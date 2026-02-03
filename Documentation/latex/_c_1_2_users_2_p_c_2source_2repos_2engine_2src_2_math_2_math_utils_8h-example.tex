@@ -1,0 +1,207 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math\+Utils.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_utils_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_utils_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ minValue\ =\ Math::Min(3.5f,\ 2.1f);\ \ \textcolor{comment}{//\ minValue\ =\ 2.1f}}
+\DoxyCodeLine{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ absValue\ =\ Math::Abs(-\/4.2f);\ \ \ \ \ \ \ \textcolor{comment}{//\ absValue\ =\ 4.2f}}
+\DoxyCodeLine{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ powerValue\ =\ Math::Pow(2.0f,\ 3.0f);\ \textcolor{comment}{//\ powerValue\ =\ 8.0f}}
+\DoxyCodeLine{\textcolor{keywordtype}{bool}\ equal\ =\ Math::Approximately(0.1f\ +\ 0.2f,\ 0.3f);\ \ \textcolor{comment}{//\ equal\ =\ true}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Math.h"{}}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @namespace\ Math}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Additional\ mathematical\ utility\ functions\ for\ the\ game\ engine.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ namespace\ extends\ the\ core\ Math\ namespace\ with\ additional\ utility\ functions}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ commonly\ used\ in\ game\ development.\ It\ includes\ functions\ for\ minimum/maximum,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ absolute\ value,\ power\ calculations,\ approximate\ comparisons,\ and\ various}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ interpolation\ techniques.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Min/Max\ functions\ for\ comparing\ two\ values}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Absolute\ value\ function}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Power\ function\ for\ exponentiation}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Approximate\ equality\ checks\ for\ floating-\/point\ numbers}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Clamped\ linear\ interpolation}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Quadratic\ interpolation}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Angle\ wrapping\ utility}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ All\ floating-\/point\ operations\ use\ f32\ (single-\/precision)\ for\ performance.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ minValue\ =\ Math::Min(3.5f,\ 2.1f);\ \ //\ minValue\ =\ 2.1f}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ absValue\ =\ Math::Abs(-\/4.2f);\ \ \ \ \ \ \ //\ absValue\ =\ 4.2f}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ powerValue\ =\ Math::Pow(2.0f,\ 3.0f);\ //\ powerValue\ =\ 8.0f}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ bool\ equal\ =\ Math::Approximately(0.1f\ +\ 0.2f,\ 0.3f);\ \ //\ equal\ =\ true}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{namespace\ }\doxymbox{\hyperlink{namespace_math}{Math}}\{}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Returns\ the\ minimum\ of\ two\ values.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ a\ The\ first\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ b\ The\ second\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ T\ The\ minimum\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ minValue\ =\ Math::Min(3.5f,\ 2.1f);\ \ //\ minValue\ =\ 2.1f}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\ \ \textcolor{keyword}{constexpr}\ T\ Min(T\ a,\ T\ b)\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ (a\ <\ b)\ ?\ a\ :\ b;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Returns\ the\ maximum\ of\ two\ values.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ a\ The\ first\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ b\ The\ second\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ T\ The\ maximum\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ maxValue\ =\ Math::Max(3.5f,\ 2.1f);\ \ //\ maxValue\ =\ 3.5f}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\ \ \textcolor{keyword}{constexpr}\ T\ Max(T\ a,\ T\ b)\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ (a\ >\ b)\ ?\ a\ :\ b;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Returns\ the\ absolute\ value\ of\ a\ number.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ value\ The\ value\ to\ get\ the\ absolute\ of}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ T\ The\ absolute\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ absValue\ =\ Math::Abs(-\/4.2f);\ \ \ \ \ \ \ //\ absValue\ =\ 4.2f}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\ \ \textcolor{keyword}{constexpr}\ T\ Abs(T\ value)\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ (value\ <\ T(0))\ ?\ -\/value\ :\ value;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Raises\ a\ base\ to\ the\ power\ of\ an\ exponent.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ base\ The\ base\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ exponent\ The\ exponent\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ f32\ The\ result\ of\ base\ raised\ to\ the\ exponent}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ powerValue\ =\ Math::Pow(2.0f,\ 3.0f);\ //\ powerValue\ =\ 8.0f}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ Pow(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ base,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ exponent)\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ std::pow(base,\ exponent);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Checks\ if\ two\ floating-\/point\ numbers\ are\ approximately\ equal.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Compares\ two\ f32\ values\ within\ a\ small\ epsilon\ tolerance\ to\ account\ for}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ floating-\/point\ precision\ errors.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ a\ The\ first\ floating-\/point\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ b\ The\ second\ floating-\/point\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ epsilon\ The\ tolerance\ for\ comparison\ (default\ is\ EPSILON)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ bool\ True\ if\ values\ are\ approximately\ equal,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ bool\ equal\ =\ Math::Approximately(0.1f\ +\ 0.2f,\ 0.3f);\ \ //\ equal\ =\ true}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Approximately(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ a,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ b,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ epsilon\ =\ \doxymbox{\hyperlink{namespace_math_accab87ed706920fc8ced5c0fef4a16cf}{EPSILON}})\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ Abs(a\ -\/\ b)\ <=\ epsilon;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Clamped\ linear\ interpolation\ between\ two\ values.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Performs\ linear\ interpolation\ (lerp)\ between\ a\ and\ b,\ clamping\ the}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ interpolation\ parameter\ t\ to\ the\ range\ [0.0,\ 1.0].}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ a\ The\ start\ value\ (t\ =\ 0)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ b\ The\ end\ value\ (t\ =\ 1)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ t\ The\ interpolation\ parameter}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ T\ The\ interpolated\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ result\ =\ Math::LerpClamped(0.0f,\ 10.0f,\ 1.5f);\ //\ result\ =\ 10.0f}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\ \ \textcolor{keyword}{constexpr}\ T\ LerpClamped(T\ a,\ T\ b,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ t)\{}
+\DoxyCodeLine{\ \ \ \ t\ =\ Clamp(t,\ 0.0f,\ 1.0f);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ Lerp(a,\ b,\ t);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Quadratic\ interpolation\ among\ three\ values.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Performs\ quadratic\ interpolation\ using\ three\ control\ points\ a,\ b,\ and\ c.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ a\ The\ first\ control\ point}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ b\ The\ second\ control\ point}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ c\ The\ third\ control\ point}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ t\ The\ interpolation\ parameter}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ T\ The\ interpolated\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ result\ =\ Math::QuadraticLerp(0.0f,\ 5.0f,\ 10.0f,\ 0.5f);\ //\ result\ =\ 5.0f}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\ \ \textcolor{keyword}{constexpr}\ T\ QuadraticLerp(T\ a,\ T\ b,\ T\ c,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ t)\{}
+\DoxyCodeLine{\ \ \ \ T\ ab\ =\ Lerp(a,\ b,\ t);}
+\DoxyCodeLine{\ \ \ \ T\ bc\ =\ Lerp(b,\ c,\ t);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ Lerp(ab,\ bc,\ t);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Wraps\ an\ angle\ in\ radians\ to\ the\ range\ [-\/π,\ π].}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ angle\ The\ input\ angle\ in\ radians}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ f32\ The\ wrapped\ angle\ in\ the\ range\ [-\/π,\ π]}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ wrappedAngle\ =\ Math::WarpAngle(4.0f);\ //\ wrappedAngle\ ≈\ -\/2.28319f}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\ \ \textcolor{keyword}{constexpr}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ WarpAngle(T\ angle)\{}
+\DoxyCodeLine{\ \ \ \ angle\ =\ std::fmod(angle,\ \doxymbox{\hyperlink{namespace_math_aee4e2fdc9954787c0334470bfc7597c0}{TWO\_PI}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(angle\ <\ \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{PI}})\ angle\ -\/=\ \doxymbox{\hyperlink{namespace_math_aee4e2fdc9954787c0334470bfc7597c0}{TWO\_PI}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(angle\ >\ \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{PI}})\ angle\ +=\ \doxymbox{\hyperlink{namespace_math_aee4e2fdc9954787c0334470bfc7597c0}{TWO\_PI}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ angle;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\};\ \textcolor{comment}{//\ namespace\ Math}}
+
+\end{DoxyCodeInclude}
+ 

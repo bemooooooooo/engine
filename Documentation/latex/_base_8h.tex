@@ -1,0 +1,155 @@
+\doxysection{src/\+\+Core/\+\+Base.h File Reference}
+\hypertarget{_base_8h}{}\label{_base_8h}\index{src/Core/Base.h@{src/Core/Base.h}}
+
+
+Core base definitions, type aliases, and utility macros for the game engine.  
+
+
+{\ttfamily \+\#include $<$cstdint$>$}\newline
+{\ttfamily \+\#include $<$memory$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{_base_8h_a0697ee40f69dc5dab56d13131f4c4835}{ENGINE\+\_\+\+API}}~\+\_\+\+\_\+attribute\+\_\+\+\_\+((visibility("{}default"{})))
+\begin{DoxyCompactList}\small\item\em Cross-\/platform export macro for DLL/\+shared library definitions. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{_base_8h_ad954e7a621f49c25e7bfe44b123b7490}{ENGINE\+\_\+\+FORCE\+\_\+\+INLINE}}~inline
+\item 
+\+\#define \doxymbox{\hyperlink{_base_8h_a5792d534b2f6a7679d66bbf911b1e634}{ENGINE\+\_\+\+DEPRECATED}}(msg)
+\item 
+\+\#define \doxymbox{\hyperlink{_base_8h_ac7becf6fd1b1508cb194e957dc7e9812}{ENGINE\+\_\+\+PACKED}}
+\item 
+\+\#define \doxymbox{\hyperlink{_base_8h_a6a77c2c00d7d96071c5b3bc7aef5b448}{ENGINE\+\_\+\+PACKED\+\_\+\+END}}
+\item 
+\+\#define \doxymbox{\hyperlink{group___debug_macros_gaea47321626b32e9ed5172fdab6644d46}{ENGINE\+\_\+\+DEBUG\+\_\+\+LOG}}(x)
+\begin{DoxyCompactList}\small\item\em Logs a message in debug builds only with zero overhead in release builds. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{group___debug_macros_ga6a368943a0cf91bd403bf1c6e35e9ee0}{ENGINE\+\_\+\+DEBUG\+\_\+\+LOG\+\_\+\+IF}}(cond,  x)
+\begin{DoxyCompactList}\small\item\em Conditionally logs a message in debug builds only if a condition is met. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \doxymbox{\hyperlink{group___base_types_ga196513547113c3f96a078ee3e658a6ef}{i8}} = int8\+\_\+t
+\begin{DoxyCompactList}\small\item\em Signed 8-\/bit integer type (range:\+ -\/128 to 127). \end{DoxyCompactList}\item 
+using \doxymbox{\hyperlink{group___base_types_ga977685259fe8059c48e92450967d46a8}{i16}} = int16\+\_\+t
+\begin{DoxyCompactList}\small\item\em Signed 16-\/bit integer type (range:\+ -\/32768 to 32767). \end{DoxyCompactList}\item 
+using \doxymbox{\hyperlink{group___base_types_gaec41e5f8e4b7aef2540e84268692fa84}{i32}} = int32\+\_\+t
+\begin{DoxyCompactList}\small\item\em Signed 32-\/bit integer type (range:\+ -\/2147483648 to 2147483647). \end{DoxyCompactList}\item 
+using \doxymbox{\hyperlink{group___base_types_ga86025ec3a0bc201ca893caac2cb2acbd}{i64}} = int64\+\_\+t
+\begin{DoxyCompactList}\small\item\em Signed 64-\/bit integer type (range:\+ -\/9223372036854775808 to 9223372036854775807). \end{DoxyCompactList}\item 
+using \doxymbox{\hyperlink{group___base_types_ga987e4d6cf789cb59dbb390728271e4d6}{u8}} = uint8\+\_\+t
+\begin{DoxyCompactList}\small\item\em Unsigned 8-\/bit integer type (range:\+ 0 to 255). \end{DoxyCompactList}\item 
+using \doxymbox{\hyperlink{group___base_types_ga6dbf9516e516c901604625282c174aa4}{u16}} = uint16\+\_\+t
+\begin{DoxyCompactList}\small\item\em Unsigned 16-\/bit integer type (range:\+ 0 to 65535). \end{DoxyCompactList}\item 
+using \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} = uint32\+\_\+t
+\begin{DoxyCompactList}\small\item\em Unsigned 32-\/bit integer type (range:\+ 0 to 4294967295). \end{DoxyCompactList}\item 
+using \doxymbox{\hyperlink{group___base_types_ga1af9f95651e921615e75917a6dd1b574}{u64}} = uint64\+\_\+t
+\begin{DoxyCompactList}\small\item\em Unsigned 64-\/bit integer type (range:\+ 0 to 18446744073709551615). \end{DoxyCompactList}\item 
+using \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} = float
+\begin{DoxyCompactList}\small\item\em 32-\/bit floating-\/point type (standard C++ float) \end{DoxyCompactList}\item 
+using \doxymbox{\hyperlink{group___base_types_gabc2f107791bd7c1d49ecf0f168c085a3}{f64}} = double
+\begin{DoxyCompactList}\small\item\em 64-\/bit floating-\/point type (standard C++ double) \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\using \doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope}} = std::\+unique\+\_\+ptr$<$T$>$
+\begin{DoxyCompactList}\small\item\em Type alias for std::\+unique\+\_\+ptr$<$\+T$>$. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\using \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}} = std::\+shared\+\_\+ptr$<$T$>$
+\begin{DoxyCompactList}\small\item\em Type alias for std::\+shared\+\_\+ptr$<$\+T$>$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T, typename... Args$>$ }\\constexpr \doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope}}$<$ T $>$ \doxymbox{\hyperlink{group___memory_management_gaa6f344b966989e6bcb7ad2e2eaceb7ce}{Create\+Scope}} (Args \&\&... args)
+\item 
+{\footnotesize template$<$typename T, typename... Args$>$ }\\constexpr \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ T $>$ \doxymbox{\hyperlink{group___memory_management_ga6319f792d6030b2b69071455eb36e3f8}{Create\+Ref}} (Args \&\&... args)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Core base definitions, type aliases, and utility macros for the game engine. 
+
+This header provides fundamental types, memory management utilities, and cross-\/platform compatibility definitions for the My\+Game\+Engine project. It serves as the foundation that all other engine modules depend on.
+
+\doxylink{namespace_key}{Key} features:\+
+\begin{DoxyItemize}
+\item Cross-\/platform compatibility macros
+\item Fixed-\/size integer type aliases (\doxylink{group___base_types_ga196513547113c3f96a078ee3e658a6ef}{i8}, \doxylink{group___base_types_ga977685259fe8059c48e92450967d46a8}{i16}, \doxylink{group___base_types_gaec41e5f8e4b7aef2540e84268692fa84}{i32}, \doxylink{group___base_types_ga86025ec3a0bc201ca893caac2cb2acbd}{i64}, \doxylink{group___base_types_ga987e4d6cf789cb59dbb390728271e4d6}{u8}, \doxylink{group___base_types_ga6dbf9516e516c901604625282c174aa4}{u16}, \doxylink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}, \doxylink{group___base_types_ga1af9f95651e921615e75917a6dd1b574}{u64})
+\item Floating-\/point type aliases (\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}, \doxylink{group___base_types_gabc2f107791bd7c1d49ecf0f168c085a3}{f64})
+\item Smart pointer utilities (\doxylink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope}, \doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}) with factory functions
+\item Debug logging macros that compile out in release builds
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Author}
+bemooooooooo 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026 
+\end{DoxyDate}
+
+
+Definition in file \doxymbox{\hyperlink{_base_8h_source}{Base.\+h}}.
+
+
+
+\label{doc-define-members}
+\Hypertarget{_base_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_base_8h_a0697ee40f69dc5dab56d13131f4c4835}\index{Base.h@{Base.h}!ENGINE\_API@{ENGINE\_API}}
+\index{ENGINE\_API@{ENGINE\_API}!Base.h@{Base.h}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_API}{ENGINE\_API}}
+{\footnotesize\ttfamily \label{_base_8h_a0697ee40f69dc5dab56d13131f4c4835} 
+\+\#define ENGINE\+\_\+\+API~\+\_\+\+\_\+attribute\+\_\+\+\_\+((visibility("{}default"{})))}
+
+
+
+Cross-\/platform export macro for DLL/\+shared library definitions. 
+
+On Windows platforms, this macro expands to \+\_\+\+\_\+declspec(dllexport) to properly export symbols from a dynamic library. On other platforms (Linux, mac\+OS), it expands to nothing, allowing the code to work seamlessly across different OS.
+
+Usage:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{_base_8h_a0697ee40f69dc5dab56d13131f4c4835}{ENGINE\_API}}\ MyPublicClass\ \{\ ...\ \};}
+
+\end{DoxyCode}
+ 
+
+Definition at line \doxymbox{\hyperlink{_base_8h_source_l00038}{38}} of file \doxymbox{\hyperlink{_base_8h_source}{Base.\+h}}.
+
+\Hypertarget{_base_8h_a5792d534b2f6a7679d66bbf911b1e634}\index{Base.h@{Base.h}!ENGINE\_DEPRECATED@{ENGINE\_DEPRECATED}}
+\index{ENGINE\_DEPRECATED@{ENGINE\_DEPRECATED}!Base.h@{Base.h}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_DEPRECATED}{ENGINE\_DEPRECATED}}
+{\footnotesize\ttfamily \label{_base_8h_a5792d534b2f6a7679d66bbf911b1e634} 
+\+\#define ENGINE\+\_\+\+DEPRECATED(\begin{DoxyParamCaption}\item[{}]{msg}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_base_8h_source_l00054}{54}} of file \doxymbox{\hyperlink{_base_8h_source}{Base.\+h}}.
+
+\Hypertarget{_base_8h_ad954e7a621f49c25e7bfe44b123b7490}\index{Base.h@{Base.h}!ENGINE\_FORCE\_INLINE@{ENGINE\_FORCE\_INLINE}}
+\index{ENGINE\_FORCE\_INLINE@{ENGINE\_FORCE\_INLINE}!Base.h@{Base.h}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_FORCE\_INLINE}{ENGINE\_FORCE\_INLINE}}
+{\footnotesize\ttfamily \label{_base_8h_ad954e7a621f49c25e7bfe44b123b7490} 
+\+\#define ENGINE\+\_\+\+FORCE\+\_\+\+INLINE~inline}
+
+
+
+Definition at line \doxymbox{\hyperlink{_base_8h_source_l00053}{53}} of file \doxymbox{\hyperlink{_base_8h_source}{Base.\+h}}.
+
+\Hypertarget{_base_8h_ac7becf6fd1b1508cb194e957dc7e9812}\index{Base.h@{Base.h}!ENGINE\_PACKED@{ENGINE\_PACKED}}
+\index{ENGINE\_PACKED@{ENGINE\_PACKED}!Base.h@{Base.h}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_PACKED}{ENGINE\_PACKED}}
+{\footnotesize\ttfamily \label{_base_8h_ac7becf6fd1b1508cb194e957dc7e9812} 
+\+\#define ENGINE\+\_\+\+PACKED}
+
+
+
+Definition at line \doxymbox{\hyperlink{_base_8h_source_l00055}{55}} of file \doxymbox{\hyperlink{_base_8h_source}{Base.\+h}}.
+
+\Hypertarget{_base_8h_a6a77c2c00d7d96071c5b3bc7aef5b448}\index{Base.h@{Base.h}!ENGINE\_PACKED\_END@{ENGINE\_PACKED\_END}}
+\index{ENGINE\_PACKED\_END@{ENGINE\_PACKED\_END}!Base.h@{Base.h}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_PACKED\_END}{ENGINE\_PACKED\_END}}
+{\footnotesize\ttfamily \label{_base_8h_a6a77c2c00d7d96071c5b3bc7aef5b448} 
+\+\#define ENGINE\+\_\+\+PACKED\+\_\+\+END}
+
+
+
+Definition at line \doxymbox{\hyperlink{_base_8h_source_l00056}{56}} of file \doxymbox{\hyperlink{_base_8h_source}{Base.\+h}}.
+

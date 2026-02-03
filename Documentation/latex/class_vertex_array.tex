@@ -1,0 +1,307 @@
+\doxysection{Vertex\+Array Class Reference}
+\hypertarget{class_vertex_array}{}\label{class_vertex_array}\index{VertexArray@{VertexArray}}
+
+
+Encapsulates an Open\+GL vertex array object (VAO).  
+
+
+
+
+{\ttfamily \+\#include $<$Vertex\+Array.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_vertex_array_ab8a2dcce9698f96dac5f9a19c6979d03}{Vertex\+Array}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_vertex_array}{Vertex\+Array} and generates the Open\+GL VAO. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_vertex_array_a82597eb9daba5ad66dd3cf898e159a95}{\texorpdfstring{$\sim$}{\string~}\+Vertex\+Array}} ()
+\begin{DoxyCompactList}\small\item\em Destructor that cleans up the Open\+GL VAO. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vertex_array_ad5059455f0864327028636c628d5a661}{Bind}} () const
+\begin{DoxyCompactList}\small\item\em Binds the vertex array for rendering. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vertex_array_a73f0d868a6c76622bcd57063a2c2d8d4}{Unbind}} () const
+\begin{DoxyCompactList}\small\item\em Unbinds the vertex array. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vertex_array_ae8314382604c29d6f8b1ebfa47ee6255}{Add\+Vertex\+Buffer}} (const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_vertex_buffer}{Vertex\+Buffer}} $>$ \&vertex\+Buffer, const \doxymbox{\hyperlink{class_vertex_buffer_layout}{Vertex\+Buffer\+Layout}} \&layout)
+\begin{DoxyCompactList}\small\item\em Adds a vertex buffer to the vertex array with the specified layout. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vertex_array_aa7479d7bb305c85f538e8b8a0474b2ca}{Set\+Index\+Buffer}} (const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_index_buffer}{Index\+Buffer}} $>$ \&index\+Buffer)
+\begin{DoxyCompactList}\small\item\em Sets the index buffer for the vertex array. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_vertex_buffer}{Vertex\+Buffer}} $>$ $>$ \& \doxymbox{\hyperlink{class_vertex_array_a9ae2fd95b5ff6103dfe8e8360e92c8a9}{Get\+Vertex\+Buffers}} () const
+\begin{DoxyCompactList}\small\item\em Gets the Open\+GL renderer ID of the vertex array. \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_index_buffer}{Index\+Buffer}} $>$ \& \doxymbox{\hyperlink{class_vertex_array_a3d97dc363e1c73502e366283dd69dc7e}{Get\+Index\+Buffer}} () const
+\begin{DoxyCompactList}\small\item\em Gets the index buffer associated with the vertex array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_vertex_array_acbdf7108d32fafca25a832011c560997}{m\+\_\+\+Renderer\+ID}}
+\begin{DoxyCompactList}\small\item\em The Open\+GL renderer ID for the vertex array object. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_vertex_array_a539e8b57b18f63c2cab0994bd784de4f}{m\+\_\+\+Vertex\+Buffer\+Index}} = 0
+\begin{DoxyCompactList}\small\item\em The current index for vertex buffer attributes. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_vertex_buffer}{Vertex\+Buffer}} $>$ $>$ \doxymbox{\hyperlink{class_vertex_array_ae7b5367ecca33b1a8719e09e1e48eac1}{m\+\_\+\+Vertex\+Buffers}}
+\begin{DoxyCompactList}\small\item\em The list of vertex buffers associated with this vertex array. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_index_buffer}{Index\+Buffer}} $>$ \doxymbox{\hyperlink{class_vertex_array_aceca6495c792c8bf98af0173f93d31e0}{m\+\_\+\+Index\+Buffer}}
+\begin{DoxyCompactList}\small\item\em The index buffer associated with this vertex array. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Encapsulates an Open\+GL vertex array object (VAO). 
+
+Manages the binding of vertex buffers and index buffers for rendering. 
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00151}{151}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_vertex_array_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_vertex_array_ab8a2dcce9698f96dac5f9a19c6979d03}\index{VertexArray@{VertexArray}!VertexArray@{VertexArray}}
+\index{VertexArray@{VertexArray}!VertexArray@{VertexArray}}
+\doxysubsubsection{\texorpdfstring{VertexArray()}{VertexArray()}}
+{\footnotesize\ttfamily \label{class_vertex_array_ab8a2dcce9698f96dac5f9a19c6979d03} 
+Vertex\+Array::\+\+Vertex\+Array (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a new \doxylink{class_vertex_array}{Vertex\+Array} and generates the Open\+GL VAO. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00005}{5}} of file \doxymbox{\hyperlink{_vertex_array_8cpp_source}{Vertex\+Array.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_array_8h_source_l00212}{m\+\_\+\+Renderer\+ID}}.
+
+\Hypertarget{class_vertex_array_a82597eb9daba5ad66dd3cf898e159a95}\index{VertexArray@{VertexArray}!````~VertexArray@{\texorpdfstring{$\sim$}{\string~}VertexArray}}
+\index{````~VertexArray@{\texorpdfstring{$\sim$}{\string~}VertexArray}!VertexArray@{VertexArray}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VertexArray()}{\string~VertexArray()}}
+{\footnotesize\ttfamily \label{class_vertex_array_a82597eb9daba5ad66dd3cf898e159a95} 
+Vertex\+Array::\+\texorpdfstring{$\sim$}{\string~}\+Vertex\+Array (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor that cleans up the Open\+GL VAO. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00007}{7}} of file \doxymbox{\hyperlink{_vertex_array_8cpp_source}{Vertex\+Array.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_array_8h_source_l00212}{m\+\_\+\+Renderer\+ID}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_vertex_array_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_vertex_array_ae8314382604c29d6f8b1ebfa47ee6255}\index{VertexArray@{VertexArray}!AddVertexBuffer@{AddVertexBuffer}}
+\index{AddVertexBuffer@{AddVertexBuffer}!VertexArray@{VertexArray}}
+\doxysubsubsection{\texorpdfstring{AddVertexBuffer()}{AddVertexBuffer()}}
+{\footnotesize\ttfamily \label{class_vertex_array_ae8314382604c29d6f8b1ebfa47ee6255} 
+void Vertex\+Array::\+\+Add\+Vertex\+Buffer (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_vertex_buffer}{Vertex\+Buffer}} $>$ \&}]{vertex\+Buffer}{, }\item[{const \doxymbox{\hyperlink{class_vertex_buffer_layout}{Vertex\+Buffer\+Layout}} \&}]{layout}{}\end{DoxyParamCaption})}
+
+
+
+Adds a vertex buffer to the vertex array with the specified layout. 
+
+Configures the vertex attribute pointers based on the provided layout.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\+Buffer} & The vertex buffer to add \\
+\hline
+{\em layout} & The layout describing the vertex attributes \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00013}{13}} of file \doxymbox{\hyperlink{_vertex_array_8cpp_source}{Vertex\+Array.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00009}{Bind()}}, \doxymbox{\hyperlink{_vertex_array_8h_source_l00087}{Vertex\+Buffer\+Layout::\+\+Get\+Elements()}}, \doxymbox{\hyperlink{_vertex_array_8h_source_l00042}{Vertex\+Buffer\+Element::\+\+Get\+Size\+Of\+Type()}}, \doxymbox{\hyperlink{_vertex_array_8h_source_l00096}{Vertex\+Buffer\+Layout::\+\+Get\+Stride()}}, \doxymbox{\hyperlink{_vertex_array_8h_source_l00218}{m\+\_\+\+Vertex\+Buffer\+Index}}, and \doxymbox{\hyperlink{_vertex_array_8h_source_l00224}{m\+\_\+\+Vertex\+Buffers}}.
+
+\Hypertarget{class_vertex_array_ad5059455f0864327028636c628d5a661}\index{VertexArray@{VertexArray}!Bind@{Bind}}
+\index{Bind@{Bind}!VertexArray@{VertexArray}}
+\doxysubsubsection{\texorpdfstring{Bind()}{Bind()}}
+{\footnotesize\ttfamily \label{class_vertex_array_ad5059455f0864327028636c628d5a661} 
+void Vertex\+Array::\+\+Bind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Binds the vertex array for rendering. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00009}{9}} of file \doxymbox{\hyperlink{_vertex_array_8cpp_source}{Vertex\+Array.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_array_8h_source_l00212}{m\+\_\+\+Renderer\+ID}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00013}{Add\+Vertex\+Buffer()}}, and \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00034}{Set\+Index\+Buffer()}}.
+
+\Hypertarget{class_vertex_array_a3d97dc363e1c73502e366283dd69dc7e}\index{VertexArray@{VertexArray}!GetIndexBuffer@{GetIndexBuffer}}
+\index{GetIndexBuffer@{GetIndexBuffer}!VertexArray@{VertexArray}}
+\doxysubsubsection{\texorpdfstring{GetIndexBuffer()}{GetIndexBuffer()}}
+{\footnotesize\ttfamily \label{class_vertex_array_a3d97dc363e1c73502e366283dd69dc7e} 
+const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_index_buffer}{Index\+Buffer}} $>$ \& Vertex\+Array::\+\+Get\+Index\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the index buffer associated with the vertex array. 
+
+\begin{DoxyReturn}{Returns}
+const \doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Index\+Buffer$>$}\& The index buffer 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00205}{205}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_array_8h_source_l00230}{m\+\_\+\+Index\+Buffer}}.
+
+\Hypertarget{class_vertex_array_a9ae2fd95b5ff6103dfe8e8360e92c8a9}\index{VertexArray@{VertexArray}!GetVertexBuffers@{GetVertexBuffers}}
+\index{GetVertexBuffers@{GetVertexBuffers}!VertexArray@{VertexArray}}
+\doxysubsubsection{\texorpdfstring{GetVertexBuffers()}{GetVertexBuffers()}}
+{\footnotesize\ttfamily \label{class_vertex_array_a9ae2fd95b5ff6103dfe8e8360e92c8a9} 
+const std::\+vector$<$ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_vertex_buffer}{Vertex\+Buffer}} $>$ $>$ \& Vertex\+Array::\+\+Get\+Vertex\+Buffers (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the Open\+GL renderer ID of the vertex array. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32} The Open\+GL renderer ID 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00196}{196}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_array_8h_source_l00224}{m\+\_\+\+Vertex\+Buffers}}.
+
+\Hypertarget{class_vertex_array_aa7479d7bb305c85f538e8b8a0474b2ca}\index{VertexArray@{VertexArray}!SetIndexBuffer@{SetIndexBuffer}}
+\index{SetIndexBuffer@{SetIndexBuffer}!VertexArray@{VertexArray}}
+\doxysubsubsection{\texorpdfstring{SetIndexBuffer()}{SetIndexBuffer()}}
+{\footnotesize\ttfamily \label{class_vertex_array_aa7479d7bb305c85f538e8b8a0474b2ca} 
+void Vertex\+Array::\+\+Set\+Index\+Buffer (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_index_buffer}{Index\+Buffer}} $>$ \&}]{index\+Buffer}{}\end{DoxyParamCaption})}
+
+
+
+Sets the index buffer for the vertex array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index\+Buffer} & The index buffer to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00034}{34}} of file \doxymbox{\hyperlink{_vertex_array_8cpp_source}{Vertex\+Array.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00009}{Bind()}}, and \doxymbox{\hyperlink{_vertex_array_8h_source_l00230}{m\+\_\+\+Index\+Buffer}}.
+
+\Hypertarget{class_vertex_array_a73f0d868a6c76622bcd57063a2c2d8d4}\index{VertexArray@{VertexArray}!Unbind@{Unbind}}
+\index{Unbind@{Unbind}!VertexArray@{VertexArray}}
+\doxysubsubsection{\texorpdfstring{Unbind()}{Unbind()}}
+{\footnotesize\ttfamily \label{class_vertex_array_a73f0d868a6c76622bcd57063a2c2d8d4} 
+void Vertex\+Array::\+\+Unbind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Unbinds the vertex array. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00011}{11}} of file \doxymbox{\hyperlink{_vertex_array_8cpp_source}{Vertex\+Array.\+cpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_vertex_array_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_vertex_array_aceca6495c792c8bf98af0173f93d31e0}\index{VertexArray@{VertexArray}!m\_IndexBuffer@{m\_IndexBuffer}}
+\index{m\_IndexBuffer@{m\_IndexBuffer}!VertexArray@{VertexArray}}
+\doxysubsubsection{\texorpdfstring{m\_IndexBuffer}{m\_IndexBuffer}}
+{\footnotesize\ttfamily \label{class_vertex_array_aceca6495c792c8bf98af0173f93d31e0} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$\doxymbox{\hyperlink{class_index_buffer}{Index\+Buffer}}$>$ Vertex\+Array::\+m\+\_\+\+Index\+Buffer\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The index buffer associated with this vertex array. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00230}{230}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_vertex_array_8h_source_l00205}{Get\+Index\+Buffer()}}, and \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00034}{Set\+Index\+Buffer()}}.
+
+\Hypertarget{class_vertex_array_acbdf7108d32fafca25a832011c560997}\index{VertexArray@{VertexArray}!m\_RendererID@{m\_RendererID}}
+\index{m\_RendererID@{m\_RendererID}!VertexArray@{VertexArray}}
+\doxysubsubsection{\texorpdfstring{m\_RendererID}{m\_RendererID}}
+{\footnotesize\ttfamily \label{class_vertex_array_acbdf7108d32fafca25a832011c560997} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Vertex\+Array::\+m\+\_\+\+Renderer\+ID\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Open\+GL renderer ID for the vertex array object. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00212}{212}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00009}{Bind()}}, \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00005}{Vertex\+Array()}}, and \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00007}{\texorpdfstring{$\sim$}{\string~}\+Vertex\+Array()}}.
+
+\Hypertarget{class_vertex_array_a539e8b57b18f63c2cab0994bd784de4f}\index{VertexArray@{VertexArray}!m\_VertexBufferIndex@{m\_VertexBufferIndex}}
+\index{m\_VertexBufferIndex@{m\_VertexBufferIndex}!VertexArray@{VertexArray}}
+\doxysubsubsection{\texorpdfstring{m\_VertexBufferIndex}{m\_VertexBufferIndex}}
+{\footnotesize\ttfamily \label{class_vertex_array_a539e8b57b18f63c2cab0994bd784de4f} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Vertex\+Array::\+m\+\_\+\+Vertex\+Buffer\+Index = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The current index for vertex buffer attributes. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00218}{218}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00013}{Add\+Vertex\+Buffer()}}.
+
+\Hypertarget{class_vertex_array_ae7b5367ecca33b1a8719e09e1e48eac1}\index{VertexArray@{VertexArray}!m\_VertexBuffers@{m\_VertexBuffers}}
+\index{m\_VertexBuffers@{m\_VertexBuffers}!VertexArray@{VertexArray}}
+\doxysubsubsection{\texorpdfstring{m\_VertexBuffers}{m\_VertexBuffers}}
+{\footnotesize\ttfamily \label{class_vertex_array_ae7b5367ecca33b1a8719e09e1e48eac1} 
+std::\+vector$<$\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$\doxymbox{\hyperlink{class_vertex_buffer}{Vertex\+Buffer}}$>$ $>$ Vertex\+Array::\+m\+\_\+\+Vertex\+Buffers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The list of vertex buffers associated with this vertex array. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00224}{224}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00013}{Add\+Vertex\+Buffer()}}, and \doxymbox{\hyperlink{_vertex_array_8h_source_l00196}{Get\+Vertex\+Buffers()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Vertex\+Array.\+h\item 
+src/\+\+Graphics/\+Vertex\+Array.\+cpp\end{DoxyCompactItemize}

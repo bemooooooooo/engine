@@ -1,0 +1,183 @@
+\doxysection{Resource\+Manager.\+h}
+\hypertarget{_resource_manager_8h_source}{}\label{_resource_manager_8h_source}\index{src/Graphics/ResourceManager.h@{src/Graphics/ResourceManager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_base_8h}{../Core/Base.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00006}00006\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Forward\ declarations-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00007}00007\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_shader}{Shader}};}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00008}00008\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_texture}{Texture}};}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00009}00009\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_mesh}{Mesh}};}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00010}00010\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00011}00011\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00012}00012\ \textcolor{comment}{\ *\ @class\ ResourceManager}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00013}00013\ \textcolor{comment}{\ *\ @brief\ Centralized\ manager\ for\ loading,\ storing,\ and\ accessing\ graphics\ resources.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00014}00014\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00015}00015\ \textcolor{comment}{\ *\ This\ class\ provides\ static\ methods\ to\ load,\ retrieve,\ and\ unload\ various\ graphics}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00016}00016\ \textcolor{comment}{\ *\ resources\ such\ as\ shaders,\ textures,\ and\ meshes.\ It\ maintains\ internal\ maps\ to}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00017}00017\ \textcolor{comment}{\ *\ ensure\ that\ resources\ are\ loaded\ only\ once\ and\ shared\ across\ the\ engine.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00018}00018\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00019}00019\ \textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00020}00020\ \textcolor{comment}{\ *\ -\/\ Load\ shaders\ from\ files\ or\ source\ code}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00021}00021\ \textcolor{comment}{\ *\ -\/\ Load\ textures\ from\ image\ files}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00022}00022\ \textcolor{comment}{\ *\ -\/\ Register\ and\ retrieve\ meshes}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00023}00023\ \textcolor{comment}{\ *\ -\/\ Automatic\ resource\ cleanup\ on\ shutdown}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00024}00024\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00025}00025\ \textcolor{comment}{\ *\ @note\ All\ methods\ are\ static;\ no\ instances\ of\ ResourceManager\ should\ be\ created.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00026}00026\ \textcolor{comment}{\ *\ @note\ Resources\ are\ identified\ by\ unique\ string\ names.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00027}00027\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00028}00028\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00029}00029\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00030}00030\ \textcolor{comment}{\ *\ auto\ shader\ =\ ResourceManager::LoadShader("{}basic"{},\ "{}vertex.glsl"{},\ "{}fragment.glsl"{});}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00031}00031\ \textcolor{comment}{\ *\ auto\ texture\ =\ ResourceManager::LoadTexture("{}brick"{},\ "{}brick\_diffuse.png"{});}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00032}00032\ \textcolor{comment}{\ *\ auto\ mesh\ =\ ResourceManager::GetMesh("{}cube"{});}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00033}00033\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00034}00034\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00035}\doxymbox{\hyperlink{class_resource_manager}{00035}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_resource_manager}{ResourceManager}}\ \{}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00036}00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Shader\ management-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00038}00038\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00039}00039\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Retrieves\ a\ shader\ by\ name.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00040}00040\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00041}00041\ \textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ of\ the\ shader}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00042}00042\ \textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Shader>\ The\ requested\ shader,\ or\ nullptr\ if\ not\ found}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00043}00043\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00044}00044\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\ \doxymbox{\hyperlink{class_resource_manager_a3603db5f3dfffc1557139cb0b59e1c77}{GetShader}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00045}00045\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00046}00046\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00047}00047\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Loads\ a\ shader\ from\ vertex\ and\ fragment\ file\ paths.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00048}00048\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00049}00049\ \textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ to\ associate\ with\ the\ shader}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00050}00050\ \textcolor{comment}{\ \ \ \ \ *\ @param\ vertexPath\ The\ file\ path\ to\ the\ vertex\ shader\ source}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00051}00051\ \textcolor{comment}{\ \ \ \ \ *\ @param\ fragmentPath\ The\ file\ path\ to\ the\ fragment\ shader\ source}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00052}00052\ \textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Shader>\ The\ loaded\ shader}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00053}00053\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00054}00054\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\ \doxymbox{\hyperlink{class_resource_manager_a884ae73b54ff6fe1bc9e1b21f1611e51}{LoadShader}}(\textcolor{keyword}{const}\ std::string\&\ name,\ }
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vertexPath,\ }
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ fragmentPath);}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00057}00057\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00058}00058\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00059}00059\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Loads\ a\ shader\ from\ provided\ source\ code\ strings.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00060}00060\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00061}00061\ \textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ to\ associate\ with\ the\ shader}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00062}00062\ \textcolor{comment}{\ \ \ \ \ *\ @param\ vertexSrc\ The\ vertex\ shader\ source\ code}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00063}00063\ \textcolor{comment}{\ \ \ \ \ *\ @param\ fragmentSrc\ The\ fragment\ shader\ source\ code}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00064}00064\ \textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Shader>\ The\ loaded\ shader}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00065}00065\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00066}00066\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\ \doxymbox{\hyperlink{class_resource_manager_a827e96a4c14146dfae34cd5ff2164fae}{LoadShaderFromSource}}(\textcolor{keyword}{const}\ std::string\&\ name,}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vertexSrc,}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ fragmentSrc);\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00069}00069\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00070}00070\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Unloads\ a\ shader\ by\ name.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00071}00071\ \textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ of\ the\ shader\ to\ unload}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00072}00072\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_resource_manager_a1b9f6d6eb55776d2868a128c346e29ae}{UnloadShader}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00074}00074\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Texture\ management-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00076}00076\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00077}00077\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Retrieves\ a\ texture\ by\ name.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00078}00078\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00079}00079\ \textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ of\ the\ texture}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00080}00080\ \textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Texture>\ The\ requested\ texture,\ or\ nullptr\ if\ not\ found}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00081}00081\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00082}00082\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Texture>}}\ \doxymbox{\hyperlink{class_resource_manager_ada224c447722b7fc9244514b7173ef9f}{GetTexture}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00083}00083\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00084}00084\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00085}00085\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Loads\ a\ texture\ from\ an\ image\ file.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00086}00086\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00087}00087\ \textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ to\ associate\ with\ the\ texture}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00088}00088\ \textcolor{comment}{\ \ \ \ \ *\ @param\ path\ The\ file\ path\ to\ the\ image}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00089}00089\ \textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Texture>\ The\ loaded\ texture}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00090}00090\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00091}00091\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Texture>}}\ \doxymbox{\hyperlink{class_resource_manager_aa9444c36eac438a0f97987baf0d95e51}{LoadTexture}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ std::string\&\ path);}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00092}00092\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00093}00093\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00094}00094\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Unloads\ a\ texture\ by\ name.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00095}00095\ \textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ of\ the\ texture\ to\ unload}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00096}00096\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00097}00097\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_resource_manager_a5ab9c2577f39e6311fd673a30fa3ab5e}{UnloadTexture}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00098}00098\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00099}00099\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Mesh\ management-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00100}00100\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00101}00101\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00102}00102\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Retrieves\ a\ mesh\ by\ name.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00103}00103\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00104}00104\ \textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ of\ the\ mesh}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00105}00105\ \textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Mesh>\ The\ requested\ mesh,\ or\ nullptr\ if\ not\ found}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00106}00106\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00107}00107\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\ \doxymbox{\hyperlink{class_resource_manager_a04399a80ced01704cc0e0400f40bc52d}{GetMesh}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00108}00108\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00109}00109\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00110}00110\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Registers\ a\ mesh\ with\ a\ unique\ name.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00111}00111\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00112}00112\ \textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ to\ associate\ with\ the\ mesh}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00113}00113\ \textcolor{comment}{\ \ \ \ \ *\ @param\ mesh\ The\ mesh\ to\ register}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00114}00114\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00115}00115\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_resource_manager_aea7a27de3d69b57d62eb7109b00f45a4}{RegisterMesh}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\&\ mesh);}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00116}00116\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00117}00117\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00118}00118\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Unloads\ a\ mesh\ by\ name.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00119}00119\ \textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ of\ the\ mesh\ to\ unload}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00120}00120\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00121}00121\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_resource_manager_af2f8fdb280a2f25a86dcb78133d1a037}{UnloadMesh}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00122}00122\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00123}00123\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Cleanup-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00124}00124\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00125}00125\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00126}00126\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Unloads\ all\ resources\ and\ clears\ internal\ storage.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00127}00127\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00128}00128\ \textcolor{comment}{\ \ \ \ \ *\ Should\ be\ called\ at\ engine\ shutdown\ to\ free\ all\ loaded\ resources.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00129}00129\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00130}00130\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_resource_manager_ad69916a57c142341802f13585d267851}{Shutdown}}();}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00131}00131\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00132}00132\ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Statistics-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00133}00133\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00134}00134\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00135}00135\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ count\ of\ currently\ loaded\ shaders,\ textures,\ and\ meshes.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00136}00136\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00137}00137\ \textcolor{comment}{\ \ \ \ \ *\ @return\ size\_t\ Number\ of\ loaded\ shaders}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00138}00138\ \textcolor{comment}{\ \ \ \ \ *\ @return\ size\_t\ Number\ of\ loaded\ textures}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00139}00139\ \textcolor{comment}{\ \ \ \ \ *\ @return\ size\_t\ Number\ of\ loaded\ meshes}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00140}00140\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00141}\doxymbox{\hyperlink{class_resource_manager_a8589b7ff1fc4258a3462e9ffec3ac8ec}{00141}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{class_resource_manager_a8589b7ff1fc4258a3462e9ffec3ac8ec}{GetShaderCount}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_resource_manager_a89da21256052faf26f86ff7eabf02f9b}{s\_Shaders}}.size();\ \}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00142}00142\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00143}00143\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00144}00144\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ count\ of\ currently\ loaded\ textures.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00145}00145\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00146}00146\ \textcolor{comment}{\ \ \ \ \ *\ @return\ size\_t\ Number\ of\ loaded\ textures}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00147}00147\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00148}\doxymbox{\hyperlink{class_resource_manager_a4c0853c81b0cbe333700de117c7f0cad}{00148}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{class_resource_manager_a4c0853c81b0cbe333700de117c7f0cad}{GetTextureCount}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_resource_manager_ad5209de21223e9f36d3fd38f4623bcb5}{s\_Textures}}.size();\ \}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00149}00149\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00150}00150\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00151}00151\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ count\ of\ currently\ loaded\ meshes.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00152}00152\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00153}00153\ \textcolor{comment}{\ \ \ \ \ *\ @return\ size\_t\ Number\ of\ loaded\ meshes}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00154}00154\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00155}\doxymbox{\hyperlink{class_resource_manager_a2584aeeea0e40b9b1f0a83cbde69e98f}{00155}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{class_resource_manager_a2584aeeea0e40b9b1f0a83cbde69e98f}{GetMeshCount}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_resource_manager_a7a9101c11ae477773228d65a9863b3f1}{s\_Meshes}}.size();\ \}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00157}00157\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00158}00158\ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Static\ resource\ storage-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00159}00159\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00160}00160\ \textcolor{comment}{\ \ \ \ \ *\ @var\ s\_Shaders}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00161}00161\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Map\ of\ loaded\ shaders\ identified\ by\ unique\ names.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00162}00162\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00163}\doxymbox{\hyperlink{class_resource_manager_a89da21256052faf26f86ff7eabf02f9b}{00163}}\ \ \ \ \ \textcolor{keyword}{static}\ std::unordered\_map<std::string,\ Ref<Shader>>\ \doxymbox{\hyperlink{class_resource_manager_a89da21256052faf26f86ff7eabf02f9b}{s\_Shaders}};}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00164}00164\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00165}00165\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00166}00166\ \textcolor{comment}{\ \ \ \ \ *\ @var\ s\_Textures}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00167}00167\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Map\ of\ loaded\ textures\ identified\ by\ unique\ names.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00168}00168\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00169}\doxymbox{\hyperlink{class_resource_manager_ad5209de21223e9f36d3fd38f4623bcb5}{00169}}\ \ \ \ \ \textcolor{keyword}{static}\ std::unordered\_map<std::string,\ Ref<Texture>>\ \doxymbox{\hyperlink{class_resource_manager_ad5209de21223e9f36d3fd38f4623bcb5}{s\_Textures}};}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00170}00170\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00171}00171\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00172}00172\ \textcolor{comment}{\ \ \ \ \ *\ @var\ s\_Meshes}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00173}00173\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Map\ of\ loaded\ meshes\ identified\ by\ unique\ names.}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00174}00174\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00175}\doxymbox{\hyperlink{class_resource_manager_a7a9101c11ae477773228d65a9863b3f1}{00175}}\ \ \ \ \ \textcolor{keyword}{static}\ std::unordered\_map<std::string,\ Ref<Mesh>>\ \doxymbox{\hyperlink{class_resource_manager_a7a9101c11ae477773228d65a9863b3f1}{s\_Meshes}};}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00176}00176\ \};}
+\DoxyCodeLine{\Hypertarget{_resource_manager_8h_source_l00177}00177\ }
+
+\end{DoxyCode}

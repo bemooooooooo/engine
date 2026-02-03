@@ -1,0 +1,82 @@
+.TH "Log::Logger" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Log::Logger \- \fBLogger\fP class for creating log messages with various severity levels\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Log\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLogger\fP (\fBLevel\fP lvl, const char *file, int line)"
+.br
+.ti -1c
+.RI "template<typename T> Logger & \fBoperator<<\fP (T &&value)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBLevel\fP \fBm_Level_\fP"
+.br
+.ti -1c
+.RI "std::ostringstream \fBm_Stream_\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBLogger\fP class for creating log messages with various severity levels\&. 
+
+The \fBLogger\fP class provides a stream-style interface for constructing log messages\&. It captures the log level, source file, and line number for each message\&. Messages are output to the console and optionally to a log file based on the configured log level\&.
+
+.PP
+Usage: 
+.PP
+.nf
+Log::Logger(Level::_Info, __FILE__, __LINE__) << "This is an info message\&.";
+
+.fi
+.PP
+ 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Log\&.h\fP\&.
+.PP
+Definition at line \fB65\fP of file \fBLog\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Log::Logger::Logger (\fBLevel\fP lvl, const char * file, int line)"
+
+.PP
+Definition at line \fB13\fP of file \fBLog\&.cpp\fP\&.
+.SS "Log::Logger::~Logger ()"
+
+.PP
+Definition at line \fB28\fP of file \fBLog\&.cpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T> Logger & Log::Logger::operator<< (T && value)\fR [inline]\fP"
+
+.PP
+Definition at line \fB85\fP of file \fBLog\&.h\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBLevel\fP Log::Logger::m_Level_\fR [private]\fP"
+
+.PP
+Definition at line \fB94\fP of file \fBLog\&.h\fP\&.
+.SS "std::ostringstream Log::Logger::m_Stream_\fR [private]\fP"
+
+.PP
+Definition at line \fB96\fP of file \fBLog\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

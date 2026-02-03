@@ -1,0 +1,219 @@
+\doxysection{Mesh.\+cpp}
+\hypertarget{_mesh_8cpp_source}{}\label{_mesh_8cpp_source}\index{src/Graphics/Mesh.cpp@{src/Graphics/Mesh.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}Mesh.h"{}}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}../Core/Log.h"{}}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}../Math/Matrix3.h"{}}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00006}\doxymbox{\hyperlink{class_mesh_aa3ce6c1e639633ce0fa5bc93c60eaffa}{00006}}\ \doxymbox{\hyperlink{class_mesh_aa3ce6c1e639633ce0fa5bc93c60eaffa}{Mesh::Mesh}}(\textcolor{keyword}{const}\ std::vector<Vertex>\&\ vertices,\ \textcolor{keyword}{const}\ std::vector<u32>\&\ indices)}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00007}00007\ \ \ \ \ :\ \doxymbox{\hyperlink{class_mesh_ae398c72e4f10367adb2c12c24550c89a}{m\_IndexCount}}(indices.size())\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00008}00008\ \ \ \textcolor{comment}{//\ Create\ vertex\ buffer}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00009}00009\ \ \ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<VertexBuffer>}}\ vertexBuffer\ =\ CreateRef<VertexBuffer>(}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00010}00010\ \ \ \ \ \ \ vertices.data(),\ vertices.size()\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{struct_vertex}{Vertex}}));}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00012}00012\ \ \ \textcolor{comment}{//\ Create\ layout}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00013}00013\ \ \ \doxymbox{\hyperlink{class_vertex_buffer_layout}{VertexBufferLayout}}\ layout;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00014}00014\ \ \ layout.\doxymbox{\hyperlink{class_vertex_buffer_layout_aa611a359943aeb66245892d699d8ee27}{Push}}<\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}>(3);\ \ \textcolor{comment}{//\ position}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00015}00015\ \ \ layout.\doxymbox{\hyperlink{class_vertex_buffer_layout_aa611a359943aeb66245892d699d8ee27}{Push}}<\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}>(3);\ \ \textcolor{comment}{//\ normal}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00016}00016\ \ \ layout.\doxymbox{\hyperlink{class_vertex_buffer_layout_aa611a359943aeb66245892d699d8ee27}{Push}}<\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}>(2);\ \ \textcolor{comment}{//\ texCoord}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00017}00017\ \ \ layout.\doxymbox{\hyperlink{class_vertex_buffer_layout_aa611a359943aeb66245892d699d8ee27}{Push}}<\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}>(3);\ \ \textcolor{comment}{//\ tangent}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00018}00018\ \ \ layout.\doxymbox{\hyperlink{class_vertex_buffer_layout_aa611a359943aeb66245892d699d8ee27}{Push}}<\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}>(3);\ \ \textcolor{comment}{//\ bitangent}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00020}00020\ \ \ \textcolor{comment}{//\ Create\ vertex\ array}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00021}00021\ \ \ \doxymbox{\hyperlink{class_mesh_af2c83960c67ca268bed034ceaa7b2897}{m\_VertexArray}}\ =\ CreateRef<VertexArray>();}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00022}00022\ \ \ \doxymbox{\hyperlink{class_mesh_af2c83960c67ca268bed034ceaa7b2897}{m\_VertexArray}}-\/>AddVertexBuffer(vertexBuffer,\ layout);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00024}00024\ \ \ \textcolor{comment}{//\ Create\ index\ buffer}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00025}00025\ \ \ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<IndexBuffer>}}\ indexBuffer\ =}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00026}00026\ \ \ \ \ \ \ CreateRef<IndexBuffer>(indices.data(),\ indices.size());}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00027}00027\ \ \ \doxymbox{\hyperlink{class_mesh_af2c83960c67ca268bed034ceaa7b2897}{m\_VertexArray}}-\/>SetIndexBuffer(indexBuffer);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00029}00029\ \ \ \textcolor{comment}{//\ Create\ default\ material}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00030}00030\ \ \ \doxymbox{\hyperlink{class_mesh_a792f47724b42c5fb941de071fed62a68}{m\_Material}}\ =\ CreateRef<Material>();}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00032}00032\ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Mesh\ created\ with\ "{}}\ <<\ vertices.size()\ <<\ \textcolor{stringliteral}{"{}\ vertices,\ "{}}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ indices.size()\ <<\ \textcolor{stringliteral}{"{}\ indices"{}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00034}00034\ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00036}\doxymbox{\hyperlink{class_mesh_a5efe4da1a4c0971cfb037bd70304c303}{00036}}\ \doxymbox{\hyperlink{class_mesh_a5efe4da1a4c0971cfb037bd70304c303}{Mesh::\string~Mesh}}()\ \{\ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Mesh\ destroyed"{}};\ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00038}\doxymbox{\hyperlink{class_mesh_a18ca56b1c5788b55e1919cb12f0718b9}{00038}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_mesh_a18ca56b1c5788b55e1919cb12f0718b9}{Mesh::Draw}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\&\ shader,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_matrix4}{Matrix4}}\&\ transform)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00039}00039\ \ \ \textcolor{keywordflow}{if}\ (!shader)\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00040}00040\ \ \ \ \ ENGINE\_ERROR\ <<\ \textcolor{stringliteral}{"{}Mesh::Draw:\ shader\ is\ null!"{}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00042}00042\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00043}00043\ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00044}00044\ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{class_mesh_a792f47724b42c5fb941de071fed62a68}{m\_Material}})\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00045}00045\ \ \ \ \ \doxymbox{\hyperlink{class_mesh_a792f47724b42c5fb941de071fed62a68}{m\_Material}}-\/>Apply(shader);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00046}00046\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00048}00048\ \ \ shader-\/>SetMatrix4(\textcolor{stringliteral}{"{}u\_Model"{}},\ transform);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00049}00049\ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00050}00050\ \ \ \textcolor{comment}{//\ Вычисляем\ нормальную\ матрицу\ на\ CPU\ (оптимизация)}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00051}00051\ \ \ \doxymbox{\hyperlink{struct_matrix3}{Matrix3}}\ normalMatrix\ =\ transform.GetNormalMatrix();}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00052}00052\ \ \ shader-\/>SetMatrix3(\textcolor{stringliteral}{"{}u\_NormalMatrix"{}},\ normalMatrix);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00053}00053\ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00054}00054\ \ \ \textcolor{keywordflow}{if}\ (!\doxymbox{\hyperlink{class_mesh_af2c83960c67ca268bed034ceaa7b2897}{m\_VertexArray}})\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00055}00055\ \ \ \ \ ENGINE\_ERROR\ <<\ \textcolor{stringliteral}{"{}Mesh::Draw:\ vertex\ array\ is\ null!"{}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00057}00057\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00058}00058\ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00059}00059\ \ \ \doxymbox{\hyperlink{class_mesh_af2c83960c67ca268bed034ceaa7b2897}{m\_VertexArray}}-\/>Bind();}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00060}00060\ \ \ Renderer::Submit(shader,\ \doxymbox{\hyperlink{class_mesh_af2c83960c67ca268bed034ceaa7b2897}{m\_VertexArray}},\ transform);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00061}00061\ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00063}\doxymbox{\hyperlink{class_mesh_a89afdca6de34de136cfe4b354a75a21c}{00063}}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\ \doxymbox{\hyperlink{class_mesh_a89afdca6de34de136cfe4b354a75a21c}{Mesh::CreateCube}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00064}00064\ \ \ \ \ std::vector<Vertex>\ vertices\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Front\ face}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/0.5f,\ -\/0.5f,\ \ 0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 0,\ 1),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(0,\ 0)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(\ 0.5f,\ -\/0.5f,\ \ 0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 0,\ 1),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(1,\ 0)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(\ 0.5f,\ \ 0.5f,\ \ 0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 0,\ 1),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(1,\ 1)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/0.5f,\ \ 0.5f,\ \ 0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 0,\ 1),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(0,\ 1)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Back\ face}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/0.5f,\ -\/0.5f,\ -\/0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 0,\ -\/1),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(1,\ 0)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/0.5f,\ \ 0.5f,\ -\/0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 0,\ -\/1),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(1,\ 1)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(\ 0.5f,\ \ 0.5f,\ -\/0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 0,\ -\/1),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(0,\ 1)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(\ 0.5f,\ -\/0.5f,\ -\/0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 0,\ -\/1),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(0,\ 0)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Top\ face}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/0.5f,\ \ 0.5f,\ -\/0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 1,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(0,\ 1)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/0.5f,\ \ 0.5f,\ \ 0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 1,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(0,\ 0)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(\ 0.5f,\ \ 0.5f,\ \ 0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 1,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(1,\ 0)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(\ 0.5f,\ \ 0.5f,\ -\/0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 1,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(1,\ 1)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bottom\ face}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/0.5f,\ -\/0.5f,\ -\/0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ -\/1,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(1,\ 1)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(\ 0.5f,\ -\/0.5f,\ -\/0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ -\/1,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(0,\ 1)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(\ 0.5f,\ -\/0.5f,\ \ 0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ -\/1,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(0,\ 0)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/0.5f,\ -\/0.5f,\ \ 0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ -\/1,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(1,\ 0)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Right\ face}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0.5f,\ -\/0.5f,\ -\/0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(1,\ 0,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(1,\ 0)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0.5f,\ \ 0.5f,\ -\/0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(1,\ 0,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(1,\ 1)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0.5f,\ \ 0.5f,\ \ 0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(1,\ 0,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(0,\ 1)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0.5f,\ -\/0.5f,\ \ 0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(1,\ 0,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(0,\ 0)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Left\ face}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/0.5f,\ -\/0.5f,\ -\/0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/1,\ 0,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(0,\ 0)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/0.5f,\ -\/0.5f,\ \ 0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/1,\ 0,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(1,\ 0)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/0.5f,\ \ 0.5f,\ \ 0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/1,\ 0,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(1,\ 1)\ \},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \{\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/0.5f,\ \ 0.5f,\ -\/0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/1,\ 0,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(0,\ 1)\ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00100}00100\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00101}00101\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00102}00102\ \ \ \ \ std::vector<u32>\ indices\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Front\ face}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ 0,\ 1,\ 2,\ 2,\ 3,\ 0,}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Back\ face}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ 4,\ 5,\ 6,\ 6,\ 7,\ 4,}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Top\ face}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ 8,\ 9,\ 10,\ 10,\ 11,\ 8,}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bottom\ face}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ 12,\ 13,\ 14,\ 14,\ 15,\ 12,}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Right\ face}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ 16,\ 17,\ 18,\ 18,\ 19,\ 16,}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Left\ face}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ 20,\ 21,\ 22,\ 22,\ 23,\ 20}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00115}00115\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00116}00116\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{return}\ CreateRef<Mesh>(vertices,\ indices);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00118}00118\ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00120}\doxymbox{\hyperlink{class_mesh_ac3da9e5b09bf79e2ac9b2aa2b20e28ee}{00120}}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\ \doxymbox{\hyperlink{class_mesh_ac3da9e5b09bf79e2ac9b2aa2b20e28ee}{Mesh::CreatePlane}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00121}00121\ \ \ std::vector<Vertex>\ vertices\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00122}00122\ \ \ \ \ \ \ \{\doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/0.5f,\ 0.0f,\ -\/0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 1,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(0,\ 0)\},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00123}00123\ \ \ \ \ \ \ \{\doxymbox{\hyperlink{struct_vector3}{Vector3}}(0.5f,\ 0.0f,\ -\/0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 1,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(1,\ 0)\},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00124}00124\ \ \ \ \ \ \ \{\doxymbox{\hyperlink{struct_vector3}{Vector3}}(0.5f,\ 0.0f,\ 0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 1,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(1,\ 1)\},}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00125}00125\ \ \ \ \ \ \ \{\doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/0.5f,\ 0.0f,\ 0.5f),\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 1,\ 0),\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(0,\ 1)\}\};}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00127}00127\ \ \ std::vector<u32>\ indices\ =\ \{0,\ 1,\ 2,\ 2,\ 3,\ 0\};}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00129}00129\ \ \ \textcolor{keywordflow}{return}\ CreateRef<Mesh>(vertices,\ indices);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00130}00130\ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00132}\doxymbox{\hyperlink{class_mesh_a4cf4b14d99b5255d3f120dc68a41a9e6}{00132}}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\ \doxymbox{\hyperlink{class_mesh_a4cf4b14d99b5255d3f120dc68a41a9e6}{Mesh::CreateSphere}}(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ segments)\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00133}00133\ \ \ \ \ std::vector<Vertex>\ vertices;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00134}00134\ \ \ \ \ std::vector<u32>\ indices;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00135}00135\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00136}00136\ \ \ \ \ segments\ =\ Math::Max(segments,\ 3u);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00137}00137\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00138}00138\ \ \ \ \ \textcolor{comment}{//\ Generate\ vertices}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{keywordflow}{for}\ (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ y\ =\ 0;\ y\ <=\ segments;\ y++)\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ x\ =\ 0;\ x\ <=\ segments;\ x++)\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ xSegment\ =\ (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}})x\ /\ (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}})segments;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ ySegment\ =\ (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}})y\ /\ (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}})segments;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ xPos\ =\ std::cos(xSegment\ *\ 2.0f\ *\ \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{Math::PI}})\ *\ std::sin(ySegment\ *\ \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{Math::PI}});}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ yPos\ =\ std::cos(ySegment\ *\ \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{Math::PI}});}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ zPos\ =\ std::sin(xSegment\ *\ 2.0f\ *\ \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{Math::PI}})\ *\ std::sin(ySegment\ *\ \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{Math::PI}});}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_vertex}{Vertex}}\ vertex;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_a7aed0e6457d927a6e248703d3131bde9}{position}}\ =\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(xPos,\ yPos,\ zPos)\ *\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_adce2d4b3d1191c69328519bdf231c344}{normal}}\ =\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(xPos,\ yPos,\ zPos).Normalized();}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_a216ef7fa93f9fd245f6b42385aaf81a7}{texCoord}}\ =\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}(xSegment,\ ySegment);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ vertices.push\_back(vertex);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00155}00155\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00156}00156\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00157}00157\ \ \ \ \ \textcolor{comment}{//\ Generate\ indices}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00158}00158\ \ \ \ \ \textcolor{keywordflow}{for}\ (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ y\ =\ 0;\ y\ <\ segments;\ y++)\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ x\ =\ 0;\ x\ <\ segments;\ x++)\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ first\ =\ (y\ *\ (segments\ +\ 1))\ +\ x;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ second\ =\ first\ +\ segments\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ indices.push\_back(first);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ indices.push\_back(second);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ indices.push\_back(first\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ indices.push\_back(second);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ indices.push\_back(second\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ indices.push\_back(first\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00171}00171\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00172}00172\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00173}00173\ \ \ \ \ \textcolor{comment}{//\ Calculate\ tangents\ and\ bitangents}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00174}00174\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ indices.size();\ i\ +=\ 3)\ \{}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ i0\ =\ indices[i];}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ i1\ =\ indices[i\ +\ 1];}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ i2\ =\ indices[i\ +\ 2];}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_vertex}{Vertex}}\&\ v0\ =\ vertices[i0];}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_vertex}{Vertex}}\&\ v1\ =\ vertices[i1];}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_vertex}{Vertex}}\&\ v2\ =\ vertices[i2];}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_vector3}{Vector3}}\ edge1\ =\ v1.\doxymbox{\hyperlink{struct_vertex_a7aed0e6457d927a6e248703d3131bde9}{position}}\ -\/\ v0.\doxymbox{\hyperlink{struct_vertex_a7aed0e6457d927a6e248703d3131bde9}{position}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_vector3}{Vector3}}\ edge2\ =\ v2.\doxymbox{\hyperlink{struct_vertex_a7aed0e6457d927a6e248703d3131bde9}{position}}\ -\/\ v0.\doxymbox{\hyperlink{struct_vertex_a7aed0e6457d927a6e248703d3131bde9}{position}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_vector2}{Vector2}}\ deltaUV1\ =\ v1.\doxymbox{\hyperlink{struct_vertex_a216ef7fa93f9fd245f6b42385aaf81a7}{texCoord}}\ -\/\ v0.\doxymbox{\hyperlink{struct_vertex_a216ef7fa93f9fd245f6b42385aaf81a7}{texCoord}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_vector2}{Vector2}}\ deltaUV2\ =\ v2.\doxymbox{\hyperlink{struct_vertex_a216ef7fa93f9fd245f6b42385aaf81a7}{texCoord}}\ -\/\ v0.\doxymbox{\hyperlink{struct_vertex_a216ef7fa93f9fd245f6b42385aaf81a7}{texCoord}};}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ f\ =\ 1.0f\ /\ (deltaUV1.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ *\ deltaUV2.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ -\/\ deltaUV2.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ *\ deltaUV1.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}});}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_vector3}{Vector3}}\ tangent;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ tangent.x\ =\ f\ *\ (deltaUV2.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ *\ edge1.x\ -\/\ deltaUV1.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ *\ edge2.x);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ tangent.y\ =\ f\ *\ (deltaUV2.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ *\ edge1.y\ -\/\ deltaUV1.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ *\ edge2.y);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ tangent.z\ =\ f\ *\ (deltaUV2.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ *\ edge1.z\ -\/\ deltaUV1.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ *\ edge2.z);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ tangent\ =\ tangent.Normalized();}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_vector3}{Vector3}}\ bitangent;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ bitangent.x\ =\ f\ *\ (-\/deltaUV2.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ *\ edge1.x\ +\ deltaUV1.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ *\ edge2.x);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ bitangent.y\ =\ f\ *\ (-\/deltaUV2.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ *\ edge1.y\ +\ deltaUV1.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ *\ edge2.y);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ bitangent.z\ =\ f\ *\ (-\/deltaUV2.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ *\ edge1.z\ +\ deltaUV1.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ *\ edge2.z);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ bitangent\ =\ bitangent.Normalized();}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ v0.\doxymbox{\hyperlink{struct_vertex_a936dff71a7000ba389017a6ddb7f3b7f}{tangent}}\ =\ tangent;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ v1.\doxymbox{\hyperlink{struct_vertex_a936dff71a7000ba389017a6ddb7f3b7f}{tangent}}\ =\ tangent;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ v2.\doxymbox{\hyperlink{struct_vertex_a936dff71a7000ba389017a6ddb7f3b7f}{tangent}}\ =\ tangent;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ v0.\doxymbox{\hyperlink{struct_vertex_a42f0a210d6fc3f7753de16c1e12e40d4}{bitangent}}\ =\ bitangent;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ v1.\doxymbox{\hyperlink{struct_vertex_a42f0a210d6fc3f7753de16c1e12e40d4}{bitangent}}\ =\ bitangent;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ v2.\doxymbox{\hyperlink{struct_vertex_a42f0a210d6fc3f7753de16c1e12e40d4}{bitangent}}\ =\ bitangent;}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00210}00210\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00211}00211\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00212}00212\ \ \ \ \ \textcolor{keywordflow}{return}\ CreateRef<Mesh>(vertices,\ indices);}
+\DoxyCodeLine{\Hypertarget{_mesh_8cpp_source_l00213}00213\ \}}
+
+\end{DoxyCode}

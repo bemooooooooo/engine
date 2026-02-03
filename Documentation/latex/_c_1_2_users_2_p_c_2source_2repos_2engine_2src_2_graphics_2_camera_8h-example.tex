@@ -1,0 +1,205 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{class_camera}{Camera}}\ camera(CameraType::Perspective,\ 45.0f,\ 16.0f/9.0f,\ 0.1f,\ 100.0f);}
+\DoxyCodeLine{camera.SetPosition(\doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 0,\ 5));}
+\DoxyCodeLine{camera.LookAt(\doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 0,\ 0));}
+\DoxyCodeLine{\doxymbox{\hyperlink{struct_matrix4}{Matrix4}}\ viewProj\ =\ camera.GetViewProjectionMatrix();}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Math/Matrix4.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Math/Vector3.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Math/Quaternion.h"{}}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @enum\ CameraType}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Enumeration\ of\ camera\ projection\ types.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Defines\ the\ type\ of\ projection\ used\ by\ the\ camera:\ Perspective\ or\ Orthographic.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{enum\ class}\ CameraType\ \{}
+\DoxyCodeLine{\ \ \ \ Perspective,}
+\DoxyCodeLine{\ \ \ \ Orthographic}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ Camera}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ A\ 3D\ camera\ class\ supporting\ perspective\ and\ orthographic\ projections.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ The\ Camera\ class\ encapsulates\ the\ properties\ and\ behaviors\ of\ a\ virtual\ camera}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ in\ a\ 3D\ scene.\ It\ supports\ both\ perspective\ and\ orthographic\ projection\ modes,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ allowing\ for\ flexible\ rendering\ setups.\ The\ camera\ maintains\ its\ position,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ orientation,\ and\ projection\ parameters,\ and\ provides\ methods\ to\ manipulate}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ its\ transform\ and\ retrieve\ view/projection\ matrices.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Switchable\ between\ perspective\ and\ orthographic\ projections}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Position\ and\ rotation\ management\ using\ Vector3\ and\ Quaternion}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ View\ and\ projection\ matrix\ generation}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Utility\ methods\ for\ moving,\ rotating,\ and\ looking\ at\ targets}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ The\ camera\ uses\ a\ right-\/handed\ coordinate\ system.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ The\ up\ vector\ is\ assumed\ to\ be\ (0,\ 1,\ 0)\ unless\ specified\ otherwise.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Camera\ camera(CameraType::Perspective,\ 45.0f,\ 16.0f/9.0f,\ 0.1f,\ 100.0f);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ camera.SetPosition(Vector3(0,\ 0,\ 5));}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ camera.LookAt(Vector3(0,\ 0,\ 0));}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Matrix4\ viewProj\ =\ camera.GetViewProjectionMatrix();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_camera}{Camera}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Construct\ a\ new\ Camera\ object}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Initializes\ a\ camera\ with\ default\ parameters.\ The\ default\ camera\ is\ a\ perspective\ camera}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ positioned\ at\ the\ origin,\ looking\ down\ the\ negative\ Z-\/axis.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{class_camera_a01f94c3543f56ede7af49dc778f19331}{Camera}}();}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Construct\ a\ new\ Camera\ object\ with\ specified\ parameters.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ type\ The\ type\ of\ camera\ projection\ (Perspective\ or\ Orthographic)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ fovOrSize\ For\ Perspective:\ vertical\ field\ of\ view\ in\ degrees;\ For\ Orthographic:\ size\ of\ the\ view\ volume}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ aspect\ Aspect\ ratio\ (width\ /\ height)\ of\ the\ viewport}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ near\ Near\ clipping\ plane\ distance}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ far\ Far\ clipping\ plane\ distance}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{class_camera_a01f94c3543f56ede7af49dc778f19331}{Camera}}(CameraType\ type,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ fovOrSize,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ aspect,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ near,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ far);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ camera\ to\ use\ perspective\ projection.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ fov\ Vertical\ field\ of\ view\ in\ degrees}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ aspect\ Aspect\ ratio\ (width\ /\ height)\ of\ the\ viewport}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ near\ Near\ clipping\ plane\ distance}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ far\ Far\ clipping\ plane\ distance}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_camera_ab1782340a5959089cbf93a7c97cdfdec}{SetPerspective}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ fov,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ aspect,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ near,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ far);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ camera\ to\ use\ orthographic\ projection.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ size\ Size\ of\ the\ orthographic\ view\ volume\ (height)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ aspect\ Aspect\ ratio\ (width\ /\ height)\ of\ the\ viewport}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ near\ Near\ clipping\ plane\ distance}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ far\ Far\ clipping\ plane\ distance}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_camera_a9f23e46ca6e265e5142d1c902d4a960b}{SetOrthographic}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ size,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ aspect,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ near,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ far);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ camera's\ position\ in\ world\ space.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ position\ The\ new\ position\ of\ the\ camera}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_camera_ad59eeb5b820614ca7e52262082e8dde1}{SetPosition}}(\textcolor{keyword}{const}\ Vector3\&\ position)\ \{\ \doxymbox{\hyperlink{class_camera_a3f89ba3e10d6e8ea7fe3479417d2661c}{m\_Position}}\ =\ position;\ \doxymbox{\hyperlink{class_camera_ab9356a4aa0aa7cf4eaee66425638ce81}{Recalculate}}();\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ camera's\ rotation\ using\ a\ quaternion.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ rotation\ The\ new\ rotation\ of\ the\ camera}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_camera_a813699dd0540d634e888c47b6de40330}{SetRotation}}(\textcolor{keyword}{const}\ Quaternion\&\ rotation)\ \{\ \doxymbox{\hyperlink{class_camera_ab75f47af1cd46907c8ca0cd333395889}{m\_Rotation}}\ =\ rotation;\ \doxymbox{\hyperlink{class_camera_ab9356a4aa0aa7cf4eaee66425638ce81}{Recalculate}}();\ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Orients\ the\ camera\ to\ look\ at\ a\ target\ point.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ target\ The\ point\ in\ world\ space\ to\ look\ at}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ up\ The\ up\ direction\ vector\ (default\ is\ (0,\ 1,\ 0))}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_camera_a87338e74f59353ecaa912e2f421608c2}{LookAt}}(\textcolor{keyword}{const}\ Vector3\&\ target,\ \textcolor{keyword}{const}\ Vector3\&\ up\ =\ Vector3::Up);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Moves\ the\ camera\ by\ an\ offset\ in\ world\ space.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ offset\ The\ translation\ vector\ to\ move\ the\ camera}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_camera_a0b51a525a1779c542ade9812ad70aa9d}{Move}}(\textcolor{keyword}{const}\ Vector3\&\ offset);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Rotates\ the\ camera\ by\ a\ quaternion\ rotation.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ rotation\ The\ quaternion\ representing\ the\ rotation\ to\ apply}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_camera_a3a37aa4f50af4dd52fcafda1e102dcca}{Rotate}}(\textcolor{keyword}{const}\ Quaternion\&\ rotation);}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Getters}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Gets\ the\ camera's\ position\ in\ world\ space.}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ Vector3\&\ \doxymbox{\hyperlink{class_camera_a7be636d533fd93d1c725ef92156acda2}{GetPosition}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_camera_a3f89ba3e10d6e8ea7fe3479417d2661c}{m\_Position}};\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Gets\ the\ camera's\ rotation\ as\ a\ quaternion.}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ Quaternion\&\ \doxymbox{\hyperlink{class_camera_a863a1bd3d4050e8f432004e7b3fd76ff}{GetRotation}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_camera_ab75f47af1cd46907c8ca0cd333395889}{m\_Rotation}};\ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Gets\ the\ view\ matrix\ of\ the\ camera.}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ Matrix4\&\ \doxymbox{\hyperlink{class_camera_a7b3d84899e56607661ab212ae8e790c8}{GetViewMatrix}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_camera_aaab33e66df42a804c349b925a14bad04}{m\_ViewMatrix}};\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Gets\ the\ projection\ matrix\ of\ the\ camera.}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ Matrix4\&\ \doxymbox{\hyperlink{class_camera_a6bf792fb62c5db5d7a296f90060c9dc3}{GetProjectionMatrix}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_camera_a5f352b9fc34c9fe737528c4c393f68fa}{m\_ProjectionMatrix}};\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Gets\ the\ combined\ view-\/projection\ matrix\ of\ the\ camera.}}
+\DoxyCodeLine{\ \ \ \ Matrix4\ \doxymbox{\hyperlink{class_camera_a0a48cc9324beabbb6a8d04793d13ee95}{GetViewProjectionMatrix}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_camera_a5f352b9fc34c9fe737528c4c393f68fa}{m\_ProjectionMatrix}}\ *\ \doxymbox{\hyperlink{class_camera_aaab33e66df42a804c349b925a14bad04}{m\_ViewMatrix}};\ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Gets\ the\ camera's\ forward,\ right,\ and\ up\ direction\ vectors.}}
+\DoxyCodeLine{\ \ \ \ Vector3\ \doxymbox{\hyperlink{class_camera_ac7c5c9923eaa64299efb930688f4714d}{GetForward}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_camera_ab75f47af1cd46907c8ca0cd333395889}{m\_Rotation}}\ *\ Vector3::Forward;\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Gets\ the\ camera's\ right\ direction\ vector.}}
+\DoxyCodeLine{\ \ \ \ Vector3\ \doxymbox{\hyperlink{class_camera_a8e40065ff5a84c42768c2757001a7c3a}{GetRight}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_camera_ab75f47af1cd46907c8ca0cd333395889}{m\_Rotation}}\ *\ Vector3::Right;\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Gets\ the\ camera's\ up\ direction\ vector.}}
+\DoxyCodeLine{\ \ \ \ Vector3\ \doxymbox{\hyperlink{class_camera_ae053ef1680044846abd0be0a2ec6abaf}{GetUp}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_camera_ab75f47af1cd46907c8ca0cd333395889}{m\_Rotation}}\ *\ Vector3::Up;\ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Gets\ the\ camera\ type\ (Perspective\ or\ Orthographic).}}
+\DoxyCodeLine{\ \ \ \ CameraType\ \doxymbox{\hyperlink{class_camera_acfe749c845e33f741121b9219027a5c6}{GetType}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_camera_a978ade18865022ff5eed90b52c87b13c}{m\_Type}};\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Gets\ the\ camera's\ field\ of\ view\ (for\ perspective\ cameras).}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{class_camera_a809e6fd0fbf37150cbd006f8036d1280}{GetFOV}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_camera_aa4007c66e9f7392b97a6b9ed6c886764}{m\_FOV}};\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Gets\ the\ camera's\ size\ (for\ orthographic\ cameras).}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{class_camera_af501e68d83502540a705dd0f317294cf}{GetAspect}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_Aspect;\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Gets\ the\ camera's\ near\ clipping\ plane\ distance.}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{class_camera_a3722f0df8301a991249f2f780c516efb}{GetNear}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_Near;\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Gets\ the\ camera's\ far\ clipping\ plane\ distance.}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{class_camera_af17bc39abcb97d98ff9d9d245c4ee750}{GetFar}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_Far;\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Recalculates\ the\ view\ and\ projection\ matrices\ based\ on\ current\ parameters.}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_camera_ab9356a4aa0aa7cf4eaee66425638ce81}{Recalculate}}();}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Members}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ The\ type\ of\ camera\ projection.}}
+\DoxyCodeLine{\ \ \ \ CameraType\ \doxymbox{\hyperlink{class_camera_a978ade18865022ff5eed90b52c87b13c}{m\_Type}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ The\ position\ of\ the\ camera\ in\ world\ space.}}
+\DoxyCodeLine{\ \ \ \ Vector3\ \doxymbox{\hyperlink{class_camera_a3f89ba3e10d6e8ea7fe3479417d2661c}{m\_Position}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ The\ rotation\ of\ the\ camera\ as\ a\ quaternion.}}
+\DoxyCodeLine{\ \ \ \ Quaternion\ \doxymbox{\hyperlink{class_camera_ab75f47af1cd46907c8ca0cd333395889}{m\_Rotation}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Projection\ parameters}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{class_camera_aa4007c66e9f7392b97a6b9ed6c886764}{m\_FOV}};\ \ \ \ \ \ \textcolor{comment}{//\ For\ perspective}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m\_Size;\ \ \ \ \ \textcolor{comment}{//\ For\ orthographic}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m\_Aspect;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m\_Near;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m\_Far;}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ View\ and\ projection\ matrices}}
+\DoxyCodeLine{\ \ \ \ Matrix4\ \doxymbox{\hyperlink{class_camera_aaab33e66df42a804c349b925a14bad04}{m\_ViewMatrix}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ ///\ @brief\ Projection\ matrix}}
+\DoxyCodeLine{\ \ \ \ Matrix4\ \doxymbox{\hyperlink{class_camera_a5f352b9fc34c9fe737528c4c393f68fa}{m\_ProjectionMatrix}};}
+\DoxyCodeLine{\};}
+
+\end{DoxyCodeInclude}
+ 

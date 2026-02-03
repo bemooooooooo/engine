@@ -1,0 +1,267 @@
+.TH "Material" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Material \- Represents a material with properties and associated shader\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Material\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMaterial\fP ()"
+.br
+.RI "Constructs a \fBMaterial\fP with default properties and no shader\&. "
+.ti -1c
+.RI "\fBMaterial\fP (const \fBRef\fP< \fBShader\fP > &shader)"
+.br
+.RI "Constructs a \fBMaterial\fP with the specified shader\&. "
+.ti -1c
+.RI "void \fBApply\fP (const \fBRef\fP< \fBShader\fP > &shader) const"
+.br
+.RI "Applies the material properties to the given shader\&. "
+.ti -1c
+.RI "void \fBSetShader\fP (const \fBRef\fP< \fBShader\fP > &shader)"
+.br
+.RI "Sets the shader used by this material\&. "
+.ti -1c
+.RI "\fBRef\fP< \fBShader\fP > \fBGetShader\fP () const"
+.br
+.RI "Gets the shader used by this material\&. "
+.ti -1c
+.RI "\fBMaterialProperties\fP & \fBGetProperties\fP ()"
+.br
+.RI "Gets the material properties\&. "
+.ti -1c
+.RI "const \fBMaterialProperties\fP & \fBGetProperties\fP () const"
+.br
+.RI "Gets the material properties (const version)\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBRef\fP< \fBMaterial\fP > \fBCreate\fP ()"
+.br
+.RI "Factory method to create a \fBMaterial\fP with default properties\&. "
+.ti -1c
+.RI "static \fBRef\fP< \fBMaterial\fP > \fBCreate\fP (const \fBRef\fP< \fBShader\fP > &shader)"
+.br
+.RI "Factory method to create a \fBMaterial\fP with the specified shader\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBRef\fP< \fBShader\fP > \fBm_Shader\fP"
+.br
+.RI "The shader associated with this material\&. "
+.ti -1c
+.RI "\fBMaterialProperties\fP \fBm_Properties\fP"
+.br
+.RI "The properties defining the material's appearance\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a material with properties and associated shader\&. 
+
+The \fBMaterial\fP class encapsulates the visual properties of a surface, including its shader and material properties such as color, metallicity, roughness, and texture maps\&. It provides methods to apply these properties to a shader for rendering\&.
+
+.PP
+\fBKey\fP features:
+.IP "\(bu" 2
+Holds a reference to a \fBShader\fP used for rendering
+.IP "\(bu" 2
+Contains \fBMaterialProperties\fP defining appearance
+.IP "\(bu" 2
+Method to apply properties to the shader uniforms 
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP\&.
+.PP
+Definition at line \fB78\fP of file \fBMaterial\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Material::Material ()"
+
+.PP
+Constructs a \fBMaterial\fP with default properties and no shader\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP\&.
+.PP
+Definition at line \fB4\fP of file \fBMaterial\&.cpp\fP\&.
+.SS "Material::Material (const \fBRef\fP< \fBShader\fP > & shader)"
+
+.PP
+Constructs a \fBMaterial\fP with the specified shader\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIshader\fP Reference to the \fBShader\fP to be used by this material 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Material::Apply (const \fBRef\fP< \fBShader\fP > & shader) const"
+
+.PP
+Applies the material properties to the given shader\&. Sets the shader uniforms based on the material's properties and binds any associated texture maps\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIshader\fP The shader to which the material properties will be applied 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP\&.
+.PP
+Definition at line \fB13\fP of file \fBMaterial\&.cpp\fP\&.
+.PP
+References \fBm_Shader\fP\&.
+.SS "\fBRef\fP< \fBMaterial\fP > Material::Create ()\fR [static]\fP"
+
+.PP
+Factory method to create a \fBMaterial\fP with default properties\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Material>\fP Reference to the newly created \fBMaterial\fP 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP\&.
+.SS "\fBRef\fP< \fBMaterial\fP > Material::Create (const \fBRef\fP< \fBShader\fP > & shader)\fR [static]\fP"
+
+.PP
+Factory method to create a \fBMaterial\fP with the specified shader\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIshader\fP Reference to the \fBShader\fP to be used by the new material 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Material>\fP Reference to the newly created \fBMaterial\fP 
+.RE
+.PP
+
+.SS "\fBMaterialProperties\fP & Material::GetProperties ()\fR [inline]\fP"
+
+.PP
+Gets the material properties\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBMaterialProperties\fP& Reference to the material properties 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP\&.
+.PP
+Definition at line \fB125\fP of file \fBMaterial\&.h\fP\&.
+.PP
+References \fBm_Properties\fP\&.
+.SS "const \fBMaterialProperties\fP & Material::GetProperties () const\fR [inline]\fP"
+
+.PP
+Gets the material properties (const version)\&. 
+.PP
+\fBReturns\fP
+.RS 4
+const \fBMaterialProperties\fP& Const reference to the material properties 
+.RE
+.PP
+
+.PP
+Definition at line \fB132\fP of file \fBMaterial\&.h\fP\&.
+.PP
+References \fBm_Properties\fP\&.
+.SS "\fBRef\fP< \fBShader\fP > Material::GetShader () const\fR [inline]\fP"
+
+.PP
+Gets the shader used by this material\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Shader>\fP Reference to the current \fBShader\fP 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP\&.
+.PP
+Definition at line \fB118\fP of file \fBMaterial\&.h\fP\&.
+.PP
+References \fBm_Shader\fP\&.
+.SS "void Material::SetShader (const \fBRef\fP< \fBShader\fP > & shader)\fR [inline]\fP"
+
+.PP
+Sets the shader used by this material\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIshader\fP Reference to the \fBShader\fP to set 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP\&.
+.PP
+Definition at line \fB111\fP of file \fBMaterial\&.h\fP\&.
+.PP
+References \fBm_Shader\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBMaterialProperties\fP Material::m_Properties\fR [private]\fP"
+
+.PP
+The properties defining the material's appearance\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP\&.
+.PP
+Definition at line \fB160\fP of file \fBMaterial\&.h\fP\&.
+.PP
+Referenced by \fBGetProperties()\fP, and \fBGetProperties()\fP\&.
+.SS "\fBRef\fP<\fBShader\fP> Material::m_Shader\fR [private]\fP"
+
+.PP
+The shader associated with this material\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP\&.
+.PP
+Definition at line \fB154\fP of file \fBMaterial\&.h\fP\&.
+.PP
+Referenced by \fBApply()\fP, \fBGetShader()\fP, and \fBSetShader()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

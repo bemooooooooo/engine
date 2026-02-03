@@ -1,0 +1,552 @@
+\doxysection{Resource\+Manager Class Reference}
+\hypertarget{class_resource_manager}{}\label{class_resource_manager}\index{ResourceManager@{ResourceManager}}
+
+
+Centralized manager for loading, storing, and accessing graphics resources.  
+
+
+
+
+{\ttfamily \+\#include $<$Resource\+Manager.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \doxymbox{\hyperlink{class_resource_manager_a3603db5f3dfffc1557139cb0b59e1c77}{Get\+Shader}} (const std::\+string \&name)
+\begin{DoxyCompactList}\small\item\em Retrieves a shader by name. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \doxymbox{\hyperlink{class_resource_manager_a884ae73b54ff6fe1bc9e1b21f1611e51}{Load\+Shader}} (const std::\+string \&name, const std::\+string \&vertex\+Path, const std::\+string \&fragment\+Path)
+\begin{DoxyCompactList}\small\item\em Loads a shader from vertex and fragment file paths. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \doxymbox{\hyperlink{class_resource_manager_a827e96a4c14146dfae34cd5ff2164fae}{Load\+Shader\+From\+Source}} (const std::\+string \&name, const std::\+string \&vertex\+Src, const std::\+string \&fragment\+Src)
+\begin{DoxyCompactList}\small\item\em Loads a shader from provided source code strings. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{class_resource_manager_a1b9f6d6eb55776d2868a128c346e29ae}{Unload\+Shader}} (const std::\+string \&name)
+\begin{DoxyCompactList}\small\item\em Unloads a shader by name. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_texture}{Texture}} $>$ \doxymbox{\hyperlink{class_resource_manager_ada224c447722b7fc9244514b7173ef9f}{Get\+Texture}} (const std::\+string \&name)
+\begin{DoxyCompactList}\small\item\em Retrieves a texture by name. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_texture}{Texture}} $>$ \doxymbox{\hyperlink{class_resource_manager_aa9444c36eac438a0f97987baf0d95e51}{Load\+Texture}} (const std::\+string \&name, const std::\+string \&path)
+\begin{DoxyCompactList}\small\item\em Loads a texture from an image file. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{class_resource_manager_a5ab9c2577f39e6311fd673a30fa3ab5e}{Unload\+Texture}} (const std::\+string \&name)
+\begin{DoxyCompactList}\small\item\em Unloads a texture by name. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ \doxymbox{\hyperlink{class_resource_manager_a04399a80ced01704cc0e0400f40bc52d}{Get\+Mesh}} (const std::\+string \&name)
+\begin{DoxyCompactList}\small\item\em Retrieves a mesh by name. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{class_resource_manager_aea7a27de3d69b57d62eb7109b00f45a4}{Register\+Mesh}} (const std::\+string \&name, const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ \&mesh)
+\begin{DoxyCompactList}\small\item\em Registers a mesh with a unique name. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{class_resource_manager_af2f8fdb280a2f25a86dcb78133d1a037}{Unload\+Mesh}} (const std::\+string \&name)
+\begin{DoxyCompactList}\small\item\em Unloads a mesh by name. \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{class_resource_manager_ad69916a57c142341802f13585d267851}{Shutdown}} ()
+\begin{DoxyCompactList}\small\item\em Unloads all resources and clears internal storage. \end{DoxyCompactList}\item 
+static size\+\_\+t \doxymbox{\hyperlink{class_resource_manager_a8589b7ff1fc4258a3462e9ffec3ac8ec}{Get\+Shader\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Gets the count of currently loaded shaders, textures, and meshes. \end{DoxyCompactList}\item 
+static size\+\_\+t \doxymbox{\hyperlink{class_resource_manager_a4c0853c81b0cbe333700de117c7f0cad}{Get\+Texture\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Gets the count of currently loaded textures. \end{DoxyCompactList}\item 
+static size\+\_\+t \doxymbox{\hyperlink{class_resource_manager_a2584aeeea0e40b9b1f0a83cbde69e98f}{Get\+Mesh\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Gets the count of currently loaded meshes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ $>$ \doxymbox{\hyperlink{class_resource_manager_a89da21256052faf26f86ff7eabf02f9b}{s\+\_\+\+Shaders}}
+\begin{DoxyCompactList}\small\item\em Map of loaded shaders identified by unique names. \end{DoxyCompactList}\item 
+static std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_texture}{Texture}} $>$ $>$ \doxymbox{\hyperlink{class_resource_manager_ad5209de21223e9f36d3fd38f4623bcb5}{s\+\_\+\+Textures}}
+\begin{DoxyCompactList}\small\item\em Map of loaded textures identified by unique names. \end{DoxyCompactList}\item 
+static std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ $>$ \doxymbox{\hyperlink{class_resource_manager_a7a9101c11ae477773228d65a9863b3f1}{s\+\_\+\+Meshes}}
+\begin{DoxyCompactList}\small\item\em Map of loaded meshes identified by unique names. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Centralized manager for loading, storing, and accessing graphics resources. 
+
+This class provides static methods to load, retrieve, and unload various graphics resources such as shaders, textures, and meshes. It maintains internal maps to ensure that resources are loaded only once and shared across the engine.
+
+\doxylink{namespace_key}{Key} features:\+
+\begin{DoxyItemize}
+\item Load shaders from files or source code
+\item Load textures from image files
+\item Register and retrieve meshes
+\item Automatic resource cleanup on shutdown
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+All methods are static; no instances of \doxylink{class_resource_manager}{Resource\+Manager} should be created. 
+
+Resources are identified by unique string names. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8h_source_l00035}{35}} of file \doxymbox{\hyperlink{_resource_manager_8h_source}{Resource\+Manager.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_resource_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_resource_manager_a04399a80ced01704cc0e0400f40bc52d}\index{ResourceManager@{ResourceManager}!GetMesh@{GetMesh}}
+\index{GetMesh@{GetMesh}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{GetMesh()}{GetMesh()}}
+{\footnotesize\ttfamily \label{class_resource_manager_a04399a80ced01704cc0e0400f40bc52d} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ Resource\+Manager::\+\+Get\+Mesh (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [nodiscard]}}
+
+
+
+Retrieves a mesh by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The unique name of the mesh \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Mesh$>$} The requested mesh, or nullptr if not found 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}, and \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00107}{107}} of file \doxymbox{\hyperlink{_resource_manager_8cpp_source}{Resource\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_resource_manager_8h_source_l00175}{s\+\_\+\+Meshes}}.
+
+\Hypertarget{class_resource_manager_a2584aeeea0e40b9b1f0a83cbde69e98f}\index{ResourceManager@{ResourceManager}!GetMeshCount@{GetMeshCount}}
+\index{GetMeshCount@{GetMeshCount}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{GetMeshCount()}{GetMeshCount()}}
+{\footnotesize\ttfamily \label{class_resource_manager_a2584aeeea0e40b9b1f0a83cbde69e98f} 
+size\+\_\+t Resource\+Manager::\+\+Get\+Mesh\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the count of currently loaded meshes. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t Number of loaded meshes 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8h_source_l00155}{155}} of file \doxymbox{\hyperlink{_resource_manager_8h_source}{Resource\+Manager.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_resource_manager_8h_source_l00175}{s\+\_\+\+Meshes}}.
+
+\Hypertarget{class_resource_manager_a3603db5f3dfffc1557139cb0b59e1c77}\index{ResourceManager@{ResourceManager}!GetShader@{GetShader}}
+\index{GetShader@{GetShader}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{GetShader()}{GetShader()}}
+{\footnotesize\ttfamily \label{class_resource_manager_a3603db5f3dfffc1557139cb0b59e1c77} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ Resource\+Manager::\+\+Get\+Shader (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [nodiscard]}}
+
+
+
+Retrieves a shader by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The unique name of the shader \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Shader$>$} The requested shader, or nullptr if not found 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00011}{11}} of file \doxymbox{\hyperlink{_resource_manager_8cpp_source}{Resource\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_resource_manager_8h_source_l00163}{s\+\_\+\+Shaders}}.
+
+\Hypertarget{class_resource_manager_a8589b7ff1fc4258a3462e9ffec3ac8ec}\index{ResourceManager@{ResourceManager}!GetShaderCount@{GetShaderCount}}
+\index{GetShaderCount@{GetShaderCount}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{GetShaderCount()}{GetShaderCount()}}
+{\footnotesize\ttfamily \label{class_resource_manager_a8589b7ff1fc4258a3462e9ffec3ac8ec} 
+size\+\_\+t Resource\+Manager::\+\+Get\+Shader\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the count of currently loaded shaders, textures, and meshes. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t Number of loaded shaders 
+
+size\+\_\+t Number of loaded textures 
+
+size\+\_\+t Number of loaded meshes 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8h_source_l00141}{141}} of file \doxymbox{\hyperlink{_resource_manager_8h_source}{Resource\+Manager.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_resource_manager_8h_source_l00163}{s\+\_\+\+Shaders}}.
+
+\Hypertarget{class_resource_manager_ada224c447722b7fc9244514b7173ef9f}\index{ResourceManager@{ResourceManager}!GetTexture@{GetTexture}}
+\index{GetTexture@{GetTexture}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{GetTexture()}{GetTexture()}}
+{\footnotesize\ttfamily \label{class_resource_manager_ada224c447722b7fc9244514b7173ef9f} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_texture}{Texture}} $>$ Resource\+Manager::\+\+Get\+Texture (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [nodiscard]}}
+
+
+
+Retrieves a texture by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The unique name of the texture \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Texture$>$} The requested texture, or nullptr if not found 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00070}{70}} of file \doxymbox{\hyperlink{_resource_manager_8cpp_source}{Resource\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_resource_manager_8h_source_l00169}{s\+\_\+\+Textures}}.
+
+\Hypertarget{class_resource_manager_a4c0853c81b0cbe333700de117c7f0cad}\index{ResourceManager@{ResourceManager}!GetTextureCount@{GetTextureCount}}
+\index{GetTextureCount@{GetTextureCount}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{GetTextureCount()}{GetTextureCount()}}
+{\footnotesize\ttfamily \label{class_resource_manager_a4c0853c81b0cbe333700de117c7f0cad} 
+size\+\_\+t Resource\+Manager::\+\+Get\+Texture\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the count of currently loaded textures. 
+
+\begin{DoxyReturn}{Returns}
+size\+\_\+t Number of loaded textures 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8h_source_l00148}{148}} of file \doxymbox{\hyperlink{_resource_manager_8h_source}{Resource\+Manager.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_resource_manager_8h_source_l00169}{s\+\_\+\+Textures}}.
+
+\Hypertarget{class_resource_manager_a884ae73b54ff6fe1bc9e1b21f1611e51}\index{ResourceManager@{ResourceManager}!LoadShader@{LoadShader}}
+\index{LoadShader@{LoadShader}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{LoadShader()}{LoadShader()}}
+{\footnotesize\ttfamily \label{class_resource_manager_a884ae73b54ff6fe1bc9e1b21f1611e51} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ Resource\+Manager::\+\+Load\+Shader (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{, }\item[{const std::\+string \&}]{vertex\+Path}{, }\item[{const std::\+string \&}]{fragment\+Path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [nodiscard]}}
+
+
+
+Loads a shader from vertex and fragment file paths. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The unique name to associate with the shader \\
+\hline
+{\em vertex\+Path} & The file path to the vertex shader source \\
+\hline
+{\em fragment\+Path} & The file path to the fragment shader source \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Shader$>$} The loaded shader 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00020}{20}} of file \doxymbox{\hyperlink{_resource_manager_8cpp_source}{Resource\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_shader_8cpp_source_l00128}{Shader::\+\+Create\+From\+Files()}}, and \doxymbox{\hyperlink{_resource_manager_8h_source_l00163}{s\+\_\+\+Shaders}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00124}{Test\+App::\+\+On\+Initialize()}}.
+
+\Hypertarget{class_resource_manager_a827e96a4c14146dfae34cd5ff2164fae}\index{ResourceManager@{ResourceManager}!LoadShaderFromSource@{LoadShaderFromSource}}
+\index{LoadShaderFromSource@{LoadShaderFromSource}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{LoadShaderFromSource()}{LoadShaderFromSource()}}
+{\footnotesize\ttfamily \label{class_resource_manager_a827e96a4c14146dfae34cd5ff2164fae} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ Resource\+Manager::\+\+Load\+Shader\+From\+Source (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{, }\item[{const std::\+string \&}]{vertex\+Src}{, }\item[{const std::\+string \&}]{fragment\+Src}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [nodiscard]}}
+
+
+
+Loads a shader from provided source code strings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The unique name to associate with the shader \\
+\hline
+{\em vertex\+Src} & The vertex shader source code \\
+\hline
+{\em fragment\+Src} & The fragment shader source code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Shader$>$} The loaded shader 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00040}{40}} of file \doxymbox{\hyperlink{_resource_manager_8cpp_source}{Resource\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_shader_8cpp_source_l00124}{Shader::\+\+Create()}}, and \doxymbox{\hyperlink{_resource_manager_8h_source_l00163}{s\+\_\+\+Shaders}}.
+
+\Hypertarget{class_resource_manager_aa9444c36eac438a0f97987baf0d95e51}\index{ResourceManager@{ResourceManager}!LoadTexture@{LoadTexture}}
+\index{LoadTexture@{LoadTexture}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{LoadTexture()}{LoadTexture()}}
+{\footnotesize\ttfamily \label{class_resource_manager_aa9444c36eac438a0f97987baf0d95e51} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_texture}{Texture}} $>$ Resource\+Manager::\+\+Load\+Texture (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{, }\item[{const std::\+string \&}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [nodiscard]}}
+
+
+
+Loads a texture from an image file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The unique name to associate with the texture \\
+\hline
+{\em path} & The file path to the image \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Texture$>$} The loaded texture 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00079}{79}} of file \doxymbox{\hyperlink{_resource_manager_8cpp_source}{Resource\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_texture_8cpp_source_l00081}{Texture::\+\+Create()}}, and \doxymbox{\hyperlink{_resource_manager_8h_source_l00169}{s\+\_\+\+Textures}}.
+
+\Hypertarget{class_resource_manager_aea7a27de3d69b57d62eb7109b00f45a4}\index{ResourceManager@{ResourceManager}!RegisterMesh@{RegisterMesh}}
+\index{RegisterMesh@{RegisterMesh}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{RegisterMesh()}{RegisterMesh()}}
+{\footnotesize\ttfamily \label{class_resource_manager_aea7a27de3d69b57d62eb7109b00f45a4} 
+void Resource\+Manager::\+\+Register\+Mesh (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{, }\item[{const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ \&}]{mesh}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Registers a mesh with a unique name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The unique name to associate with the mesh \\
+\hline
+{\em mesh} & The mesh to register \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00116}{116}} of file \doxymbox{\hyperlink{_resource_manager_8cpp_source}{Resource\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_resource_manager_8h_source_l00175}{s\+\_\+\+Meshes}}.
+
+\Hypertarget{class_resource_manager_ad69916a57c142341802f13585d267851}\index{ResourceManager@{ResourceManager}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily \label{class_resource_manager_ad69916a57c142341802f13585d267851} 
+void Resource\+Manager::\+\+Shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Unloads all resources and clears internal storage. 
+
+Should be called at engine shutdown to free all loaded resources. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00134}{134}} of file \doxymbox{\hyperlink{_resource_manager_8cpp_source}{Resource\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_resource_manager_8h_source_l00175}{s\+\_\+\+Meshes}}, \doxymbox{\hyperlink{_resource_manager_8h_source_l00163}{s\+\_\+\+Shaders}}, and \doxymbox{\hyperlink{_resource_manager_8h_source_l00169}{s\+\_\+\+Textures}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00217}{Test\+App::\+\+On\+Shutdown()}}.
+
+\Hypertarget{class_resource_manager_af2f8fdb280a2f25a86dcb78133d1a037}\index{ResourceManager@{ResourceManager}!UnloadMesh@{UnloadMesh}}
+\index{UnloadMesh@{UnloadMesh}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{UnloadMesh()}{UnloadMesh()}}
+{\footnotesize\ttfamily \label{class_resource_manager_af2f8fdb280a2f25a86dcb78133d1a037} 
+void Resource\+Manager::\+\+Unload\+Mesh (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Unloads a mesh by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The unique name of the mesh to unload \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00124}{124}} of file \doxymbox{\hyperlink{_resource_manager_8cpp_source}{Resource\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_resource_manager_8h_source_l00175}{s\+\_\+\+Meshes}}.
+
+\Hypertarget{class_resource_manager_a1b9f6d6eb55776d2868a128c346e29ae}\index{ResourceManager@{ResourceManager}!UnloadShader@{UnloadShader}}
+\index{UnloadShader@{UnloadShader}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{UnloadShader()}{UnloadShader()}}
+{\footnotesize\ttfamily \label{class_resource_manager_a1b9f6d6eb55776d2868a128c346e29ae} 
+void Resource\+Manager::\+\+Unload\+Shader (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Unloads a shader by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The unique name of the shader to unload \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00060}{60}} of file \doxymbox{\hyperlink{_resource_manager_8cpp_source}{Resource\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_resource_manager_8h_source_l00163}{s\+\_\+\+Shaders}}.
+
+\Hypertarget{class_resource_manager_a5ab9c2577f39e6311fd673a30fa3ab5e}\index{ResourceManager@{ResourceManager}!UnloadTexture@{UnloadTexture}}
+\index{UnloadTexture@{UnloadTexture}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{UnloadTexture()}{UnloadTexture()}}
+{\footnotesize\ttfamily \label{class_resource_manager_a5ab9c2577f39e6311fd673a30fa3ab5e} 
+void Resource\+Manager::\+\+Unload\+Texture (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Unloads a texture by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The unique name of the texture to unload \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00097}{97}} of file \doxymbox{\hyperlink{_resource_manager_8cpp_source}{Resource\+Manager.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_resource_manager_8h_source_l00169}{s\+\_\+\+Textures}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_resource_manager_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_resource_manager_a7a9101c11ae477773228d65a9863b3f1}\index{ResourceManager@{ResourceManager}!s\_Meshes@{s\_Meshes}}
+\index{s\_Meshes@{s\_Meshes}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{s\_Meshes}{s\_Meshes}}
+{\footnotesize\ttfamily \label{class_resource_manager_a7a9101c11ae477773228d65a9863b3f1} 
+std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ $>$ Resource\+Manager::\+s\+\_\+\+Meshes\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Map of loaded meshes identified by unique names. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8h_source_l00175}{175}} of file \doxymbox{\hyperlink{_resource_manager_8h_source}{Resource\+Manager.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00107}{Get\+Mesh()}}, \doxymbox{\hyperlink{_resource_manager_8h_source_l00155}{Get\+Mesh\+Count()}}, \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00116}{Register\+Mesh()}}, \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00134}{Shutdown()}}, and \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00124}{Unload\+Mesh()}}.
+
+\Hypertarget{class_resource_manager_a89da21256052faf26f86ff7eabf02f9b}\index{ResourceManager@{ResourceManager}!s\_Shaders@{s\_Shaders}}
+\index{s\_Shaders@{s\_Shaders}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{s\_Shaders}{s\_Shaders}}
+{\footnotesize\ttfamily \label{class_resource_manager_a89da21256052faf26f86ff7eabf02f9b} 
+std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ $>$ Resource\+Manager::\+s\+\_\+\+Shaders\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Map of loaded shaders identified by unique names. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8h_source_l00163}{163}} of file \doxymbox{\hyperlink{_resource_manager_8h_source}{Resource\+Manager.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00011}{Get\+Shader()}}, \doxymbox{\hyperlink{_resource_manager_8h_source_l00141}{Get\+Shader\+Count()}}, \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00020}{Load\+Shader()}}, \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00040}{Load\+Shader\+From\+Source()}}, \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00134}{Shutdown()}}, and \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00060}{Unload\+Shader()}}.
+
+\Hypertarget{class_resource_manager_ad5209de21223e9f36d3fd38f4623bcb5}\index{ResourceManager@{ResourceManager}!s\_Textures@{s\_Textures}}
+\index{s\_Textures@{s\_Textures}!ResourceManager@{ResourceManager}}
+\doxysubsubsection{\texorpdfstring{s\_Textures}{s\_Textures}}
+{\footnotesize\ttfamily \label{class_resource_manager_ad5209de21223e9f36d3fd38f4623bcb5} 
+std::\+unordered\+\_\+map$<$ std::\+string, \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_texture}{Texture}} $>$ $>$ Resource\+Manager::\+s\+\_\+\+Textures\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Map of loaded textures identified by unique names. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_resource_manager_8h_source_l00169}{169}} of file \doxymbox{\hyperlink{_resource_manager_8h_source}{Resource\+Manager.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00070}{Get\+Texture()}}, \doxymbox{\hyperlink{_resource_manager_8h_source_l00148}{Get\+Texture\+Count()}}, \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00079}{Load\+Texture()}}, \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00134}{Shutdown()}}, and \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00097}{Unload\+Texture()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Resource\+Manager.\+h\item 
+src/\+\+Graphics/\+Resource\+Manager.\+cpp\end{DoxyCompactItemize}

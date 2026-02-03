@@ -1,0 +1,590 @@
+\doxysection{Engine Class Reference}
+\hypertarget{class_engine}{}\label{class_engine}\index{Engine@{Engine}}
+Inheritance diagram for Engine:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_engine}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_engine}{Engine} instance. \end{DoxyCompactList}\item 
+virtual \doxymbox{\hyperlink{class_engine_a8ef7030a089ecb30bbfcb9e43094717a}{\texorpdfstring{$\sim$}{\string~}\+Engine}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_engine}{Engine} instance and cleans up resources. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_engine_af4c789fb939a0870426c698a5124a0ee}{Run}} ()
+\item 
+bool \doxymbox{\hyperlink{class_engine_a11baa1640d1f89e3cf8d1887a9621032}{Initialize}} ()
+\item 
+void \doxymbox{\hyperlink{class_engine_a3dbd2c0a65e642baa7eaa97caa6e4e64}{Shutdown}} ()
+\item 
+\Hypertarget{class_engine_ab09e1edd7b04d0c91d91efbfc80e0489}\label{class_engine_ab09e1edd7b04d0c91d91efbfc80e0489} 
+virtual void {\bfseries On\+Event} (\doxymbox{\hyperlink{class_event}{Event}} \&event)=0
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_engine_a95cd587c5d6be9ac896a7949e7dd5c83}{Get\+Delta\+Time}} () const
+\begin{DoxyCompactList}\small\item\em Gets the application window. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_engine_a2e26a52a904fa6455c0c4bd9ae4ac057}{Get\+FPS}} () const
+\begin{DoxyCompactList}\small\item\em Gets the current frames per second (FPS). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_engine}{Engine}} \& \doxymbox{\hyperlink{class_engine_a773b5995960f2ff398d064c221c70230}{Get}} ()
+\begin{DoxyCompactList}\small\item\em Gets the singleton instance of the \doxylink{class_engine}{Engine}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{class_engine_ae11320612a2d3ecffe574a1c92dca7e8}{On\+Initialize}} ()
+\begin{DoxyCompactList}\small\item\em Called during engine initialization. Override this method in derived classes to implement game-\/specific initialization logic. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_engine_ab387292a25fb78fb3f2d4e20c735d734}{On\+Update}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} delta\+Time)=0
+\begin{DoxyCompactList}\small\item\em Called each frame to update game logic. Override this method in derived classes to implement game-\/specific update logic. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_engine_ae4c3ae5f32711465d9eaef36c82716ac}{On\+Render}} ()
+\begin{DoxyCompactList}\small\item\em Called each frame to render the scene. Override this method in derived classes to implement game-\/specific rendering logic. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_engine_aaa0aa0f8418f57e7ca8724cd5db63baa}{On\+Shutdown}} ()
+\begin{DoxyCompactList}\small\item\em Called during engine shutdown. Override this method in derived classes to implement game-\/specific cleanup logic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_engine_ab68d0f3a90f84bec81d2de30cef77d58}{Process\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Processes input events. This function polls and handles input events from the windowing system. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_engine_a0594de9ff559eb966f6d1950024b1646}{Update}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} delta\+Time)
+\begin{DoxyCompactList}\small\item\em Updates the engine state. This function updates game logic and timing information. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_engine_acde70aed0043e2e2091d0bb6cce8e3c1}{Render}} ()
+\begin{DoxyCompactList}\small\item\em Renders the current frame. This function calls the game-\/specific rendering logic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope}}$<$ \doxymbox{\hyperlink{class_window}{Window}} $>$ \doxymbox{\hyperlink{class_engine_a236d009773f852cf486ebe09986145ad}{m\+\_\+\+Window\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Scoped pointer to the main application window. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_time_1_1_timer}{Time::\+\+Timer}} \doxymbox{\hyperlink{class_engine_a59cd6443a49ad2265a9f9276c7e0465d}{m\+\_\+\+Timer\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Timer instance for tracking elapsed time and delta time. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_engine_af1d992fdad018dcd8d433e6b87be55ca}{m\+\_\+\+Delta\+Time\+\_\+}} = 0.\+0f
+\begin{DoxyCompactList}\small\item\em \doxylink{namespace_time}{Time} elapsed since the last frame in seconds. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_engine_a0a6c105135b31c5aede1bef6f998f486}{m\+\_\+\+FPS\+\_\+}} = 0.\+0f
+\begin{DoxyCompactList}\small\item\em Current frames per second (FPS) value. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_engine_a9b2d76ed30e04ff8933216d8100f06cc}{m\+\_\+\+Frame\+Count\+\_\+}} = 0
+\begin{DoxyCompactList}\small\item\em Number of frames rendered in the current second. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_engine_acd11e4fc3bc8ef034a99d84540afab28}{m\+\_\+\+FPSTimer\+\_\+}} = 0.\+0f
+\begin{DoxyCompactList}\small\item\em Accumulated time for FPS calculation. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_engine_a43d6fa801aa828fa908d919a1b69f26e}{m\+\_\+is\+Running\+\_\+}} = false
+\begin{DoxyCompactList}\small\item\em Flag indicating whether the main loop is running. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_engine_adaf3fd8a2de9a16193389c801b02e4f8}{m\+\_\+is\+Minimized}} = false
+\begin{DoxyCompactList}\small\item\em Flag indicating whether the window is minimized. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_engine}{Engine}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_engine_af9e452122d847e551b235983f817ea20}{s\+\_\+\+Instance\+\_\+}} = nullptr
+\begin{DoxyCompactList}\small\item\em Static pointer to the singleton \doxylink{class_engine}{Engine} instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00058}{58}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_engine_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}\index{Engine@{Engine}!Engine@{Engine}}
+\index{Engine@{Engine}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{Engine()}{Engine()}}
+{\footnotesize\ttfamily \label{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2} 
+Engine::\+\+Engine (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a new \doxylink{class_engine}{Engine} instance. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8cpp_source_l00007}{7}} of file \doxymbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_engine_8h_source_l00204}{s\+\_\+\+Instance\+\_\+}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_engine_8h_source_l00129}{Get()}}.
+
+\Hypertarget{class_engine_a8ef7030a089ecb30bbfcb9e43094717a}\index{Engine@{Engine}!````~Engine@{\texorpdfstring{$\sim$}{\string~}Engine}}
+\index{````~Engine@{\texorpdfstring{$\sim$}{\string~}Engine}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Engine()}{\string~Engine()}}
+{\footnotesize\ttfamily \label{class_engine_a8ef7030a089ecb30bbfcb9e43094717a} 
+Engine::\+\texorpdfstring{$\sim$}{\string~}\+Engine (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destroys the \doxylink{class_engine}{Engine} instance and cleans up resources. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8cpp_source_l00016}{16}} of file \doxymbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_engine_8h_source_l00204}{s\+\_\+\+Instance\+\_\+}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_engine_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_engine_a773b5995960f2ff398d064c221c70230}\index{Engine@{Engine}!Get@{Get}}
+\index{Get@{Get}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily \label{class_engine_a773b5995960f2ff398d064c221c70230} 
+\doxymbox{\hyperlink{class_engine}{Engine}} \& Engine::\+\+Get (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the singleton instance of the \doxylink{class_engine}{Engine}. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_engine}{Engine}\& Reference to the global \doxylink{class_engine}{Engine} instance 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00129}{129}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_engine_8cpp_source_l00007}{Engine()}}, and \doxymbox{\hyperlink{_engine_8h_source_l00204}{s\+\_\+\+Instance\+\_\+}}.
+
+\Hypertarget{class_engine_a95cd587c5d6be9ac896a7949e7dd5c83}\index{Engine@{Engine}!GetDeltaTime@{GetDeltaTime}}
+\index{GetDeltaTime@{GetDeltaTime}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{GetDeltaTime()}{GetDeltaTime()}}
+{\footnotesize\ttfamily \label{class_engine_a95cd587c5d6be9ac896a7949e7dd5c83} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Engine::\+\+Get\+Delta\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the application window. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_window}{Window}\& Reference to the engine\textquotesingle{}s main window 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00134}{134}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_engine_8h_source_l00228}{m\+\_\+\+Delta\+Time\+\_\+}}.
+
+\Hypertarget{class_engine_a2e26a52a904fa6455c0c4bd9ae4ac057}\index{Engine@{Engine}!GetFPS@{GetFPS}}
+\index{GetFPS@{GetFPS}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{GetFPS()}{GetFPS()}}
+{\footnotesize\ttfamily \label{class_engine_a2e26a52a904fa6455c0c4bd9ae4ac057} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Engine::\+\+Get\+FPS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the current frames per second (FPS). 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} Current FPS value 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00139}{139}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_engine_8h_source_l00236}{m\+\_\+\+FPS\+\_\+}}.
+
+\Hypertarget{class_engine_a11baa1640d1f89e3cf8d1887a9621032}\index{Engine@{Engine}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily \label{class_engine_a11baa1640d1f89e3cf8d1887a9621032} 
+bool Engine::\+\+Initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8cpp_source_l00022}{22}} of file \doxymbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}}.
+
+\Hypertarget{class_engine_ae11320612a2d3ecffe574a1c92dca7e8}\index{Engine@{Engine}!OnInitialize@{OnInitialize}}
+\index{OnInitialize@{OnInitialize}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{OnInitialize()}{OnInitialize()}}
+{\footnotesize\ttfamily \label{class_engine_ae11320612a2d3ecffe574a1c92dca7e8} 
+virtual void Engine::\+\+On\+Initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Called during engine initialization. Override this method in derived classes to implement game-\/specific initialization logic. 
+
+
+
+Reimplemented in \doxymbox{\hyperlink{class_test_app_ae314351442dedee0bb1fb9bebb236d60}{Test\+App}}.
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00149}{149}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+\Hypertarget{class_engine_ae4c3ae5f32711465d9eaef36c82716ac}\index{Engine@{Engine}!OnRender@{OnRender}}
+\index{OnRender@{OnRender}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{OnRender()}{OnRender()}}
+{\footnotesize\ttfamily \label{class_engine_ae4c3ae5f32711465d9eaef36c82716ac} 
+virtual void Engine::\+\+On\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Called each frame to render the scene. Override this method in derived classes to implement game-\/specific rendering logic. 
+
+
+
+Reimplemented in \doxymbox{\hyperlink{class_test_app_ae0d04b159377479f20fca88198669016}{Test\+App}}.
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00164}{164}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_engine_8cpp_source_l00122}{Render()}}.
+
+\Hypertarget{class_engine_aaa0aa0f8418f57e7ca8724cd5db63baa}\index{Engine@{Engine}!OnShutdown@{OnShutdown}}
+\index{OnShutdown@{OnShutdown}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{OnShutdown()}{OnShutdown()}}
+{\footnotesize\ttfamily \label{class_engine_aaa0aa0f8418f57e7ca8724cd5db63baa} 
+virtual void Engine::\+\+On\+Shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Called during engine shutdown. Override this method in derived classes to implement game-\/specific cleanup logic. 
+
+
+
+Reimplemented in \doxymbox{\hyperlink{class_test_app_acd6763515b563f6f1394a44b9523e93d}{Test\+App}}.
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00171}{171}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+\Hypertarget{class_engine_ab387292a25fb78fb3f2d4e20c735d734}\index{Engine@{Engine}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_engine_ab387292a25fb78fb3f2d4e20c735d734} 
+virtual void Engine::\+\+On\+Update (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Called each frame to update game logic. Override this method in derived classes to implement game-\/specific update logic. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & \doxylink{namespace_time}{Time} elapsed since the last frame in seconds \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \doxymbox{\hyperlink{class_test_app_a91cb091c669cda0707d1760b12465e9c}{Test\+App}}.
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Referenced by \doxymbox{\hyperlink{_engine_8cpp_source_l00118}{Update()}}.
+
+\Hypertarget{class_engine_ab68d0f3a90f84bec81d2de30cef77d58}\index{Engine@{Engine}!ProcessInput@{ProcessInput}}
+\index{ProcessInput@{ProcessInput}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{ProcessInput()}{ProcessInput()}}
+{\footnotesize\ttfamily \label{class_engine_ab68d0f3a90f84bec81d2de30cef77d58} 
+void Engine::\+\+Process\+Input (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Processes input events. This function polls and handles input events from the windowing system. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8cpp_source_l00103}{103}} of file \doxymbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_engine_8h_source_l00260}{m\+\_\+is\+Running\+\_\+}}.
+
+\Hypertarget{class_engine_acde70aed0043e2e2091d0bb6cce8e3c1}\index{Engine@{Engine}!Render@{Render}}
+\index{Render@{Render}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily \label{class_engine_acde70aed0043e2e2091d0bb6cce8e3c1} 
+void Engine::\+\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Renders the current frame. This function calls the game-\/specific rendering logic. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8cpp_source_l00122}{122}} of file \doxymbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_engine_8h_source_l00212}{m\+\_\+\+Window\+\_\+}}, and \doxymbox{\hyperlink{_engine_8h_source_l00164}{On\+Render()}}.
+
+\Hypertarget{class_engine_af4c789fb939a0870426c698a5124a0ee}\index{Engine@{Engine}!Run@{Run}}
+\index{Run@{Run}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily \label{class_engine_af4c789fb939a0870426c698a5124a0ee} 
+void Engine::\+\+Run (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8cpp_source_l00058}{58}} of file \doxymbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}}.
+
+\Hypertarget{class_engine_a3dbd2c0a65e642baa7eaa97caa6e4e64}\index{Engine@{Engine}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily \label{class_engine_a3dbd2c0a65e642baa7eaa97caa6e4e64} 
+void Engine::\+\+Shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8cpp_source_l00044}{44}} of file \doxymbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}}.
+
+\Hypertarget{class_engine_a0594de9ff559eb966f6d1950024b1646}\index{Engine@{Engine}!Update@{Update}}
+\index{Update@{Update}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_engine_a0594de9ff559eb966f6d1950024b1646} 
+void Engine::\+\+Update (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Updates the engine state. This function updates game logic and timing information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & \doxylink{namespace_time}{Time} elapsed since the last frame in seconds \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8cpp_source_l00118}{118}} of file \doxymbox{\hyperlink{_engine_8cpp_source}{Engine.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{class_engine_ab387292a25fb78fb3f2d4e20c735d734}{On\+Update()}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_engine_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_engine_af1d992fdad018dcd8d433e6b87be55ca}\index{Engine@{Engine}!m\_DeltaTime\_@{m\_DeltaTime\_}}
+\index{m\_DeltaTime\_@{m\_DeltaTime\_}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{m\_DeltaTime\_}{m\_DeltaTime\_}}
+{\footnotesize\ttfamily \label{class_engine_af1d992fdad018dcd8d433e6b87be55ca} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Engine::\+m\+\_\+\+Delta\+Time\+\_\+ = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{namespace_time}{Time} elapsed since the last frame in seconds. 
+
+Used for frame-\/rate independent updates and timing calculations. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00228}{228}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_engine_8h_source_l00134}{Get\+Delta\+Time()}}.
+
+\Hypertarget{class_engine_a0a6c105135b31c5aede1bef6f998f486}\index{Engine@{Engine}!m\_FPS\_@{m\_FPS\_}}
+\index{m\_FPS\_@{m\_FPS\_}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{m\_FPS\_}{m\_FPS\_}}
+{\footnotesize\ttfamily \label{class_engine_a0a6c105135b31c5aede1bef6f998f486} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Engine::\+m\+\_\+\+FPS\+\_\+ = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Current frames per second (FPS) value. 
+
+Updated each frame to reflect the current rendering performance. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00236}{236}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_engine_8h_source_l00139}{Get\+FPS()}}.
+
+\Hypertarget{class_engine_acd11e4fc3bc8ef034a99d84540afab28}\index{Engine@{Engine}!m\_FPSTimer\_@{m\_FPSTimer\_}}
+\index{m\_FPSTimer\_@{m\_FPSTimer\_}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{m\_FPSTimer\_}{m\_FPSTimer\_}}
+{\footnotesize\ttfamily \label{class_engine_acd11e4fc3bc8ef034a99d84540afab28} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Engine::\+m\+\_\+\+FPSTimer\+\_\+ = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Accumulated time for FPS calculation. 
+
+Used to track elapsed time for updating the FPS value once per second. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00252}{252}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+\Hypertarget{class_engine_a9b2d76ed30e04ff8933216d8100f06cc}\index{Engine@{Engine}!m\_FrameCount\_@{m\_FrameCount\_}}
+\index{m\_FrameCount\_@{m\_FrameCount\_}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{m\_FrameCount\_}{m\_FrameCount\_}}
+{\footnotesize\ttfamily \label{class_engine_a9b2d76ed30e04ff8933216d8100f06cc} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Engine::\+m\+\_\+\+Frame\+Count\+\_\+ = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Number of frames rendered in the current second. 
+
+Used to calculate the FPS value. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00244}{244}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+\Hypertarget{class_engine_adaf3fd8a2de9a16193389c801b02e4f8}\index{Engine@{Engine}!m\_isMinimized@{m\_isMinimized}}
+\index{m\_isMinimized@{m\_isMinimized}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{m\_isMinimized}{m\_isMinimized}}
+{\footnotesize\ttfamily \label{class_engine_adaf3fd8a2de9a16193389c801b02e4f8} 
+bool Engine::\+m\+\_\+is\+Minimized = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flag indicating whether the window is minimized. 
+
+Used to pause updates and rendering when the window is not visible. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00268}{268}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+\Hypertarget{class_engine_a43d6fa801aa828fa908d919a1b69f26e}\index{Engine@{Engine}!m\_isRunning\_@{m\_isRunning\_}}
+\index{m\_isRunning\_@{m\_isRunning\_}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{m\_isRunning\_}{m\_isRunning\_}}
+{\footnotesize\ttfamily \label{class_engine_a43d6fa801aa828fa908d919a1b69f26e} 
+bool Engine::\+m\+\_\+is\+Running\+\_\+ = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flag indicating whether the main loop is running. 
+
+Used to control the execution of the main application loop. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00260}{260}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_engine_8cpp_source_l00103}{Process\+Input()}}.
+
+\Hypertarget{class_engine_a59cd6443a49ad2265a9f9276c7e0465d}\index{Engine@{Engine}!m\_Timer\_@{m\_Timer\_}}
+\index{m\_Timer\_@{m\_Timer\_}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{m\_Timer\_}{m\_Timer\_}}
+{\footnotesize\ttfamily \label{class_engine_a59cd6443a49ad2265a9f9276c7e0465d} 
+\doxymbox{\hyperlink{class_time_1_1_timer}{Time::\+\+Timer}} Engine::\+m\+\_\+\+Timer\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Timer instance for tracking elapsed time and delta time. 
+
+Used to measure frame times and provide timing information to the engine. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00220}{220}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+\Hypertarget{class_engine_a236d009773f852cf486ebe09986145ad}\index{Engine@{Engine}!m\_Window\_@{m\_Window\_}}
+\index{m\_Window\_@{m\_Window\_}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{m\_Window\_}{m\_Window\_}}
+{\footnotesize\ttfamily \label{class_engine_a236d009773f852cf486ebe09986145ad} 
+\doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope}}$<$\doxymbox{\hyperlink{class_window}{Window}}$>$ Engine::\+m\+\_\+\+Window\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Scoped pointer to the main application window. 
+
+Manages the lifecycle of the window used for rendering and input. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00212}{212}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_engine_8cpp_source_l00122}{Render()}}.
+
+\Hypertarget{class_engine_af9e452122d847e551b235983f817ea20}\index{Engine@{Engine}!s\_Instance\_@{s\_Instance\_}}
+\index{s\_Instance\_@{s\_Instance\_}!Engine@{Engine}}
+\doxysubsubsection{\texorpdfstring{s\_Instance\_}{s\_Instance\_}}
+{\footnotesize\ttfamily \label{class_engine_af9e452122d847e551b235983f817ea20} 
+\doxymbox{\hyperlink{class_engine}{Engine}} \texorpdfstring{$\ast$}{*} Engine::\+s\+\_\+\+Instance\+\_\+ = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Static pointer to the singleton \doxylink{class_engine}{Engine} instance. 
+
+Used to provide global access to the \doxylink{class_engine}{Engine} instance via \doxylink{class_engine_a773b5995960f2ff398d064c221c70230}{Engine::\+\+Get()}. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_engine_8h_source_l00204}{204}} of file \doxymbox{\hyperlink{_engine_8h_source}{Engine.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_engine_8cpp_source_l00007}{Engine()}}, \doxymbox{\hyperlink{_engine_8h_source_l00129}{Get()}}, and \doxymbox{\hyperlink{_engine_8cpp_source_l00016}{\texorpdfstring{$\sim$}{\string~}\+Engine()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Core/\+Engine.\+h\item 
+src/\+\+Core/\+Engine.\+cpp\end{DoxyCompactItemize}

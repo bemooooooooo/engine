@@ -1,0 +1,195 @@
+\doxysection{Test\+Scene Class Reference}
+\hypertarget{class_test_scene}{}\label{class_test_scene}\index{TestScene@{TestScene}}
+Inheritance diagram for Test\+Scene:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_test_scene}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_test_scene_a6064750ecfc435c16b687c65d99b17a1}{Initialize}} ()
+\item 
+void \doxymbox{\hyperlink{class_test_scene_ade6d9e9f4fd30888257ed187cef2e388}{Update}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} delta\+Time) override
+\begin{DoxyCompactList}\small\item\em Updates all Scene\+Objects in the scene. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_test_scene_ac7e1d8acdfc54c9a0a96bf4f1acc9a32}{Render}} (const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&shader) const override
+\begin{DoxyCompactList}\small\item\em Renders all Scene\+Objects in the scene using the specified shader. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_scene}{Scene}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_scene_ad10176d75a9cc0da56626f682d083507}{Scene}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_scene}{Scene} with an optional name. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_scene_a6fb788d6ae25d5293d3a58966cf29757}{Scene}} (std::\+string \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}})
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_scene}{Scene} with the specified name. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_scene_a3b8cec2e32546713915f8c6303c951f1}{\texorpdfstring{$\sim$}{\string~}\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_scene}{Scene} class. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_scene_a4c9d8adc4cc03dd82f249b37dc64916c}{Add\+Object}} (const \doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}} \&object)
+\begin{DoxyCompactList}\small\item\em Adds a \doxylink{struct_scene_object}{Scene\+Object} to the scene. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_scene_a695ea00facd0b261fd7b536f47a735d3}{Remove\+Object}} (const std::\+string \&\doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}})
+\begin{DoxyCompactList}\small\item\em Removes a \doxylink{struct_scene_object}{Scene\+Object} from the scene by name. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_scene_a2573a087031d929dd4ded7505c6e8a1b}{Find\+Object}} (const std::\+string \&\doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}})
+\begin{DoxyCompactList}\small\item\em Finds a \doxylink{struct_scene_object}{Scene\+Object} in the scene by name. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}} $>$ \& \doxymbox{\hyperlink{class_scene_a11f3986e592b49aa3921ecf37b0c2dce}{Get\+Objects}} () const
+\begin{DoxyCompactList}\small\item\em Gets the list of Scene\+Objects in the scene. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}} $>$ \& \doxymbox{\hyperlink{class_scene_a645956b159ae9cbc43ec698eb9e96222}{Get\+Objects}} ()
+\begin{DoxyCompactList}\small\item\em Gets the list of Scene\+Objects in the scene. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_scene_ae3ad734c5ab018e43fc0b2360443d588}{Set\+Camera}} (const \doxymbox{\hyperlink{class_camera}{Camera}} \&camera)
+\begin{DoxyCompactList}\small\item\em Sets the camera for the scene. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_camera}{Camera}} \& \doxymbox{\hyperlink{class_scene_ab72a62cdd897e1d31a72e9a2f3a260b2}{Get\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Gets the camera of the scene. \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{class_camera}{Camera}} \& \doxymbox{\hyperlink{class_scene_a26734db954d487644691e613286a9c4a}{Get\+Camera}} () const
+\begin{DoxyCompactList}\small\item\em Gets the camera of the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_test_scene_a71baed98f8064252255a5109cbc48ada}{Create\+Test\+Objects}} ()
+\item 
+void \doxymbox{\hyperlink{class_test_scene_a2ba4541cc6f71aa3a087ce9c909ce239}{Update\+Camera}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} delta\+Time)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_test_scene_a1555d345e11e1e7a7f025888c3c0876e}{m\+\_\+\+Total\+Time}} = 0.\+0f
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_test_scene_a71aef7281084a8d06e7bae5c5556ee47}{m\+\_\+\+Camera\+Orbit\+Angle}} = 0.\+0f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00009}{9}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_test_scene_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_test_scene_a04fd916e8e52cd1335fc05e2ebf1c8df}\index{TestScene@{TestScene}!TestScene@{TestScene}}
+\index{TestScene@{TestScene}!TestScene@{TestScene}}
+\doxysubsubsection{\texorpdfstring{TestScene()}{TestScene()}}
+{\footnotesize\ttfamily \label{class_test_scene_a04fd916e8e52cd1335fc05e2ebf1c8df} 
+Test\+Scene::\+\+Test\+Scene (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00011}{11}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_test_scene_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_test_scene_a71baed98f8064252255a5109cbc48ada}\index{TestScene@{TestScene}!CreateTestObjects@{CreateTestObjects}}
+\index{CreateTestObjects@{CreateTestObjects}!TestScene@{TestScene}}
+\doxysubsubsection{\texorpdfstring{CreateTestObjects()}{CreateTestObjects()}}
+{\footnotesize\ttfamily \label{class_test_scene_a71baed98f8064252255a5109cbc48ada} 
+void Test\+Scene::\+\+Create\+Test\+Objects (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00057}{57}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{class_test_scene_a6064750ecfc435c16b687c65d99b17a1}\index{TestScene@{TestScene}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!TestScene@{TestScene}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily \label{class_test_scene_a6064750ecfc435c16b687c65d99b17a1} 
+void Test\+Scene::\+\+Initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00013}{13}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{class_test_scene_ac7e1d8acdfc54c9a0a96bf4f1acc9a32}\index{TestScene@{TestScene}!Render@{Render}}
+\index{Render@{Render}!TestScene@{TestScene}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily \label{class_test_scene_ac7e1d8acdfc54c9a0a96bf4f1acc9a32} 
+void Test\+Scene::\+\+Render (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&}]{shader}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Renders all Scene\+Objects in the scene using the specified shader. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & The shader to use for rendering the objects \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \doxymbox{\hyperlink{class_scene_ad73b9c1185b16f0bd0b16b77471b8e35}{Scene}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00039}{39}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_scene_8h_source_l00200}{Scene::\+\+Get\+Camera()}}, and \doxymbox{\hyperlink{_scene_8h_source_l00179}{Scene::\+\+Get\+Objects()}}.
+
+\Hypertarget{class_test_scene_ade6d9e9f4fd30888257ed187cef2e388}\index{TestScene@{TestScene}!Update@{Update}}
+\index{Update@{Update}!TestScene@{TestScene}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_test_scene_ade6d9e9f4fd30888257ed187cef2e388} 
+void Test\+Scene::\+\+Update (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Updates all Scene\+Objects in the scene. 
+
+Calls the on\+Update callback for each object if it is set.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The time elapsed since the last update in seconds \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \doxymbox{\hyperlink{class_scene_a2835bf088b491fe34516dfea0e8bfd0b}{Scene}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00029}{29}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{class_test_scene_a2ba4541cc6f71aa3a087ce9c909ce239}\index{TestScene@{TestScene}!UpdateCamera@{UpdateCamera}}
+\index{UpdateCamera@{UpdateCamera}!TestScene@{TestScene}}
+\doxysubsubsection{\texorpdfstring{UpdateCamera()}{UpdateCamera()}}
+{\footnotesize\ttfamily \label{class_test_scene_a2ba4541cc6f71aa3a087ce9c909ce239} 
+void Test\+Scene::\+\+Update\+Camera (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00109}{109}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_test_scene_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_test_scene_a71aef7281084a8d06e7bae5c5556ee47}\index{TestScene@{TestScene}!m\_CameraOrbitAngle@{m\_CameraOrbitAngle}}
+\index{m\_CameraOrbitAngle@{m\_CameraOrbitAngle}!TestScene@{TestScene}}
+\doxysubsubsection{\texorpdfstring{m\_CameraOrbitAngle}{m\_CameraOrbitAngle}}
+{\footnotesize\ttfamily \label{class_test_scene_a71aef7281084a8d06e7bae5c5556ee47} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Test\+Scene::\+m\+\_\+\+Camera\+Orbit\+Angle = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00055}{55}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{class_test_scene_a1555d345e11e1e7a7f025888c3c0876e}\index{TestScene@{TestScene}!m\_TotalTime@{m\_TotalTime}}
+\index{m\_TotalTime@{m\_TotalTime}!TestScene@{TestScene}}
+\doxysubsubsection{\texorpdfstring{m\_TotalTime}{m\_TotalTime}}
+{\footnotesize\ttfamily \label{class_test_scene_a1555d345e11e1e7a7f025888c3c0876e} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Test\+Scene::\+m\+\_\+\+Total\+Time = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00054}{54}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+main.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,89 @@
+.TH "Plane" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Plane
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPlane\fP (const \fBVector3\fP &normal, \fBf32\fP distance)"
+.br
+.ti -1c
+.RI "\fBPlane\fP (const \fBVector3\fP &point, const \fBVector3\fP &normal)"
+.br
+.ti -1c
+.RI "\fBPlane\fP (const \fBVector3\fP &a, const \fBVector3\fP &b, const \fBVector3\fP &c)"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBGetDistanceToPoint\fP (const \fBVector3\fP &point) const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBClosestPoint\fP (const \fBVector3\fP &point) const"
+.br
+.ti -1c
+.RI "bool \fBGetSide\fP (const \fBVector3\fP &point) const"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBVector3\fP \fBnormal\fP"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBdistance\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB4\fP of file \fBPlane\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Plane::Plane ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB8\fP of file \fBPlane\&.h\fP\&.
+.SS "Plane::Plane (const \fBVector3\fP & normal, \fBf32\fP distance)\fR [inline]\fP"
+
+.PP
+Definition at line \fB9\fP of file \fBPlane\&.h\fP\&.
+.SS "Plane::Plane (const \fBVector3\fP & point, const \fBVector3\fP & normal)\fR [inline]\fP"
+
+.PP
+Definition at line \fB10\fP of file \fBPlane\&.h\fP\&.
+.SS "Plane::Plane (const \fBVector3\fP & a, const \fBVector3\fP & b, const \fBVector3\fP & c)\fR [inline]\fP"
+
+.PP
+Definition at line \fB11\fP of file \fBPlane\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBVector3\fP Plane::ClosestPoint (const \fBVector3\fP & point) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB20\fP of file \fBPlane\&.h\fP\&.
+.SS "\fBf32\fP Plane::GetDistanceToPoint (const \fBVector3\fP & point) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB16\fP of file \fBPlane\&.h\fP\&.
+.SS "bool Plane::GetSide (const \fBVector3\fP & point) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB24\fP of file \fBPlane\&.h\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBf32\fP Plane::distance"
+
+.PP
+Definition at line \fB6\fP of file \fBPlane\&.h\fP\&.
+.SS "\fBVector3\fP Plane::normal"
+
+.PP
+Definition at line \fB5\fP of file \fBPlane\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

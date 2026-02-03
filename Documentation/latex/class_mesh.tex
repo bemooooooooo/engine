@@ -1,0 +1,324 @@
+\doxysection{Mesh Class Reference}
+\hypertarget{class_mesh}{}\label{class_mesh}\index{Mesh@{Mesh}}
+
+
+Represents a 3D mesh with geometry and material.  
+
+
+
+
+{\ttfamily \+\#include $<$Mesh.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_mesh_aa3ce6c1e639633ce0fa5bc93c60eaffa}{Mesh}} (const std::\+vector$<$ \doxymbox{\hyperlink{struct_vertex}{Vertex}} $>$ \&vertices, const std::\+vector$<$ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} $>$ \&indices)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_mesh}{Mesh} from given vertices and indices. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_mesh_a5efe4da1a4c0971cfb037bd70304c303}{\texorpdfstring{$\sim$}{\string~}\+Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_mesh}{Mesh} class. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_mesh_a18ca56b1c5788b55e1919cb12f0718b9}{Draw}} (const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&shader, const \doxymbox{\hyperlink{struct_matrix4}{Matrix4}} \&transform) const
+\begin{DoxyCompactList}\small\item\em Draws the mesh using the specified shader and transformation matrix. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_mesh_a6073d51e0b6105607ee96443043a8f82}{Set\+Material}} (const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_material}{Material}} $>$ \&material)
+\begin{DoxyCompactList}\small\item\em Sets the material for the mesh. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_material}{Material}} $>$ \doxymbox{\hyperlink{class_mesh_a9db3f3ec253a39f1652558b63244378a}{Get\+Material}} () const
+\begin{DoxyCompactList}\small\item\em Gets the material associated with the mesh. \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_vertex_array}{Vertex\+Array}} $>$ \& \doxymbox{\hyperlink{class_mesh_abebfce2d1c0b9faf324c551ff0ca3dd9}{Get\+Vertex\+Array}} () const
+\begin{DoxyCompactList}\small\item\em Gets the vertex array of the mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ \doxymbox{\hyperlink{class_mesh_a89afdca6de34de136cfe4b354a75a21c}{Create\+Cube}} ()
+\begin{DoxyCompactList}\small\item\em Factory method to create a cube mesh. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ \doxymbox{\hyperlink{class_mesh_ac3da9e5b09bf79e2ac9b2aa2b20e28ee}{Create\+Plane}} ()
+\begin{DoxyCompactList}\small\item\em Factory method to create a plane mesh. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ \doxymbox{\hyperlink{class_mesh_a4cf4b14d99b5255d3f120dc68a41a9e6}{Create\+Sphere}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} segments=32)
+\begin{DoxyCompactList}\small\item\em Factory method to create a sphere mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_vertex_array}{Vertex\+Array}} $>$ \doxymbox{\hyperlink{class_mesh_af2c83960c67ca268bed034ceaa7b2897}{m\+\_\+\+Vertex\+Array}}
+\begin{DoxyCompactList}\small\item\em The vertex array object containing vertex and index buffers. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_material}{Material}} $>$ \doxymbox{\hyperlink{class_mesh_a792f47724b42c5fb941de071fed62a68}{m\+\_\+\+Material}}
+\begin{DoxyCompactList}\small\item\em The material associated with the mesh. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_mesh_ae398c72e4f10367adb2c12c24550c89a}{m\+\_\+\+Index\+Count}}
+\begin{DoxyCompactList}\small\item\em The number of indices in the mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a 3D mesh with geometry and material. 
+
+Encapsulates vertex and index buffers, along with material properties. Provides methods to draw the mesh using a specified shader and transformation. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8h_source_l00073}{73}} of file \doxymbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_mesh_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_mesh_aa3ce6c1e639633ce0fa5bc93c60eaffa}\index{Mesh@{Mesh}!Mesh@{Mesh}}
+\index{Mesh@{Mesh}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{Mesh()}{Mesh()}}
+{\footnotesize\ttfamily \label{class_mesh_aa3ce6c1e639633ce0fa5bc93c60eaffa} 
+Mesh::\+\+Mesh (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{struct_vertex}{Vertex}} $>$ \&}]{vertices}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} $>$ \&}]{indices}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_mesh}{Mesh} from given vertices and indices. 
+
+Creates vertex and index buffers, and sets up the vertex array object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertices} & The list of vertices defining the mesh geometry \\
+\hline
+{\em indices} & The list of indices defining the mesh faces \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8cpp_source_l00006}{6}} of file \doxymbox{\hyperlink{_mesh_8cpp_source}{Mesh.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_mesh_8h_source_l00161}{m\+\_\+\+Index\+Count}}, \doxymbox{\hyperlink{_mesh_8h_source_l00155}{m\+\_\+\+Material}}, \doxymbox{\hyperlink{_mesh_8h_source_l00149}{m\+\_\+\+Vertex\+Array}}, and \doxymbox{\hyperlink{_vertex_array_8h_source_l00078}{Vertex\+Buffer\+Layout::\+\+Push()}}.
+
+\Hypertarget{class_mesh_a5efe4da1a4c0971cfb037bd70304c303}\index{Mesh@{Mesh}!````~Mesh@{\texorpdfstring{$\sim$}{\string~}Mesh}}
+\index{````~Mesh@{\texorpdfstring{$\sim$}{\string~}Mesh}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Mesh()}{\string~Mesh()}}
+{\footnotesize\ttfamily \label{class_mesh_a5efe4da1a4c0971cfb037bd70304c303} 
+Mesh::\+\texorpdfstring{$\sim$}{\string~}\+Mesh (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor for the \doxylink{class_mesh}{Mesh} class. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8cpp_source_l00036}{36}} of file \doxymbox{\hyperlink{_mesh_8cpp_source}{Mesh.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_mesh_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_mesh_a89afdca6de34de136cfe4b354a75a21c}\index{Mesh@{Mesh}!CreateCube@{CreateCube}}
+\index{CreateCube@{CreateCube}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{CreateCube()}{CreateCube()}}
+{\footnotesize\ttfamily \label{class_mesh_a89afdca6de34de136cfe4b354a75a21c} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ Mesh::\+\+Create\+Cube (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Factory method to create a cube mesh. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Mesh$>$} The created cube mesh 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8cpp_source_l00063}{63}} of file \doxymbox{\hyperlink{_mesh_8cpp_source}{Mesh.\+cpp}}.
+
+\Hypertarget{class_mesh_ac3da9e5b09bf79e2ac9b2aa2b20e28ee}\index{Mesh@{Mesh}!CreatePlane@{CreatePlane}}
+\index{CreatePlane@{CreatePlane}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{CreatePlane()}{CreatePlane()}}
+{\footnotesize\ttfamily \label{class_mesh_ac3da9e5b09bf79e2ac9b2aa2b20e28ee} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ Mesh::\+\+Create\+Plane (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Factory method to create a plane mesh. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Mesh$>$} The created plane mesh 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8cpp_source_l00120}{120}} of file \doxymbox{\hyperlink{_mesh_8cpp_source}{Mesh.\+cpp}}.
+
+\Hypertarget{class_mesh_a4cf4b14d99b5255d3f120dc68a41a9e6}\index{Mesh@{Mesh}!CreateSphere@{CreateSphere}}
+\index{CreateSphere@{CreateSphere}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{CreateSphere()}{CreateSphere()}}
+{\footnotesize\ttfamily \label{class_mesh_a4cf4b14d99b5255d3f120dc68a41a9e6} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ Mesh::\+\+Create\+Sphere (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{segments}{ = {\ttfamily 32}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Factory method to create a sphere mesh. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em segments} & The number of segments for the sphere (default is 32) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Mesh$>$} The created sphere mesh 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8cpp_source_l00132}{132}} of file \doxymbox{\hyperlink{_mesh_8cpp_source}{Mesh.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_mesh_8h_source_l00047}{Vertex::\+bitangent}}, \doxymbox{\hyperlink{_mesh_8h_source_l00029}{Vertex::\+normal}}, \doxymbox{\hyperlink{_math_8h_source_l00043}{Math::\+\+PI}}, \doxymbox{\hyperlink{_mesh_8h_source_l00023}{Vertex::\+position}}, \doxymbox{\hyperlink{_mesh_8h_source_l00041}{Vertex::\+tangent}}, \doxymbox{\hyperlink{_mesh_8h_source_l00035}{Vertex::\+tex\+Coord}}, \doxymbox{\hyperlink{_vector2_8h_source_l00038}{Vector2::\+x}}, and \doxymbox{\hyperlink{_vector2_8h_source_l00044}{Vector2::\+y}}.
+
+\Hypertarget{class_mesh_a18ca56b1c5788b55e1919cb12f0718b9}\index{Mesh@{Mesh}!Draw@{Draw}}
+\index{Draw@{Draw}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_mesh_a18ca56b1c5788b55e1919cb12f0718b9} 
+void Mesh::\+\+Draw (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&}]{shader}{, }\item[{const \doxymbox{\hyperlink{struct_matrix4}{Matrix4}} \&}]{transform}{}\end{DoxyParamCaption}) const}
+
+
+
+Draws the mesh using the specified shader and transformation matrix. 
+
+Binds the material and vertex array, sets shader uniforms, and issues the draw call to render the mesh.
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & The shader to use for rendering \\
+\hline
+{\em transform} & The transformation matrix to apply to the mesh \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8cpp_source_l00038}{38}} of file \doxymbox{\hyperlink{_mesh_8cpp_source}{Mesh.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_mesh_8h_source_l00155}{m\+\_\+\+Material}}, and \doxymbox{\hyperlink{_mesh_8h_source_l00149}{m\+\_\+\+Vertex\+Array}}.
+
+\Hypertarget{class_mesh_a9db3f3ec253a39f1652558b63244378a}\index{Mesh@{Mesh}!GetMaterial@{GetMaterial}}
+\index{GetMaterial@{GetMaterial}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{GetMaterial()}{GetMaterial()}}
+{\footnotesize\ttfamily \label{class_mesh_a9db3f3ec253a39f1652558b63244378a} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_material}{Material}} $>$ Mesh::\+\+Get\+Material (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the material associated with the mesh. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Material$>$} The material of the mesh 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8h_source_l00112}{112}} of file \doxymbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_mesh_8h_source_l00155}{m\+\_\+\+Material}}.
+
+\Hypertarget{class_mesh_abebfce2d1c0b9faf324c551ff0ca3dd9}\index{Mesh@{Mesh}!GetVertexArray@{GetVertexArray}}
+\index{GetVertexArray@{GetVertexArray}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{GetVertexArray()}{GetVertexArray()}}
+{\footnotesize\ttfamily \label{class_mesh_abebfce2d1c0b9faf324c551ff0ca3dd9} 
+const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_vertex_array}{Vertex\+Array}} $>$ \& Mesh::\+\+Get\+Vertex\+Array (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the vertex array of the mesh. 
+
+\begin{DoxyReturn}{Returns}
+const \doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Vertex\+Array$>$}\& The vertex array object 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8h_source_l00119}{119}} of file \doxymbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_mesh_8h_source_l00149}{m\+\_\+\+Vertex\+Array}}.
+
+\Hypertarget{class_mesh_a6073d51e0b6105607ee96443043a8f82}\index{Mesh@{Mesh}!SetMaterial@{SetMaterial}}
+\index{SetMaterial@{SetMaterial}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{SetMaterial()}{SetMaterial()}}
+{\footnotesize\ttfamily \label{class_mesh_a6073d51e0b6105607ee96443043a8f82} 
+void Mesh::\+\+Set\+Material (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_material}{Material}} $>$ \&}]{material}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the material for the mesh. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em material} & The material to associate with this mesh \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8h_source_l00105}{105}} of file \doxymbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_mesh_8h_source_l00155}{m\+\_\+\+Material}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_mesh_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_mesh_ae398c72e4f10367adb2c12c24550c89a}\index{Mesh@{Mesh}!m\_IndexCount@{m\_IndexCount}}
+\index{m\_IndexCount@{m\_IndexCount}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{m\_IndexCount}{m\_IndexCount}}
+{\footnotesize\ttfamily \label{class_mesh_ae398c72e4f10367adb2c12c24550c89a} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Mesh::\+m\+\_\+\+Index\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The number of indices in the mesh. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8h_source_l00161}{161}} of file \doxymbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_mesh_8cpp_source_l00006}{Mesh()}}.
+
+\Hypertarget{class_mesh_a792f47724b42c5fb941de071fed62a68}\index{Mesh@{Mesh}!m\_Material@{m\_Material}}
+\index{m\_Material@{m\_Material}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{m\_Material}{m\_Material}}
+{\footnotesize\ttfamily \label{class_mesh_a792f47724b42c5fb941de071fed62a68} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$\doxymbox{\hyperlink{class_material}{Material}}$>$ Mesh::\+m\+\_\+\+Material\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The material associated with the mesh. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8h_source_l00155}{155}} of file \doxymbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_mesh_8cpp_source_l00038}{Draw()}}, \doxymbox{\hyperlink{_mesh_8h_source_l00112}{Get\+Material()}}, \doxymbox{\hyperlink{_mesh_8cpp_source_l00006}{Mesh()}}, and \doxymbox{\hyperlink{_mesh_8h_source_l00105}{Set\+Material()}}.
+
+\Hypertarget{class_mesh_af2c83960c67ca268bed034ceaa7b2897}\index{Mesh@{Mesh}!m\_VertexArray@{m\_VertexArray}}
+\index{m\_VertexArray@{m\_VertexArray}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{m\_VertexArray}{m\_VertexArray}}
+{\footnotesize\ttfamily \label{class_mesh_af2c83960c67ca268bed034ceaa7b2897} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$\doxymbox{\hyperlink{class_vertex_array}{Vertex\+Array}}$>$ Mesh::\+m\+\_\+\+Vertex\+Array\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The vertex array object containing vertex and index buffers. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8h_source_l00149}{149}} of file \doxymbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_mesh_8cpp_source_l00038}{Draw()}}, \doxymbox{\hyperlink{_mesh_8h_source_l00119}{Get\+Vertex\+Array()}}, and \doxymbox{\hyperlink{_mesh_8cpp_source_l00006}{Mesh()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Mesh.\+h\item 
+src/\+\+Graphics/\+Mesh.\+cpp\end{DoxyCompactItemize}

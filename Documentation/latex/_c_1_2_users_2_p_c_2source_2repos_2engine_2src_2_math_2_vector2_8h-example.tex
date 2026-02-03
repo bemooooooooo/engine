@@ -1,0 +1,763 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Vector2.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_vector2_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_vector2_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{struct_vector2}{Vector2}}\ position(10.0f,\ 20.0f);}
+\DoxyCodeLine{\doxymbox{\hyperlink{struct_vector2}{Vector2}}\ velocity(5.0f,\ -\/3.0f);}
+\DoxyCodeLine{\doxymbox{\hyperlink{struct_vector2}{Vector2}}\ newPosition\ =\ position\ +\ velocity;\ \ \textcolor{comment}{//\ (15.0f,\ 17.0f)}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ distance\ =\ Vector2::Distance(position,\ newPosition);}
+\DoxyCodeLine{\doxymbox{\hyperlink{struct_vector2}{Vector2}}\ normalized\ =\ velocity.Normalized();}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Math.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}MathUtils.h"{}}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @struct\ Vector2}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ A\ 2-\/dimensional\ vector\ structure\ for\ mathematics\ and\ graphics\ operations.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Vector2\ represents\ a\ point\ or\ direction\ in\ 2D\ space\ using\ two\ floating-\/point}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ components\ (x,\ y).\ It\ supports\ standard\ vector\ operations\ including\ addition,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ subtraction,\ scalar\ multiplication,\ normalization,\ and\ distance\ calculations.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Common\ uses:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ 2D\ positions\ and\ velocities}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Screen\ coordinates\ and\ UI\ positioning}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Direction\ vectors\ for\ 2D\ movement}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Texture\ coordinates\ (UV\ mapping)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ 2D\ physics\ calculations}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ All\ components\ are\ stored\ as\ f32\ (single-\/precision\ floats)\ for\ performance.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ Vector\ operations\ are\ defined\ as\ operator\ overloads\ for\ intuitive\ syntax.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Vector2\ position(10.0f,\ 20.0f);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Vector2\ velocity(5.0f,\ -\/3.0f);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Vector2\ newPosition\ =\ position\ +\ velocity;\ \ //\ (15.0f,\ 17.0f)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ distance\ =\ Vector2::Distance(position,\ newPosition);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Vector2\ normalized\ =\ velocity.Normalized();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_vector2}{Vector2}}\{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ x}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ The\ X-\/component\ (horizontal\ coordinate)\ of\ the\ vector.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}};}
+\DoxyCodeLine{\ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ y}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ The\ Y-\/component\ (vertical\ coordinate)\ of\ the\ vector.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Default\ constructor\ initializing\ vector\ to\ zero\ (0,\ 0).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Creates\ a\ zero\ vector\ where\ both\ x\ and\ y\ components\ are\ 0.0f.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Useful\ for\ initializing\ vectors\ that\ will\ be\ set\ later.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ zero;\ \ //\ (0,\ 0)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2()\ :\ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}(0),\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}(0)\ \{\}}
+\DoxyCodeLine{\ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Constructor\ initializing\ vector\ with\ individual\ components.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Creates\ a\ vector\ with\ the\ specified\ x\ and\ y\ components.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ x\ The\ X-\/component\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ y\ The\ Y-\/component\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ position(10.5f,\ 20.3f);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}},\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}})\ :\ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}(\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}),\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}(\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}})\ \{\}}
+\DoxyCodeLine{\ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Constructor\ initializing\ vector\ with\ a\ scalar\ value\ for\ both\ components.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Creates\ a\ vector\ where\ both\ x\ and\ y\ are\ set\ to\ the\ same\ value.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Marked\ as\ explicit\ to\ prevent\ accidental\ implicit\ conversions\ from\ scalars.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ scalar\ The\ value\ for\ both\ x\ and\ y\ components}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ one(1.0f);\ \ //\ (1.0f,\ 1.0f)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ scale(2.5f);\ \ //\ (2.5f,\ 2.5f)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{explicit}\ Vector2(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ scalar)\ :\ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}(scalar),\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}(scalar)\ \{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Vector\ addition\ operator.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Adds\ two\ vectors\ component-\/wise,\ returning\ a\ new\ vector.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Does\ not\ modify\ either\ operand.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ other\ The\ vector\ to\ add\ to\ this\ vector}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Vector2\ A\ new\ vector\ with\ summed\ components}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ a(1,\ 2);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ b(3,\ 4);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ c\ =\ a\ +\ b;\ \ //\ (4,\ 6)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2\ operator+(\textcolor{keyword}{const}\ Vector2\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ Vector2(\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ +\ other.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}},\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ +\ other.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Vector\ subtraction\ operator.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Subtracts\ another\ vector\ from\ this\ vector\ component-\/wise.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Does\ not\ modify\ either\ operand.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ other\ The\ vector\ to\ subtract\ from\ this\ vector}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Vector2\ A\ new\ vector\ with\ subtracted\ components}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ a(5,\ 7);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ b(2,\ 3);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ c\ =\ a\ -\/\ b;\ \ //\ (3,\ 4)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2\ operator-\/(\textcolor{keyword}{const}\ Vector2\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ Vector2(\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ -\/\ other.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}},\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ -\/\ other.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Vector\ component-\/wise\ multiplication\ operator.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Multiplies\ two\ vectors\ component-\/wise\ (NOT\ dot\ product).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Each\ component\ is\ multiplied\ independently.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ other\ The\ vector\ to\ multiply\ with\ this\ vector}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Vector2\ A\ new\ vector\ with\ multiplied\ components}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ This\ is\ component-\/wise\ multiplication,\ not\ dot\ product.\ Use\ Dot()\ for\ dot\ product.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ a(2,\ 3);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ b(4,\ 5);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ c\ =\ a\ *\ b;\ \ //\ (8,\ 15)\ -\/\ NOT\ dot\ product}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2\ operator*(\textcolor{keyword}{const}\ Vector2\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ Vector2(\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ *\ other.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}},\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ *\ other.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Vector\ component-\/wise\ division\ operator.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Divides\ this\ vector\ by\ another\ vector\ component-\/wise.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Each\ component\ is\ divided\ independently.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ other\ The\ vector\ to\ divide\ this\ vector\ by}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Vector2\ A\ new\ vector\ with\ divided\ components}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @warning\ Does\ not\ check\ for\ division\ by\ zero.\ Ensure\ other's\ components\ are\ non-\/zero.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ a(10,\ 20);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ b(2,\ 5);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ c\ =\ a\ /\ b;\ \ //\ (5,\ 4)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2\ operator/(\textcolor{keyword}{const}\ Vector2\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ Vector2(\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ /\ other.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}},\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ /\ other.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Scalar\ multiplication\ operator\ (vector\ *\ scalar).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Multiplies\ each\ component\ of\ the\ vector\ by\ a\ scalar\ value.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ is\ the\ primary\ way\ to\ scale\ a\ vector.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ scalar\ The\ scalar\ value\ to\ multiply\ with}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Vector2\ A\ new\ vector\ with\ scaled\ components}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(2,\ 3);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ scaled\ =\ v\ *\ 2.5f;\ \ //\ (5,\ 7.5)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2\ operator*(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ scalar)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ Vector2(\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ *\ scalar,\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ *\ scalar);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Scalar\ division\ operator\ (vector\ /\ scalar).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Divides\ each\ component\ of\ the\ vector\ by\ a\ scalar\ value.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Used\ to\ scale\ down\ a\ vector\ or\ normalize\ using\ a\ custom\ denominator.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ scalar\ The\ scalar\ value\ to\ divide\ by}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Vector2\ A\ new\ vector\ with\ divided\ components}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @warning\ Does\ not\ check\ for\ division\ by\ zero.\ Ensure\ scalar\ is\ non-\/zero.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(10,\ 20);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ scaled\ =\ v\ /\ 2.0f;\ \ //\ (5,\ 10)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2\ operator/(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ scalar)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ Vector2(\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ /\ scalar,\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ /\ scalar);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ In-\/place\ vector\ addition\ operator.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Adds\ another\ vector\ to\ this\ vector,\ modifying\ it\ in-\/place.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Returns\ a\ reference\ to\ this\ vector\ for\ chaining\ operations.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ other\ The\ vector\ to\ add}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Vector2\&\ Reference\ to\ this\ modified\ vector}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(1,\ 2);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ v\ +=\ Vector2(3,\ 4);\ \ //\ v\ is\ now\ (4,\ 6)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2\&\ operator+=(\textcolor{keyword}{const}\ Vector2\&\ other)\ \{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ +=\ other.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}};}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ +=\ other.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ In-\/place\ vector\ subtraction\ operator.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Subtracts\ another\ vector\ from\ this\ vector,\ modifying\ it\ in-\/place.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Returns\ a\ reference\ to\ this\ vector\ for\ chaining\ operations.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ other\ The\ vector\ to\ subtract}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Vector2\&\ Reference\ to\ this\ modified\ vector}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(5,\ 7);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ v\ -\/=\ Vector2(2,\ 3);\ \ //\ v\ is\ now\ (3,\ 4)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2\&\ operator-\/=(\textcolor{keyword}{const}\ Vector2\&\ other)\ \{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ -\/=\ other.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}};}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ -\/=\ other.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ In-\/place\ component-\/wise\ multiplication\ operator.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Multiplies\ this\ vector\ by\ another\ vector\ component-\/wise,\ modifying\ it\ in-\/place.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ other\ The\ vector\ to\ multiply\ with}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Vector2\&\ Reference\ to\ this\ modified\ vector}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(2,\ 3);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ v\ *=\ Vector2(4,\ 5);\ \ //\ v\ is\ now\ (8,\ 15)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2\&\ operator*=(\textcolor{keyword}{const}\ Vector2\&\ other)\ \{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ *=\ other.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}};}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ *=\ other.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ In-\/place\ component-\/wise\ division\ operator.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Divides\ this\ vector\ by\ another\ vector\ component-\/wise,\ modifying\ it\ in-\/place.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ other\ The\ vector\ to\ divide\ by}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Vector2\&\ Reference\ to\ this\ modified\ vector}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @warning\ Does\ not\ check\ for\ division\ by\ zero.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(10,\ 20);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ v\ /=\ Vector2(2,\ 5);\ \ //\ v\ is\ now\ (5,\ 4)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2\&\ operator/=(\textcolor{keyword}{const}\ Vector2\&\ other)\ \{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ /=\ other.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}};}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ /=\ other.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ In-\/place\ scalar\ multiplication\ operator.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Multiplies\ this\ vector\ by\ a\ scalar\ value,\ modifying\ it\ in-\/place.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ scalar\ The\ scalar\ to\ multiply\ by}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Vector2\&\ Reference\ to\ this\ modified\ vector}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(2,\ 3);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ v\ *=\ 2.0f;\ \ //\ v\ is\ now\ (4,\ 6)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2\&\ operator*=(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ scalar)\ \{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ *=\ scalar;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ *=\ scalar;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ In-\/place\ scalar\ division\ operator.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Divides\ this\ vector\ by\ a\ scalar\ value,\ modifying\ it\ in-\/place.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ scalar\ The\ scalar\ to\ divide\ by}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Vector2\&\ Reference\ to\ this\ modified\ vector}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @warning\ Does\ not\ check\ for\ division\ by\ zero.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(10,\ 20);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ v\ /=\ 2.0f;\ \ //\ v\ is\ now\ (5,\ 10)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2\&\ operator/=(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ scalar)\ \{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ /=\ scalar;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ /=\ scalar;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Equality\ comparison\ operator\ with\ floating-\/point\ tolerance.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Compares\ two\ vectors\ for\ equality\ using\ approximate\ comparison\ to\ handle}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ floating-\/point\ precision\ issues.\ Uses\ Math::Approximately()\ internally.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ other\ The\ vector\ to\ compare\ with}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ bool\ True\ if\ vectors\ are\ approximately\ equal,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ Uses\ floating-\/point\ tolerance,\ not\ exact\ equality.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ a(1.0f,\ 2.0f);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ b(1.000001f,\ 2.000001f);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ if\ (a\ ==\ b)\ \{\ \ //\ True\ due\ to\ approximate\ comparison}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ \ \ //\ Vectors\ are\ considered\ equal}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ Vector2\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ Math::Approximately(\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}},\ other.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}})\ \&\&\ Math::Approximately(\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}},\ other.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Inequality\ comparison\ operator\ with\ floating-\/point\ tolerance.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Compares\ two\ vectors\ for\ inequality\ using\ approximate\ comparison.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Returns\ the\ opposite\ of\ the\ equality\ operator.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ other\ The\ vector\ to\ compare\ with}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ bool\ True\ if\ vectors\ are\ not\ approximately\ equal,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ a(1.0f,\ 2.0f);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ b(5.0f,\ 6.0f);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ if\ (a\ !=\ b)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ \ \ //\ Vectors\ are\ different}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ Vector2\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ !(*\textcolor{keyword}{this}\ ==\ other);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Unary\ negation\ operator\ (negates\ both\ components).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Returns\ a\ new\ vector\ with\ both\ components\ negated.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Useful\ for\ reversing\ direction\ vectors.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Vector2\ A\ new\ vector\ with\ negated\ components}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(3,\ -\/4);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ neg\ =\ -\/v;\ \ //\ (-\/3,\ 4)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2\ operator-\/()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ Vector2(-\/\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}},\ -\/\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Array-\/style\ access\ operator\ (const\ version).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Allows\ accessing\ vector\ components\ by\ index:\ 0\ =\ x,\ 1\ =\ y.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ is\ the\ const\ version\ and\ returns\ by\ value.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ index\ Component\ index\ (0\ =\ x,\ 1\ =\ y)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ f32\ The\ component\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @warning\ No\ bounds\ checking.\ Index\ must\ be\ 0\ or\ 1.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(10,\ 20);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ x\ =\ v[0];\ \ //\ 10}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ y\ =\ v[1];\ \ //\ 20}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ operator[](\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ index)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ (\&\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}})[index];}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Array-\/style\ access\ operator\ (mutable\ version).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Allows\ accessing\ and\ modifying\ vector\ components\ by\ index:\ 0\ =\ x,\ 1\ =\ y.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ is\ the\ mutable\ version\ and\ returns\ by\ reference.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ index\ Component\ index\ (0\ =\ x,\ 1\ =\ y)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ f32\&\ Reference\ to\ the\ component}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @warning\ No\ bounds\ checking.\ Index\ must\ be\ 0\ or\ 1.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(10,\ 20);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ v[0]\ =\ 30;\ \ //\ v\ is\ now\ (30,\ 20)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ v[1]\ +=\ 5;\ \ //\ v\ is\ now\ (30,\ 25)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\&\ operator[](\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ index)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ (\&\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}})[index];}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Calculates\ the\ length\ (magnitude)\ of\ this\ vector.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Computes\ the\ Euclidean\ length\ of\ the\ vector\ using\ the\ formula:}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ length\ =\ sqrt(x²\ +\ y²)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ f32\ The\ length\ of\ the\ vector}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ This\ involves\ a\ square\ root\ operation.\ For\ comparisons,\ use\ LengthSquared()\ instead.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(3,\ 4);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ len\ =\ v.Length();\ \ //\ 5.0}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ Length()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ Math::Sqrt(\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ *\ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ +\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ *\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Calculates\ the\ squared\ length\ (magnitude\ squared)\ of\ this\ vector.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Computes\ x²\ +\ y²\ without\ the\ expensive\ square\ root\ operation.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Useful\ for\ distance\ comparisons\ where\ exact\ values\ aren't\ needed.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ f32\ The\ squared\ length\ of\ the\ vector}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ Faster\ than\ Length()\ since\ it\ avoids\ the\ square\ root.\ Use\ for\ comparisons.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(3,\ 4);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ lenSq\ =\ v.LengthSquared();\ \ //\ 25.0}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ //\ Distance\ comparison\ without\ sqrt}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ if\ (v.LengthSquared()\ >\ maxDistanceSq)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ \ \ //\ Too\ far\ away}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ LengthSquared()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ *\ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ +\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ *\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Normalizes\ this\ vector\ in-\/place.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Scales\ the\ vector\ so\ its\ length\ becomes\ 1.0\ (unit\ vector).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ The\ direction\ remains\ the\ same;\ only\ the\ magnitude\ changes.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ If\ the\ vector\ is\ zero-\/length,\ it\ remains\ unchanged.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ Modifies\ this\ vector\ in-\/place.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ Handles\ zero-\/length\ vectors\ gracefully.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(3,\ 4);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ v.Normalize();\ \ //\ v\ is\ now\ (0.6,\ 0.8)\ with\ length\ 1.0}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ Normalize()\ \{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ len\ =\ Length();}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (Math::NearZero(len))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ =\ 0.0f;}
+\DoxyCodeLine{\ \ \ \ \ \ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ =\ 0.0f;}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ /=\ len;}
+\DoxyCodeLine{\ \ \ \ \ \ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ /=\ len;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Returns\ a\ normalized\ copy\ of\ this\ vector.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Creates\ and\ returns\ a\ new\ unit\ vector\ in\ the\ same\ direction\ as\ this\ vector.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ vector\ is\ not\ modified.\ If\ the\ vector\ is\ zero-\/length,\ returns\ zero\ vector.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Vector2\ A\ new\ unit\ vector\ in\ the\ same\ direction}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ Does\ not\ modify\ this\ vector;\ creates\ a\ new\ one.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ Handles\ zero-\/length\ vectors\ gracefully.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(3,\ 4);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ normalized\ =\ v.Normalized();\ \ //\ (0.6,\ 0.8)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ assert(Math::Approximately(normalized.Length(),\ 1.0f));}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Vector2\ Normalized()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ len\ =\ Length();}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (Math::NearZero(len))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector2(0.0f,\ 0.0f);}
+\DoxyCodeLine{\ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector2(\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ /\ len,\ \doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ /\ len);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Checks\ if\ this\ vector\ is\ normalized\ (length\ approximately\ 1.0).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Tests\ whether\ the\ vector\ is\ a\ unit\ vector\ using\ floating-\/point\ tolerance.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ bool\ True\ if\ length\ is\ approximately\ 1.0,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(1,\ 0);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ assert(v.isNormalized());\ \ //\ True}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ w(2,\ 0);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ assert(!w.isNormalized());\ \ //\ False}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ isNormalized()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ Math::Approximately(LengthSquared(),\ 1.0f);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Checks\ if\ this\ vector\ is\ zero\ vector\ (approximately\ zero\ length).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Tests\ whether\ the\ vector\ has\ zero\ length\ using\ floating-\/point\ tolerance.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ bool\ True\ if\ length\ is\ approximately\ zero,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ zero(0,\ 0);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ assert(zero.isZero());\ \ //\ True}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ v(1,\ 1);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ assert(!v.isZero());\ \ //\ False}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ isZero()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ Math::NearZero(LengthSquared());}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Calculates\ the\ dot\ product\ of\ two\ vectors.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ The\ dot\ product\ (scalar\ product)\ is:\ a·b\ =\ a.x*b.x\ +\ a.y*b.y}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Mathematically,\ a·b\ =\ |a|\ *\ |b|\ *\ cos(θ),\ where\ θ\ is\ the\ angle\ between\ vectors.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ a\ The\ first\ vector}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ b\ The\ second\ vector}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ f32\ The\ dot\ product\ result}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Interpretation\ of\ dot\ product:}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ -\/\ Positive:\ vectors\ point\ in\ similar\ directions\ (angle\ <\ 90°)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ -\/\ Zero:\ vectors\ are\ perpendicular\ (angle\ =\ 90°)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ -\/\ Negative:\ vectors\ point\ in\ opposite\ directions\ (angle\ >\ 90°)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ a(1,\ 0);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ b(0,\ 1);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ dot\ =\ Vector2::Dot(a,\ b);\ \ //\ 0\ (perpendicular)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ c(2,\ 0);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ dot2\ =\ Vector2::Dot(a,\ c);\ \ //\ 2\ (same\ direction)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ Dot(\textcolor{keyword}{const}\ Vector2\&\ a,\ \textcolor{keyword}{const}\ Vector2\&\ b)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ a.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ *\ b.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ +\ a.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ *\ b.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Calculates\ the\ distance\ between\ two\ points.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Computes\ the\ Euclidean\ distance\ between\ two\ vectors\ treated\ as\ points\ in\ 2D\ space.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Formula:\ distance\ =\ |(a\ -\/\ b)|}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ a\ The\ first\ point}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ b\ The\ second\ point}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ f32\ The\ distance\ between\ the\ points}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ This\ is\ expensive\ due\ to\ square\ root.\ Use\ DistanceSquared()\ for\ comparisons.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ a(0,\ 0);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ b(3,\ 4);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ dist\ =\ Vector2::Distance(a,\ b);\ \ //\ 5.0}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ Distance(\textcolor{keyword}{const}\ Vector2\&\ a,\ \textcolor{keyword}{const}\ Vector2\&\ b)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ (a\ -\/\ b).Length();}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Calculates\ the\ squared\ distance\ between\ two\ points.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Computes\ the\ squared\ distance\ between\ two\ vectors\ without\ expensive\ square\ root.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Useful\ for\ distance\ comparisons\ where\ relative\ ordering\ is\ what\ matters.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ a\ The\ first\ point}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ b\ The\ second\ point}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ f32\ The\ squared\ distance\ between\ the\ points}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ Much\ faster\ than\ Distance().\ Use\ for\ comparisons\ and\ sorting.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ a(0,\ 0);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ b(3,\ 4);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ distSq\ =\ Vector2::DistanceSquared(a,\ b);\ \ //\ 25.0}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ //\ Find\ closest\ point\ without\ sqrt}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ if\ (Vector2::DistanceSquared(enemy,\ player)\ <\ maxRangeSq)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ \ \ //\ Enemy\ is\ in\ range}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ DistanceSquared(\textcolor{keyword}{const}\ Vector2\&\ a,\ \textcolor{keyword}{const}\ Vector2\&\ b)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ (a\ -\/\ b).LengthSquared();}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Linearly\ interpolates\ between\ two\ vectors.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Performs\ linear\ interpolation\ (lerp)\ between\ vectors\ a\ and\ b.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Formula:\ result\ =\ a\ +\ (b\ -\/\ a)\ *\ t\ =\ a\ *\ (1\ -\/\ t)\ +\ b\ *\ t}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ a\ The\ start\ vector\ (t\ =\ 0)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ b\ The\ end\ vector\ (t\ =\ 1)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ t\ The\ interpolation\ parameter\ (0.0\ to\ 1.0)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Vector2\ The\ interpolated\ vector}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Parameter\ t\ behavior:}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ -\/\ t\ =\ 0.0:\ Returns\ a}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ -\/\ t\ =\ 0.5:\ Returns\ midpoint}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ -\/\ t\ =\ 1.0:\ Returns\ b}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ -\/\ t\ <\ 0.0\ or\ t\ >\ 1.0:\ Extrapolates\ (useful\ for\ some\ techniques)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ start(0,\ 0);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ end(10,\ 10);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ halfway\ =\ Vector2::Lerp(start,\ end,\ 0.5f);\ \ //\ (5,\ 5)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Vector2\ quarter\ =\ Vector2::Lerp(start,\ end,\ 0.25f);\ \ //\ (2.5,\ 2.5)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{static}\ Vector2\ Lerp(\textcolor{keyword}{const}\ Vector2\&\ a,\ \textcolor{keyword}{const}\ Vector2\&\ b,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ t)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ Vector2(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Math::Lerp(a.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}},\ b.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}},\ t),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Math::Lerp(a.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}},\ b.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}},\ t)}
+\DoxyCodeLine{\ \ \ \ );}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ Zero}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Constant\ zero\ vector\ (0,\ 0).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ Vector2\ \doxymbox{\hyperlink{struct_vector2_ad6039b208cf18bbb89eace91dab27126}{Zero}};}
+\DoxyCodeLine{\ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ One}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Constant\ unit\ vector\ (1,\ 1).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ Vector2\ \doxymbox{\hyperlink{struct_vector2_afccb7c332e30322fb9b462359bcb7982}{One}};}
+\DoxyCodeLine{\ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ UnitX}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Constant\ unit\ vector\ along\ X\ axis\ (1,\ 0).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ Vector2\ \doxymbox{\hyperlink{struct_vector2_ab85e1a2c31429a8db803b6110185da61}{UnitX}};}
+\DoxyCodeLine{\ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ UnitY}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Constant\ unit\ vector\ along\ Y\ axis\ (0,\ 1).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ Vector2\ \doxymbox{\hyperlink{struct_vector2_a1c7257442f38cc095fd5366b8181ab59}{UnitY}};}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Scalar\ multiplication\ operator\ (scalar\ *\ vector).}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Multiplies\ a\ scalar\ by\ a\ vector,\ scaling\ each\ component.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ allows\ writing\ either\ \`{}v\ *\ 2.0f`\ or\ \`{}2.0f\ *\ v`\ with\ the\ same\ result.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ scalar\ The\ scalar\ to\ multiply\ with}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ vec\ The\ vector\ to\ scale}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ Vector2\ A\ new\ scaled\ vector}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Vector2\ v(2,\ 3);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Vector2\ result1\ =\ v\ *\ 2.5f;\ \ \ \ \ \ //\ (5,\ 7.5)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Vector2\ result2\ =\ 2.5f\ *\ v;\ \ \ \ \ \ //\ (5,\ 7.5)\ -\/\ same\ result}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}\ operator*(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ scalar,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_vector2}{Vector2}}\&\ vec)\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ vec*scalar;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+
+\end{DoxyCodeInclude}
+ 

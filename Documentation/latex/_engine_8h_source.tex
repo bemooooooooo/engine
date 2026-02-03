@@ -1,0 +1,275 @@
+\doxysection{Engine.\+h}
+\hypertarget{_engine_8h_source}{}\label{_engine_8h_source}\index{src/Core/Engine.h@{src/Core/Engine.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_base_8h}{Base.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}Event.h"{}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}Log.h"{}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}Time.h"{}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00007}00007\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_window}{Window}};}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00009}00009\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00010}00010\ \textcolor{comment}{\ *\ @brief\ Core\ engine\ class\ managing\ the\ main\ application\ loop\ and\ subsystems.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00011}00011\ \textcolor{comment}{\ *\ The\ Engine\ class\ is\ responsible\ for\ initializing\ and\ shutting\ down\ the\ engine,}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00012}00012\ \textcolor{comment}{\ *\ managing\ the\ main\ loop,\ processing\ input,\ updating\ game\ logic,\ and\ rendering.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00013}00013\ \textcolor{comment}{\ *\ It\ serves\ as\ the\ central\ hub\ that\ coordinates\ various\ subsystems\ such\ as\ windowing,}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00014}00014\ \textcolor{comment}{\ *\ timing,\ and\ event\ handling.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00016}00016\ \textcolor{comment}{\ *\ Key\ responsibilities:}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00017}00017\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00018}00018\ \textcolor{comment}{\ *\ -\/\ Initialize\ and\ shut\ down\ the\ engine\ and\ its\ subsystems}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00019}00019\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00020}00020\ \textcolor{comment}{\ *\ -\/\ Manage\ the\ main\ application\ loop}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00021}00021\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00022}00022\ \textcolor{comment}{\ *\ -\/\ Process\ input\ events}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00023}00023\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00024}00024\ \textcolor{comment}{\ *\ -\/\ Update\ game\ logic\ with\ frame-\/rate\ independent\ timing}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00025}00025\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00026}00026\ \textcolor{comment}{\ *\ -\/\ Render\ frames\ to\ the\ window}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00027}00027\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00028}00028\ \textcolor{comment}{\ *\ -\/\ Provide\ access\ to\ timing\ information\ (delta\ time,\ FPS)}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00029}00029\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00030}00030\ \textcolor{comment}{\ *\ -\/\ Handle\ window\ events\ and\ callbacks}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00031}00031\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00032}00032\ \textcolor{comment}{\ *\ @note\ This\ is\ a\ base\ class\ meant\ to\ be\ extended\ by\ specific\ game\ implementations.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00033}00033\ \textcolor{comment}{\ *\ Derived\ classes\ should\ override\ virtual\ methods\ to\ implement\ game-\/specific\ behavior.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00034}00034\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00035}00035\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00036}00036\ \textcolor{comment}{\ *\ class\ MyGameEngine\ :\ public\ Engine\ \{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00037}00037\ \textcolor{comment}{\ *\ protected:}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00038}00038\ \textcolor{comment}{\ *\ \ \ void\ OnInitialize()\ override\ \{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00039}00039\ \textcolor{comment}{\ *\ \ \ \ //\ Game-\/specific\ initialization}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00040}00040\ \textcolor{comment}{\ *\ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00041}00041\ \textcolor{comment}{\ *\ \ void\ OnUpdate(f32\ deltaTime)\ override\ \{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00042}00042\ \textcolor{comment}{\ *\ \ \ //\ Game-\/specific\ update\ logic}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00043}00043\ \textcolor{comment}{\ *\ \ \}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00044}00044\ \textcolor{comment}{\ *\ void\ OnRender()\ override\ \{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00045}00045\ \textcolor{comment}{\ *\ \ //\ Game-\/specific\ rendering}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00046}00046\ \textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00047}00047\ \textcolor{comment}{\ *\ void\ OnShutdown()\ override\ \{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00048}00048\ \textcolor{comment}{\ *\ //\ Game-\/specific\ cleanup}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00049}00049\ \textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00050}00050\ \textcolor{comment}{\ *\ \};}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00051}00051\ \textcolor{comment}{\ *\ int\ main()\ \{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00052}00052\ \textcolor{comment}{\ *\ MyGameEngine\ engine;}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00053}00053\ \textcolor{comment}{\ *\ engine.Run();}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00054}00054\ \textcolor{comment}{\ *\ return\ 0;}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00055}00055\ \textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00056}00056\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00057}00057\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00058}\doxymbox{\hyperlink{class_engine}{00058}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine}}\ \{}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00059}00059\ \ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00060}00060\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00061}00061\ \textcolor{comment}{\ \ \ \ *\ @brief\ Constructs\ a\ new\ Engine\ instance.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00062}00062\ \textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00063}00063\ \ \ \doxymbox{\hyperlink{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine}}();\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00064}00064\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00065}00065\ \textcolor{comment}{\ \ \ *\ @brief\ Destroys\ the\ Engine\ instance\ and\ cleans\ up\ resources.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00066}00066\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00067}00067\ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_engine_a8ef7030a089ecb30bbfcb9e43094717a}{\string~Engine}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00068}00068\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00069}00069\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00070}00070\ \textcolor{comment}{\ \ \ *\ @brief\ Starts\ the\ main\ application\ loop.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00071}00071\ \textcolor{comment}{\ \ \ *\ This\ function\ initializes\ the\ engine\ and\ enters\ the\ main\ loop,}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00072}00072\ \textcolor{comment}{\ \ \ *\ processing\ input,\ updating\ game\ logic,\ and\ rendering\ frames\ until}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00073}00073\ \textcolor{comment}{\ \ \ *\ the\ application\ is\ closed.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00074}00074\ \textcolor{comment}{\ \ \ *\ @note\ This\ function\ blocks\ until\ the\ application\ exits.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00075}00075\ \textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00076}00076\ \textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00077}00077\ \textcolor{comment}{\ \ \ *\ MyGameEngine\ engine;}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00078}00078\ \textcolor{comment}{\ \ \ *\ engine.Run();}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00079}00079\ \textcolor{comment}{\ \ \ *\ return\ 0;}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00080}00080\ \textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00081}00081\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00082}00082\ \ \ \textcolor{keywordtype}{void}\ Run();}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00083}00083\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00084}00084\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00085}00085\ \textcolor{comment}{\ \ \ *\ @brief\ Initializes\ the\ engine\ and\ its\ subsystems.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00086}00086\ \textcolor{comment}{\ \ \ *\ This\ function\ sets\ up\ the\ window,\ timing,\ and\ other\ necessary}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00087}00087\ \textcolor{comment}{\ \ \ *\ subsystems\ before\ entering\ the\ main\ loop.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00088}00088\ \textcolor{comment}{\ \ \ *\ @return\ true\ if\ initialization\ was\ successful,\ false\ otherwise}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00089}00089\ \textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00090}00090\ \textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00091}00091\ \textcolor{comment}{\ \ \ *\ Engine\ engine;}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00092}00092\ \textcolor{comment}{\ \ \ *\ if\ (engine.Initialize())\ \{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00093}00093\ \textcolor{comment}{\ \ \ *\ \ \ engine.Run();}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00094}00094\ \textcolor{comment}{\ \ \ *\ \}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00095}00095\ \textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00096}00096\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00097}00097\ \ \ \textcolor{keywordtype}{bool}\ Initialize();\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00098}00098\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00099}00099\ \textcolor{comment}{\ \ \ *\ @brief\ Shuts\ down\ the\ engine\ and\ cleans\ up\ resources.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00100}00100\ \textcolor{comment}{\ \ \ *\ This\ function\ is\ called\ when\ the\ application\ is\ exiting\ to\ properly}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00101}00101\ \textcolor{comment}{\ \ \ *\ release\ resources\ and\ shut\ down\ subsystems.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00102}00102\ \textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00103}00103\ \textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00104}00104\ \textcolor{comment}{\ \ \ *\ engine.Shutdown();}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00105}00105\ \textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00106}00106\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00107}00107\ \ \ \textcolor{keywordtype}{void}\ Shutdown();}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00108}00108\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00109}00109\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00110}00110\ \textcolor{comment}{\ \ \ *\ @brief\ Handles\ an\ incoming\ event.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00111}00111\ \textcolor{comment}{\ \ \ *\ This\ virtual\ method\ can\ be\ overridden\ by\ derived\ classes\ to\ handle}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00112}00112\ \textcolor{comment}{\ \ \ *\ specific\ events\ such\ as\ input,\ window\ resize,\ etc.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00113}00113\ \textcolor{comment}{\ \ \ *\ @param\ event\ The\ event\ to\ handle}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00114}00114\ \textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00115}00115\ \textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00116}00116\ \textcolor{comment}{\ \ \ *\ void\ MyGameEngine::OnEvent(Event\&\ event)\ \{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00117}00117\ \textcolor{comment}{\ \ \ *\ \ \ if\ (event.IsType<WindowResizeEvent>())\ \{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00118}00118\ \textcolor{comment}{\ \ \ *\ \ \ \ \ //\ Handle\ window\ resize}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00119}00119\ \textcolor{comment}{\ \ \ *\ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00120}00120\ \textcolor{comment}{\ \ \ *\ \}}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00121}00121\ \textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00122}00122\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00123}00123\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OnEvent(\doxymbox{\hyperlink{class_event}{Event}}\&\ event)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00124}00124\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00125}00125\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00126}00126\ \textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ singleton\ instance\ of\ the\ Engine.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00127}00127\ \textcolor{comment}{\ \ \ *\ @return\ Engine\&\ Reference\ to\ the\ global\ Engine\ instance}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00128}00128\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00129}\doxymbox{\hyperlink{class_engine_a773b5995960f2ff398d064c221c70230}{00129}}\ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine}}\&\ \doxymbox{\hyperlink{class_engine_a773b5995960f2ff398d064c221c70230}{Get}}()\ \{\ \textcolor{keywordflow}{return}\ *\doxymbox{\hyperlink{class_engine_af9e452122d847e551b235983f817ea20}{s\_Instance\_}};\ \}\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00130}00130\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00131}00131\ \textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ application\ window.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00132}00132\ \textcolor{comment}{\ \ \ *\ @return\ Window\&\ Reference\ to\ the\ engine's\ main\ window}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00133}00133\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00134}\doxymbox{\hyperlink{class_engine_a95cd587c5d6be9ac896a7949e7dd5c83}{00134}}\ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{class_engine_a95cd587c5d6be9ac896a7949e7dd5c83}{GetDeltaTime}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_af1d992fdad018dcd8d433e6b87be55ca}{m\_DeltaTime\_}};\ \}\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00135}00135\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00136}00136\ \textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ current\ frames\ per\ second\ (FPS).}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00137}00137\ \textcolor{comment}{\ \ \ *\ @return\ f32\ Current\ FPS\ value}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00138}00138\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00139}\doxymbox{\hyperlink{class_engine_a2e26a52a904fa6455c0c4bd9ae4ac057}{00139}}\ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{class_engine_a2e26a52a904fa6455c0c4bd9ae4ac057}{GetFPS}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_a0a6c105135b31c5aede1bef6f998f486}{m\_FPS\_}};\ \}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00141}00141\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00142}00142\ \ \textcolor{comment}{//\ Virtual\ methods\ for\ game-\/specific\ behavior}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00143}00143\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00144}00144\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00145}00145\ \textcolor{comment}{\ \ \ *\ @brief\ Called\ during\ engine\ initialization.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00146}00146\ \textcolor{comment}{\ \ \ *\ Override\ this\ method\ in\ derived\ classes\ to\ implement}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00147}00147\ \textcolor{comment}{\ \ \ *\ game-\/specific\ initialization\ logic.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00148}00148\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00149}\doxymbox{\hyperlink{class_engine_ae11320612a2d3ecffe574a1c92dca7e8}{00149}}\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_ae11320612a2d3ecffe574a1c92dca7e8}{OnInitialize}}()\ \{\}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00150}00150\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00151}00151\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00152}00152\ \textcolor{comment}{\ \ \ *\ @brief\ Called\ each\ frame\ to\ update\ game\ logic.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00153}00153\ \textcolor{comment}{\ \ \ *\ Override\ this\ method\ in\ derived\ classes\ to\ implement}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00154}00154\ \textcolor{comment}{\ \ \ *\ game-\/specific\ update\ logic.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00155}00155\ \textcolor{comment}{\ \ \ *\ @param\ deltaTime\ Time\ elapsed\ since\ the\ last\ frame\ in\ seconds}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00156}00156\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00157}\doxymbox{\hyperlink{class_engine_ab387292a25fb78fb3f2d4e20c735d734}{00157}}\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_ab387292a25fb78fb3f2d4e20c735d734}{OnUpdate}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ deltaTime)\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00158}00158\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00159}00159\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00160}00160\ \textcolor{comment}{\ \ \ *\ @brief\ Called\ each\ frame\ to\ render\ the\ scene.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00161}00161\ \textcolor{comment}{\ \ \ *\ Override\ this\ method\ in\ derived\ classes\ to\ implement}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00162}00162\ \textcolor{comment}{\ \ \ *\ game-\/specific\ rendering\ logic.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00163}00163\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00164}\doxymbox{\hyperlink{class_engine_ae4c3ae5f32711465d9eaef36c82716ac}{00164}}\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_ae4c3ae5f32711465d9eaef36c82716ac}{OnRender}}()\ \{\}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00165}00165\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00166}00166\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00167}00167\ \textcolor{comment}{\ \ \ *\ @brief\ Called\ during\ engine\ shutdown.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00168}00168\ \textcolor{comment}{\ \ \ *\ Override\ this\ method\ in\ derived\ classes\ to\ implement}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00169}00169\ \textcolor{comment}{\ \ \ *\ game-\/specific\ cleanup\ logic.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00170}00170\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00171}\doxymbox{\hyperlink{class_engine_aaa0aa0f8418f57e7ca8724cd5db63baa}{00171}}\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_aaa0aa0f8418f57e7ca8724cd5db63baa}{OnShutdown}}()\ \{\}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00173}00173\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00174}00174\ \ \textcolor{comment}{//\ Main\ loop\ functions}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00175}00175\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00176}00176\ \textcolor{comment}{\ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00177}00177\ \textcolor{comment}{\ \ *\ @brief\ Processes\ input\ events.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00178}00178\ \textcolor{comment}{\ \ *\ This\ function\ polls\ and\ handles\ input\ events\ from\ the\ windowing\ system.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00179}00179\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00180}00180\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_ab68d0f3a90f84bec81d2de30cef77d58}{ProcessInput}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00181}00181\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00182}00182\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00183}00183\ \textcolor{comment}{\ \ \ *\ @brief\ Updates\ the\ engine\ state.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00184}00184\ \textcolor{comment}{\ \ \ *\ This\ function\ updates\ game\ logic\ and\ timing\ information.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00185}00185\ \textcolor{comment}{\ \ \ *\ @param\ deltaTime\ Time\ elapsed\ since\ the\ last\ frame\ in\ seconds}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00186}00186\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00187}00187\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_a0594de9ff559eb966f6d1950024b1646}{Update}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ deltaTime);}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00188}00188\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00189}00189\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00190}00190\ \textcolor{comment}{\ \ \ *\ @brief\ Renders\ the\ current\ frame.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00191}00191\ \textcolor{comment}{\ \ \ *\ This\ function\ calls\ the\ game-\/specific\ rendering\ logic.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00192}00192\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00193}00193\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_acde70aed0043e2e2091d0bb6cce8e3c1}{Render}}();}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00195}00195\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00196}00196\ \ \textcolor{comment}{//\ Member\ variables}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00197}00197\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00198}00198\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00199}00199\ \textcolor{comment}{\ \ \ *\ @var\ s\_Instance\_}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00200}00200\ \textcolor{comment}{\ \ \ *\ @brief\ Static\ pointer\ to\ the\ singleton\ Engine\ instance.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00201}00201\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00202}00202\ \textcolor{comment}{\ \ \ *\ Used\ to\ provide\ global\ access\ to\ the\ Engine\ instance\ via\ Engine::Get().}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00203}00203\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00204}\doxymbox{\hyperlink{class_engine_af9e452122d847e551b235983f817ea20}{00204}}\ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine}}*\ \doxymbox{\hyperlink{class_engine_af9e452122d847e551b235983f817ea20}{s\_Instance\_}};}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00205}00205\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00206}00206\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00207}00207\ \textcolor{comment}{\ \ \ *\ @var\ m\_Window\_}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00208}00208\ \textcolor{comment}{\ \ \ *\ @brief\ Scoped\ pointer\ to\ the\ main\ application\ window.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00209}00209\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00210}00210\ \textcolor{comment}{\ \ \ *\ Manages\ the\ lifecycle\ of\ the\ window\ used\ for\ rendering\ and\ input.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00211}00211\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00212}\doxymbox{\hyperlink{class_engine_a236d009773f852cf486ebe09986145ad}{00212}}\ \ \ \doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope<Window>}}\ \doxymbox{\hyperlink{class_engine_a236d009773f852cf486ebe09986145ad}{m\_Window\_}};}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00213}00213\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00214}00214\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00215}00215\ \textcolor{comment}{\ \ \ *\ @var\ m\_Timer\_}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00216}00216\ \textcolor{comment}{\ \ \ *\ @brief\ Timer\ instance\ for\ tracking\ elapsed\ time\ and\ delta\ time.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00217}00217\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00218}00218\ \textcolor{comment}{\ \ \ *\ Used\ to\ measure\ frame\ times\ and\ provide\ timing\ information\ to\ the\ engine.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00219}00219\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00220}\doxymbox{\hyperlink{class_engine_a59cd6443a49ad2265a9f9276c7e0465d}{00220}}\ \ \ \doxymbox{\hyperlink{class_time_1_1_timer}{Time::Timer}}\ \doxymbox{\hyperlink{class_engine_a59cd6443a49ad2265a9f9276c7e0465d}{m\_Timer\_}};}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00221}00221\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00222}00222\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00223}00223\ \textcolor{comment}{\ \ \ *\ @var\ m\_DeltaTime\_}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00224}00224\ \textcolor{comment}{\ \ \ *\ @brief\ Time\ elapsed\ since\ the\ last\ frame\ in\ seconds.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00225}00225\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00226}00226\ \textcolor{comment}{\ \ \ *\ Used\ for\ frame-\/rate\ independent\ updates\ and\ timing\ calculations.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00227}00227\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00228}\doxymbox{\hyperlink{class_engine_af1d992fdad018dcd8d433e6b87be55ca}{00228}}\ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{class_engine_af1d992fdad018dcd8d433e6b87be55ca}{m\_DeltaTime\_}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00229}00229\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00230}00230\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00231}00231\ \textcolor{comment}{\ \ \ *\ @var\ m\_FPS\_}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00232}00232\ \textcolor{comment}{\ \ \ *\ @brief\ Current\ frames\ per\ second\ (FPS)\ value.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00233}00233\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00234}00234\ \textcolor{comment}{\ \ \ *\ Updated\ each\ frame\ to\ reflect\ the\ current\ rendering\ performance.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00235}00235\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00236}\doxymbox{\hyperlink{class_engine_a0a6c105135b31c5aede1bef6f998f486}{00236}}\ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{class_engine_a0a6c105135b31c5aede1bef6f998f486}{m\_FPS\_}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00237}00237\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00238}00238\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00239}00239\ \textcolor{comment}{\ \ \ *\ @var\ m\_FrameCount\_}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00240}00240\ \textcolor{comment}{\ \ \ *\ @brief\ Number\ of\ frames\ rendered\ in\ the\ current\ second.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00241}00241\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00242}00242\ \textcolor{comment}{\ \ \ *\ Used\ to\ calculate\ the\ FPS\ value.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00243}00243\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00244}\doxymbox{\hyperlink{class_engine_a9b2d76ed30e04ff8933216d8100f06cc}{00244}}\ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_engine_a9b2d76ed30e04ff8933216d8100f06cc}{m\_FrameCount\_}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00245}00245\ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00246}00246\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00247}00247\ \textcolor{comment}{\ \ \ *\ @var\ m\_FPSTimer\_}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00248}00248\ \textcolor{comment}{\ \ \ *\ @brief\ Accumulated\ time\ for\ FPS\ calculation.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00249}00249\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00250}00250\ \textcolor{comment}{\ \ \ *\ Used\ to\ track\ elapsed\ time\ for\ updating\ the\ FPS\ value\ once\ per\ second.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00251}00251\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00252}\doxymbox{\hyperlink{class_engine_acd11e4fc3bc8ef034a99d84540afab28}{00252}}\ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{class_engine_acd11e4fc3bc8ef034a99d84540afab28}{m\_FPSTimer\_}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00253}00253\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00254}00254\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00255}00255\ \textcolor{comment}{\ \ \ *\ @var\ m\_isRunning\_}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00256}00256\ \textcolor{comment}{\ \ \ *\ @brief\ Flag\ indicating\ whether\ the\ main\ loop\ is\ running.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00257}00257\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00258}00258\ \textcolor{comment}{\ \ \ *\ Used\ to\ control\ the\ execution\ of\ the\ main\ application\ loop.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00259}00259\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00260}\doxymbox{\hyperlink{class_engine_a43d6fa801aa828fa908d919a1b69f26e}{00260}}\ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_engine_a43d6fa801aa828fa908d919a1b69f26e}{m\_isRunning\_}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00261}00261\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00262}00262\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00263}00263\ \textcolor{comment}{\ \ \ *\ @var\ m\_isMinimized}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00264}00264\ \textcolor{comment}{\ \ \ *\ @brief\ Flag\ indicating\ whether\ the\ window\ is\ minimized.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00265}00265\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00266}00266\ \textcolor{comment}{\ \ \ *\ Used\ to\ pause\ updates\ and\ rendering\ when\ the\ window\ is\ not\ visible.}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00267}00267\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00268}\doxymbox{\hyperlink{class_engine_adaf3fd8a2de9a16193389c801b02e4f8}{00268}}\ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_engine_adaf3fd8a2de9a16193389c801b02e4f8}{m\_isMinimized}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_engine_8h_source_l00269}00269\ \};}
+
+\end{DoxyCode}

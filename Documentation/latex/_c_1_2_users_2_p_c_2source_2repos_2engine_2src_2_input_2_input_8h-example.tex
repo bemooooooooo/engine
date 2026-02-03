@@ -1,0 +1,446 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Input/\+\+Input.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_input_2_input_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_input_2_input_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Initialize\ input\ system}}
+\DoxyCodeLine{Input::Init();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ In\ the\ main\ loop}}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (running)\ \{}
+\DoxyCodeLine{\ \ \ Input::Update();}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}\ (Input::GetKeyDown(Key::Space))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \textcolor{comment}{//\ Space\ key\ was\ pressed\ this\ frame}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{struct_vector2}{Vector2}}\ mousePos\ =\ Input::GetMousePosition();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Core/Base.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Math/Vector2.h"{}}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @namespace\ Key}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Namespace\ containing\ keyboard\ key\ code\ definitions.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{namespace\ }\doxymbox{\hyperlink{namespace_key}{Key}}\ \{}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @enum\ Code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Enumeration\ of\ keyboard\ key\ codes.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Defines\ key\ codes\ for\ standard\ keys,\ function\ keys,\ and\ modifier\ keys.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{enum}\ \doxymbox{\hyperlink{namespace_key_afb9d68f62d2a93575c84412c87983a19}{Code}}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Space\ =\ 32,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Apostrophe\ =\ 39,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Comma\ =\ 44,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Minus\ =\ 45,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Period\ =\ 46,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Slash\ =\ 47,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Numbers}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Zero\ =\ 48,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ One\ =\ 49,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Two\ =\ 50,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Three\ =\ 51,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Four\ =\ 52,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Five\ =\ 53,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Six\ =\ 54,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Seven\ =\ 55,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Eight\ =\ 56,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Nine\ =\ 57,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Letters}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ A\ =\ 65,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ B\ =\ 66,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ C\ =\ 67,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ D\ =\ 68,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ E\ =\ 69,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ F\ =\ 70,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ G\ =\ 71,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ H\ =\ 72,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ I\ =\ 73,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ J\ =\ 74,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ K\ =\ 75,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ L\ =\ 76,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ M\ =\ 77,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ N\ =\ 78,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ O\ =\ 79,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ P\ =\ 80,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Q\ =\ 81,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ R\ =\ 82,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ S\ =\ 83,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ T\ =\ 84,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ U\ =\ 85,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ V\ =\ 86,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ W\ =\ 87,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ X\ =\ 88,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Y\ =\ 89,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Z\ =\ 90,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Function\ keys}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Escape\ =\ 256,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Enter\ =\ 257,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Tab\ =\ 258,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Backspace\ =\ 259,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Insert\ =\ 260,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Delete\ =\ 261,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Right\ =\ 262,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Left\ =\ 263,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Down\ =\ 264,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Up\ =\ 265,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ PageUp\ =\ 266,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ PageDown\ =\ 267,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Home\ =\ 268,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ End\ =\ 269,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ CapsLock\ =\ 280,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ScrollLock\ =\ 281,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ NumLock\ =\ 282,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ PrintScreen\ =\ 283,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Pause\ =\ 284,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Modifier\ keys}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ LeftShift\ =\ 340,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ LeftControl\ =\ 341,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ LeftAlt\ =\ 342,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ LeftSuper\ =\ 343,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ RightShift\ =\ 344,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ RightControl\ =\ 345,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ RightAlt\ =\ 346,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ RightSuper\ =\ 347,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Menu\ =\ 348}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @namespace\ Mouse}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Namespace\ containing\ mouse\ button\ code\ definitions.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{namespace\ }\doxymbox{\hyperlink{namespace_mouse}{Mouse}}\ \{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @enum\ Button}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Enumeration\ of\ mouse\ button\ codes.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Defines\ button\ codes\ for\ standard\ mouse\ buttons.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{enum}\ \doxymbox{\hyperlink{namespace_mouse_a2189c95ac90001266b97105c25085270}{Button}}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Button1\ =\ 0,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Button2\ =\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Button3\ =\ 2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Button4\ =\ 3,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Button5\ =\ 4,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Button6\ =\ 5,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Button7\ =\ 6,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Button8\ =\ 7,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Left\ =\ Button1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Right\ =\ Button2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Middle\ =\ Button3}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ Input}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Static\ class\ for\ handling\ input\ from\ keyboard\ and\ mouse.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Provides\ methods\ to\ query\ the\ current\ state\ of\ keys\ and\ mouse\ buttons,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ as\ well\ as\ mouse\ position\ and\ scroll\ delta.\ Also\ allows\ locking\ the\ cursor.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ Must\ be\ updated\ each\ frame\ via\ Update()\ to\ track\ state\ changes.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ //\ Initialize\ input\ system}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Input::Init();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ //\ In\ the\ main\ loop}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ while\ (running)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ Input::Update();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ if\ (Input::GetKeyDown(Key::Space))\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ \ //\ Space\ key\ was\ pressed\ this\ frame}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ Vector2\ mousePos\ =\ Input::GetMousePosition();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_input}{Input}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Initializes\ the\ input\ system.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Sets\ up\ necessary\ state\ for\ tracking\ input.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ once\ at\ engine\ startup.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Input::Init();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Init();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Updates\ the\ input\ state.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Should\ be\ called\ once\ per\ frame\ to\ update\ key\ and\ mouse\ states.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Tracks\ changes\ for\ GetKeyDown\ and\ GetKeyUp\ methods.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ every\ frame.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ //\ In\ the\ main\ loop}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ while\ (running)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ Input::Update();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ //\ ...\ game\ logic\ ...}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Update();}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Keyboard-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Checks\ if\ a\ key\ is\ currently\ pressed.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ key\ The\ key\ code\ to\ check}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ bool\ True\ if\ the\ key\ is\ pressed,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ if\ (Input::GetKey(Key::W))\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ //\ Move\ forward}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ GetKey(\doxymbox{\hyperlink{namespace_key_afb9d68f62d2a93575c84412c87983a19}{Key::Code}}\ key);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Checks\ if\ a\ key\ was\ pressed\ this\ frame.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ key\ The\ key\ code\ to\ check}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ bool\ True\ if\ the\ key\ was\ pressed\ this\ frame,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ if\ (Input::GetKeyDown(Key::Space))\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ //\ Jump\ action}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ GetKeyDown(\doxymbox{\hyperlink{namespace_key_afb9d68f62d2a93575c84412c87983a19}{Key::Code}}\ key);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Checks\ if\ a\ key\ was\ released\ this\ frame.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ key\ The\ key\ code\ to\ check}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ bool\ True\ if\ the\ key\ was\ released\ this\ frame,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ if\ (Input::GetKeyUp(Key::E))\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ //\ Interact\ action}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ GetKeyUp(\doxymbox{\hyperlink{namespace_key_afb9d68f62d2a93575c84412c87983a19}{Key::Code}}\ key);}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Mouse-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Checks\ if\ a\ mouse\ button\ is\ currently\ pressed.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ button\ The\ mouse\ button\ code\ to\ check}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ bool\ True\ if\ the\ button\ is\ pressed,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ if\ (Input::GetMouseButton(Mouse::Left))\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ //\ Shooting\ action}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ GetMouseButton(\doxymbox{\hyperlink{namespace_mouse_a2189c95ac90001266b97105c25085270}{Mouse::Button}}\ button);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Checks\ if\ a\ mouse\ button\ was\ pressed\ this\ frame.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ button\ The\ mouse\ button\ code\ to\ check}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ bool\ True\ if\ the\ button\ was\ pressed\ this\ frame,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ if\ (Input::GetMouseButtonDown(Mouse::Left))\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ //\ Start\ aiming}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ GetMouseButtonDown(\doxymbox{\hyperlink{namespace_mouse_a2189c95ac90001266b97105c25085270}{Mouse::Button}}\ button);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Checks\ if\ a\ mouse\ button\ was\ released\ this\ frame.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ button\ The\ mouse\ button\ code\ to\ check}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ bool\ True\ if\ the\ button\ was\ released\ this\ frame,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ if\ (Input::GetMouseButtonUp(Mouse::Left))\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ //\ Fire\ weapon}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ GetMouseButtonUp(\doxymbox{\hyperlink{namespace_mouse_a2189c95ac90001266b97105c25085270}{Mouse::Button}}\ button);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ current\ mouse\ position\ in\ window\ coordinates.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Vector2\ The\ current\ mouse\ position}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Vector2\ mousePos\ =\ Input::GetMousePosition();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ Vector2\ GetMousePosition();}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ mouse\ movement\ delta\ since\ the\ last\ frame.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Vector2\ The\ mouse\ movement\ delta}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Vector2\ mouseDelta\ =\ Input::GetMouseDelta();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ Vector2\ GetMouseDelta();}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ mouse\ scroll\ wheel\ delta\ since\ the\ last\ frame.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Vector2\ The\ mouse\ scroll\ delta}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Vector2\ scrollDelta\ =\ Input::GetMouseScrollDelta();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ Vector2\ GetMouseScrollDelta();}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Other-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ cursor\ mode\ (locked\ or\ unlocked).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ locked\ True\ to\ lock\ the\ cursor,\ false\ to\ unlock}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Input::SetCursorMode(true);\ \ //\ Lock\ cursor}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetCursorMode(\textcolor{keywordtype}{bool}\ locked);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Checks\ if\ the\ cursor\ is\ currently\ locked.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ bool\ True\ if\ the\ cursor\ is\ locked,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ if\ (Input::IsCursorLocked())\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ //\ Cursor\ is\ locked}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ IsCursorLocked();}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/System\ methods-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ state\ of\ a\ key\ (for\ internal\ use).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ key\ The\ key\ code\ to\ set}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ pressed\ True\ if\ the\ key\ is\ pressed,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_input_ac6c6f025e523b58584b780ade63cf9fa}{SetKeyState}}(\doxymbox{\hyperlink{namespace_key_afb9d68f62d2a93575c84412c87983a19}{Key::Code}}\ key,\ \textcolor{keywordtype}{bool}\ pressed);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ state\ of\ a\ mouse\ button\ (for\ internal\ use).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ button\ The\ mouse\ button\ code\ to\ set}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ pressed\ True\ if\ the\ button\ is\ pressed,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_input_a5ed99cad4f42a413f684189638051d40}{SetMouseButtonState}}(\doxymbox{\hyperlink{namespace_mouse_a2189c95ac90001266b97105c25085270}{Mouse::Button}}\ button,\ \textcolor{keywordtype}{bool}\ pressed);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ current\ mouse\ position\ (for\ internal\ use).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ position\ The\ new\ mouse\ position}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_input_ad670d58c47c6919c32b218163c745bc4}{SetMousePosition}}(\textcolor{keyword}{const}\ Vector2\&\ position);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ mouse\ scroll\ delta\ (for\ internal\ use).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ scroll\ The\ new\ mouse\ scroll\ delta}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_input_a03c716468a0bbb59d60c802f270dc2d9}{SetMouseScrollDelta}}(\textcolor{keyword}{const}\ Vector2\&\ scroll);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{private}:}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Internal\ state}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ s\_KeyState}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Current\ state\ of\ all\ keys.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ std::array<bool,\ 512>\ \doxymbox{\hyperlink{class_input_acf4f860e26a3a4569c89a609df5ecd5d}{s\_KeyState}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ s\_KeyStatePrevious}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Previous\ frame\ state\ of\ all\ keys.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ std::array<bool,\ 512>\ \doxymbox{\hyperlink{class_input_a11c5cc43e52e22661fdccfbed5e1991b}{s\_KeyStatePrevious}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ s\_MouseButtonState}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Current\ state\ of\ all\ mouse\ buttons.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ std::array<bool,\ 8>\ \doxymbox{\hyperlink{class_input_ae1f8636f106cd3b41a603e66cbac1db1}{s\_MouseButtonState}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ s\_MouseButtonStatePrevious}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Previous\ frame\ state\ of\ all\ mouse\ buttons.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ std::array<bool,\ 8>\ \doxymbox{\hyperlink{class_input_ab2622594c5d9f6f16d54ac52816578ef}{s\_MouseButtonStatePrevious}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ s\_MousePosition}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Current\ mouse\ position.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ Vector2\ \doxymbox{\hyperlink{class_input_a88083cc47c71bbdfa5c0a5704e45e210}{s\_MousePosition}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ s\_MousePositionPrevious}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Previous\ frame\ mouse\ position.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ Vector2\ \doxymbox{\hyperlink{class_input_a04955a0d6cf5e1a9737b5cfce2ec5566}{s\_MousePositionPrevious}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ s\_MouseScrollDelta}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Mouse\ scroll\ delta.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ Vector2\ \doxymbox{\hyperlink{class_input_a6bdf2600c41b3894d3739bc67a32df4f}{s\_MouseScrollDelta}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ s\_CursorLocked}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Whether\ the\ cursor\ is\ currently\ locked.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_input_aa089fec2c27ff076760c93cf2f6a6afe}{s\_CursorLocked}};}
+\DoxyCodeLine{\};}
+
+\end{DoxyCodeInclude}
+ 

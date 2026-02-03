@@ -1,0 +1,228 @@
+\doxysection{Window\+Resize\+Event Class Reference}
+\hypertarget{class_window_resize_event}{}\label{class_window_resize_event}\index{WindowResizeEvent@{WindowResizeEvent}}
+
+
+\doxylink{class_event}{Event} triggered when the window is resized.  
+
+
+
+
+{\ttfamily \+\#include $<$Window.\+h$>$}
+
+Inheritance diagram for Window\+Resize\+Event:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_window_resize_event}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_window_resize_event_a0dd122a0e06cd7e9e44188f5d8ba27d1}{Window\+Resize\+Event}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} width, \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} height)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_window_resize_event}{Window\+Resize\+Event} with the new dimensions. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_window_resize_event_abee5eabafd0aa542c3ab6b7569649362}{Get\+Width}} () const
+\begin{DoxyCompactList}\small\item\em Gets the new width of the window. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_window_resize_event_a60e0e754c34c4312193b0aebe8ba0fb1}{Get\+Height}} () const
+\begin{DoxyCompactList}\small\item\em Gets the new height of the window. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_window_resize_event_ae2378189874a18d24933b707c0275619}{To\+String}} () const override
+\begin{DoxyCompactList}\small\item\em Converts the event to a string representation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_event}{Event}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Event} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_event}{Event} object. \end{DoxyCompactList}\item 
+virtual const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_event_a092ad068c77c897d25aec42563fb60ec}{Get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Gets the event type as a string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\bool \doxymbox{\hyperlink{class_event_a759eeb1cb569cbea0c0a9707696adf6e}{Is\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the event is of a specific type T. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_window_resize_event_a432600754407959f0fba3a13688989c0}{m\+\_\+\+Width}}
+\begin{DoxyCompactList}\small\item\em The new width of the window. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_window_resize_event_aa87bb6b17f65c2fc1e8ff0526501eb51}{m\+\_\+\+Height}}
+\begin{DoxyCompactList}\small\item\em The new height of the window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Attributes inherited from \doxymbox{\hyperlink{class_event}{Event}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{class_event_adc2beb684aa773433656394589ee60d5}{Handled\+\_\+}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_event}{Event} triggered when the window is resized. 
+
+This event is dispatched whenever the window size changes, providing the new width and height. It allows the application to adjust rendering parameters or UI layouts accordingly. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8h_source_l00016}{16}} of file \doxymbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_window_resize_event_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_window_resize_event_a0dd122a0e06cd7e9e44188f5d8ba27d1}\index{WindowResizeEvent@{WindowResizeEvent}!WindowResizeEvent@{WindowResizeEvent}}
+\index{WindowResizeEvent@{WindowResizeEvent}!WindowResizeEvent@{WindowResizeEvent}}
+\doxysubsubsection{\texorpdfstring{WindowResizeEvent()}{WindowResizeEvent()}}
+{\footnotesize\ttfamily \label{class_window_resize_event_a0dd122a0e06cd7e9e44188f5d8ba27d1} 
+Window\+Resize\+Event::\+\+Window\+Resize\+Event (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{width}{, }\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{class_window_resize_event}{Window\+Resize\+Event} with the new dimensions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & The new width of the window \\
+\hline
+{\em height} & The new height of the window \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8h_source_l00024}{24}} of file \doxymbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_window_8h_source_l00055}{m\+\_\+\+Height}}, and \doxymbox{\hyperlink{_window_8h_source_l00055}{m\+\_\+\+Width}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_window_resize_event_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_window_resize_event_a60e0e754c34c4312193b0aebe8ba0fb1}\index{WindowResizeEvent@{WindowResizeEvent}!GetHeight@{GetHeight}}
+\index{GetHeight@{GetHeight}!WindowResizeEvent@{WindowResizeEvent}}
+\doxysubsubsection{\texorpdfstring{GetHeight()}{GetHeight()}}
+{\footnotesize\ttfamily \label{class_window_resize_event_a60e0e754c34c4312193b0aebe8ba0fb1} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Window\+Resize\+Event::\+\+Get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the new height of the window. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32} The new height 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8h_source_l00037}{37}} of file \doxymbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_window_8h_source_l00055}{m\+\_\+\+Height}}.
+
+\Hypertarget{class_window_resize_event_abee5eabafd0aa542c3ab6b7569649362}\index{WindowResizeEvent@{WindowResizeEvent}!GetWidth@{GetWidth}}
+\index{GetWidth@{GetWidth}!WindowResizeEvent@{WindowResizeEvent}}
+\doxysubsubsection{\texorpdfstring{GetWidth()}{GetWidth()}}
+{\footnotesize\ttfamily \label{class_window_resize_event_abee5eabafd0aa542c3ab6b7569649362} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Window\+Resize\+Event::\+\+Get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the new width of the window. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32} The new width 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8h_source_l00031}{31}} of file \doxymbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_window_8h_source_l00055}{m\+\_\+\+Width}}.
+
+\Hypertarget{class_window_resize_event_ae2378189874a18d24933b707c0275619}\index{WindowResizeEvent@{WindowResizeEvent}!ToString@{ToString}}
+\index{ToString@{ToString}!WindowResizeEvent@{WindowResizeEvent}}
+\doxysubsubsection{\texorpdfstring{ToString()}{ToString()}}
+{\footnotesize\ttfamily \label{class_window_resize_event_ae2378189874a18d24933b707c0275619} 
+std::\+string Window\+Resize\+Event::\+\+To\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Converts the event to a string representation. 
+
+\begin{DoxyReturn}{Returns}
+std::\+string A string representation of the event 
+\end{DoxyReturn}
+
+
+Reimplemented from \doxymbox{\hyperlink{class_event_a17303a8089a66eece86b41cdea845f55}{Event}}.
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8h_source_l00044}{44}} of file \doxymbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_window_8h_source_l00055}{m\+\_\+\+Height}}, and \doxymbox{\hyperlink{_window_8h_source_l00055}{m\+\_\+\+Width}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_window_resize_event_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_window_resize_event_aa87bb6b17f65c2fc1e8ff0526501eb51}\index{WindowResizeEvent@{WindowResizeEvent}!m\_Height@{m\_Height}}
+\index{m\_Height@{m\_Height}!WindowResizeEvent@{WindowResizeEvent}}
+\doxysubsubsection{\texorpdfstring{m\_Height}{m\_Height}}
+{\footnotesize\ttfamily \label{class_window_resize_event_aa87bb6b17f65c2fc1e8ff0526501eb51} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Window\+Resize\+Event::\+m\+\_\+\+Height\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The new height of the window. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8h_source_l00055}{55}} of file \doxymbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_window_8h_source_l00037}{Get\+Height()}}, \doxymbox{\hyperlink{_window_8h_source_l00044}{To\+String()}}, and \doxymbox{\hyperlink{_window_8h_source_l00024}{Window\+Resize\+Event()}}.
+
+\Hypertarget{class_window_resize_event_a432600754407959f0fba3a13688989c0}\index{WindowResizeEvent@{WindowResizeEvent}!m\_Width@{m\_Width}}
+\index{m\_Width@{m\_Width}!WindowResizeEvent@{WindowResizeEvent}}
+\doxysubsubsection{\texorpdfstring{m\_Width}{m\_Width}}
+{\footnotesize\ttfamily \label{class_window_resize_event_a432600754407959f0fba3a13688989c0} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Window\+Resize\+Event::\+m\+\_\+\+Width\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The new width of the window. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8h_source_l00055}{55}} of file \doxymbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_window_8h_source_l00031}{Get\+Width()}}, \doxymbox{\hyperlink{_window_8h_source_l00044}{To\+String()}}, and \doxymbox{\hyperlink{_window_8h_source_l00024}{Window\+Resize\+Event()}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Window.\+h\end{DoxyCompactItemize}

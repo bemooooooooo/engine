@@ -1,0 +1,442 @@
+.TH "Engine" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Engine
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBTestApp\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEngine\fP ()"
+.br
+.RI "Constructs a new \fBEngine\fP instance\&. "
+.ti -1c
+.RI "virtual \fB~Engine\fP ()"
+.br
+.RI "Destroys the \fBEngine\fP instance and cleans up resources\&. "
+.ti -1c
+.RI "void \fBRun\fP ()"
+.br
+.ti -1c
+.RI "bool \fBInitialize\fP ()"
+.br
+.ti -1c
+.RI "void \fBShutdown\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBOnEvent\fP (\fBEvent\fP &event)=0"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBGetDeltaTime\fP () const"
+.br
+.RI "Gets the application window\&. "
+.ti -1c
+.RI "\fBf32\fP \fBGetFPS\fP () const"
+.br
+.RI "Gets the current frames per second (FPS)\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBEngine\fP & \fBGet\fP ()"
+.br
+.RI "Gets the singleton instance of the \fBEngine\fP\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnInitialize\fP ()"
+.br
+.RI "Called during engine initialization\&. Override this method in derived classes to implement game-specific initialization logic\&. "
+.ti -1c
+.RI "virtual void \fBOnUpdate\fP (\fBf32\fP deltaTime)=0"
+.br
+.RI "Called each frame to update game logic\&. Override this method in derived classes to implement game-specific update logic\&. "
+.ti -1c
+.RI "virtual void \fBOnRender\fP ()"
+.br
+.RI "Called each frame to render the scene\&. Override this method in derived classes to implement game-specific rendering logic\&. "
+.ti -1c
+.RI "virtual void \fBOnShutdown\fP ()"
+.br
+.RI "Called during engine shutdown\&. Override this method in derived classes to implement game-specific cleanup logic\&. "
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBProcessInput\fP ()"
+.br
+.RI "Processes input events\&. This function polls and handles input events from the windowing system\&. "
+.ti -1c
+.RI "void \fBUpdate\fP (\fBf32\fP deltaTime)"
+.br
+.RI "Updates the engine state\&. This function updates game logic and timing information\&. "
+.ti -1c
+.RI "void \fBRender\fP ()"
+.br
+.RI "Renders the current frame\&. This function calls the game-specific rendering logic\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBScope\fP< \fBWindow\fP > \fBm_Window_\fP"
+.br
+.RI "Scoped pointer to the main application window\&. "
+.ti -1c
+.RI "\fBTime::Timer\fP \fBm_Timer_\fP"
+.br
+.RI "Timer instance for tracking elapsed time and delta time\&. "
+.ti -1c
+.RI "\fBf32\fP \fBm_DeltaTime_\fP = 0\&.0f"
+.br
+.RI "\fBTime\fP elapsed since the last frame in seconds\&. "
+.ti -1c
+.RI "\fBf32\fP \fBm_FPS_\fP = 0\&.0f"
+.br
+.RI "Current frames per second (FPS) value\&. "
+.ti -1c
+.RI "\fBu32\fP \fBm_FrameCount_\fP = 0"
+.br
+.RI "Number of frames rendered in the current second\&. "
+.ti -1c
+.RI "\fBf32\fP \fBm_FPSTimer_\fP = 0\&.0f"
+.br
+.RI "Accumulated time for FPS calculation\&. "
+.ti -1c
+.RI "bool \fBm_isRunning_\fP = false"
+.br
+.RI "Flag indicating whether the main loop is running\&. "
+.ti -1c
+.RI "bool \fBm_isMinimized\fP = false"
+.br
+.RI "Flag indicating whether the window is minimized\&. "
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static \fBEngine\fP * \fBs_Instance_\fP = nullptr"
+.br
+.RI "Static pointer to the singleton \fBEngine\fP instance\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB58\fP of file \fBEngine\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Engine::Engine ()"
+
+.PP
+Constructs a new \fBEngine\fP instance\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB7\fP of file \fBEngine\&.cpp\fP\&.
+.PP
+References \fBs_Instance_\fP\&.
+.PP
+Referenced by \fBGet()\fP\&.
+.SS "Engine::~Engine ()\fR [virtual]\fP"
+
+.PP
+Destroys the \fBEngine\fP instance and cleans up resources\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB16\fP of file \fBEngine\&.cpp\fP\&.
+.PP
+References \fBs_Instance_\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBEngine\fP & Engine::Get ()\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Gets the singleton instance of the \fBEngine\fP\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBEngine\fP& Reference to the global \fBEngine\fP instance 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB129\fP of file \fBEngine\&.h\fP\&.
+.PP
+References \fBEngine()\fP, and \fBs_Instance_\fP\&.
+.SS "\fBf32\fP Engine::GetDeltaTime () const\fR [inline]\fP"
+
+.PP
+Gets the application window\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBWindow\fP& Reference to the engine's main window 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB134\fP of file \fBEngine\&.h\fP\&.
+.PP
+References \fBm_DeltaTime_\fP\&.
+.SS "\fBf32\fP Engine::GetFPS () const\fR [inline]\fP"
+
+.PP
+Gets the current frames per second (FPS)\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBf32\fP Current FPS value 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB139\fP of file \fBEngine\&.h\fP\&.
+.PP
+References \fBm_FPS_\fP\&.
+.SS "bool Engine::Initialize ()"
+
+.PP
+Definition at line \fB22\fP of file \fBEngine\&.cpp\fP\&.
+.SS "virtual void Engine::OnInitialize ()\fR [inline]\fP, \fR [protected]\fP, \fR [virtual]\fP"
+
+.PP
+Called during engine initialization\&. Override this method in derived classes to implement game-specific initialization logic\&. 
+.PP
+Reimplemented in \fBTestApp\fP\&.
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB149\fP of file \fBEngine\&.h\fP\&.
+.SS "virtual void Engine::OnRender ()\fR [inline]\fP, \fR [protected]\fP, \fR [virtual]\fP"
+
+.PP
+Called each frame to render the scene\&. Override this method in derived classes to implement game-specific rendering logic\&. 
+.PP
+Reimplemented in \fBTestApp\fP\&.
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB164\fP of file \fBEngine\&.h\fP\&.
+.PP
+Referenced by \fBRender()\fP\&.
+.SS "virtual void Engine::OnShutdown ()\fR [inline]\fP, \fR [protected]\fP, \fR [virtual]\fP"
+
+.PP
+Called during engine shutdown\&. Override this method in derived classes to implement game-specific cleanup logic\&. 
+.PP
+Reimplemented in \fBTestApp\fP\&.
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB171\fP of file \fBEngine\&.h\fP\&.
+.SS "virtual void Engine::OnUpdate (\fBf32\fP deltaTime)\fR [protected]\fP, \fR [pure virtual]\fP"
+
+.PP
+Called each frame to update game logic\&. Override this method in derived classes to implement game-specific update logic\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdeltaTime\fP \fBTime\fP elapsed since the last frame in seconds 
+.RE
+.PP
+
+.PP
+Implemented in \fBTestApp\fP\&.
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Referenced by \fBUpdate()\fP\&.
+.SS "void Engine::ProcessInput ()\fR [private]\fP"
+
+.PP
+Processes input events\&. This function polls and handles input events from the windowing system\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB103\fP of file \fBEngine\&.cpp\fP\&.
+.PP
+References \fBm_isRunning_\fP\&.
+.SS "void Engine::Render ()\fR [private]\fP"
+
+.PP
+Renders the current frame\&. This function calls the game-specific rendering logic\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB122\fP of file \fBEngine\&.cpp\fP\&.
+.PP
+References \fBm_Window_\fP, and \fBOnRender()\fP\&.
+.SS "void Engine::Run ()"
+
+.PP
+Definition at line \fB58\fP of file \fBEngine\&.cpp\fP\&.
+.SS "void Engine::Shutdown ()"
+
+.PP
+Definition at line \fB44\fP of file \fBEngine\&.cpp\fP\&.
+.SS "void Engine::Update (\fBf32\fP deltaTime)\fR [private]\fP"
+
+.PP
+Updates the engine state\&. This function updates game logic and timing information\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdeltaTime\fP \fBTime\fP elapsed since the last frame in seconds 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB118\fP of file \fBEngine\&.cpp\fP\&.
+.PP
+References \fBOnUpdate()\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBf32\fP Engine::m_DeltaTime_ = 0\&.0f\fR [private]\fP"
+
+.PP
+\fBTime\fP elapsed since the last frame in seconds\&. Used for frame-rate independent updates and timing calculations\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB228\fP of file \fBEngine\&.h\fP\&.
+.PP
+Referenced by \fBGetDeltaTime()\fP\&.
+.SS "\fBf32\fP Engine::m_FPS_ = 0\&.0f\fR [private]\fP"
+
+.PP
+Current frames per second (FPS) value\&. Updated each frame to reflect the current rendering performance\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB236\fP of file \fBEngine\&.h\fP\&.
+.PP
+Referenced by \fBGetFPS()\fP\&.
+.SS "\fBf32\fP Engine::m_FPSTimer_ = 0\&.0f\fR [private]\fP"
+
+.PP
+Accumulated time for FPS calculation\&. Used to track elapsed time for updating the FPS value once per second\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB252\fP of file \fBEngine\&.h\fP\&.
+.SS "\fBu32\fP Engine::m_FrameCount_ = 0\fR [private]\fP"
+
+.PP
+Number of frames rendered in the current second\&. Used to calculate the FPS value\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB244\fP of file \fBEngine\&.h\fP\&.
+.SS "bool Engine::m_isMinimized = false\fR [private]\fP"
+
+.PP
+Flag indicating whether the window is minimized\&. Used to pause updates and rendering when the window is not visible\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB268\fP of file \fBEngine\&.h\fP\&.
+.SS "bool Engine::m_isRunning_ = false\fR [private]\fP"
+
+.PP
+Flag indicating whether the main loop is running\&. Used to control the execution of the main application loop\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB260\fP of file \fBEngine\&.h\fP\&.
+.PP
+Referenced by \fBProcessInput()\fP\&.
+.SS "\fBTime::Timer\fP Engine::m_Timer_\fR [private]\fP"
+
+.PP
+Timer instance for tracking elapsed time and delta time\&. Used to measure frame times and provide timing information to the engine\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB220\fP of file \fBEngine\&.h\fP\&.
+.SS "\fBScope\fP<\fBWindow\fP> Engine::m_Window_\fR [private]\fP"
+
+.PP
+Scoped pointer to the main application window\&. Manages the lifecycle of the window used for rendering and input\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB212\fP of file \fBEngine\&.h\fP\&.
+.PP
+Referenced by \fBRender()\fP\&.
+.SS "\fBEngine\fP * Engine::s_Instance_ = nullptr\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Static pointer to the singleton \fBEngine\fP instance\&. Used to provide global access to the \fBEngine\fP instance via \fBEngine::Get()\fP\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP\&.
+.PP
+Definition at line \fB204\fP of file \fBEngine\&.h\fP\&.
+.PP
+Referenced by \fBEngine()\fP, \fBGet()\fP, and \fB~Engine()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

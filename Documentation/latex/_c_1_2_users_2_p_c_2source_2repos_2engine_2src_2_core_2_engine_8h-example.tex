@@ -1,0 +1,319 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}Core engine class managing the main application loop and subsystems. The \doxylink{class_engine}{Engine} class is responsible for initializing and shutting down the engine, managing the main loop, processing input, updating game logic, and rendering. It serves as the central hub that coordinates various subsystems such as windowing, timing, and event handling.
+
+Core engine class managing the main application loop and subsystems. The \doxylink{class_engine}{Engine} class is responsible for initializing and shutting down the engine, managing the main loop, processing input, updating game logic, and rendering. It serves as the central hub that coordinates various subsystems such as windowing, timing, and event handling.\+Key responsibilities:\+
+
+
+\begin{DoxyItemize}
+\item Initialize and shut down the engine and its subsystems
+\item Manage the main application loop
+\item Process input events
+\item Update game logic with frame-\/rate independent timing
+\item Render frames to the window
+\item Provide access to timing information (delta time, FPS)
+\item Handle window events and callbacks
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+This is a base class meant to be extended by specific game implementations. Derived classes should override virtual methods to implement game-\/specific behavior.
+\end{DoxyNote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{class\ }MyGameEngine\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_engine}{Engine}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{protected}:}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_ae11320612a2d3ecffe574a1c92dca7e8}{OnInitialize}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\ \ \ \textcolor{comment}{//\ Game-\/specific\ initialization}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_ab387292a25fb78fb3f2d4e20c735d734}{OnUpdate}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ deltaTime)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Game-\/specific\ update\ logic}}
+\DoxyCodeLine{\ \}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_ae4c3ae5f32711465d9eaef36c82716ac}{OnRender}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Game-\/specific\ rendering}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_aaa0aa0f8418f57e7ca8724cd5db63baa}{OnShutdown}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\textcolor{comment}{//\ Game-\/specific\ cleanup}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ main()\ \{}
+\DoxyCodeLine{MyGameEngine\ engine;}
+\DoxyCodeLine{engine.Run();}
+\DoxyCodeLine{\textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_base_8h}{Base.h}}"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Event.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Log.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Time.h"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_window}{Window}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Core\ engine\ class\ managing\ the\ main\ application\ loop\ and\ subsystems.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ The\ Engine\ class\ is\ responsible\ for\ initializing\ and\ shutting\ down\ the\ engine,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ managing\ the\ main\ loop,\ processing\ input,\ updating\ game\ logic,\ and\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ It\ serves\ as\ the\ central\ hub\ that\ coordinates\ various\ subsystems\ such\ as\ windowing,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ timing,\ and\ event\ handling.}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ responsibilities:}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Initialize\ and\ shut\ down\ the\ engine\ and\ its\ subsystems}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Manage\ the\ main\ application\ loop}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Process\ input\ events}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Update\ game\ logic\ with\ frame-\/rate\ independent\ timing}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Render\ frames\ to\ the\ window}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Provide\ access\ to\ timing\ information\ (delta\ time,\ FPS)}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Handle\ window\ events\ and\ callbacks}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ This\ is\ a\ base\ class\ meant\ to\ be\ extended\ by\ specific\ game\ implementations.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Derived\ classes\ should\ override\ virtual\ methods\ to\ implement\ game-\/specific\ behavior.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ class\ MyGameEngine\ :\ public\ Engine\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ protected:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ void\ OnInitialize()\ override\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ //\ Game-\/specific\ initialization}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ void\ OnUpdate(f32\ deltaTime)\ override\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ //\ Game-\/specific\ update\ logic}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ void\ OnRender()\ override\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ //\ Game-\/specific\ rendering}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ void\ OnShutdown()\ override\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ //\ Game-\/specific\ cleanup}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \};}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ int\ main()\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ MyGameEngine\ engine;}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ engine.Run();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ return\ 0;}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_engine}{Engine}}\ \{}
+\DoxyCodeLine{\ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ *\ @brief\ Constructs\ a\ new\ Engine\ instance.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine}}();\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Destroys\ the\ Engine\ instance\ and\ cleans\ up\ resources.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_engine_a8ef7030a089ecb30bbfcb9e43094717a}{\string~Engine}}();}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Starts\ the\ main\ application\ loop.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ function\ initializes\ the\ engine\ and\ enters\ the\ main\ loop,}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ processing\ input,\ updating\ game\ logic,\ and\ rendering\ frames\ until}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ the\ application\ is\ closed.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ This\ function\ blocks\ until\ the\ application\ exits.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ MyGameEngine\ engine;}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ engine.Run();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ return\ 0;}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ Run();}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Initializes\ the\ engine\ and\ its\ subsystems.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ function\ sets\ up\ the\ window,\ timing,\ and\ other\ necessary}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ subsystems\ before\ entering\ the\ main\ loop.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ true\ if\ initialization\ was\ successful,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Engine\ engine;}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ if\ (engine.Initialize())\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ engine.Run();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ Initialize();\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Shuts\ down\ the\ engine\ and\ cleans\ up\ resources.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ function\ is\ called\ when\ the\ application\ is\ exiting\ to\ properly}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ release\ resources\ and\ shut\ down\ subsystems.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ engine.Shutdown();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ Shutdown();}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Handles\ an\ incoming\ event.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ virtual\ method\ can\ be\ overridden\ by\ derived\ classes\ to\ handle}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ specific\ events\ such\ as\ input,\ window\ resize,\ etc.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ event\ The\ event\ to\ handle}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ void\ MyGameEngine::OnEvent(Event\&\ event)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ if\ (event.IsType<WindowResizeEvent>())\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ \ \ //\ Handle\ window\ resize}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OnEvent(Event\&\ event)\ =\ 0;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ singleton\ instance\ of\ the\ Engine.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Engine\&\ Reference\ to\ the\ global\ Engine\ instance}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine}}\&\ \doxymbox{\hyperlink{class_engine_a773b5995960f2ff398d064c221c70230}{Get}}()\ \{\ \textcolor{keywordflow}{return}\ *\doxymbox{\hyperlink{class_engine_af9e452122d847e551b235983f817ea20}{s\_Instance\_}};\ \}\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ application\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Window\&\ Reference\ to\ the\ engine's\ main\ window}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{class_engine_a95cd587c5d6be9ac896a7949e7dd5c83}{GetDeltaTime}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_af1d992fdad018dcd8d433e6b87be55ca}{m\_DeltaTime\_}};\ \}\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ current\ frames\ per\ second\ (FPS).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ f32\ Current\ FPS\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{class_engine_a2e26a52a904fa6455c0c4bd9ae4ac057}{GetFPS}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_engine_a0a6c105135b31c5aede1bef6f998f486}{m\_FPS\_}};\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Virtual\ methods\ for\ game-\/specific\ behavior}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Called\ during\ engine\ initialization.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Override\ this\ method\ in\ derived\ classes\ to\ implement}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ game-\/specific\ initialization\ logic.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_ae11320612a2d3ecffe574a1c92dca7e8}{OnInitialize}}()\ \{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Called\ each\ frame\ to\ update\ game\ logic.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Override\ this\ method\ in\ derived\ classes\ to\ implement}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ game-\/specific\ update\ logic.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ deltaTime\ Time\ elapsed\ since\ the\ last\ frame\ in\ seconds}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_ab387292a25fb78fb3f2d4e20c735d734}{OnUpdate}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ deltaTime)\ =\ 0;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Called\ each\ frame\ to\ render\ the\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Override\ this\ method\ in\ derived\ classes\ to\ implement}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ game-\/specific\ rendering\ logic.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_ae4c3ae5f32711465d9eaef36c82716ac}{OnRender}}()\ \{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Called\ during\ engine\ shutdown.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Override\ this\ method\ in\ derived\ classes\ to\ implement}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ game-\/specific\ cleanup\ logic.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_aaa0aa0f8418f57e7ca8724cd5db63baa}{OnShutdown}}()\ \{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Main\ loop\ functions}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ *\ @brief\ Processes\ input\ events.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ *\ This\ function\ polls\ and\ handles\ input\ events\ from\ the\ windowing\ system.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_ab68d0f3a90f84bec81d2de30cef77d58}{ProcessInput}}();}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Updates\ the\ engine\ state.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ function\ updates\ game\ logic\ and\ timing\ information.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ deltaTime\ Time\ elapsed\ since\ the\ last\ frame\ in\ seconds}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_a0594de9ff559eb966f6d1950024b1646}{Update}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ deltaTime);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Renders\ the\ current\ frame.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ function\ calls\ the\ game-\/specific\ rendering\ logic.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_engine_acde70aed0043e2e2091d0bb6cce8e3c1}{Render}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Member\ variables}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ s\_Instance\_}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Static\ pointer\ to\ the\ singleton\ Engine\ instance.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Used\ to\ provide\ global\ access\ to\ the\ Engine\ instance\ via\ Engine::Get().}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine}}*\ \doxymbox{\hyperlink{class_engine_af9e452122d847e551b235983f817ea20}{s\_Instance\_}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ m\_Window\_}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Scoped\ pointer\ to\ the\ main\ application\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Manages\ the\ lifecycle\ of\ the\ window\ used\ for\ rendering\ and\ input.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope<Window>}}\ \doxymbox{\hyperlink{class_engine_a236d009773f852cf486ebe09986145ad}{m\_Window\_}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ m\_Timer\_}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Timer\ instance\ for\ tracking\ elapsed\ time\ and\ delta\ time.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Used\ to\ measure\ frame\ times\ and\ provide\ timing\ information\ to\ the\ engine.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Time::Timer\ \doxymbox{\hyperlink{class_engine_a59cd6443a49ad2265a9f9276c7e0465d}{m\_Timer\_}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ m\_DeltaTime\_}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Time\ elapsed\ since\ the\ last\ frame\ in\ seconds.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Used\ for\ frame-\/rate\ independent\ updates\ and\ timing\ calculations.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{class_engine_af1d992fdad018dcd8d433e6b87be55ca}{m\_DeltaTime\_}}\ =\ 0.0f;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ m\_FPS\_}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Current\ frames\ per\ second\ (FPS)\ value.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Updated\ each\ frame\ to\ reflect\ the\ current\ rendering\ performance.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{class_engine_a0a6c105135b31c5aede1bef6f998f486}{m\_FPS\_}}\ =\ 0.0f;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ m\_FrameCount\_}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Number\ of\ frames\ rendered\ in\ the\ current\ second.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Used\ to\ calculate\ the\ FPS\ value.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_engine_a9b2d76ed30e04ff8933216d8100f06cc}{m\_FrameCount\_}}\ =\ 0;}
+\DoxyCodeLine{\ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ m\_FPSTimer\_}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Accumulated\ time\ for\ FPS\ calculation.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Used\ to\ track\ elapsed\ time\ for\ updating\ the\ FPS\ value\ once\ per\ second.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{class_engine_acd11e4fc3bc8ef034a99d84540afab28}{m\_FPSTimer\_}}\ =\ 0.0f;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ m\_isRunning\_}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Flag\ indicating\ whether\ the\ main\ loop\ is\ running.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Used\ to\ control\ the\ execution\ of\ the\ main\ application\ loop.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_engine_a43d6fa801aa828fa908d919a1b69f26e}{m\_isRunning\_}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ m\_isMinimized}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Flag\ indicating\ whether\ the\ window\ is\ minimized.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Used\ to\ pause\ updates\ and\ rendering\ when\ the\ window\ is\ not\ visible.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_engine_adaf3fd8a2de9a16193389c801b02e4f8}{m\_isMinimized}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\};}
+
+\end{DoxyCodeInclude}
+ 

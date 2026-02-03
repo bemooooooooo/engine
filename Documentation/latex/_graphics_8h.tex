@@ -1,0 +1,51 @@
+\doxysection{src/\+\+Graphics/\+\+Graphics.h File Reference}
+\hypertarget{_graphics_8h}{}\label{_graphics_8h}\index{src/Graphics/Graphics.h@{src/Graphics/Graphics.h}}
+
+
+Central header for the Graphics module of the My\+Game\+Engine project.  
+
+
+{\ttfamily \+\#include "{}Graphics\+Context.\+h"{}}\newline
+{\ttfamily \+\#include "{}Render\+Command.\+h"{}}\newline
+{\ttfamily \+\#include "{}Renderer.\+h"{}}\newline
+{\ttfamily \+\#include "{}Window.\+h"{}}\newline
+{\ttfamily \+\#include "{}Shader.\+h"{}}\newline
+{\ttfamily \+\#include "{}Texture.\+h"{}}\newline
+{\ttfamily \+\#include "{}Vertex\+Buffer.\+h"{}}\newline
+{\ttfamily \+\#include "{}Index\+Buffer.\+h"{}}\newline
+{\ttfamily \+\#include "{}Vertex\+Array.\+h"{}}\newline
+{\ttfamily \+\#include "{}Scene.\+h"{}}\newline
+{\ttfamily \+\#include "{}Camera.\+h"{}}\newline
+{\ttfamily \+\#include "{}Mesh.\+h"{}}\newline
+{\ttfamily \+\#include "{}Material.\+h"{}}\newline
+
+
+\doxysubsection{Detailed Description}
+Central header for the Graphics module of the My\+Game\+Engine project. 
+
+This header aggregates all core graphics functionalities, including context management, rendering commands, resource handling, and scene representation. It serves as the main entry point for graphics-\/related operations within the engine.
+
+\doxylink{namespace_key}{Key} components included:\+
+
+
+\begin{DoxyItemize}
+\item \doxylink{class_graphics_context}{Graphics\+Context}:\+ Manages the graphics rendering context and Open\+GL state.
+\item \doxylink{class_render_command}{Render\+Command}:\+ Provides static methods for issuing rendering commands.
+\item \doxylink{class_renderer}{Renderer}:\+ High-\/level rendering interface for drawing scenes and objects.
+\item Resource classes:\+ \doxylink{class_shader}{Shader}, \doxylink{class_texture}{Texture}, \doxylink{class_vertex_buffer}{Vertex\+Buffer}, \doxylink{class_index_buffer}{Index\+Buffer}, \doxylink{class_vertex_array}{Vertex\+Array}.
+\item \doxylink{class_scene}{Scene} representation:\+ \doxylink{class_scene}{Scene}, \doxylink{class_camera}{Camera}, \doxylink{class_mesh}{Mesh}, \doxylink{class_material}{Material}.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+This header should be included in any source file that requires graphics functionality from the engine.
+\end{DoxyNote}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2026 
+\end{DoxyDate}
+
+
+Definition in file \doxymbox{\hyperlink{_graphics_8h_source}{Graphics.\+h}}.
+

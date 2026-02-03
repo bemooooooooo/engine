@@ -1,0 +1,380 @@
+\doxysection{Graphics\+Context.\+h}
+\hypertarget{_graphics_context_8h_source}{}\label{_graphics_context_8h_source}\index{src/Graphics/GraphicsContext.h@{src/Graphics/GraphicsContext.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_base_8h}{../Core/Base.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}../Core/Log.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00005}00005\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00006}00006\ \textcolor{comment}{\ *\ @class\ GraphicsContext}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00007}00007\ \textcolor{comment}{\ *\ @brief\ Core\ graphics\ context\ management\ for\ OpenGL\ operations.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00008}00008\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00009}00009\ \textcolor{comment}{\ *\ This\ class\ manages\ the\ graphics\ rendering\ context\ and\ provides\ a\ unified\ interface}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00010}00010\ \textcolor{comment}{\ *\ for\ OpenGL\ operations.\ It\ handles\ viewport\ setup,\ color\ clearing,\ depth\ testing,}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00011}00011\ \textcolor{comment}{\ *\ blending,\ face\ culling,\ and\ drawing\ operations.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00012}00012\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00013}00013\ \textcolor{comment}{\ *\ All\ member\ functions\ are\ static,\ making\ GraphicsContext\ a\ static\ utility\ class.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00014}00014\ \textcolor{comment}{\ *\ This\ enforces\ a\ single\ graphics\ context\ per\ application,\ which\ is\ appropriate}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00015}00015\ \textcolor{comment}{\ *\ for\ most\ game\ engine\ architectures.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00016}00016\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00017}00017\ \textcolor{comment}{\ *\ The\ class\ is\ responsible\ for:}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00018}00018\ \textcolor{comment}{\ *\ -\/\ Initializing\ and\ shutting\ down\ the\ graphics\ context}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00019}00019\ \textcolor{comment}{\ *\ -\/\ Managing\ rendering\ state\ (viewport,\ clear\ color,\ depth\ test,\ etc.)}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00020}00020\ \textcolor{comment}{\ *\ -\/\ Providing\ drawing\ functions}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00021}00021\ \textcolor{comment}{\ *\ -\/\ Querying\ graphics\ hardware\ information}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00022}00022\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00023}00023\ \textcolor{comment}{\ *\ @note\ This\ class\ uses\ static\ methods.\ It\ should\ be\ initialized\ once\ at\ engine\ startup.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00024}00024\ \textcolor{comment}{\ *\ @note\ All\ OpenGL\ operations\ must\ occur\ after\ initialization.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00025}00025\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00026}00026\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00027}00027\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00028}00028\ \textcolor{comment}{\ *\ //\ Initialize\ graphics\ at\ engine\ startup}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00029}00029\ \textcolor{comment}{\ *\ GraphicsContext::Init();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00030}00030\ \textcolor{comment}{\ *\ GraphicsContext::SetViewport(0,\ 0,\ 800,\ 600);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00031}00031\ \textcolor{comment}{\ *\ GraphicsContext::SetClearColor(0.1f,\ 0.1f,\ 0.1f,\ 1.0f);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00032}00032\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00033}00033\ \textcolor{comment}{\ *\ //\ Render\ loop}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00034}00034\ \textcolor{comment}{\ *\ while\ (running)\ \{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00035}00035\ \textcolor{comment}{\ *\ \ \ \ \ GraphicsContext::Clear();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00036}00036\ \textcolor{comment}{\ *\ \ \ \ \ //\ ...\ draw\ objects\ ...}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00037}00037\ \textcolor{comment}{\ *\ \ \ \ \ GraphicsContext::DrawArrays(vertexCount);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00038}00038\ \textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00039}00039\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00040}00040\ \textcolor{comment}{\ *\ //\ Cleanup\ at\ shutdown}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00041}00041\ \textcolor{comment}{\ *\ GraphicsContext::Shutdown();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00042}00042\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00043}00043\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00044}\doxymbox{\hyperlink{class_graphics_context}{00044}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_graphics_context}{GraphicsContext}}\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00045}00045\ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00046}00046\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00047}00047\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Initializes\ the\ graphics\ context.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00048}00048\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00049}00049\ \textcolor{comment}{\ \ \ \ \ *\ Must\ be\ called\ once\ at\ engine\ startup\ before\ any\ graphics\ operations.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00050}00050\ \textcolor{comment}{\ \ \ \ \ *\ This\ function\ initializes\ OpenGL,\ loads\ extensions\ (via\ GLAD),\ and\ sets\ up}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00051}00051\ \textcolor{comment}{\ \ \ \ \ *\ the\ initial\ graphics\ state.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00052}00052\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00053}00053\ \textcolor{comment}{\ \ \ \ \ *\ @note\ This\ should\ be\ called\ right\ after\ creating\ a\ window.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00054}00054\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ before\ any\ rendering\ or\ graphics\ queries.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00055}00055\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00056}00056\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00057}00057\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00058}00058\ \textcolor{comment}{\ \ \ \ \ *\ Window\ window(800,\ 600,\ "{}My\ Game"{});}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00059}00059\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::Init();\ \ //\ Initialize\ graphics}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00060}00060\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00061}00061\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Init();}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00063}00063\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00064}00064\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00065}00065\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Shuts\ down\ the\ graphics\ context.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00066}00066\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00067}00067\ \textcolor{comment}{\ \ \ \ \ *\ Called\ at\ engine\ shutdown\ to\ clean\ up\ graphics\ resources\ and\ properly}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00068}00068\ \textcolor{comment}{\ \ \ \ \ *\ close\ the\ graphics\ context.\ This\ should\ be\ called\ before\ window\ destruction.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00069}00069\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00070}00070\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ before\ destroying\ the\ window.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00071}00071\ \textcolor{comment}{\ \ \ \ \ *\ @note\ No\ graphics\ operations\ should\ occur\ after\ shutdown.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00072}00072\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00073}00073\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00074}00074\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00075}00075\ \textcolor{comment}{\ \ \ \ \ *\ //\ At\ engine\ shutdown}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00076}00076\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::Shutdown();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00077}00077\ \textcolor{comment}{\ \ \ \ \ *\ window.Destroy();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00078}00078\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00079}00079\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00080}00080\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Shutdown();}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00081}00081\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00082}00082\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00083}00083\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ viewport\ dimensions\ and\ position.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00084}00084\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00085}00085\ \textcolor{comment}{\ \ \ \ \ *\ Defines\ the\ rectangular\ region\ of\ the\ render\ target\ (screen/framebuffer)}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00086}00086\ \textcolor{comment}{\ \ \ \ \ *\ where\ rendering\ will\ occur.\ The\ viewport\ is\ specified\ in\ pixel\ coordinates.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00087}00087\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00088}00088\ \textcolor{comment}{\ \ \ \ \ *\ @param\ x\ The\ left\ edge\ of\ the\ viewport\ in\ pixels\ (usually\ 0)}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00089}00089\ \textcolor{comment}{\ \ \ \ \ *\ @param\ y\ The\ bottom\ edge\ of\ the\ viewport\ in\ pixels\ (usually\ 0)}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00090}00090\ \textcolor{comment}{\ \ \ \ \ *\ @param\ width\ The\ width\ of\ the\ viewport\ in\ pixels}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00091}00091\ \textcolor{comment}{\ \ \ \ \ *\ @param\ height\ The\ height\ of\ the\ viewport\ in\ pixels}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00092}00092\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00093}00093\ \textcolor{comment}{\ \ \ \ \ *\ @note\ The\ origin\ (0,\ 0)\ is\ typically\ at\ the\ bottom-\/left\ in\ OpenGL.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00094}00094\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Viewport\ can\ be\ smaller\ than\ the\ window\ for\ split-\/screen\ or\ UI\ areas.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00095}00095\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00096}00096\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00097}00097\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00098}00098\ \textcolor{comment}{\ \ \ \ \ *\ //\ Set\ full\ viewport\ for\ 800x600\ window}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00099}00099\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::SetViewport(0,\ 0,\ 800,\ 600);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00100}00100\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00101}00101\ \textcolor{comment}{\ \ \ \ \ *\ //\ Set\ viewport\ for\ quarter\ of\ the\ screen\ (top-\/left)}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00102}00102\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::SetViewport(0,\ 300,\ 400,\ 300);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00103}00103\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00104}00104\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00105}00105\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetViewport(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ x,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ y,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ width,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ height);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00106}00106\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00107}00107\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00108}00108\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ color\ used\ for\ clearing\ the\ color\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00109}00109\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00110}00110\ \textcolor{comment}{\ \ \ \ \ *\ Specifies\ the\ RGBA\ color\ that\ will\ be\ used\ when\ Clear()\ is\ called\ to}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00111}00111\ \textcolor{comment}{\ \ \ \ \ *\ clear\ the\ color\ buffer.\ This\ is\ typically\ called\ once\ per\ frame\ with}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00112}00112\ \textcolor{comment}{\ \ \ \ \ *\ the\ background\ color.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00113}00113\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00114}00114\ \textcolor{comment}{\ \ \ \ \ *\ @param\ r\ Red\ component\ (0.0f\ to\ 1.0f)}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00115}00115\ \textcolor{comment}{\ \ \ \ \ *\ @param\ g\ Green\ component\ (0.0f\ to\ 1.0f)}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00116}00116\ \textcolor{comment}{\ \ \ \ \ *\ @param\ b\ Blue\ component\ (0.0f\ to\ 1.0f)}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00117}00117\ \textcolor{comment}{\ \ \ \ \ *\ @param\ a\ Alpha\ component\ (0.0f\ to\ 1.0f)}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00118}00118\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00119}00119\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Values\ are\ clamped\ to\ [0.0,\ 1.0]\ internally\ by\ OpenGL.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00120}00120\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00121}00121\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00122}00122\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00123}00123\ \textcolor{comment}{\ \ \ \ \ *\ //\ Black\ background}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00124}00124\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::SetClearColor(0.0f,\ 0.0f,\ 0.0f,\ 1.0f);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00125}00125\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00126}00126\ \textcolor{comment}{\ \ \ \ \ *\ //\ Gray\ background}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00127}00127\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::SetClearColor(0.5f,\ 0.5f,\ 0.5f,\ 1.0f);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00128}00128\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00129}00129\ \textcolor{comment}{\ \ \ \ \ *\ //\ Sky\ blue}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00130}00130\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::SetClearColor(0.53f,\ 0.81f,\ 0.92f,\ 1.0f);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00131}00131\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00132}00132\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00133}00133\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetClearColor(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ r,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ g,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ b,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ a);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00134}00134\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00135}00135\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00136}00136\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Clears\ the\ color\ and\ depth\ buffers.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00137}00137\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00138}00138\ \textcolor{comment}{\ \ \ \ \ *\ Fills\ the\ color\ buffer\ with\ the\ color\ set\ by\ SetClearColor()\ and\ clears}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00139}00139\ \textcolor{comment}{\ \ \ \ \ *\ the\ depth\ buffer.\ This\ is\ typically\ called\ at\ the\ start\ of\ each\ frame\ to}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00140}00140\ \textcolor{comment}{\ \ \ \ \ *\ prepare\ for\ new\ rendering.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00141}00141\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00142}00142\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ each\ frame\ to\ clear\ previous\ frame's\ rendering.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00143}00143\ \textcolor{comment}{\ \ \ \ \ *\ @note\ The\ depth\ buffer\ is\ always\ cleared\ regardless\ of\ depth\ test\ state.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00144}00144\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00145}00145\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00146}00146\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00147}00147\ \textcolor{comment}{\ \ \ \ \ *\ while\ (running)\ \{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00148}00148\ \textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ GraphicsContext::Clear();\ \ //\ Clear\ both\ color\ and\ depth}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00149}00149\ \textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ //\ ...\ render\ scene\ ...}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00150}00150\ \textcolor{comment}{\ \ \ \ \ *\ \}}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00151}00151\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00152}00152\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00153}00153\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Clear();}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00154}00154\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00155}00155\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00156}00156\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Enables\ or\ disables\ depth\ testing.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00157}00157\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00158}00158\ \textcolor{comment}{\ \ \ \ \ *\ Depth\ testing\ compares\ the\ depth\ (Z\ value)\ of\ fragments\ to\ determine\ if\ they}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00159}00159\ \textcolor{comment}{\ \ \ \ \ *\ should\ be\ rendered.\ When\ enabled,\ only\ the\ closest\ fragment\ at\ each\ pixel}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00160}00160\ \textcolor{comment}{\ \ \ \ \ *\ is\ rendered,\ preventing\ far\ objects\ from\ appearing\ in\ front\ of\ near\ ones.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00161}00161\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00162}00162\ \textcolor{comment}{\ \ \ \ \ *\ @param\ enable\ True\ to\ enable\ depth\ testing,\ false\ to\ disable}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00163}00163\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00164}00164\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Enabled\ by\ default\ in\ most\ graphics\ engines.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00165}00165\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ enabled\ for\ proper\ 3D\ rendering.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00166}00166\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Disable\ for\ 2D\ rendering\ or\ UI\ layers.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00167}00167\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00168}00168\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00169}00169\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00170}00170\ \textcolor{comment}{\ \ \ \ \ *\ //\ Enable\ for\ 3D\ rendering}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00171}00171\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::EnableDepthTest(true);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00172}00172\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00173}00173\ \textcolor{comment}{\ \ \ \ \ *\ //\ Disable\ for\ 2D\ UI\ overlays}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00174}00174\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::EnableDepthTest(false);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00175}00175\ \textcolor{comment}{\ \ \ \ \ *\ RenderUI();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00176}00176\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::EnableDepthTest(true);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00177}00177\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00178}00178\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00179}00179\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ EnableDepthTest(\textcolor{keywordtype}{bool}\ enable);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00180}00180\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00181}00181\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00182}00182\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Enables\ or\ disables\ color\ blending.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00183}00183\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00184}00184\ \textcolor{comment}{\ \ \ \ \ *\ Blending\ allows\ semi-\/transparent\ rendering\ by\ combining\ the\ color\ being\ rendered}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00185}00185\ \textcolor{comment}{\ \ \ \ \ *\ with\ the\ existing\ color\ in\ the\ framebuffer.\ Essential\ for\ transparency,\ particles,}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00186}00186\ \textcolor{comment}{\ \ \ \ \ *\ and\ UI\ rendering.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00187}00187\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00188}00188\ \textcolor{comment}{\ \ \ \ \ *\ @param\ enable\ True\ to\ enable\ blending,\ false\ to\ disable}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00189}00189\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00190}00190\ \textcolor{comment}{\ \ \ \ \ *\ @note\ When\ enabled,\ uses\ standard\ alpha\ blending\ (src\_alpha,\ one\_minus\_src\_alpha).}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00191}00191\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Enable\ for\ transparent\ objects,\ particles,\ and\ UI\ elements.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00192}00192\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00193}00193\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00194}00194\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00195}00195\ \textcolor{comment}{\ \ \ \ \ *\ //\ Enable\ for\ transparent\ objects}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00196}00196\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::EnableBlending(true);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00197}00197\ \textcolor{comment}{\ \ \ \ \ *\ RenderParticles();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00198}00198\ \textcolor{comment}{\ \ \ \ \ *\ RenderUI();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00199}00199\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00200}00200\ \textcolor{comment}{\ \ \ \ \ *\ //\ Disable\ for\ opaque\ geometry}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00201}00201\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::EnableBlending(false);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00202}00202\ \textcolor{comment}{\ \ \ \ \ *\ RenderScene();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00203}00203\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00204}00204\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00205}00205\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ EnableBlending(\textcolor{keywordtype}{bool}\ enable);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00206}00206\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00207}00207\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00208}00208\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Enables\ or\ disables\ face\ culling.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00209}00209\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00210}00210\ \textcolor{comment}{\ \ \ \ \ *\ Face\ culling\ eliminates\ back-\/facing\ triangles\ from\ rendering,\ reducing\ the}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00211}00211\ \textcolor{comment}{\ \ \ \ \ *\ number\ of\ fragments\ that\ need\ to\ be\ processed.\ Improves\ performance\ for}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00212}00212\ \textcolor{comment}{\ \ \ \ \ *\ closed\ meshes\ where\ only\ front\ faces\ should\ be\ visible.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00213}00213\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00214}00214\ \textcolor{comment}{\ \ \ \ \ *\ @param\ enable\ True\ to\ enable\ culling,\ false\ to\ disable}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00215}00215\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00216}00216\ \textcolor{comment}{\ \ \ \ \ *\ @note\ When\ enabled,\ back\ faces\ are\ culled\ by\ default\ (set\ via\ SetCullFace).}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00217}00217\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Improves\ performance\ by\ skipping\ invisible\ back-\/facing\ triangles.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00218}00218\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Should\ be\ enabled\ for\ typical\ opaque\ geometry.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00219}00219\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00220}00220\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00221}00221\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00222}00222\ \textcolor{comment}{\ \ \ \ \ *\ //\ Enable\ culling\ for\ opaque\ objects}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00223}00223\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::EnableCulling(true);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00224}00224\ \textcolor{comment}{\ \ \ \ \ *\ RenderScene();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00225}00225\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00226}00226\ \textcolor{comment}{\ \ \ \ \ *\ //\ Disable\ for\ transparent\ objects\ or\ single-\/sided\ geometry}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00227}00227\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::EnableCulling(false);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00228}00228\ \textcolor{comment}{\ \ \ \ \ *\ RenderTransparent();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00229}00229\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00230}00230\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00231}00231\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ EnableCulling(\textcolor{keywordtype}{bool}\ enable);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00232}00232\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00233}00233\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00234}00234\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ which\ face\ to\ cull\ (back\ or\ front).}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00235}00235\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00236}00236\ \textcolor{comment}{\ \ \ \ \ *\ Determines\ whether\ back\ faces\ or\ front\ faces\ are\ culled\ when\ face\ culling}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00237}00237\ \textcolor{comment}{\ \ \ \ \ *\ is\ enabled.\ Back\ face\ culling\ is\ the\ standard\ for\ most\ graphics\ applications.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00238}00238\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00239}00239\ \textcolor{comment}{\ \ \ \ \ *\ @param\ cullBack\ True\ to\ cull\ back\ faces\ (standard),\ false\ to\ cull\ front\ faces}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00240}00240\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00241}00241\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Face\ direction\ is\ determined\ by\ vertex\ winding\ order\ (counter-\/clockwise\ =\ front).}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00242}00242\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Only\ effective\ when\ EnableCulling(true)\ has\ been\ called.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00243}00243\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00244}00244\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00245}00245\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00246}00246\ \textcolor{comment}{\ \ \ \ \ *\ //\ Standard\ setup:\ cull\ back\ faces}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00247}00247\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::EnableCulling(true);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00248}00248\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::SetCullFace(true);\ \ //\ Cull\ back\ faces}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00249}00249\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00250}00250\ \textcolor{comment}{\ \ \ \ \ *\ //\ For\ special\ case:\ cull\ front\ faces\ instead}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00251}00251\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::SetCullFace(false);\ \ //\ Cull\ front\ faces}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00252}00252\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00253}00253\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00254}00254\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetCullFace(\textcolor{keywordtype}{bool}\ cullBack);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00255}00255\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00256}00256\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00257}00257\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Draws\ vertices\ as\ a\ list\ using\ vertex\ arrays.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00258}00258\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00259}00259\ \textcolor{comment}{\ \ \ \ \ *\ Renders\ vertices\ from\ the\ bound\ vertex\ array\ without\ indices.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00260}00260\ \textcolor{comment}{\ \ \ \ \ *\ Vertices\ are\ drawn\ in\ order\ (0,\ 1,\ 2,\ ...,\ vertexCount-\/1).}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00261}00261\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00262}00262\ \textcolor{comment}{\ \ \ \ \ *\ @param\ vertexCount\ Number\ of\ vertices\ to\ render}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00263}00263\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00264}00264\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Requires\ a\ bound\ vertex\ array\ with\ position\ data.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00265}00265\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Less\ efficient\ than\ indexed\ drawing\ for\ meshes\ with\ shared\ vertices.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00266}00266\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00267}00267\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00268}00268\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00269}00269\ \textcolor{comment}{\ \ \ \ \ *\ //\ Draw\ a\ triangle}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00270}00270\ \textcolor{comment}{\ \ \ \ \ *\ VAO.Bind();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00271}00271\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::DrawArrays(3);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00272}00272\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00273}00273\ \textcolor{comment}{\ \ \ \ \ *\ //\ Draw\ a\ quad}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00274}00274\ \textcolor{comment}{\ \ \ \ \ *\ VAO.Bind();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00275}00275\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::DrawArrays(4);}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00276}00276\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00277}00277\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00278}00278\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ DrawArrays(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ vertexCount);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00279}00279\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00280}00280\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00281}00281\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Draws\ vertices\ using\ an\ index\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00282}00282\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00283}00283\ \textcolor{comment}{\ \ \ \ \ *\ Renders\ vertices\ according\ to\ indices\ in\ the\ bound\ index\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00284}00284\ \textcolor{comment}{\ \ \ \ \ *\ More\ efficient\ than\ DrawArrays()\ for\ meshes\ where\ vertices\ are\ shared}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00285}00285\ \textcolor{comment}{\ \ \ \ \ *\ between\ multiple\ triangles.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00286}00286\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00287}00287\ \textcolor{comment}{\ \ \ \ \ *\ @param\ indexCount\ Number\ of\ indices\ to\ render}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00288}00288\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00289}00289\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Requires\ bound\ vertex\ array\ and\ index\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00290}00290\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Preferred\ method\ for\ rendering\ meshes\ and\ models.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00291}00291\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00292}00292\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00293}00293\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00294}00294\ \textcolor{comment}{\ \ \ \ \ *\ VAO.Bind();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00295}00295\ \textcolor{comment}{\ \ \ \ \ *\ IndexBuffer.Bind();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00296}00296\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::DrawIndexed(mesh.GetIndexCount());}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00297}00297\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00298}00298\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00299}00299\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ DrawIndexed(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ indexCount);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00300}00300\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00301}00301\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00302}00302\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ graphics\ hardware\ vendor\ name.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00303}00303\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00304}00304\ \textcolor{comment}{\ \ \ \ \ *\ Returns\ a\ string\ identifying\ the\ GPU\ manufacturer\ (e.g.,\ "{}NVIDIA"{},\ "{}AMD"{},\ "{}Intel"{}).}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00305}00305\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00306}00306\ \textcolor{comment}{\ \ \ \ \ *\ @return\ const\ char*\ Vendor\ name\ string,\ typically\ from\ GL\_VENDOR}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00307}00307\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00308}00308\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00309}00309\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00310}00310\ \textcolor{comment}{\ \ \ \ \ *\ const\ char*\ vendor\ =\ GraphicsContext::GetVendor();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00311}00311\ \textcolor{comment}{\ \ \ \ \ *\ ENGINE\_INFO\ <<\ "{}GPU\ Vendor:\ "{}\ <<\ vendor;}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00312}00312\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00313}00313\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00314}00314\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ GetVendor();}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00315}00315\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00316}00316\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00317}00317\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ graphics\ hardware\ renderer\ name.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00318}00318\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00319}00319\ \textcolor{comment}{\ \ \ \ \ *\ Returns\ a\ string\ identifying\ the\ specific\ GPU\ model}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00320}00320\ \textcolor{comment}{\ \ \ \ \ *\ (e.g.,\ "{}GeForce\ RTX\ 3080"{},\ "{}Radeon\ RX\ 6900\ XT"{}).}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00321}00321\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00322}00322\ \textcolor{comment}{\ \ \ \ \ *\ @return\ const\ char*\ Renderer\ name\ string,\ typically\ from\ GL\_RENDERER}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00323}00323\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00324}00324\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00325}00325\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00326}00326\ \textcolor{comment}{\ \ \ \ \ *\ const\ char*\ renderer\ =\ GraphicsContext::GetRenderer();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00327}00327\ \textcolor{comment}{\ \ \ \ \ *\ ENGINE\_INFO\ <<\ "{}GPU\ Model:\ "{}\ <<\ renderer;}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00328}00328\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00329}00329\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00330}00330\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ GetRenderer();}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00331}00331\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00332}00332\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00333}00333\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ OpenGL\ version\ string.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00334}00334\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00335}00335\ \textcolor{comment}{\ \ \ \ \ *\ Returns\ the\ OpenGL\ version\ supported\ by\ the\ graphics\ context}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00336}00336\ \textcolor{comment}{\ \ \ \ \ *\ (e.g.,\ "{}4.6.0"{},\ "{}3.3.0"{}).}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00337}00337\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00338}00338\ \textcolor{comment}{\ \ \ \ \ *\ @return\ const\ char*\ Version\ string,\ typically\ from\ GL\_VERSION}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00339}00339\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00340}00340\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00341}00341\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00342}00342\ \textcolor{comment}{\ \ \ \ \ *\ const\ char*\ version\ =\ GraphicsContext::GetVersion();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00343}00343\ \textcolor{comment}{\ \ \ \ \ *\ ENGINE\_INFO\ <<\ "{}OpenGL\ Version:\ "{}\ <<\ version;}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00344}00344\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00345}00345\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00346}00346\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ GetVersion();}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00347}00347\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00348}00348\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00349}00349\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Prints\ detailed\ graphics\ hardware\ information\ to\ the\ log.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00350}00350\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00351}00351\ \textcolor{comment}{\ \ \ \ \ *\ Outputs\ vendor,\ renderer\ model,\ OpenGL\ version,\ and\ other\ graphics}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00352}00352\ \textcolor{comment}{\ \ \ \ \ *\ capability\ information.\ Useful\ for\ debugging\ and\ logging\ at\ startup.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00353}00353\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00354}00354\ \textcolor{comment}{\ \ \ \ \ *\ @note\ This\ is\ a\ convenience\ function\ that\ logs\ the\ output\ of\ GetVendor(),}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00355}00355\ \textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ \ \ GetRenderer(),\ and\ GetVersion().}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00356}00356\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00357}00357\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00358}00358\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00359}00359\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::Init();}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00360}00360\ \textcolor{comment}{\ \ \ \ \ *\ GraphicsContext::PrintGLInfo();\ \ //\ Log\ graphics\ info}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00361}00361\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00362}00362\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00363}00363\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ PrintGLInfo();}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00364}00364\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00365}00365\ \textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00366}00366\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00367}00367\ \textcolor{comment}{\ \ \ \ \ *\ @var\ s\_Initialized}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00368}00368\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Static\ flag\ indicating\ whether\ the\ graphics\ context\ is\ initialized.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00369}00369\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00370}00370\ \textcolor{comment}{\ \ \ \ \ *\ Used\ to\ track\ initialization\ state\ and\ prevent\ double-\/initialization\ or}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00371}00371\ \textcolor{comment}{\ \ \ \ \ *\ operations\ before\ proper\ setup.}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00372}00372\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00373}\doxymbox{\hyperlink{class_graphics_context_a37a144d3b40d916f9097813a7692e849}{00373}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_graphics_context_a37a144d3b40d916f9097813a7692e849}{s\_Initialized}};}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8h_source_l00374}00374\ \};}
+
+\end{DoxyCode}

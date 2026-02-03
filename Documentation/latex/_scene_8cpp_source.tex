@@ -1,0 +1,96 @@
+\doxysection{Scene.\+cpp}
+\hypertarget{_scene_8cpp_source}{}\label{_scene_8cpp_source}\index{src/Graphics/Scene.cpp@{src/Graphics/Scene.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}Scene.h"{}}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}../Core/Log.h"{}}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}Renderer.h"{}}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00006}\doxymbox{\hyperlink{class_scene_ad10176d75a9cc0da56626f682d083507}{00006}}\ \doxymbox{\hyperlink{class_scene_ad10176d75a9cc0da56626f682d083507}{Scene::Scene}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00007}00007\ \ \ \doxymbox{\hyperlink{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}{m\_Camera}}.SetPerspective(Math::ToRadians(60.0f),\ 16.0f\ /\ 9.0f,\ 0.1f,\ 1000.0f);}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00008}00008\ \ \ \doxymbox{\hyperlink{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}{m\_Camera}}.SetPosition(\doxymbox{\hyperlink{struct_vector3}{Vector3}}(0.0f,\ 0.0f,\ 5.0f));}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00010}00010\ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Scene\ created\ with\ default\ camera\ settings."{}};}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00011}00011\ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00013}\doxymbox{\hyperlink{class_scene_a6fb788d6ae25d5293d3a58966cf29757}{00013}}\ \doxymbox{\hyperlink{class_scene_ad10176d75a9cc0da56626f682d083507}{Scene::Scene}}(std::string\ \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}})\ :\ \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}}\{\doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}}\}\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00014}00014\ \ \ \doxymbox{\hyperlink{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}{m\_Camera}}.SetPerspective(Math::ToRadians(60.0f),\ 16.0f\ /\ 9.0f,\ 0.1f,\ 1000.0f);}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00015}00015\ \ \ \doxymbox{\hyperlink{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}{m\_Camera}}.SetPosition(\doxymbox{\hyperlink{struct_vector3}{Vector3}}(0.0f,\ 0.0f,\ 5.0f));}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00017}00017\ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Scene\ '"{}}\ <<\ \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}}\ <<\ \textcolor{stringliteral}{"{}'\ created\ with\ default\ camera\ settings."{}};}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00018}00018\ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00020}\doxymbox{\hyperlink{class_scene_a3b8cec2e32546713915f8c6303c951f1}{00020}}\ \doxymbox{\hyperlink{class_scene_a3b8cec2e32546713915f8c6303c951f1}{Scene::\string~Scene}}()\ \{\ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Scene\ destroyed."{}};\ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00022}\doxymbox{\hyperlink{class_scene_a4c9d8adc4cc03dd82f249b37dc64916c}{00022}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_scene_a4c9d8adc4cc03dd82f249b37dc64916c}{Scene::AddObject}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_scene_object}{SceneObject}}\&\ \textcolor{keywordtype}{object})\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00023}00023\ \ \ \textcolor{comment}{//\ Проверка\ на\ дубликаты\ имен}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00024}00024\ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{class_scene_a5e328ee8e0d8d80a193ab15ea0135d65}{m\_ObjectIndex}}.find(\textcolor{keywordtype}{object}.name)\ !=\ \doxymbox{\hyperlink{class_scene_a5e328ee8e0d8d80a193ab15ea0135d65}{m\_ObjectIndex}}.end())\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00025}00025\ \ \ \ \ ENGINE\_WARN\ <<\ \textcolor{stringliteral}{"{}Object\ with\ name\ '"{}}\ <<\ \textcolor{keywordtype}{object}.name\ <<\ \textcolor{stringliteral}{"{}'\ already\ exists\ in\ scene!\ Skipping\ add."{}};}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00027}00027\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00028}00028\ \ \ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00029}00029\ \ \ \textcolor{comment}{//\ Добавляем\ объект\ и\ обновляем\ индекс}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00030}00030\ \ \ \doxymbox{\hyperlink{class_scene_a5e328ee8e0d8d80a193ab15ea0135d65}{m\_ObjectIndex}}[\textcolor{keywordtype}{object}.name]\ =\ \doxymbox{\hyperlink{class_scene_a4507dcef4e6a65477d814c7d10de037f}{m\_Objects}}.size();}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00031}00031\ \ \ \doxymbox{\hyperlink{class_scene_a4507dcef4e6a65477d814c7d10de037f}{m\_Objects}}.push\_back(\textcolor{keywordtype}{object});}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00032}00032\ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Added\ object\ to\ scene:\ "{}}\ <<\ \textcolor{keywordtype}{object}.name;}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00033}00033\ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00035}\doxymbox{\hyperlink{class_scene_a695ea00facd0b261fd7b536f47a735d3}{00035}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_scene_a695ea00facd0b261fd7b536f47a735d3}{Scene::RemoveObject}}(\textcolor{keyword}{const}\ std::string\&\ \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}})\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00036}00036\ \ \ \textcolor{keyword}{auto}\ indexIt\ =\ \doxymbox{\hyperlink{class_scene_a5e328ee8e0d8d80a193ab15ea0135d65}{m\_ObjectIndex}}.find(\doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}});}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00037}00037\ \ \ \textcolor{keywordflow}{if}\ (indexIt\ ==\ \doxymbox{\hyperlink{class_scene_a5e328ee8e0d8d80a193ab15ea0135d65}{m\_ObjectIndex}}.end())\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00038}00038\ \ \ \ \ ENGINE\_WARN\ <<\ \textcolor{stringliteral}{"{}Object\ not\ found\ in\ scene:\ "{}}\ <<\ \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}};}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00040}00040\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00041}00041\ \ \ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00042}00042\ \ \ \textcolor{keywordtype}{size\_t}\ index\ =\ indexIt-\/>second;}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00043}00043\ \ \ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00044}00044\ \ \ \textcolor{comment}{//\ Удаляем\ из\ вектора}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00045}00045\ \ \ \doxymbox{\hyperlink{class_scene_a4507dcef4e6a65477d814c7d10de037f}{m\_Objects}}.erase(\doxymbox{\hyperlink{class_scene_a4507dcef4e6a65477d814c7d10de037f}{m\_Objects}}.begin()\ +\ index);}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00046}00046\ \ \ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00047}00047\ \ \ \textcolor{comment}{//\ Обновляем\ индекс\ для\ всех\ объектов\ после\ удаленного}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00048}00048\ \ \ \doxymbox{\hyperlink{class_scene_a5e328ee8e0d8d80a193ab15ea0135d65}{m\_ObjectIndex}}.erase(indexIt);}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00049}00049\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ pair\ :\ \doxymbox{\hyperlink{class_scene_a5e328ee8e0d8d80a193ab15ea0135d65}{m\_ObjectIndex}})\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (pair.second\ >\ index)\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00051}00051\ \ \ \ \ \ \ pair.second-\/-\/;}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00053}00053\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00054}00054\ \ \ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00055}00055\ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Removed\ object\ from\ scene:\ "{}}\ <<\ \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}};}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00058}\doxymbox{\hyperlink{class_scene_a2573a087031d929dd4ded7505c6e8a1b}{00058}}\ \doxymbox{\hyperlink{struct_scene_object}{SceneObject}}*\ \doxymbox{\hyperlink{class_scene_a2573a087031d929dd4ded7505c6e8a1b}{Scene::FindObject}}(\textcolor{keyword}{const}\ std::string\&\ \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}})\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00059}00059\ \ \ \textcolor{keyword}{auto}\ it\ =\ \doxymbox{\hyperlink{class_scene_a5e328ee8e0d8d80a193ab15ea0135d65}{m\_ObjectIndex}}.find(\doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}});}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00060}00060\ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ \doxymbox{\hyperlink{class_scene_a5e328ee8e0d8d80a193ab15ea0135d65}{m\_ObjectIndex}}.end())\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{return}\ \&\doxymbox{\hyperlink{class_scene_a4507dcef4e6a65477d814c7d10de037f}{m\_Objects}}[it-\/>second];}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00062}00062\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00063}00063\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00064}00064\ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00066}\doxymbox{\hyperlink{class_scene_a2835bf088b491fe34516dfea0e8bfd0b}{00066}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_scene_a2835bf088b491fe34516dfea0e8bfd0b}{Scene::Update}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ deltaTime)\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00067}00067\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ \textcolor{keywordtype}{object}\ :\ \doxymbox{\hyperlink{class_scene_a4507dcef4e6a65477d814c7d10de037f}{m\_Objects}})\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{object}.onUpdate)\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00069}00069\ \ \ \ \ \ \ \textcolor{keywordtype}{object}.onUpdate(\&\textcolor{keywordtype}{object},\ deltaTime);}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00071}00071\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00072}00072\ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00074}\doxymbox{\hyperlink{class_scene_ad73b9c1185b16f0bd0b16b77471b8e35}{00074}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_scene_ad73b9c1185b16f0bd0b16b77471b8e35}{Scene::Render}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\&\ shader)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00075}00075\ \ \ \textcolor{keywordflow}{if}\ (!shader)\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00076}00076\ \ \ \ \ ENGINE\_ERROR\ <<\ \textcolor{stringliteral}{"{}Scene::Render:\ shader\ is\ null!"{}};}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00078}00078\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00079}00079\ \ \ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00080}00080\ \ \ Renderer::BeginScene(\doxymbox{\hyperlink{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}{m\_Camera}});}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00082}00082\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ \textcolor{keywordtype}{object}\ :\ \doxymbox{\hyperlink{class_scene_a4507dcef4e6a65477d814c7d10de037f}{m\_Objects}})\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{object}.mesh)\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00084}00084\ \ \ \ \ \ \ \doxymbox{\hyperlink{group___debug_macros_gaea47321626b32e9ed5172fdab6644d46}{ENGINE\_DEBUG\_LOG}}(\textcolor{stringliteral}{"{}Rendering\ "{}}\ <<\ \textcolor{keywordtype}{object}.\doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}});}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00085}00085\ \ \ \ \ \ \ \textcolor{keywordtype}{object}.mesh-\/>Draw(shader,\ \textcolor{keywordtype}{object}.transform.ToMatrix());}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00087}00087\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00089}00089\ \ \ Renderer::EndScene();}
+\DoxyCodeLine{\Hypertarget{_scene_8cpp_source_l00090}00090\ \}}
+
+\end{DoxyCode}

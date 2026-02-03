@@ -1,0 +1,196 @@
+.TH "VertexBufferLayout" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+VertexBufferLayout \- Defines the layout of vertex attributes in a vertex buffer\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <VertexArray\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVertexBufferLayout\fP ()"
+.br
+.RI "Default constructor initializing an empty layout\&. "
+.ti -1c
+.RI "template<typename T> void \fBPush\fP (\fBu32\fP count)"
+.br
+.RI "Templated method to add a vertex attribute to the layout\&. "
+.ti -1c
+.RI "const std::vector< \fBVertexBufferElement\fP > & \fBGetElements\fP () const"
+.br
+.RI "Gets the list of vertex buffer elements in the layout\&. "
+.ti -1c
+.RI "\fBu32\fP \fBGetStride\fP () const"
+.br
+.RI "Gets the stride (total size) of the vertex structure in bytes\&. "
+.ti -1c
+.RI "template<> void \fBPush\fP (\fBu32\fP count)"
+.br
+.RI "Specialization for float (\fBf32\fP) vertex attributes\&. "
+.ti -1c
+.RI "template<> void \fBPush\fP (\fBu32\fP count)"
+.br
+.RI "Specialization for unsigned int (\fBu32\fP) vertex attributes\&. "
+.ti -1c
+.RI "template<> void \fBPush\fP (\fBu32\fP count)"
+.br
+.RI "Specialization for unsigned byte (\fBu8\fP) vertex attributes\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< \fBVertexBufferElement\fP > \fBm_Elements\fP"
+.br
+.RI "The list of vertex buffer elements defining the layout\&. "
+.ti -1c
+.RI "\fBu32\fP \fBm_Stride\fP"
+.br
+.RI "The total size of the vertex structure in bytes\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the layout of vertex attributes in a vertex buffer\&. 
+
+Manages a list of \fBVertexBufferElement\fP instances and calculates the stride (total size) of the vertex structure\&. 
+.PP
+Definition at line \fB62\fP of file \fBVertexArray\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "VertexBufferLayout::VertexBufferLayout ()\fR [inline]\fP"
+
+.PP
+Default constructor initializing an empty layout\&. 
+.PP
+Definition at line \fB67\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+References \fBm_Stride\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const std::vector< \fBVertexBufferElement\fP > & VertexBufferLayout::GetElements () const\fR [inline]\fP"
+
+.PP
+Gets the list of vertex buffer elements in the layout\&. 
+.PP
+\fBReturns\fP
+.RS 4
+const std::vector<VertexBufferElement>& The list of elements 
+.RE
+.PP
+
+.PP
+Definition at line \fB87\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+References \fBm_Elements\fP\&.
+.PP
+Referenced by \fBVertexArray::AddVertexBuffer()\fP\&.
+.SS "\fBu32\fP VertexBufferLayout::GetStride () const\fR [inline]\fP"
+
+.PP
+Gets the stride (total size) of the vertex structure in bytes\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBu32\fP The stride in bytes 
+.RE
+.PP
+
+.PP
+Definition at line \fB96\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+References \fBm_Stride\fP\&.
+.PP
+Referenced by \fBVertexArray::AddVertexBuffer()\fP\&.
+.SS "template<> void VertexBufferLayout::Push (\fBu32\fP count)\fR [inline]\fP"
+
+.PP
+Specialization for unsigned byte (\fBu8\fP) vertex attributes\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcount\fP The number of unsigned byte components 
+.RE
+.PP
+
+.PP
+Definition at line \fB140\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+References \fBVertexBufferElement::GetSizeOfType()\fP, \fBm_Elements\fP, and \fBm_Stride\fP\&.
+.SS "template<> void VertexBufferLayout::Push (\fBu32\fP count)\fR [inline]\fP"
+
+.PP
+Specialization for unsigned int (\fBu32\fP) vertex attributes\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcount\fP The number of unsigned int components 
+.RE
+.PP
+
+.PP
+Definition at line \fB129\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+References \fBVertexBufferElement::GetSizeOfType()\fP, \fBm_Elements\fP, and \fBm_Stride\fP\&.
+.SS "template<> void VertexBufferLayout::Push (\fBu32\fP count)\fR [inline]\fP"
+
+.PP
+Specialization for float (\fBf32\fP) vertex attributes\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcount\fP The number of float components 
+.RE
+.PP
+
+.PP
+Definition at line \fB118\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+References \fBVertexBufferElement::GetSizeOfType()\fP, \fBm_Elements\fP, and \fBm_Stride\fP\&.
+.SS "template<typename T> void VertexBufferLayout::Push (\fBu32\fP count)\fR [inline]\fP"
+
+.PP
+Templated method to add a vertex attribute to the layout\&. Specializations exist for \fBf32\fP, \fBu32\fP, and \fBu8\fP types\&.
+
+.PP
+\fBTemplate Parameters\fP
+.RS 4
+\fIT\fP The data type of the vertex attribute 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIcount\fP The number of components in the attribute 
+.RE
+.PP
+
+.PP
+Definition at line \fB78\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+Referenced by \fBMesh::Mesh()\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<\fBVertexBufferElement\fP> VertexBufferLayout::m_Elements\fR [private]\fP"
+
+.PP
+The list of vertex buffer elements defining the layout\&. 
+.PP
+Definition at line \fB103\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+Referenced by \fBGetElements()\fP, and \fBPush()\fP\&.
+.SS "\fBu32\fP VertexBufferLayout::m_Stride\fR [private]\fP"
+
+.PP
+The total size of the vertex structure in bytes\&. 
+.PP
+Definition at line \fB109\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+Referenced by \fBGetStride()\fP, \fBPush()\fP, and \fBVertexBufferLayout()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

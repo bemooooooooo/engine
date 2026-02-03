@@ -1,0 +1,174 @@
+.TH "TestApp" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TestApp
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBEngine\fP\&.
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBOnInitialize\fP () override"
+.br
+.RI "Called during engine initialization\&. Override this method in derived classes to implement game-specific initialization logic\&. "
+.ti -1c
+.RI "void \fBOnUpdate\fP (\fBf32\fP deltaTime) override"
+.br
+.RI "Called each frame to update game logic\&. Override this method in derived classes to implement game-specific update logic\&. "
+.ti -1c
+.RI "void \fBOnRender\fP () override"
+.br
+.RI "Called each frame to render the scene\&. Override this method in derived classes to implement game-specific rendering logic\&. "
+.ti -1c
+.RI "void \fBOnShutdown\fP () override"
+.br
+.RI "Called during engine shutdown\&. Override this method in derived classes to implement game-specific cleanup logic\&. "
+.ti -1c
+.RI "void \fBOnEvent\fP (\fBEvent\fP &event) override"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBHandleInput\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBScope\fP< \fBTestScene\fP > \fBm_Scene\fP"
+.br
+.ti -1c
+.RI "\fBRef\fP< \fBShader\fP > \fBm_Shader\fP"
+.br
+.ti -1c
+.RI "bool \fBm_WireframeMode\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Public Member Functions inherited from \fBEngine\fP
+.in +1c
+.ti -1c
+.RI "\fBEngine\fP ()"
+.br
+.RI "Constructs a new \fBEngine\fP instance\&. "
+.ti -1c
+.RI "virtual \fB~Engine\fP ()"
+.br
+.RI "Destroys the \fBEngine\fP instance and cleans up resources\&. "
+.ti -1c
+.RI "void \fBRun\fP ()"
+.br
+.ti -1c
+.RI "bool \fBInitialize\fP ()"
+.br
+.ti -1c
+.RI "void \fBShutdown\fP ()"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBGetDeltaTime\fP () const"
+.br
+.RI "Gets the application window\&. "
+.ti -1c
+.RI "\fBf32\fP \fBGetFPS\fP () const"
+.br
+.RI "Gets the current frames per second (FPS)\&. "
+.in -1c
+
+Static Public Member Functions inherited from \fBEngine\fP
+.in +1c
+.ti -1c
+.RI "static \fBEngine\fP & \fBGet\fP ()"
+.br
+.RI "Gets the singleton instance of the \fBEngine\fP\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB119\fP of file \fBmain\&.cpp\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TestApp::TestApp ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB121\fP of file \fBmain\&.cpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void TestApp::HandleInput ()\fR [inline]\fP, \fR [private]\fP"
+
+.PP
+Definition at line \fB239\fP of file \fBmain\&.cpp\fP\&.
+.SS "void TestApp::OnEvent (\fBEvent\fP & event)\fR [inline]\fP, \fR [override]\fP, \fR [protected]\fP, \fR [virtual]\fP"
+
+.PP
+Implements \fBEngine\fP\&.
+.PP
+Definition at line \fB224\fP of file \fBmain\&.cpp\fP\&.
+.SS "void TestApp::OnInitialize ()\fR [inline]\fP, \fR [override]\fP, \fR [protected]\fP, \fR [virtual]\fP"
+
+.PP
+Called during engine initialization\&. Override this method in derived classes to implement game-specific initialization logic\&. 
+.PP
+Reimplemented from \fBEngine\fP\&.
+.PP
+Definition at line \fB124\fP of file \fBmain\&.cpp\fP\&.
+.PP
+References \fBResourceManager::LoadShader()\fP\&.
+.SS "void TestApp::OnRender ()\fR [inline]\fP, \fR [override]\fP, \fR [protected]\fP, \fR [virtual]\fP"
+
+.PP
+Called each frame to render the scene\&. Override this method in derived classes to implement game-specific rendering logic\&. 
+.PP
+Reimplemented from \fBEngine\fP\&.
+.PP
+Definition at line \fB188\fP of file \fBmain\&.cpp\fP\&.
+.SS "void TestApp::OnShutdown ()\fR [inline]\fP, \fR [override]\fP, \fR [protected]\fP, \fR [virtual]\fP"
+
+.PP
+Called during engine shutdown\&. Override this method in derived classes to implement game-specific cleanup logic\&. 
+.PP
+Reimplemented from \fBEngine\fP\&.
+.PP
+Definition at line \fB217\fP of file \fBmain\&.cpp\fP\&.
+.PP
+References \fBResourceManager::Shutdown()\fP\&.
+.SS "void TestApp::OnUpdate (\fBf32\fP deltaTime)\fR [inline]\fP, \fR [override]\fP, \fR [protected]\fP, \fR [virtual]\fP"
+
+.PP
+Called each frame to update game logic\&. Override this method in derived classes to implement game-specific update logic\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdeltaTime\fP \fBTime\fP elapsed since the last frame in seconds 
+.RE
+.PP
+
+.PP
+Implements \fBEngine\fP\&.
+.PP
+Definition at line \fB167\fP of file \fBmain\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBScope\fP<\fBTestScene\fP> TestApp::m_Scene\fR [private]\fP"
+
+.PP
+Definition at line \fB234\fP of file \fBmain\&.cpp\fP\&.
+.SS "\fBRef\fP<\fBShader\fP> TestApp::m_Shader\fR [private]\fP"
+
+.PP
+Definition at line \fB235\fP of file \fBmain\&.cpp\fP\&.
+.SS "bool TestApp::m_WireframeMode\fR [private]\fP"
+
+.PP
+Definition at line \fB236\fP of file \fBmain\&.cpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

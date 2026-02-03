@@ -1,0 +1,229 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Matrix3.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_matrix3_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_matrix3_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{struct_matrix3}{Matrix3}}\ matA;}
+\DoxyCodeLine{\doxymbox{\hyperlink{struct_matrix3}{Matrix3}}\ matB;}
+\DoxyCodeLine{\doxymbox{\hyperlink{struct_matrix3}{Matrix3}}\ matC\ =\ matA\ *\ matB;\ \ \textcolor{comment}{//\ Matrix\ multiplication}}
+\DoxyCodeLine{\doxymbox{\hyperlink{struct_vector3}{Vector3}}\ transformed\ =\ matA\ *\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(1.0f,\ 2.0f,\ 1.0f);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Math.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Vector3.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Vector2.h"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Forward\ declaration}}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_matrix4}{Matrix4}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @struct\ Matrix3}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ A\ 3x3\ matrix\ structure\ for\ mathematics\ and\ graphics\ operations.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Matrix3\ represents\ a\ 3x3\ matrix\ used\ for\ various\ transformations\ in\ 2D\ and\ 3D\ space,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ including\ rotation,\ scaling,\ and\ shearing.\ It\ supports\ standard\ matrix\ operations}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ such\ as\ addition,\ subtraction,\ multiplication,\ transposition,\ and\ inversion.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Common\ uses:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ 2D\ transformations\ (rotation,\ scaling,\ shearing)}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Normal\ matrix\ calculations\ in\ 3D\ graphics}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Linear\ transformations\ in\ 3D\ space}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ All\ components\ are\ stored\ as\ f32\ (single-\/precision\ floats)\ for\ performance.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ Matrix\ operations\ are\ defined\ as\ operator\ overloads\ for\ intuitive\ syntax.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Matrix3\ matA;}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Matrix3\ matB;}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Matrix3\ matC\ =\ matA\ *\ matB;\ \ //\ Matrix\ multiplication}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Vector3\ transformed\ =\ matA\ *\ Vector3(1.0f,\ 2.0f,\ 1.0f);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_matrix3}{Matrix3}}\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m[9];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ mm[3][3];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Vector3\ columns[3];}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ Matrix3()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ SetIdentity();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{explicit}\ Matrix3(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}*\ data)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ memcpy(m,\ data,\ 9\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}));}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ Matrix3(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m00,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m01,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m02,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m10,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m11,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m12,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m20,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m21,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m22)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ m[0]\ =\ m00;\ m[1]\ =\ m01;\ m[2]\ =\ m02;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ m[3]\ =\ m10;\ m[4]\ =\ m11;\ m[5]\ =\ m12;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ m[6]\ =\ m20;\ m[7]\ =\ m21;\ m[8]\ =\ m22;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Базовые\ операции}}
+\DoxyCodeLine{\ \ \ \ Matrix3\ operator+(\textcolor{keyword}{const}\ Matrix3\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Matrix3\ result;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 9;\ ++i)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ result.m[i]\ =\ m[i]\ +\ other.m[i];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ Matrix3\ operator-\/(\textcolor{keyword}{const}\ Matrix3\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Matrix3\ result;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 9;\ ++i)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ result.m[i]\ =\ m[i]\ -\/\ other.m[i];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ Matrix3\ operator*(\textcolor{keyword}{const}\ Matrix3\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Matrix3\ result;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 3;\ ++i)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ 3;\ ++j)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.mm[i][j]\ =\ 0.0f;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ 3;\ ++k)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.mm[i][j]\ +=\ mm[i][k]\ *\ other.mm[k][j];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ Vector3\ operator*(\textcolor{keyword}{const}\ Vector3\&\ vec)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Vector3(}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ m[0]\ *\ vec.x\ +\ m[1]\ *\ vec.y\ +\ m[2]\ *\ vec.z,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ m[3]\ *\ vec.x\ +\ m[4]\ *\ vec.y\ +\ m[5]\ *\ vec.z,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ m[6]\ *\ vec.x\ +\ m[7]\ *\ vec.y\ +\ m[8]\ *\ vec.z}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ Matrix3\&\ operator*=(\textcolor{keyword}{const}\ Matrix3\&\ other)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ *\textcolor{keyword}{this}\ =\ *\textcolor{keyword}{this}\ *\ other;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ Matrix3\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 9;\ ++i)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!Math::Approximately(m[i],\ other.m[i]))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ operator()(\textcolor{keywordtype}{int}\ row,\ \textcolor{keywordtype}{int}\ col)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mm[row][col];}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\&\ operator()(\textcolor{keywordtype}{int}\ row,\ \textcolor{keywordtype}{int}\ col)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ mm[row][col];}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Методы}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ SetIdentity()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ identity[9]\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ 1.0f,\ 0.0f,\ 0.0f,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ 0.0f,\ 1.0f,\ 0.0f,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ 0.0f,\ 0.0f,\ 1.0f}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ memcpy(m,\ identity,\ 9\ *\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}));}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ Matrix3\ Transposed()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Matrix3\ result;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 3;\ ++i)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ 3;\ ++j)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.mm[j][i]\ =\ mm[i][j];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ Determinant()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m[0]\ *\ (m[4]\ *\ m[8]\ -\/\ m[5]\ *\ m[7])\ -\/}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m[1]\ *\ (m[3]\ *\ m[8]\ -\/\ m[5]\ *\ m[6])\ +}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m[2]\ *\ (m[3]\ *\ m[7]\ -\/\ m[4]\ *\ m[6]);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ Matrix3\ Inverted()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Matrix3\ result;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ det\ =\ Determinant();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Math::NearZero(det))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Identity();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ invDet\ =\ 1.0f\ /\ det;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[0]\ =\ (m[4]\ *\ m[8]\ -\/\ m[5]\ *\ m[7])\ *\ invDet;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[1]\ =\ (m[2]\ *\ m[7]\ -\/\ m[1]\ *\ m[8])\ *\ invDet;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[2]\ =\ (m[1]\ *\ m[5]\ -\/\ m[2]\ *\ m[4])\ *\ invDet;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[3]\ =\ (m[5]\ *\ m[6]\ -\/\ m[3]\ *\ m[8])\ *\ invDet;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[4]\ =\ (m[0]\ *\ m[8]\ -\/\ m[2]\ *\ m[6])\ *\ invDet;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[5]\ =\ (m[2]\ *\ m[3]\ -\/\ m[0]\ *\ m[5])\ *\ invDet;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[6]\ =\ (m[3]\ *\ m[7]\ -\/\ m[4]\ *\ m[6])\ *\ invDet;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[7]\ =\ (m[1]\ *\ m[6]\ -\/\ m[0]\ *\ m[7])\ *\ invDet;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[8]\ =\ (m[0]\ *\ m[4]\ -\/\ m[1]\ *\ m[3])\ *\ invDet;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Статические\ методы}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ Matrix3\ Identity()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Matrix3();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ Matrix3\ Scale(\textcolor{keyword}{const}\ Vector2\&\ scale)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Matrix3\ result;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[0]\ =\ scale.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[4]\ =\ scale.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ Matrix3\ Rotation(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ angle)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Matrix3\ result;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ c\ =\ \doxymbox{\hyperlink{namespace_math_a85d7111dae78d8c454fdb9b6fba22a69}{Math::Cos}}(angle);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ s\ =\ \doxymbox{\hyperlink{namespace_math_a8f4dbcdd74ef3ce8de71b8407a654f2b}{Math::Sin}}(angle);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[0]\ =\ c;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[1]\ =\ -\/s;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[3]\ =\ s;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[4]\ =\ c;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ Matrix3\ Translation(\textcolor{keyword}{const}\ Vector2\&\ translation)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ Matrix3\ result;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[2]\ =\ translation.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ result.m[5]\ =\ translation.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ Matrix3\ FromMatrix4(\textcolor{keyword}{const}\ Matrix4\&\ matrix4);}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Реализация\ FromMatrix4\ требует\ полного\ определения\ Matrix4}}
+\DoxyCodeLine{\textcolor{comment}{//\ Включаем\ Matrix4.h\ здесь\ для\ реализации\ (Matrix4\ уже\ включает\ Matrix3,\ но\ это\ безопасно}}
+\DoxyCodeLine{\textcolor{comment}{//\ так\ как\ мы\ включаем\ его\ после\ объявления\ Matrix3)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Matrix4.h"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{struct_matrix3}{Matrix3}}\ Matrix3::FromMatrix4(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_matrix4}{Matrix4}}\&\ matrix4)\ \{}
+\DoxyCodeLine{\ \ \ \ Matrix3\ result;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ 3;\ ++i)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ 3;\ ++j)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ result.mm[i][j]\ =\ matrix4(i,\ j);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCodeInclude}
+ 

@@ -1,0 +1,131 @@
+.TH "Renderer" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Renderer \- Core rendering system for managing draw calls and scene rendering\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Renderer\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBInit\fP ()"
+.br
+.ti -1c
+.RI "static void \fBShutdown\fP ()"
+.br
+.ti -1c
+.RI "static void \fBBeginScene\fP (const \fBCamera\fP &camera)"
+.br
+.ti -1c
+.RI "static void \fBEndScene\fP ()"
+.br
+.ti -1c
+.RI "static void \fBSubmit\fP (const \fBRef\fP< \fBShader\fP > &shader, const \fBRef\fP< \fBVertexArray\fP > &vertexArray, const \fBMatrix4\fP &transform=Matrix4::Identity())"
+.br
+.ti -1c
+.RI "static void \fBSetClearColor\fP (const \fBVector4\fP &color)"
+.br
+.ti -1c
+.RI "static void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "static void \fBOnWindowResize\fP (\fBu32\fP width, \fBu32\fP height)"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static \fBScope\fP< \fBSceneData\fP > \fBs_SceneData\fP = CreateScope<\fBSceneData\fP>()"
+.br
+.RI "Static instance holding current scene rendering data\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Core rendering system for managing draw calls and scene rendering\&. 
+
+This class provides static methods for initializing the renderer, beginning and ending scenes, submitting draw calls, and handling window resize events\&. It manages the rendering state and coordinates with shaders and vertex arrays to render 3D objects to the screen\&.
+
+.PP
+\fBKey\fP features:
+.IP "\(bu" 2
+\fBScene\fP management (begin/end)
+.IP "\(bu" 2
+Draw call submission
+.IP "\(bu" 2
+Clear color and buffer clearing
+.IP "\(bu" 2
+\fBWindow\fP resize handling
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+All methods are static; no instances of \fBRenderer\fP should be created\&. 
+
+.PP
+Must be initialized via Init() before use\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Renderer\&.h\fP\&.
+.PP
+Definition at line \fB56\fP of file \fBRenderer\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Renderer::BeginScene (const \fBCamera\fP & camera)\fR [static]\fP"
+
+.PP
+Definition at line \fB18\fP of file \fBRenderer\&.cpp\fP\&.
+.SS "void Renderer::Clear ()\fR [static]\fP"
+
+.PP
+Definition at line \fB71\fP of file \fBRenderer\&.cpp\fP\&.
+.SS "void Renderer::EndScene ()\fR [static]\fP"
+
+.PP
+Definition at line \fB22\fP of file \fBRenderer\&.cpp\fP\&.
+.SS "void Renderer::Init ()\fR [static]\fP"
+
+.PP
+Definition at line \fB6\fP of file \fBRenderer\&.cpp\fP\&.
+.SS "void Renderer::OnWindowResize (\fBu32\fP width, \fBu32\fP height)\fR [static]\fP"
+
+.PP
+Definition at line \fB75\fP of file \fBRenderer\&.cpp\fP\&.
+.SS "void Renderer::SetClearColor (const \fBVector4\fP & color)\fR [static]\fP"
+
+.PP
+Definition at line \fB67\fP of file \fBRenderer\&.cpp\fP\&.
+.SS "void Renderer::Shutdown ()\fR [static]\fP"
+
+.PP
+Definition at line \fB12\fP of file \fBRenderer\&.cpp\fP\&.
+.SS "void Renderer::Submit (const \fBRef\fP< \fBShader\fP > & shader, const \fBRef\fP< \fBVertexArray\fP > & vertexArray, const \fBMatrix4\fP & transform = \fRMatrix4::Identity()\fP)\fR [static]\fP"
+
+.PP
+Definition at line \fB26\fP of file \fBRenderer\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBScope\fP< \fBSceneData\fP > Renderer::s_SceneData = CreateScope<\fBSceneData\fP>()\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Static instance holding current scene rendering data\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Renderer\&.h\fP\&.
+.PP
+Definition at line \fB201\fP of file \fBRenderer\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

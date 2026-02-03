@@ -1,0 +1,160 @@
+.TH "BaseTypes" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BaseTypes \- Fundamental Type Aliases
+.SH SYNOPSIS
+.br
+.PP
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "using \fBi8\fP = int8_t"
+.br
+.RI "Signed 8-bit integer type (range: -128 to 127)\&. "
+.ti -1c
+.RI "using \fBi16\fP = int16_t"
+.br
+.RI "Signed 16-bit integer type (range: -32768 to 32767)\&. "
+.ti -1c
+.RI "using \fBi32\fP = int32_t"
+.br
+.RI "Signed 32-bit integer type (range: -2147483648 to 2147483647)\&. "
+.ti -1c
+.RI "using \fBi64\fP = int64_t"
+.br
+.RI "Signed 64-bit integer type (range: -9223372036854775808 to 9223372036854775807)\&. "
+.ti -1c
+.RI "using \fBu8\fP = uint8_t"
+.br
+.RI "Unsigned 8-bit integer type (range: 0 to 255)\&. "
+.ti -1c
+.RI "using \fBu16\fP = uint16_t"
+.br
+.RI "Unsigned 16-bit integer type (range: 0 to 65535)\&. "
+.ti -1c
+.RI "using \fBu32\fP = uint32_t"
+.br
+.RI "Unsigned 32-bit integer type (range: 0 to 4294967295)\&. "
+.ti -1c
+.RI "using \fBu64\fP = uint64_t"
+.br
+.RI "Unsigned 64-bit integer type (range: 0 to 18446744073709551615)\&. "
+.ti -1c
+.RI "using \fBf32\fP = float"
+.br
+.RI "32-bit floating-point type (standard C++ float) "
+.ti -1c
+.RI "using \fBf64\fP = double"
+.br
+.RI "64-bit floating-point type (standard C++ double) "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Standard type aliases for fixed-size integer and floating-point types\&. These provide a consistent interface across different platforms and compilers for numerical computations throughout the engine\&. 
+.SH "Typedef Documentation"
+.PP 
+.SS "using \fBf32\fP = float"
+
+.PP
+32-bit floating-point type (standard C++ float) Provides single-precision floating-point calculations, commonly used for 3D graphics computations, physics calculations, and transformations\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Base\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Core/Time\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/GraphicsContext\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/RenderCommand\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Shader\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Math/MathUtils\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Math/Matrix3\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Math/Vector2\&.h\fP, and \fBUsage\fP\&.
+.PP
+Definition at line \fB126\fP of file \fBBase\&.h\fP\&.
+.SS "using \fBf64\fP = double"
+
+.PP
+64-bit floating-point type (standard C++ double) Provides double-precision floating-point calculations for high-precision mathematical operations where accuracy is critical\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Base\&.h\fP\&.
+.PP
+Definition at line \fB135\fP of file \fBBase\&.h\fP\&.
+.SS "using \fBi16\fP = int16_t"
+
+.PP
+Signed 16-bit integer type (range: -32768 to 32767)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Base\&.h\fP\&.
+.PP
+Definition at line \fB81\fP of file \fBBase\&.h\fP\&.
+.SS "using \fBi32\fP = int32_t"
+
+.PP
+Signed 32-bit integer type (range: -2147483648 to 2147483647)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Base\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Shader\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB87\fP of file \fBBase\&.h\fP\&.
+.SS "using \fBi64\fP = int64_t"
+
+.PP
+Signed 64-bit integer type (range: -9223372036854775808 to 9223372036854775807)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Base\&.h\fP\&.
+.PP
+Definition at line \fB93\fP of file \fBBase\&.h\fP\&.
+.SS "using \fBi8\fP = int8_t"
+
+.PP
+Signed 8-bit integer type (range: -128 to 127)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Base\&.h\fP\&.
+.PP
+Definition at line \fB75\fP of file \fBBase\&.h\fP\&.
+.SS "using \fBu16\fP = uint16_t"
+
+.PP
+Unsigned 16-bit integer type (range: 0 to 65535)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Base\&.h\fP\&.
+.PP
+Definition at line \fB105\fP of file \fBBase\&.h\fP\&.
+.SS "using \fBu32\fP = uint32_t"
+
+.PP
+Unsigned 32-bit integer type (range: 0 to 4294967295)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Base\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/GraphicsContext\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/IndexBuffer\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/RenderCommand\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Renderer\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Shader\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Math/Vector2\&.h\fP\&.
+.PP
+Definition at line \fB111\fP of file \fBBase\&.h\fP\&.
+.SS "using \fBu64\fP = uint64_t"
+
+.PP
+Unsigned 64-bit integer type (range: 0 to 18446744073709551615)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Base\&.h\fP\&.
+.PP
+Definition at line \fB117\fP of file \fBBase\&.h\fP\&.
+.SS "using \fBu8\fP = uint8_t"
+
+.PP
+Unsigned 8-bit integer type (range: 0 to 255)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Base\&.h\fP\&.
+.PP
+Definition at line \fB99\fP of file \fBBase\&.h\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

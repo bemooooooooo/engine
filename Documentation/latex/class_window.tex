@@ -1,0 +1,379 @@
+\doxysection{Window Class Reference}
+\hypertarget{class_window}{}\label{class_window}\index{Window@{Window}}
+
+
+Encapsulates a window using GLFW for context and event handling.  
+
+
+
+
+{\ttfamily \+\#include $<$Window.\+h$>$}
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_window_1_1_window_data}{Window\+Data}}
+\begin{DoxyCompactList}\small\item\em Internal data structure for window properties and state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \doxymbox{\hyperlink{class_window_ae7df2d993ca25c8617c0bac53880c234}{Event\+Callback\+Fn}} = std::\+function$<$void(\doxymbox{\hyperlink{class_event}{Event}}\&)$>$
+\begin{DoxyCompactList}\small\item\em Function type for event callbacks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_window_a74e6087da23d3c24e9fac0245e5ec92c}{Window}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_window}{Window} instance. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_window_a245d821e6016fa1f6970ccbbedd635f6}{\texorpdfstring{$\sim$}{\string~}\+Window}} ()
+\begin{DoxyCompactList}\small\item\em Destructor that cleans up the window resources. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_window_a541b6751fce9ada75b282c0246bfc2ff}{Initialize}} (const \doxymbox{\hyperlink{struct_window_props}{Window\+Props}} \&props=\doxymbox{\hyperlink{struct_window_props}{Window\+Props}}())
+\item 
+void \doxymbox{\hyperlink{class_window_a89c434ec340b4594c6c8af3f0bf58c9b}{Shutdown}} ()
+\item 
+void \doxymbox{\hyperlink{class_window_ab8d28dce3166c70eb5744466460795df}{Update}} ()
+\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_window_a0ea057f50666273ea7be70c758a36239}{Get\+Width}} () const
+\begin{DoxyCompactList}\small\item\em Gets the current width of the window. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_window_a7178ee9d49bb363d16c3e4f13df62789}{Get\+Height}} () const
+\begin{DoxyCompactList}\small\item\em Gets the current height of the window. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_window_a57d825ad38512ac9a4b79d06be0c3b65}{Begin\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em Begins the frame by polling events. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_window_a23bf99dc7ae51eacb31f71b1b1d01975}{End\+Frame}} ()
+\begin{DoxyCompactList}\small\item\em Ends the frame by swapping buffers. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_window_ab92b7cd7f14cfc1cd54a383b2b56a7db}{Set\+Event\+Callback}} (const \doxymbox{\hyperlink{class_window_ae7df2d993ca25c8617c0bac53880c234}{Event\+Callback\+Fn}} \&callback)
+\item 
+bool \doxymbox{\hyperlink{class_window_a57ff1cba3082f14aa7f29f02aae3827e}{Should\+Close}} () const
+\item 
+void \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_window_a5cd03da187191b6e83f4dc06ec933844}{Get\+Native\+Window}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_window_a144f7bf9555c435bd55542665dd62efe}{Setup\+Callbacks}} ()
+\begin{DoxyCompactList}\small\item\em Sets up GLFW callbacks for window events. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_window_1_1_window_data}{Window\+Data}} \doxymbox{\hyperlink{class_window_a6ffad99d369f977e8656b5afa742416e}{m\+\_\+\+Data}}
+\begin{DoxyCompactList}\small\item\em The window\textquotesingle{}s properties and state data. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_window_afc4ca5972253160b7b8e4084758930a2}{m\+\_\+\+Window}} = nullptr
+\begin{DoxyCompactList}\small\item\em Pointer to the native GLFW window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Encapsulates a window using GLFW for context and event handling. 
+
+This class manages the creation, updating, and destruction of a window. It also handles input events and provides a callback mechanism for event processing.
+
+\doxylink{namespace_key}{Key} features:\+
+\begin{DoxyItemize}
+\item Create and destroy a window with specified properties
+\item Poll events and swap buffers each frame
+\item Set event callback functions for handling input and window events
+\item Query window dimensions and native handle
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+Requires GLFW library to be linked with the project. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}, and \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8h_source_l00147}{147}} of file \doxymbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{class_window_doc-typedef-members}
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{class_window_ae7df2d993ca25c8617c0bac53880c234}\index{Window@{Window}!EventCallbackFn@{EventCallbackFn}}
+\index{EventCallbackFn@{EventCallbackFn}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{EventCallbackFn}{EventCallbackFn}}
+{\footnotesize\ttfamily \label{class_window_ae7df2d993ca25c8617c0bac53880c234} 
+using \doxymbox{\hyperlink{class_window_ae7df2d993ca25c8617c0bac53880c234}{Window::\+\+Event\+Callback\+Fn}} = std::\+function$<$void(\doxymbox{\hyperlink{class_event}{Event}}\&)$>$}
+
+
+
+Function type for event callbacks. 
+
+Represents a function that takes an \doxylink{class_event}{Event} reference and returns void. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8h_source_l00155}{155}} of file \doxymbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_window_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_window_a74e6087da23d3c24e9fac0245e5ec92c}\index{Window@{Window}!Window@{Window}}
+\index{Window@{Window}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Window()}{Window()}}
+{\footnotesize\ttfamily \label{class_window_a74e6087da23d3c24e9fac0245e5ec92c} 
+Window::\+\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_window}{Window} instance. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8cpp_source_l00015}{15}} of file \doxymbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+\Hypertarget{class_window_a245d821e6016fa1f6970ccbbedd635f6}\index{Window@{Window}!````~Window@{\texorpdfstring{$\sim$}{\string~}Window}}
+\index{````~Window@{\texorpdfstring{$\sim$}{\string~}Window}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Window()}{\string~Window()}}
+{\footnotesize\ttfamily \label{class_window_a245d821e6016fa1f6970ccbbedd635f6} 
+Window::\+\texorpdfstring{$\sim$}{\string~}\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor that cleans up the window resources. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8cpp_source_l00019}{19}} of file \doxymbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_window_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_window_a57d825ad38512ac9a4b79d06be0c3b65}\index{Window@{Window}!BeginFrame@{BeginFrame}}
+\index{BeginFrame@{BeginFrame}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{BeginFrame()}{BeginFrame()}}
+{\footnotesize\ttfamily \label{class_window_a57d825ad38512ac9a4b79d06be0c3b65} 
+void Window::\+\+Begin\+Frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Begins the frame by polling events. 
+
+Should be called at the start of each frame before rendering. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8cpp_source_l00145}{145}} of file \doxymbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+\Hypertarget{class_window_a23bf99dc7ae51eacb31f71b1b1d01975}\index{Window@{Window}!EndFrame@{EndFrame}}
+\index{EndFrame@{EndFrame}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{EndFrame()}{EndFrame()}}
+{\footnotesize\ttfamily \label{class_window_a23bf99dc7ae51eacb31f71b1b1d01975} 
+void Window::\+\+End\+Frame (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Ends the frame by swapping buffers. 
+
+Should be called at the end of each frame after rendering. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8cpp_source_l00150}{150}} of file \doxymbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+\Hypertarget{class_window_a7178ee9d49bb363d16c3e4f13df62789}\index{Window@{Window}!GetHeight@{GetHeight}}
+\index{GetHeight@{GetHeight}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{GetHeight()}{GetHeight()}}
+{\footnotesize\ttfamily \label{class_window_a7178ee9d49bb363d16c3e4f13df62789} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Window::\+\+Get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the current height of the window. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32} The height in pixels 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8h_source_l00222}{222}} of file \doxymbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_window_8h_source_l00307}{m\+\_\+\+Data}}.
+
+\Hypertarget{class_window_a5cd03da187191b6e83f4dc06ec933844}\index{Window@{Window}!GetNativeWindow@{GetNativeWindow}}
+\index{GetNativeWindow@{GetNativeWindow}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{GetNativeWindow()}{GetNativeWindow()}}
+{\footnotesize\ttfamily \label{class_window_a5cd03da187191b6e83f4dc06ec933844} 
+void \texorpdfstring{$\ast$}{*} Window::\+\+Get\+Native\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_window_8h_source_l00281}{281}} of file \doxymbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+\Hypertarget{class_window_a0ea057f50666273ea7be70c758a36239}\index{Window@{Window}!GetWidth@{GetWidth}}
+\index{GetWidth@{GetWidth}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{GetWidth()}{GetWidth()}}
+{\footnotesize\ttfamily \label{class_window_a0ea057f50666273ea7be70c758a36239} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Window::\+\+Get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the current width of the window. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32} The width in pixels 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8h_source_l00216}{216}} of file \doxymbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_window_8h_source_l00307}{m\+\_\+\+Data}}.
+
+\Hypertarget{class_window_a541b6751fce9ada75b282c0246bfc2ff}\index{Window@{Window}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily \label{class_window_a541b6751fce9ada75b282c0246bfc2ff} 
+bool Window::\+\+Initialize (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_window_props}{Window\+Props}} \&}]{props}{ = {\ttfamily \doxymbox{\hyperlink{struct_window_props}{Window\+Props}}()}}\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8cpp_source_l00024}{24}} of file \doxymbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+\Hypertarget{class_window_ab92b7cd7f14cfc1cd54a383b2b56a7db}\index{Window@{Window}!SetEventCallback@{SetEventCallback}}
+\index{SetEventCallback@{SetEventCallback}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{SetEventCallback()}{SetEventCallback()}}
+{\footnotesize\ttfamily \label{class_window_ab92b7cd7f14cfc1cd54a383b2b56a7db} 
+void Window::\+\+Set\+Event\+Callback (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_window_ae7df2d993ca25c8617c0bac53880c234}{Event\+Callback\+Fn}} \&}]{callback}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8h_source_l00253}{253}} of file \doxymbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+\Hypertarget{class_window_a144f7bf9555c435bd55542665dd62efe}\index{Window@{Window}!SetupCallbacks@{SetupCallbacks}}
+\index{SetupCallbacks@{SetupCallbacks}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{SetupCallbacks()}{SetupCallbacks()}}
+{\footnotesize\ttfamily \label{class_window_a144f7bf9555c435bd55542665dd62efe} 
+void Window::\+\+Setup\+Callbacks (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sets up GLFW callbacks for window events. 
+
+Configures GLFW to call appropriate functions on window events such as resize and close, forwarding them to the event callback. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8cpp_source_l00114}{114}} of file \doxymbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_window_8h_source_l00307}{m\+\_\+\+Data}}, and \doxymbox{\hyperlink{_window_8h_source_l00313}{m\+\_\+\+Window}}.
+
+\Hypertarget{class_window_a57ff1cba3082f14aa7f29f02aae3827e}\index{Window@{Window}!ShouldClose@{ShouldClose}}
+\index{ShouldClose@{ShouldClose}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{ShouldClose()}{ShouldClose()}}
+{\footnotesize\ttfamily \label{class_window_a57ff1cba3082f14aa7f29f02aae3827e} 
+bool Window::\+\+Should\+Close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8cpp_source_l00110}{110}} of file \doxymbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+\Hypertarget{class_window_a89c434ec340b4594c6c8af3f0bf58c9b}\index{Window@{Window}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily \label{class_window_a89c434ec340b4594c6c8af3f0bf58c9b} 
+void Window::\+\+Shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8cpp_source_l00091}{91}} of file \doxymbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+\Hypertarget{class_window_ab8d28dce3166c70eb5744466460795df}\index{Window@{Window}!Update@{Update}}
+\index{Update@{Update}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_window_ab8d28dce3166c70eb5744466460795df} 
+void Window::\+\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_window_8cpp_source_l00099}{99}} of file \doxymbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_window_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_window_a6ffad99d369f977e8656b5afa742416e}\index{Window@{Window}!m\_Data@{m\_Data}}
+\index{m\_Data@{m\_Data}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{m\_Data}{m\_Data}}
+{\footnotesize\ttfamily \label{class_window_a6ffad99d369f977e8656b5afa742416e} 
+\doxymbox{\hyperlink{struct_window_1_1_window_data}{Window\+Data}} Window::\+m\+\_\+\+Data\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The window\textquotesingle{}s properties and state data. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8h_source_l00307}{307}} of file \doxymbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_window_8h_source_l00222}{Get\+Height()}}, \doxymbox{\hyperlink{_window_8h_source_l00216}{Get\+Width()}}, and \doxymbox{\hyperlink{_window_8cpp_source_l00114}{Setup\+Callbacks()}}.
+
+\Hypertarget{class_window_afc4ca5972253160b7b8e4084758930a2}\index{Window@{Window}!m\_Window@{m\_Window}}
+\index{m\_Window@{m\_Window}!Window@{Window}}
+\doxysubsubsection{\texorpdfstring{m\_Window}{m\_Window}}
+{\footnotesize\ttfamily \label{class_window_afc4ca5972253160b7b8e4084758930a2} 
+void\texorpdfstring{$\ast$}{*} Window::\+m\+\_\+\+Window = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to the native GLFW window. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_window_8h_source_l00313}{313}} of file \doxymbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_window_8cpp_source_l00114}{Setup\+Callbacks()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Window.\+h\item 
+src/\+\+Graphics/\+Window.\+cpp\end{DoxyCompactItemize}

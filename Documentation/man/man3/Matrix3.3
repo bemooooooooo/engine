@@ -1,0 +1,234 @@
+.TH "Matrix3" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Matrix3 \- A 3x3 matrix structure for mathematics and graphics operations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Matrix3\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMatrix3\fP (const \fBf32\fP *data)"
+.br
+.ti -1c
+.RI "\fBMatrix3\fP (\fBf32\fP m00, \fBf32\fP m01, \fBf32\fP m02, \fBf32\fP m10, \fBf32\fP m11, \fBf32\fP m12, \fBf32\fP m20, \fBf32\fP m21, \fBf32\fP m22)"
+.br
+.ti -1c
+.RI "\fBMatrix3\fP \fBoperator+\fP (const \fBMatrix3\fP &other) const"
+.br
+.ti -1c
+.RI "\fBMatrix3\fP \fBoperator\-\fP (const \fBMatrix3\fP &other) const"
+.br
+.ti -1c
+.RI "\fBMatrix3\fP \fBoperator*\fP (const \fBMatrix3\fP &other) const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator*\fP (const \fBVector3\fP &vec) const"
+.br
+.ti -1c
+.RI "\fBMatrix3\fP & \fBoperator*=\fP (const \fBMatrix3\fP &other)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBMatrix3\fP &other) const"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBoperator()\fP (int row, int col) const"
+.br
+.ti -1c
+.RI "\fBf32\fP & \fBoperator()\fP (int row, int col)"
+.br
+.ti -1c
+.RI "void \fBSetIdentity\fP ()"
+.br
+.ti -1c
+.RI "\fBMatrix3\fP \fBTransposed\fP () const"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBDeterminant\fP () const"
+.br
+.ti -1c
+.RI "\fBMatrix3\fP \fBInverted\fP () const"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBMatrix3\fP \fBIdentity\fP ()"
+.br
+.ti -1c
+.RI "static \fBMatrix3\fP \fBScale\fP (const \fBVector2\fP &scale)"
+.br
+.ti -1c
+.RI "static \fBMatrix3\fP \fBRotation\fP (\fBf32\fP angle)"
+.br
+.ti -1c
+.RI "static \fBMatrix3\fP \fBTranslation\fP (const \fBVector2\fP &translation)"
+.br
+.ti -1c
+.RI "static \fBMatrix3\fP \fBFromMatrix4\fP (const \fBMatrix4\fP &matrix4)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   \fBf32\fP \fBm\fP [9]"
+.br
+.ti -1c
+.RI "   \fBf32\fP \fBmm\fP [3][3]"
+.br
+.ti -1c
+.RI "   \fBVector3\fP \fBcolumns\fP [3]"
+.br
+.ti -1c
+.RI "}; "
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A 3x3 matrix structure for mathematics and graphics operations\&. 
+
+\fBMatrix3\fP represents a 3x3 matrix used for various transformations in 2D and 3D space, including rotation, scaling, and shearing\&. It supports standard matrix operations such as addition, subtraction, multiplication, transposition, and inversion\&. Common uses:
+.IP "\(bu" 2
+2D transformations (rotation, scaling, shearing)
+.IP "\(bu" 2
+Normal matrix calculations in 3D graphics
+.IP "\(bu" 2
+Linear transformations in 3D space
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+All components are stored as \fBf32\fP (single-precision floats) for performance\&. 
+
+.PP
+Matrix operations are defined as operator overloads for intuitive syntax\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Shader\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Math/Matrix3\&.h\fP\&.
+.PP
+Definition at line \fB33\fP of file \fBMatrix3\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Matrix3::Matrix3 ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB40\fP of file \fBMatrix3\&.h\fP\&.
+.SS "Matrix3::Matrix3 (const \fBf32\fP * data)\fR [inline]\fP, \fR [explicit]\fP"
+
+.PP
+Definition at line \fB44\fP of file \fBMatrix3\&.h\fP\&.
+.SS "Matrix3::Matrix3 (\fBf32\fP m00, \fBf32\fP m01, \fBf32\fP m02, \fBf32\fP m10, \fBf32\fP m11, \fBf32\fP m12, \fBf32\fP m20, \fBf32\fP m21, \fBf32\fP m22)\fR [inline]\fP"
+
+.PP
+Definition at line \fB48\fP of file \fBMatrix3\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBf32\fP Matrix3::Determinant () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB134\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBMatrix3\fP Matrix3::FromMatrix4 (const \fBMatrix4\fP & matrix4)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB205\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBMatrix3\fP Matrix3::Identity ()\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB166\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBMatrix3\fP Matrix3::Inverted () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB140\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBf32\fP & Matrix3::operator() (int row, int col)\fR [inline]\fP"
+
+.PP
+Definition at line \fB110\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBf32\fP Matrix3::operator() (int row, int col) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB106\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBMatrix3\fP Matrix3::operator* (const \fBMatrix3\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB73\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBVector3\fP Matrix3::operator* (const \fBVector3\fP & vec) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB86\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBMatrix3\fP & Matrix3::operator*= (const \fBMatrix3\fP & other)\fR [inline]\fP"
+
+.PP
+Definition at line \fB94\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBMatrix3\fP Matrix3::operator+ (const \fBMatrix3\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB57\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBMatrix3\fP Matrix3::operator\- (const \fBMatrix3\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB65\fP of file \fBMatrix3\&.h\fP\&.
+.SS "bool Matrix3::operator== (const \fBMatrix3\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB99\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBMatrix3\fP Matrix3::Rotation (\fBf32\fP angle)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB177\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBMatrix3\fP Matrix3::Scale (const \fBVector2\fP & scale)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB170\fP of file \fBMatrix3\&.h\fP\&.
+.SS "void Matrix3::SetIdentity ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB115\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBMatrix3\fP Matrix3::Translation (const \fBVector2\fP & translation)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB190\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBMatrix3\fP Matrix3::Transposed () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB124\fP of file \fBMatrix3\&.h\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBVector3\fP Matrix3::columns[3]"
+
+.PP
+Definition at line \fB37\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBf32\fP Matrix3::m[9]"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Matrix3\&.h\fP\&.
+.PP
+Definition at line \fB35\fP of file \fBMatrix3\&.h\fP\&.
+.SS "\fBf32\fP Matrix3::mm[3][3]"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Matrix3\&.h\fP\&.
+.PP
+Definition at line \fB36\fP of file \fBMatrix3\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

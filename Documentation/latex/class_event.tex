@@ -1,0 +1,167 @@
+\doxysection{Event Class Reference}
+\hypertarget{class_event}{}\label{class_event}\index{Event@{Event}}
+
+
+Base class for all events in the event system.  
+
+
+
+
+{\ttfamily \+\#include $<$Event.\+h$>$}
+
+Inheritance diagram for Event:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_event}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_event_a105223995bbf1a1e4714d0c77f91cf0b}\label{class_event_a105223995bbf1a1e4714d0c77f91cf0b} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Event} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \doxylink{class_event}{Event} object. \end{DoxyCompactList}\item 
+virtual const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_event_a092ad068c77c897d25aec42563fb60ec}{Get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Gets the event type as a string. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\bool \doxymbox{\hyperlink{class_event_a759eeb1cb569cbea0c0a9707696adf6e}{Is\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the event is of a specific type T. \end{DoxyCompactList}\item 
+virtual std::\+string \doxymbox{\hyperlink{class_event_a17303a8089a66eece86b41cdea845f55}{To\+String}} () const
+\begin{DoxyCompactList}\small\item\em Converts the event to a string representation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{class_event_adc2beb684aa773433656394589ee60d5}{Handled\+\_\+}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for all events in the event system. 
+
+The \doxylink{class_event}{Event} class serves as the base for all specific event types in the engine\textquotesingle{}s event handling system. It provides common functionality such as type identification and a handled flag to indicate whether the event has been processed.
+
+\doxylink{namespace_key}{Key} features:\+
+\begin{DoxyItemize}
+\item Type identification via \doxylink{class_event_a092ad068c77c897d25aec42563fb60ec}{Get\+Type()} and \doxylink{class_event_a759eeb1cb569cbea0c0a9707696adf6e}{Is\+Type$<$\+T$>$()}
+\item Handled flag to prevent further processing of already handled events
+\item \doxylink{class_event_a17303a8089a66eece86b41cdea845f55}{To\+String()} method for easy logging and debugging
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+All specific event types should inherit from this class and implement their own type identification methods. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}, \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_event_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Event.\+h}}, and \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_event_8h_source_l00037}{37}} of file \doxymbox{\hyperlink{_event_8h_source}{Event.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_event_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_event_a092ad068c77c897d25aec42563fb60ec}\index{Event@{Event}!GetType@{GetType}}
+\index{GetType@{GetType}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{GetType()}{GetType()}}
+{\footnotesize\ttfamily \label{class_event_a092ad068c77c897d25aec42563fb60ec} 
+virtual const char \texorpdfstring{$\ast$}{*} Event::\+\+Get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Gets the event type as a string. 
+
+Returns a string representing the specific type of the event. Must be overridden by derived event classes.
+
+\begin{DoxyReturn}{Returns}
+const char\texorpdfstring{$\ast$}{*} The event type string 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_event_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Event.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_event_8h_source_l00062}{62}} of file \doxymbox{\hyperlink{_event_8h_source}{Event.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_event_8h_source_l00086}{To\+String()}}.
+
+\Hypertarget{class_event_a759eeb1cb569cbea0c0a9707696adf6e}\index{Event@{Event}!IsType@{IsType}}
+\index{IsType@{IsType}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{IsType()}{IsType()}}
+{\footnotesize\ttfamily \label{class_event_a759eeb1cb569cbea0c0a9707696adf6e} 
+template$<$typename T$>$ \\
+bool Event::\+\+Is\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the event is of a specific type T. 
+
+Uses dynamic\+\_\+cast to determine if the event instance can be cast to type T. Returns true if the cast is successful, false otherwise.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The event type to check against \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+bool True if the event is of type T, false otherwise 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_event_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Event.\+h}}, and \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_event_8h_source_l00074}{74}} of file \doxymbox{\hyperlink{_event_8h_source}{Event.\+h}}.
+
+\Hypertarget{class_event_a17303a8089a66eece86b41cdea845f55}\index{Event@{Event}!ToString@{ToString}}
+\index{ToString@{ToString}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{ToString()}{ToString()}}
+{\footnotesize\ttfamily \label{class_event_a17303a8089a66eece86b41cdea845f55} 
+virtual std::\+string Event::\+\+To\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Converts the event to a string representation. 
+
+Returns a string that describes the event. By default, it returns the event type. Derived classes can override this method to provide more detailed information.
+
+\begin{DoxyReturn}{Returns}
+std::\+string A string representation of the event 
+\end{DoxyReturn}
+
+
+Reimplemented in \doxymbox{\hyperlink{class_window_close_event_a003e0478da492ea8d0822466aad4c84b}{Window\+Close\+Event}}, and \doxymbox{\hyperlink{class_window_resize_event_ae2378189874a18d24933b707c0275619}{Window\+Resize\+Event}}.
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_event_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Event.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_event_8h_source_l00086}{86}} of file \doxymbox{\hyperlink{_event_8h_source}{Event.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_event_8h_source_l00062}{Get\+Type()}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_event_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_event_adc2beb684aa773433656394589ee60d5}\index{Event@{Event}!Handled\_@{Handled\_}}
+\index{Handled\_@{Handled\_}!Event@{Event}}
+\doxysubsubsection{\texorpdfstring{Handled\_}{Handled\_}}
+{\footnotesize\ttfamily \label{class_event_adc2beb684aa773433656394589ee60d5} 
+bool Event::\+\+Handled\+\_\+ = false}
+
+
+
+Definition at line \doxymbox{\hyperlink{_event_8h_source_l00052}{52}} of file \doxymbox{\hyperlink{_event_8h_source}{Event.\+h}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Core/\+Event.\+h\end{DoxyCompactItemize}

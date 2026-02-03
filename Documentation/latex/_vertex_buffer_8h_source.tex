@@ -1,0 +1,69 @@
+\doxysection{Vertex\+Buffer.\+h}
+\hypertarget{_vertex_buffer_8h_source}{}\label{_vertex_buffer_8h_source}\index{src/Graphics/VertexBuffer.h@{src/Graphics/VertexBuffer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_base_8h}{../Core/Base.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00004}00004\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00005}00005\ \textcolor{comment}{\ *\ @class\ VertexBuffer}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00006}00006\ \textcolor{comment}{\ *\ @brief\ Encapsulates\ an\ OpenGL\ vertex\ buffer\ object\ (VBO).}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00007}00007\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00008}00008\ \textcolor{comment}{\ *\ Manages\ the\ creation,\ binding,\ and\ data\ management\ of\ a\ vertex\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00009}00009\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00010}\doxymbox{\hyperlink{class_vertex_buffer}{00010}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_vertex_buffer_ac19f46ec67149c8ab7fce00ff2ee41b3}{VertexBuffer}}\ \{}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00011}00011\ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00012}00012\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00013}00013\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Constructs\ a\ VertexBuffer\ with\ the\ given\ data\ and\ size.}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00014}00014\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00015}00015\ \textcolor{comment}{\ \ \ \ \ *\ @param\ data\ Pointer\ to\ the\ vertex\ data}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00016}00016\ \textcolor{comment}{\ \ \ \ \ *\ @param\ size\ Size\ of\ the\ vertex\ data\ in\ bytes}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00017}00017\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00018}00018\ \ \ \ \ \doxymbox{\hyperlink{class_vertex_buffer_ac19f46ec67149c8ab7fce00ff2ee41b3}{VertexBuffer}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ size);}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00019}00019\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00020}00020\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00021}00021\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Constructs\ a\ dynamic\ VertexBuffer\ with\ the\ given\ size.}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00022}00022\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00023}00023\ \textcolor{comment}{\ \ \ \ \ *\ @param\ size\ Size\ of\ the\ vertex\ buffer\ in\ bytes}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00024}00024\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00025}00025\ \ \ \ \ \doxymbox{\hyperlink{class_vertex_buffer_ac19f46ec67149c8ab7fce00ff2ee41b3}{VertexBuffer}}(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ size);}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00026}00026\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00027}00027\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00028}00028\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Destructor\ that\ cleans\ up\ the\ OpenGL\ vertex\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00029}00029\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00030}00030\ \ \ \ \ \doxymbox{\hyperlink{class_vertex_buffer_a5216726fdd43b2ae8e1439e347717fdd}{\string~VertexBuffer}}();}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00031}00031\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00032}00032\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00033}00033\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Binds\ the\ vertex\ buffer\ for\ rendering.}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00034}00034\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00035}00035\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vertex_buffer_a13019e8580ca3e369fad4166500ad2b9}{Bind}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00036}00036\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00037}00037\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00038}00038\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Unbinds\ the\ vertex\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00039}00039\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00040}00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vertex_buffer_abfdb36238d60f2cd7bf63093f914b61f}{Unbind}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00041}00041\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00042}00042\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00043}00043\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ data\ of\ the\ vertex\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00044}00044\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00045}00045\ \textcolor{comment}{\ \ \ \ \ *\ @param\ data\ Pointer\ to\ the\ new\ vertex\ data}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00046}00046\ \textcolor{comment}{\ \ \ \ \ *\ @param\ size\ Size\ of\ the\ data\ in\ bytes}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00047}00047\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00048}00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vertex_buffer_a8ac04ca57704402055e7892d4f3cc113}{SetData}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ data,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ size);}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00049}00049\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00050}00050\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00051}00051\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ OpenGL\ renderer\ ID\ of\ the\ vertex\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00052}00052\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00053}00053\ \textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ OpenGL\ renderer\ ID}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00054}00054\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00055}\doxymbox{\hyperlink{class_vertex_buffer_aed72730445ce94392c90db777f0ca91c}{00055}}\ \ \ \ \ [[nodiscard]]\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_vertex_buffer_aed72730445ce94392c90db777f0ca91c}{GetRendererID}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_vertex_buffer_a3a95148c117b0dacabc015afcfff79f4}{m\_RendererID}};\ \}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00057}00057\ \textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00058}00058\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00059}00059\ \textcolor{comment}{\ \ \ \ \ *\ @var\ m\_RendererID}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00060}00060\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ OpenGL\ renderer\ ID\ for\ the\ vertex\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00061}00061\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00062}\doxymbox{\hyperlink{class_vertex_buffer_a3a95148c117b0dacabc015afcfff79f4}{00062}}\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_vertex_buffer_a3a95148c117b0dacabc015afcfff79f4}{m\_RendererID}};}
+\DoxyCodeLine{\Hypertarget{_vertex_buffer_8h_source_l00063}00063\ \};}
+
+\end{DoxyCode}

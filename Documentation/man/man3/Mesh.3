@@ -1,0 +1,249 @@
+.TH "Mesh" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mesh \- Represents a 3D mesh with geometry and material\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Mesh\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMesh\fP (const std::vector< \fBVertex\fP > &vertices, const std::vector< \fBu32\fP > &indices)"
+.br
+.RI "Constructs a \fBMesh\fP from given vertices and indices\&. "
+.ti -1c
+.RI "\fB~Mesh\fP ()"
+.br
+.RI "Destructor for the \fBMesh\fP class\&. "
+.ti -1c
+.RI "void \fBDraw\fP (const \fBRef\fP< \fBShader\fP > &shader, const \fBMatrix4\fP &transform) const"
+.br
+.RI "Draws the mesh using the specified shader and transformation matrix\&. "
+.ti -1c
+.RI "void \fBSetMaterial\fP (const \fBRef\fP< \fBMaterial\fP > &material)"
+.br
+.RI "Sets the material for the mesh\&. "
+.ti -1c
+.RI "\fBRef\fP< \fBMaterial\fP > \fBGetMaterial\fP () const"
+.br
+.RI "Gets the material associated with the mesh\&. "
+.ti -1c
+.RI "const \fBRef\fP< \fBVertexArray\fP > & \fBGetVertexArray\fP () const"
+.br
+.RI "Gets the vertex array of the mesh\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBRef\fP< \fBMesh\fP > \fBCreateCube\fP ()"
+.br
+.RI "Factory method to create a cube mesh\&. "
+.ti -1c
+.RI "static \fBRef\fP< \fBMesh\fP > \fBCreatePlane\fP ()"
+.br
+.RI "Factory method to create a plane mesh\&. "
+.ti -1c
+.RI "static \fBRef\fP< \fBMesh\fP > \fBCreateSphere\fP (\fBu32\fP segments=32)"
+.br
+.RI "Factory method to create a sphere mesh\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBRef\fP< \fBVertexArray\fP > \fBm_VertexArray\fP"
+.br
+.RI "The vertex array object containing vertex and index buffers\&. "
+.ti -1c
+.RI "\fBRef\fP< \fBMaterial\fP > \fBm_Material\fP"
+.br
+.RI "The material associated with the mesh\&. "
+.ti -1c
+.RI "\fBu32\fP \fBm_IndexCount\fP"
+.br
+.RI "The number of indices in the mesh\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a 3D mesh with geometry and material\&. 
+
+Encapsulates vertex and index buffers, along with material properties\&. Provides methods to draw the mesh using a specified shader and transformation\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB73\fP of file \fBMesh\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Mesh::Mesh (const std::vector< \fBVertex\fP > & vertices, const std::vector< \fBu32\fP > & indices)"
+
+.PP
+Constructs a \fBMesh\fP from given vertices and indices\&. Creates vertex and index buffers, and sets up the vertex array object\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIvertices\fP The list of vertices defining the mesh geometry 
+.br
+\fIindices\fP The list of indices defining the mesh faces 
+.RE
+.PP
+
+.PP
+Definition at line \fB6\fP of file \fBMesh\&.cpp\fP\&.
+.PP
+References \fBm_IndexCount\fP, \fBm_Material\fP, \fBm_VertexArray\fP, and \fBVertexBufferLayout::Push()\fP\&.
+.SS "Mesh::~Mesh ()"
+
+.PP
+Destructor for the \fBMesh\fP class\&. 
+.PP
+Definition at line \fB36\fP of file \fBMesh\&.cpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBRef\fP< \fBMesh\fP > Mesh::CreateCube ()\fR [static]\fP"
+
+.PP
+Factory method to create a cube mesh\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Mesh>\fP The created cube mesh 
+.RE
+.PP
+
+.PP
+Definition at line \fB63\fP of file \fBMesh\&.cpp\fP\&.
+.SS "\fBRef\fP< \fBMesh\fP > Mesh::CreatePlane ()\fR [static]\fP"
+
+.PP
+Factory method to create a plane mesh\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Mesh>\fP The created plane mesh 
+.RE
+.PP
+
+.PP
+Definition at line \fB120\fP of file \fBMesh\&.cpp\fP\&.
+.SS "\fBRef\fP< \fBMesh\fP > Mesh::CreateSphere (\fBu32\fP segments = \fR32\fP)\fR [static]\fP"
+
+.PP
+Factory method to create a sphere mesh\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsegments\fP The number of segments for the sphere (default is 32) 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Mesh>\fP The created sphere mesh 
+.RE
+.PP
+
+.PP
+Definition at line \fB132\fP of file \fBMesh\&.cpp\fP\&.
+.PP
+References \fBVertex::bitangent\fP, \fBVertex::normal\fP, \fBMath::PI\fP, \fBVertex::position\fP, \fBVertex::tangent\fP, \fBVertex::texCoord\fP, \fBVector2::x\fP, and \fBVector2::y\fP\&.
+.SS "void Mesh::Draw (const \fBRef\fP< \fBShader\fP > & shader, const \fBMatrix4\fP & transform) const"
+
+.PP
+Draws the mesh using the specified shader and transformation matrix\&. Binds the material and vertex array, sets shader uniforms, and issues the draw call to render the mesh\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIshader\fP The shader to use for rendering 
+.br
+\fItransform\fP The transformation matrix to apply to the mesh 
+.RE
+.PP
+
+.PP
+Definition at line \fB38\fP of file \fBMesh\&.cpp\fP\&.
+.PP
+References \fBm_Material\fP, and \fBm_VertexArray\fP\&.
+.SS "\fBRef\fP< \fBMaterial\fP > Mesh::GetMaterial () const\fR [inline]\fP"
+
+.PP
+Gets the material associated with the mesh\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Material>\fP The material of the mesh 
+.RE
+.PP
+
+.PP
+Definition at line \fB112\fP of file \fBMesh\&.h\fP\&.
+.PP
+References \fBm_Material\fP\&.
+.SS "const \fBRef\fP< \fBVertexArray\fP > & Mesh::GetVertexArray () const\fR [inline]\fP"
+
+.PP
+Gets the vertex array of the mesh\&. 
+.PP
+\fBReturns\fP
+.RS 4
+const \fBRef<VertexArray>\fP& The vertex array object 
+.RE
+.PP
+
+.PP
+Definition at line \fB119\fP of file \fBMesh\&.h\fP\&.
+.PP
+References \fBm_VertexArray\fP\&.
+.SS "void Mesh::SetMaterial (const \fBRef\fP< \fBMaterial\fP > & material)\fR [inline]\fP"
+
+.PP
+Sets the material for the mesh\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fImaterial\fP The material to associate with this mesh 
+.RE
+.PP
+
+.PP
+Definition at line \fB105\fP of file \fBMesh\&.h\fP\&.
+.PP
+References \fBm_Material\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBu32\fP Mesh::m_IndexCount\fR [private]\fP"
+
+.PP
+The number of indices in the mesh\&. 
+.PP
+Definition at line \fB161\fP of file \fBMesh\&.h\fP\&.
+.PP
+Referenced by \fBMesh()\fP\&.
+.SS "\fBRef\fP<\fBMaterial\fP> Mesh::m_Material\fR [private]\fP"
+
+.PP
+The material associated with the mesh\&. 
+.PP
+Definition at line \fB155\fP of file \fBMesh\&.h\fP\&.
+.PP
+Referenced by \fBDraw()\fP, \fBGetMaterial()\fP, \fBMesh()\fP, and \fBSetMaterial()\fP\&.
+.SS "\fBRef\fP<\fBVertexArray\fP> Mesh::m_VertexArray\fR [private]\fP"
+
+.PP
+The vertex array object containing vertex and index buffers\&. 
+.PP
+Definition at line \fB149\fP of file \fBMesh\&.h\fP\&.
+.PP
+Referenced by \fBDraw()\fP, \fBGetVertexArray()\fP, and \fBMesh()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

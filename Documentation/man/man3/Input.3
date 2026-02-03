@@ -1,0 +1,353 @@
+.TH "Input" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Input \- Static class for handling input from keyboard and mouse\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Input\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBInit\fP ()"
+.br
+.ti -1c
+.RI "static void \fBUpdate\fP ()"
+.br
+.ti -1c
+.RI "static bool \fBGetKey\fP (\fBKey::Code\fP key)"
+.br
+.ti -1c
+.RI "static bool \fBGetKeyDown\fP (\fBKey::Code\fP key)"
+.br
+.ti -1c
+.RI "static bool \fBGetKeyUp\fP (\fBKey::Code\fP key)"
+.br
+.ti -1c
+.RI "static bool \fBGetMouseButton\fP (\fBMouse::Button\fP button)"
+.br
+.ti -1c
+.RI "static bool \fBGetMouseButtonDown\fP (\fBMouse::Button\fP button)"
+.br
+.ti -1c
+.RI "static bool \fBGetMouseButtonUp\fP (\fBMouse::Button\fP button)"
+.br
+.ti -1c
+.RI "static \fBVector2\fP \fBGetMousePosition\fP ()"
+.br
+.ti -1c
+.RI "static \fBVector2\fP \fBGetMouseDelta\fP ()"
+.br
+.ti -1c
+.RI "static \fBVector2\fP \fBGetMouseScrollDelta\fP ()"
+.br
+.ti -1c
+.RI "static void \fBSetCursorMode\fP (bool locked)"
+.br
+.ti -1c
+.RI "static bool \fBIsCursorLocked\fP ()"
+.br
+.ti -1c
+.RI "static void \fBSetKeyState\fP (\fBKey::Code\fP key, bool pressed)"
+.br
+.RI "Sets the state of a key (for internal use)\&. "
+.ti -1c
+.RI "static void \fBSetMouseButtonState\fP (\fBMouse::Button\fP button, bool pressed)"
+.br
+.RI "Sets the state of a mouse button (for internal use)\&. "
+.ti -1c
+.RI "static void \fBSetMousePosition\fP (const \fBVector2\fP &position)"
+.br
+.RI "Sets the current mouse position (for internal use)\&. "
+.ti -1c
+.RI "static void \fBSetMouseScrollDelta\fP (const \fBVector2\fP &scroll)"
+.br
+.RI "Sets the mouse scroll delta (for internal use)\&. "
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static std::array< bool, 512 > \fBs_KeyState\fP"
+.br
+.RI "Current state of all keys\&. "
+.ti -1c
+.RI "static std::array< bool, 512 > \fBs_KeyStatePrevious\fP"
+.br
+.RI "Previous frame state of all keys\&. "
+.ti -1c
+.RI "static std::array< bool, 8 > \fBs_MouseButtonState\fP"
+.br
+.RI "Current state of all mouse buttons\&. "
+.ti -1c
+.RI "static std::array< bool, 8 > \fBs_MouseButtonStatePrevious\fP"
+.br
+.RI "Previous frame state of all mouse buttons\&. "
+.ti -1c
+.RI "static \fBVector2\fP \fBs_MousePosition\fP"
+.br
+.RI "Current mouse position\&. "
+.ti -1c
+.RI "static \fBVector2\fP \fBs_MousePositionPrevious\fP"
+.br
+.RI "Previous frame mouse position\&. "
+.ti -1c
+.RI "static \fBVector2\fP \fBs_MouseScrollDelta\fP"
+.br
+.RI "\fBMouse\fP scroll delta\&. "
+.ti -1c
+.RI "static bool \fBs_CursorLocked\fP = false"
+.br
+.RI "Whether the cursor is currently locked\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Static class for handling input from keyboard and mouse\&. 
+
+Provides methods to query the current state of keys and mouse buttons, as well as mouse position and scroll delta\&. Also allows locking the cursor\&.
+
+.PP
+\fBNote\fP
+.RS 4
+Must be updated each frame via Update() to track state changes\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Input/Input\&.h\fP\&.
+.PP
+Definition at line \fB148\fP of file \fBInput\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Input::GetKey (\fBKey::Code\fP key)\fR [static]\fP"
+
+.PP
+Definition at line \fB39\fP of file \fBInput\&.cpp\fP\&.
+.SS "bool Input::GetKeyDown (\fBKey::Code\fP key)\fR [static]\fP"
+
+.PP
+Definition at line \fB43\fP of file \fBInput\&.cpp\fP\&.
+.SS "bool Input::GetKeyUp (\fBKey::Code\fP key)\fR [static]\fP"
+
+.PP
+Definition at line \fB48\fP of file \fBInput\&.cpp\fP\&.
+.SS "bool Input::GetMouseButton (\fBMouse::Button\fP button)\fR [static]\fP"
+
+.PP
+Definition at line \fB54\fP of file \fBInput\&.cpp\fP\&.
+.SS "bool Input::GetMouseButtonDown (\fBMouse::Button\fP button)\fR [static]\fP"
+
+.PP
+Definition at line \fB58\fP of file \fBInput\&.cpp\fP\&.
+.SS "bool Input::GetMouseButtonUp (\fBMouse::Button\fP button)\fR [static]\fP"
+
+.PP
+Definition at line \fB63\fP of file \fBInput\&.cpp\fP\&.
+.SS "\fBVector2\fP Input::GetMouseDelta ()\fR [static]\fP"
+
+.PP
+Definition at line \fB72\fP of file \fBInput\&.cpp\fP\&.
+.SS "\fBVector2\fP Input::GetMousePosition ()\fR [static]\fP"
+
+.PP
+Definition at line \fB68\fP of file \fBInput\&.cpp\fP\&.
+.SS "\fBVector2\fP Input::GetMouseScrollDelta ()\fR [static]\fP"
+
+.PP
+Definition at line \fB76\fP of file \fBInput\&.cpp\fP\&.
+.SS "void Input::Init ()\fR [static]\fP"
+
+.PP
+Definition at line \fB15\fP of file \fBInput\&.cpp\fP\&.
+.SS "bool Input::IsCursorLocked ()\fR [static]\fP"
+
+.PP
+Definition at line \fB86\fP of file \fBInput\&.cpp\fP\&.
+.SS "void Input::SetCursorMode (bool locked)\fR [static]\fP"
+
+.PP
+Definition at line \fB81\fP of file \fBInput\&.cpp\fP\&.
+.SS "void Input::SetKeyState (\fBKey::Code\fP key, bool pressed)\fR [static]\fP"
+
+.PP
+Sets the state of a key (for internal use)\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIkey\fP The key code to set 
+.br
+\fIpressed\fP True if the key is pressed, false otherwise 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Input/Input\&.h\fP\&.
+.PP
+Definition at line \fB91\fP of file \fBInput\&.cpp\fP\&.
+.PP
+References \fBs_KeyState\fP\&.
+.SS "void Input::SetMouseButtonState (\fBMouse::Button\fP button, bool pressed)\fR [static]\fP"
+
+.PP
+Sets the state of a mouse button (for internal use)\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIbutton\fP The mouse button code to set 
+.br
+\fIpressed\fP True if the button is pressed, false otherwise 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Input/Input\&.h\fP\&.
+.PP
+Definition at line \fB95\fP of file \fBInput\&.cpp\fP\&.
+.PP
+References \fBs_MouseButtonState\fP\&.
+.SS "void Input::SetMousePosition (const \fBVector2\fP & position)\fR [static]\fP"
+
+.PP
+Sets the current mouse position (for internal use)\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIposition\fP The new mouse position 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Input/Input\&.h\fP\&.
+.PP
+Definition at line \fB99\fP of file \fBInput\&.cpp\fP\&.
+.PP
+References \fBs_MousePosition\fP\&.
+.SS "void Input::SetMouseScrollDelta (const \fBVector2\fP & scroll)\fR [static]\fP"
+
+.PP
+Sets the mouse scroll delta (for internal use)\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIscroll\fP The new mouse scroll delta 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Input/Input\&.h\fP\&.
+.PP
+Definition at line \fB103\fP of file \fBInput\&.cpp\fP\&.
+.PP
+References \fBs_MouseScrollDelta\fP\&.
+.SS "void Input::Update ()\fR [static]\fP"
+
+.PP
+Definition at line \fB28\fP of file \fBInput\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool Input::s_CursorLocked = false\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Whether the cursor is currently locked\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Input/Input\&.h\fP\&.
+.PP
+Definition at line \fB422\fP of file \fBInput\&.h\fP\&.
+.SS "std::array< bool, 512 > Input::s_KeyState\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Current state of all keys\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Input/Input\&.h\fP\&.
+.PP
+Definition at line \fB380\fP of file \fBInput\&.h\fP\&.
+.PP
+Referenced by \fBSetKeyState()\fP\&.
+.SS "std::array< bool, 512 > Input::s_KeyStatePrevious\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Previous frame state of all keys\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Input/Input\&.h\fP\&.
+.PP
+Definition at line \fB386\fP of file \fBInput\&.h\fP\&.
+.SS "std::array< bool, 8 > Input::s_MouseButtonState\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Current state of all mouse buttons\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Input/Input\&.h\fP\&.
+.PP
+Definition at line \fB392\fP of file \fBInput\&.h\fP\&.
+.PP
+Referenced by \fBSetMouseButtonState()\fP\&.
+.SS "std::array< bool, 8 > Input::s_MouseButtonStatePrevious\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Previous frame state of all mouse buttons\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Input/Input\&.h\fP\&.
+.PP
+Definition at line \fB398\fP of file \fBInput\&.h\fP\&.
+.SS "\fBVector2\fP Input::s_MousePosition\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Current mouse position\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Input/Input\&.h\fP\&.
+.PP
+Definition at line \fB404\fP of file \fBInput\&.h\fP\&.
+.PP
+Referenced by \fBSetMousePosition()\fP\&.
+.SS "\fBVector2\fP Input::s_MousePositionPrevious\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Previous frame mouse position\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Input/Input\&.h\fP\&.
+.PP
+Definition at line \fB410\fP of file \fBInput\&.h\fP\&.
+.SS "\fBVector2\fP Input::s_MouseScrollDelta\fR [static]\fP, \fR [private]\fP"
+
+.PP
+\fBMouse\fP scroll delta\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Input/Input\&.h\fP\&.
+.PP
+Definition at line \fB416\fP of file \fBInput\&.h\fP\&.
+.PP
+Referenced by \fBSetMouseScrollDelta()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

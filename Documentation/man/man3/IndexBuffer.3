@@ -1,0 +1,223 @@
+.TH "IndexBuffer" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+IndexBuffer \- Represents an OpenGL index buffer for indexed drawing\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <IndexBuffer\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBIndexBuffer\fP (const \fBu32\fP *indices, \fBu32\fP count)"
+.br
+.RI "Constructs an \fBIndexBuffer\fP from an array of indices\&. "
+.ti -1c
+.RI "\fB~IndexBuffer\fP ()"
+.br
+.RI "Destructor that cleans up the OpenGL index buffer\&. "
+.ti -1c
+.RI "void \fBBind\fP () const"
+.br
+.RI "Binds the index buffer for rendering\&. "
+.ti -1c
+.RI "void \fBUnbind\fP () const"
+.br
+.RI "Unbinds the index buffer\&. "
+.ti -1c
+.RI "\fBu32\fP \fBGetCount\fP () const"
+.br
+.RI "Gets the number of indices stored in the buffer\&. "
+.ti -1c
+.RI "\fBu32\fP \fBGetRendererID\fP () const"
+.br
+.RI "Gets the OpenGL renderer ID for this index buffer\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBu32\fP \fBm_RendererID\fP"
+.br
+.RI "The OpenGL buffer object ID for this index buffer\&. "
+.ti -1c
+.RI "\fBu32\fP \fBm_Count\fP"
+.br
+.RI "The number of indices stored in this index buffer\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents an OpenGL index buffer for indexed drawing\&. 
+
+The \fBIndexBuffer\fP class encapsulates the creation, binding, and management of an OpenGL index buffer object (IBO)\&. It allows for efficient rendering of complex geometries by reusing vertex data through indexed drawing\&.
+
+.PP
+\fBKey\fP features:
+.IP "\(bu" 2
+Creation of index buffer from an array of indices
+.IP "\(bu" 2
+Binding and unbinding the index buffer for rendering
+.IP "\(bu" 2
+Retrieval of the number of indices stored
+.PP
+
+.PP
+Usage:
+.IP "\(bu" 2
+Create an \fBIndexBuffer\fP with a list of indices
+.IP "\(bu" 2
+Bind the buffer before issuing draw calls
+.IP "\(bu" 2
+Unbind when done to avoid unintended state changes
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+This class assumes that an OpenGL context is active when used\&. 
+
+.PP
+The indices are expected to be of type \fBu32\fP (unsigned 32-bit integers)\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/IndexBuffer\&.h\fP\&.
+.PP
+Definition at line \fB35\fP of file \fBIndexBuffer\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "IndexBuffer::IndexBuffer (const \fBu32\fP * indices, \fBu32\fP count)"
+
+.PP
+Constructs an \fBIndexBuffer\fP from an array of indices\&. Creates an OpenGL index buffer object and uploads the provided indices to the GPU for use in indexed drawing\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIindices\fP Pointer to an array of \fBu32\fP indices 
+.br
+\fIcount\fP Number of indices in the array 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/IndexBuffer\&.h\fP\&.
+.PP
+Definition at line \fB4\fP of file \fBIndexBuffer\&.cpp\fP\&.
+.PP
+References \fBm_Count\fP, and \fBm_RendererID\fP\&.
+.SS "IndexBuffer::~IndexBuffer ()"
+
+.PP
+Destructor that cleans up the OpenGL index buffer\&. Deletes the OpenGL buffer object associated with this \fBIndexBuffer\fP to free GPU resources\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/IndexBuffer\&.h\fP\&.
+.PP
+Definition at line \fB11\fP of file \fBIndexBuffer\&.cpp\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void IndexBuffer::Bind () const"
+
+.PP
+Binds the index buffer for rendering\&. Sets this index buffer as the current buffer to be used for indexed drawing operations\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/IndexBuffer\&.h\fP\&.
+.PP
+Definition at line \fB15\fP of file \fBIndexBuffer\&.cpp\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.SS "\fBu32\fP IndexBuffer::GetCount () const\fR [inline]\fP"
+
+.PP
+Gets the number of indices stored in the buffer\&. Returns the count of indices that were uploaded to the GPU when the \fBIndexBuffer\fP was created\&.
+
+.PP
+\fBReturns\fP
+.RS 4
+\fBu32\fP The number of indices 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/IndexBuffer\&.h\fP\&.
+.PP
+Definition at line \fB80\fP of file \fBIndexBuffer\&.h\fP\&.
+.PP
+References \fBm_Count\fP\&.
+.SS "\fBu32\fP IndexBuffer::GetRendererID () const\fR [inline]\fP"
+
+.PP
+Gets the OpenGL renderer ID for this index buffer\&. Returns the internal OpenGL buffer object ID used for binding and rendering\&.
+
+.PP
+\fBReturns\fP
+.RS 4
+\fBu32\fP The OpenGL buffer object ID 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/IndexBuffer\&.h\fP\&.
+.PP
+Definition at line \fB90\fP of file \fBIndexBuffer\&.h\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.SS "void IndexBuffer::Unbind () const"
+
+.PP
+Unbinds the index buffer\&. Resets the current index buffer binding to zero, effectively unbinding any index buffer that was previously bound\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/IndexBuffer\&.h\fP\&.
+.PP
+Definition at line \fB19\fP of file \fBIndexBuffer\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBu32\fP IndexBuffer::m_Count\fR [private]\fP"
+
+.PP
+The number of indices stored in this index buffer\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/IndexBuffer\&.h\fP\&.
+.PP
+Definition at line \fB102\fP of file \fBIndexBuffer\&.h\fP\&.
+.PP
+Referenced by \fBGetCount()\fP, and \fBIndexBuffer()\fP\&.
+.SS "\fBu32\fP IndexBuffer::m_RendererID\fR [private]\fP"
+
+.PP
+The OpenGL buffer object ID for this index buffer\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/IndexBuffer\&.h\fP\&.
+.PP
+Definition at line \fB97\fP of file \fBIndexBuffer\&.h\fP\&.
+.PP
+Referenced by \fBBind()\fP, \fBGetRendererID()\fP, \fBIndexBuffer()\fP, and \fB~IndexBuffer()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

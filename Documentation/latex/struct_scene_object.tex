@@ -1,0 +1,181 @@
+\doxysection{Scene\+Object Struct Reference}
+\hypertarget{struct_scene_object}{}\label{struct_scene_object}\index{SceneObject@{SceneObject}}
+
+
+Represents an object within a 3D scene, containing a mesh and transform.  
+
+
+
+
+{\ttfamily \+\#include $<$Scene.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_scene_object_a74acdc78ecc807ca0b03104346aa867f}{Scene\+Object}} (const std::\+string \&\doxymbox{\hyperlink{struct_scene_object_a6c5ece15b6c7fe5b4d41ebcf4b13e9fc}{name}}, const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ \&\doxymbox{\hyperlink{struct_scene_object_af3d0d2c807c820edb11551c0fe90be4c}{mesh}}, const \doxymbox{\hyperlink{class_transform}{Transform}} \&\doxymbox{\hyperlink{struct_scene_object_acc41820565467dc4384d5717b5ef5a65}{transform}}=\doxymbox{\hyperlink{class_transform}{Transform}}())
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{struct_scene_object}{Scene\+Object} with the given name, mesh, and optional transform. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string \doxymbox{\hyperlink{struct_scene_object_a6c5ece15b6c7fe5b4d41ebcf4b13e9fc}{name}}
+\begin{DoxyCompactList}\small\item\em The unique name identifier for the scene object. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ \doxymbox{\hyperlink{struct_scene_object_af3d0d2c807c820edb11551c0fe90be4c}{mesh}}
+\begin{DoxyCompactList}\small\item\em The mesh associated with this scene object. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_transform}{Transform}} \doxymbox{\hyperlink{struct_scene_object_acc41820565467dc4384d5717b5ef5a65}{transform}}
+\begin{DoxyCompactList}\small\item\em The transformation (position, rotation, scale) of the object in the scene. \end{DoxyCompactList}\item 
+std::\+function$<$ void(\doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}} \texorpdfstring{$\ast$}{*}, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}})$>$ \doxymbox{\hyperlink{struct_scene_object_a8d46d27e658b69b375241c11a66c0ff9}{on\+Update}} = nullptr
+\begin{DoxyCompactList}\small\item\em Optional callback function called each frame during scene update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an object within a 3D scene, containing a mesh and transform. 
+
+\doxylink{struct_scene_object}{Scene\+Object} encapsulates a 3D mesh along with its transformation (position, rotation, scale) in the scene. It also supports an optional update callback for per-\/frame logic.
+
+\doxylink{namespace_key}{Key} features:\+
+\begin{DoxyItemize}
+\item Holds a reference to a \doxylink{class_mesh}{Mesh} for rendering
+\item Contains a \doxylink{class_transform}{Transform} for spatial positioning
+\item Supports an on\+Update callback for custom behavior each frame
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+The on\+Update function, if set, is called during the scene\textquotesingle{}s Update() method with the delta time parameter. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00035}{35}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{struct_scene_object_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_scene_object_a74acdc78ecc807ca0b03104346aa867f}\index{SceneObject@{SceneObject}!SceneObject@{SceneObject}}
+\index{SceneObject@{SceneObject}!SceneObject@{SceneObject}}
+\doxysubsubsection{\texorpdfstring{SceneObject()}{SceneObject()}}
+{\footnotesize\ttfamily \label{struct_scene_object_a74acdc78ecc807ca0b03104346aa867f} 
+Scene\+Object::\+\+Scene\+Object (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{, }\item[{const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ \&}]{mesh}{, }\item[{const \doxymbox{\hyperlink{class_transform}{Transform}} \&}]{transform}{ = {\ttfamily \doxymbox{\hyperlink{class_transform}{Transform}}()}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{struct_scene_object}{Scene\+Object} with the given name, mesh, and optional transform. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{struct_scene_object_a6c5ece15b6c7fe5b4d41ebcf4b13e9fc}{name}} & The unique name for the scene object \\
+\hline
+{\em \doxylink{struct_scene_object_af3d0d2c807c820edb11551c0fe90be4c}{mesh}} & The mesh to associate with this object \\
+\hline
+{\em \doxylink{struct_scene_object_acc41820565467dc4384d5717b5ef5a65}{transform}} & The initial transform of the object (default is identity) \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00081}{81}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_scene_8h_source_l00046}{mesh}}, \doxymbox{\hyperlink{_scene_8h_source_l00040}{name}}, and \doxymbox{\hyperlink{_scene_8h_source_l00052}{transform}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_scene_object_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_scene_object_af3d0d2c807c820edb11551c0fe90be4c}\index{SceneObject@{SceneObject}!mesh@{mesh}}
+\index{mesh@{mesh}!SceneObject@{SceneObject}}
+\doxysubsubsection{\texorpdfstring{mesh}{mesh}}
+{\footnotesize\ttfamily \label{struct_scene_object_af3d0d2c807c820edb11551c0fe90be4c} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$\doxymbox{\hyperlink{class_mesh}{Mesh}}$>$ Scene\+Object::\+mesh}
+
+
+
+The mesh associated with this scene object. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00046}{46}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_scene_8h_source_l00081}{Scene\+Object()}}.
+
+\Hypertarget{struct_scene_object_a6c5ece15b6c7fe5b4d41ebcf4b13e9fc}\index{SceneObject@{SceneObject}!name@{name}}
+\index{name@{name}!SceneObject@{SceneObject}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{struct_scene_object_a6c5ece15b6c7fe5b4d41ebcf4b13e9fc} 
+std::\+string Scene\+Object::\+name}
+
+
+
+The unique name identifier for the scene object. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00040}{40}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_scene_8h_source_l00081}{Scene\+Object()}}.
+
+\Hypertarget{struct_scene_object_a8d46d27e658b69b375241c11a66c0ff9}\index{SceneObject@{SceneObject}!onUpdate@{onUpdate}}
+\index{onUpdate@{onUpdate}!SceneObject@{SceneObject}}
+\doxysubsubsection{\texorpdfstring{onUpdate}{onUpdate}}
+{\footnotesize\ttfamily \label{struct_scene_object_a8d46d27e658b69b375241c11a66c0ff9} 
+std::\+function$<$void (\doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}}\texorpdfstring{$\ast$}{*}, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}})$>$ Scene\+Object::\+on\+Update = nullptr}
+
+
+
+Optional callback function called each frame during scene update. 
+
+This function, if set, is invoked during the \doxylink{class_scene}{Scene}\textquotesingle{}s Update() method, allowing for custom per-\/frame logic such as animations or behavior. The function receives a pointer to the \doxylink{struct_scene_object}{Scene\+Object} and the delta time since the last frame.
+
+\begin{DoxyNote}{Note}
+Set to nullptr by default (no update). 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00072}{72}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+\Hypertarget{struct_scene_object_acc41820565467dc4384d5717b5ef5a65}\index{SceneObject@{SceneObject}!transform@{transform}}
+\index{transform@{transform}!SceneObject@{SceneObject}}
+\doxysubsubsection{\texorpdfstring{transform}{transform}}
+{\footnotesize\ttfamily \label{struct_scene_object_acc41820565467dc4384d5717b5ef5a65} 
+\doxymbox{\hyperlink{class_transform}{Transform}} Scene\+Object::\+transform}
+
+
+
+The transformation (position, rotation, scale) of the object in the scene. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00052}{52}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_scene_8h_source_l00081}{Scene\+Object()}}.
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Scene.\+h\end{DoxyCompactItemize}

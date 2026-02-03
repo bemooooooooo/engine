@@ -1,0 +1,162 @@
+\doxysection{Event.\+h}
+\hypertarget{_event_8h_source}{}\label{_event_8h_source}\index{src/Core/Event.h@{src/Core/Event.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_base_8h}{Base.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00006}00006\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00007}00007\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00008}00008\ \textcolor{comment}{\ *\ @class\ Event}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00009}00009\ \textcolor{comment}{\ *\ @brief\ Base\ class\ for\ all\ events\ in\ the\ event\ system.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00010}00010\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00011}00011\ \textcolor{comment}{\ *\ The\ Event\ class\ serves\ as\ the\ base\ for\ all\ specific\ event\ types\ in\ the\ engine's}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00012}00012\ \textcolor{comment}{\ *\ event\ handling\ system.\ It\ provides\ common\ functionality\ such\ as\ type\ identification}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00013}00013\ \textcolor{comment}{\ *\ and\ a\ handled\ flag\ to\ indicate\ whether\ the\ event\ has\ been\ processed.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00014}00014\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00015}00015\ \textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00016}00016\ \textcolor{comment}{\ *\ -\/\ Type\ identification\ via\ GetType()\ and\ IsType<T>()}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00017}00017\ \textcolor{comment}{\ *\ -\/\ Handled\ flag\ to\ prevent\ further\ processing\ of\ already\ handled\ events}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00018}00018\ \textcolor{comment}{\ *\ -\/\ ToString()\ method\ for\ easy\ logging\ and\ debugging}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00019}00019\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00020}00020\ \textcolor{comment}{\ *\ @note\ All\ specific\ event\ types\ should\ inherit\ from\ this\ class\ and\ implement}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00021}00021\ \textcolor{comment}{\ *\ \ \ \ \ \ \ their\ own\ type\ identification\ methods.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00022}00022\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00023}00023\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00024}00024\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00025}00025\ \textcolor{comment}{\ *\ class\ KeyEvent\ :\ public\ Event\ \{}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00026}00026\ \textcolor{comment}{\ *\ public:}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00027}00027\ \textcolor{comment}{\ *\ \ \ \ \ EVENT\_CLASS\_TYPE(KeyEvent)}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00028}00028\ \textcolor{comment}{\ *\ \ \ \ \ //\ Additional\ KeyEvent-\/specific\ members...}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00029}00029\ \textcolor{comment}{\ *\ \};}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00030}00030\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00031}00031\ \textcolor{comment}{\ *\ Event*\ event\ =\ new\ KeyEvent();}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00032}00032\ \textcolor{comment}{\ *\ if\ (event-\/>IsType<KeyEvent>())\ \{}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00033}00033\ \textcolor{comment}{\ *\ \ \ \ \ //\ Handle\ key\ event}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00034}00034\ \textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00035}00035\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00036}00036\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00037}\doxymbox{\hyperlink{class_event}{00037}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_event}{Event}}\ \{}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00038}00038\ \ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00039}00039\ \textcolor{comment}{\ /**}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00040}00040\ \textcolor{comment}{\ \ *\ @brief\ Destroy\ the\ Event\ object}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00041}00041\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00042}\doxymbox{\hyperlink{class_event_a105223995bbf1a1e4714d0c77f91cf0b}{00042}}\ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_event_a105223995bbf1a1e4714d0c77f91cf0b}{\string~Event}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00043}00043\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00044}00044\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00045}00045\ \textcolor{comment}{\ \ \ *\ @var\ Handled}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00046}00046\ \textcolor{comment}{\ \ \ *\ @brief\ Indicates\ whether\ the\ event\ has\ been\ handled.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00047}00047\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00048}00048\ \textcolor{comment}{\ \ \ *\ This\ flag\ is\ used\ to\ prevent\ further\ processing\ of\ the\ event\ once\ it\ has}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00049}00049\ \textcolor{comment}{\ \ \ *\ been\ handled\ by\ an\ event\ listener.\ Event\ dispatchers\ check\ this\ flag\ before}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00050}00050\ \textcolor{comment}{\ \ \ *\ invoking\ handlers.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00051}00051\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00052}00052\ \ \ \textcolor{keywordtype}{bool}\ Handled\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00053}00053\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00054}00054\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00055}00055\ \textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ event\ type\ as\ a\ string.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00056}00056\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00057}00057\ \textcolor{comment}{\ \ \ *\ Returns\ a\ string\ representing\ the\ specific\ type\ of\ the\ event.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00058}00058\ \textcolor{comment}{\ \ \ *\ Must\ be\ overridden\ by\ derived\ event\ classes.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00059}00059\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00060}00060\ \textcolor{comment}{\ \ \ *\ @return\ const\ char*\ The\ event\ type\ string}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00061}00061\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00062}\doxymbox{\hyperlink{class_event_a092ad068c77c897d25aec42563fb60ec}{00062}}\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{class_event_a092ad068c77c897d25aec42563fb60ec}{GetType}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{typeid}(*this).name();\ \}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00063}00063\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00064}00064\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00065}00065\ \textcolor{comment}{\ \ \ *\ @brief\ Checks\ if\ the\ event\ is\ of\ a\ specific\ type\ T.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00066}00066\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00067}00067\ \textcolor{comment}{\ \ \ *\ Uses\ dynamic\_cast\ to\ determine\ if\ the\ event\ instance\ can\ be\ cast\ to\ type\ T.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00068}00068\ \textcolor{comment}{\ \ \ *\ Returns\ true\ if\ the\ cast\ is\ successful,\ false\ otherwise.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00069}00069\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00070}00070\ \textcolor{comment}{\ \ \ *\ @tparam\ T\ The\ event\ type\ to\ check\ against}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00071}00071\ \textcolor{comment}{\ \ \ *\ @return\ bool\ True\ if\ the\ event\ is\ of\ type\ T,\ false\ otherwise}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00072}00072\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00073}00073\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00074}\doxymbox{\hyperlink{class_event_a759eeb1cb569cbea0c0a9707696adf6e}{00074}}\ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_event_a759eeb1cb569cbea0c0a9707696adf6e}{IsType}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00075}00075\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{dynamic\_cast<}\textcolor{keyword}{const\ }T*\textcolor{keyword}{>}(\textcolor{keyword}{this})\ !=\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00076}00076\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00077}00077\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00078}00078\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00079}00079\ \textcolor{comment}{\ \ \ *\ @brief\ Converts\ the\ event\ to\ a\ string\ representation.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00080}00080\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00081}00081\ \textcolor{comment}{\ \ \ *\ Returns\ a\ string\ that\ describes\ the\ event.\ By\ default,\ it\ returns\ the\ event\ type.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00082}00082\ \textcolor{comment}{\ \ \ *\ Derived\ classes\ can\ override\ this\ method\ to\ provide\ more\ detailed\ information.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00083}00083\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00084}00084\ \textcolor{comment}{\ \ \ *\ @return\ std::string\ A\ string\ representation\ of\ the\ event}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00085}00085\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00086}\doxymbox{\hyperlink{class_event_a17303a8089a66eece86b41cdea845f55}{00086}}\ \ \ \textcolor{keyword}{virtual}\ std::string\ \doxymbox{\hyperlink{class_event_a17303a8089a66eece86b41cdea845f55}{ToString}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_event_a092ad068c77c897d25aec42563fb60ec}{GetType}}();}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00088}00088\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00089}00089\ \};}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00090}00090\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00091}00091\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00092}00092\ \textcolor{comment}{\ *\ @class\ EventDispatcher}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00093}00093\ \textcolor{comment}{\ *\ @brief\ Dispatches\ events\ to\ appropriate\ handlers\ based\ on\ event\ type.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00094}00094\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00095}00095\ \textcolor{comment}{\ *\ The\ EventDispatcher\ class\ is\ responsible\ for\ routing\ events\ to\ the\ correct}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00096}00096\ \textcolor{comment}{\ *\ handler\ functions\ based\ on\ their\ type.\ It\ uses\ templates\ to\ allow\ for\ type-\/safe}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00097}00097\ \textcolor{comment}{\ *\ dispatching\ of\ events.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00098}00098\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00099}00099\ \textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00100}00100\ \textcolor{comment}{\ *\ -\/\ Type-\/safe\ event\ dispatching\ using\ templates}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00101}00101\ \textcolor{comment}{\ *\ -\/\ Prevents\ multiple\ handling\ of\ the\ same\ event\ via\ the\ Handled\ flag}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00102}00102\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00103}00103\ \textcolor{comment}{\ *\ @tparam\ T\ The\ specific\ event\ type\ to\ dispatch}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00104}00104\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00105}00105\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00106}00106\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00107}00107\ \textcolor{comment}{\ *\ Event*\ event\ =\ new\ KeyEvent();}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00108}00108\ \textcolor{comment}{\ *\ EventDispatcher<KeyEvent>\ dispatcher(*event);}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00109}00109\ \textcolor{comment}{\ *\ dispatcher.Dispatch<KeyEvent>([](KeyEvent\&\ e)\ \{}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00110}00110\ \textcolor{comment}{\ *\ \ \ \ \ //\ Handle\ key\ event}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00111}00111\ \textcolor{comment}{\ *\ \ \ \ \ return\ true;\ //\ Mark\ as\ handled}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00112}00112\ \textcolor{comment}{\ *\ \});}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00113}00113\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00114}00114\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00115}00115\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00116}\doxymbox{\hyperlink{class_event_dispatcher}{00116}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_event_dispatcher_ae8542f00ea6595db32ed7c7dbad9a5d2}{EventDispatcher}}\ \{}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00117}00117\ \ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00118}00118\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00119}00119\ \textcolor{comment}{\ \ *\ @brief\ Constructs\ an\ EventDispatcher\ for\ a\ given\ event.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00120}00120\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00121}\doxymbox{\hyperlink{class_event_dispatcher_ae8542f00ea6595db32ed7c7dbad9a5d2}{00121}}\ \ \ \doxymbox{\hyperlink{class_event_dispatcher_ae8542f00ea6595db32ed7c7dbad9a5d2}{EventDispatcher}}(\doxymbox{\hyperlink{class_event}{Event}}\&\ event)\ :\ \doxymbox{\hyperlink{class_event_dispatcher_a5ff21b4625346e4d7b0bd70b193bfae3}{m\_Event\_}}(static\_cast<T\&>(event))\ \{\}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00122}00122\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00123}00123\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00124}00124\ \textcolor{comment}{\ \ \ *\ @brief\ Dispatches\ the\ event\ to\ the\ provided\ handler\ if\ types\ match.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00125}00125\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00126}00126\ \textcolor{comment}{\ \ \ *\ This\ function\ checks\ if\ the\ event\ type\ matches\ T.\ If\ it\ does,\ it\ invokes}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00127}00127\ \textcolor{comment}{\ \ \ *\ the\ provided\ handler\ function\ with\ the\ event\ as\ an\ argument.\ If\ the\ handler}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00128}00128\ \textcolor{comment}{\ \ \ *\ returns\ true,\ the\ event\ is\ marked\ as\ handled.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00129}00129\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00130}00130\ \textcolor{comment}{\ \ \ *\ @tparam\ F\ The\ type\ of\ the\ handler\ function\ (should\ be\ callable\ with\ T\&)}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00131}00131\ \textcolor{comment}{\ \ \ *\ @param\ func\ The\ handler\ function\ to\ invoke\ if\ types\ match}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00132}00132\ \textcolor{comment}{\ \ \ *\ @return\ bool\ True\ if\ the\ event\ was\ dispatched\ and\ handled,\ false\ otherwise}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00133}00133\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00134}00134\ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ F>}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00135}\doxymbox{\hyperlink{class_event_dispatcher_a00460da348877f605ddaa9d48615b9eb}{00135}}\ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_event_dispatcher_a00460da348877f605ddaa9d48615b9eb}{Dispatch}}(\textcolor{keyword}{const}\ F\&\ func)\ \{}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00136}00136\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\doxymbox{\hyperlink{class_event_dispatcher_a5ff21b4625346e4d7b0bd70b193bfae3}{m\_Event\_}}.Handled)\ \{}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00137}00137\ \ \ \ \ \ \ \doxymbox{\hyperlink{class_event_dispatcher_a5ff21b4625346e4d7b0bd70b193bfae3}{m\_Event\_}}.Handled\ =\ func(\doxymbox{\hyperlink{class_event_dispatcher_a5ff21b4625346e4d7b0bd70b193bfae3}{m\_Event\_}});}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00138}00138\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00139}00139\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00140}00140\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00141}00141\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00143}00143\ \ \textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00144}00144\ \textcolor{comment}{\ /**}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00145}00145\ \textcolor{comment}{\ \ *\ @brief\ Reference\ to\ the\ event\ being\ dispatched.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00146}00146\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00147}\doxymbox{\hyperlink{class_event_dispatcher_a5ff21b4625346e4d7b0bd70b193bfae3}{00147}}\ \ \ T\&\ \doxymbox{\hyperlink{class_event_dispatcher_a5ff21b4625346e4d7b0bd70b193bfae3}{m\_Event\_}};}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00148}00148\ \};}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00149}00149\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00150}00150\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00151}00151\ \textcolor{comment}{\ *\ @def\ EVENT\_CLASS\_TYPE(type)}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00152}00152\ \textcolor{comment}{\ *\ @brief\ Macro\ to\ define\ type\ identification\ methods\ in\ event\ classes.}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00153}00153\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00154}00154\ \textcolor{preprocessor}{\#define\ EVENT\_CLASS\_TYPE(type)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00155}00155\ \textcolor{preprocessor}{\ \ static\ const\ char*\ GetStaticType()\ \{\ return\ \#type;\ \}\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{_event_8h_source_l00156}00156\ \textcolor{preprocessor}{\ \ virtual\ const\ char*\ GetType()\ const\ override\ \{\ return\ GetStaticType();\ \}}}
+
+\end{DoxyCode}

@@ -1,0 +1,153 @@
+.TH "SceneObject" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SceneObject \- Represents an object within a 3D scene, containing a mesh and transform\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Scene\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSceneObject\fP (const std::string &\fBname\fP, const \fBRef\fP< \fBMesh\fP > &\fBmesh\fP, const \fBTransform\fP &\fBtransform\fP=\fBTransform\fP())"
+.br
+.RI "Constructs a \fBSceneObject\fP with the given name, mesh, and optional transform\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBname\fP"
+.br
+.RI "The unique name identifier for the scene object\&. "
+.ti -1c
+.RI "\fBRef\fP< \fBMesh\fP > \fBmesh\fP"
+.br
+.RI "The mesh associated with this scene object\&. "
+.ti -1c
+.RI "\fBTransform\fP \fBtransform\fP"
+.br
+.RI "The transformation (position, rotation, scale) of the object in the scene\&. "
+.ti -1c
+.RI "std::function< void(\fBSceneObject\fP *, \fBf32\fP)> \fBonUpdate\fP = nullptr"
+.br
+.RI "Optional callback function called each frame during scene update\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents an object within a 3D scene, containing a mesh and transform\&. 
+
+\fBSceneObject\fP encapsulates a 3D mesh along with its transformation (position, rotation, scale) in the scene\&. It also supports an optional update callback for per-frame logic\&.
+
+.PP
+\fBKey\fP features:
+.IP "\(bu" 2
+Holds a reference to a \fBMesh\fP for rendering
+.IP "\(bu" 2
+Contains a \fBTransform\fP for spatial positioning
+.IP "\(bu" 2
+Supports an onUpdate callback for custom behavior each frame
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+The onUpdate function, if set, is called during the scene's Update() method with the delta time parameter\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB35\fP of file \fBScene\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SceneObject::SceneObject (const std::string & name, const \fBRef\fP< \fBMesh\fP > & mesh, const \fBTransform\fP & transform = \fR\fBTransform\fP()\fP)\fR [inline]\fP"
+
+.PP
+Constructs a \fBSceneObject\fP with the given name, mesh, and optional transform\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI\fBname\fP\fP The unique name for the scene object 
+.br
+\fI\fBmesh\fP\fP The mesh to associate with this object 
+.br
+\fI\fBtransform\fP\fP The initial transform of the object (default is identity) 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB81\fP of file \fBScene\&.h\fP\&.
+.PP
+References \fBmesh\fP, \fBname\fP, and \fBtransform\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBRef\fP<\fBMesh\fP> SceneObject::mesh"
+
+.PP
+The mesh associated with this scene object\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB46\fP of file \fBScene\&.h\fP\&.
+.PP
+Referenced by \fBSceneObject()\fP\&.
+.SS "std::string SceneObject::name"
+
+.PP
+The unique name identifier for the scene object\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB40\fP of file \fBScene\&.h\fP\&.
+.PP
+Referenced by \fBSceneObject()\fP\&.
+.SS "std::function<void (\fBSceneObject\fP*, \fBf32\fP)> SceneObject::onUpdate = nullptr"
+
+.PP
+Optional callback function called each frame during scene update\&. This function, if set, is invoked during the \fBScene\fP's Update() method, allowing for custom per-frame logic such as animations or behavior\&. The function receives a pointer to the \fBSceneObject\fP and the delta time since the last frame\&.
+
+.PP
+\fBNote\fP
+.RS 4
+Set to nullptr by default (no update)\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB72\fP of file \fBScene\&.h\fP\&.
+.SS "\fBTransform\fP SceneObject::transform"
+
+.PP
+The transformation (position, rotation, scale) of the object in the scene\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB52\fP of file \fBScene\&.h\fP\&.
+.PP
+Referenced by \fBSceneObject()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

@@ -1,0 +1,197 @@
+\doxysection{Math\+Utils.\+h}
+\hypertarget{_math_utils_8h_source}{}\label{_math_utils_8h_source}\index{src/Math/MathUtils.h@{src/Math/MathUtils.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}Math.h"{}}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00004}00004\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00005}00005\ \textcolor{comment}{\ *\ @namespace\ Math}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00006}00006\ \textcolor{comment}{\ *\ @brief\ Additional\ mathematical\ utility\ functions\ for\ the\ game\ engine.}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00007}00007\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00008}00008\ \textcolor{comment}{\ *\ This\ namespace\ extends\ the\ core\ Math\ namespace\ with\ additional\ utility\ functions}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00009}00009\ \textcolor{comment}{\ *\ commonly\ used\ in\ game\ development.\ It\ includes\ functions\ for\ minimum/maximum,}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00010}00010\ \textcolor{comment}{\ *\ absolute\ value,\ power\ calculations,\ approximate\ comparisons,\ and\ various}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00011}00011\ \textcolor{comment}{\ *\ interpolation\ techniques.}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00012}00012\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00013}00013\ \textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00014}00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00015}00015\ \textcolor{comment}{\ *\ -\/\ Min/Max\ functions\ for\ comparing\ two\ values}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00016}00016\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00017}00017\ \textcolor{comment}{\ *\ -\/\ Absolute\ value\ function}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00019}00019\ \textcolor{comment}{\ *\ -\/\ Power\ function\ for\ exponentiation}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00020}00020\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00021}00021\ \textcolor{comment}{\ *\ -\/\ Approximate\ equality\ checks\ for\ floating-\/point\ numbers}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00022}00022\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00023}00023\ \textcolor{comment}{\ *\ -\/\ Clamped\ linear\ interpolation}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00024}00024\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00025}00025\ \textcolor{comment}{\ *\ -\/\ Quadratic\ interpolation}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00027}00027\ \textcolor{comment}{\ *\ -\/\ Angle\ wrapping\ utility}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00028}00028\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00029}00029\ \textcolor{comment}{\ *\ @note\ All\ floating-\/point\ operations\ use\ f32\ (single-\/precision)\ for\ performance.}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00030}00030\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00031}00031\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00032}00032\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00033}00033\ \textcolor{comment}{\ *\ f32\ minValue\ =\ Math::Min(3.5f,\ 2.1f);\ \ //\ minValue\ =\ 2.1f}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00034}00034\ \textcolor{comment}{\ *\ f32\ absValue\ =\ Math::Abs(-\/4.2f);\ \ \ \ \ \ \ //\ absValue\ =\ 4.2f}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00035}00035\ \textcolor{comment}{\ *\ f32\ powerValue\ =\ Math::Pow(2.0f,\ 3.0f);\ //\ powerValue\ =\ 8.0f}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00036}00036\ \textcolor{comment}{\ *\ bool\ equal\ =\ Math::Approximately(0.1f\ +\ 0.2f,\ 0.3f);\ \ //\ equal\ =\ true}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00037}00037\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00038}00038\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00039}00039\ \textcolor{keyword}{namespace\ }\doxymbox{\hyperlink{namespace_math}{Math}}\{}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00040}00040\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00041}00041\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00042}00042\ \textcolor{comment}{\ \ \ *\ @brief\ Returns\ the\ minimum\ of\ two\ values.}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00043}00043\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00044}00044\ \textcolor{comment}{\ \ \ *\ @param\ a\ The\ first\ value}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00045}00045\ \textcolor{comment}{\ \ \ *\ @param\ b\ The\ second\ value}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00046}00046\ \textcolor{comment}{\ \ \ *\ @return\ T\ The\ minimum\ value}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00047}00047\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00048}00048\ \textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00049}00049\ \textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00050}00050\ \textcolor{comment}{\ \ \ *\ f32\ minValue\ =\ Math::Min(3.5f,\ 2.1f);\ \ //\ minValue\ =\ 2.1f}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00051}00051\ \textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00052}00052\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00053}00053\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00054}00054\ \ \ \textcolor{keyword}{constexpr}\ T\ Min(T\ a,\ T\ b)\{}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{return}\ (a\ <\ b)\ ?\ a\ :\ b;}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00056}00056\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00057}00057\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00058}00058\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00059}00059\ \textcolor{comment}{\ \ \ *\ @brief\ Returns\ the\ maximum\ of\ two\ values.}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00060}00060\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00061}00061\ \textcolor{comment}{\ \ \ *\ @param\ a\ The\ first\ value}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00062}00062\ \textcolor{comment}{\ \ \ *\ @param\ b\ The\ second\ value}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00063}00063\ \textcolor{comment}{\ \ \ *\ @return\ T\ The\ maximum\ value}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00064}00064\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00065}00065\ \textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00066}00066\ \textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00067}00067\ \textcolor{comment}{\ \ \ *\ f32\ maxValue\ =\ Math::Max(3.5f,\ 2.1f);\ \ //\ maxValue\ =\ 3.5f}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00068}00068\ \textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00069}00069\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00070}00070\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00071}00071\ \ \ \textcolor{keyword}{constexpr}\ T\ Max(T\ a,\ T\ b)\{}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{return}\ (a\ >\ b)\ ?\ a\ :\ b;}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00073}00073\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00074}00074\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00075}00075\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00076}00076\ \textcolor{comment}{\ \ \ *\ @brief\ Returns\ the\ absolute\ value\ of\ a\ number.}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00077}00077\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00078}00078\ \textcolor{comment}{\ \ \ *\ @param\ value\ The\ value\ to\ get\ the\ absolute\ of}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00079}00079\ \textcolor{comment}{\ \ \ *\ @return\ T\ The\ absolute\ value}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00080}00080\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00081}00081\ \textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00082}00082\ \textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00083}00083\ \textcolor{comment}{\ \ \ *\ f32\ absValue\ =\ Math::Abs(-\/4.2f);\ \ \ \ \ \ \ //\ absValue\ =\ 4.2f}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00084}00084\ \textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00085}00085\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00086}00086\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00087}00087\ \ \ \textcolor{keyword}{constexpr}\ T\ Abs(T\ value)\{}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{return}\ (value\ <\ T(0))\ ?\ -\/value\ :\ value;}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00089}00089\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00090}00090\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00091}00091\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00092}00092\ \textcolor{comment}{\ \ \ *\ @brief\ Raises\ a\ base\ to\ the\ power\ of\ an\ exponent.}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00093}00093\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00094}00094\ \textcolor{comment}{\ \ \ *\ @param\ base\ The\ base\ value}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00095}00095\ \textcolor{comment}{\ \ \ *\ @param\ exponent\ The\ exponent\ value}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00096}00096\ \textcolor{comment}{\ \ \ *\ @return\ f32\ The\ result\ of\ base\ raised\ to\ the\ exponent}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00097}00097\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00098}00098\ \textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00099}00099\ \textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00100}00100\ \textcolor{comment}{\ \ \ *\ f32\ powerValue\ =\ Math::Pow(2.0f,\ 3.0f);\ //\ powerValue\ =\ 8.0f}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00101}00101\ \textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00102}00102\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00103}00103\ \ \ \textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ Pow(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ base,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ exponent)\{}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{return}\ std::pow(base,\ exponent);}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00105}00105\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00106}00106\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00107}00107\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00108}00108\ \textcolor{comment}{\ \ \ *\ @brief\ Checks\ if\ two\ floating-\/point\ numbers\ are\ approximately\ equal.}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00109}00109\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00110}00110\ \textcolor{comment}{\ \ \ *\ Compares\ two\ f32\ values\ within\ a\ small\ epsilon\ tolerance\ to\ account\ for}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00111}00111\ \textcolor{comment}{\ \ \ *\ floating-\/point\ precision\ errors.}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00112}00112\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00113}00113\ \textcolor{comment}{\ \ \ *\ @param\ a\ The\ first\ floating-\/point\ value}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00114}00114\ \textcolor{comment}{\ \ \ *\ @param\ b\ The\ second\ floating-\/point\ value}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00115}00115\ \textcolor{comment}{\ \ \ *\ @param\ epsilon\ The\ tolerance\ for\ comparison\ (default\ is\ EPSILON)}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00116}00116\ \textcolor{comment}{\ \ \ *\ @return\ bool\ True\ if\ values\ are\ approximately\ equal,\ false\ otherwise}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00117}00117\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00118}00118\ \textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00119}00119\ \textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00120}00120\ \textcolor{comment}{\ \ \ *\ bool\ equal\ =\ Math::Approximately(0.1f\ +\ 0.2f,\ 0.3f);\ \ //\ equal\ =\ true}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00121}00121\ \textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00122}00122\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00123}00123\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ Approximately(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ a,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ b,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ epsilon\ =\ \doxymbox{\hyperlink{namespace_math_accab87ed706920fc8ced5c0fef4a16cf}{EPSILON}})\{}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{return}\ Abs(a\ -\/\ b)\ <=\ epsilon;}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00125}00125\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00126}00126\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00127}00127\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00128}00128\ \textcolor{comment}{\ \ \ *\ @brief\ Clamped\ linear\ interpolation\ between\ two\ values.}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00129}00129\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00130}00130\ \textcolor{comment}{\ \ \ *\ Performs\ linear\ interpolation\ (lerp)\ between\ a\ and\ b,\ clamping\ the}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00131}00131\ \textcolor{comment}{\ \ \ *\ interpolation\ parameter\ t\ to\ the\ range\ [0.0,\ 1.0].}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00132}00132\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00133}00133\ \textcolor{comment}{\ \ \ *\ @param\ a\ The\ start\ value\ (t\ =\ 0)}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00134}00134\ \textcolor{comment}{\ \ \ *\ @param\ b\ The\ end\ value\ (t\ =\ 1)}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00135}00135\ \textcolor{comment}{\ \ \ *\ @param\ t\ The\ interpolation\ parameter}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00136}00136\ \textcolor{comment}{\ \ \ *\ @return\ T\ The\ interpolated\ value}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00137}00137\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00138}00138\ \textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00139}00139\ \textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00140}00140\ \textcolor{comment}{\ \ \ *\ f32\ result\ =\ Math::LerpClamped(0.0f,\ 10.0f,\ 1.5f);\ //\ result\ =\ 10.0f}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00141}00141\ \textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00142}00142\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00143}00143\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00144}00144\ \ \ \textcolor{keyword}{constexpr}\ T\ LerpClamped(T\ a,\ T\ b,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ t)\{}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00145}00145\ \ \ \ \ t\ =\ Clamp(t,\ 0.0f,\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00146}00146\ \ \ \ \ \textcolor{keywordflow}{return}\ Lerp(a,\ b,\ t);}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00147}00147\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00148}00148\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00149}00149\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00150}00150\ \textcolor{comment}{\ \ \ *\ @brief\ Quadratic\ interpolation\ among\ three\ values.}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00151}00151\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00152}00152\ \textcolor{comment}{\ \ \ *\ Performs\ quadratic\ interpolation\ using\ three\ control\ points\ a,\ b,\ and\ c.}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00153}00153\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00154}00154\ \textcolor{comment}{\ \ \ *\ @param\ a\ The\ first\ control\ point}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00155}00155\ \textcolor{comment}{\ \ \ *\ @param\ b\ The\ second\ control\ point}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00156}00156\ \textcolor{comment}{\ \ \ *\ @param\ c\ The\ third\ control\ point}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00157}00157\ \textcolor{comment}{\ \ \ *\ @param\ t\ The\ interpolation\ parameter}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00158}00158\ \textcolor{comment}{\ \ \ *\ @return\ T\ The\ interpolated\ value}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00159}00159\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00160}00160\ \textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00161}00161\ \textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00162}00162\ \textcolor{comment}{\ \ \ *\ f32\ result\ =\ Math::QuadraticLerp(0.0f,\ 5.0f,\ 10.0f,\ 0.5f);\ //\ result\ =\ 5.0f}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00163}00163\ \textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00164}00164\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00165}00165\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00166}00166\ \ \ \textcolor{keyword}{constexpr}\ T\ QuadraticLerp(T\ a,\ T\ b,\ T\ c,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ t)\{}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00167}00167\ \ \ \ \ T\ ab\ =\ Lerp(a,\ b,\ t);}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00168}00168\ \ \ \ \ T\ bc\ =\ Lerp(b,\ c,\ t);}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00169}00169\ \ \ \ \ \textcolor{keywordflow}{return}\ Lerp(ab,\ bc,\ t);}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00170}00170\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00171}00171\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00172}00172\ \textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00173}00173\ \textcolor{comment}{\ \ \ *\ @brief\ Wraps\ an\ angle\ in\ radians\ to\ the\ range\ [-\/π,\ π].}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00174}00174\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00175}00175\ \textcolor{comment}{\ \ \ *\ @param\ angle\ The\ input\ angle\ in\ radians}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00176}00176\ \textcolor{comment}{\ \ \ *\ @return\ f32\ The\ wrapped\ angle\ in\ the\ range\ [-\/π,\ π]}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00177}00177\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00178}00178\ \textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00179}00179\ \textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00180}00180\ \textcolor{comment}{\ \ \ *\ f32\ wrappedAngle\ =\ Math::WarpAngle(4.0f);\ //\ wrappedAngle\ ≈\ -\/2.28319f}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00181}00181\ \textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00182}00182\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00183}00183\ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00184}00184\ \ \ \textcolor{keyword}{constexpr}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ WarpAngle(T\ angle)\{}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00185}00185\ \ \ \ \ angle\ =\ std::fmod(angle,\ \doxymbox{\hyperlink{namespace_math_aee4e2fdc9954787c0334470bfc7597c0}{TWO\_PI}});}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00186}00186\ \ \ \ \ \textcolor{keywordflow}{if}(angle\ <\ \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{PI}})\ angle\ -\/=\ \doxymbox{\hyperlink{namespace_math_aee4e2fdc9954787c0334470bfc7597c0}{TWO\_PI}};}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00187}00187\ \ \ \ \ \textcolor{keywordflow}{if}(angle\ >\ \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{PI}})\ angle\ +=\ \doxymbox{\hyperlink{namespace_math_aee4e2fdc9954787c0334470bfc7597c0}{TWO\_PI}};}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00188}00188\ \ \ \ \ \textcolor{keywordflow}{return}\ angle;}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00189}00189\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_math_utils_8h_source_l00191}00191\ \};\ \textcolor{comment}{//\ namespace\ Math}}
+
+\end{DoxyCode}

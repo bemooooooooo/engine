@@ -1,0 +1,83 @@
+.TH "DebugMacros" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+DebugMacros \- Debug Logging Macros
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBENGINE_DEBUG_LOG\fP(x)"
+.br
+.RI "Logs a message in debug builds only with zero overhead in release builds\&. "
+.ti -1c
+.RI "#define \fBENGINE_DEBUG_LOG_IF\fP(cond,  x)"
+.br
+.RI "Conditionally logs a message in debug builds only if a condition is met\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Conditional compilation macros for debug logging that provide zero-overhead debugging in release builds\&. These macros are completely eliminated during compilation when ENGINE_DEBUG_BUILD is not defined, ensuring zero performance impact\&. 
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ENGINE_DEBUG_LOG( x)"
+\fBValue:\fP
+.nf
+((void)0)
+.PP
+.fi
+
+.PP
+Logs a message in debug builds only with zero overhead in release builds\&. In debug builds (when ENGINE_DEBUG_BUILD is defined and non-zero), this macro outputs the given expression to the engine's logging system via ENGINE_INFO\&. In release builds, this macro compiles to a no-op instruction that has virtually no performance cost\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP The message or expression to log
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Requires ENGINE_INFO to be defined as a logging stream (e\&.g\&., logger stream) 
+.RE
+.PP
+
+.PP
+Definition at line \fB272\fP of file \fBBase\&.h\fP\&.
+.PP
+Referenced by \fBScene::Render()\fP\&.
+.SS "#define ENGINE_DEBUG_LOG_IF( cond,  x)"
+\fBValue:\fP
+.nf
+((void)0)
+.PP
+.fi
+
+.PP
+Conditionally logs a message in debug builds only if a condition is met\&. In debug builds, this macro evaluates the condition and logs the expression only if the condition evaluates to true\&. In release builds, this macro is completely eliminated by the preprocessor, resulting in zero runtime cost\&.
+
+.PP
+This is useful for conditional logging that should only appear under specific runtime circumstances, such as logging only when values are out of expected ranges or when certain error conditions are detected\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIcond\fP The condition to evaluate (true = log, false = skip) 
+.br
+\fIx\fP The message or expression to log if condition is true
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Requires ENGINE_INFO to be defined as a logging stream 
+.RE
+.PP
+
+.PP
+Definition at line \fB302\fP of file \fBBase\&.h\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

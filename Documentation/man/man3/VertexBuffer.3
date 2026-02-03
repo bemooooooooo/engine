@@ -1,0 +1,162 @@
+.TH "VertexBuffer" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+VertexBuffer \- Encapsulates an OpenGL vertex buffer object (VBO)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <VertexBuffer\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVertexBuffer\fP (const void *data, \fBu32\fP size)"
+.br
+.RI "Constructs a \fBVertexBuffer\fP with the given data and size\&. "
+.ti -1c
+.RI "\fBVertexBuffer\fP (\fBu32\fP size)"
+.br
+.RI "Constructs a dynamic \fBVertexBuffer\fP with the given size\&. "
+.ti -1c
+.RI "\fB~VertexBuffer\fP ()"
+.br
+.RI "Destructor that cleans up the OpenGL vertex buffer\&. "
+.ti -1c
+.RI "void \fBBind\fP () const"
+.br
+.RI "Binds the vertex buffer for rendering\&. "
+.ti -1c
+.RI "void \fBUnbind\fP () const"
+.br
+.RI "Unbinds the vertex buffer\&. "
+.ti -1c
+.RI "void \fBSetData\fP (const void *data, \fBu32\fP size)"
+.br
+.RI "Sets the data of the vertex buffer\&. "
+.ti -1c
+.RI "\fBu32\fP \fBGetRendererID\fP () const"
+.br
+.RI "Gets the OpenGL renderer ID of the vertex buffer\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBu32\fP \fBm_RendererID\fP"
+.br
+.RI "The OpenGL renderer ID for the vertex buffer\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Encapsulates an OpenGL vertex buffer object (VBO)\&. 
+
+Manages the creation, binding, and data management of a vertex buffer\&. 
+.PP
+Definition at line \fB10\fP of file \fBVertexBuffer\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "VertexBuffer::VertexBuffer (const void * data, \fBu32\fP size)"
+
+.PP
+Constructs a \fBVertexBuffer\fP with the given data and size\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdata\fP Pointer to the vertex data 
+.br
+\fIsize\fP Size of the vertex data in bytes 
+.RE
+.PP
+
+.PP
+Definition at line \fB4\fP of file \fBVertexBuffer\&.cpp\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.SS "VertexBuffer::VertexBuffer (\fBu32\fP size)"
+
+.PP
+Constructs a dynamic \fBVertexBuffer\fP with the given size\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsize\fP Size of the vertex buffer in bytes 
+.RE
+.PP
+
+.PP
+Definition at line \fB10\fP of file \fBVertexBuffer\&.cpp\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.SS "VertexBuffer::~VertexBuffer ()"
+
+.PP
+Destructor that cleans up the OpenGL vertex buffer\&. 
+.PP
+Definition at line \fB16\fP of file \fBVertexBuffer\&.cpp\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void VertexBuffer::Bind () const"
+
+.PP
+Binds the vertex buffer for rendering\&. 
+.PP
+Definition at line \fB20\fP of file \fBVertexBuffer\&.cpp\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.SS "\fBu32\fP VertexBuffer::GetRendererID () const\fR [inline]\fP, \fR [nodiscard]\fP"
+
+.PP
+Gets the OpenGL renderer ID of the vertex buffer\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBu32\fP The OpenGL renderer ID 
+.RE
+.PP
+
+.PP
+Definition at line \fB55\fP of file \fBVertexBuffer\&.h\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.SS "void VertexBuffer::SetData (const void * data, \fBu32\fP size)"
+
+.PP
+Sets the data of the vertex buffer\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdata\fP Pointer to the new vertex data 
+.br
+\fIsize\fP Size of the data in bytes 
+.RE
+.PP
+
+.PP
+Definition at line \fB28\fP of file \fBVertexBuffer\&.cpp\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.SS "void VertexBuffer::Unbind () const"
+
+.PP
+Unbinds the vertex buffer\&. 
+.PP
+Definition at line \fB24\fP of file \fBVertexBuffer\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBu32\fP VertexBuffer::m_RendererID\fR [private]\fP"
+
+.PP
+The OpenGL renderer ID for the vertex buffer\&. 
+.PP
+Definition at line \fB62\fP of file \fBVertexBuffer\&.h\fP\&.
+.PP
+Referenced by \fBBind()\fP, \fBGetRendererID()\fP, \fBSetData()\fP, \fBVertexBuffer()\fP, \fBVertexBuffer()\fP, and \fB~VertexBuffer()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

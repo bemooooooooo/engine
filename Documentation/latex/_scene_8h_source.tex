@@ -1,0 +1,239 @@
+\doxysection{Scene.\+h}
+\hypertarget{_scene_8h_source}{}\label{_scene_8h_source}\index{src/Graphics/Scene.h@{src/Graphics/Scene.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_base_8h}{../Core/Base.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}../Math/Transform.h"{}}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}Mesh.h"{}}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00008}00008\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00009}00009\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00010}00010\ \textcolor{comment}{\ *\ @struct\ SceneObject}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00011}00011\ \textcolor{comment}{\ *\ @brief\ Represents\ an\ object\ within\ a\ 3D\ scene,\ containing\ a\ mesh\ and\ transform.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00012}00012\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00013}00013\ \textcolor{comment}{\ *\ SceneObject\ encapsulates\ a\ 3D\ mesh\ along\ with\ its\ transformation\ (position,}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00014}00014\ \textcolor{comment}{\ *\ rotation,\ scale)\ in\ the\ scene.\ It\ also\ supports\ an\ optional\ update\ callback}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00015}00015\ \textcolor{comment}{\ *\ for\ per-\/frame\ logic.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00016}00016\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00017}00017\ \textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00018}00018\ \textcolor{comment}{\ *\ -\/\ Holds\ a\ reference\ to\ a\ Mesh\ for\ rendering}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00019}00019\ \textcolor{comment}{\ *\ -\/\ Contains\ a\ Transform\ for\ spatial\ positioning}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00020}00020\ \textcolor{comment}{\ *\ -\/\ Supports\ an\ onUpdate\ callback\ for\ custom\ behavior\ each\ frame}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00021}00021\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00022}00022\ \textcolor{comment}{\ *\ @note\ The\ onUpdate\ function,\ if\ set,\ is\ called\ during\ the\ scene's\ Update()}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00023}00023\ \textcolor{comment}{\ *\ \ \ \ \ \ \ method\ with\ the\ delta\ time\ parameter.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00024}00024\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00025}00025\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00026}00026\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00027}00027\ \textcolor{comment}{\ *\ Ref<Mesh>\ cubeMesh\ =\ ResourceManager::GetMesh("{}cube"{});}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00028}00028\ \textcolor{comment}{\ *\ SceneObject\ cubeObject("{}Cube"{},\ cubeMesh);}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00029}00029\ \textcolor{comment}{\ *\ cubeObject.transform.position\ =\ Vector3(0,\ 0,\ 0);}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00030}00030\ \textcolor{comment}{\ *\ cubeObject.onUpdate\ =\ [](SceneObject*\ obj,\ f32\ deltaTime)\ \{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00031}00031\ \textcolor{comment}{\ *\ \ \ \ \ obj-\/>transform.rotation.y\ +=\ 90.0f\ *\ deltaTime;\ //\ Rotate\ 90\ degrees\ per\ second}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00032}00032\ \textcolor{comment}{\ *\ \};}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00033}00033\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00034}00034\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00035}\doxymbox{\hyperlink{struct_scene_object}{00035}}\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_scene_object_a74acdc78ecc807ca0b03104346aa867f}{SceneObject}}\ \{\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00036}00036\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00037}00037\ \textcolor{comment}{\ \ \ *\ @var\ name}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00038}00038\ \textcolor{comment}{\ \ \ *\ @brief\ The\ unique\ name\ identifier\ for\ the\ scene\ object.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00039}00039\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00040}\doxymbox{\hyperlink{struct_scene_object_a6c5ece15b6c7fe5b4d41ebcf4b13e9fc}{00040}}\ \ \ std::string\ \doxymbox{\hyperlink{struct_scene_object_a6c5ece15b6c7fe5b4d41ebcf4b13e9fc}{name}};}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00041}00041\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00042}00042\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00043}00043\ \textcolor{comment}{\ \ \ *\ @var\ mesh}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00044}00044\ \textcolor{comment}{\ \ \ *\ @brief\ The\ mesh\ associated\ with\ this\ scene\ object.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00045}00045\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00046}\doxymbox{\hyperlink{struct_scene_object_af3d0d2c807c820edb11551c0fe90be4c}{00046}}\ \ \ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\ \doxymbox{\hyperlink{struct_scene_object_af3d0d2c807c820edb11551c0fe90be4c}{mesh}};}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00047}00047\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00048}00048\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00049}00049\ \textcolor{comment}{\ \ \ *\ @var\ transform}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00050}00050\ \textcolor{comment}{\ \ \ *\ @brief\ The\ transformation\ (position,\ rotation,\ scale)\ of\ the\ object\ in\ the\ scene.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00051}00051\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00052}\doxymbox{\hyperlink{struct_scene_object_acc41820565467dc4384d5717b5ef5a65}{00052}}\ \ \ \doxymbox{\hyperlink{class_transform}{Transform}}\ \doxymbox{\hyperlink{struct_scene_object_acc41820565467dc4384d5717b5ef5a65}{transform}};}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00053}00053\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00054}00054\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00055}00055\ \textcolor{comment}{\ \ \ *\ @var\ onUpdate}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00056}00056\ \textcolor{comment}{\ \ \ *\ @brief\ Optional\ callback\ function\ called\ each\ frame\ during\ scene\ update.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00057}00057\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00058}00058\ \textcolor{comment}{\ \ \ *\ This\ function,\ if\ set,\ is\ invoked\ during\ the\ Scene's\ Update()\ method,}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00059}00059\ \textcolor{comment}{\ \ \ *\ allowing\ for\ custom\ per-\/frame\ logic\ such\ as\ animations\ or\ behavior.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00060}00060\ \textcolor{comment}{\ \ \ *\ The\ function\ receives\ a\ pointer\ to\ the\ SceneObject\ and\ the\ delta\ time}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00061}00061\ \textcolor{comment}{\ \ \ *\ since\ the\ last\ frame.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00062}00062\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00063}00063\ \textcolor{comment}{\ \ \ *\ @note\ Set\ to\ nullptr\ by\ default\ (no\ update).}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00064}00064\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00065}00065\ \textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00066}00066\ \textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00067}00067\ \textcolor{comment}{\ \ \ *\ sceneObject.onUpdate\ =\ [](SceneObject*\ obj,\ f32\ deltaTime)\ \{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00068}00068\ \textcolor{comment}{\ \ \ *\ \ \ \ \ obj-\/>transform.position.x\ +=\ 1.0f\ *\ deltaTime;\ //\ Move\ right\ at\ 1\ unit/sec}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00069}00069\ \textcolor{comment}{\ \ \ *\ \};}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00070}00070\ \textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00071}00071\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00072}\doxymbox{\hyperlink{struct_scene_object_a8d46d27e658b69b375241c11a66c0ff9}{00072}}\ \ \ std::function<void\ (\doxymbox{\hyperlink{struct_scene_object_a74acdc78ecc807ca0b03104346aa867f}{SceneObject}}*,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}})>\ \doxymbox{\hyperlink{struct_scene_object_a8d46d27e658b69b375241c11a66c0ff9}{onUpdate}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00073}00073\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00074}00074\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00075}00075\ \textcolor{comment}{\ \ \ *\ @brief\ Constructs\ a\ SceneObject\ with\ the\ given\ name,\ mesh,\ and\ optional\ transform.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00076}00076\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00077}00077\ \textcolor{comment}{\ \ \ *\ @param\ name\ The\ unique\ name\ for\ the\ scene\ object}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00078}00078\ \textcolor{comment}{\ \ \ *\ @param\ mesh\ The\ mesh\ to\ associate\ with\ this\ object}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00079}00079\ \textcolor{comment}{\ \ \ *\ @param\ transform\ The\ initial\ transform\ of\ the\ object\ (default\ is\ identity)}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00080}00080\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00081}\doxymbox{\hyperlink{struct_scene_object_a74acdc78ecc807ca0b03104346aa867f}{00081}}\ \ \ \doxymbox{\hyperlink{struct_scene_object_a74acdc78ecc807ca0b03104346aa867f}{SceneObject}}(\textcolor{keyword}{const}\ std::string\&\ \doxymbox{\hyperlink{struct_scene_object_a6c5ece15b6c7fe5b4d41ebcf4b13e9fc}{name}},\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\&\ \doxymbox{\hyperlink{struct_scene_object_af3d0d2c807c820edb11551c0fe90be4c}{mesh}},}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_transform}{Transform}}\&\ \doxymbox{\hyperlink{struct_scene_object_acc41820565467dc4384d5717b5ef5a65}{transform}}\ =\ \doxymbox{\hyperlink{class_transform}{Transform}}())}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00083}00083\ \ \ \ \ \ \ :\ \doxymbox{\hyperlink{struct_scene_object_a6c5ece15b6c7fe5b4d41ebcf4b13e9fc}{name}}(\doxymbox{\hyperlink{struct_scene_object_a6c5ece15b6c7fe5b4d41ebcf4b13e9fc}{name}}),\ \doxymbox{\hyperlink{struct_scene_object_af3d0d2c807c820edb11551c0fe90be4c}{mesh}}(\doxymbox{\hyperlink{struct_scene_object_af3d0d2c807c820edb11551c0fe90be4c}{mesh}}),\ \doxymbox{\hyperlink{struct_scene_object_acc41820565467dc4384d5717b5ef5a65}{transform}}(\doxymbox{\hyperlink{struct_scene_object_acc41820565467dc4384d5717b5ef5a65}{transform}})\ \{\}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00084}00084\ \};\ \ \textcolor{comment}{//\ struct\ SceneObject}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00085}00085\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00086}00086\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00087}00087\ \textcolor{comment}{\ *\ @class\ Scene}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00088}00088\ \textcolor{comment}{\ *\ @brief\ Represents\ a\ 3D\ scene\ containing\ multiple\ scene\ objects\ and\ a\ camera.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00089}00089\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00090}00090\ \textcolor{comment}{\ *\ The\ Scene\ class\ manages\ a\ collection\ of\ SceneObject\ instances,\ allowing\ for}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00091}00091\ \textcolor{comment}{\ *\ adding,\ removing,\ updating,\ and\ rendering\ them.\ It\ also\ holds\ a\ Camera\ to}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00092}00092\ \textcolor{comment}{\ *\ define\ the\ viewpoint\ for\ rendering\ the\ scene.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00093}00093\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00094}00094\ \textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00095}00095\ \textcolor{comment}{\ *\ -\/\ Add\ and\ remove\ SceneObjects\ by\ name}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00096}00096\ \textcolor{comment}{\ *\ -\/\ Find\ SceneObjects\ by\ name}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00097}00097\ \textcolor{comment}{\ *\ -\/\ Update\ all\ objects\ each\ frame,\ invoking\ their\ onUpdate\ callbacks}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00098}00098\ \textcolor{comment}{\ *\ -\/\ Render\ all\ objects\ using\ a\ specified\ shader}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00099}00099\ \textcolor{comment}{\ *\ -\/\ Manage\ a\ Camera\ for\ the\ scene}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00100}00100\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00101}00101\ \textcolor{comment}{\ *\ @note\ The\ Scene\ does\ not\ handle\ physics\ or\ collision;\ it\ focuses\ on\ object}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00102}00102\ \textcolor{comment}{\ *\ \ \ \ \ \ \ management\ and\ rendering.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00103}00103\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00104}00104\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00105}00105\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00106}00106\ \textcolor{comment}{\ *\ Scene\ scene("{}SampleScene"{});}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00107}00107\ \textcolor{comment}{\ *\ Ref<Mesh>\ cubeMesh\ =\ ResourceManager::GetMesh("{}cube"{});}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00108}00108\ \textcolor{comment}{\ *\ SceneObject\ cubeObject("{}Cube"{},\ cubeMesh);}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00109}00109\ \textcolor{comment}{\ *\ scene.AddObject(cubeObject);}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00110}00110\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00111}00111\ \textcolor{comment}{\ *\ //\ In\ the\ main\ loop}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00112}00112\ \textcolor{comment}{\ *\ f32\ deltaTime\ =\ timer.Tick();}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00113}00113\ \textcolor{comment}{\ *\ scene.Update(deltaTime);}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00114}00114\ \textcolor{comment}{\ *\ scene.Render(shader);}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00115}00115\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00116}00116\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00117}\doxymbox{\hyperlink{class_scene}{00117}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_scene_ad10176d75a9cc0da56626f682d083507}{Scene}}\ \{}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00118}00118\ \ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00119}00119\ \textcolor{comment}{\ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00120}00120\ \textcolor{comment}{\ \ \ *\ @brief\ Constructs\ a\ new\ Scene\ with\ an\ optional\ name.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00121}00121\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00122}00122\ \textcolor{comment}{\ \ \ *\ @param\ name\ The\ name\ of\ the\ scene\ (default\ is\ empty\ string)}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00123}00123\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00124}00124\ \ \ \doxymbox{\hyperlink{class_scene_ad10176d75a9cc0da56626f682d083507}{Scene}}();\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00125}00125\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00126}00126\ \textcolor{comment}{\ \ \ *\ @brief\ Constructs\ a\ new\ Scene\ with\ the\ specified\ name.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00127}00127\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00128}00128\ \textcolor{comment}{\ \ \ *\ @param\ name\ The\ name\ of\ the\ scene}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00129}00129\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00130}00130\ \ \ \doxymbox{\hyperlink{class_scene_ad10176d75a9cc0da56626f682d083507}{Scene}}(std::string\ \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}});\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00131}00131\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00132}00132\ \textcolor{comment}{\ \ \ *\ @brief\ Destructor\ for\ the\ Scene\ class.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00133}00133\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00134}00134\ \ \ \doxymbox{\hyperlink{class_scene_a3b8cec2e32546713915f8c6303c951f1}{\string~Scene}}();}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00135}00135\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00136}00136\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00137}00137\ \textcolor{comment}{\ \ \ *\ @brief\ Adds\ a\ SceneObject\ to\ the\ scene.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00138}00138\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00139}00139\ \textcolor{comment}{\ \ \ *\ @param\ object\ The\ SceneObject\ to\ add}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00140}00140\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00141}00141\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_scene_a4c9d8adc4cc03dd82f249b37dc64916c}{AddObject}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_scene_object}{SceneObject}}\&\ \textcolor{keywordtype}{object});}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00142}00142\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00143}00143\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00144}00144\ \textcolor{comment}{\ \ \ *\ @brief\ Removes\ a\ SceneObject\ from\ the\ scene\ by\ name.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00145}00145\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00146}00146\ \textcolor{comment}{\ \ \ *\ @param\ name\ The\ name\ of\ the\ SceneObject\ to\ remove}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00147}00147\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00148}00148\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_scene_a695ea00facd0b261fd7b536f47a735d3}{RemoveObject}}(\textcolor{keyword}{const}\ std::string\&\ \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}});}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00149}00149\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00150}00150\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00151}00151\ \textcolor{comment}{\ \ \ *\ @brief\ Finds\ a\ SceneObject\ in\ the\ scene\ by\ name.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00152}00152\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00153}00153\ \textcolor{comment}{\ \ \ *\ @param\ name\ The\ name\ of\ the\ SceneObject\ to\ find}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00154}00154\ \textcolor{comment}{\ \ \ *\ @return\ SceneObject*\ Pointer\ to\ the\ found\ SceneObject,\ or\ nullptr\ if\ not\ found}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00155}00155\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00156}00156\ \ \ [[nodiscard]]\ \doxymbox{\hyperlink{struct_scene_object}{SceneObject}}*\ \doxymbox{\hyperlink{class_scene_a2573a087031d929dd4ded7505c6e8a1b}{FindObject}}(\textcolor{keyword}{const}\ std::string\&\ \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}});}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00157}00157\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00158}00158\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00159}00159\ \textcolor{comment}{\ \ \ *\ @brief\ Updates\ all\ SceneObjects\ in\ the\ scene.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00160}00160\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00161}00161\ \textcolor{comment}{\ \ \ *\ Calls\ the\ onUpdate\ callback\ for\ each\ object\ if\ it\ is\ set.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00162}00162\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00163}00163\ \textcolor{comment}{\ \ \ *\ @param\ deltaTime\ The\ time\ elapsed\ since\ the\ last\ update\ in\ seconds}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00164}00164\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00165}00165\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_scene_a2835bf088b491fe34516dfea0e8bfd0b}{Update}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ deltaTime);}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00166}00166\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00167}00167\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00168}00168\ \textcolor{comment}{\ \ \ *\ @brief\ Renders\ all\ SceneObjects\ in\ the\ scene\ using\ the\ specified\ shader.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00169}00169\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00170}00170\ \textcolor{comment}{\ \ \ *\ @param\ shader\ The\ shader\ to\ use\ for\ rendering\ the\ objects}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00171}00171\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00172}00172\ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_scene_ad73b9c1185b16f0bd0b16b77471b8e35}{Render}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\&\ shader)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00173}00173\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00174}00174\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00175}00175\ \textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ list\ of\ SceneObjects\ in\ the\ scene.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00176}00176\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00177}00177\ \textcolor{comment}{\ \ \ *\ @return\ const\ std::vector<SceneObject>\&\ Constant\ reference\ to\ the\ vector\ of\ SceneObjects}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00178}00178\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00179}\doxymbox{\hyperlink{class_scene_a11f3986e592b49aa3921ecf37b0c2dce}{00179}}\ \ \ \textcolor{keyword}{const}\ std::vector<SceneObject>\&\ \doxymbox{\hyperlink{class_scene_a11f3986e592b49aa3921ecf37b0c2dce}{GetObjects}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_scene_a4507dcef4e6a65477d814c7d10de037f}{m\_Objects}};\ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00180}00180\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00181}00181\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00182}00182\ \textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ list\ of\ SceneObjects\ in\ the\ scene.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00183}00183\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00184}00184\ \textcolor{comment}{\ \ \ *\ @return\ std::vector<SceneObject>\&\ Reference\ to\ the\ vector\ of\ SceneObjects}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00185}00185\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00186}\doxymbox{\hyperlink{class_scene_a645956b159ae9cbc43ec698eb9e96222}{00186}}\ \ \ std::vector<SceneObject>\&\ \doxymbox{\hyperlink{class_scene_a645956b159ae9cbc43ec698eb9e96222}{GetObjects}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_scene_a4507dcef4e6a65477d814c7d10de037f}{m\_Objects}};\ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00187}00187\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00188}00188\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00189}00189\ \textcolor{comment}{\ \ \ *\ @brief\ Sets\ the\ camera\ for\ the\ scene.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00190}00190\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00191}00191\ \textcolor{comment}{\ \ \ *\ @param\ camera\ The\ Camera\ to\ set}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00192}00192\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00193}\doxymbox{\hyperlink{class_scene_ae3ad734c5ab018e43fc0b2360443d588}{00193}}\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_scene_ae3ad734c5ab018e43fc0b2360443d588}{SetCamera}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_camera}{Camera}}\&\ camera)\ \{\ \doxymbox{\hyperlink{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}{m\_Camera}}\ =\ camera;\ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00194}00194\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00195}00195\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00196}00196\ \textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ camera\ of\ the\ scene.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00197}00197\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00198}00198\ \textcolor{comment}{\ \ \ *\ @return\ Camera\&\ Reference\ to\ the\ scene's\ Camera}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00199}00199\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00200}\doxymbox{\hyperlink{class_scene_ab72a62cdd897e1d31a72e9a2f3a260b2}{00200}}\ \ \ \doxymbox{\hyperlink{class_camera}{Camera}}\&\ \doxymbox{\hyperlink{class_scene_ab72a62cdd897e1d31a72e9a2f3a260b2}{GetCamera}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}{m\_Camera}};\ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00201}00201\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00202}00202\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00203}00203\ \textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ camera\ of\ the\ scene.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00204}00204\ \textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00205}00205\ \textcolor{comment}{\ \ \ *\ @return\ const\ Camera\&\ Constant\ reference\ to\ the\ scene's\ Camera}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00206}00206\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00207}\doxymbox{\hyperlink{class_scene_a26734db954d487644691e613286a9c4a}{00207}}\ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_camera}{Camera}}\&\ \doxymbox{\hyperlink{class_scene_a26734db954d487644691e613286a9c4a}{GetCamera}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}{m\_Camera}};\ \}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00209}00209\ \ \textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00210}00210\ \textcolor{comment}{\ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00211}00211\ \textcolor{comment}{\ \ \ *\ @var\ name}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00212}00212\ \textcolor{comment}{\ \ \ *\ @brief\ The\ name\ of\ the\ scene.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00213}00213\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00214}\doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{00214}}\ \ \ std::string\ \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}};}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00215}00215\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00216}00216\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00217}00217\ \textcolor{comment}{\ \ \ *\ @var\ m\_Objects}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00218}00218\ \textcolor{comment}{\ \ \ *\ @brief\ The\ list\ of\ SceneObjects\ contained\ in\ the\ scene.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00219}00219\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00220}\doxymbox{\hyperlink{class_scene_a4507dcef4e6a65477d814c7d10de037f}{00220}}\ \ \ std::vector<SceneObject>\ \doxymbox{\hyperlink{class_scene_a4507dcef4e6a65477d814c7d10de037f}{m\_Objects}};}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00221}00221\ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00222}00222\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00223}00223\ \textcolor{comment}{\ \ \ *\ @var\ m\_ObjectIndex}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00224}00224\ \textcolor{comment}{\ \ \ *\ @brief\ A\ map\ for\ quick\ lookup\ of\ SceneObjects\ by\ name.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00225}00225\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00226}\doxymbox{\hyperlink{class_scene_a5e328ee8e0d8d80a193ab15ea0135d65}{00226}}\ \ \ std::unordered\_map<std::string,\ size\_t>\ \doxymbox{\hyperlink{class_scene_a5e328ee8e0d8d80a193ab15ea0135d65}{m\_ObjectIndex}};}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00227}00227\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00228}00228\ \textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00229}00229\ \textcolor{comment}{\ \ \ *\ @var\ m\_Camera}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00230}00230\ \textcolor{comment}{\ \ \ *\ @brief\ The\ camera\ used\ to\ view\ the\ scene.}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00231}00231\ \textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00232}\doxymbox{\hyperlink{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}{00232}}\ \ \ \doxymbox{\hyperlink{class_camera}{Camera}}\ \doxymbox{\hyperlink{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}{m\_Camera}};}
+\DoxyCodeLine{\Hypertarget{_scene_8h_source_l00233}00233\ \};\ \ \textcolor{comment}{//\ class\ Scene}}
+
+\end{DoxyCode}

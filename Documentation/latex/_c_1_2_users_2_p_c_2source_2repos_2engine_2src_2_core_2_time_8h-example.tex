@@ -1,0 +1,225 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Time.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_time_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_time_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{class_time_1_1_timer}{Time::Timer}}\ gameTimer;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (gameRunning)\ \{}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ deltaTime\ =\ gameTimer.Tick();\ \ \textcolor{comment}{//\ Get\ time\ since\ last\ frame}}
+\DoxyCodeLine{\ \ \ \ gameLogic.Update(deltaTime);}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (gameTimer.Elapsed()\ >\ 60.0f)\ \{\ \ \textcolor{comment}{//\ After\ 60\ seconds}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ GameOver();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_base_8h}{Base.h}}"{}}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @namespace\ Time}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Namespace\ containing\ timing\ and\ measurement\ utilities\ for\ the\ game\ engine.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Provides\ high-\/precision\ timer\ functionality\ for\ measuring\ elapsed\ time,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ frame-\/to-\/frame\ delta\ times,\ and\ other\ timing-\/related\ operations\ essential}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ for\ game\ logic\ and\ frame-\/rate\ independent\ updates.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{namespace\ }\doxymbox{\hyperlink{namespace_time}{Time}}\ \{}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ Timer}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ High-\/precision\ timer\ for\ measuring\ elapsed\ time\ and\ frame\ delta\ times.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ class\ provides\ a\ flexible\ timer\ that\ can\ measure\ both\ total\ elapsed\ time}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ since\ creation/reset\ and\ frame-\/to-\/frame\ delta\ times.\ It\ uses\ the\ system's}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ high-\/resolution\ clock\ for\ accurate\ timing\ measurements\ needed\ in\ game\ loops.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ The\ timer\ is\ useful\ for:}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Frame\ timing\ and\ delta\ time\ calculation}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Performance\ profiling\ and\ benchmarking}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Game\ logic\ that\ depends\ on\ elapsed\ time}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Animations\ and\ transitions}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Input\ response\ timing}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ This\ class\ is\ not\ thread-\/safe.\ Use\ separate\ Timer\ instances\ for\ different\ threads.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Time::Timer\ gameTimer;}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ while\ (gameRunning)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ f32\ deltaTime\ =\ gameTimer.Tick();\ \ //\ Get\ time\ since\ last\ frame}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ gameLogic.Update(deltaTime);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ if\ (gameTimer.Elapsed()\ >\ 60.0f)\ \{\ \ //\ After\ 60\ seconds}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ GameOver();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_time_1_1_timer}{Timer}}\ \{}
+\DoxyCodeLine{\ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @typedef\ Clock}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ High-\/resolution\ clock\ type\ used\ for\ timing\ measurements.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Uses\ std::chrono::high\_resolution\_clock\ which\ provides\ the\ highest}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ available\ resolution\ for\ time\ measurements\ on\ the\ system.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{class_time_1_1_timer_a0d7f101405b61e9abc417cf1b3df3477}{Clock}}\ =\ std::chrono::high\_resolution\_clock;}
+\DoxyCodeLine{\ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @typedef\ TimePoint}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Type\ representing\ a\ specific\ point\ in\ time\ from\ the\ high-\/resolution\ clock.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Represents\ a\ single\ moment\ in\ time\ with\ the\ precision\ of\ the\ high-\/resolution\ clock.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Used\ internally\ to\ track\ timer\ start\ time\ and\ last\ frame\ time.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{class_time_1_1_timer_a25d0d3bffff1e81066356c49315f407b}{TimePoint}}\ =\ std::chrono::time\_point<Clock>;}
+\DoxyCodeLine{\ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @typedef\ Duration}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Type\ representing\ a\ duration\ of\ time\ in\ floating-\/point\ seconds.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ A\ duration\ type\ that\ measures\ time\ intervals\ in\ floating-\/point\ seconds,}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ providing\ fractional\ second\ precision\ for\ frame\ delta\ times\ and\ other\ timing\ needs.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{class_time_1_1_timer_a483e1d5cf0a22a0cc52ddf6c1ce8fc41}{Duration}}\ =\ std::chrono::duration<f32>;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Constructs\ a\ new\ Timer\ instance\ and\ starts\ it\ immediately.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ The\ constructor\ initializes\ the\ timer\ with\ the\ current\ time\ as\ the\ start\ time.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ The\ timer\ begins\ measuring\ immediately\ upon\ construction.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ The\ timer\ tracks\ both\ total\ elapsed\ time\ and\ frame-\/to-\/frame\ delta\ times.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Time::Timer\ timer;\ \ //\ Timer\ starts\ now}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Timer();}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Resets\ the\ timer\ to\ its\ initial\ state.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ When\ called,\ this\ function\ sets\ the\ start\ time\ of\ the\ timer\ to\ the\ current\ time,}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ effectively\ restarting\ the\ timer.\ The\ elapsed\ time\ becomes\ 0,\ and\ subsequent}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ calls\ to\ Elapsed()\ will\ measure\ time\ from\ this\ reset\ point.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ is\ useful\ when\ you\ want\ to:}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ -\/\ Restart\ timing\ for\ a\ new\ section}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ -\/\ Reset\ timing\ between\ game\ phases}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ -\/\ Clear\ accumulated\ timing\ for\ fresh\ measurements}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ This\ does\ not\ affect\ the\ last\ frame\ time\ used\ by\ Tick().}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ timer.Reset();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ assert(timer.Elapsed()\ <\ 0.001f);\ \ //\ Should\ be\ very\ close\ to\ 0}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ Reset();}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Returns\ the\ total\ time\ elapsed\ since\ timer\ start\ or\ last\ reset.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ function\ returns\ the\ cumulative\ time\ that\ has\ passed\ since\ the\ timer\ was}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ constructed\ or\ Reset()\ was\ called.\ The\ returned\ value\ is\ in\ seconds\ as\ a}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ floating-\/point\ number,\ allowing\ for\ fractional\ second\ precision.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ f32\ The\ elapsed\ time\ in\ seconds\ (e.g.,\ 1.5\ =\ 1\ second\ and\ 500\ milliseconds)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ This\ is\ a\ const\ function\ and\ does\ not\ modify\ the\ timer\ state.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ Call\ Reset()\ to\ reset\ this\ counter.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Time::Timer\ timer;}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ //\ ...\ do\ some\ work\ ...}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ elapsedSeconds\ =\ timer.Elapsed();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ ENGINE\_DEBUG\_LOG("{}Operation\ took:\ "{}\ <<\ elapsedSeconds\ <<\ "{}\ seconds"{});}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ Elapsed()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Calculates\ and\ returns\ the\ time\ elapsed\ since\ the\ last\ Tick()\ call.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ function\ calculates\ the\ delta\ time\ (time\ difference)\ since\ the\ last\ time}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Tick()\ was\ called.\ On\ the\ first\ call,\ it\ returns\ the\ time\ since\ the\ timer\ was}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ constructed\ or\ Reset().\ Subsequent\ calls\ return\ the\ frame-\/to-\/frame\ delta\ time.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ is\ the\ primary\ function\ used\ for\ frame-\/rate\ independent\ game\ logic\ updates.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ It\ allows\ game\ physics,\ movement,\ and\ animations\ to\ advance\ proportionally\ to}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ the\ time\ that\ has\ actually\ passed,\ not\ the\ number\ of\ frames\ rendered.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ f32\ The\ time\ since\ last\ Tick()\ call\ in\ seconds}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ This\ function\ updates\ the\ internal\ last-\/frame\ timestamp.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ The\ returned\ delta\ time\ includes\ all\ system\ overhead\ (rendering,\ input,\ etc.)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Time::Timer\ timer;}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ while\ (gameRunning)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ \ \ f32\ deltaTime\ =\ timer.Tick();\ \ //\ Get\ time\ since\ last\ frame}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ \ \ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ \ \ //\ Update\ game\ logic\ with\ frame-\/rate\ independent\ timing}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ \ \ player.position\ +=\ player.velocity\ *\ deltaTime;}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ \ \ particle.lifetime\ -\/=\ deltaTime;}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ \ \ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ \ \ //\ Render\ frame...}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example\ Usage\ in\ physics:}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ f32\ deltaTime\ =\ gameTimer.Tick();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ entity.velocity.y\ -\/=\ gravity\ *\ deltaTime;\ \ //\ Frame-\/rate\ independent\ gravity}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ entity.position\ +=\ entity.velocity\ *\ deltaTime;}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ Tick();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ m\_StartTime\_}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ The\ time\ point\ when\ the\ timer\ was\ created\ or\ last\ reset.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Used\ to\ calculate\ total\ elapsed\ time\ via\ the\ Elapsed()\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Updated\ when\ Reset()\ is\ called.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{class_time_1_1_timer_a25d0d3bffff1e81066356c49315f407b}{TimePoint}}\ \doxymbox{\hyperlink{class_time_1_1_timer_a4f62d133f1b54573f9c9d4e09d22a72d}{m\_StartTime\_}};}
+\DoxyCodeLine{\ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ m\_LastFrameTime\_}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ The\ time\ point\ of\ the\ last\ Tick()\ call.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Used\ to\ calculate\ the\ delta\ time\ (time\ between\ frames)\ in\ the\ Tick()\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Updated\ after\ each\ Tick()\ call.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{class_time_1_1_timer_a25d0d3bffff1e81066356c49315f407b}{TimePoint}}\ \doxymbox{\hyperlink{class_time_1_1_timer_a423d46299e6af81352cbf32e85276176}{m\_LastFrameTime\_}};}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}\ \ \textcolor{comment}{//\ namespace\ Time}}
+
+\end{DoxyCodeInclude}
+ 

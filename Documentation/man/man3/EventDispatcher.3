@@ -1,0 +1,125 @@
+.TH "EventDispatcher< T >" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+EventDispatcher< T > \- Dispatches events to appropriate handlers based on event type\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Event\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBEventDispatcher\fP (\fBEvent\fP &event)"
+.br
+.RI "Constructs an \fBEventDispatcher\fP for a given event\&. "
+.ti -1c
+.RI "template<typename F> bool \fBDispatch\fP (const F &func)"
+.br
+.RI "Dispatches the event to the provided handler if types match\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "T & \fBm_Event_\fP"
+.br
+.RI "Reference to the event being dispatched\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename T>
+.br
+class EventDispatcher< T >"Dispatches events to appropriate handlers based on event type\&. 
+
+The \fBEventDispatcher\fP class is responsible for routing events to the correct handler functions based on their type\&. It uses templates to allow for type-safe dispatching of events\&.
+
+.PP
+\fBKey\fP features:
+.IP "\(bu" 2
+Type-safe event dispatching using templates
+.IP "\(bu" 2
+Prevents multiple handling of the same event via the Handled flag
+.PP
+
+.PP
+\fBTemplate Parameters\fP
+.RS 4
+\fIT\fP The specific event type to dispatch 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Event\&.h\fP\&.
+.PP
+Definition at line \fB116\fP of file \fBEvent\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename T> \fBEventDispatcher\fP< T >::EventDispatcher (\fBEvent\fP & event)\fR [inline]\fP"
+
+.PP
+Constructs an \fBEventDispatcher\fP for a given event\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Event\&.h\fP\&.
+.PP
+Definition at line \fB121\fP of file \fBEvent\&.h\fP\&.
+.PP
+References \fBm_Event_\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T> template<typename F> bool \fBEventDispatcher\fP< T >::Dispatch (const F & func)\fR [inline]\fP"
+
+.PP
+Dispatches the event to the provided handler if types match\&. This function checks if the event type matches T\&. If it does, it invokes the provided handler function with the event as an argument\&. If the handler returns true, the event is marked as handled\&.
+
+.PP
+\fBTemplate Parameters\fP
+.RS 4
+\fIF\fP The type of the handler function (should be callable with T&) 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIfunc\fP The handler function to invoke if types match 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+bool True if the event was dispatched and handled, false otherwise 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Event\&.h\fP\&.
+.PP
+Definition at line \fB135\fP of file \fBEvent\&.h\fP\&.
+.PP
+References \fBm_Event_\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<typename T> T& \fBEventDispatcher\fP< T >::m_Event_\fR [private]\fP"
+
+.PP
+Reference to the event being dispatched\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Event\&.h\fP\&.
+.PP
+Definition at line \fB147\fP of file \fBEvent\&.h\fP\&.
+.PP
+Referenced by \fBDispatch()\fP, and \fBEventDispatcher()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

@@ -1,0 +1,110 @@
+\doxysection{Model\+Loader.\+cpp}
+\hypertarget{_model_loader_8cpp_source}{}\label{_model_loader_8cpp_source}\index{src/Graphics/ModelLoader.cpp@{src/Graphics/ModelLoader.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}ModelLoader.h"{}}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}../Core/Log.h"{}}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00005}\doxymbox{\hyperlink{class_model_loader_a6f83b2ebba67fbaf7e8540440d34fde2}{00005}}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\ \doxymbox{\hyperlink{class_model_loader_a6f83b2ebba67fbaf7e8540440d34fde2}{ModelLoader::LoadMesh}}(\textcolor{keyword}{const}\ std::string\&\ filepath)\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00006}00006\ \ \ \textcolor{keyword}{auto}\ meshes\ =\ \doxymbox{\hyperlink{class_model_loader_ae138cf95f00e92a5b3b5e64906d5f6ee}{LoadModel}}(filepath);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00007}00007\ \ \ \textcolor{keywordflow}{return}\ meshes.empty()\ ?\ nullptr\ :\ meshes[0];}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00008}00008\ \}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00010}\doxymbox{\hyperlink{class_model_loader_ae138cf95f00e92a5b3b5e64906d5f6ee}{00010}}\ std::vector<Ref<Mesh>>\ \doxymbox{\hyperlink{class_model_loader_ae138cf95f00e92a5b3b5e64906d5f6ee}{ModelLoader::LoadModel}}(\textcolor{keyword}{const}\ std::string\&\ filepath)\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00011}00011\ \ \ std::vector<Ref<Mesh>>\ meshes;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00013}00013\ \ \ Assimp::Importer\ importer;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00014}00014\ \ \ \textcolor{keyword}{const}\ aiScene*\ scene\ =}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00015}00015\ \ \ \ \ \ \ importer.ReadFile(filepath,\ aiProcess\_Triangulate\ |\ aiProcess\_FlipUVs\ |}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ aiProcess\_CalcTangentSpace);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00018}00018\ \ \ \textcolor{keywordflow}{if}\ (!scene\ ||\ scene-\/>mFlags\ \&\ AI\_SCENE\_FLAGS\_INCOMPLETE\ ||}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00019}00019\ \ \ \ \ \ \ !scene-\/>mRootNode)\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00020}00020\ \ \ \ \ ENGINE\_ERROR\ <<\ \textcolor{stringliteral}{"{}Assimp\ error:\ "{}}\ <<\ importer.GetErrorString();}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00021}00021\ \ \ \ \ \textcolor{keywordflow}{return}\ meshes;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00022}00022\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00024}00024\ \ \ \doxymbox{\hyperlink{class_model_loader_a4b5fd06f67503496592fa4400a560e3d}{ProcessNode}}(scene-\/>mRootNode,\ scene,\ meshes);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00025}00025\ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Loaded\ model:\ "{}}\ <<\ filepath\ <<\ \textcolor{stringliteral}{"{}\ ("{}}\ <<\ meshes.size()}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ meshes)"{}};}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00028}00028\ \ \ \textcolor{keywordflow}{return}\ meshes;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00029}00029\ \}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00031}\doxymbox{\hyperlink{class_model_loader_a4b5fd06f67503496592fa4400a560e3d}{00031}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_model_loader_a4b5fd06f67503496592fa4400a560e3d}{ModelLoader::ProcessNode}}(aiNode*\ node,\ \textcolor{keyword}{const}\ aiScene*\ scene,}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}>\&\ meshes)\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00033}00033\ \ \ \textcolor{comment}{//\ Process\ each\ mesh\ located\ at\ the\ current\ node}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00034}00034\ \ \ \textcolor{keywordflow}{for}\ (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ i\ =\ 0;\ i\ <\ node-\/>mNumMeshes;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00035}00035\ \ \ \ \ aiMesh*\ mesh\ =\ scene-\/>mMeshes[node-\/>mMeshes[i]];}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00036}00036\ \ \ \ \ meshes.push\_back(\doxymbox{\hyperlink{class_model_loader_a1df6a237f3339a9feb6cd7d73dd116b1}{ProcessMesh}}(mesh));}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00037}00037\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00039}00039\ \ \ \textcolor{comment}{//\ Process\ each\ of\ the\ children\ nodes}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00040}00040\ \ \ \textcolor{keywordflow}{for}\ (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ i\ =\ 0;\ i\ <\ node-\/>mNumChildren;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00041}00041\ \ \ \ \ \doxymbox{\hyperlink{class_model_loader_a4b5fd06f67503496592fa4400a560e3d}{ProcessNode}}(node-\/>mChildren[i],\ scene,\ meshes);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00042}00042\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00043}00043\ \}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00045}\doxymbox{\hyperlink{class_model_loader_a1df6a237f3339a9feb6cd7d73dd116b1}{00045}}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\ \doxymbox{\hyperlink{class_model_loader_a1df6a237f3339a9feb6cd7d73dd116b1}{ModelLoader::ProcessMesh}}(aiMesh*\ mesh)\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00046}00046\ \ \ std::vector<Vertex>\ vertices\ =\ LoadVertices(mesh);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00047}00047\ \ \ std::vector<u32>\ indices\ =\ LoadIndices(mesh);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00048}00048\ \ \ \textcolor{keywordflow}{return}\ CreateRef<Mesh>(vertices,\ indices);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00049}00049\ \}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00051}00051\ std::vector<Vertex>\ ModelLoader::LoadVertices(aiMesh*\ mesh)\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00052}00052\ \ \ std::vector<Vertex>\ vertices;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00053}00053\ \ \ vertices.reserve(mesh-\/>mNumVertices);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00055}00055\ \ \ \textcolor{keywordflow}{for}\ (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ i\ =\ 0;\ i\ <\ mesh-\/>mNumVertices;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00056}00056\ \ \ \ \ \doxymbox{\hyperlink{struct_vertex}{Vertex}}\ vertex;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Position}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00059}00059\ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_a7aed0e6457d927a6e248703d3131bde9}{position}}.x\ =\ mesh-\/>mVertices[i].x;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00060}00060\ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_a7aed0e6457d927a6e248703d3131bde9}{position}}.y\ =\ mesh-\/>mVertices[i].y;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00061}00061\ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_a7aed0e6457d927a6e248703d3131bde9}{position}}.z\ =\ mesh-\/>mVertices[i].z;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ Normal}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (mesh-\/>HasNormals())\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00065}00065\ \ \ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_adce2d4b3d1191c69328519bdf231c344}{normal}}.x\ =\ mesh-\/>mNormals[i].x;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00066}00066\ \ \ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_adce2d4b3d1191c69328519bdf231c344}{normal}}.y\ =\ mesh-\/>mNormals[i].y;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00067}00067\ \ \ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_adce2d4b3d1191c69328519bdf231c344}{normal}}.z\ =\ mesh-\/>mNormals[i].z;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//\ Texture\ coordinates}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{if}\ (mesh-\/>mTextureCoords[0])\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00072}00072\ \ \ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_a216ef7fa93f9fd245f6b42385aaf81a7}{texCoord}}.\doxymbox{\hyperlink{struct_vector2_acd31f1c412c1761d4aa56a728666bcee}{x}}\ =\ mesh-\/>mTextureCoords[0][i].x;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00073}00073\ \ \ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_a216ef7fa93f9fd245f6b42385aaf81a7}{texCoord}}.\doxymbox{\hyperlink{struct_vector2_abe2c8cfc78ae83b83af4408d42d4a8af}{y}}\ =\ mesh-\/>mTextureCoords[0][i].y;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ Tangents\ and\ bitangents}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{if}\ (mesh-\/>HasTangentsAndBitangents())\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00078}00078\ \ \ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_a936dff71a7000ba389017a6ddb7f3b7f}{tangent}}.x\ =\ mesh-\/>mTangents[i].x;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00079}00079\ \ \ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_a936dff71a7000ba389017a6ddb7f3b7f}{tangent}}.y\ =\ mesh-\/>mTangents[i].y;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00080}00080\ \ \ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_a936dff71a7000ba389017a6ddb7f3b7f}{tangent}}.z\ =\ mesh-\/>mTangents[i].z;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00082}00082\ \ \ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_a42f0a210d6fc3f7753de16c1e12e40d4}{bitangent}}.x\ =\ mesh-\/>mBitangents[i].x;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00083}00083\ \ \ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_a42f0a210d6fc3f7753de16c1e12e40d4}{bitangent}}.y\ =\ mesh-\/>mBitangents[i].y;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00084}00084\ \ \ \ \ \ \ vertex.\doxymbox{\hyperlink{struct_vertex_a42f0a210d6fc3f7753de16c1e12e40d4}{bitangent}}.z\ =\ mesh-\/>mBitangents[i].z;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00087}00087\ \ \ \ \ vertices.push\_back(vertex);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00088}00088\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00090}00090\ \ \ \textcolor{keywordflow}{return}\ vertices;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00093}00093\ std::vector<u32>\ ModelLoader::LoadIndices(aiMesh*\ mesh)\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00094}00094\ \ \ std::vector<u32>\ indices;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00096}00096\ \ \ \textcolor{keywordflow}{for}\ (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ i\ =\ 0;\ i\ <\ mesh-\/>mNumFaces;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00097}00097\ \ \ \ \ aiFace\ face\ =\ mesh-\/>mFaces[i];}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00098}00098\ \ \ \ \ \textcolor{keywordflow}{for}\ (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ j\ =\ 0;\ j\ <\ face.mNumIndices;\ j++)\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00099}00099\ \ \ \ \ \ \ indices.push\_back(face.mIndices[j]);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00100}00100\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00101}00101\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00103}00103\ \ \ \textcolor{keywordflow}{return}\ indices;}
+\DoxyCodeLine{\Hypertarget{_model_loader_8cpp_source_l00104}00104\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,225 @@
+\doxysection{Vertex\+Buffer Class Reference}
+\hypertarget{class_vertex_buffer}{}\label{class_vertex_buffer}\index{VertexBuffer@{VertexBuffer}}
+
+
+Encapsulates an Open\+GL vertex buffer object (VBO).  
+
+
+
+
+{\ttfamily \+\#include $<$Vertex\+Buffer.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_vertex_buffer_ac19f46ec67149c8ab7fce00ff2ee41b3}{Vertex\+Buffer}} (const void \texorpdfstring{$\ast$}{*}data, \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} size)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_vertex_buffer}{Vertex\+Buffer} with the given data and size. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_vertex_buffer_ad820648b19a272783fbf884dd518ad8d}{Vertex\+Buffer}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} size)
+\begin{DoxyCompactList}\small\item\em Constructs a dynamic \doxylink{class_vertex_buffer}{Vertex\+Buffer} with the given size. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_vertex_buffer_a5216726fdd43b2ae8e1439e347717fdd}{\texorpdfstring{$\sim$}{\string~}\+Vertex\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em Destructor that cleans up the Open\+GL vertex buffer. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vertex_buffer_a13019e8580ca3e369fad4166500ad2b9}{Bind}} () const
+\begin{DoxyCompactList}\small\item\em Binds the vertex buffer for rendering. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vertex_buffer_abfdb36238d60f2cd7bf63093f914b61f}{Unbind}} () const
+\begin{DoxyCompactList}\small\item\em Unbinds the vertex buffer. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vertex_buffer_a8ac04ca57704402055e7892d4f3cc113}{Set\+Data}} (const void \texorpdfstring{$\ast$}{*}data, \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} size)
+\begin{DoxyCompactList}\small\item\em Sets the data of the vertex buffer. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_vertex_buffer_aed72730445ce94392c90db777f0ca91c}{Get\+Renderer\+ID}} () const
+\begin{DoxyCompactList}\small\item\em Gets the Open\+GL renderer ID of the vertex buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_vertex_buffer_a3a95148c117b0dacabc015afcfff79f4}{m\+\_\+\+Renderer\+ID}}
+\begin{DoxyCompactList}\small\item\em The Open\+GL renderer ID for the vertex buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Encapsulates an Open\+GL vertex buffer object (VBO). 
+
+Manages the creation, binding, and data management of a vertex buffer. 
+
+Definition at line \doxymbox{\hyperlink{_vertex_buffer_8h_source_l00010}{10}} of file \doxymbox{\hyperlink{_vertex_buffer_8h_source}{Vertex\+Buffer.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_vertex_buffer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_vertex_buffer_ac19f46ec67149c8ab7fce00ff2ee41b3}\index{VertexBuffer@{VertexBuffer}!VertexBuffer@{VertexBuffer}}
+\index{VertexBuffer@{VertexBuffer}!VertexBuffer@{VertexBuffer}}
+\doxysubsubsection{\texorpdfstring{VertexBuffer()}{VertexBuffer()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_ac19f46ec67149c8ab7fce00ff2ee41b3} 
+Vertex\+Buffer::\+\+Vertex\+Buffer (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_vertex_buffer}{Vertex\+Buffer} with the given data and size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the vertex data \\
+\hline
+{\em size} & Size of the vertex data in bytes \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_buffer_8cpp_source_l00004}{4}} of file \doxymbox{\hyperlink{_vertex_buffer_8cpp_source}{Vertex\+Buffer.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_buffer_8h_source_l00062}{m\+\_\+\+Renderer\+ID}}.
+
+\Hypertarget{class_vertex_buffer_ad820648b19a272783fbf884dd518ad8d}\index{VertexBuffer@{VertexBuffer}!VertexBuffer@{VertexBuffer}}
+\index{VertexBuffer@{VertexBuffer}!VertexBuffer@{VertexBuffer}}
+\doxysubsubsection{\texorpdfstring{VertexBuffer()}{VertexBuffer()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_ad820648b19a272783fbf884dd518ad8d} 
+Vertex\+Buffer::\+\+Vertex\+Buffer (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a dynamic \doxylink{class_vertex_buffer}{Vertex\+Buffer} with the given size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Size of the vertex buffer in bytes \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_buffer_8cpp_source_l00010}{10}} of file \doxymbox{\hyperlink{_vertex_buffer_8cpp_source}{Vertex\+Buffer.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_buffer_8h_source_l00062}{m\+\_\+\+Renderer\+ID}}.
+
+\Hypertarget{class_vertex_buffer_a5216726fdd43b2ae8e1439e347717fdd}\index{VertexBuffer@{VertexBuffer}!````~VertexBuffer@{\texorpdfstring{$\sim$}{\string~}VertexBuffer}}
+\index{````~VertexBuffer@{\texorpdfstring{$\sim$}{\string~}VertexBuffer}!VertexBuffer@{VertexBuffer}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}VertexBuffer()}{\string~VertexBuffer()}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_a5216726fdd43b2ae8e1439e347717fdd} 
+Vertex\+Buffer::\+\texorpdfstring{$\sim$}{\string~}\+Vertex\+Buffer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor that cleans up the Open\+GL vertex buffer. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_buffer_8cpp_source_l00016}{16}} of file \doxymbox{\hyperlink{_vertex_buffer_8cpp_source}{Vertex\+Buffer.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_buffer_8h_source_l00062}{m\+\_\+\+Renderer\+ID}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_vertex_buffer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_vertex_buffer_a13019e8580ca3e369fad4166500ad2b9}\index{VertexBuffer@{VertexBuffer}!Bind@{Bind}}
+\index{Bind@{Bind}!VertexBuffer@{VertexBuffer}}
+\doxysubsubsection{\texorpdfstring{Bind()}{Bind()}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_a13019e8580ca3e369fad4166500ad2b9} 
+void Vertex\+Buffer::\+\+Bind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Binds the vertex buffer for rendering. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_buffer_8cpp_source_l00020}{20}} of file \doxymbox{\hyperlink{_vertex_buffer_8cpp_source}{Vertex\+Buffer.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_buffer_8h_source_l00062}{m\+\_\+\+Renderer\+ID}}.
+
+\Hypertarget{class_vertex_buffer_aed72730445ce94392c90db777f0ca91c}\index{VertexBuffer@{VertexBuffer}!GetRendererID@{GetRendererID}}
+\index{GetRendererID@{GetRendererID}!VertexBuffer@{VertexBuffer}}
+\doxysubsubsection{\texorpdfstring{GetRendererID()}{GetRendererID()}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_aed72730445ce94392c90db777f0ca91c} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Vertex\+Buffer::\+\+Get\+Renderer\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the Open\+GL renderer ID of the vertex buffer. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32} The Open\+GL renderer ID 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_buffer_8h_source_l00055}{55}} of file \doxymbox{\hyperlink{_vertex_buffer_8h_source}{Vertex\+Buffer.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_buffer_8h_source_l00062}{m\+\_\+\+Renderer\+ID}}.
+
+\Hypertarget{class_vertex_buffer_a8ac04ca57704402055e7892d4f3cc113}\index{VertexBuffer@{VertexBuffer}!SetData@{SetData}}
+\index{SetData@{SetData}!VertexBuffer@{VertexBuffer}}
+\doxysubsubsection{\texorpdfstring{SetData()}{SetData()}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_a8ac04ca57704402055e7892d4f3cc113} 
+void Vertex\+Buffer::\+\+Set\+Data (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Sets the data of the vertex buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the new vertex data \\
+\hline
+{\em size} & Size of the data in bytes \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_buffer_8cpp_source_l00028}{28}} of file \doxymbox{\hyperlink{_vertex_buffer_8cpp_source}{Vertex\+Buffer.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_buffer_8h_source_l00062}{m\+\_\+\+Renderer\+ID}}.
+
+\Hypertarget{class_vertex_buffer_abfdb36238d60f2cd7bf63093f914b61f}\index{VertexBuffer@{VertexBuffer}!Unbind@{Unbind}}
+\index{Unbind@{Unbind}!VertexBuffer@{VertexBuffer}}
+\doxysubsubsection{\texorpdfstring{Unbind()}{Unbind()}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_abfdb36238d60f2cd7bf63093f914b61f} 
+void Vertex\+Buffer::\+\+Unbind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Unbinds the vertex buffer. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_buffer_8cpp_source_l00024}{24}} of file \doxymbox{\hyperlink{_vertex_buffer_8cpp_source}{Vertex\+Buffer.\+cpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_vertex_buffer_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_vertex_buffer_a3a95148c117b0dacabc015afcfff79f4}\index{VertexBuffer@{VertexBuffer}!m\_RendererID@{m\_RendererID}}
+\index{m\_RendererID@{m\_RendererID}!VertexBuffer@{VertexBuffer}}
+\doxysubsubsection{\texorpdfstring{m\_RendererID}{m\_RendererID}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_a3a95148c117b0dacabc015afcfff79f4} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Vertex\+Buffer::\+m\+\_\+\+Renderer\+ID\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Open\+GL renderer ID for the vertex buffer. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_buffer_8h_source_l00062}{62}} of file \doxymbox{\hyperlink{_vertex_buffer_8h_source}{Vertex\+Buffer.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_vertex_buffer_8cpp_source_l00020}{Bind()}}, \doxymbox{\hyperlink{_vertex_buffer_8h_source_l00055}{Get\+Renderer\+ID()}}, \doxymbox{\hyperlink{_vertex_buffer_8cpp_source_l00028}{Set\+Data()}}, \doxymbox{\hyperlink{_vertex_buffer_8cpp_source_l00004}{Vertex\+Buffer()}}, \doxymbox{\hyperlink{_vertex_buffer_8cpp_source_l00010}{Vertex\+Buffer()}}, and \doxymbox{\hyperlink{_vertex_buffer_8cpp_source_l00016}{\texorpdfstring{$\sim$}{\string~}\+Vertex\+Buffer()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Vertex\+Buffer.\+h\item 
+src/\+\+Graphics/\+Vertex\+Buffer.\+cpp\end{DoxyCompactItemize}

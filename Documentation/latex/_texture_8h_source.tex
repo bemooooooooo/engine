@@ -1,0 +1,183 @@
+\doxysection{Texture.\+h}
+\hypertarget{_texture_8h_source}{}\label{_texture_8h_source}\index{src/Graphics/Texture.h@{src/Graphics/Texture.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_base_8h}{../Core/Base.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}../Core/Log.h"{}}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00004}00004\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00005}00005\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00006}00006\ \textcolor{comment}{\ *\ @class\ Texture}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00007}00007\ \textcolor{comment}{\ *\ @brief\ Represents\ a\ 2D\ texture\ resource\ in\ OpenGL.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00008}00008\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00009}00009\ \textcolor{comment}{\ *\ This\ class\ encapsulates\ the\ creation,\ management,\ and\ usage\ of\ 2D\ textures}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00010}00010\ \textcolor{comment}{\ *\ in\ OpenGL.\ It\ provides\ methods\ to\ load\ textures\ from\ image\ files,\ create}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00011}00011\ \textcolor{comment}{\ *\ empty\ textures,\ bind/unbind\ them\ for\ rendering,\ and\ set\ texture\ data.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00012}00012\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00013}00013\ \textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00014}00014\ \textcolor{comment}{\ *\ -\/\ Load\ textures\ from\ image\ files\ (e.g.,\ PNG,\ JPEG)}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00015}00015\ \textcolor{comment}{\ *\ -\/\ Create\ empty\ textures\ with\ specified\ width\ and\ height}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00016}00016\ \textcolor{comment}{\ *\ -\/\ Bind\ and\ unbind\ textures\ to\ texture\ units}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00017}00017\ \textcolor{comment}{\ *\ -\/\ Set\ texture\ data\ dynamically}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00018}00018\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00019}00019\ \textcolor{comment}{\ *\ @note\ Requires\ a\ valid\ OpenGL\ context\ to\ function\ properly.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00020}00020\ \textcolor{comment}{\ *\ @note\ All\ OpenGL\ calls\ are\ made\ through\ this\ class;\ direct\ OpenGL\ calls\ should\ be\ avoided.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00021}00021\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00022}00022\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00023}00023\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00024}00024\ \textcolor{comment}{\ *\ //\ Create\ a\ texture\ from\ file}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00025}00025\ \textcolor{comment}{\ *\ Ref<Texture>\ texture\ =\ Texture::Create("{}path/to/texture.png"{});}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00026}00026\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00027}00027\ \textcolor{comment}{\ *\ //\ Create\ an\ empty\ texture}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00028}00028\ \textcolor{comment}{\ *\ Ref<Texture>\ emptyTexture\ =\ Texture::Create(512,\ 512);}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00029}00029\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00030}00030\ \textcolor{comment}{\ *\ //\ Bind\ the\ texture\ for\ use}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00031}00031\ \textcolor{comment}{\ *\ texture-\/>Bind(0);\ \ //\ Bind\ to\ texture\ unit\ 0}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00032}00032\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00033}00033\ \textcolor{comment}{\ *\ //\ Set\ texture\ data}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00034}00034\ \textcolor{comment}{\ *\ void*\ data\ =\ ...;\ //\ Pointer\ to\ pixel\ data}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00035}00035\ \textcolor{comment}{\ *\ texture-\/>SetData(data,\ width\ *\ height\ *\ 4);\ //\ Assuming\ RGBA\ format}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00036}00036\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00037}00037\ \textcolor{comment}{\ *\ //\ Unbind\ the\ texture}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00038}00038\ \textcolor{comment}{\ *\ texture-\/>Unbind();}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00039}00039\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00040}00040\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00041}\doxymbox{\hyperlink{class_texture}{00041}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_texture_a9f41c70a2e704ef829e7e89718862aa4}{Texture}}\ \{}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00042}00042\ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00043}00043\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00044}00044\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Constructs\ a\ Texture\ with\ the\ given\ width\ and\ height.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00045}00045\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00046}00046\ \textcolor{comment}{\ \ \ \ \ *\ Creates\ an\ empty\ texture\ with\ the\ specified\ dimensions.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00047}00047\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00048}00048\ \textcolor{comment}{\ \ \ \ \ *\ @param\ width\ The\ width\ of\ the\ texture\ in\ pixels}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00049}00049\ \textcolor{comment}{\ \ \ \ \ *\ @param\ height\ The\ height\ of\ the\ texture\ in\ pixels}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00050}00050\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00051}00051\ \ \ \ \ \doxymbox{\hyperlink{class_texture_a9f41c70a2e704ef829e7e89718862aa4}{Texture}}(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ width,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ height);}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00052}00052\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00053}00053\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00054}00054\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Constructs\ a\ Texture\ by\ loading\ from\ the\ specified\ file\ path.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00055}00055\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00056}00056\ \textcolor{comment}{\ \ \ \ \ *\ Loads\ the\ texture\ image\ from\ the\ given\ file\ and\ creates\ the\ OpenGL\ texture.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00057}00057\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00058}00058\ \textcolor{comment}{\ \ \ \ \ *\ @param\ filepath\ The\ path\ to\ the\ image\ file\ to\ load}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00059}00059\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00060}00060\ \ \ \ \ \doxymbox{\hyperlink{class_texture_a9f41c70a2e704ef829e7e89718862aa4}{Texture}}(\textcolor{keyword}{const}\ std::string\&\ filepath);}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00061}00061\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00062}00062\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00063}00063\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Destructor\ that\ cleans\ up\ the\ OpenGL\ texture\ resource.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00064}00064\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00065}00065\ \ \ \ \ \doxymbox{\hyperlink{class_texture_a09c4bcb7462f64c1d20fa69dba3cee8a}{\string~Texture}}();}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00066}00066\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00067}00067\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00068}00068\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Binds\ the\ texture\ to\ the\ specified\ texture\ unit.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00069}00069\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00070}00070\ \textcolor{comment}{\ \ \ \ \ *\ @param\ slot\ The\ texture\ unit\ slot\ to\ bind\ to\ (default\ is\ 0)}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00071}00071\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00072}00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_texture_a2ce2eb9f09d4bbcc289b42cecfe21f9d}{Bind}}(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ slot\ =\ 0)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00073}00073\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00074}00074\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00075}00075\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Unbinds\ the\ texture\ from\ the\ current\ texture\ unit.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00076}00076\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00077}00077\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_texture_a0bff249ecfb46e9b08c6ba52d64a921e}{Unbind}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00078}00078\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00079}00079\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00080}00080\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ texture\ data\ from\ a\ raw\ data\ pointer.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00081}00081\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00082}00082\ \textcolor{comment}{\ \ \ \ \ *\ Uploads\ the\ provided\ pixel\ data\ to\ the\ texture.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00083}00083\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00084}00084\ \textcolor{comment}{\ \ \ \ \ *\ @param\ data\ Pointer\ to\ the\ pixel\ data}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00085}00085\ \textcolor{comment}{\ \ \ \ \ *\ @param\ size\ Size\ of\ the\ data\ in\ bytes}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00086}00086\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00087}00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_texture_aebe2caf71137e1771aa5a9096c70955d}{SetData}}(\textcolor{keywordtype}{void}*\ data,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ size);}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00088}00088\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00089}00089\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00090}00090\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ width\ of\ the\ texture\ in\ pixels.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00091}00091\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00092}00092\ \textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ width\ of\ the\ texture}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00093}00093\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00094}\doxymbox{\hyperlink{class_texture_a60932e4a79a6aa83303456814944e183}{00094}}\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_texture_a60932e4a79a6aa83303456814944e183}{GetWidth}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_texture_a85847b7dbebd64b03b3e714376f3e6fc}{m\_Width}};\ \}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00095}00095\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00096}00096\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00097}00097\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ height\ of\ the\ texture\ in\ pixels.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00098}00098\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00099}00099\ \textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ height\ of\ the\ texture}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00100}00100\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00101}\doxymbox{\hyperlink{class_texture_a7ae059fdd929a2f43ac4902767cf8bf5}{00101}}\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_texture_a7ae059fdd929a2f43ac4902767cf8bf5}{GetHeight}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_Height;\ \}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00102}00102\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00103}00103\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00104}00104\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ OpenGL\ renderer\ ID\ of\ the\ texture.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00105}00105\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00106}00106\ \textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ OpenGL\ renderer\ ID}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00107}00107\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00108}\doxymbox{\hyperlink{class_texture_ab18699fc9ead2bcb9d997000f2c97b77}{00108}}\ \ \ \ \ [[nodiscard]]\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_texture_ab18699fc9ead2bcb9d997000f2c97b77}{GetRendererID}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_texture_af8fe00f64287e900e136948eefe311f2}{m\_RendererID}};\ \}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00109}00109\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00110}00110\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00111}00111\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Checks\ if\ the\ texture\ was\ successfully\ loaded.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00112}00112\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00113}00113\ \textcolor{comment}{\ \ \ \ \ *\ @return\ true\ If\ the\ texture\ is\ loaded\ and\ valid}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00114}00114\ \textcolor{comment}{\ \ \ \ \ *\ @return\ false\ If\ the\ texture\ failed\ to\ load}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00115}00115\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00116}\doxymbox{\hyperlink{class_texture_a426f7a09d506a481b0607ef9f91e1672}{00116}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_texture_a426f7a09d506a481b0607ef9f91e1672}{IsLoaded}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_texture_a19581cda9c74f7992070f390672b45ad}{m\_IsLoaded}};\ \}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00117}00117\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00118}00118\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00119}00119\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Factory\ method\ to\ create\ a\ Texture.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00120}00120\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00121}00121\ \textcolor{comment}{\ \ \ \ \ *\ Overloaded\ to\ create\ a\ texture\ either\ from\ dimensions\ or\ from\ a\ file\ path.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00122}00122\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00123}00123\ \textcolor{comment}{\ \ \ \ \ *\ @param\ width\ The\ width\ of\ the\ texture\ in\ pixels}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00124}00124\ \textcolor{comment}{\ \ \ \ \ *\ @param\ height\ The\ height\ of\ the\ texture\ in\ pixels}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00125}00125\ \textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Texture>\ The\ created\ empty\ texture}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00126}00126\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00127}00127\ \textcolor{comment}{\ \ \ \ \ *\ @param\ filepath\ The\ path\ to\ the\ image\ file\ to\ load}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00128}00128\ \textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Texture>\ The\ created\ texture\ loaded\ from\ file}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00129}00129\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00130}00130\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Texture>}}\ \doxymbox{\hyperlink{class_texture_a95668d1df7743f3178a362c0c0e3b470}{Create}}(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ width,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ height);}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00131}00131\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00132}00132\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00133}00133\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Factory\ method\ to\ create\ a\ Texture\ from\ a\ file.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00134}00134\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00135}00135\ \textcolor{comment}{\ \ \ \ \ *\ @param\ filepath\ The\ path\ to\ the\ image\ file\ to\ load}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00136}00136\ \textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Texture>\ The\ created\ texture\ loaded\ from\ file}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00137}00137\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00138}00138\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Texture>}}\ \doxymbox{\hyperlink{class_texture_a95668d1df7743f3178a362c0c0e3b470}{Create}}(\textcolor{keyword}{const}\ std::string\&\ filepath);}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00140}00140\ \textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00141}00141\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00142}00142\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Internal\ method\ to\ create\ the\ OpenGL\ texture\ resource.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00143}00143\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00144}00144\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_texture_a3ddeec1757d232f12f5a8b91cfe02c88}{CreateInternal}}();}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00145}00145\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00146}00146\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00147}00147\ \textcolor{comment}{\ \ \ \ \ *\ @var\ m\_RendererID}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00148}00148\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ OpenGL\ renderer\ ID\ for\ the\ texture.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00149}00149\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00150}\doxymbox{\hyperlink{class_texture_af8fe00f64287e900e136948eefe311f2}{00150}}\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_texture_af8fe00f64287e900e136948eefe311f2}{m\_RendererID}};}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00151}00151\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00152}00152\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00153}00153\ \textcolor{comment}{\ \ \ \ \ *\ @var\ m\_Width}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00154}00154\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ width\ of\ the\ texture\ in\ pixels.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00155}00155\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00156}\doxymbox{\hyperlink{class_texture_a85847b7dbebd64b03b3e714376f3e6fc}{00156}}\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_texture_a85847b7dbebd64b03b3e714376f3e6fc}{m\_Width}},\ m\_Height;}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00157}00157\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00158}00158\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00159}00159\ \textcolor{comment}{\ \ \ \ \ *\ @var\ m\_InternalFormat}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00160}00160\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ internal\ format\ of\ the\ texture\ (e.g.,\ GL\_RGBA8).}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00161}00161\ \textcolor{comment}{\ \ \ \ \ *\ @var\ m\_DataFormat}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00162}00162\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ data\ format\ of\ the\ texture\ (e.g.,\ GL\_RGBA).}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00163}00163\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00164}\doxymbox{\hyperlink{class_texture_a7310ad8cb00d157d33ec3bdb13f46297}{00164}}\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_texture_a16126c7495b6e30482c7074d08bf8dc2}{m\_InternalFormat}},\ \doxymbox{\hyperlink{class_texture_a7310ad8cb00d157d33ec3bdb13f46297}{m\_DataFormat}};}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00165}00165\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00166}00166\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00167}00167\ \textcolor{comment}{\ \ \ \ \ *\ @var\ m\_Filepath}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00168}00168\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ file\ path\ from\ which\ the\ texture\ was\ loaded.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00169}00169\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00170}\doxymbox{\hyperlink{class_texture_a675be3c1432369c5590c0a9b5f114758}{00170}}\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_texture_a675be3c1432369c5590c0a9b5f114758}{m\_Filepath}};}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00171}00171\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00172}00172\ \textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00173}00173\ \textcolor{comment}{\ \ \ \ \ *\ @var\ m\_IsLoaded}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00174}00174\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Flag\ indicating\ whether\ the\ texture\ was\ successfully\ loaded.}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00175}00175\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00176}\doxymbox{\hyperlink{class_texture_a19581cda9c74f7992070f390672b45ad}{00176}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_texture_a19581cda9c74f7992070f390672b45ad}{m\_IsLoaded}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_texture_8h_source_l00177}00177\ \};}
+
+\end{DoxyCode}

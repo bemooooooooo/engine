@@ -1,0 +1,173 @@
+\doxysection{Material\+Properties Struct Reference}
+\hypertarget{struct_material_properties}{}\label{struct_material_properties}\index{MaterialProperties@{MaterialProperties}}
+
+
+Encapsulates the properties and texture maps of a material.  
+
+
+
+
+{\ttfamily \+\#include $<$Material.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_vector4}{Vector4}} \doxymbox{\hyperlink{struct_material_properties_a0f38eafebb411c531aa76162fa8edff8}{albedo}} = \doxymbox{\hyperlink{struct_vector4}{Vector4}}(1.\+0f, 1.\+0f, 1.\+0f, 1.\+0f)
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{struct_material_properties_a80855b956e0464761c6cd91ddbe65c2b}{metallic}} = 0.\+0f
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{struct_material_properties_a0b55b52f9bf1a3ff1d6a0232d965325f}{roughness}} = 0.\+5f
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{struct_material_properties_aa3cb978a8b13fdce53969021bfd278a2}{ambient\+Occlusion}} = 1.\+0f
+\item 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_texture}{Texture}} $>$ \doxymbox{\hyperlink{struct_material_properties_aee5e440a923c40107ccbfd657689c520}{albedo\+Map}}
+\item 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_texture}{Texture}} $>$ \doxymbox{\hyperlink{struct_material_properties_a4da6cebc22815fe5ee8e82dfd70c0f19}{normal\+Map}}
+\item 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_texture}{Texture}} $>$ \doxymbox{\hyperlink{struct_material_properties_ada1f99aab2a375769252e26b48f69cc4}{metallic\+Map}}
+\item 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_texture}{Texture}} $>$ \doxymbox{\hyperlink{struct_material_properties_a227f998adec578ac6ac7877a39e79ea3}{roughness\+Map}}
+\item 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_texture}{Texture}} $>$ \doxymbox{\hyperlink{struct_material_properties_ab7e99a907e73e38110c958938b205854}{ambient\+Occlusion\+Map}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Encapsulates the properties and texture maps of a material. 
+
+This structure holds the various properties that define the appearance of a material in the rendering engine, including color, metallicity, roughness, ambient occlusion, and associated texture maps.
+
+Properties:\+
+\begin{DoxyItemize}
+\item albedo:\+ Base color of the material
+\item metallic:\+ Metallic factor (0.\+0 = non-\/metal, 1.\+0 = metal)
+\item roughness:\+ Surface roughness (0.\+0 = smooth, 1.\+0 = rough)
+\item ambient\+Occlusion:\+ Ambient occlusion factor
+\end{DoxyItemize}
+
+\doxylink{class_texture}{Texture} Maps:\+
+\begin{DoxyItemize}
+\item albedo\+Map:\+ \doxylink{class_texture}{Texture} for base color
+\item normal\+Map:\+ \doxylink{class_texture}{Texture} for surface normals
+\item metallic\+Map:\+ \doxylink{class_texture}{Texture} for metallic values
+\item roughness\+Map:\+ \doxylink{class_texture}{Texture} for roughness values
+\item ambient\+Occlusion\+Map:\+ \doxylink{class_texture}{Texture} for ambient occlusion values 
+\end{DoxyItemize}\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00037}{37}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_material_properties_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_material_properties_a0f38eafebb411c531aa76162fa8edff8}\index{MaterialProperties@{MaterialProperties}!albedo@{albedo}}
+\index{albedo@{albedo}!MaterialProperties@{MaterialProperties}}
+\doxysubsubsection{\texorpdfstring{albedo}{albedo}}
+{\footnotesize\ttfamily \label{struct_material_properties_a0f38eafebb411c531aa76162fa8edff8} 
+\doxymbox{\hyperlink{struct_vector4}{Vector4}} Material\+Properties::\+albedo = \doxymbox{\hyperlink{struct_vector4}{Vector4}}(1.\+0f, 1.\+0f, 1.\+0f, 1.\+0f)}
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00039}{39}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+\Hypertarget{struct_material_properties_aee5e440a923c40107ccbfd657689c520}\index{MaterialProperties@{MaterialProperties}!albedoMap@{albedoMap}}
+\index{albedoMap@{albedoMap}!MaterialProperties@{MaterialProperties}}
+\doxysubsubsection{\texorpdfstring{albedoMap}{albedoMap}}
+{\footnotesize\ttfamily \label{struct_material_properties_aee5e440a923c40107ccbfd657689c520} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$\doxymbox{\hyperlink{class_texture}{Texture}}$>$ Material\+Properties::\+albedo\+Map}
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00045}{45}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+\Hypertarget{struct_material_properties_aa3cb978a8b13fdce53969021bfd278a2}\index{MaterialProperties@{MaterialProperties}!ambientOcclusion@{ambientOcclusion}}
+\index{ambientOcclusion@{ambientOcclusion}!MaterialProperties@{MaterialProperties}}
+\doxysubsubsection{\texorpdfstring{ambientOcclusion}{ambientOcclusion}}
+{\footnotesize\ttfamily \label{struct_material_properties_aa3cb978a8b13fdce53969021bfd278a2} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Material\+Properties::\+ambient\+Occlusion = 1.\+0f}
+
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00042}{42}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+\Hypertarget{struct_material_properties_ab7e99a907e73e38110c958938b205854}\index{MaterialProperties@{MaterialProperties}!ambientOcclusionMap@{ambientOcclusionMap}}
+\index{ambientOcclusionMap@{ambientOcclusionMap}!MaterialProperties@{MaterialProperties}}
+\doxysubsubsection{\texorpdfstring{ambientOcclusionMap}{ambientOcclusionMap}}
+{\footnotesize\ttfamily \label{struct_material_properties_ab7e99a907e73e38110c958938b205854} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$\doxymbox{\hyperlink{class_texture}{Texture}}$>$ Material\+Properties::\+ambient\+Occlusion\+Map}
+
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00049}{49}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+\Hypertarget{struct_material_properties_a80855b956e0464761c6cd91ddbe65c2b}\index{MaterialProperties@{MaterialProperties}!metallic@{metallic}}
+\index{metallic@{metallic}!MaterialProperties@{MaterialProperties}}
+\doxysubsubsection{\texorpdfstring{metallic}{metallic}}
+{\footnotesize\ttfamily \label{struct_material_properties_a80855b956e0464761c6cd91ddbe65c2b} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Material\+Properties::\+metallic = 0.\+0f}
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00040}{40}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+\Hypertarget{struct_material_properties_ada1f99aab2a375769252e26b48f69cc4}\index{MaterialProperties@{MaterialProperties}!metallicMap@{metallicMap}}
+\index{metallicMap@{metallicMap}!MaterialProperties@{MaterialProperties}}
+\doxysubsubsection{\texorpdfstring{metallicMap}{metallicMap}}
+{\footnotesize\ttfamily \label{struct_material_properties_ada1f99aab2a375769252e26b48f69cc4} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$\doxymbox{\hyperlink{class_texture}{Texture}}$>$ Material\+Properties::\+metallic\+Map}
+
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00047}{47}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+\Hypertarget{struct_material_properties_a4da6cebc22815fe5ee8e82dfd70c0f19}\index{MaterialProperties@{MaterialProperties}!normalMap@{normalMap}}
+\index{normalMap@{normalMap}!MaterialProperties@{MaterialProperties}}
+\doxysubsubsection{\texorpdfstring{normalMap}{normalMap}}
+{\footnotesize\ttfamily \label{struct_material_properties_a4da6cebc22815fe5ee8e82dfd70c0f19} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$\doxymbox{\hyperlink{class_texture}{Texture}}$>$ Material\+Properties::\+normal\+Map}
+
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00046}{46}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+\Hypertarget{struct_material_properties_a0b55b52f9bf1a3ff1d6a0232d965325f}\index{MaterialProperties@{MaterialProperties}!roughness@{roughness}}
+\index{roughness@{roughness}!MaterialProperties@{MaterialProperties}}
+\doxysubsubsection{\texorpdfstring{roughness}{roughness}}
+{\footnotesize\ttfamily \label{struct_material_properties_a0b55b52f9bf1a3ff1d6a0232d965325f} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Material\+Properties::\+roughness = 0.\+5f}
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00041}{41}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+\Hypertarget{struct_material_properties_a227f998adec578ac6ac7877a39e79ea3}\index{MaterialProperties@{MaterialProperties}!roughnessMap@{roughnessMap}}
+\index{roughnessMap@{roughnessMap}!MaterialProperties@{MaterialProperties}}
+\doxysubsubsection{\texorpdfstring{roughnessMap}{roughnessMap}}
+{\footnotesize\ttfamily \label{struct_material_properties_a227f998adec578ac6ac7877a39e79ea3} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$\doxymbox{\hyperlink{class_texture}{Texture}}$>$ Material\+Properties::\+roughness\+Map}
+
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00048}{48}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Material.\+h\end{DoxyCompactItemize}

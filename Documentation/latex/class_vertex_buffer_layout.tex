@@ -1,0 +1,271 @@
+\doxysection{Vertex\+Buffer\+Layout Class Reference}
+\hypertarget{class_vertex_buffer_layout}{}\label{class_vertex_buffer_layout}\index{VertexBufferLayout@{VertexBufferLayout}}
+
+
+Defines the layout of vertex attributes in a vertex buffer.  
+
+
+
+
+{\ttfamily \+\#include $<$Vertex\+Array.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_vertex_buffer_layout_a1e10e1d0c533a91948466fa4f88bab09}{Vertex\+Buffer\+Layout}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor initializing an empty layout. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\void \doxymbox{\hyperlink{class_vertex_buffer_layout_aa611a359943aeb66245892d699d8ee27}{Push}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} count)
+\begin{DoxyCompactList}\small\item\em Templated method to add a vertex attribute to the layout. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{struct_vertex_buffer_element}{Vertex\+Buffer\+Element}} $>$ \& \doxymbox{\hyperlink{class_vertex_buffer_layout_aba7ad4feb91be25b597b903fe93668fe}{Get\+Elements}} () const
+\begin{DoxyCompactList}\small\item\em Gets the list of vertex buffer elements in the layout. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_vertex_buffer_layout_a017735b1471f36c7a5246b2afd246876}{Get\+Stride}} () const
+\begin{DoxyCompactList}\small\item\em Gets the stride (total size) of the vertex structure in bytes. \end{DoxyCompactList}\item 
+template$<$$>$ void \doxymbox{\hyperlink{class_vertex_buffer_layout_a976ae83716c405ad1bdfffc4583ef6d2}{Push}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} count)
+\begin{DoxyCompactList}\small\item\em Specialization for float (\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}) vertex attributes. \end{DoxyCompactList}\item 
+template$<$$>$ void \doxymbox{\hyperlink{class_vertex_buffer_layout_a976ae83716c405ad1bdfffc4583ef6d2}{Push}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} count)
+\begin{DoxyCompactList}\small\item\em Specialization for unsigned int (\doxylink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}) vertex attributes. \end{DoxyCompactList}\item 
+template$<$$>$ void \doxymbox{\hyperlink{class_vertex_buffer_layout_a976ae83716c405ad1bdfffc4583ef6d2}{Push}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} count)
+\begin{DoxyCompactList}\small\item\em Specialization for unsigned byte (\doxylink{group___base_types_ga987e4d6cf789cb59dbb390728271e4d6}{u8}) vertex attributes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_vertex_buffer_element}{Vertex\+Buffer\+Element}} $>$ \doxymbox{\hyperlink{class_vertex_buffer_layout_a105b29d119e9aec0b24fbc478af1e8db}{m\+\_\+\+Elements}}
+\begin{DoxyCompactList}\small\item\em The list of vertex buffer elements defining the layout. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_vertex_buffer_layout_a58b81b7de53a4c36c73c2cf91adf3ce1}{m\+\_\+\+Stride}}
+\begin{DoxyCompactList}\small\item\em The total size of the vertex structure in bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the layout of vertex attributes in a vertex buffer. 
+
+Manages a list of \doxylink{struct_vertex_buffer_element}{Vertex\+Buffer\+Element} instances and calculates the stride (total size) of the vertex structure. 
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00062}{62}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_vertex_buffer_layout_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_vertex_buffer_layout_a1e10e1d0c533a91948466fa4f88bab09}\index{VertexBufferLayout@{VertexBufferLayout}!VertexBufferLayout@{VertexBufferLayout}}
+\index{VertexBufferLayout@{VertexBufferLayout}!VertexBufferLayout@{VertexBufferLayout}}
+\doxysubsubsection{\texorpdfstring{VertexBufferLayout()}{VertexBufferLayout()}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_layout_a1e10e1d0c533a91948466fa4f88bab09} 
+Vertex\+Buffer\+Layout::\+\+Vertex\+Buffer\+Layout (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor initializing an empty layout. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00067}{67}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_array_8h_source_l00109}{m\+\_\+\+Stride}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_vertex_buffer_layout_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_vertex_buffer_layout_aba7ad4feb91be25b597b903fe93668fe}\index{VertexBufferLayout@{VertexBufferLayout}!GetElements@{GetElements}}
+\index{GetElements@{GetElements}!VertexBufferLayout@{VertexBufferLayout}}
+\doxysubsubsection{\texorpdfstring{GetElements()}{GetElements()}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_layout_aba7ad4feb91be25b597b903fe93668fe} 
+const std::\+vector$<$ \doxymbox{\hyperlink{struct_vertex_buffer_element}{Vertex\+Buffer\+Element}} $>$ \& Vertex\+Buffer\+Layout::\+\+Get\+Elements (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the list of vertex buffer elements in the layout. 
+
+\begin{DoxyReturn}{Returns}
+const std::\+vector$<$\+Vertex\+Buffer\+Element$>$\& The list of elements 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00087}{87}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_array_8h_source_l00103}{m\+\_\+\+Elements}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00013}{Vertex\+Array::\+\+Add\+Vertex\+Buffer()}}.
+
+\Hypertarget{class_vertex_buffer_layout_a017735b1471f36c7a5246b2afd246876}\index{VertexBufferLayout@{VertexBufferLayout}!GetStride@{GetStride}}
+\index{GetStride@{GetStride}!VertexBufferLayout@{VertexBufferLayout}}
+\doxysubsubsection{\texorpdfstring{GetStride()}{GetStride()}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_layout_a017735b1471f36c7a5246b2afd246876} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Vertex\+Buffer\+Layout::\+\+Get\+Stride (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the stride (total size) of the vertex structure in bytes. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32} The stride in bytes 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00096}{96}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_array_8h_source_l00109}{m\+\_\+\+Stride}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00013}{Vertex\+Array::\+\+Add\+Vertex\+Buffer()}}.
+
+\Hypertarget{class_vertex_buffer_layout_a976ae83716c405ad1bdfffc4583ef6d2}\index{VertexBufferLayout@{VertexBufferLayout}!Push@{Push}}
+\index{Push@{Push}!VertexBufferLayout@{VertexBufferLayout}}
+\doxysubsubsection{\texorpdfstring{Push()}{Push()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_layout_a976ae83716c405ad1bdfffc4583ef6d2} 
+template$<$$>$ \\
+void Vertex\+Buffer\+Layout::\+\+Push (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Specialization for unsigned byte (\doxylink{group___base_types_ga987e4d6cf789cb59dbb390728271e4d6}{u8}) vertex attributes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & The number of unsigned byte components \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00140}{140}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_array_8h_source_l00042}{Vertex\+Buffer\+Element::\+\+Get\+Size\+Of\+Type()}}, \doxymbox{\hyperlink{_vertex_array_8h_source_l00103}{m\+\_\+\+Elements}}, and \doxymbox{\hyperlink{_vertex_array_8h_source_l00109}{m\+\_\+\+Stride}}.
+
+\Hypertarget{class_vertex_buffer_layout_a976ae83716c405ad1bdfffc4583ef6d2}\index{VertexBufferLayout@{VertexBufferLayout}!Push@{Push}}
+\index{Push@{Push}!VertexBufferLayout@{VertexBufferLayout}}
+\doxysubsubsection{\texorpdfstring{Push()}{Push()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_layout_a976ae83716c405ad1bdfffc4583ef6d2} 
+template$<$$>$ \\
+void Vertex\+Buffer\+Layout::\+\+Push (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Specialization for unsigned int (\doxylink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}) vertex attributes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & The number of unsigned int components \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00129}{129}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_array_8h_source_l00042}{Vertex\+Buffer\+Element::\+\+Get\+Size\+Of\+Type()}}, \doxymbox{\hyperlink{_vertex_array_8h_source_l00103}{m\+\_\+\+Elements}}, and \doxymbox{\hyperlink{_vertex_array_8h_source_l00109}{m\+\_\+\+Stride}}.
+
+\Hypertarget{class_vertex_buffer_layout_a976ae83716c405ad1bdfffc4583ef6d2}\index{VertexBufferLayout@{VertexBufferLayout}!Push@{Push}}
+\index{Push@{Push}!VertexBufferLayout@{VertexBufferLayout}}
+\doxysubsubsection{\texorpdfstring{Push()}{Push()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_layout_a976ae83716c405ad1bdfffc4583ef6d2} 
+template$<$$>$ \\
+void Vertex\+Buffer\+Layout::\+\+Push (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Specialization for float (\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}) vertex attributes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & The number of float components \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00118}{118}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_array_8h_source_l00042}{Vertex\+Buffer\+Element::\+\+Get\+Size\+Of\+Type()}}, \doxymbox{\hyperlink{_vertex_array_8h_source_l00103}{m\+\_\+\+Elements}}, and \doxymbox{\hyperlink{_vertex_array_8h_source_l00109}{m\+\_\+\+Stride}}.
+
+\Hypertarget{class_vertex_buffer_layout_aa611a359943aeb66245892d699d8ee27}\index{VertexBufferLayout@{VertexBufferLayout}!Push@{Push}}
+\index{Push@{Push}!VertexBufferLayout@{VertexBufferLayout}}
+\doxysubsubsection{\texorpdfstring{Push()}{Push()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_layout_aa611a359943aeb66245892d699d8ee27} 
+template$<$typename T$>$ \\
+void Vertex\+Buffer\+Layout::\+\+Push (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Templated method to add a vertex attribute to the layout. 
+
+Specializations exist for \doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}, \doxylink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}, and \doxylink{group___base_types_ga987e4d6cf789cb59dbb390728271e4d6}{u8} types.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The data type of the vertex attribute \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em count} & The number of components in the attribute \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00078}{78}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_mesh_8cpp_source_l00006}{Mesh::\+\+Mesh()}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_vertex_buffer_layout_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_vertex_buffer_layout_a105b29d119e9aec0b24fbc478af1e8db}\index{VertexBufferLayout@{VertexBufferLayout}!m\_Elements@{m\_Elements}}
+\index{m\_Elements@{m\_Elements}!VertexBufferLayout@{VertexBufferLayout}}
+\doxysubsubsection{\texorpdfstring{m\_Elements}{m\_Elements}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_layout_a105b29d119e9aec0b24fbc478af1e8db} 
+std::\+vector$<$\doxymbox{\hyperlink{struct_vertex_buffer_element}{Vertex\+Buffer\+Element}}$>$ Vertex\+Buffer\+Layout::\+m\+\_\+\+Elements\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The list of vertex buffer elements defining the layout. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00103}{103}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_vertex_array_8h_source_l00087}{Get\+Elements()}}, and \doxymbox{\hyperlink{_vertex_array_8h_source_l00118}{Push()}}.
+
+\Hypertarget{class_vertex_buffer_layout_a58b81b7de53a4c36c73c2cf91adf3ce1}\index{VertexBufferLayout@{VertexBufferLayout}!m\_Stride@{m\_Stride}}
+\index{m\_Stride@{m\_Stride}!VertexBufferLayout@{VertexBufferLayout}}
+\doxysubsubsection{\texorpdfstring{m\_Stride}{m\_Stride}}
+{\footnotesize\ttfamily \label{class_vertex_buffer_layout_a58b81b7de53a4c36c73c2cf91adf3ce1} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Vertex\+Buffer\+Layout::\+m\+\_\+\+Stride\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The total size of the vertex structure in bytes. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00109}{109}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_vertex_array_8h_source_l00096}{Get\+Stride()}}, \doxymbox{\hyperlink{_vertex_array_8h_source_l00118}{Push()}}, and \doxymbox{\hyperlink{_vertex_array_8h_source_l00067}{Vertex\+Buffer\+Layout()}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Vertex\+Array.\+h\end{DoxyCompactItemize}

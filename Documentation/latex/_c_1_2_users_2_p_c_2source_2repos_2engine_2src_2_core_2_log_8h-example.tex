@@ -1,0 +1,232 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Log.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_log_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_log_8h-example}Stream insertion operator for logging various data types.
+
+Stream insertion operator for logging various data types.\+Allows chaining of log message components using the \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} operator. Supports any type that can be output to an std::\+ostream. 
+\begin{DoxyParams}{Parameters}
+{\em value} & The value to log \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Logger\& Reference to this logger for chaining 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Uses perfect forwarding to handle all types efficiently.
+\end{DoxyNote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Player\ position:\ "{}}\ <<\ player.position\ <<\ \textcolor{stringliteral}{"{},\ Health:\ "{}}\ <<\ player.health;}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifdef\ \_MSC\_VER}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ warning(disable\ :\ 4996)\ \ }\textcolor{comment}{//\ \_CRT\_SECURE\_NO\_WARNINGS}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_base_8h}{Base.h}}"{}}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @namespace\ Log}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Logging\ utilities\ and\ logger\ class\ for\ engine\ diagnostics.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Provides\ a\ flexible\ logging\ system\ with\ multiple\ severity\ levels\ (Trace,\ Debug,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Info,\ Warn,\ Error,\ Critical).\ Supports\ logging\ to\ console\ and\ optional\ file}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ output.\ Designed\ for\ easy\ integration\ into\ the\ engine\ for\ runtime\ diagnostics,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ debugging,\ and\ error\ reporting.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Stream-\/style\ logging\ with\ operator<<\ overloads}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Configurable\ log\ levels\ to\ filter\ messages}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Optional\ file\ logging\ with\ append/overwrite\ modes}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Usage:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ ENGINE\_INFO\ <<\ "{}Engine\ started\ successfully."{};}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ ENGINE\_WARN\ <<\ "{}Low\ memory\ warning."{};}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ ENGINE\_ERROR\ <<\ "{}Failed\ to\ load\ texture:\ "{}\ <<\ texturePath;}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{namespace\ }\doxymbox{\hyperlink{namespace_log}{Log}}\ \{}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @enum\ Level}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Log\ severity\ levels.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Defines\ the\ various\ log\ levels\ used\ to\ categorize\ log\ messages\ by\ severity.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Allows\ filtering\ of\ log\ output\ based\ on\ the\ configured\ log\ level.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{enum\ class}\ \doxymbox{\hyperlink{namespace_log_afb5d4c945d835d194a295461d752531e}{Level}}\ \{}
+\DoxyCodeLine{\ \ \_Trace\ =\ 0,}
+\DoxyCodeLine{\ \ \_Debug\ =\ 1,}
+\DoxyCodeLine{\ \ \_Info\ =\ 2,}
+\DoxyCodeLine{\ \ \_Warn\ =\ 3,}
+\DoxyCodeLine{\ \ \_Error\ =\ 4,}
+\DoxyCodeLine{\ \ \_Critical\ =\ 5}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ Logger}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Logger\ class\ for\ creating\ log\ messages\ with\ various\ severity\ levels.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ The\ Logger\ class\ provides\ a\ stream-\/style\ interface\ for\ constructing\ log\ messages.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ It\ captures\ the\ log\ level,\ source\ file,\ and\ line\ number\ for\ each\ message.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Messages\ are\ output\ to\ the\ console\ and\ optionally\ to\ a\ log\ file\ based\ on}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ the\ configured\ log\ level.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Usage:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Log::Logger(Level::\_Info,\ \_\_FILE\_\_,\ \_\_LINE\_\_)\ <<\ "{}This\ is\ an\ info\ message."{};}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_log_1_1_logger}{Logger}}\ \{}
+\DoxyCodeLine{\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \textcolor{comment}{//\ Constructor\ and\ Destructor}}
+\DoxyCodeLine{\ \ Logger(\doxymbox{\hyperlink{namespace_log_afb5d4c945d835d194a295461d752531e}{Level}}\ lvl,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ file,\ \textcolor{keywordtype}{int}\ line);}
+\DoxyCodeLine{\ \ \string~Logger();}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Stream\ insertion\ operator\ for\ logging\ various\ data\ types.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Allows\ chaining\ of\ log\ message\ components\ using\ the\ <<\ operator.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Supports\ any\ type\ that\ can\ be\ output\ to\ an\ std::ostream.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ value\ The\ value\ to\ log}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Logger\&\ Reference\ to\ this\ logger\ for\ chaining}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ Uses\ perfect\ forwarding\ to\ handle\ all\ types\ efficiently.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ ENGINE\_INFO\ <<\ "{}Player\ position:\ "{}\ <<\ player.position\ <<\ "{},\ Health:\ "{}\ <<\ player.health;}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\ \ Logger\&\ operator<<(T\&\&\ value)\ \{}
+\DoxyCodeLine{\ \ \ \ m\_Stream\_\ <<\ std::forward<T>(value);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Member\ variables}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Log\ level\ of\ this\ message}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{namespace_log_afb5d4c945d835d194a295461d752531e}{Level}}\ m\_Level\_;}
+\DoxyCodeLine{\ \ \textcolor{comment}{//\ Source\ file\ where\ the\ log\ was\ generated}}
+\DoxyCodeLine{\ \ std::ostringstream\ m\_Stream\_;}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Initializes\ the\ logging\ system.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Sets\ up\ any\ necessary\ state\ for\ logging.\ Currently\ a\ no-\/op\ but\ can\ be}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ extended\ in\ the\ future\ for\ more\ complex\ initialization.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{namespace_log_adc2470e1e4de07f81462116f6fdf60fd}{Init}}();}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Sets\ the\ global\ log\ level.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Configures\ the\ minimum\ log\ level\ that\ will\ be\ output.\ Messages\ below}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ this\ level\ will\ be\ ignored.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ lvl\ The\ log\ level\ to\ set}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Log::SetLevel(Log::Level::\_Warn);\ \ //\ Only\ log\ warnings\ and\ above}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ SetLevel(\doxymbox{\hyperlink{namespace_log_afb5d4c945d835d194a295461d752531e}{Level}}\ lvl);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope<std::ofstream>}}\ s\_LogFile;}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ std::streambuf*\ s\_OldCoutBuf\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ std::streambuf*\ s\_OldCerrBuf\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ std::streambuf*\ s\_OldClogBuf\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Enables\ logging\ to\ a\ file.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Redirects\ log\ output\ to\ the\ specified\ file.\ Can\ either\ append\ to}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ an\ existing\ file\ or\ overwrite\ it.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ path\ The\ file\ path\ to\ log\ to}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ append\ True\ to\ append\ to\ existing\ file,\ false\ to\ overwrite}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ bool\ True\ if\ file\ logging\ was\ successfully\ enabled,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ if\ (Log::EnableFileLogging("{}engine.log"{},\ true))\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ ENGINE\_INFO\ <<\ "{}File\ logging\ enabled."{};}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \}\ else\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ ENGINE\_ERROR\ <<\ "{}Failed\ to\ enable\ file\ logging."{};}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ If\ enabling\ file\ logging\ fails,\ the\ log\ output\ remains\ directed\ to\ console.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ Call\ DisableFileLogging()\ to\ stop\ logging\ to\ the\ file\ and\ restore\ console\ output.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ EnableFileLogging(\textcolor{keyword}{const}\ std::string\&\ path\ =\ \textcolor{stringliteral}{"{}engine.log"{}},\ \textcolor{keywordtype}{bool}\ append\ =\ \textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{try}\ \{}
+\DoxyCodeLine{\ \ \ \ std::ios\_base::openmode\ mode\ =\ std::ios::out;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (append)\ mode\ |=\ std::ios::app;}
+\DoxyCodeLine{\ \ \ \ s\_LogFile\ =\ CreateScope<std::ofstream>(path,\ mode);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (!s\_LogFile-\/>is\_open())\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ s\_LogFile.reset();}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ s\_OldCoutBuf\ =\ std::cout.rdbuf();}
+\DoxyCodeLine{\ \ \ \ s\_OldCerrBuf\ =\ std::cerr.rdbuf();}
+\DoxyCodeLine{\ \ \ \ s\_OldClogBuf\ =\ std::clog.rdbuf();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ std::cout.rdbuf(s\_LogFile-\/>rdbuf());}
+\DoxyCodeLine{\ \ \ \ std::cerr.rdbuf(s\_LogFile-\/>rdbuf());}
+\DoxyCodeLine{\ \ \ \ std::clog.rdbuf(s\_LogFile-\/>rdbuf());}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\ \ \}\ \textcolor{keywordflow}{catch}\ (...)\ \{}
+\DoxyCodeLine{\ \ \ \ s\_LogFile.reset();}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Disables\ file\ logging\ and\ restores\ console\ output.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Stops\ logging\ to\ the\ file\ and\ restores\ the\ original\ console\ output\ streams.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Closes\ the\ log\ file\ if\ it\ was\ open.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Log::DisableFileLogging();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ ENGINE\_INFO\ <<\ "{}File\ logging\ disabled,\ back\ to\ console."{};}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ DisableFileLogging()\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}\ (s\_LogFile)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (s\_OldCoutBuf)\ std::cout.rdbuf(s\_OldCoutBuf);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (s\_OldCerrBuf)\ std::cerr.rdbuf(s\_OldCerrBuf);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (s\_OldClogBuf)\ std::clog.rdbuf(s\_OldClogBuf);}
+\DoxyCodeLine{\ \ \ \ s\_LogFile-\/>close();}
+\DoxyCodeLine{\ \ \ \ s\_LogFile.reset();}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\};\ \ \textcolor{comment}{//\ namespace\ Log}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Convenience\ macros\ for\ logging\ at\ various\ levels}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ ENGINE\_TRACE\ Log::Logger(Log::Level::\_Trace,\ \_\_FILE\_\_,\ \_\_LINE\_\_)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ ENGINE\_DEBUG\ Log::Logger(Log::Level::\_Debug,\ \_\_FILE\_\_,\ \_\_LINE\_\_)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ ENGINE\_INFO\ Log::Logger(Log::Level::\_Info,\ \_\_FILE\_\_,\ \_\_LINE\_\_)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ ENGINE\_WARN\ Log::Logger(Log::Level::\_Warn,\ \_\_FILE\_\_,\ \_\_LINE\_\_)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ ENGINE\_ERROR\ Log::Logger(Log::Level::\_Error,\ \_\_FILE\_\_,\ \_\_LINE\_\_)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ ENGINE\_CRITICAL\ Log::Logger(Log::Level::\_Critical,\ \_\_FILE\_\_,\ \_\_LINE\_\_)}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Convenience\ macros\ for\ file\ logging}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ ENABLE\_FILE\_LOGGING(path)\ ::Log::EnableFileLogging((path),\ true)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ ENABLE\_FILE\_LOGGING\_APPEND(path)\ ::Log::EnableFileLogging((path),\ true)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ ENABLE\_FILE\_LOGGING\_OVERWRITE(path)\ ::Log::EnableFileLogging((path),\ false)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ DISABLE\_FILE\_LOGGING()\ ::Log::DisableFileLogging()}}
+
+\end{DoxyCodeInclude}
+ 

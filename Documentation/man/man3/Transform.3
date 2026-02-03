@@ -1,0 +1,115 @@
+.TH "Transform" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Transform
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMatrix4\fP \fBToMatrix\fP () const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBForward\fP () const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBRight\fP () const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBUp\fP () const"
+.br
+.ti -1c
+.RI "void \fBLookAt\fP (const \fBVector3\fP &target, const \fBVector3\fP &up=Vector3::Up)"
+.br
+.ti -1c
+.RI "\fBTransform\fP \fBoperator*\fP (const \fBTransform\fP &other) const"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBTransform\fP \fBLerp\fP (const \fBTransform\fP &a, const \fBTransform\fP &b, \fBf32\fP t)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBVector3\fP \fBposition\fP"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP \fBrotation\fP"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBscale\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB6\fP of file \fBTransform\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Transform::Transform ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB12\fP of file \fBTransform\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBVector3\fP Transform::Forward () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB22\fP of file \fBTransform\&.h\fP\&.
+.SS "\fBTransform\fP Transform::Lerp (const \fBTransform\fP & a, const \fBTransform\fP & b, \fBf32\fP t)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB46\fP of file \fBTransform\&.h\fP\&.
+.SS "void Transform::LookAt (const \fBVector3\fP & target, const \fBVector3\fP & up = \fRVector3::Up\fP)\fR [inline]\fP"
+
+.PP
+Definition at line \fB34\fP of file \fBTransform\&.h\fP\&.
+.SS "\fBTransform\fP Transform::operator* (const \fBTransform\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB38\fP of file \fBTransform\&.h\fP\&.
+.SS "\fBVector3\fP Transform::Right () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB26\fP of file \fBTransform\&.h\fP\&.
+.SS "\fBMatrix4\fP Transform::ToMatrix () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB14\fP of file \fBTransform\&.h\fP\&.
+.SS "\fBVector3\fP Transform::Up () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB30\fP of file \fBTransform\&.h\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBVector3\fP Transform::position"
+
+.PP
+Definition at line \fB8\fP of file \fBTransform\&.h\fP\&.
+.SS "\fBQuaternion\fP Transform::rotation"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB9\fP of file \fBTransform\&.h\fP\&.
+.SS "\fBVector3\fP Transform::scale"
+
+.PP
+Definition at line \fB10\fP of file \fBTransform\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

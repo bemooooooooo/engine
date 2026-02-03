@@ -1,0 +1,83 @@
+\doxysection{Debug Logging Macros }
+\hypertarget{group___debug_macros}{}\label{group___debug_macros}\index{Debug Logging Macros@{Debug Logging Macros}}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{group___debug_macros_gaea47321626b32e9ed5172fdab6644d46}{ENGINE\+\_\+\+DEBUG\+\_\+\+LOG}}(x)
+\begin{DoxyCompactList}\small\item\em Logs a message in debug builds only with zero overhead in release builds. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{group___debug_macros_ga6a368943a0cf91bd403bf1c6e35e9ee0}{ENGINE\+\_\+\+DEBUG\+\_\+\+LOG\+\_\+\+IF}}(cond,  x)
+\begin{DoxyCompactList}\small\item\em Conditionally logs a message in debug builds only if a condition is met. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Conditional compilation macros for debug logging that provide zero-\/overhead debugging in release builds. These macros are completely eliminated during compilation when ENGINE\+\_\+\+DEBUG\+\_\+\+BUILD is not defined, ensuring zero performance impact. 
+
+\label{doc-define-members}
+\Hypertarget{group___debug_macros_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group___debug_macros_gaea47321626b32e9ed5172fdab6644d46}\index{Debug Logging Macros@{Debug Logging Macros}!ENGINE\_DEBUG\_LOG@{ENGINE\_DEBUG\_LOG}}
+\index{ENGINE\_DEBUG\_LOG@{ENGINE\_DEBUG\_LOG}!Debug Logging Macros@{Debug Logging Macros}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_DEBUG\_LOG}{ENGINE\_DEBUG\_LOG}}
+{\footnotesize\ttfamily \label{group___debug_macros_gaea47321626b32e9ed5172fdab6644d46} 
+\+\#define ENGINE\+\_\+\+DEBUG\+\_\+\+LOG(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((void)0)}
+
+\end{DoxyCode}
+
+
+Logs a message in debug builds only with zero overhead in release builds. 
+
+In debug builds (when ENGINE\+\_\+\+DEBUG\+\_\+\+BUILD is defined and non-\/zero), this macro outputs the given expression to the engine\textquotesingle{}s logging system via ENGINE\+\_\+\+INFO. In release builds, this macro compiles to a no-\/op instruction that has virtually no performance cost.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The message or expression to log\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Requires ENGINE\+\_\+\+INFO to be defined as a logging stream (e.\+g., logger stream) 
+\end{DoxyNote}
+
+
+Definition at line \doxymbox{\hyperlink{_base_8h_source_l00272}{272}} of file \doxymbox{\hyperlink{_base_8h_source}{Base.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_scene_8cpp_source_l00074}{Scene::\+\+Render()}}.
+
+\Hypertarget{group___debug_macros_ga6a368943a0cf91bd403bf1c6e35e9ee0}\index{Debug Logging Macros@{Debug Logging Macros}!ENGINE\_DEBUG\_LOG\_IF@{ENGINE\_DEBUG\_LOG\_IF}}
+\index{ENGINE\_DEBUG\_LOG\_IF@{ENGINE\_DEBUG\_LOG\_IF}!Debug Logging Macros@{Debug Logging Macros}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_DEBUG\_LOG\_IF}{ENGINE\_DEBUG\_LOG\_IF}}
+{\footnotesize\ttfamily \label{group___debug_macros_ga6a368943a0cf91bd403bf1c6e35e9ee0} 
+\+\#define ENGINE\+\_\+\+DEBUG\+\_\+\+LOG\+\_\+\+IF(\begin{DoxyParamCaption}\item[{}]{cond}{, }\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((void)0)}
+
+\end{DoxyCode}
+
+
+Conditionally logs a message in debug builds only if a condition is met. 
+
+In debug builds, this macro evaluates the condition and logs the expression only if the condition evaluates to true. In release builds, this macro is completely eliminated by the preprocessor, resulting in zero runtime cost.
+
+This is useful for conditional logging that should only appear under specific runtime circumstances, such as logging only when values are out of expected ranges or when certain error conditions are detected.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cond} & The condition to evaluate (true = log, false = skip) \\
+\hline
+{\em x} & The message or expression to log if condition is true\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Requires ENGINE\+\_\+\+INFO to be defined as a logging stream 
+\end{DoxyNote}
+
+
+Definition at line \doxymbox{\hyperlink{_base_8h_source_l00302}{302}} of file \doxymbox{\hyperlink{_base_8h_source}{Base.\+h}}.
+

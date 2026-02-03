@@ -1,0 +1,178 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{struct_material_properties}{MaterialProperties}}\ props;}
+\DoxyCodeLine{props.albedo\ =\ \doxymbox{\hyperlink{struct_vector4}{Vector4}}(1.0f,\ 0.0f,\ 0.0f,\ 1.0f);\ \textcolor{comment}{//\ Red\ color}}
+\DoxyCodeLine{props.metallic\ =\ 0.5f;}
+\DoxyCodeLine{props.roughness\ =\ 0.2f;}
+\DoxyCodeLine{props.albedoMap\ =\ CreateRef<Texture>(\textcolor{stringliteral}{"{}textures/wood\_albedo.png"{}});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Core/Base.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Texture.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Shader.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Math/Vector4.h"{}}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @struct\ MaterialProperties}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Encapsulates\ the\ properties\ and\ texture\ maps\ of\ a\ material.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ structure\ holds\ the\ various\ properties\ that\ define\ the\ appearance}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ of\ a\ material\ in\ the\ rendering\ engine,\ including\ color,\ metallicity,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ roughness,\ ambient\ occlusion,\ and\ associated\ texture\ maps.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Properties:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ albedo:\ Base\ color\ of\ the\ material}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ metallic:\ Metallic\ factor\ (0.0\ =\ non-\/metal,\ 1.0\ =\ metal)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ roughness:\ Surface\ roughness\ (0.0\ =\ smooth,\ 1.0\ =\ rough)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ ambientOcclusion:\ Ambient\ occlusion\ factor}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Texture\ Maps:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ albedoMap:\ Texture\ for\ base\ color}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ normalMap:\ Texture\ for\ surface\ normals}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ metallicMap:\ Texture\ for\ metallic\ values}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ roughnessMap:\ Texture\ for\ roughness\ values}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ ambientOcclusionMap:\ Texture\ for\ ambient\ occlusion\ values}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ MaterialProperties\ props;}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ props.albedo\ =\ Vector4(1.0f,\ 0.0f,\ 0.0f,\ 1.0f);\ //\ Red\ color}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ props.metallic\ =\ 0.5f;}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ props.roughness\ =\ 0.2f;}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ props.albedoMap\ =\ CreateRef<Texture>("{}textures/wood\_albedo.png"{});}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_material_properties}{MaterialProperties}}\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Default\ material\ properties}}
+\DoxyCodeLine{\ \ \ \ Vector4\ albedo\ =\ Vector4(1.0f,\ 1.0f,\ 1.0f,\ 1.0f);}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ metallic\ =\ 0.0f;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ roughness\ =\ 0.5f;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ ambientOcclusion\ =\ 1.0f;}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Texture\ maps}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Texture>}}\ albedoMap;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Texture>}}\ normalMap;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Texture>}}\ metallicMap;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Texture>}}\ roughnessMap;}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Texture>}}\ ambientOcclusionMap;}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ Material}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Represents\ a\ material\ with\ properties\ and\ associated\ shader.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ The\ Material\ class\ encapsulates\ the\ visual\ properties\ of\ a\ surface,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ including\ its\ shader\ and\ material\ properties\ such\ as\ color,\ metallicity,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ roughness,\ and\ texture\ maps.\ It\ provides\ methods\ to\ apply\ these\ properties}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ to\ a\ shader\ for\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Holds\ a\ reference\ to\ a\ Shader\ used\ for\ rendering}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Contains\ MaterialProperties\ defining\ appearance}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Method\ to\ apply\ properties\ to\ the\ shader\ uniforms}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Ref<Shader>\ shader\ =\ Shader::CreateFromFiles("{}vertex.glsl"{},\ "{}fragment.glsl"{});}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Ref<Material>\ material\ =\ Material::Create(shader);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ material-\/>GetProperties().albedo\ =\ Vector4(0.8f,\ 0.2f,\ 0.2f,\ 1.0f);\ //\ Reddish\ color}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ material-\/>GetProperties().metallic\ =\ 0.9f;}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ //\ In\ render\ loop}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ material-\/>Apply(shader);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_material}{Material}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ TODO\ Изменить\ конструктор\ по\ умолчанию,\ чтобы\ он\ создавал\ материал\ с\ дефолтным\ шейдером}\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Constructs\ a\ Material\ with\ default\ properties\ and\ no\ shader.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{class_material_a137e987401b63eb7c6c27c3e38bc74b5}{Material}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ TODO\ Сделать\ конструктор\ с\ параметрами\ для\ задания\ шейдера\ и\ свойств\ материала}\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Constructs\ a\ Material\ with\ the\ specified\ shader.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ shader\ Reference\ to\ the\ Shader\ to\ be\ used\ by\ this\ material}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{class_material_a137e987401b63eb7c6c27c3e38bc74b5}{Material}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\&\ shader);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Applies\ the\ material\ properties\ to\ the\ given\ shader.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Sets\ the\ shader\ uniforms\ based\ on\ the\ material's\ properties\ and}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ binds\ any\ associated\ texture\ maps.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ shader\ The\ shader\ to\ which\ the\ material\ properties\ will\ be\ applied}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_material_a3721ac2921e5c425da968b5421451688}{Apply}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\&\ shader)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ shader\ used\ by\ this\ material.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ shader\ Reference\ to\ the\ Shader\ to\ set}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_material_ae5119fca8f1fcdbab924a1cac17904d9}{SetShader}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\&\ shader)\ \{\ \doxymbox{\hyperlink{class_material_add77d8cc6551d56b264085f4440b8bca}{m\_Shader}}\ =\ shader;\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ shader\ used\ by\ this\ material.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Shader>\ Reference\ to\ the\ current\ Shader}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\ \doxymbox{\hyperlink{class_material_ad414ffc52be67d1cd2d681cad2767742}{GetShader}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_material_add77d8cc6551d56b264085f4440b8bca}{m\_Shader}};\ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ material\ properties.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ MaterialProperties\&\ Reference\ to\ the\ material\ properties}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ MaterialProperties\&\ \doxymbox{\hyperlink{class_material_aea0628e04931cc3b03526e2a21da5e73}{GetProperties}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}};\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ material\ properties\ (const\ version).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ const\ MaterialProperties\&\ Const\ reference\ to\ the\ material\ properties}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ MaterialProperties\&\ \doxymbox{\hyperlink{class_material_aea0628e04931cc3b03526e2a21da5e73}{GetProperties}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}};\ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Factory\ method\ to\ create\ a\ Material\ with\ default\ properties.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Material>\ Reference\ to\ the\ newly\ created\ Material}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Material>}}\ \doxymbox{\hyperlink{class_material_a0fec49ce2ec527eb8543784cbd155ad9}{Create}}();}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Factory\ method\ to\ create\ a\ Material\ with\ the\ specified\ shader.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ shader\ Reference\ to\ the\ Shader\ to\ be\ used\ by\ the\ new\ material}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Material>\ Reference\ to\ the\ newly\ created\ Material}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Material>}}\ \doxymbox{\hyperlink{class_material_a0fec49ce2ec527eb8543784cbd155ad9}{Create}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\&\ shader);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_Shader}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ shader\ associated\ with\ this\ material.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\ \doxymbox{\hyperlink{class_material_add77d8cc6551d56b264085f4440b8bca}{m\_Shader}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_Properties}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ properties\ defining\ the\ material's\ appearance.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ MaterialProperties\ \doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}};}
+\DoxyCodeLine{\};}
+
+\end{DoxyCodeInclude}
+ 

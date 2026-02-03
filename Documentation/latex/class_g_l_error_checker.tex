@@ -1,0 +1,166 @@
+\doxysection{GLError\+Checker Class Reference}
+\hypertarget{class_g_l_error_checker}{}\label{class_g_l_error_checker}\index{GLErrorChecker@{GLErrorChecker}}
+
+
+Utility class for checking and logging Open\+GL errors.  
+
+
+
+
+{\ttfamily \+\#include $<$GLError.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_g_l_error_checker_a380cd783517807d41eb12e0fd230b89f}{GLError\+Checker}} (const char \texorpdfstring{$\ast$}{*}context)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_g_l_error_checker}{GLError\+Checker} with a context description. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_g_l_error_checker_a7250b7df496d2fe81a54c734838204d9}{\texorpdfstring{$\sim$}{\string~}\+GLError\+Checker}} ()
+\begin{DoxyCompactList}\small\item\em Destructor that checks for Open\+GL errors. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_g_l_error_checker_a552b5db6b5b23d3cf93948e8cb249b47}{Check\+Errors}} () const
+\begin{DoxyCompactList}\small\item\em Checks for Open\+GL errors and logs them. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_g_l_error_checker_a5afec2169c42ccc0c7817d7096d164f5}{Get\+Error\+String}} (GLenum error)
+\begin{DoxyCompactList}\small\item\em Converts an Open\+GL error code to a human-\/readable string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_g_l_error_checker_af8ddc279e42b3902b4b836d9eaf529f9}{m\+\_\+\+Context}}
+\begin{DoxyCompactList}\small\item\em Context description for error logging. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utility class for checking and logging Open\+GL errors. 
+
+This class provides functionality to check for Open\+GL errors after Open\+GL function calls. It logs any detected errors using the engine\textquotesingle{}s logging system. The class can be used in a RAII manner to automatically check for errors when going out of scope.
+
+Usage:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{class_g_l_error_checker_a380cd783517807d41eb12e0fd230b89f}{GLErrorChecker}}\ glError(\textcolor{stringliteral}{"{}Rendering\ Frame"{}});}
+\DoxyCodeLine{\ \textcolor{comment}{//\ OpenGL\ calls...}}
+\DoxyCodeLine{\}\ \textcolor{comment}{//\ Errors\ checked\ automatically\ here}}
+
+\end{DoxyCode}
+ \begin{DoxyNote}{Note}
+This class is intended for debugging purposes and may be disabled in release builds for performance. 
+\end{DoxyNote}
+
+
+Definition at line \doxymbox{\hyperlink{_g_l_error_8h_source_l00026}{26}} of file \doxymbox{\hyperlink{_g_l_error_8h_source}{GLError.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_g_l_error_checker_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_g_l_error_checker_a380cd783517807d41eb12e0fd230b89f}\index{GLErrorChecker@{GLErrorChecker}!GLErrorChecker@{GLErrorChecker}}
+\index{GLErrorChecker@{GLErrorChecker}!GLErrorChecker@{GLErrorChecker}}
+\doxysubsubsection{\texorpdfstring{GLErrorChecker()}{GLErrorChecker()}}
+{\footnotesize\ttfamily \label{class_g_l_error_checker_a380cd783517807d41eb12e0fd230b89f} 
+GLError\+Checker::\+\+GLError\+Checker (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a \doxylink{class_g_l_error_checker}{GLError\+Checker} with a context description. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_g_l_error_8h_source_l00029}{29}} of file \doxymbox{\hyperlink{_g_l_error_8h_source}{GLError.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_g_l_error_8h_source_l00072}{m\+\_\+\+Context}}.
+
+\Hypertarget{class_g_l_error_checker_a7250b7df496d2fe81a54c734838204d9}\index{GLErrorChecker@{GLErrorChecker}!````~GLErrorChecker@{\texorpdfstring{$\sim$}{\string~}GLErrorChecker}}
+\index{````~GLErrorChecker@{\texorpdfstring{$\sim$}{\string~}GLErrorChecker}!GLErrorChecker@{GLErrorChecker}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}GLErrorChecker()}{\string~GLErrorChecker()}}
+{\footnotesize\ttfamily \label{class_g_l_error_checker_a7250b7df496d2fe81a54c734838204d9} 
+GLError\+Checker::\+\texorpdfstring{$\sim$}{\string~}\+GLError\+Checker (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destructor that checks for Open\+GL errors. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_g_l_error_8h_source_l00035}{35}} of file \doxymbox{\hyperlink{_g_l_error_8h_source}{GLError.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_g_l_error_8h_source_l00040}{Check\+Errors()}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_g_l_error_checker_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_g_l_error_checker_a552b5db6b5b23d3cf93948e8cb249b47}\index{GLErrorChecker@{GLErrorChecker}!CheckErrors@{CheckErrors}}
+\index{CheckErrors@{CheckErrors}!GLErrorChecker@{GLErrorChecker}}
+\doxysubsubsection{\texorpdfstring{CheckErrors()}{CheckErrors()}}
+{\footnotesize\ttfamily \label{class_g_l_error_checker_a552b5db6b5b23d3cf93948e8cb249b47} 
+void GLError\+Checker::\+\+Check\+Errors (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks for Open\+GL errors and logs them. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_g_l_error_8h_source_l00040}{40}} of file \doxymbox{\hyperlink{_g_l_error_8h_source}{GLError.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_g_l_error_8h_source_l00058}{Get\+Error\+String()}}, and \doxymbox{\hyperlink{_g_l_error_8h_source_l00072}{m\+\_\+\+Context}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_g_l_error_8h_source_l00035}{\texorpdfstring{$\sim$}{\string~}\+GLError\+Checker()}}.
+
+\Hypertarget{class_g_l_error_checker_a5afec2169c42ccc0c7817d7096d164f5}\index{GLErrorChecker@{GLErrorChecker}!GetErrorString@{GetErrorString}}
+\index{GetErrorString@{GetErrorString}!GLErrorChecker@{GLErrorChecker}}
+\doxysubsubsection{\texorpdfstring{GetErrorString()}{GetErrorString()}}
+{\footnotesize\ttfamily \label{class_g_l_error_checker_a5afec2169c42ccc0c7817d7096d164f5} 
+const char \texorpdfstring{$\ast$}{*} GLError\+Checker::\+\+Get\+Error\+String (\begin{DoxyParamCaption}\item[{GLenum}]{error}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Converts an Open\+GL error code to a human-\/readable string. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_g_l_error_8h_source_l00058}{58}} of file \doxymbox{\hyperlink{_g_l_error_8h_source}{GLError.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_g_l_error_8h_source_l00040}{Check\+Errors()}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_g_l_error_checker_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_g_l_error_checker_af8ddc279e42b3902b4b836d9eaf529f9}\index{GLErrorChecker@{GLErrorChecker}!m\_Context@{m\_Context}}
+\index{m\_Context@{m\_Context}!GLErrorChecker@{GLErrorChecker}}
+\doxysubsubsection{\texorpdfstring{m\_Context}{m\_Context}}
+{\footnotesize\ttfamily \label{class_g_l_error_checker_af8ddc279e42b3902b4b836d9eaf529f9} 
+const char\texorpdfstring{$\ast$}{*} GLError\+Checker::\+m\+\_\+\+Context\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Context description for error logging. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_g_l_error_8h_source_l00072}{72}} of file \doxymbox{\hyperlink{_g_l_error_8h_source}{GLError.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_g_l_error_8h_source_l00040}{Check\+Errors()}}, and \doxymbox{\hyperlink{_g_l_error_8h_source_l00029}{GLError\+Checker()}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+GLError.\+h\end{DoxyCompactItemize}

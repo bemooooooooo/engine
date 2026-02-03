@@ -1,0 +1,251 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\ cubeMesh\ =\ \doxymbox{\hyperlink{class_resource_manager_a04399a80ced01704cc0e0400f40bc52d}{ResourceManager::GetMesh}}(\textcolor{stringliteral}{"{}cube"{}});}
+\DoxyCodeLine{\doxymbox{\hyperlink{struct_scene_object}{SceneObject}}\ cubeObject(\textcolor{stringliteral}{"{}Cube"{}},\ cubeMesh);}
+\DoxyCodeLine{cubeObject.transform.position\ =\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0,\ 0,\ 0);}
+\DoxyCodeLine{cubeObject.onUpdate\ =\ [](\doxymbox{\hyperlink{struct_scene_object}{SceneObject}}*\ obj,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ deltaTime)\ \{}
+\DoxyCodeLine{\ \ \ \ obj-\/>\doxymbox{\hyperlink{struct_scene_object_acc41820565467dc4384d5717b5ef5a65}{transform}}.rotation.y\ +=\ 90.0f\ *\ deltaTime;\ \textcolor{comment}{//\ Rotate\ 90\ degrees\ per\ second}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Core/Base.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Math/Transform.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Mesh.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @struct\ SceneObject}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Represents\ an\ object\ within\ a\ 3D\ scene,\ containing\ a\ mesh\ and\ transform.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ SceneObject\ encapsulates\ a\ 3D\ mesh\ along\ with\ its\ transformation\ (position,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ rotation,\ scale)\ in\ the\ scene.\ It\ also\ supports\ an\ optional\ update\ callback}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ for\ per-\/frame\ logic.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Holds\ a\ reference\ to\ a\ Mesh\ for\ rendering}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Contains\ a\ Transform\ for\ spatial\ positioning}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Supports\ an\ onUpdate\ callback\ for\ custom\ behavior\ each\ frame}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ The\ onUpdate\ function,\ if\ set,\ is\ called\ during\ the\ scene's\ Update()}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ \ \ method\ with\ the\ delta\ time\ parameter.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Ref<Mesh>\ cubeMesh\ =\ ResourceManager::GetMesh("{}cube"{});}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ SceneObject\ cubeObject("{}Cube"{},\ cubeMesh);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ cubeObject.transform.position\ =\ Vector3(0,\ 0,\ 0);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ cubeObject.onUpdate\ =\ [](SceneObject*\ obj,\ f32\ deltaTime)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ obj-\/>transform.rotation.y\ +=\ 90.0f\ *\ deltaTime;\ //\ Rotate\ 90\ degrees\ per\ second}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \};}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_scene_object}{SceneObject}}\ \{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ name}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ The\ unique\ name\ identifier\ for\ the\ scene\ object.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ std::string\ \doxymbox{\hyperlink{struct_scene_object_a6c5ece15b6c7fe5b4d41ebcf4b13e9fc}{name}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ mesh}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ The\ mesh\ associated\ with\ this\ scene\ object.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\ \doxymbox{\hyperlink{struct_scene_object_af3d0d2c807c820edb11551c0fe90be4c}{mesh}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ transform}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ The\ transformation\ (position,\ rotation,\ scale)\ of\ the\ object\ in\ the\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Transform\ \doxymbox{\hyperlink{struct_scene_object_acc41820565467dc4384d5717b5ef5a65}{transform}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ onUpdate}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Optional\ callback\ function\ called\ each\ frame\ during\ scene\ update.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ function,\ if\ set,\ is\ invoked\ during\ the\ Scene's\ Update()\ method,}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ allowing\ for\ custom\ per-\/frame\ logic\ such\ as\ animations\ or\ behavior.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ The\ function\ receives\ a\ pointer\ to\ the\ SceneObject\ and\ the\ delta\ time}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ since\ the\ last\ frame.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @note\ Set\ to\ nullptr\ by\ default\ (no\ update).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ sceneObject.onUpdate\ =\ [](SceneObject*\ obj,\ f32\ deltaTime)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \ \ \ \ obj-\/>transform.position.x\ +=\ 1.0f\ *\ deltaTime;\ //\ Move\ right\ at\ 1\ unit/sec}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ \};}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ std::function<void\ (\doxymbox{\hyperlink{struct_scene_object_a74acdc78ecc807ca0b03104346aa867f}{SceneObject}}*,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}})>\ \doxymbox{\hyperlink{struct_scene_object_a8d46d27e658b69b375241c11a66c0ff9}{onUpdate}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Constructs\ a\ SceneObject\ with\ the\ given\ name,\ mesh,\ and\ optional\ transform.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ name\ The\ unique\ name\ for\ the\ scene\ object}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ mesh\ The\ mesh\ to\ associate\ with\ this\ object}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ transform\ The\ initial\ transform\ of\ the\ object\ (default\ is\ identity)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{struct_scene_object_a74acdc78ecc807ca0b03104346aa867f}{SceneObject}}(\textcolor{keyword}{const}\ std::string\&\ \doxymbox{\hyperlink{struct_scene_object_a6c5ece15b6c7fe5b4d41ebcf4b13e9fc}{name}},\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\&\ \doxymbox{\hyperlink{struct_scene_object_af3d0d2c807c820edb11551c0fe90be4c}{mesh}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Transform\&\ \doxymbox{\hyperlink{struct_scene_object_acc41820565467dc4384d5717b5ef5a65}{transform}}\ =\ Transform())}
+\DoxyCodeLine{\ \ \ \ \ \ :\ \doxymbox{\hyperlink{struct_scene_object_a6c5ece15b6c7fe5b4d41ebcf4b13e9fc}{name}}(\doxymbox{\hyperlink{struct_scene_object_a6c5ece15b6c7fe5b4d41ebcf4b13e9fc}{name}}),\ \doxymbox{\hyperlink{struct_scene_object_af3d0d2c807c820edb11551c0fe90be4c}{mesh}}(\doxymbox{\hyperlink{struct_scene_object_af3d0d2c807c820edb11551c0fe90be4c}{mesh}}),\ \doxymbox{\hyperlink{struct_scene_object_acc41820565467dc4384d5717b5ef5a65}{transform}}(\doxymbox{\hyperlink{struct_scene_object_acc41820565467dc4384d5717b5ef5a65}{transform}})\ \{\}}
+\DoxyCodeLine{\};\ \ \textcolor{comment}{//\ struct\ SceneObject}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ Scene}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Represents\ a\ 3D\ scene\ containing\ multiple\ scene\ objects\ and\ a\ camera.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ The\ Scene\ class\ manages\ a\ collection\ of\ SceneObject\ instances,\ allowing\ for}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ adding,\ removing,\ updating,\ and\ rendering\ them.\ It\ also\ holds\ a\ Camera\ to}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ define\ the\ viewpoint\ for\ rendering\ the\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Add\ and\ remove\ SceneObjects\ by\ name}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Find\ SceneObjects\ by\ name}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Update\ all\ objects\ each\ frame,\ invoking\ their\ onUpdate\ callbacks}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Render\ all\ objects\ using\ a\ specified\ shader}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Manage\ a\ Camera\ for\ the\ scene}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ The\ Scene\ does\ not\ handle\ physics\ or\ collision;\ it\ focuses\ on\ object}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ \ \ management\ and\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Scene\ scene("{}SampleScene"{});}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Ref<Mesh>\ cubeMesh\ =\ ResourceManager::GetMesh("{}cube"{});}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ SceneObject\ cubeObject("{}Cube"{},\ cubeMesh);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ scene.AddObject(cubeObject);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ //\ In\ the\ main\ loop}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ deltaTime\ =\ timer.Tick();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ scene.Update(deltaTime);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ scene.Render(shader);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_scene}{Scene}}\ \{}
+\DoxyCodeLine{\ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Constructs\ a\ new\ Scene\ with\ an\ optional\ name.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ name\ The\ name\ of\ the\ scene\ (default\ is\ empty\ string)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{class_scene_ad10176d75a9cc0da56626f682d083507}{Scene}}();\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Constructs\ a\ new\ Scene\ with\ the\ specified\ name.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ name\ The\ name\ of\ the\ scene}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{class_scene_ad10176d75a9cc0da56626f682d083507}{Scene}}(std::string\ \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}});\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Destructor\ for\ the\ Scene\ class.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{class_scene_a3b8cec2e32546713915f8c6303c951f1}{\string~Scene}}();}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Adds\ a\ SceneObject\ to\ the\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ object\ The\ SceneObject\ to\ add}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_scene_a4c9d8adc4cc03dd82f249b37dc64916c}{AddObject}}(\textcolor{keyword}{const}\ SceneObject\&\ \textcolor{keywordtype}{object});}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Removes\ a\ SceneObject\ from\ the\ scene\ by\ name.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ name\ The\ name\ of\ the\ SceneObject\ to\ remove}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_scene_a695ea00facd0b261fd7b536f47a735d3}{RemoveObject}}(\textcolor{keyword}{const}\ std::string\&\ \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}});}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Finds\ a\ SceneObject\ in\ the\ scene\ by\ name.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ name\ The\ name\ of\ the\ SceneObject\ to\ find}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ SceneObject*\ Pointer\ to\ the\ found\ SceneObject,\ or\ nullptr\ if\ not\ found}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ [[nodiscard]]\ SceneObject*\ \doxymbox{\hyperlink{class_scene_a2573a087031d929dd4ded7505c6e8a1b}{FindObject}}(\textcolor{keyword}{const}\ std::string\&\ \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}});}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Updates\ all\ SceneObjects\ in\ the\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Calls\ the\ onUpdate\ callback\ for\ each\ object\ if\ it\ is\ set.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ deltaTime\ The\ time\ elapsed\ since\ the\ last\ update\ in\ seconds}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_scene_a2835bf088b491fe34516dfea0e8bfd0b}{Update}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ deltaTime);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Renders\ all\ SceneObjects\ in\ the\ scene\ using\ the\ specified\ shader.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ shader\ The\ shader\ to\ use\ for\ rendering\ the\ objects}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_scene_ad73b9c1185b16f0bd0b16b77471b8e35}{Render}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\&\ shader)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ list\ of\ SceneObjects\ in\ the\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ const\ std::vector<SceneObject>\&\ Constant\ reference\ to\ the\ vector\ of\ SceneObjects}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{const}\ std::vector<SceneObject>\&\ \doxymbox{\hyperlink{class_scene_a11f3986e592b49aa3921ecf37b0c2dce}{GetObjects}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_scene_a4507dcef4e6a65477d814c7d10de037f}{m\_Objects}};\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ list\ of\ SceneObjects\ in\ the\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ std::vector<SceneObject>\&\ Reference\ to\ the\ vector\ of\ SceneObjects}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ std::vector<SceneObject>\&\ \doxymbox{\hyperlink{class_scene_a11f3986e592b49aa3921ecf37b0c2dce}{GetObjects}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_scene_a4507dcef4e6a65477d814c7d10de037f}{m\_Objects}};\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Sets\ the\ camera\ for\ the\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ camera\ The\ Camera\ to\ set}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_scene_ae3ad734c5ab018e43fc0b2360443d588}{SetCamera}}(\textcolor{keyword}{const}\ Camera\&\ camera)\ \{\ \doxymbox{\hyperlink{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}{m\_Camera}}\ =\ camera;\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ camera\ of\ the\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ Camera\&\ Reference\ to\ the\ scene's\ Camera}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Camera\&\ \doxymbox{\hyperlink{class_scene_ab72a62cdd897e1d31a72e9a2f3a260b2}{GetCamera}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}{m\_Camera}};\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ camera\ of\ the\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ const\ Camera\&\ Constant\ reference\ to\ the\ scene's\ Camera}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{const}\ Camera\&\ \doxymbox{\hyperlink{class_scene_ab72a62cdd897e1d31a72e9a2f3a260b2}{GetCamera}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}{m\_Camera}};\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ name}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ The\ name\ of\ the\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ std::string\ \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ m\_Objects}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ The\ list\ of\ SceneObjects\ contained\ in\ the\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ std::vector<SceneObject>\ \doxymbox{\hyperlink{class_scene_a4507dcef4e6a65477d814c7d10de037f}{m\_Objects}};}
+\DoxyCodeLine{\ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ m\_ObjectIndex}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ A\ map\ for\ quick\ lookup\ of\ SceneObjects\ by\ name.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ std::unordered\_map<std::string,\ size\_t>\ \doxymbox{\hyperlink{class_scene_a5e328ee8e0d8d80a193ab15ea0135d65}{m\_ObjectIndex}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ m\_Camera}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ The\ camera\ used\ to\ view\ the\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ Camera\ \doxymbox{\hyperlink{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}{m\_Camera}};}
+\DoxyCodeLine{\};\ \ \textcolor{comment}{//\ class\ Scene}}
+
+\end{DoxyCodeInclude}
+ 

@@ -1,0 +1,91 @@
+\doxysection{GLError.\+h}
+\hypertarget{_g_l_error_8h_source}{}\label{_g_l_error_8h_source}\index{src/Graphics/GLError.h@{src/Graphics/GLError.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_base_8h}{../Core/Base.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}../Core/Log.h"{}}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <glad/gl.h>}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00006}00006\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00007}00007\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00008}00008\ \textcolor{comment}{\ *\ @class\ GLErrorChecker}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00009}00009\ \textcolor{comment}{\ *\ @brief\ Utility\ class\ for\ checking\ and\ logging\ OpenGL\ errors.}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00010}00010\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00011}00011\ \textcolor{comment}{\ *\ This\ class\ provides\ functionality\ to\ check\ for\ OpenGL\ errors\ after}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00012}00012\ \textcolor{comment}{\ *\ OpenGL\ function\ calls.\ It\ logs\ any\ detected\ errors\ using\ the\ engine's}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00013}00013\ \textcolor{comment}{\ *\ logging\ system.\ The\ class\ can\ be\ used}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00014}00014\ \textcolor{comment}{\ *\ in\ a\ RAII\ manner\ to\ automatically\ check\ for\ errors\ when\ going\ out\ of\ scope.}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00016}00016\ \textcolor{comment}{\ *\ Usage:}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00017}00017\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00018}00018\ \textcolor{comment}{\ *\ \{}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00019}00019\ \textcolor{comment}{\ *\ \ \ GLErrorChecker\ glError("{}Rendering\ Frame"{});}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00020}00020\ \textcolor{comment}{\ *\ \ //\ OpenGL\ calls...}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00021}00021\ \textcolor{comment}{\ *\ \}\ //\ Errors\ checked\ automatically\ here}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00022}00022\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00023}00023\ \textcolor{comment}{\ *\ @note\ This\ class\ is\ intended\ for\ debugging\ purposes\ and\ may\ be\ disabled}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00024}00024\ \textcolor{comment}{\ *\ in\ release\ builds\ for\ performance.}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00025}00025\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00026}\doxymbox{\hyperlink{class_g_l_error_checker}{00026}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_g_l_error_checker_a380cd783517807d41eb12e0fd230b89f}{GLErrorChecker}}\ \{}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00027}00027\ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00028}00028\ \textcolor{comment}{\ \ \ \ ///\ @brief\ Constructs\ a\ GLErrorChecker\ with\ a\ context\ description.}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00029}\doxymbox{\hyperlink{class_g_l_error_checker_a380cd783517807d41eb12e0fd230b89f}{00029}}\ \ \ \ \ \doxymbox{\hyperlink{class_g_l_error_checker_a380cd783517807d41eb12e0fd230b89f}{GLErrorChecker}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ context)\ :\ \doxymbox{\hyperlink{class_g_l_error_checker_af8ddc279e42b3902b4b836d9eaf529f9}{m\_Context}}(context)\ \{}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clear\ any\ existing\ errors}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (glGetError()\ !=\ GL\_NO\_ERROR);}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00033}00033\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00034}00034\ \textcolor{comment}{\ \ \ \ ///\ @brief\ Destructor\ that\ checks\ for\ OpenGL\ errors.}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00035}\doxymbox{\hyperlink{class_g_l_error_checker_a7250b7df496d2fe81a54c734838204d9}{00035}}\ \ \ \ \ \doxymbox{\hyperlink{class_g_l_error_checker_a7250b7df496d2fe81a54c734838204d9}{\string~GLErrorChecker}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_g_l_error_checker_a552b5db6b5b23d3cf93948e8cb249b47}{CheckErrors}}();}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00038}00038\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00039}00039\ \textcolor{comment}{\ \ \ \ ///\ @brief\ Checks\ for\ OpenGL\ errors\ and\ logs\ them.}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00040}\doxymbox{\hyperlink{class_g_l_error_checker_a552b5db6b5b23d3cf93948e8cb249b47}{00040}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_g_l_error_checker_a552b5db6b5b23d3cf93948e8cb249b47}{CheckErrors}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ GLenum\ error;}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ hasError\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ std::string\ errorMessages;}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ ((error\ =\ glGetError())\ !=\ GL\_NO\_ERROR)\ \{}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ hasError\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ errorString\ =\ \doxymbox{\hyperlink{class_g_l_error_checker_a5afec2169c42ccc0c7817d7096d164f5}{GetErrorString}}(error);}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!errorMessages.empty())\ errorMessages\ +=\ \textcolor{stringliteral}{"{},\ "{}};}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ errorMessages\ +=\ errorString;}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hasError)\ \{}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ ENGINE\_ERROR\ <<\ \textcolor{stringliteral}{"{}OpenGL\ Error\ in\ "{}}\ <<\ \doxymbox{\hyperlink{class_g_l_error_checker_af8ddc279e42b3902b4b836d9eaf529f9}{m\_Context}}\ <<\ \textcolor{stringliteral}{"{}:\ "{}}\ <<\ errorMessages;}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00056}00056\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00057}00057\ \textcolor{comment}{\ \ \ \ ///\ @brief\ Converts\ an\ OpenGL\ error\ code\ to\ a\ human-\/readable\ string.}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00058}\doxymbox{\hyperlink{class_g_l_error_checker_a5afec2169c42ccc0c7817d7096d164f5}{00058}}\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{class_g_l_error_checker_a5afec2169c42ccc0c7817d7096d164f5}{GetErrorString}}(GLenum\ error)\ \{}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (error)\ \{}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ GL\_NO\_ERROR:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}GL\_NO\_ERROR"{}};}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ GL\_INVALID\_ENUM:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}GL\_INVALID\_ENUM"{}};}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ GL\_INVALID\_VALUE:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}GL\_INVALID\_VALUE"{}};}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ GL\_INVALID\_OPERATION:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}GL\_INVALID\_OPERATION"{}};}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ GL\_OUT\_OF\_MEMORY:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}GL\_OUT\_OF\_MEMORY"{}};}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ GL\_INVALID\_FRAMEBUFFER\_OPERATION:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}GL\_INVALID\_FRAMEBUFFER\_OPERATION"{}};}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}UNKNOWN\_ERROR"{}};}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00070}00070\ \textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00071}00071\ \textcolor{comment}{\ \ \ \ ///\ @brief\ Context\ description\ for\ error\ logging.}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00072}\doxymbox{\hyperlink{class_g_l_error_checker_af8ddc279e42b3902b4b836d9eaf529f9}{00072}}\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{class_g_l_error_checker_af8ddc279e42b3902b4b836d9eaf529f9}{m\_Context}};}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00073}00073\ \};}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00074}00074\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00075}00075\ \textcolor{comment}{///\ @brief\ Macro\ to\ create\ a\ GLErrorChecker\ for\ the\ current\ scope.}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00076}00076\ \textcolor{preprocessor}{\#define\ GL\_CHECK(context)\ GLErrorChecker\ \_gl\_checker(context)}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00077}00077\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00078}00078\ \textcolor{comment}{///\ @brief\ Checks\ for\ OpenGL\ errors\ with\ a\ custom\ message.}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00079}00079\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ CheckGLError(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ message)\ \{}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00080}00080\ \ \ \ \ GLenum\ error\ =\ glGetError();}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{if}\ (error\ !=\ GL\_NO\_ERROR)\ \{}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ ENGINE\_ERROR\ <<\ message\ <<\ \textcolor{stringliteral}{"{}\ -\/\ GL\ Error:\ "{}}\ <<\ \doxymbox{\hyperlink{class_g_l_error_checker_a5afec2169c42ccc0c7817d7096d164f5}{GLErrorChecker::GetErrorString}}(error);}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{_g_l_error_8h_source_l00085}00085\ }
+
+\end{DoxyCode}

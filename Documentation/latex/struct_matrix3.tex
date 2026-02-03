@@ -1,0 +1,348 @@
+\doxysection{Matrix3 Struct Reference}
+\hypertarget{struct_matrix3}{}\label{struct_matrix3}\index{Matrix3@{Matrix3}}
+
+
+A 3x3 matrix structure for mathematics and graphics operations.  
+
+
+
+
+{\ttfamily \+\#include $<$Matrix3.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_matrix3_a4bda87e98056327907ce03b35a64a3ae}{Matrix3}} (const \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \texorpdfstring{$\ast$}{*}data)
+\item 
+\doxymbox{\hyperlink{struct_matrix3_a72b01be8300b4cf505788b1a581661a7}{Matrix3}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} m00, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} m01, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} m02, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} m10, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} m11, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} m12, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} m20, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} m21, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} m22)
+\item 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \doxymbox{\hyperlink{struct_matrix3_a30e737bccc355da5433b9be08f19a1d1}{operator+}} (const \doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \&other) const
+\item 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \doxymbox{\hyperlink{struct_matrix3_ae4b30ca967d237295ac626254a63b6e3}{operator-\/}} (const \doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \&other) const
+\item 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \doxymbox{\hyperlink{struct_matrix3_a98dbadcdc25586e691344088a13e92f1}{operator\texorpdfstring{$\ast$}{*}}} (const \doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \&other) const
+\item 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} \doxymbox{\hyperlink{struct_matrix3_a0b24a44f275663b85860c4d2260abc4a}{operator\texorpdfstring{$\ast$}{*}}} (const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&vec) const
+\item 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \& \doxymbox{\hyperlink{struct_matrix3_adb8506e7804abebebd06399208080791}{operator\texorpdfstring{$\ast$}{*}=}} (const \doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \&other)
+\item 
+bool \doxymbox{\hyperlink{struct_matrix3_a5bd6a08248415894e22c5e5ce9e4fe70}{operator==}} (const \doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \&other) const
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{struct_matrix3_a303870dc98656a35256eb013aab80272}{operator()}} (int row, int col) const
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \& \doxymbox{\hyperlink{struct_matrix3_ac4f2c7616cfa3ced543d3a24d10d51cd}{operator()}} (int row, int col)
+\item 
+void \doxymbox{\hyperlink{struct_matrix3_a0e8a7ff4488a6552ded4c99e458e8bc2}{Set\+Identity}} ()
+\item 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \doxymbox{\hyperlink{struct_matrix3_a7e011d73c9c8860dec853e2786550012}{Transposed}} () const
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{struct_matrix3_ac585f81e354b54f66beb2a09e3ca5ab6}{Determinant}} () const
+\item 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \doxymbox{\hyperlink{struct_matrix3_a0c982bc8ce0c167598e3357ecb847a17}{Inverted}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \doxymbox{\hyperlink{struct_matrix3_aa4fee78783b26f55a868084028d2475a}{Identity}} ()
+\item 
+static \doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \doxymbox{\hyperlink{struct_matrix3_a9c62e3d1a88508698e1e0dc2a207e8d3}{Scale}} (const \doxymbox{\hyperlink{struct_vector2}{Vector2}} \&scale)
+\item 
+static \doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \doxymbox{\hyperlink{struct_matrix3_a2d46e9ffe63d9802e745952ea0a2e203}{Rotation}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} angle)
+\item 
+static \doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \doxymbox{\hyperlink{struct_matrix3_a8cf4886899afdd8be2e4818d43849690}{Translation}} (const \doxymbox{\hyperlink{struct_vector2}{Vector2}} \&translation)
+\item 
+static \doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \doxymbox{\hyperlink{struct_matrix3_acc7b5919706ed126a0f161f48087e279}{From\+Matrix4}} (const \doxymbox{\hyperlink{struct_matrix4}{Matrix4}} \&matrix4)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_matrix3_ae2454d893154588ca10bd6d3219356b7}\label{struct_matrix3_ae2454d893154588ca10bd6d3219356b7} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{struct_matrix3_a5008c302f366fad5184e5c7b5171b59f}{m}} \+[9]\+\\
+\>\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{struct_matrix3_ac62ca83e05ebb736a88d9cd5ee25b2da}{mm}} \+[3]\+\+[3]\+\\
+\>\doxymbox{\hyperlink{struct_vector3}{Vector3}} \doxymbox{\hyperlink{struct_matrix3_a25cbd2b4e273f22190ebbc8f4cde9a2d}{columns}} \+[3]\+\\
+\}; \\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A 3x3 matrix structure for mathematics and graphics operations. 
+
+\doxylink{struct_matrix3}{Matrix3} represents a 3x3 matrix used for various transformations in 2D and 3D space, including rotation, scaling, and shearing. It supports standard matrix operations such as addition, subtraction, multiplication, transposition, and inversion. Common uses:\+
+\begin{DoxyItemize}
+\item 2D transformations (rotation, scaling, shearing)
+\item Normal matrix calculations in 3D graphics
+\item Linear transformations in 3D space
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+All components are stored as \doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} (single-\/precision floats) for performance. 
+
+Matrix operations are defined as operator overloads for intuitive syntax. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_shader_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Shader.\+h}}, and \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_matrix3_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Matrix3.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00033}{33}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{struct_matrix3_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_matrix3_a773fdcf139826ddb39c30e7d08bbdb90}\index{Matrix3@{Matrix3}!Matrix3@{Matrix3}}
+\index{Matrix3@{Matrix3}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{Matrix3()}{Matrix3()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{struct_matrix3_a773fdcf139826ddb39c30e7d08bbdb90} 
+Matrix3::\+\+Matrix3 (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00040}{40}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_a4bda87e98056327907ce03b35a64a3ae}\index{Matrix3@{Matrix3}!Matrix3@{Matrix3}}
+\index{Matrix3@{Matrix3}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{Matrix3()}{Matrix3()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{struct_matrix3_a4bda87e98056327907ce03b35a64a3ae} 
+Matrix3::\+\+Matrix3 (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \texorpdfstring{$\ast$}{*}}]{data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00044}{44}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_a72b01be8300b4cf505788b1a581661a7}\index{Matrix3@{Matrix3}!Matrix3@{Matrix3}}
+\index{Matrix3@{Matrix3}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{Matrix3()}{Matrix3()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{struct_matrix3_a72b01be8300b4cf505788b1a581661a7} 
+Matrix3::\+\+Matrix3 (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{m00}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{m01}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{m02}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{m10}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{m11}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{m12}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{m20}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{m21}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{m22}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00048}{48}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{struct_matrix3_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_matrix3_ac585f81e354b54f66beb2a09e3ca5ab6}\index{Matrix3@{Matrix3}!Determinant@{Determinant}}
+\index{Determinant@{Determinant}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{Determinant()}{Determinant()}}
+{\footnotesize\ttfamily \label{struct_matrix3_ac585f81e354b54f66beb2a09e3ca5ab6} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Matrix3::\+\+Determinant (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00134}{134}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_acc7b5919706ed126a0f161f48087e279}\index{Matrix3@{Matrix3}!FromMatrix4@{FromMatrix4}}
+\index{FromMatrix4@{FromMatrix4}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{FromMatrix4()}{FromMatrix4()}}
+{\footnotesize\ttfamily \label{struct_matrix3_acc7b5919706ed126a0f161f48087e279} 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} Matrix3::\+\+From\+Matrix4 (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_matrix4}{Matrix4}} \&}]{matrix4}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00205}{205}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_aa4fee78783b26f55a868084028d2475a}\index{Matrix3@{Matrix3}!Identity@{Identity}}
+\index{Identity@{Identity}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{Identity()}{Identity()}}
+{\footnotesize\ttfamily \label{struct_matrix3_aa4fee78783b26f55a868084028d2475a} 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} Matrix3::\+\+Identity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00166}{166}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_a0c982bc8ce0c167598e3357ecb847a17}\index{Matrix3@{Matrix3}!Inverted@{Inverted}}
+\index{Inverted@{Inverted}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{Inverted()}{Inverted()}}
+{\footnotesize\ttfamily \label{struct_matrix3_a0c982bc8ce0c167598e3357ecb847a17} 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} Matrix3::\+\+Inverted (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00140}{140}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_ac4f2c7616cfa3ced543d3a24d10d51cd}\index{Matrix3@{Matrix3}!operator()@{operator()}}
+\index{operator()@{operator()}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{struct_matrix3_ac4f2c7616cfa3ced543d3a24d10d51cd} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \& Matrix3::\+operator() (\begin{DoxyParamCaption}\item[{int}]{row}{, }\item[{int}]{col}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00110}{110}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_a303870dc98656a35256eb013aab80272}\index{Matrix3@{Matrix3}!operator()@{operator()}}
+\index{operator()@{operator()}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{struct_matrix3_a303870dc98656a35256eb013aab80272} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Matrix3::\+operator() (\begin{DoxyParamCaption}\item[{int}]{row}{, }\item[{int}]{col}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00106}{106}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_a98dbadcdc25586e691344088a13e92f1}\index{Matrix3@{Matrix3}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{struct_matrix3_a98dbadcdc25586e691344088a13e92f1} 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} Matrix3::\+operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00073}{73}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_a0b24a44f275663b85860c4d2260abc4a}\index{Matrix3@{Matrix3}!operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}}
+\index{operator\texorpdfstring{$\ast$}{*}@{operator\texorpdfstring{$\ast$}{*}}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}()}{operator*()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{struct_matrix3_a0b24a44f275663b85860c4d2260abc4a} 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} Matrix3::\+operator\texorpdfstring{$\ast$}{*} (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{vec}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00086}{86}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_adb8506e7804abebebd06399208080791}\index{Matrix3@{Matrix3}!operator\texorpdfstring{$\ast$}{*}=@{operator\texorpdfstring{$\ast$}{*}=}}
+\index{operator\texorpdfstring{$\ast$}{*}=@{operator\texorpdfstring{$\ast$}{*}=}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{operator\texorpdfstring{$\ast$}{*}=()}{operator*=()}}
+{\footnotesize\ttfamily \label{struct_matrix3_adb8506e7804abebebd06399208080791} 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \& Matrix3::\+operator\texorpdfstring{$\ast$}{*}= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00094}{94}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_a30e737bccc355da5433b9be08f19a1d1}\index{Matrix3@{Matrix3}!operator+@{operator+}}
+\index{operator+@{operator+}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily \label{struct_matrix3_a30e737bccc355da5433b9be08f19a1d1} 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} Matrix3::\+operator+ (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00057}{57}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_ae4b30ca967d237295ac626254a63b6e3}\index{Matrix3@{Matrix3}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily \label{struct_matrix3_ae4b30ca967d237295ac626254a63b6e3} 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} Matrix3::\+operator-\/ (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00065}{65}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_a5bd6a08248415894e22c5e5ce9e4fe70}\index{Matrix3@{Matrix3}!operator==@{operator==}}
+\index{operator==@{operator==}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{struct_matrix3_a5bd6a08248415894e22c5e5ce9e4fe70} 
+bool Matrix3::\+operator== (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_matrix3}{Matrix3}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00099}{99}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_a2d46e9ffe63d9802e745952ea0a2e203}\index{Matrix3@{Matrix3}!Rotation@{Rotation}}
+\index{Rotation@{Rotation}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{Rotation()}{Rotation()}}
+{\footnotesize\ttfamily \label{struct_matrix3_a2d46e9ffe63d9802e745952ea0a2e203} 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} Matrix3::\+\+Rotation (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{angle}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00177}{177}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_a9c62e3d1a88508698e1e0dc2a207e8d3}\index{Matrix3@{Matrix3}!Scale@{Scale}}
+\index{Scale@{Scale}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{Scale()}{Scale()}}
+{\footnotesize\ttfamily \label{struct_matrix3_a9c62e3d1a88508698e1e0dc2a207e8d3} 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} Matrix3::\+\+Scale (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector2}{Vector2}} \&}]{scale}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00170}{170}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_a0e8a7ff4488a6552ded4c99e458e8bc2}\index{Matrix3@{Matrix3}!SetIdentity@{SetIdentity}}
+\index{SetIdentity@{SetIdentity}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{SetIdentity()}{SetIdentity()}}
+{\footnotesize\ttfamily \label{struct_matrix3_a0e8a7ff4488a6552ded4c99e458e8bc2} 
+void Matrix3::\+\+Set\+Identity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00115}{115}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_a8cf4886899afdd8be2e4818d43849690}\index{Matrix3@{Matrix3}!Translation@{Translation}}
+\index{Translation@{Translation}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{Translation()}{Translation()}}
+{\footnotesize\ttfamily \label{struct_matrix3_a8cf4886899afdd8be2e4818d43849690} 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} Matrix3::\+\+Translation (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector2}{Vector2}} \&}]{translation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00190}{190}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_a7e011d73c9c8860dec853e2786550012}\index{Matrix3@{Matrix3}!Transposed@{Transposed}}
+\index{Transposed@{Transposed}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{Transposed()}{Transposed()}}
+{\footnotesize\ttfamily \label{struct_matrix3_a7e011d73c9c8860dec853e2786550012} 
+\doxymbox{\hyperlink{struct_matrix3}{Matrix3}} Matrix3::\+\+Transposed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00124}{124}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_matrix3_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_matrix3_a25cbd2b4e273f22190ebbc8f4cde9a2d}\index{Matrix3@{Matrix3}!columns@{columns}}
+\index{columns@{columns}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{columns}{columns}}
+{\footnotesize\ttfamily \label{struct_matrix3_a25cbd2b4e273f22190ebbc8f4cde9a2d} 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} Matrix3::\+columns\+[3]\+}
+
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00037}{37}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_a5008c302f366fad5184e5c7b5171b59f}\index{Matrix3@{Matrix3}!m@{m}}
+\index{m@{m}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{m}{m}}
+{\footnotesize\ttfamily \label{struct_matrix3_a5008c302f366fad5184e5c7b5171b59f} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Matrix3::\+m\+[9]\+}
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_matrix3_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Matrix3.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00035}{35}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+\Hypertarget{struct_matrix3_ac62ca83e05ebb736a88d9cd5ee25b2da}\index{Matrix3@{Matrix3}!mm@{mm}}
+\index{mm@{mm}!Matrix3@{Matrix3}}
+\doxysubsubsection{\texorpdfstring{mm}{mm}}
+{\footnotesize\ttfamily \label{struct_matrix3_ac62ca83e05ebb736a88d9cd5ee25b2da} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Matrix3::\+mm\+[3]\+\+[3]\+}
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_matrix3_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Matrix3.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_matrix3_8h_source_l00036}{36}} of file \doxymbox{\hyperlink{_matrix3_8h_source}{Matrix3.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Math/\+Matrix3.\+h\end{DoxyCompactItemize}

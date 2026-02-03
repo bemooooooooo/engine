@@ -1,0 +1,494 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ angleRad\ =\ Math::ToRadians(90.0f);\ \ \textcolor{comment}{//\ Convert\ degrees\ to\ radians}}
+\DoxyCodeLine{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ clampedValue\ =\ Math::Clamp(value,\ 0.0f,\ 1.0f);\ \ \textcolor{comment}{//\ Clamp\ value\ between\ 0\ and\ 1}}
+\DoxyCodeLine{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ lerpedValue\ =\ Math::Lerp(start,\ end,\ t);\ \ \textcolor{comment}{//\ Linear\ interpolation}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <limits>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Core/Base.h"{}}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @namespace\ Math}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Mathematical\ constants\ and\ utility\ functions\ for\ the\ game\ engine.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ namespace\ provides\ a\ collection\ of\ mathematical\ constants,\ functions,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ and\ utilities\ commonly\ used\ in\ game\ development.\ It\ includes\ definitions}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ for\ pi,\ conversion\ factors\ between\ degrees\ and\ radians,\ and\ various}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ helper\ functions\ for\ clamping,\ interpolation,\ and\ common\ math\ operations.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Mathematical\ constants\ (PI,\ TWO\_PI,\ DEG2RAD,\ RAD2DEG)}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Clamping\ and\ interpolation\ functions}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Angle\ conversion\ utilities}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Common\ math\ functions\ (sqrt,\ sin,\ cos,\ etc.)}}
+\DoxyCodeLine{\textcolor{comment}{\ *}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Utility\ functions\ for\ range\ checking\ and\ power-\/of-\/two\ calculations}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ All\ floating-\/point\ operations\ use\ f32\ (single-\/precision)\ for\ performance.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ angleRad\ =\ Math::ToRadians(90.0f);\ \ //\ Convert\ degrees\ to\ radians}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ clampedValue\ =\ Math::Clamp(value,\ 0.0f,\ 1.0f);\ \ //\ Clamp\ value\ between\ 0\ and\ 1}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ lerpedValue\ =\ Math::Lerp(start,\ end,\ t);\ \ //\ Linear\ interpolation}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{namespace\ }\doxymbox{\hyperlink{namespace_math}{Math}}\ \{}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ PI}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Mathematical\ constant\ π\ (pi)\ approximately\ equal\ to\ 3.14159.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{PI}}\ =\ 3.14159265358979323846f;\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ TWO\_PI}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Mathematical\ constant\ 2π\ (two\ times\ pi)\ approximately\ equal\ to\ 6.28318.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_aee4e2fdc9954787c0334470bfc7597c0}{TWO\_PI}}\ =\ 6.28318530717958647692f;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ HALF\_PI}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Mathematical\ constant\ π/2\ (half\ pi)\ approximately\ equal\ to\ 1.5708.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_ab2cbad12b4db8c83d049ec6126eb276d}{HALF\_PI}}\ =\ 1.57079632679489661923f;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ DEG2RAD}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Conversion\ factor\ from\ degrees\ to\ radians.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_a46d08bfee3cf59359dcd09da91f0457d}{DEG2RAD}}\ =\ \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{PI}}\ /\ 180.0f;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ RAD2DEG}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Conversion\ factor\ from\ radians\ to\ degrees.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_a0e3c13471cf7c76a4dc3ea053166ab35}{RAD2DEG}}\ =\ 180.0f\ /\ \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{PI}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ EPSILON}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Small\ value\ used\ for\ floating-\/point\ comparisons.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_accab87ed706920fc8ced5c0fef4a16cf}{EPSILON}}\ =\ 1.0e-\/6f;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Clamps\ a\ value\ between\ a\ minimum\ and\ maximum.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Returns\ the\ value\ limited\ to\ the\ specified\ range\ [min,\ max].}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ If\ value\ <\ min,\ returns\ min.\ If\ value\ >\ max,\ returns\ max.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Otherwise,\ returns\ value.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @tparam\ T\ The\ type\ of\ the\ value\ (must\ support\ comparison\ operators)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ The\ value\ to\ clamp}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ min\ The\ minimum\ allowable\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ max\ The\ maximum\ allowable\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ T\ The\ clamped\ value\ within\ [min,\ max]}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ clamped\ =\ Math::Clamp(5.0f,\ 0.0f,\ 3.0f);\ \ //\ clamped\ =\ 3.0f}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ clamped2\ =\ Math::Clamp(-\/1.0f,\ 0.0f,\ 3.0f);\ //\ clamped2\ =\ 0.0f}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ clamped3\ =\ Math::Clamp(2.0f,\ 0.0f,\ 3.0f);\ \ //\ clamped3\ =\ 2.0f}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ T\ Clamp(T\ value,\ T\ min,\ T\ max)\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ (value\ <\ min)\ ?\ min\ :\ (value\ >\ max)\ ?\ max\ :\ value;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Linearly\ interpolates\ between\ two\ values.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Performs\ linear\ interpolation\ (lerp)\ between\ a\ and\ b\ using\ parameter\ t.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Formula:\ result\ =\ a\ +\ (b\ -\/\ a)\ *\ t}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @tparam\ T\ The\ type\ of\ the\ values\ (must\ support\ arithmetic\ operators)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ a\ The\ start\ value\ (t\ =\ 0)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ b\ The\ end\ value\ (t\ =\ 1)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ t\ The\ interpolation\ parameter\ (0.0\ to\ 1.0)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ T\ The\ interpolated\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Parameter\ t\ behavior:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ t\ =\ 0.0:\ Returns\ a}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ t\ =\ 1.0:\ Returns\ b}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ t\ <\ 0.0\ or\ t\ >\ 1.0:\ Extrapolates\ beyond\ a\ and\ b}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ result\ =\ Math::Lerp(0.0f,\ 10.0f,\ 0.5f);\ \ //\ result\ =\ 5.0f}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ result2\ =\ Math::Lerp(20.0f,\ 30.0f,\ 0.25f);\ //\ result2\ =\ 22.5f}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ T\ Lerp(T\ a,\ T\ b,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ t)\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ a\ +\ t\ *\ (b\ -\/\ a);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Converts\ degrees\ to\ radians.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Multiplies\ the\ degree\ value\ by\ the\ DEG2RAD\ conversion\ factor.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ degrees\ Angle\ in\ degrees}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ Angle\ in\ radians}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ radians\ =\ Math::ToRadians(180.0f);\ \ //\ radians\ =\ π}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ ToRadians(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ degrees)\ \{\ \textcolor{keywordflow}{return}\ degrees\ *\ \doxymbox{\hyperlink{namespace_math_a46d08bfee3cf59359dcd09da91f0457d}{DEG2RAD}};\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Converts\ radians\ to\ degrees.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Multiplies\ the\ radian\ value\ by\ the\ RAD2DEG\ conversion\ factor.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ radians\ Angle\ in\ radians}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ Angle\ in\ degrees}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ degrees\ =\ Math::ToDegrees(Math::PI);\ \ //\ degrees\ =\ 180.0f}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ ToDegrees(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ radians)\ \{\ \textcolor{keywordflow}{return}\ radians\ *\ \doxymbox{\hyperlink{namespace_math_a0e3c13471cf7c76a4dc3ea053166ab35}{RAD2DEG}};\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Checks\ if\ two\ floating-\/point\ numbers\ are\ approximately\ equal.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Compares\ two\ f32\ values\ within\ a\ small\ epsilon\ tolerance\ to\ account\ for}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ floating-\/point\ precision\ errors.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ a\ The\ first\ floating-\/point\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ b\ The\ second\ floating-\/point\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ epsilon\ The\ tolerance\ for\ comparison\ (default\ is\ EPSILON)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ bool\ True\ if\ values\ are\ approximately\ equal,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ bool\ equal\ =\ Math::Approximately(0.1f\ +\ 0.2f,\ 0.3f);\ \ //\ equal\ =\ true}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \textcolor{keywordtype}{bool}\ NearZero(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ value,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ epsilon\ =\ \doxymbox{\hyperlink{namespace_math_accab87ed706920fc8ced5c0fef4a16cf}{EPSILON}})\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ std::fabs(value)\ <=\ epsilon;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Checks\ if\ two\ floating-\/point\ numbers\ are\ approximately\ equal.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Compares\ two\ f32\ values\ within\ a\ small\ epsilon\ tolerance\ to\ account\ for}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ floating-\/point\ precision\ errors.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ a\ The\ first\ floating-\/point\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ b\ The\ second\ floating-\/point\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ epsilon\ The\ tolerance\ for\ comparison\ (default\ is\ EPSILON)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ bool\ True\ if\ values\ are\ approximately\ equal,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ bool\ equal\ =\ Math::Approximately(0.1f\ +\ 0.2f,\ 0.3f);\ \ //\ equal\ =\ true}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ Sqrt(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ v)\ \{\ \textcolor{keywordflow}{return}\ std::sqrt(v);\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Trigonometric\ functions-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Sin\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ angleRad\ angle\ in\ radians}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ Sine\ of\ the\ angle}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_a8f4dbcdd74ef3ce8de71b8407a654f2b}{Sin}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ angleRad)\ \{\ \textcolor{keywordflow}{return}\ std::sin(angleRad);\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Cos\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ angleRad\ angle\ in\ radians}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ Cosine\ of\ the\ angle}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_a85d7111dae78d8c454fdb9b6fba22a69}{Cos}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ angleRad)\ \{\ \textcolor{keywordflow}{return}\ std::cos(angleRad);\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Tan\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ angleRad\ angle\ in\ radians}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ Tangent\ of\ the\ angle}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_ae9b9bca238e44f6bd314df8957c06e27}{Tan}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ angleRad)\ \{\ \textcolor{keywordflow}{return}\ std::tan(angleRad);\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Other\ common\ math\ functions-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Arc\ sine\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ Input\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ Arc\ sine\ of\ the\ value\ in\ radians}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_a9aeda26c030adbf471bab70a9b7f544f}{ASin}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ value)\ \{\ \textcolor{keywordflow}{return}\ std::asin(value);\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Arc\ cosine\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ Input\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ Arc\ cosine\ of\ the\ value\ in\ radians}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_ad0632ff66392f0559dac6556a8f982ec}{ACos}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ value)\ \{\ \textcolor{keywordflow}{return}\ std::acos(value);\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Arc\ tangent\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ Input\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ Arc\ tangent\ of\ the\ value\ in\ radians}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_a45f42aada4642529a0d0779280dc0d83}{ATan}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ value)\ \{\ \textcolor{keywordflow}{return}\ std::atan(value);\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Arc\ tangent\ function\ with\ two\ arguments.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ y\ Y\ coordinate}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ x\ X\ coordinate}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ Arc\ tangent\ of\ y/x\ in\ radians}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_ac8ed210ad72ca37577538092cd7e192f}{ATan2}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ y,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ x)\ \{\ \textcolor{keywordflow}{return}\ std::atan2(y,\ x);\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Exponential\ and\ logarithmic\ functions-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Exponential\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ Input\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ e\ raised\ to\ the\ power\ of\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_a650dcaa43cd9aabad9317bd7daa59e47}{Exp}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ value)\ \{\ \textcolor{keywordflow}{return}\ std::exp(value);\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Natural\ logarithm\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ Input\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ Natural\ logarithm\ of\ the\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_a0a453133a1ddea6d1f4b0ad383409583}{Log}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ value)\ \{\ \textcolor{keywordflow}{return}\ std::log(value);\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Base-\/10\ logarithm\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ Input\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ Base-\/10\ logarithm\ of\ the\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_a7d431b325a7a9bb205a81915f28b1147}{Log10}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ value)\ \{\ \textcolor{keywordflow}{return}\ std::log10(value);\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Rounding\ functions-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Ceiling\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ Input\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ Smallest\ integer\ not\ less\ than\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_a3a72da9728fe753784906239ba65086e}{Ceil}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ value)\ \{\ \textcolor{keywordflow}{return}\ std::ceil(value);\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Floor\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ Input\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ Largest\ integer\ not\ greater\ than\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_aa27c59c26db2eb7d018237df85d7cbfa}{Floor}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ value)\ \{\ \textcolor{keywordflow}{return}\ std::floor(value);\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Round\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ Input\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ Nearest\ integer\ to\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_aa0e7494bb6a3fe9c3e813b0b8b5487d7}{Round}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ value)\ \{\ \textcolor{keywordflow}{return}\ std::round(value);\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Fractional\ part\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ Input\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ Fractional\ part\ of\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ \doxymbox{\hyperlink{namespace_math_aa654b389507369464b076330acb4581c}{Fmod}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ x,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ y)\ \{\ \textcolor{keywordflow}{return}\ std::fmod(x,\ y);\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Utility\ functions-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Sign\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @tparam\ T\ The\ type\ of\ the\ value\ (must\ support\ comparison\ operators)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ The\ value\ to\ check}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ T\ -\/1\ if\ value\ <\ 0,\ 1\ if\ value\ >\ 0,\ 0\ if\ value\ ==\ 0}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ i32\ sign1\ =\ Math::Sign(-\/10);\ \ //\ sign1\ =\ -\/1}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ i32\ sign2\ =\ Math::Sign(5);\ \ \ \ //\ sign2\ =\ 1}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ i32\ sign3\ =\ Math::Sign(0);\ \ \ \ //\ sign3\ =\ 0}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ T\ Sign(T\ value)\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ (T(0)\ <\ value)\ -\/\ (value\ <\ T(0));}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Smoothstep\ function\ for\ smooth\ interpolation.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Performs\ smooth\ Hermite\ interpolation\ between\ 0\ and\ 1\ when\ x\ is\ in\ [edge0,\ edge1].}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ The\ function\ returns\ 0\ if\ x\ <=\ edge0\ and\ 1\ if\ x\ >=\ edge1.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ The\ interpolation\ has\ zero\ first\ derivatives\ at\ the\ endpoints.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ edge0\ The\ lower\ edge\ of\ the\ transition}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ edge1\ The\ upper\ edge\ of\ the\ transition}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ x\ The\ input\ value\ to\ interpolate}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ The\ smoothly\ interpolated\ value\ between\ 0\ and\ 1}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ smooth\ =\ Math::Smoothstep(0.0f,\ 1.0f,\ 0.5f);\ \ //\ smooth\ =\ 0.5f}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ Smoothstep(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ edge0,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ edge1,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ x)\ \{}
+\DoxyCodeLine{\ \ x\ =\ Clamp((x\ -\/\ edge0)\ /\ (edge1\ -\/\ edge0),\ 0.0f,\ 1.0f);}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ x\ *\ x\ *\ (3.0f\ -\/\ 2.0f\ *\ x);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Smootherstep\ function\ for\ even\ smoother\ interpolation.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Performs\ smoother\ Hermite\ interpolation\ between\ 0\ and\ 1\ when\ x\ is\ in\ [edge0,\ edge1].}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ The\ function\ returns\ 0\ if\ x\ <=\ edge0\ and\ 1\ if\ x\ >=\ edge1.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ The\ interpolation\ has\ zero\ first\ and\ second\ derivatives\ at\ the\ endpoints.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ edge0\ The\ lower\ edge\ of\ the\ transition}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ edge1\ The\ upper\ edge\ of\ the\ transition}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ x\ The\ input\ value\ to\ interpolate}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ The\ smoothly\ interpolated\ value\ between\ 0\ and\ 1}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ smoother\ =\ Math::Smootherstep(0.0f,\ 1.0f,\ 0.5f);\ \ //\ smoother\ =\ 0.5f}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ Smootherstep(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ edge0,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ edge1,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ x)\ \{}
+\DoxyCodeLine{\ \ x\ =\ Clamp((x\ -\/\ edge0)\ /\ (edge1\ -\/\ edge0),\ 0.0f,\ 1.0f);}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ x\ *\ x\ *\ x\ *\ (x\ *\ (x\ *\ 6.0f\ -\/\ 15.0f)\ +\ 10.0f);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Remaps\ a\ value\ from\ one\ range\ to\ another.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Maps\ a\ value\ from\ the\ range\ [fromMin,\ fromMax]\ to\ the\ range\ [toMin,\ toMax].}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ The\ input\ value\ to\ remap}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ fromMin\ The\ lower\ bound\ of\ the\ input\ range}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ fromMax\ The\ upper\ bound\ of\ the\ input\ range}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ toMin\ The\ lower\ bound\ of\ the\ output\ range}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ toMax\ The\ upper\ bound\ of\ the\ output\ range}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ f32\ The\ remapped\ value\ in\ the\ output\ range}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ f32\ remapped\ =\ Math::Remap(5.0f,\ 0.0f,\ 10.0f,\ 100.0f,\ 200.0f);\ \ //\ remapped\ =\ 150.0f}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ Remap(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ value,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ fromMin,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ fromMax,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ toMin,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ toMax)\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ toMin\ +\ (value\ -\/\ fromMin)\ *\ (toMax\ -\/\ toMin)\ /\ (fromMax\ -\/\ fromMin);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Check\ if\ value\ is\ in\ range\ [min,\ max]}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ The\ value\ to\ check}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ min\ The\ minimum\ bound}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ max\ The\ maximum\ bound}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ bool\ True\ if\ value\ is\ in\ range,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ bool\ inRange\ =\ Math::InRange(5,\ 0,\ 10);\ \ //\ inRange\ =\ true}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ InRange(T\ value,\ T\ min,\ T\ max)\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ value\ >=\ min\ \&\&\ value\ <=\ max;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Check\ if\ value\ is\ in\ exclusive\ range\ (min,\ max)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ The\ value\ to\ check}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ min\ The\ minimum\ bound}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ max\ The\ maximum\ bound}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ bool\ True\ if\ value\ is\ in\ exclusive\ range,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ bool\ inRangeExclusive\ =\ Math::InRangeExclusive(5,\ 0,\ 10);\ \ //\ inRangeExclusive\ =\ true}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ InRangeExclusive(T\ value,\ T\ min,\ T\ max)\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ value\ >\ min\ \&\&\ value\ <\ max;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Converts\ a\ floating-\/point\ number\ to\ an\ integer\ by\ rounding.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ Input\ floating-\/point\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ i32\ Rounded\ integer\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{inline}\ \doxymbox{\hyperlink{group___base_types_gaec41e5f8e4b7aef2540e84268692fa84}{i32}}\ \doxymbox{\hyperlink{namespace_math_a7305c01ece0e19a6b0ae0862bcc8aeb6}{FloatToInt}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ value)\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\doxymbox{\hyperlink{group___base_types_gaec41e5f8e4b7aef2540e84268692fa84}{i32}}\textcolor{keyword}{>}(\doxymbox{\hyperlink{namespace_math_aa0e7494bb6a3fe9c3e813b0b8b5487d7}{Round}}(value));\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Checks\ if\ a\ value\ is\ a\ power\ of\ two.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ The\ value\ to\ check}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ bool\ True\ if\ value\ is\ a\ power\ of\ two,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ bool\ isPOT\ =\ Math::IsPowerOfTwo(16);\ \ //\ isPOT\ =\ true}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{bool}\ IsPowerOfTwo(T\ value)\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ value\ !=\ 0\ \&\&\ (value\ \&\ (value\ -\/\ 1))\ ==\ 0;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Calculates\ the\ next\ power\ of\ two\ greater\ than\ or\ equal\ to\ value.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ value\ The\ input\ value}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ T\ The\ next\ power\ of\ two}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ u32\ nextPOT\ =\ Math::NextPowerOfTwo(20);\ \ //\ nextPOT\ =\ 32}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ T\ NextPowerOfTwo(T\ value)\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}\ (value\ <=\ 0)\ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\ \ value-\/-\/;}
+\DoxyCodeLine{\ \ value\ |=\ value\ >>\ 1;}
+\DoxyCodeLine{\ \ value\ |=\ value\ >>\ 2;}
+\DoxyCodeLine{\ \ value\ |=\ value\ >>\ 4;}
+\DoxyCodeLine{\ \ value\ |=\ value\ >>\ 8;}
+\DoxyCodeLine{\ \ value\ |=\ value\ >>\ 16;}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ value\ +\ 1;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\};\ \ \textcolor{comment}{//\ namespace\ Math}}
+
+\end{DoxyCodeInclude}
+ 

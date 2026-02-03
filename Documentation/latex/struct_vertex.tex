@@ -1,0 +1,173 @@
+\doxysection{Vertex Struct Reference}
+\hypertarget{struct_vertex}{}\label{struct_vertex}\index{Vertex@{Vertex}}
+
+
+Structure representing a single vertex in a mesh.  
+
+
+
+
+{\ttfamily \+\#include $<$Mesh.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_vertex_ae2152b82b92f1522812a1e2bb8c32ba5}\label{struct_vertex_ae2152b82b92f1522812a1e2bb8c32ba5} 
+{\bfseries Vertex} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor initializing vertex attributes. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_vertex_a4ccfcca71475ba7c793b1a88381df693}{Vertex}} (const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&pos, const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&norm=Vector3::\+\+Up, const \doxymbox{\hyperlink{struct_vector2}{Vector2}} \&uv=\doxymbox{\hyperlink{struct_vector2_ad6039b208cf18bbb89eace91dab27126}{Vector2::\+\+Zero}})
+\begin{DoxyCompactList}\small\item\em Parameterized constructor to initialize vertex attributes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} \doxymbox{\hyperlink{struct_vertex_a7aed0e6457d927a6e248703d3131bde9}{position}}
+\begin{DoxyCompactList}\small\item\em The 3D position of the vertex. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} \doxymbox{\hyperlink{struct_vertex_adce2d4b3d1191c69328519bdf231c344}{normal}}
+\begin{DoxyCompactList}\small\item\em The normal vector at the vertex, used for lighting calculations. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_vector2}{Vector2}} \doxymbox{\hyperlink{struct_vertex_a216ef7fa93f9fd245f6b42385aaf81a7}{tex\+Coord}}
+\begin{DoxyCompactList}\small\item\em The 2D texture coordinates (UV) for mapping textures to the vertex. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} \doxymbox{\hyperlink{struct_vertex_a936dff71a7000ba389017a6ddb7f3b7f}{tangent}}
+\begin{DoxyCompactList}\small\item\em The tangent vector at the vertex, used for normal mapping. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} \doxymbox{\hyperlink{struct_vertex_a42f0a210d6fc3f7753de16c1e12e40d4}{bitangent}}
+\begin{DoxyCompactList}\small\item\em The bitangent vector at the vertex, used for normal mapping. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure representing a single vertex in a mesh. 
+
+Contains position, normal, texture coordinates, tangent, and bitangent data. Used for defining the geometry of 3D models. 
+
+Definition at line \doxymbox{\hyperlink{_mesh_8h_source_l00018}{18}} of file \doxymbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{struct_vertex_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_vertex_a4ccfcca71475ba7c793b1a88381df693}\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{Vertex()}{Vertex()}}
+{\footnotesize\ttfamily \label{struct_vertex_a4ccfcca71475ba7c793b1a88381df693} 
+Vertex::\+\+Vertex (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{pos}{, }\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{norm}{ = {\ttfamily Vector3:\+:\+Up}, }\item[{const \doxymbox{\hyperlink{struct_vector2}{Vector2}} \&}]{uv}{ = {\ttfamily \doxymbox{\hyperlink{struct_vector2_ad6039b208cf18bbb89eace91dab27126}{Vector2::\+\+Zero}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Parameterized constructor to initialize vertex attributes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The position of the vertex \\
+\hline
+{\em norm} & The normal vector at the vertex (default is up vector) \\
+\hline
+{\em uv} & The texture coordinates (default is zero vector) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8h_source_l00061}{61}} of file \doxymbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_mesh_8h_source_l00029}{normal}}, \doxymbox{\hyperlink{_mesh_8h_source_l00023}{position}}, \doxymbox{\hyperlink{_mesh_8h_source_l00035}{tex\+Coord}}, and \doxymbox{\hyperlink{_vector2_8h_source_l00704}{Vector2::\+\+Zero}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_vertex_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_vertex_a42f0a210d6fc3f7753de16c1e12e40d4}\index{Vertex@{Vertex}!bitangent@{bitangent}}
+\index{bitangent@{bitangent}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{bitangent}{bitangent}}
+{\footnotesize\ttfamily \label{struct_vertex_a42f0a210d6fc3f7753de16c1e12e40d4} 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} Vertex::\+bitangent}
+
+
+
+The bitangent vector at the vertex, used for normal mapping. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8h_source_l00047}{47}} of file \doxymbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_mesh_8cpp_source_l00132}{Mesh::\+\+Create\+Sphere()}}.
+
+\Hypertarget{struct_vertex_adce2d4b3d1191c69328519bdf231c344}\index{Vertex@{Vertex}!normal@{normal}}
+\index{normal@{normal}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{normal}{normal}}
+{\footnotesize\ttfamily \label{struct_vertex_adce2d4b3d1191c69328519bdf231c344} 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} Vertex::\+normal}
+
+
+
+The normal vector at the vertex, used for lighting calculations. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8h_source_l00029}{29}} of file \doxymbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_mesh_8cpp_source_l00132}{Mesh::\+\+Create\+Sphere()}}, and \doxymbox{\hyperlink{_mesh_8h_source_l00061}{Vertex()}}.
+
+\Hypertarget{struct_vertex_a7aed0e6457d927a6e248703d3131bde9}\index{Vertex@{Vertex}!position@{position}}
+\index{position@{position}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \label{struct_vertex_a7aed0e6457d927a6e248703d3131bde9} 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} Vertex::\+position}
+
+
+
+The 3D position of the vertex. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8h_source_l00023}{23}} of file \doxymbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_mesh_8cpp_source_l00132}{Mesh::\+\+Create\+Sphere()}}, and \doxymbox{\hyperlink{_mesh_8h_source_l00061}{Vertex()}}.
+
+\Hypertarget{struct_vertex_a936dff71a7000ba389017a6ddb7f3b7f}\index{Vertex@{Vertex}!tangent@{tangent}}
+\index{tangent@{tangent}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{tangent}{tangent}}
+{\footnotesize\ttfamily \label{struct_vertex_a936dff71a7000ba389017a6ddb7f3b7f} 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} Vertex::\+tangent}
+
+
+
+The tangent vector at the vertex, used for normal mapping. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8h_source_l00041}{41}} of file \doxymbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_mesh_8cpp_source_l00132}{Mesh::\+\+Create\+Sphere()}}.
+
+\Hypertarget{struct_vertex_a216ef7fa93f9fd245f6b42385aaf81a7}\index{Vertex@{Vertex}!texCoord@{texCoord}}
+\index{texCoord@{texCoord}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{texCoord}{texCoord}}
+{\footnotesize\ttfamily \label{struct_vertex_a216ef7fa93f9fd245f6b42385aaf81a7} 
+\doxymbox{\hyperlink{struct_vector2}{Vector2}} Vertex::\+tex\+Coord}
+
+
+
+The 2D texture coordinates (UV) for mapping textures to the vertex. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_mesh_8h_source_l00035}{35}} of file \doxymbox{\hyperlink{_mesh_8h_source}{Mesh.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_mesh_8cpp_source_l00132}{Mesh::\+\+Create\+Sphere()}}, and \doxymbox{\hyperlink{_mesh_8h_source_l00061}{Vertex()}}.
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Mesh.\+h\end{DoxyCompactItemize}

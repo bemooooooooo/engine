@@ -1,0 +1,178 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Event.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_event_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_event_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{class\ }KeyEvent\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_event}{Event}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \ \ EVENT\_CLASS\_TYPE(KeyEvent)}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Additional\ KeyEvent-\/specific\ members...}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\doxymbox{\hyperlink{class_event}{Event}}*\ \textcolor{keyword}{event}\ =\ \textcolor{keyword}{new}\ KeyEvent();}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (event-\/>IsType<KeyEvent>())\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Handle\ key\ event}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_base_8h}{Base.h}}"{}}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ Event}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Base\ class\ for\ all\ events\ in\ the\ event\ system.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ The\ Event\ class\ serves\ as\ the\ base\ for\ all\ specific\ event\ types\ in\ the\ engine's}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ event\ handling\ system.\ It\ provides\ common\ functionality\ such\ as\ type\ identification}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ and\ a\ handled\ flag\ to\ indicate\ whether\ the\ event\ has\ been\ processed.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Type\ identification\ via\ GetType()\ and\ IsType<T>()}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Handled\ flag\ to\ prevent\ further\ processing\ of\ already\ handled\ events}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ ToString()\ method\ for\ easy\ logging\ and\ debugging}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ All\ specific\ event\ types\ should\ inherit\ from\ this\ class\ and\ implement}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ \ \ their\ own\ type\ identification\ methods.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ class\ KeyEvent\ :\ public\ Event\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ public:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ EVENT\_CLASS\_TYPE(KeyEvent)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ //\ Additional\ KeyEvent-\/specific\ members...}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \};}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Event*\ event\ =\ new\ KeyEvent();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ if\ (event-\/>IsType<KeyEvent>())\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ //\ Handle\ key\ event}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_event}{Event}}\ \{}
+\DoxyCodeLine{\ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ *\ @brief\ Destroy\ the\ Event\ object}}
+\DoxyCodeLine{\textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_event_a105223995bbf1a1e4714d0c77f91cf0b}{\string~Event}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @var\ Handled}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Indicates\ whether\ the\ event\ has\ been\ handled.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ flag\ is\ used\ to\ prevent\ further\ processing\ of\ the\ event\ once\ it\ has}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ been\ handled\ by\ an\ event\ listener.\ Event\ dispatchers\ check\ this\ flag\ before}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ invoking\ handlers.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ Handled\_\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Gets\ the\ event\ type\ as\ a\ string.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Returns\ a\ string\ representing\ the\ specific\ type\ of\ the\ event.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Must\ be\ overridden\ by\ derived\ event\ classes.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ const\ char*\ The\ event\ type\ string}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{class_event_a092ad068c77c897d25aec42563fb60ec}{GetType}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{typeid}(*this).name();\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Checks\ if\ the\ event\ is\ of\ a\ specific\ type\ T.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Uses\ dynamic\_cast\ to\ determine\ if\ the\ event\ instance\ can\ be\ cast\ to\ type\ T.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Returns\ true\ if\ the\ cast\ is\ successful,\ false\ otherwise.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @tparam\ T\ The\ event\ type\ to\ check\ against}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ bool\ True\ if\ the\ event\ is\ of\ type\ T,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_event_a759eeb1cb569cbea0c0a9707696adf6e}{IsType}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{dynamic\_cast<}\textcolor{keyword}{const\ }T*\textcolor{keyword}{>}(\textcolor{keyword}{this})\ !=\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Converts\ the\ event\ to\ a\ string\ representation.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Returns\ a\ string\ that\ describes\ the\ event.\ By\ default,\ it\ returns\ the\ event\ type.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ Derived\ classes\ can\ override\ this\ method\ to\ provide\ more\ detailed\ information.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ std::string\ A\ string\ representation\ of\ the\ event}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{virtual}\ std::string\ \doxymbox{\hyperlink{class_event_a17303a8089a66eece86b41cdea845f55}{ToString}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_event_a092ad068c77c897d25aec42563fb60ec}{GetType}}();}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ EventDispatcher}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Dispatches\ events\ to\ appropriate\ handlers\ based\ on\ event\ type.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ The\ EventDispatcher\ class\ is\ responsible\ for\ routing\ events\ to\ the\ correct}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ handler\ functions\ based\ on\ their\ type.\ It\ uses\ templates\ to\ allow\ for\ type-\/safe}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ dispatching\ of\ events.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Type-\/safe\ event\ dispatching\ using\ templates}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Prevents\ multiple\ handling\ of\ the\ same\ event\ via\ the\ Handled\ flag}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @tparam\ T\ The\ specific\ event\ type\ to\ dispatch}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Event*\ event\ =\ new\ KeyEvent();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ EventDispatcher<KeyEvent>\ dispatcher(*event);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ dispatcher.Dispatch<KeyEvent>([](KeyEvent\&\ e)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ //\ Handle\ key\ event}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ return\ true;\ //\ Mark\ as\ handled}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \});}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_event_dispatcher}{EventDispatcher}}\ \{}
+\DoxyCodeLine{\ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ *\ @brief\ Constructs\ an\ EventDispatcher\ for\ a\ given\ event.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\ \ \doxymbox{\hyperlink{class_event_dispatcher_ae8542f00ea6595db32ed7c7dbad9a5d2}{EventDispatcher}}(Event\&\ event)\ :\ \doxymbox{\hyperlink{class_event_dispatcher_a5ff21b4625346e4d7b0bd70b193bfae3}{m\_Event\_}}(static\_cast<T\&>(event))\ \{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @brief\ Dispatches\ the\ event\ to\ the\ provided\ handler\ if\ types\ match.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ This\ function\ checks\ if\ the\ event\ type\ matches\ T.\ If\ it\ does,\ it\ invokes}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ the\ provided\ handler\ function\ with\ the\ event\ as\ an\ argument.\ If\ the\ handler}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ returns\ true,\ the\ event\ is\ marked\ as\ handled.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @tparam\ F\ The\ type\ of\ the\ handler\ function\ (should\ be\ callable\ with\ T\&)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @param\ func\ The\ handler\ function\ to\ invoke\ if\ types\ match}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ *\ @return\ bool\ True\ if\ the\ event\ was\ dispatched\ and\ handled,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ */}}
+\DoxyCodeLine{\ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ F>}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_event_dispatcher_a00460da348877f605ddaa9d48615b9eb}{Dispatch}}(\textcolor{keyword}{const}\ F\&\ func)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (!\doxymbox{\hyperlink{class_event_dispatcher_a5ff21b4625346e4d7b0bd70b193bfae3}{m\_Event\_}}.Handled)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \doxymbox{\hyperlink{class_event_dispatcher_a5ff21b4625346e4d7b0bd70b193bfae3}{m\_Event\_}}.Handled\ =\ func(\doxymbox{\hyperlink{class_event_dispatcher_a5ff21b4625346e4d7b0bd70b193bfae3}{m\_Event\_}});}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ *\ @brief\ Reference\ to\ the\ event\ being\ dispatched.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\ \ T\&\ \doxymbox{\hyperlink{class_event_dispatcher_a5ff21b4625346e4d7b0bd70b193bfae3}{m\_Event\_}};}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @def\ EVENT\_CLASS\_TYPE(type)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Macro\ to\ define\ type\ identification\ methods\ in\ event\ classes.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ EVENT\_CLASS\_TYPE(type)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ static\ const\ char*\ GetStaticType()\ \{\ return\ \#type;\ \}\ \(\backslash\)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ virtual\ const\ char*\ GetType()\ const\ override\ \{\ return\ GetStaticType();\ \}}}
+
+\end{DoxyCodeInclude}
+ 

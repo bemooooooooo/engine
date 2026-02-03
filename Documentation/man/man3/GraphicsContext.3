@@ -1,0 +1,183 @@
+.TH "GraphicsContext" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GraphicsContext \- Core graphics context management for OpenGL operations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <GraphicsContext\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBInit\fP ()"
+.br
+.ti -1c
+.RI "static void \fBShutdown\fP ()"
+.br
+.ti -1c
+.RI "static void \fBSetViewport\fP (\fBu32\fP x, \fBu32\fP y, \fBu32\fP width, \fBu32\fP height)"
+.br
+.ti -1c
+.RI "static void \fBSetClearColor\fP (\fBf32\fP r, \fBf32\fP g, \fBf32\fP b, \fBf32\fP a)"
+.br
+.ti -1c
+.RI "static void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "static void \fBEnableDepthTest\fP (bool enable)"
+.br
+.ti -1c
+.RI "static void \fBEnableBlending\fP (bool enable)"
+.br
+.ti -1c
+.RI "static void \fBEnableCulling\fP (bool enable)"
+.br
+.ti -1c
+.RI "static void \fBSetCullFace\fP (bool cullBack)"
+.br
+.ti -1c
+.RI "static void \fBDrawArrays\fP (\fBu32\fP vertexCount)"
+.br
+.ti -1c
+.RI "static void \fBDrawIndexed\fP (\fBu32\fP indexCount)"
+.br
+.ti -1c
+.RI "static const char * \fBGetVendor\fP ()"
+.br
+.ti -1c
+.RI "static const char * \fBGetRenderer\fP ()"
+.br
+.ti -1c
+.RI "static const char * \fBGetVersion\fP ()"
+.br
+.ti -1c
+.RI "static void \fBPrintGLInfo\fP ()"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBs_Initialized\fP = false"
+.br
+.RI "Static flag indicating whether the graphics context is initialized\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Core graphics context management for OpenGL operations\&. 
+
+This class manages the graphics rendering context and provides a unified interface for OpenGL operations\&. It handles viewport setup, color clearing, depth testing, blending, face culling, and drawing operations\&.
+
+.PP
+All member functions are static, making \fBGraphicsContext\fP a static utility class\&. This enforces a single graphics context per application, which is appropriate for most game engine architectures\&.
+
+.PP
+The class is responsible for:
+.IP "\(bu" 2
+Initializing and shutting down the graphics context
+.IP "\(bu" 2
+Managing rendering state (viewport, clear color, depth test, etc\&.)
+.IP "\(bu" 2
+Providing drawing functions
+.IP "\(bu" 2
+Querying graphics hardware information
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+This class uses static methods\&. It should be initialized once at engine startup\&. 
+
+.PP
+All OpenGL operations must occur after initialization\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/GraphicsContext\&.h\fP\&.
+.PP
+Definition at line \fB44\fP of file \fBGraphicsContext\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void GraphicsContext::Clear ()\fR [static]\fP"
+
+.PP
+Definition at line \fB63\fP of file \fBGraphicsContext\&.cpp\fP\&.
+.SS "void GraphicsContext::DrawArrays (\fBu32\fP vertexCount)\fR [static]\fP"
+
+.PP
+Definition at line \fB86\fP of file \fBGraphicsContext\&.cpp\fP\&.
+.SS "void GraphicsContext::DrawIndexed (\fBu32\fP indexCount)\fR [static]\fP"
+
+.PP
+Definition at line \fB90\fP of file \fBGraphicsContext\&.cpp\fP\&.
+.SS "void GraphicsContext::EnableBlending (bool enable)\fR [static]\fP"
+
+.PP
+Definition at line \fB72\fP of file \fBGraphicsContext\&.cpp\fP\&.
+.SS "void GraphicsContext::EnableCulling (bool enable)\fR [static]\fP"
+
+.PP
+Definition at line \fB77\fP of file \fBGraphicsContext\&.cpp\fP\&.
+.SS "void GraphicsContext::EnableDepthTest (bool enable)\fR [static]\fP"
+
+.PP
+Definition at line \fB67\fP of file \fBGraphicsContext\&.cpp\fP\&.
+.SS "const char * GraphicsContext::GetRenderer ()\fR [static]\fP"
+
+.PP
+Definition at line \fB98\fP of file \fBGraphicsContext\&.cpp\fP\&.
+.SS "const char * GraphicsContext::GetVendor ()\fR [static]\fP"
+
+.PP
+Definition at line \fB94\fP of file \fBGraphicsContext\&.cpp\fP\&.
+.SS "const char * GraphicsContext::GetVersion ()\fR [static]\fP"
+
+.PP
+Definition at line \fB102\fP of file \fBGraphicsContext\&.cpp\fP\&.
+.SS "void GraphicsContext::Init ()\fR [static]\fP"
+
+.PP
+Definition at line \fB7\fP of file \fBGraphicsContext\&.cpp\fP\&.
+.SS "void GraphicsContext::PrintGLInfo ()\fR [static]\fP"
+
+.PP
+Definition at line \fB107\fP of file \fBGraphicsContext\&.cpp\fP\&.
+.SS "void GraphicsContext::SetClearColor (\fBf32\fP r, \fBf32\fP g, \fBf32\fP b, \fBf32\fP a)\fR [static]\fP"
+
+.PP
+Definition at line \fB59\fP of file \fBGraphicsContext\&.cpp\fP\&.
+.SS "void GraphicsContext::SetCullFace (bool cullBack)\fR [static]\fP"
+
+.PP
+Definition at line \fB82\fP of file \fBGraphicsContext\&.cpp\fP\&.
+.SS "void GraphicsContext::SetViewport (\fBu32\fP x, \fBu32\fP y, \fBu32\fP width, \fBu32\fP height)\fR [static]\fP"
+
+.PP
+Definition at line \fB55\fP of file \fBGraphicsContext\&.cpp\fP\&.
+.SS "void GraphicsContext::Shutdown ()\fR [static]\fP"
+
+.PP
+Definition at line \fB50\fP of file \fBGraphicsContext\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool GraphicsContext::s_Initialized = false\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Static flag indicating whether the graphics context is initialized\&. Used to track initialization state and prevent double-initialization or operations before proper setup\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/GraphicsContext\&.h\fP\&.
+.PP
+Definition at line \fB373\fP of file \fBGraphicsContext\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

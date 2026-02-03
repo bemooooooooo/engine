@@ -1,0 +1,96 @@
+\doxysection{Model\+Loader.\+h}
+\hypertarget{_model_loader_8h_source}{}\label{_model_loader_8h_source}\index{src/Graphics/ModelLoader.h@{src/Graphics/ModelLoader.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_base_8h}{../Core/Base.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}Mesh.h"{}}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <assimp/Importer.hpp>}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <assimp/scene.h>}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <assimp/postprocess.h>}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00009}00009\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00010}00010\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00011}00011\ \textcolor{comment}{\ *\ @class\ ModelLoader}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00012}00012\ \textcolor{comment}{\ *\ @brief\ Utility\ class\ for\ loading\ 3D\ models\ and\ meshes\ from\ files.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00013}00013\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00014}00014\ \textcolor{comment}{\ *\ This\ class\ uses\ the\ Assimp\ library\ to\ load\ 3D\ model\ files\ in\ various\ formats}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00015}00015\ \textcolor{comment}{\ *\ (e.g.,\ OBJ,\ FBX,\ STL)\ and\ converts\ them\ into\ Mesh\ objects\ usable\ by\ the\ engine.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00016}00016\ \textcolor{comment}{\ *\ It\ handles\ parsing\ the\ model\ file,\ extracting\ vertex\ and\ index\ data,\ and}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00017}00017\ \textcolor{comment}{\ *\ creating\ Mesh\ instances\ with\ associated\ materials.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00018}00018\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00019}00019\ \textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00020}00020\ \textcolor{comment}{\ *\ -\/\ Load\ single\ meshes\ or\ entire\ models\ with\ multiple\ meshes}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00021}00021\ \textcolor{comment}{\ *\ -\/\ Support\ for\ common\ 3D\ file\ formats\ via\ Assimp}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00022}00022\ \textcolor{comment}{\ *\ -\/\ Automatic\ processing\ of\ vertices,\ indices,\ normals,\ and\ texture\ coordinates}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00023}00023\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00024}00024\ \textcolor{comment}{\ *\ @note\ Requires\ Assimp\ library\ to\ be\ linked\ with\ the\ project.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00025}00025\ \textcolor{comment}{\ *\ @note\ Currently\ does\ not\ handle\ animations\ or\ skeletal\ data.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00026}00026\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00027}00027\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00028}00028\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00029}00029\ \textcolor{comment}{\ *\ Ref<Mesh>\ mesh\ =\ ModelLoader::LoadMesh("{}path/to/model.obj"{});}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00030}00030\ \textcolor{comment}{\ *\ std::vector<Ref<Mesh>>\ modelMeshes\ =\ ModelLoader::LoadModel("{}path/to/model.fbx"{});}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00031}00031\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00032}00032\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00033}\doxymbox{\hyperlink{class_model_loader}{00033}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_model_loader}{ModelLoader}}\ \{}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00034}00034\ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00035}00035\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00036}00036\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Loads\ a\ single\ mesh\ from\ the\ specified\ file.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00037}00037\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00038}00038\ \textcolor{comment}{\ \ \ \ \ *\ Uses\ Assimp\ to\ import\ the\ model\ file\ and\ extract\ the\ first\ mesh\ found.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00039}00039\ \textcolor{comment}{\ \ \ \ \ *\ Converts\ the\ mesh\ data\ into\ a\ Mesh\ object.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00040}00040\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00041}00041\ \textcolor{comment}{\ \ \ \ \ *\ @param\ filepath\ The\ path\ to\ the\ model\ file\ to\ load}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00042}00042\ \textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Mesh>\ The\ loaded\ mesh\ object}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00043}00043\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00044}00044\ \textcolor{comment}{\ \ \ \ \ *\ @note\ If\ the\ file\ contains\ multiple\ meshes,\ only\ the\ first\ one\ is\ loaded.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00045}00045\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Throws\ an\ exception\ if\ loading\ fails.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00046}00046\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\ \doxymbox{\hyperlink{class_model_loader_a6f83b2ebba67fbaf7e8540440d34fde2}{LoadMesh}}(\textcolor{keyword}{const}\ std::string\&\ filepath);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00048}00048\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00049}00049\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00050}00050\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Loads\ an\ entire\ model\ from\ the\ specified\ file.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00051}00051\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00052}00052\ \textcolor{comment}{\ \ \ \ \ *\ Uses\ Assimp\ to\ import\ the\ model\ file\ and\ extract\ all\ meshes\ found.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00053}00053\ \textcolor{comment}{\ \ \ \ \ *\ Converts\ each\ mesh\ into\ a\ Mesh\ object\ and\ returns\ a\ list\ of\ meshes.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00054}00054\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00055}00055\ \textcolor{comment}{\ \ \ \ \ *\ @param\ filepath\ The\ path\ to\ the\ model\ file\ to\ load}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00056}00056\ \textcolor{comment}{\ \ \ \ \ *\ @return\ std::vector<Ref<Mesh>>\ A\ vector\ of\ loaded\ mesh\ objects}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00057}00057\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00058}00058\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Supports\ models\ with\ multiple\ meshes.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00059}00059\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Throws\ an\ exception\ if\ loading\ fails.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00060}00060\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<Ref<Mesh>>\ \doxymbox{\hyperlink{class_model_loader_ae138cf95f00e92a5b3b5e64906d5f6ee}{LoadModel}}(\textcolor{keyword}{const}\ std::string\&\ filepath);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00063}00063\ \textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00064}00064\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00065}00065\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Recursively\ processes\ a\ node\ in\ the\ Assimp\ scene\ graph.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00066}00066\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00067}00067\ \textcolor{comment}{\ \ \ \ \ *\ Traverses\ the\ node\ hierarchy,\ processing\ each\ mesh\ and\ its\ children.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00068}00068\ \textcolor{comment}{\ \ \ \ \ *\ Converts\ meshes\ into\ Mesh\ objects\ and\ adds\ them\ to\ the\ provided\ list.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00069}00069\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00070}00070\ \textcolor{comment}{\ \ \ \ \ *\ @param\ node\ The\ current\ Assimp\ node\ to\ process}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00071}00071\ \textcolor{comment}{\ \ \ \ \ *\ @param\ scene\ The\ Assimp\ scene\ containing\ the\ model\ data}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00072}00072\ \textcolor{comment}{\ \ \ \ \ *\ @param\ meshes\ The\ vector\ to\ store\ processed\ Mesh\ objects}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00073}00073\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00074}00074\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_model_loader_a4b5fd06f67503496592fa4400a560e3d}{ProcessNode}}(aiNode*\ node,\ \textcolor{keyword}{const}\ aiScene*\ scene,\ std::vector<\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}>\&\ meshes);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00075}00075\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00076}00076\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00077}00077\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Processes\ an\ individual\ Assimp\ mesh\ and\ converts\ it\ to\ a\ Mesh\ object.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00078}00078\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00079}00079\ \textcolor{comment}{\ \ \ \ \ *\ Extracts\ vertex\ positions,\ normals,\ texture\ coordinates,\ and\ indices}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00080}00080\ \textcolor{comment}{\ \ \ \ \ *\ from\ the\ aiMesh\ structure\ and\ creates\ a\ Mesh\ instance.}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00081}00081\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00082}00082\ \textcolor{comment}{\ \ \ \ \ *\ @param\ mesh\ The\ Assimp\ mesh\ to\ process}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00083}00083\ \textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Mesh>\ The\ created\ Mesh\ object}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00084}00084\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00085}00085\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\ \doxymbox{\hyperlink{class_model_loader_a1df6a237f3339a9feb6cd7d73dd116b1}{ProcessMesh}}(aiMesh*\ mesh);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//\ Helper\ functions\ to\ load\ vertices\ and\ indices\ from\ an\ aiMesh}}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00088}00088\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<u32>\ LoadIndices(aiMesh*\ mesh);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00089}00089\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<Vertex>\ LoadVertices(aiMesh*\ mesh);}
+\DoxyCodeLine{\Hypertarget{_model_loader_8h_source_l00090}00090\ \};}
+
+\end{DoxyCode}

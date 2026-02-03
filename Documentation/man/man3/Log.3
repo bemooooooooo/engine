@@ -1,0 +1,149 @@
+.TH "Log" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Log \- Logging utilities and logger class for engine diagnostics\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBLogger\fP"
+.br
+.RI "\fBLogger\fP class for creating log messages with various severity levels\&. "
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum class \fBLevel\fP { \fB_Trace\fP = 0, \fB_Debug\fP = 1, \fB_Info\fP = 2, \fB_Warn\fP = 3, \fB_Error\fP = 4, \fB_Critical\fP = 5 }"
+.br
+.RI "\fBLog\fP severity levels\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBInit\fP ()"
+.br
+.RI "Initializes the logging system\&. "
+.ti -1c
+.RI "void \fBSetLevel\fP (\fBLevel\fP lvl)"
+.br
+.ti -1c
+.RI "bool \fBEnableFileLogging\fP (const std::string &path='engine\&.log', bool append=true)"
+.br
+.ti -1c
+.RI "void \fBDisableFileLogging\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "static \fBLevel\fP \fB_current_level_\fP = Level::_Trace"
+.br
+.ti -1c
+.RI "\fBScope\fP< std::ofstream > \fBs_LogFile\fP"
+.br
+.ti -1c
+.RI "std::streambuf * \fBs_OldCoutBuf\fP = nullptr"
+.br
+.ti -1c
+.RI "std::streambuf * \fBs_OldCerrBuf\fP = nullptr"
+.br
+.ti -1c
+.RI "std::streambuf * \fBs_OldClogBuf\fP = nullptr"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Logging utilities and logger class for engine diagnostics\&. 
+
+Provides a flexible logging system with multiple severity levels (Trace, Debug, Info, Warn, Error, Critical)\&. Supports logging to console and optional file output\&. Designed for easy integration into the engine for runtime diagnostics, debugging, and error reporting\&.
+
+.PP
+Features:
+.IP "\(bu" 2
+Stream-style logging with operator<< overloads
+.IP "\(bu" 2
+Configurable log levels to filter messages
+.IP "\(bu" 2
+Optional file logging with append/overwrite modes
+.PP
+
+.PP
+Usage: 
+.PP
+.nf
+ENGINE_INFO << "Engine started successfully\&.";
+ENGINE_WARN << "Low memory warning\&.";
+ENGINE_ERROR << "Failed to load texture: " << texturePath;
+
+.fi
+.PP
+ 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum class \fBLog::Level\fP\fR [strong]\fP"
+
+.PP
+\fBLog\fP severity levels\&. Defines the various log levels used to categorize log messages by severity\&. Allows filtering of log output based on the configured log level\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Log\&.h\fP\&.
+.PP
+Definition at line \fB42\fP of file \fBLog\&.h\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "void Log::DisableFileLogging ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB182\fP of file \fBLog\&.h\fP\&.
+.SS "bool Log::EnableFileLogging (const std::string & path = \fR'engine\&.log'\fP, bool append = \fRtrue\fP)\fR [inline]\fP"
+
+.PP
+Definition at line \fB147\fP of file \fBLog\&.h\fP\&.
+.SS "void Log::Init ()"
+
+.PP
+Initializes the logging system\&. Sets up any necessary state for logging\&. Currently a no-op but can be extended in the future for more complex initialization\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Log\&.h\fP\&.
+.PP
+Definition at line \fB9\fP of file \fBLog\&.cpp\fP\&.
+.SS "void Log::SetLevel (\fBLevel\fP lvl)"
+
+.PP
+Definition at line \fB11\fP of file \fBLog\&.cpp\fP\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBLevel\fP Log::_current_level_ = Level::_Trace\fR [static]\fP"
+
+.PP
+Definition at line \fB7\fP of file \fBLog\&.cpp\fP\&.
+.SS "\fBScope\fP<std::ofstream> Log::s_LogFile\fR [inline]\fP"
+
+.PP
+Definition at line \fB122\fP of file \fBLog\&.h\fP\&.
+.SS "std::streambuf* Log::s_OldCerrBuf = nullptr\fR [inline]\fP"
+
+.PP
+Definition at line \fB124\fP of file \fBLog\&.h\fP\&.
+.SS "std::streambuf* Log::s_OldClogBuf = nullptr\fR [inline]\fP"
+
+.PP
+Definition at line \fB125\fP of file \fBLog\&.h\fP\&.
+.SS "std::streambuf* Log::s_OldCoutBuf = nullptr\fR [inline]\fP"
+
+.PP
+Definition at line \fB123\fP of file \fBLog\&.h\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

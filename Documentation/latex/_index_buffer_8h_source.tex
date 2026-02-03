@@ -1,0 +1,109 @@
+\doxysection{Index\+Buffer.\+h}
+\hypertarget{_index_buffer_8h_source}{}\label{_index_buffer_8h_source}\index{src/Graphics/IndexBuffer.h@{src/Graphics/IndexBuffer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_base_8h}{../Core/Base.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00003}00003\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00004}00004\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00005}00005\ \textcolor{comment}{\ *\ @class\ IndexBuffer}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00006}00006\ \textcolor{comment}{\ *\ @brief\ Represents\ an\ OpenGL\ index\ buffer\ for\ indexed\ drawing.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00007}00007\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00008}00008\ \textcolor{comment}{\ *\ The\ IndexBuffer\ class\ encapsulates\ the\ creation,\ binding,\ and\ management}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00009}00009\ \textcolor{comment}{\ *\ of\ an\ OpenGL\ index\ buffer\ object\ (IBO).\ It\ allows\ for\ efficient\ rendering}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00010}00010\ \textcolor{comment}{\ *\ of\ complex\ geometries\ by\ reusing\ vertex\ data\ through\ indexed\ drawing.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00011}00011\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00012}00012\ \textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00013}00013\ \textcolor{comment}{\ *\ -\/\ Creation\ of\ index\ buffer\ from\ an\ array\ of\ indices}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00014}00014\ \textcolor{comment}{\ *\ -\/\ Binding\ and\ unbinding\ the\ index\ buffer\ for\ rendering}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00015}00015\ \textcolor{comment}{\ *\ -\/\ Retrieval\ of\ the\ number\ of\ indices\ stored}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00016}00016\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00017}00017\ \textcolor{comment}{\ *\ Usage:}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00018}00018\ \textcolor{comment}{\ *\ -\/\ Create\ an\ IndexBuffer\ with\ a\ list\ of\ indices}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00019}00019\ \textcolor{comment}{\ *\ -\/\ Bind\ the\ buffer\ before\ issuing\ draw\ calls}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00020}00020\ \textcolor{comment}{\ *\ -\/\ Unbind\ when\ done\ to\ avoid\ unintended\ state\ changes}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00021}00021\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00022}00022\ \textcolor{comment}{\ *\ @note\ This\ class\ assumes\ that\ an\ OpenGL\ context\ is\ active\ when\ used.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00023}00023\ \textcolor{comment}{\ *\ @note\ The\ indices\ are\ expected\ to\ be\ of\ type\ u32\ (unsigned\ 32-\/bit\ integers).}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00024}00024\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00025}00025\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00026}00026\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00027}00027\ \textcolor{comment}{\ *\ u32\ indices[]\ =\ \{0,\ 1,\ 2,\ 2,\ 3,\ 0\};}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00028}00028\ \textcolor{comment}{\ *\ IndexBuffer\ ibo(indices,\ 6);}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00029}00029\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00030}00030\ \textcolor{comment}{\ *\ ibo.Bind();}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00031}00031\ \textcolor{comment}{\ *\ GraphicsContext::DrawElements(ibo.GetCount());}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00032}00032\ \textcolor{comment}{\ *\ ibo.Unbind();}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00033}00033\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00034}00034\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00035}\doxymbox{\hyperlink{class_index_buffer}{00035}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_index_buffer_ac68b48465425e90fdd6df6a23ee77d68}{IndexBuffer}}\ \{}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00036}00036\ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00037}00037\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00038}00038\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Constructs\ an\ IndexBuffer\ from\ an\ array\ of\ indices.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00039}00039\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00040}00040\ \textcolor{comment}{\ \ \ \ \ *\ Creates\ an\ OpenGL\ index\ buffer\ object\ and\ uploads\ the\ provided}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00041}00041\ \textcolor{comment}{\ \ \ \ \ *\ indices\ to\ the\ GPU\ for\ use\ in\ indexed\ drawing.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00042}00042\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00043}00043\ \textcolor{comment}{\ \ \ \ \ *\ @param\ indices\ Pointer\ to\ an\ array\ of\ u32\ indices}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00044}00044\ \textcolor{comment}{\ \ \ \ \ *\ @param\ count\ Number\ of\ indices\ in\ the\ array}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00045}00045\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00046}00046\ \ \ \ \ \doxymbox{\hyperlink{class_index_buffer_ac68b48465425e90fdd6df6a23ee77d68}{IndexBuffer}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}*\ indices,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ count);}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00047}00047\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00048}00048\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00049}00049\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Destructor\ that\ cleans\ up\ the\ OpenGL\ index\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00050}00050\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00051}00051\ \textcolor{comment}{\ \ \ \ \ *\ Deletes\ the\ OpenGL\ buffer\ object\ associated\ with\ this\ IndexBuffer}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00052}00052\ \textcolor{comment}{\ \ \ \ \ *\ to\ free\ GPU\ resources.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00053}00053\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00054}00054\ \ \ \ \ \doxymbox{\hyperlink{class_index_buffer_a348889936f378b7942c1e01d83e42866}{\string~IndexBuffer}}();}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00055}00055\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00056}00056\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00057}00057\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Binds\ the\ index\ buffer\ for\ rendering.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00058}00058\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00059}00059\ \textcolor{comment}{\ \ \ \ \ *\ Sets\ this\ index\ buffer\ as\ the\ current\ buffer\ to\ be\ used\ for}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00060}00060\ \textcolor{comment}{\ \ \ \ \ *\ indexed\ drawing\ operations.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00061}00061\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00062}00062\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_index_buffer_ac8bdd0495f718173fb46691ad1b7e4af}{Bind}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00063}00063\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00064}00064\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00065}00065\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Unbinds\ the\ index\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00066}00066\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00067}00067\ \textcolor{comment}{\ \ \ \ \ *\ Resets\ the\ current\ index\ buffer\ binding\ to\ zero,\ effectively}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00068}00068\ \textcolor{comment}{\ \ \ \ \ *\ unbinding\ any\ index\ buffer\ that\ was\ previously\ bound.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00069}00069\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00070}00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_index_buffer_a5a1cfc46339ea7d6e72d22a096da5a77}{Unbind}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00071}00071\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00072}00072\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00073}00073\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ number\ of\ indices\ stored\ in\ the\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00074}00074\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00075}00075\ \textcolor{comment}{\ \ \ \ \ *\ Returns\ the\ count\ of\ indices\ that\ were\ uploaded\ to\ the\ GPU}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00076}00076\ \textcolor{comment}{\ \ \ \ \ *\ when\ the\ IndexBuffer\ was\ created.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00077}00077\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00078}00078\ \textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ number\ of\ indices}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00079}00079\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00080}\doxymbox{\hyperlink{class_index_buffer_a6b0ad54ce7ec387016490bd42654e603}{00080}}\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_index_buffer_a6b0ad54ce7ec387016490bd42654e603}{GetCount}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_index_buffer_abba1d4884c4d1e4c8f97a606dbd69e9f}{m\_Count}};\ \}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00081}00081\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00082}00082\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00083}00083\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ OpenGL\ renderer\ ID\ for\ this\ index\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00084}00084\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00085}00085\ \textcolor{comment}{\ \ \ \ \ *\ Returns\ the\ internal\ OpenGL\ buffer\ object\ ID\ used\ for\ binding}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00086}00086\ \textcolor{comment}{\ \ \ \ \ *\ and\ rendering.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00087}00087\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00088}00088\ \textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ OpenGL\ buffer\ object\ ID}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00089}00089\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00090}\doxymbox{\hyperlink{class_index_buffer_a1e8a2293736daccbf67f8177a727039c}{00090}}\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_index_buffer_a1e8a2293736daccbf67f8177a727039c}{GetRendererID}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_index_buffer_ae689bf71a8dee67b1dfceafafe183250}{m\_RendererID}};\ \}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00092}00092\ \textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00093}00093\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00094}00094\ \textcolor{comment}{\ \ \ \ \ *\ @var\ m\_RendererID}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00095}00095\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ OpenGL\ buffer\ object\ ID\ for\ this\ index\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00096}00096\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00097}\doxymbox{\hyperlink{class_index_buffer_ae689bf71a8dee67b1dfceafafe183250}{00097}}\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_index_buffer_ae689bf71a8dee67b1dfceafafe183250}{m\_RendererID}};\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00098}00098\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00099}00099\ \textcolor{comment}{\ \ \ \ \ *\ @var\ m\_Count}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00100}00100\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ number\ of\ indices\ stored\ in\ this\ index\ buffer.}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00101}00101\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00102}\doxymbox{\hyperlink{class_index_buffer_abba1d4884c4d1e4c8f97a606dbd69e9f}{00102}}\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_index_buffer_abba1d4884c4d1e4c8f97a606dbd69e9f}{m\_Count}};}
+\DoxyCodeLine{\Hypertarget{_index_buffer_8h_source_l00103}00103\ \};}
+
+\end{DoxyCode}

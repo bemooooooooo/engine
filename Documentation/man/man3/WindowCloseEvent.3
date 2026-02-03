@@ -1,0 +1,82 @@
+.TH "WindowCloseEvent" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WindowCloseEvent \- \fBEvent\fP triggered when the window is requested to close\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Window\&.h>\fP
+.PP
+Inherits \fBEvent\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBToString\fP () const override"
+.br
+.RI "Converts the event to a string representation\&. "
+.in -1c
+
+Public Member Functions inherited from \fBEvent\fP
+.in +1c
+.ti -1c
+.RI "virtual \fB~Event\fP ()=default"
+.br
+.RI "Destroy the \fBEvent\fP object\&. "
+.ti -1c
+.RI "virtual const char * \fBGetType\fP () const"
+.br
+.RI "Gets the event type as a string\&. "
+.ti -1c
+.RI "template<typename T> bool \fBIsType\fP () const"
+.br
+.RI "Checks if the event is of a specific type T\&. "
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Public Attributes inherited from \fBEvent\fP
+.in +1c
+.ti -1c
+.RI "bool \fBHandled_\fP = false"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBEvent\fP triggered when the window is requested to close\&. 
+
+This event is dispatched when the user attempts to close the window, allowing the application to handle cleanup or prompt the user before exiting\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB65\fP of file \fBWindow\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "std::string WindowCloseEvent::ToString () const\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Converts the event to a string representation\&. 
+.PP
+\fBReturns\fP
+.RS 4
+std::string A string representation of the event 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEvent\fP\&.
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB72\fP of file \fBWindow\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

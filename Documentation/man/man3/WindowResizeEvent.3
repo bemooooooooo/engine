@@ -1,0 +1,195 @@
+.TH "WindowResizeEvent" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WindowResizeEvent \- \fBEvent\fP triggered when the window is resized\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Window\&.h>\fP
+.PP
+Inherits \fBEvent\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBWindowResizeEvent\fP (\fBu32\fP width, \fBu32\fP height)"
+.br
+.RI "Constructs a \fBWindowResizeEvent\fP with the new dimensions\&. "
+.ti -1c
+.RI "\fBu32\fP \fBGetWidth\fP () const"
+.br
+.RI "Gets the new width of the window\&. "
+.ti -1c
+.RI "\fBu32\fP \fBGetHeight\fP () const"
+.br
+.RI "Gets the new height of the window\&. "
+.ti -1c
+.RI "std::string \fBToString\fP () const override"
+.br
+.RI "Converts the event to a string representation\&. "
+.in -1c
+
+Public Member Functions inherited from \fBEvent\fP
+.in +1c
+.ti -1c
+.RI "virtual \fB~Event\fP ()=default"
+.br
+.RI "Destroy the \fBEvent\fP object\&. "
+.ti -1c
+.RI "virtual const char * \fBGetType\fP () const"
+.br
+.RI "Gets the event type as a string\&. "
+.ti -1c
+.RI "template<typename T> bool \fBIsType\fP () const"
+.br
+.RI "Checks if the event is of a specific type T\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBu32\fP \fBm_Width\fP"
+.br
+.RI "The new width of the window\&. "
+.ti -1c
+.RI "\fBu32\fP \fBm_Height\fP"
+.br
+.RI "The new height of the window\&. "
+.in -1c
+.SS "Additional Inherited Members"
+
+
+Public Attributes inherited from \fBEvent\fP
+.in +1c
+.ti -1c
+.RI "bool \fBHandled_\fP = false"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBEvent\fP triggered when the window is resized\&. 
+
+This event is dispatched whenever the window size changes, providing the new width and height\&. It allows the application to adjust rendering parameters or UI layouts accordingly\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB16\fP of file \fBWindow\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "WindowResizeEvent::WindowResizeEvent (\fBu32\fP width, \fBu32\fP height)\fR [inline]\fP"
+
+.PP
+Constructs a \fBWindowResizeEvent\fP with the new dimensions\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIwidth\fP The new width of the window 
+.br
+\fIheight\fP The new height of the window 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB24\fP of file \fBWindow\&.h\fP\&.
+.PP
+References \fBm_Height\fP, and \fBm_Width\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBu32\fP WindowResizeEvent::GetHeight () const\fR [inline]\fP"
+
+.PP
+Gets the new height of the window\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBu32\fP The new height 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB37\fP of file \fBWindow\&.h\fP\&.
+.PP
+References \fBm_Height\fP\&.
+.SS "\fBu32\fP WindowResizeEvent::GetWidth () const\fR [inline]\fP"
+
+.PP
+Gets the new width of the window\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBu32\fP The new width 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB31\fP of file \fBWindow\&.h\fP\&.
+.PP
+References \fBm_Width\fP\&.
+.SS "std::string WindowResizeEvent::ToString () const\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Converts the event to a string representation\&. 
+.PP
+\fBReturns\fP
+.RS 4
+std::string A string representation of the event 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBEvent\fP\&.
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB44\fP of file \fBWindow\&.h\fP\&.
+.PP
+References \fBm_Height\fP, and \fBm_Width\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBu32\fP WindowResizeEvent::m_Height\fR [private]\fP"
+
+.PP
+The new height of the window\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB55\fP of file \fBWindow\&.h\fP\&.
+.PP
+Referenced by \fBGetHeight()\fP, \fBToString()\fP, and \fBWindowResizeEvent()\fP\&.
+.SS "\fBu32\fP WindowResizeEvent::m_Width\fR [private]\fP"
+
+.PP
+The new width of the window\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB55\fP of file \fBWindow\&.h\fP\&.
+.PP
+Referenced by \fBGetWidth()\fP, \fBToString()\fP, and \fBWindowResizeEvent()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

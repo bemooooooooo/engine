@@ -1,0 +1,343 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Window.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_window_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{class_window}{Window}}\ window;}
+\DoxyCodeLine{window.Initialize(\doxymbox{\hyperlink{struct_window_props}{WindowProps}}(\textcolor{stringliteral}{"{}Game"{}},\ 800,\ 600));}
+\DoxyCodeLine{}
+\DoxyCodeLine{window.SetEventCallback([](\doxymbox{\hyperlink{class_event}{Event}}\&\ e)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (e.\doxymbox{\hyperlink{class_event_a759eeb1cb569cbea0c0a9707696adf6e}{IsType}}<\doxymbox{\hyperlink{class_window_resize_event}{WindowResizeEvent}}>())\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\&\ re\ =\ \textcolor{keyword}{static\_cast<}\doxymbox{\hyperlink{class_window_resize_event}{WindowResizeEvent}}\&\textcolor{keyword}{>}(e);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Window\ resized\ to\ "{}}\ <<\ re.\doxymbox{\hyperlink{class_window_resize_event_abee5eabafd0aa542c3ab6b7569649362}{GetWidth}}()\ <<\ \textcolor{stringliteral}{"{}x"{}}\ <<\ re.GetHeight()\ <<\ std::endl;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (!window.ShouldClose())\ \{}
+\DoxyCodeLine{\ \ \ \ window.\doxymbox{\hyperlink{class_window_a57d825ad38512ac9a4b79d06be0c3b65}{BeginFrame}}();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Render\ here}}
+\DoxyCodeLine{\ \ \ \ window.\doxymbox{\hyperlink{class_window_a23bf99dc7ae51eacb31f71b1b1d01975}{EndFrame}}();}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{window.Shutdown();}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Core/Base.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Core/Event.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Input/Input.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ WindowResizeEvent}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Event\ triggered\ when\ the\ window\ is\ resized.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ event\ is\ dispatched\ whenever\ the\ window\ size\ changes,\ providing}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ the\ new\ width\ and\ height.\ It\ allows\ the\ application\ to\ adjust\ rendering}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ parameters\ or\ UI\ layouts\ accordingly.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_window_resize_event}{WindowResizeEvent}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_event}{Event}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Constructs\ a\ WindowResizeEvent\ with\ the\ new\ dimensions.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ width\ The\ new\ width\ of\ the\ window}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ height\ The\ new\ height\ of\ the\ window}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{class_window_resize_event_a0dd122a0e06cd7e9e44188f5d8ba27d1}{WindowResizeEvent}}(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ width,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ height)\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ :\ \doxymbox{\hyperlink{class_window_resize_event_a432600754407959f0fba3a13688989c0}{m\_Width}}(width),\ \doxymbox{\hyperlink{class_window_resize_event_aa87bb6b17f65c2fc1e8ff0526501eb51}{m\_Height}}(height)\ \{\}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ new\ width\ of\ the\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ new\ width}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_window_resize_event_abee5eabafd0aa542c3ab6b7569649362}{GetWidth}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_window_resize_event_a432600754407959f0fba3a13688989c0}{m\_Width}};\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ new\ height\ of\ the\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ new\ height}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_window_resize_event_a60e0e754c34c4312193b0aebe8ba0fb1}{GetHeight}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_window_resize_event_aa87bb6b17f65c2fc1e8ff0526501eb51}{m\_Height}};\ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Converts\ the\ event\ to\ a\ string\ representation.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ std::string\ A\ string\ representation\ of\ the\ event}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ std::string\ \doxymbox{\hyperlink{class_window_resize_event_ae2378189874a18d24933b707c0275619}{ToString}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}WindowResizeEvent:\ "{}}\ +\ std::to\_string(\doxymbox{\hyperlink{class_window_resize_event_a432600754407959f0fba3a13688989c0}{m\_Width}})\ +\ \textcolor{stringliteral}{"{}x"{}}\ +\ std::to\_string(\doxymbox{\hyperlink{class_window_resize_event_aa87bb6b17f65c2fc1e8ff0526501eb51}{m\_Height}});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_Width}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ new\ width\ of\ the\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_Height}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ new\ height\ of\ the\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_window_resize_event_a432600754407959f0fba3a13688989c0}{m\_Width}},\ \doxymbox{\hyperlink{class_window_resize_event_aa87bb6b17f65c2fc1e8ff0526501eb51}{m\_Height}};}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ WindowCloseEvent}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Event\ triggered\ when\ the\ window\ is\ requested\ to\ close.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ event\ is\ dispatched\ when\ the\ user\ attempts\ to\ close\ the\ window,}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ allowing\ the\ application\ to\ handle\ cleanup\ or\ prompt\ the\ user\ before\ exiting.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_window_close_event}{WindowCloseEvent}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_event}{Event}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Converts\ the\ event\ to\ a\ string\ representation.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ std::string\ A\ string\ representation\ of\ the\ event}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ std::string\ \doxymbox{\hyperlink{class_window_close_event_a003e0478da492ea8d0822466aad4c84b}{ToString}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}WindowCloseEvent"{}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @struct\ WindowProps}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Properties\ for\ configuring\ the\ window\ on\ creation.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Contains\ settings\ such\ as\ title,\ width,\ and\ height\ for\ initializing}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ a\ window\ instance.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_window_props}{WindowProps}}\ \{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ Title}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ title\ of\ the\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ Width}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ width\ of\ the\ window\ in\ pixels.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ Height}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ height\ of\ the\ window\ in\ pixels.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ std::string\ \doxymbox{\hyperlink{struct_window_props_a12dfa63e8262968795a63695247789fa}{Title}};}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{struct_window_props_aaaacae2382f49f2ffe9463ce4da66b81}{Width}};}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{struct_window_props_a5158940404ca05c92721022192ca4145}{Height}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Constructs\ WindowProps\ with\ default\ or\ specified\ values.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ title\ The\ title\ of\ the\ window\ (default:\ "{}My\ Game\ Engine"{})}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ width\ The\ width\ of\ the\ window\ in\ pixels\ (default:\ 1280)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ height\ The\ height\ of\ the\ window\ in\ pixels\ (default:\ 720)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{struct_window_props_a43616467bf7bb7901e0bae32d8495279}{WindowProps}}(\textcolor{keyword}{const}\ std::string\&\ title\ =\ \textcolor{stringliteral}{"{}My\ Game\ Engine"{}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ width\ =\ 1280,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ height\ =\ 720)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ :\ \doxymbox{\hyperlink{struct_window_props_a12dfa63e8262968795a63695247789fa}{Title}}(title),\ \doxymbox{\hyperlink{struct_window_props_aaaacae2382f49f2ffe9463ce4da66b81}{Width}}(width),\ \doxymbox{\hyperlink{struct_window_props_a5158940404ca05c92721022192ca4145}{Height}}(height)\ \{\}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ Window}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Encapsulates\ a\ window\ using\ GLFW\ for\ context\ and\ event\ handling.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ class\ manages\ the\ creation,\ updating,\ and\ destruction\ of\ a\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ It\ also\ handles\ input\ events\ and\ provides\ a\ callback\ mechanism\ for\ event}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ processing.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Create\ and\ destroy\ a\ window\ with\ specified\ properties}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Poll\ events\ and\ swap\ buffers\ each\ frame}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Set\ event\ callback\ functions\ for\ handling\ input\ and\ window\ events}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Query\ window\ dimensions\ and\ native\ handle}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ Requires\ GLFW\ library\ to\ be\ linked\ with\ the\ project.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Window\ window;}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ window.Initialize(WindowProps("{}Game"{},\ 800,\ 600));}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ window.SetEventCallback([](Event\&\ e)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ if\ (e.IsType<WindowResizeEvent>())\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ auto\&\ re\ =\ static\_cast<WindowResizeEvent\&>(e);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ std::cout\ <<\ "{}Window\ resized\ to\ "{}\ <<\ re.GetWidth()\ <<\ "{}x"{}\ <<\ re.GetHeight()\ <<\ std::endl;}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \});}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ while\ (!window.ShouldClose())\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ window.BeginFrame();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ //\ Render\ here}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ window.EndFrame();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ window.Shutdown();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_window}{Window}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @typedef\ EventCallbackFn}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Function\ type\ for\ event\ callbacks.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Represents\ a\ function\ that\ takes\ an\ Event\ reference\ and\ returns\ void.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{class_window_ae7df2d993ca25c8617c0bac53880c234}{EventCallbackFn}}\ =\ std::function<void(Event\&)>;}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Constructs\ a\ Window\ instance.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{class_window_a74e6087da23d3c24e9fac0245e5ec92c}{Window}}();}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Destructor\ that\ cleans\ up\ the\ window\ resources.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{class_window_a245d821e6016fa1f6970ccbbedd635f6}{\string~Window}}();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Initializes\ the\ window\ with\ specified\ properties.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Creates\ the\ window\ using\ GLFW\ and\ sets\ up\ necessary\ callbacks.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ props\ The\ properties\ to\ configure\ the\ window}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ bool\ True\ if\ initialization\ was\ successful,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Window\ window;}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ if\ (!window.Initialize(WindowProps("{}Game"{},\ 800,\ 600)))\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ //\ Handle\ initialization\ failure}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{bool}\ Initialize(\textcolor{keyword}{const}\ WindowProps\&\ props\ =\ WindowProps());}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Shuts\ down\ and\ destroys\ the\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Cleans\ up\ GLFW\ resources\ associated\ with\ the\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ window.Shutdown();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ Shutdown();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Updates\ the\ window\ (polls\ events\ and\ swaps\ buffers).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Should\ be\ called\ once\ per\ frame\ to\ process\ events\ and\ present\ the}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ rendered\ frame\ to\ the\ screen.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ while\ (!window.ShouldClose())\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ window.Update();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ Update();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ current\ width\ of\ the\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ width\ in\ pixels}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_window_a0ea057f50666273ea7be70c758a36239}{GetWidth}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_window_a6ffad99d369f977e8656b5afa742416e}{m\_Data}}.Width;\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ current\ height\ of\ the\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ height\ in\ pixels}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_window_a7178ee9d49bb363d16c3e4f13df62789}{GetHeight}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_window_a6ffad99d369f977e8656b5afa742416e}{m\_Data}}.Height;\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Begins\ the\ frame\ by\ polling\ events.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Should\ be\ called\ at\ the\ start\ of\ each\ frame\ before\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_window_a57d825ad38512ac9a4b79d06be0c3b65}{BeginFrame}}();}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Ends\ the\ frame\ by\ swapping\ buffers.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Should\ be\ called\ at\ the\ end\ of\ each\ frame\ after\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_window_a23bf99dc7ae51eacb31f71b1b1d01975}{EndFrame}}();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ event\ callback\ function.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Registers\ a\ callback\ function\ that\ will\ be\ invoked\ for\ each\ event}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ received\ by\ the\ window\ (e.g.,\ resize,\ close,\ input).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ callback\ The\ function\ to\ call\ on\ events}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ window.SetEventCallback([](Event\&\ e)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ //\ Handle\ event}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \});}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ SetEventCallback(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_window_ae7df2d993ca25c8617c0bac53880c234}{EventCallbackFn}}\&\ callback)\ \{\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_window_a6ffad99d369f977e8656b5afa742416e}{m\_Data}}.EventCallback\ =\ callback;\ }
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Checks\ if\ the\ window\ should\ close.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ bool\ True\ if\ the\ window\ is\ requested\ to\ close,\ false\ otherwise}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ while\ (!window.ShouldClose())\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ //\ Main\ loop}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{bool}\ ShouldClose()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ native\ window\ handle.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ void*\ Pointer\ to\ the\ native\ window\ (GLFWwindow*)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ void*\ nativeWindow\ =\ window.GetNativeWindow();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}*\ GetNativeWindow()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_window_afc4ca5972253160b7b8e4084758930a2}{m\_Window}};\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ up\ GLFW\ callbacks\ for\ window\ events.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Configures\ GLFW\ to\ call\ appropriate\ functions\ on\ window\ events}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ such\ as\ resize\ and\ close,\ forwarding\ them\ to\ the\ event\ callback.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_window_a144f7bf9555c435bd55542665dd62efe}{SetupCallbacks}}();}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @struct\ WindowData}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Internal\ data\ structure\ for\ window\ properties\ and\ state.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_window_1_1_window_data}{WindowData}}\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ std::string\ Title;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ Width,\ Height;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_window_ae7df2d993ca25c8617c0bac53880c234}{EventCallbackFn}}\ EventCallback;}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_Data}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ window's\ properties\ and\ state\ data.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{struct_window_1_1_window_data}{WindowData}}\ \doxymbox{\hyperlink{class_window_a6ffad99d369f977e8656b5afa742416e}{m\_Data}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_Window}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Pointer\ to\ the\ native\ GLFW\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}*\ \doxymbox{\hyperlink{class_window_afc4ca5972253160b7b8e4084758930a2}{m\_Window}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\};}
+
+\end{DoxyCodeInclude}
+ 

@@ -1,0 +1,146 @@
+.TH "Event" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Event \- Base class for all events in the event system\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Event\&.h>\fP
+.PP
+Inherited by \fBWindowCloseEvent\fP, and \fBWindowResizeEvent\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~Event\fP ()=default"
+.br
+.RI "Destroy the \fBEvent\fP object\&. "
+.ti -1c
+.RI "virtual const char * \fBGetType\fP () const"
+.br
+.RI "Gets the event type as a string\&. "
+.ti -1c
+.RI "template<typename T> bool \fBIsType\fP () const"
+.br
+.RI "Checks if the event is of a specific type T\&. "
+.ti -1c
+.RI "virtual std::string \fBToString\fP () const"
+.br
+.RI "Converts the event to a string representation\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBHandled_\fP = false"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for all events in the event system\&. 
+
+The \fBEvent\fP class serves as the base for all specific event types in the engine's event handling system\&. It provides common functionality such as type identification and a handled flag to indicate whether the event has been processed\&.
+
+.PP
+\fBKey\fP features:
+.IP "\(bu" 2
+Type identification via \fBGetType()\fP and \fBIsType<T>()\fP
+.IP "\(bu" 2
+Handled flag to prevent further processing of already handled events
+.IP "\(bu" 2
+\fBToString()\fP method for easy logging and debugging
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+All specific event types should inherit from this class and implement their own type identification methods\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Core/Event\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB37\fP of file \fBEvent\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual const char * Event::GetType () const\fR [inline]\fP, \fR [virtual]\fP"
+
+.PP
+Gets the event type as a string\&. Returns a string representing the specific type of the event\&. Must be overridden by derived event classes\&.
+
+.PP
+\fBReturns\fP
+.RS 4
+const char* The event type string 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Event\&.h\fP\&.
+.PP
+Definition at line \fB62\fP of file \fBEvent\&.h\fP\&.
+.PP
+Referenced by \fBToString()\fP\&.
+.SS "template<typename T> bool Event::IsType () const\fR [inline]\fP"
+
+.PP
+Checks if the event is of a specific type T\&. Uses dynamic_cast to determine if the event instance can be cast to type T\&. Returns true if the cast is successful, false otherwise\&.
+
+.PP
+\fBTemplate Parameters\fP
+.RS 4
+\fIT\fP The event type to check against 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+bool True if the event is of type T, false otherwise 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Event\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB74\fP of file \fBEvent\&.h\fP\&.
+.SS "virtual std::string Event::ToString () const\fR [inline]\fP, \fR [virtual]\fP"
+
+.PP
+Converts the event to a string representation\&. Returns a string that describes the event\&. By default, it returns the event type\&. Derived classes can override this method to provide more detailed information\&.
+
+.PP
+\fBReturns\fP
+.RS 4
+std::string A string representation of the event 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBWindowCloseEvent\fP, and \fBWindowResizeEvent\fP\&.
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Event\&.h\fP\&.
+.PP
+Definition at line \fB86\fP of file \fBEvent\&.h\fP\&.
+.PP
+References \fBGetType()\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool Event::Handled_ = false"
+
+.PP
+Definition at line \fB52\fP of file \fBEvent\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

@@ -1,0 +1,152 @@
+\doxysection{Event\+Dispatcher\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_event_dispatcher}{}\label{class_event_dispatcher}\index{EventDispatcher$<$ T $>$@{EventDispatcher$<$ T $>$}}
+
+
+Dispatches events to appropriate handlers based on event type.  
+
+
+
+
+{\ttfamily \+\#include $<$Event.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_event_dispatcher_ae8542f00ea6595db32ed7c7dbad9a5d2}{Event\+Dispatcher}} (\doxymbox{\hyperlink{class_event}{Event}} \&event)
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_event_dispatcher}{Event\+Dispatcher} for a given event. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename F$>$ }\\bool \doxymbox{\hyperlink{class_event_dispatcher_a00460da348877f605ddaa9d48615b9eb}{Dispatch}} (const F \&func)
+\begin{DoxyCompactList}\small\item\em Dispatches the event to the provided handler if types match. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \& \doxymbox{\hyperlink{class_event_dispatcher_a5ff21b4625346e4d7b0bd70b193bfae3}{m\+\_\+\+Event\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Reference to the event being dispatched. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Event\+Dispatcher$<$ T $>$}
+Dispatches events to appropriate handlers based on event type. 
+
+The \doxylink{class_event_dispatcher}{Event\+Dispatcher} class is responsible for routing events to the correct handler functions based on their type. It uses templates to allow for type-\/safe dispatching of events.
+
+\doxylink{namespace_key}{Key} features:\+
+\begin{DoxyItemize}
+\item Type-\/safe event dispatching using templates
+\item Prevents multiple handling of the same event via the Handled flag
+\end{DoxyItemize}
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The specific event type to dispatch \\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_event_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Event.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_event_8h_source_l00116}{116}} of file \doxymbox{\hyperlink{_event_8h_source}{Event.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_event_dispatcher_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_event_dispatcher_ae8542f00ea6595db32ed7c7dbad9a5d2}\index{EventDispatcher$<$ T $>$@{EventDispatcher$<$ T $>$}!EventDispatcher@{EventDispatcher}}
+\index{EventDispatcher@{EventDispatcher}!EventDispatcher$<$ T $>$@{EventDispatcher$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{EventDispatcher()}{EventDispatcher()}}
+{\footnotesize\ttfamily \label{class_event_dispatcher_ae8542f00ea6595db32ed7c7dbad9a5d2} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_event_dispatcher}{Event\+Dispatcher}}$<$ T $>$::\+\+Event\+Dispatcher (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_event}{Event}} \&}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs an \doxylink{class_event_dispatcher}{Event\+Dispatcher} for a given event. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_event_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Event.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_event_8h_source_l00121}{121}} of file \doxymbox{\hyperlink{_event_8h_source}{Event.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_event_8h_source_l00147}{m\+\_\+\+Event\+\_\+}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_event_dispatcher_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_event_dispatcher_a00460da348877f605ddaa9d48615b9eb}\index{EventDispatcher$<$ T $>$@{EventDispatcher$<$ T $>$}!Dispatch@{Dispatch}}
+\index{Dispatch@{Dispatch}!EventDispatcher$<$ T $>$@{EventDispatcher$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Dispatch()}{Dispatch()}}
+{\footnotesize\ttfamily \label{class_event_dispatcher_a00460da348877f605ddaa9d48615b9eb} 
+template$<$typename T$>$ \\
+template$<$typename F$>$ \\
+bool \doxymbox{\hyperlink{class_event_dispatcher}{Event\+Dispatcher}}$<$ T $>$::\+\+Dispatch (\begin{DoxyParamCaption}\item[{const F \&}]{func}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Dispatches the event to the provided handler if types match. 
+
+This function checks if the event type matches T. If it does, it invokes the provided handler function with the event as an argument. If the handler returns true, the event is marked as handled.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em F} & The type of the handler function (should be callable with T\&) \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em func} & The handler function to invoke if types match \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the event was dispatched and handled, false otherwise 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_event_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Event.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_event_8h_source_l00135}{135}} of file \doxymbox{\hyperlink{_event_8h_source}{Event.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_event_8h_source_l00147}{m\+\_\+\+Event\+\_\+}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_event_dispatcher_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_event_dispatcher_a5ff21b4625346e4d7b0bd70b193bfae3}\index{EventDispatcher$<$ T $>$@{EventDispatcher$<$ T $>$}!m\_Event\_@{m\_Event\_}}
+\index{m\_Event\_@{m\_Event\_}!EventDispatcher$<$ T $>$@{EventDispatcher$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_Event\_}{m\_Event\_}}
+{\footnotesize\ttfamily \label{class_event_dispatcher_a5ff21b4625346e4d7b0bd70b193bfae3} 
+template$<$typename T$>$ \\
+T\& \doxymbox{\hyperlink{class_event_dispatcher}{Event\+Dispatcher}}$<$ T $>$::\+m\+\_\+\+Event\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Reference to the event being dispatched. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_event_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Event.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_event_8h_source_l00147}{147}} of file \doxymbox{\hyperlink{_event_8h_source}{Event.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_event_8h_source_l00135}{Dispatch()}}, and \doxymbox{\hyperlink{_event_8h_source_l00121}{Event\+Dispatcher()}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Core/\+Event.\+h\end{DoxyCompactItemize}

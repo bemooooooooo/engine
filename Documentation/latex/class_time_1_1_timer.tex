@@ -1,0 +1,221 @@
+\doxysection{Time::\+Timer Class Reference}
+\hypertarget{class_time_1_1_timer}{}\label{class_time_1_1_timer}\index{Time::Timer@{Time::Timer}}
+
+
+High-\/precision timer for measuring elapsed time and frame delta times.  
+
+
+
+
+{\ttfamily \+\#include $<$Time.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \doxymbox{\hyperlink{class_time_1_1_timer_a0d7f101405b61e9abc417cf1b3df3477}{Clock}} = std::\+chrono::\+high\+\_\+resolution\+\_\+clock
+\begin{DoxyCompactList}\small\item\em High-\/resolution clock type used for timing measurements. \end{DoxyCompactList}\item 
+using \doxymbox{\hyperlink{class_time_1_1_timer_a25d0d3bffff1e81066356c49315f407b}{Time\+Point}} = std::\+chrono::\+time\+\_\+point$<$\doxymbox{\hyperlink{class_time_1_1_timer_a0d7f101405b61e9abc417cf1b3df3477}{Clock}}$>$
+\begin{DoxyCompactList}\small\item\em Type representing a specific point in time from the high-\/resolution clock. \end{DoxyCompactList}\item 
+using \doxymbox{\hyperlink{class_time_1_1_timer_a483e1d5cf0a22a0cc52ddf6c1ce8fc41}{Duration}} = std::\+chrono::\+duration$<$\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}$>$
+\begin{DoxyCompactList}\small\item\em Type representing a duration of time in floating-\/point seconds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_time_1_1_timer_a2be6a0564878f284a82471f462fe3381}{Reset}} ()
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_time_1_1_timer_a50d44dc21cb9fcd0d8465618b8718183}{Elapsed}} () const
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_time_1_1_timer_a8bad91f84f346723fbc5d299d0d5a381}{Tick}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_time_1_1_timer_a25d0d3bffff1e81066356c49315f407b}{Time\+Point}} \doxymbox{\hyperlink{class_time_1_1_timer_a4f62d133f1b54573f9c9d4e09d22a72d}{m\+\_\+\+Start\+Time\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The time point when the timer was created or last reset. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_time_1_1_timer_a25d0d3bffff1e81066356c49315f407b}{Time\+Point}} \doxymbox{\hyperlink{class_time_1_1_timer_a423d46299e6af81352cbf32e85276176}{m\+\_\+\+Last\+Frame\+Time\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The time point of the last Tick() call. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+High-\/precision timer for measuring elapsed time and frame delta times. 
+
+This class provides a flexible timer that can measure both total elapsed time since creation/\+reset and frame-\/to-\/frame delta times. It uses the system\textquotesingle{}s high-\/resolution clock for accurate timing measurements needed in game loops.
+
+The timer is useful for:\+
+
+
+\begin{DoxyItemize}
+\item Frame timing and delta time calculation
+\item Performance profiling and benchmarking
+\item Game logic that depends on elapsed time
+\item Animations and transitions
+\item \doxylink{class_input}{Input} response timing
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+This class is not thread-\/safe. Use separate \doxylink{class_time_1_1_timer}{Timer} instances for different threads. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_time_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Time.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_time_8h_source_l00052}{52}} of file \doxymbox{\hyperlink{_time_8h_source}{Time.\+h}}.
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{class_time_1_1_timer_doc-typedef-members}
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{class_time_1_1_timer_a0d7f101405b61e9abc417cf1b3df3477}\index{Time::Timer@{Time::Timer}!Clock@{Clock}}
+\index{Clock@{Clock}!Time::Timer@{Time::Timer}}
+\doxysubsubsection{\texorpdfstring{Clock}{Clock}}
+{\footnotesize\ttfamily \label{class_time_1_1_timer_a0d7f101405b61e9abc417cf1b3df3477} 
+using \doxymbox{\hyperlink{class_time_1_1_timer_a0d7f101405b61e9abc417cf1b3df3477}{Time::\+\+Timer::\+\+Clock}} = std::\+chrono::\+high\+\_\+resolution\+\_\+clock}
+
+
+
+High-\/resolution clock type used for timing measurements. 
+
+Uses std::\+chrono::\+high\+\_\+resolution\+\_\+clock which provides the highest available resolution for time measurements on the system. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_time_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Time.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_time_8h_source_l00061}{61}} of file \doxymbox{\hyperlink{_time_8h_source}{Time.\+h}}.
+
+\Hypertarget{class_time_1_1_timer_a483e1d5cf0a22a0cc52ddf6c1ce8fc41}\index{Time::Timer@{Time::Timer}!Duration@{Duration}}
+\index{Duration@{Duration}!Time::Timer@{Time::Timer}}
+\doxysubsubsection{\texorpdfstring{Duration}{Duration}}
+{\footnotesize\ttfamily \label{class_time_1_1_timer_a483e1d5cf0a22a0cc52ddf6c1ce8fc41} 
+using \doxymbox{\hyperlink{class_time_1_1_timer_a483e1d5cf0a22a0cc52ddf6c1ce8fc41}{Time::\+\+Timer::\+\+Duration}} = std::\+chrono::\+duration$<$\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}$>$}
+
+
+
+Type representing a duration of time in floating-\/point seconds. 
+
+A duration type that measures time intervals in floating-\/point seconds, providing fractional second precision for frame delta times and other timing needs. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_time_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Time.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_time_8h_source_l00079}{79}} of file \doxymbox{\hyperlink{_time_8h_source}{Time.\+h}}.
+
+\Hypertarget{class_time_1_1_timer_a25d0d3bffff1e81066356c49315f407b}\index{Time::Timer@{Time::Timer}!TimePoint@{TimePoint}}
+\index{TimePoint@{TimePoint}!Time::Timer@{Time::Timer}}
+\doxysubsubsection{\texorpdfstring{TimePoint}{TimePoint}}
+{\footnotesize\ttfamily \label{class_time_1_1_timer_a25d0d3bffff1e81066356c49315f407b} 
+using \doxymbox{\hyperlink{class_time_1_1_timer_a25d0d3bffff1e81066356c49315f407b}{Time::\+\+Timer::\+\+Time\+Point}} = std::\+chrono::\+time\+\_\+point$<$\doxymbox{\hyperlink{class_time_1_1_timer_a0d7f101405b61e9abc417cf1b3df3477}{Clock}}$>$}
+
+
+
+Type representing a specific point in time from the high-\/resolution clock. 
+
+Represents a single moment in time with the precision of the high-\/resolution clock. Used internally to track timer start time and last frame time. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_time_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Time.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_time_8h_source_l00070}{70}} of file \doxymbox{\hyperlink{_time_8h_source}{Time.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_time_1_1_timer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_time_1_1_timer_a8dbd9d4cb9f167c1977b0f0397b5678a}\index{Time::Timer@{Time::Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!Time::Timer@{Time::Timer}}
+\doxysubsubsection{\texorpdfstring{Timer()}{Timer()}}
+{\footnotesize\ttfamily \label{class_time_1_1_timer_a8dbd9d4cb9f167c1977b0f0397b5678a} 
+Time::\+\+Timer::\+\+Timer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_time_8cpp_source_l00005}{5}} of file \doxymbox{\hyperlink{_time_8cpp_source}{Time.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_time_1_1_timer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_time_1_1_timer_a50d44dc21cb9fcd0d8465618b8718183}\index{Time::Timer@{Time::Timer}!Elapsed@{Elapsed}}
+\index{Elapsed@{Elapsed}!Time::Timer@{Time::Timer}}
+\doxysubsubsection{\texorpdfstring{Elapsed()}{Elapsed()}}
+{\footnotesize\ttfamily \label{class_time_1_1_timer_a50d44dc21cb9fcd0d8465618b8718183} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Time::\+\+Timer::\+\+Elapsed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_time_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Time.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_time_8cpp_source_l00012}{12}} of file \doxymbox{\hyperlink{_time_8cpp_source}{Time.\+cpp}}.
+
+\Hypertarget{class_time_1_1_timer_a2be6a0564878f284a82471f462fe3381}\index{Time::Timer@{Time::Timer}!Reset@{Reset}}
+\index{Reset@{Reset}!Time::Timer@{Time::Timer}}
+\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily \label{class_time_1_1_timer_a2be6a0564878f284a82471f462fe3381} 
+void Time::\+\+Timer::\+\+Reset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_time_8cpp_source_l00007}{7}} of file \doxymbox{\hyperlink{_time_8cpp_source}{Time.\+cpp}}.
+
+\Hypertarget{class_time_1_1_timer_a8bad91f84f346723fbc5d299d0d5a381}\index{Time::Timer@{Time::Timer}!Tick@{Tick}}
+\index{Tick@{Tick}!Time::Timer@{Time::Timer}}
+\doxysubsubsection{\texorpdfstring{Tick()}{Tick()}}
+{\footnotesize\ttfamily \label{class_time_1_1_timer_a8bad91f84f346723fbc5d299d0d5a381} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Time::\+\+Timer::\+\+Tick (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_time_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Time.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_time_8cpp_source_l00018}{18}} of file \doxymbox{\hyperlink{_time_8cpp_source}{Time.\+cpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_time_1_1_timer_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_time_1_1_timer_a423d46299e6af81352cbf32e85276176}\index{Time::Timer@{Time::Timer}!m\_LastFrameTime\_@{m\_LastFrameTime\_}}
+\index{m\_LastFrameTime\_@{m\_LastFrameTime\_}!Time::Timer@{Time::Timer}}
+\doxysubsubsection{\texorpdfstring{m\_LastFrameTime\_}{m\_LastFrameTime\_}}
+{\footnotesize\ttfamily \label{class_time_1_1_timer_a423d46299e6af81352cbf32e85276176} 
+\doxymbox{\hyperlink{class_time_1_1_timer_a25d0d3bffff1e81066356c49315f407b}{Time\+Point}} Time::\+\+Timer::\+m\+\_\+\+Last\+Frame\+Time\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The time point of the last Tick() call. 
+
+Used to calculate the delta time (time between frames) in the Tick() function. Updated after each Tick() call. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_time_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Time.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_time_8h_source_l00200}{200}} of file \doxymbox{\hyperlink{_time_8h_source}{Time.\+h}}.
+
+\Hypertarget{class_time_1_1_timer_a4f62d133f1b54573f9c9d4e09d22a72d}\index{Time::Timer@{Time::Timer}!m\_StartTime\_@{m\_StartTime\_}}
+\index{m\_StartTime\_@{m\_StartTime\_}!Time::Timer@{Time::Timer}}
+\doxysubsubsection{\texorpdfstring{m\_StartTime\_}{m\_StartTime\_}}
+{\footnotesize\ttfamily \label{class_time_1_1_timer_a4f62d133f1b54573f9c9d4e09d22a72d} 
+\doxymbox{\hyperlink{class_time_1_1_timer_a25d0d3bffff1e81066356c49315f407b}{Time\+Point}} Time::\+\+Timer::\+m\+\_\+\+Start\+Time\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The time point when the timer was created or last reset. 
+
+Used to calculate total elapsed time via the Elapsed() function. Updated when Reset() is called. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_time_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Time.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_time_8h_source_l00191}{191}} of file \doxymbox{\hyperlink{_time_8h_source}{Time.\+h}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Core/\+Time.\+h\item 
+src/\+\+Core/\+Time.\+cpp\end{DoxyCompactItemize}

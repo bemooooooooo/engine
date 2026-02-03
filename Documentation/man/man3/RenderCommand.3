@@ -1,0 +1,121 @@
+.TH "RenderCommand" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RenderCommand \- Static wrapper class for issuing rendering commands\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <RenderCommand\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBInit\fP ()"
+.br
+.ti -1c
+.RI "static void \fBShutdown\fP ()"
+.br
+.ti -1c
+.RI "static void \fBSetViewport\fP (\fBu32\fP x, \fBu32\fP y, \fBu32\fP width, \fBu32\fP height)"
+.br
+.ti -1c
+.RI "static void \fBSetClearColor\fP (\fBf32\fP r, \fBf32\fP g, \fBf32\fP b, \fBf32\fP a)"
+.br
+.ti -1c
+.RI "static void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "static void \fBDrawArrays\fP (\fBu32\fP vertexCount)"
+.br
+.ti -1c
+.RI "static void \fBDrawIndexed\fP (\fBu32\fP indexCount)"
+.br
+.ti -1c
+.RI "static void \fBEnableDepthTest\fP (bool enable)"
+.br
+.ti -1c
+.RI "static void \fBEnableBlending\fP (bool enable)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Static wrapper class for issuing rendering commands\&. 
+
+This class provides a simplified interface for common rendering operations by wrapping the \fBGraphicsContext\fP static methods\&. It serves as a higher-level abstraction for issuing draw calls and managing rendering state\&.
+
+.PP
+All methods are static, allowing direct access without instantiation\&.
+
+.PP
+\fBKey\fP features:
+.IP "\(bu" 2
+Viewport setup
+.IP "\(bu" 2
+Clear color and buffer clearing
+.IP "\(bu" 2
+Drawing operations (arrays and indexed)
+.IP "\(bu" 2
+Depth testing and blending control
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+This class relies on \fBGraphicsContext\fP for actual OpenGL calls\&. 
+
+.PP
+Must be initialized via Init() before use\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/RenderCommand\&.h\fP\&.
+.PP
+Definition at line \fB38\fP of file \fBRenderCommand\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void RenderCommand::Clear ()\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB150\fP of file \fBRenderCommand\&.h\fP\&.
+.SS "void RenderCommand::DrawArrays (\fBu32\fP vertexCount)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB171\fP of file \fBRenderCommand\&.h\fP\&.
+.SS "void RenderCommand::DrawIndexed (\fBu32\fP indexCount)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB192\fP of file \fBRenderCommand\&.h\fP\&.
+.SS "void RenderCommand::EnableBlending (bool enable)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB237\fP of file \fBRenderCommand\&.h\fP\&.
+.SS "void RenderCommand::EnableDepthTest (bool enable)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB214\fP of file \fBRenderCommand\&.h\fP\&.
+.SS "void RenderCommand::Init ()\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB55\fP of file \fBRenderCommand\&.h\fP\&.
+.SS "void RenderCommand::SetClearColor (\fBf32\fP r, \fBf32\fP g, \fBf32\fP b, \fBf32\fP a)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB128\fP of file \fBRenderCommand\&.h\fP\&.
+.SS "void RenderCommand::SetViewport (\fBu32\fP x, \fBu32\fP y, \fBu32\fP width, \fBu32\fP height)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB98\fP of file \fBRenderCommand\&.h\fP\&.
+.SS "void RenderCommand::Shutdown ()\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB73\fP of file \fBRenderCommand\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

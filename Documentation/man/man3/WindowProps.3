@@ -1,0 +1,113 @@
+.TH "WindowProps" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WindowProps \- Properties for configuring the window on creation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Window\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBWindowProps\fP (const std::string &title='My Game Engine', \fBu32\fP width=1280, \fBu32\fP height=720)"
+.br
+.RI "Constructs \fBWindowProps\fP with default or specified values\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBTitle\fP"
+.br
+.RI "The title of the window\&. "
+.ti -1c
+.RI "\fBu32\fP \fBWidth\fP"
+.br
+.RI "The width of the window in pixels\&. "
+.ti -1c
+.RI "\fBu32\fP \fBHeight\fP"
+.br
+.RI "The height of the window in pixels\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Properties for configuring the window on creation\&. 
+
+Contains settings such as title, width, and height for initializing a window instance\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB84\fP of file \fBWindow\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "WindowProps::WindowProps (const std::string & title = \fR'My Game Engine'\fP, \fBu32\fP width = \fR1280\fP, \fBu32\fP height = \fR720\fP)\fR [inline]\fP"
+
+.PP
+Constructs \fBWindowProps\fP with default or specified values\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP The title of the window (default: "My Game Engine") 
+.br
+\fIwidth\fP The width of the window in pixels (default: 1280) 
+.br
+\fIheight\fP The height of the window in pixels (default: 720) 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB104\fP of file \fBWindow\&.h\fP\&.
+.PP
+References \fBHeight\fP, \fBTitle\fP, and \fBWidth\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBu32\fP WindowProps::Height"
+
+.PP
+The height of the window in pixels\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB95\fP of file \fBWindow\&.h\fP\&.
+.PP
+Referenced by \fBWindowProps()\fP\&.
+.SS "std::string WindowProps::Title"
+
+.PP
+The title of the window\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB93\fP of file \fBWindow\&.h\fP\&.
+.PP
+Referenced by \fBWindowProps()\fP\&.
+.SS "\fBu32\fP WindowProps::Width"
+
+.PP
+The width of the window in pixels\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB94\fP of file \fBWindow\&.h\fP\&.
+.PP
+Referenced by \fBWindowProps()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

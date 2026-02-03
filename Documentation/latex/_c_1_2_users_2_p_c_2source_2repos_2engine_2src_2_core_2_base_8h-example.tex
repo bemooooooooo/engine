@@ -1,0 +1,319 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Base.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_base_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_base_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope<Camera>}}\ camera\ =\ CreateScope<Camera>();}
+\DoxyCodeLine{\textcolor{comment}{//\ Camera\ is\ automatically\ deleted\ when\ camera\ goes\ out\ of\ scope}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @file\ Base.h}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Core\ base\ definitions,\ type\ aliases,\ and\ utility\ macros\ for\ the\ game\ engine.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ header\ provides\ fundamental\ types,\ memory\ management\ utilities,\ and\ cross-\/platform}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ compatibility\ definitions\ for\ the\ MyGameEngine\ project.\ It\ serves\ as\ the\ foundation\ that}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ all\ other\ engine\ modules\ depend\ on.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Cross-\/platform\ compatibility\ macros}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Fixed-\/size\ integer\ type\ aliases\ (i8,\ i16,\ i32,\ i64,\ u8,\ u16,\ u32,\ u64)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Floating-\/point\ type\ aliases\ (f32,\ f64)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Smart\ pointer\ utilities\ (Scope,\ Ref)\ with\ factory\ functions}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Debug\ logging\ macros\ that\ compile\ out\ in\ release\ builds}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @author\ bemooooooooo}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @version\ 1.0}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @date\ 2026}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Cross-\/platform\ export\ macro\ for\ DLL/shared\ library\ definitions.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ On\ Windows\ platforms,\ this\ macro\ expands\ to\ \_\_declspec(dllexport)\ to\ properly}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ export\ symbols\ from\ a\ dynamic\ library.\ On\ other\ platforms\ (Linux,\ macOS),\ it}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ expands\ to\ nothing,\ allowing\ the\ code\ to\ work\ seamlessly\ across\ different\ OS.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Usage:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ class\ ENGINE\_API\ MyPublicClass\ \{\ ...\ \};}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_API\ \_\_attribute\_\_((visibility("{}default"{})))}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Compiler-\/specific\ attributes}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#ifdef\ \_MSC\_VER}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_FORCE\_INLINE\ \_\_forceinline}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_DEPRECATED(msg)\ \_\_declspec(deprecated(msg))}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_PACKED\ \_\_pragma(pack(push,\ 1))}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_PACKED\_END\ \_\_pragma(pack(pop))}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#elif\ defined(\_\_GNUC\_\_)\ ||\ defined(\_\_clang\_\_)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_FORCE\_INLINE\ inline\ \_\_attribute\_\_((always\_inline))}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_DEPRECATED(msg)\ \_\_attribute\_\_((deprecated(msg)))}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_PACKED\ \_\_attribute\_\_((packed))}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_PACKED\_END}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_FORCE\_INLINE\ inline}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_DEPRECATED(msg)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_PACKED}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_PACKED\_END}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @defgroup\ BaseTypes\ Fundamental\ Type\ Aliases}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @\{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Standard\ type\ aliases\ for\ fixed-\/size\ integer\ and\ floating-\/point\ types.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ These\ provide\ a\ consistent\ interface\ across\ different\ platforms\ and\ compilers}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ for\ numerical\ computations\ throughout\ the\ engine.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Base\ types}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @typedef\ i8}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Signed\ 8-\/bit\ integer\ type\ (range:\ -\/128\ to\ 127)}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_ga196513547113c3f96a078ee3e658a6ef}{i8}}\ =\ int8\_t;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @typedef\ i16}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Signed\ 16-\/bit\ integer\ type\ (range:\ -\/32768\ to\ 32767)}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_ga977685259fe8059c48e92450967d46a8}{i16}}\ =\ int16\_t;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @typedef\ i32}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Signed\ 32-\/bit\ integer\ type\ (range:\ -\/2147483648\ to\ 2147483647)}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_gaec41e5f8e4b7aef2540e84268692fa84}{i32}}\ =\ int32\_t;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @typedef\ i64}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Signed\ 64-\/bit\ integer\ type\ (range:\ -\/9223372036854775808\ to\ 9223372036854775807)}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_ga86025ec3a0bc201ca893caac2cb2acbd}{i64}}\ =\ int64\_t;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @typedef\ u8}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Unsigned\ 8-\/bit\ integer\ type\ (range:\ 0\ to\ 255)}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_ga987e4d6cf789cb59dbb390728271e4d6}{u8}}\ =\ uint8\_t;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @typedef\ u16}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Unsigned\ 16-\/bit\ integer\ type\ (range:\ 0\ to\ 65535)}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_ga6dbf9516e516c901604625282c174aa4}{u16}}\ =\ uint16\_t;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @typedef\ u32}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Unsigned\ 32-\/bit\ integer\ type\ (range:\ 0\ to\ 4294967295)}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ =\ uint32\_t;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @typedef\ u64}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Unsigned\ 64-\/bit\ integer\ type\ (range:\ 0\ to\ 18446744073709551615)}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_ga1af9f95651e921615e75917a6dd1b574}{u64}}\ =\ uint64\_t;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @typedef\ f32}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ 32-\/bit\ floating-\/point\ type\ (standard\ C++\ float)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Provides\ single-\/precision\ floating-\/point\ calculations,\ commonly\ used\ for}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ 3D\ graphics\ computations,\ physics\ calculations,\ and\ transformations.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ =\ float;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @typedef\ f64}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ 64-\/bit\ floating-\/point\ type\ (standard\ C++\ double)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Provides\ double-\/precision\ floating-\/point\ calculations\ for\ high-\/precision}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ mathematical\ operations\ where\ accuracy\ is\ critical.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_gabc2f107791bd7c1d49ecf0f168c085a3}{f64}}\ =\ double;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**\ @\}\ */}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @defgroup\ MemoryManagement\ Smart\ Pointer\ and\ Memory\ Utilities}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @\{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Template\ aliases\ and\ factory\ functions\ for\ managing\ dynamic\ memory\ using}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ C++11\ smart\ pointers.\ These\ ensure\ proper\ resource\ management\ and\ prevent}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ memory\ leaks\ by\ automating\ cleanup.\ Use\ Scope\ for\ exclusive\ ownership\ and}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Ref\ for\ shared\ ownership\ scenarios.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @typedef\ Scope<T>}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Type\ alias\ for\ std::unique\_ptr<T>}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Represents\ exclusive\ ownership\ semantics.\ Use\ Scope\ when\ an\ object\ should\ be}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ owned\ by\ a\ single\ entity\ and\ deleted\ when\ that\ owner\ is\ destroyed.\ Prevents}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ memory\ leaks\ through\ automatic\ cleanup\ and\ eliminates\ the\ need\ for\ manual\ delete.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @tparam\ T\ The\ type\ of\ object\ to\ manage}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Scope<Camera>\ camera\ =\ CreateScope<Camera>();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ //\ Camera\ is\ automatically\ deleted\ when\ camera\ goes\ out\ of\ scope}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope}}\ =\ std::unique\_ptr<T>;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Factory\ function\ to\ create\ a\ unique\_ptr\ with\ RAII\ semantics.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Constructs\ an\ object\ of\ type\ T\ on\ the\ heap\ and\ returns\ it\ wrapped\ in\ a}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ unique\_ptr.\ This\ function\ simplifies\ the\ creation\ of\ scoped\ objects\ with}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ automatic\ cleanup\ and\ prevents\ accidental\ memory\ leaks.\ Perfect-\/forwarding}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ is\ used\ to\ support\ any\ constructor\ signature.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @tparam\ T\ The\ type\ of\ object\ to\ create}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @tparam\ Args\ Parameter\ types\ for\ the\ constructor}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ args\ Constructor\ arguments\ to\ forward\ to\ T's\ constructor}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ Scope<T>\ A\ unique\_ptr\ managing\ the\ newly\ created\ object}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ auto\ renderer\ =\ CreateScope<Renderer>(800,\ 600);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ //\ Object\ is\ automatically\ deleted\ when\ renderer\ goes\ out\ of\ scope}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope<T>}}\ CreateScope(Args\&\&...\ args)\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ std::make\_unique<T>(std::forward<Args>(args)...);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @typedef\ Ref<T>}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Type\ alias\ for\ std::shared\_ptr<T>}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Represents\ shared\ ownership\ semantics.\ Use\ Ref\ when\ multiple\ entities\ need}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ to\ own\ and\ access\ an\ object.\ The\ object\ is\ deleted\ automatically\ when\ the}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ last\ reference\ is\ released.\ Internally\ uses\ reference\ counting\ to\ track\ ownership.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @tparam\ T\ The\ type\ of\ object\ to\ manage}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Ref<Texture>\ texture\ =\ CreateRef<Texture>("{}assets/image.png"{});}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ auto\ copy\ =\ texture;\ //\ Both\ share\ ownership}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ //\ Texture\ is\ deleted\ when\ both\ references\ are\ released}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}\ =\ std::shared\_ptr<T>;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Factory\ function\ to\ create\ a\ shared\_ptr\ with\ RAII\ semantics.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Constructs\ an\ object\ of\ type\ T\ on\ the\ heap\ and\ returns\ it\ wrapped\ in\ a}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ shared\_ptr.\ This\ function\ simplifies\ the\ creation\ of\ reference-\/counted}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ objects\ and\ is\ useful\ when\ multiple\ systems\ need\ to\ share\ ownership.\ Uses}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ perfect-\/forwarding\ to\ support\ any\ constructor\ signature.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @tparam\ T\ The\ type\ of\ object\ to\ create}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @tparam\ Args\ Parameter\ types\ for\ the\ constructor}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ args\ Constructor\ arguments\ to\ forward\ to\ T's\ constructor}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @return\ Ref<T>\ A\ shared\_ptr\ managing\ the\ newly\ created\ object}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ auto\ model\ =\ CreateRef<Model>("{}assets/model.obj"{});}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ auto\ reference\ =\ model;\ //\ Both\ share\ ownership}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ //\ Object\ is\ deleted\ when\ all\ references\ are\ released}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{\textcolor{keyword}{constexpr}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<T>}}\ CreateRef(Args\&\&...\ args)\ \{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{return}\ std::make\_shared<T>(std::forward<Args>(args)...);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**\ @\}\ */}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @defgroup\ DebugMacros\ Debug\ Logging\ Macros}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @\{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Conditional\ compilation\ macros\ for\ debug\ logging\ that\ provide\ zero-\/overhead}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ debugging\ in\ release\ builds.\ These\ macros\ are\ completely\ eliminated\ during}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ compilation\ when\ ENGINE\_DEBUG\_BUILD\ is\ not\ defined,\ ensuring\ zero\ performance\ impact.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @def\ ENGINE\_DEBUG\_LOG}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Logs\ a\ message\ in\ debug\ builds\ only\ with\ zero\ overhead\ in\ release\ builds.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ In\ debug\ builds\ (when\ ENGINE\_DEBUG\_BUILD\ is\ defined\ and\ non-\/zero),\ this\ macro}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ outputs\ the\ given\ expression\ to\ the\ engine's\ logging\ system\ via\ ENGINE\_INFO.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ In\ release\ builds,\ this\ macro\ compiles\ to\ a\ no-\/op\ instruction\ that\ has\ virtually}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ no\ performance\ cost.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ x\ The\ message\ or\ expression\ to\ log}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ Requires\ ENGINE\_INFO\ to\ be\ defined\ as\ a\ logging\ stream\ (e.g.,\ logger\ stream)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ ENGINE\_DEBUG\_LOG("{}Player\ position:\ "{}\ <<\ playerPos.x\ <<\ "{},\ "{}\ <<\ playerPos.y);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ ENGINE\_DEBUG\_LOG("{}Loading\ asset:\ "{}\ <<\ assetPath);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#if\ defined(ENGINE\_DEBUG\_BUILD)\ \&\&\ ENGINE\_DEBUG\_BUILD}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \#define\ ENGINE\_DEBUG\_LOG(x)\ ENGINE\_INFO\ <<\ x}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \#define\ ENGINE\_DEBUG\_LOG(x)\ ((void)0)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @def\ ENGINE\_DEBUG\_LOG\_IF}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Conditionally\ logs\ a\ message\ in\ debug\ builds\ only\ if\ a\ condition\ is\ met.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ In\ debug\ builds,\ this\ macro\ evaluates\ the\ condition\ and\ logs\ the\ expression\ only}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ if\ the\ condition\ evaluates\ to\ true.\ In\ release\ builds,\ this\ macro\ is\ completely}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ eliminated\ by\ the\ preprocessor,\ resulting\ in\ zero\ runtime\ cost.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ is\ useful\ for\ conditional\ logging\ that\ should\ only\ appear\ under\ specific}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ runtime\ circumstances,\ such\ as\ logging\ only\ when\ values\ are\ out\ of\ expected\ ranges}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ or\ when\ certain\ error\ conditions\ are\ detected.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ cond\ The\ condition\ to\ evaluate\ (true\ =\ log,\ false\ =\ skip)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @param\ x\ The\ message\ or\ expression\ to\ log\ if\ condition\ is\ true}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ Requires\ ENGINE\_INFO\ to\ be\ defined\ as\ a\ logging\ stream}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ ENGINE\_DEBUG\_LOG\_IF(health\ <\ maxHealth,\ "{}Health\ reduced\ to:\ "{}\ <<\ health);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ ENGINE\_DEBUG\_LOG\_IF(fps\ <\ 30,\ "{}Low\ frame\ rate\ detected:\ "{}\ <<\ fps);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ ENGINE\_DEBUG\_LOG\_IF(ptr\ ==\ nullptr,\ "{}Null\ pointer\ encountered!"{});}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#if\ defined(ENGINE\_DEBUG\_BUILD)\ \&\&\ ENGINE\_DEBUG\_BUILD}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \#define\ ENGINE\_DEBUG\_LOG\_IF(cond,\ x)\ if\ (cond)\ \{\ ENGINE\_INFO\ <<\ x;\ \}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\textcolor{preprocessor}{\ \ \#define\ ENGINE\_DEBUG\_LOG\_IF(cond,\ x)\ ((void)0)}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**\ @\}\ */}}
+
+\end{DoxyCodeInclude}
+ 

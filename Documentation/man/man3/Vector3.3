@@ -1,0 +1,400 @@
+.TH "Vector3" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Vector3
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBToString\fP () const"
+.br
+.ti -1c
+.RI "\fBVector3\fP (\fBf32\fP x, \fBf32\fP y, \fBf32\fP z)"
+.br
+.ti -1c
+.RI "\fBVector3\fP (\fBf32\fP scalar)"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator+\fP (const \fBVector3\fP &other) const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator\-\fP (const \fBVector3\fP &other) const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator*\fP (const \fBVector3\fP &other) const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator/\fP (const \fBVector3\fP &other) const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator*\fP (\fBf32\fP scalar) const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator/\fP (\fBf32\fP scalar) const"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator+=\fP (const \fBVector3\fP &other)"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator\-=\fP (const \fBVector3\fP &other)"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator*=\fP (const \fBVector3\fP &other)"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator/=\fP (const \fBVector3\fP &other)"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator*=\fP (\fBf32\fP scalar)"
+.br
+.ti -1c
+.RI "\fBVector3\fP & \fBoperator/=\fP (\fBf32\fP scalar)"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBLengthSquared\fP () const"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBLength\fP () const"
+.br
+.ti -1c
+.RI "void \fBNormalize\fP ()"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBNormalized\fP () const"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBVector3\fP &other) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBVector3\fP &other) const"
+.br
+.ti -1c
+.RI "bool \fBisNormalized\fP () const"
+.br
+.ti -1c
+.RI "bool \fBisZero\fP () const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator\-\fP () const"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBoperator[]\fP (\fBu32\fP index) const"
+.br
+.ti -1c
+.RI "\fBf32\fP & \fBoperator[]\fP (\fBu32\fP index)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBf32\fP \fBDot\fP (const \fBVector3\fP &a, const \fBVector3\fP &b)"
+.br
+.ti -1c
+.RI "static \fBVector3\fP \fBCross\fP (const \fBVector3\fP &a, const \fBVector3\fP &b)"
+.br
+.ti -1c
+.RI "static \fBVector3\fP \fBLerp\fP (const \fBVector3\fP &a, const \fBVector3\fP &b, \fBf32\fP t)"
+.br
+.ti -1c
+.RI "static \fBVector3\fP \fBLerpClamped\fP (const \fBVector3\fP &a, const \fBVector3\fP &b, \fBf32\fP t)"
+.br
+.ti -1c
+.RI "static \fBVector3\fP \fBQuadraticLerp\fP (const \fBVector3\fP &a, const \fBVector3\fP &b, const \fBVector3\fP &c, \fBf32\fP t)"
+.br
+.ti -1c
+.RI "static \fBVector3\fP \fBProject\fP (const \fBVector3\fP &a, const \fBVector3\fP &b)"
+.br
+.ti -1c
+.RI "static \fBVector3\fP \fBReject\fP (const \fBVector3\fP &incident, const \fBVector3\fP &normal)"
+.br
+.ti -1c
+.RI "static \fBf32\fP \fBDistance\fP (const \fBVector3\fP &a, const \fBVector3\fP &b)"
+.br
+.ti -1c
+.RI "static \fBf32\fP \fBDistanceSquared\fP (const \fBVector3\fP &a, const \fBVector3\fP &b)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBf32\fP \fBx\fP"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBy\fP"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBz\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const \fBVector3\fP \fBZero\fP"
+.br
+.ti -1c
+.RI "static const \fBVector3\fP \fBOne\fP"
+.br
+.ti -1c
+.RI "static const \fBVector3\fP \fBUp\fP"
+.br
+.ti -1c
+.RI "static const \fBVector3\fP \fBDown\fP"
+.br
+.ti -1c
+.RI "static const \fBVector3\fP \fBLeft\fP"
+.br
+.ti -1c
+.RI "static const \fBVector3\fP \fBRight\fP"
+.br
+.ti -1c
+.RI "static const \fBVector3\fP \fBForward\fP"
+.br
+.ti -1c
+.RI "static const \fBVector3\fP \fBBackward\fP"
+.br
+.ti -1c
+.RI "static const \fBVector3\fP \fBUnitX\fP"
+.br
+.ti -1c
+.RI "static const \fBVector3\fP \fBUnitY\fP"
+.br
+.ti -1c
+.RI "static const \fBVector3\fP \fBUnitZ\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Shader\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Math/Matrix3\&.h\fP\&.
+.PP
+Definition at line \fB7\fP of file \fBVector3\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Vector3::Vector3 ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB14\fP of file \fBVector3\&.h\fP\&.
+.SS "Vector3::Vector3 (\fBf32\fP x, \fBf32\fP y, \fBf32\fP z)\fR [inline]\fP"
+
+.PP
+Definition at line \fB15\fP of file \fBVector3\&.h\fP\&.
+.SS "Vector3::Vector3 (\fBf32\fP scalar)\fR [inline]\fP, \fR [explicit]\fP"
+
+.PP
+Definition at line \fB16\fP of file \fBVector3\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBVector3\fP Vector3::Cross (const \fBVector3\fP & a, const \fBVector3\fP & b)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB138\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBf32\fP Vector3::Distance (const \fBVector3\fP & a, const \fBVector3\fP & b)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB177\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBf32\fP Vector3::DistanceSquared (const \fBVector3\fP & a, const \fBVector3\fP & b)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB181\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBf32\fP Vector3::Dot (const \fBVector3\fP & a, const \fBVector3\fP & b)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB134\fP of file \fBVector3\&.h\fP\&.
+.SS "bool Vector3::isNormalized () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB114\fP of file \fBVector3\&.h\fP\&.
+.SS "bool Vector3::isZero () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB118\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBf32\fP Vector3::Length () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB88\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBf32\fP Vector3::LengthSquared () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB84\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP Vector3::Lerp (const \fBVector3\fP & a, const \fBVector3\fP & b, \fBf32\fP t)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB146\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP Vector3::LerpClamped (const \fBVector3\fP & a, const \fBVector3\fP & b, \fBf32\fP t)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB154\fP of file \fBVector3\&.h\fP\&.
+.SS "void Vector3::Normalize ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB92\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP Vector3::Normalized () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB98\fP of file \fBVector3\&.h\fP\&.
+.SS "bool Vector3::operator!= (const \fBVector3\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB110\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP Vector3::operator* (const \fBVector3\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB26\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP Vector3::operator* (\fBf32\fP scalar) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB34\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP & Vector3::operator*= (const \fBVector3\fP & other)\fR [inline]\fP"
+
+.PP
+Definition at line \fB56\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP & Vector3::operator*= (\fBf32\fP scalar)\fR [inline]\fP"
+
+.PP
+Definition at line \fB70\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP Vector3::operator+ (const \fBVector3\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB18\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP & Vector3::operator+= (const \fBVector3\fP & other)\fR [inline]\fP"
+
+.PP
+Definition at line \fB42\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP Vector3::operator\- () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB122\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP Vector3::operator\- (const \fBVector3\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB22\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP & Vector3::operator\-= (const \fBVector3\fP & other)\fR [inline]\fP"
+
+.PP
+Definition at line \fB49\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP Vector3::operator/ (const \fBVector3\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB30\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP Vector3::operator/ (\fBf32\fP scalar) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB38\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP & Vector3::operator/= (const \fBVector3\fP & other)\fR [inline]\fP"
+
+.PP
+Definition at line \fB63\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP & Vector3::operator/= (\fBf32\fP scalar)\fR [inline]\fP"
+
+.PP
+Definition at line \fB77\fP of file \fBVector3\&.h\fP\&.
+.SS "bool Vector3::operator== (const \fBVector3\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB104\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBf32\fP & Vector3::operator[] (\fBu32\fP index)\fR [inline]\fP"
+
+.PP
+Definition at line \fB130\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBf32\fP Vector3::operator[] (\fBu32\fP index) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB126\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP Vector3::Project (const \fBVector3\fP & a, const \fBVector3\fP & b)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB165\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP Vector3::QuadraticLerp (const \fBVector3\fP & a, const \fBVector3\fP & b, const \fBVector3\fP & c, \fBf32\fP t)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB159\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBVector3\fP Vector3::Reject (const \fBVector3\fP & incident, const \fBVector3\fP & normal)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB172\fP of file \fBVector3\&.h\fP\&.
+.SS "std::string Vector3::ToString () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB10\fP of file \fBVector3\&.h\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const \fBVector3\fP Vector3::Backward\fR [static]\fP"
+
+.PP
+Definition at line \fB192\fP of file \fBVector3\&.h\fP\&.
+.SS "const \fBVector3\fP Vector3::Down\fR [static]\fP"
+
+.PP
+Definition at line \fB188\fP of file \fBVector3\&.h\fP\&.
+.SS "const \fBVector3\fP Vector3::Forward\fR [static]\fP"
+
+.PP
+Definition at line \fB191\fP of file \fBVector3\&.h\fP\&.
+.SS "const \fBVector3\fP Vector3::Left\fR [static]\fP"
+
+.PP
+Definition at line \fB189\fP of file \fBVector3\&.h\fP\&.
+.SS "const \fBVector3\fP Vector3::One\fR [static]\fP"
+
+.PP
+Definition at line \fB186\fP of file \fBVector3\&.h\fP\&.
+.SS "const \fBVector3\fP Vector3::Right\fR [static]\fP"
+
+.PP
+Definition at line \fB190\fP of file \fBVector3\&.h\fP\&.
+.SS "const \fBVector3\fP Vector3::UnitX\fR [static]\fP"
+
+.PP
+Definition at line \fB193\fP of file \fBVector3\&.h\fP\&.
+.SS "const \fBVector3\fP Vector3::UnitY\fR [static]\fP"
+
+.PP
+Definition at line \fB194\fP of file \fBVector3\&.h\fP\&.
+.SS "const \fBVector3\fP Vector3::UnitZ\fR [static]\fP"
+
+.PP
+Definition at line \fB195\fP of file \fBVector3\&.h\fP\&.
+.SS "const \fBVector3\fP Vector3::Up\fR [static]\fP"
+
+.PP
+Definition at line \fB187\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBf32\fP Vector3::x"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Matrix3\&.h\fP\&.
+.PP
+Definition at line \fB8\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBf32\fP Vector3::y"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Matrix3\&.h\fP\&.
+.PP
+Definition at line \fB8\fP of file \fBVector3\&.h\fP\&.
+.SS "\fBf32\fP Vector3::z"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Matrix3\&.h\fP\&.
+.PP
+Definition at line \fB8\fP of file \fBVector3\&.h\fP\&.
+.SS "const \fBVector3\fP Vector3::Zero\fR [static]\fP"
+
+.PP
+Definition at line \fB185\fP of file \fBVector3\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

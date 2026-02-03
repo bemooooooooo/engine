@@ -1,0 +1,180 @@
+.TH "src/Core/Base.h" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/Core/Base.h \- Core base definitions, type aliases, and utility macros for the game engine\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fR#include <cstdint>\fP
+.br
+\fR#include <memory>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBENGINE_API\fP   __attribute__((visibility('default')))"
+.br
+.RI "Cross-platform export macro for DLL/shared library definitions\&. "
+.ti -1c
+.RI "#define \fBENGINE_FORCE_INLINE\fP   inline"
+.br
+.ti -1c
+.RI "#define \fBENGINE_DEPRECATED\fP(msg)"
+.br
+.ti -1c
+.RI "#define \fBENGINE_PACKED\fP"
+.br
+.ti -1c
+.RI "#define \fBENGINE_PACKED_END\fP"
+.br
+.ti -1c
+.RI "#define \fBENGINE_DEBUG_LOG\fP(x)"
+.br
+.RI "Logs a message in debug builds only with zero overhead in release builds\&. "
+.ti -1c
+.RI "#define \fBENGINE_DEBUG_LOG_IF\fP(cond,  x)"
+.br
+.RI "Conditionally logs a message in debug builds only if a condition is met\&. "
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "using \fBi8\fP = int8_t"
+.br
+.RI "Signed 8-bit integer type (range: -128 to 127)\&. "
+.ti -1c
+.RI "using \fBi16\fP = int16_t"
+.br
+.RI "Signed 16-bit integer type (range: -32768 to 32767)\&. "
+.ti -1c
+.RI "using \fBi32\fP = int32_t"
+.br
+.RI "Signed 32-bit integer type (range: -2147483648 to 2147483647)\&. "
+.ti -1c
+.RI "using \fBi64\fP = int64_t"
+.br
+.RI "Signed 64-bit integer type (range: -9223372036854775808 to 9223372036854775807)\&. "
+.ti -1c
+.RI "using \fBu8\fP = uint8_t"
+.br
+.RI "Unsigned 8-bit integer type (range: 0 to 255)\&. "
+.ti -1c
+.RI "using \fBu16\fP = uint16_t"
+.br
+.RI "Unsigned 16-bit integer type (range: 0 to 65535)\&. "
+.ti -1c
+.RI "using \fBu32\fP = uint32_t"
+.br
+.RI "Unsigned 32-bit integer type (range: 0 to 4294967295)\&. "
+.ti -1c
+.RI "using \fBu64\fP = uint64_t"
+.br
+.RI "Unsigned 64-bit integer type (range: 0 to 18446744073709551615)\&. "
+.ti -1c
+.RI "using \fBf32\fP = float"
+.br
+.RI "32-bit floating-point type (standard C++ float) "
+.ti -1c
+.RI "using \fBf64\fP = double"
+.br
+.RI "64-bit floating-point type (standard C++ double) "
+.ti -1c
+.RI "template<typename T> using \fBScope\fP = std::unique_ptr<T>"
+.br
+.RI "Type alias for std::unique_ptr<T>\&. "
+.ti -1c
+.RI "template<typename T> using \fBRef\fP = std::shared_ptr<T>"
+.br
+.RI "Type alias for std::shared_ptr<T>\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T, typename\&.\&.\&. Args> constexpr \fBScope\fP< T > \fBCreateScope\fP (Args &&\&.\&.\&. args)"
+.br
+.ti -1c
+.RI "template<typename T, typename\&.\&.\&. Args> constexpr \fBRef\fP< T > \fBCreateRef\fP (Args &&\&.\&.\&. args)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Core base definitions, type aliases, and utility macros for the game engine\&. 
+
+This header provides fundamental types, memory management utilities, and cross-platform compatibility definitions for the MyGameEngine project\&. It serves as the foundation that all other engine modules depend on\&.
+
+.PP
+\fBKey\fP features:
+.IP "\(bu" 2
+Cross-platform compatibility macros
+.IP "\(bu" 2
+Fixed-size integer type aliases (\fBi8\fP, \fBi16\fP, \fBi32\fP, \fBi64\fP, \fBu8\fP, \fBu16\fP, \fBu32\fP, \fBu64\fP)
+.IP "\(bu" 2
+Floating-point type aliases (\fBf32\fP, \fBf64\fP)
+.IP "\(bu" 2
+Smart pointer utilities (\fBScope\fP, \fBRef\fP) with factory functions
+.IP "\(bu" 2
+Debug logging macros that compile out in release builds
+.PP
+
+.PP
+\fBAuthor\fP
+.RS 4
+bemooooooooo 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2026 
+.RE
+.PP
+
+.PP
+Definition in file \fBBase\&.h\fP\&.
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ENGINE_API   __attribute__((visibility('default')))"
+
+.PP
+Cross-platform export macro for DLL/shared library definitions\&. On Windows platforms, this macro expands to __declspec(dllexport) to properly export symbols from a dynamic library\&. On other platforms (Linux, macOS), it expands to nothing, allowing the code to work seamlessly across different OS\&.
+
+.PP
+Usage: 
+.PP
+.nf
+class ENGINE_API MyPublicClass { \&.\&.\&. };
+
+.fi
+.PP
+ 
+.PP
+Definition at line \fB38\fP of file \fBBase\&.h\fP\&.
+.SS "#define ENGINE_DEPRECATED( msg)"
+
+.PP
+Definition at line \fB54\fP of file \fBBase\&.h\fP\&.
+.SS "#define ENGINE_FORCE_INLINE   inline"
+
+.PP
+Definition at line \fB53\fP of file \fBBase\&.h\fP\&.
+.SS "#define ENGINE_PACKED"
+
+.PP
+Definition at line \fB55\fP of file \fBBase\&.h\fP\&.
+.SS "#define ENGINE_PACKED_END"
+
+.PP
+Definition at line \fB56\fP of file \fBBase\&.h\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

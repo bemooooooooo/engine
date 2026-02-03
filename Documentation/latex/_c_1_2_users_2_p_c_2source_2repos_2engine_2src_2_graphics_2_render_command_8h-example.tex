@@ -1,0 +1,262 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Render\+Command.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_render_command_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_render_command_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{RenderCommand::Init();}
+\DoxyCodeLine{RenderCommand::SetViewport(0,\ 0,\ 800,\ 600);}
+\DoxyCodeLine{RenderCommand::SetClearColor(0.1f,\ 0.1f,\ 0.1f,\ 1.0f);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (running)\ \{}
+\DoxyCodeLine{\ \ \ \ RenderCommand::Clear();}
+\DoxyCodeLine{\ \ \ \ RenderCommand::DrawIndexed(indexCount);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{RenderCommand::Shutdown();}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Core/Base.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}GraphicsContext.h"{}}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ RenderCommand}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Static\ wrapper\ class\ for\ issuing\ rendering\ commands.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ class\ provides\ a\ simplified\ interface\ for\ common\ rendering\ operations}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ by\ wrapping\ the\ GraphicsContext\ static\ methods.\ It\ serves\ as\ a\ higher-\/level}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ abstraction\ for\ issuing\ draw\ calls\ and\ managing\ rendering\ state.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ All\ methods\ are\ static,\ allowing\ direct\ access\ without\ instantiation.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Viewport\ setup}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Clear\ color\ and\ buffer\ clearing}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Drawing\ operations\ (arrays\ and\ indexed)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Depth\ testing\ and\ blending\ control}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ This\ class\ relies\ on\ GraphicsContext\ for\ actual\ OpenGL\ calls.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ Must\ be\ initialized\ via\ Init()\ before\ use.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ RenderCommand::Init();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ RenderCommand::SetViewport(0,\ 0,\ 800,\ 600);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ RenderCommand::SetClearColor(0.1f,\ 0.1f,\ 0.1f,\ 1.0f);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ while\ (running)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ RenderCommand::Clear();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ RenderCommand::DrawIndexed(indexCount);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ RenderCommand::Shutdown();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_render_command}{RenderCommand}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Initializes\ the\ rendering\ command\ system.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Must\ be\ called\ once\ at\ engine\ startup\ before\ any\ rendering\ commands\ are\ issued.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ This\ function\ initializes\ the\ underlying\ GraphicsContext.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ This\ should\ be\ called\ right\ after\ creating\ a\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ before\ any\ rendering\ commands.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Window\ window(800,\ 600,\ "{}My\ Game"{});}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ RenderCommand::Init();\ \ //\ Initialize\ rendering\ commands}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Init()\ \{\ GraphicsContext::Init();\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Shuts\ down\ the\ rendering\ command\ system.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Called\ at\ engine\ shutdown\ to\ clean\ up\ rendering\ resources.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ This\ function\ shuts\ down\ the\ underlying\ GraphicsContext.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ before\ destroying\ the\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ No\ rendering\ commands\ should\ occur\ after\ shutdown.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ //\ At\ engine\ shutdown}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ RenderCommand::Shutdown();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ window.Destroy();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Shutdown()\ \{\ GraphicsContext::Shutdown();\ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ viewport\ dimensions\ and\ position.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Defines\ the\ rectangular\ region\ of\ the\ render\ target\ (screen/framebuffer)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ where\ rendering\ will\ occur.\ The\ viewport\ is\ specified\ in\ pixel\ coordinates.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ x\ The\ left\ edge\ of\ the\ viewport\ in\ pixels\ (usually\ 0)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ y\ The\ bottom\ edge\ of\ the\ viewport\ in\ pixels\ (usually\ 0)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ width\ The\ width\ of\ the\ viewport\ in\ pixels}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ height\ The\ height\ of\ the\ viewport\ in\ pixels}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ The\ origin\ (0,\ 0)\ is\ typically\ at\ the\ bottom-\/left\ in\ OpenGL.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Viewport\ can\ be\ smaller\ than\ the\ window\ for\ split-\/screen\ or\ UI\ areas.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ //\ Set\ full\ viewport\ for\ 800x600\ window}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ RenderCommand::SetViewport(0,\ 0,\ 800,\ 600);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ //\ Set\ viewport\ for\ quarter\ of\ the\ screen\ (top-\/left)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ RenderCommand::SetViewport(0,\ 300,\ 400,\ 300);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetViewport(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ x,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ y,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ width,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ height)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ GraphicsContext::SetViewport(x,\ y,\ width,\ height);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ color\ used\ for\ clearing\ the\ color\ buffer.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Specifies\ the\ RGBA\ color\ that\ will\ be\ used\ when\ Clear()\ is\ called\ to}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ clear\ the\ color\ buffer.\ This\ is\ typically\ called\ once\ per\ frame\ with}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ the\ background\ color.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ r\ Red\ component\ (0.0f\ to\ 1.0f)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ g\ Green\ component\ (0.0f\ to\ 1.0f)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ b\ Blue\ component\ (0.0f\ to\ 1.0f)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ a\ Alpha\ component\ (0.0f\ to\ 1.0f)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Values\ are\ clamped\ to\ [0.0,\ 1.0]\ internally\ by\ OpenGL.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ //\ Black\ background}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ RenderCommand::SetClearColor(0.0f,\ 0.0f,\ 0.0f,\ 1.0f);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ //\ Gray\ background}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ RenderCommand::SetClearColor(0.5f,\ 0.5f,\ 0.5f,\ 1.0f);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ //\ Sky\ blue}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ RenderCommand::SetClearColor(0.53f,\ 0.81f,\ 0.92f,\ 1.0f);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetClearColor(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ r,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ g,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ b,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ a)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ GraphicsContext::SetClearColor(r,\ g,\ b,\ a);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Clears\ the\ color\ and\ depth\ buffers.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Fills\ the\ color\ buffer\ with\ the\ color\ set\ by\ SetClearColor()\ and\ clears}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ the\ depth\ buffer.\ This\ is\ typically\ called\ at\ the\ start\ of\ each\ frame\ to}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ prepare\ for\ new\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ each\ frame\ to\ clear\ previous\ frame's\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ The\ depth\ buffer\ is\ always\ cleared\ regardless\ of\ depth\ test\ state.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ while\ (running)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ RenderCommand::Clear();\ \ //\ Clear\ both\ color\ and\ depth}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ //\ ...\ render\ scene\ ...}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Clear()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ GraphicsContext::Clear();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Issues\ a\ draw\ call\ for\ non-\/indexed\ geometry.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Renders\ primitives\ from\ array\ data.\ This\ is\ typically\ used\ for\ drawing}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ simple\ shapes\ or\ when\ index\ buffers\ are\ not\ needed.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ vertexCount\ Number\ of\ vertices\ to\ render}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Requires\ bound\ vertex\ array.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Less\ efficient\ than\ indexed\ drawing\ for\ complex\ meshes.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ VAO.Bind();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ RenderCommand::DrawArrays(vertexCount);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ DrawArrays(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ vertexCount)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ GraphicsContext::DrawArrays(vertexCount);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Issues\ a\ draw\ call\ for\ indexed\ geometry.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Renders\ primitives\ using\ an\ index\ buffer.\ This\ is\ the\ preferred\ method}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ for\ drawing\ complex\ meshes\ where\ vertices\ are\ shared\ between\ triangles.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ indexCount\ Number\ of\ indices\ to\ render}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Requires\ bound\ vertex\ array\ and\ index\ buffer.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ VAO.Bind();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ IndexBuffer.Bind();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ RenderCommand::DrawIndexed(indexCount);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ DrawIndexed(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ indexCount)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ GraphicsContext::DrawIndexed(indexCount);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Enables\ or\ disables\ depth\ testing.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ When\ enabled,\ the\ depth\ buffer\ is\ used\ to\ determine\ fragment\ visibility}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ based\ on\ depth\ values.\ This\ prevents\ rendering\ artifacts\ in\ 3D\ scenes.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ enable\ True\ to\ enable\ depth\ testing,\ false\ to\ disable}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Depth\ testing\ is\ typically\ enabled\ for\ 3D\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ RenderCommand::EnableDepthTest(true);\ \ //\ Enable\ depth\ testing}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ //\ For\ UI\ rendering}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ RenderCommand::EnableDepthTest(false);\ //\ Disable\ depth\ testing}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ EnableDepthTest(\textcolor{keywordtype}{bool}\ enable)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ GraphicsContext::EnableDepthTest(enable);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Enables\ or\ disables\ blending.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ When\ enabled,\ blending\ is\ used\ to\ combine\ fragment\ colors\ with\ the}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ framebuffer\ based\ on\ alpha\ values.\ This\ is\ essential\ for\ rendering}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ transparent\ or\ semi-\/transparent\ objects.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ enable\ True\ to\ enable\ blending,\ false\ to\ disable}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Blending\ is\ typically\ enabled\ when\ rendering\ transparent\ objects.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ RenderCommand::EnableBlending(true);\ \ //\ Enable\ blending\ for\ transparency}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ //\ For\ opaque\ objects}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ RenderCommand::EnableBlending(false);\ //\ Disable\ blending}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ EnableBlending(\textcolor{keywordtype}{bool}\ enable)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ GraphicsContext::EnableBlending(enable);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCodeInclude}
+ 

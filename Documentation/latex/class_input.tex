@@ -1,0 +1,490 @@
+\doxysection{Input Class Reference}
+\hypertarget{class_input}{}\label{class_input}\index{Input@{Input}}
+
+
+Static class for handling input from keyboard and mouse.  
+
+
+
+
+{\ttfamily \+\#include $<$Input.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{class_input_a5197114da7299198826ff7277ee12bff}{Init}} ()
+\item 
+static void \doxymbox{\hyperlink{class_input_af80dcfde6dbfe39bf3bc0345c75595ce}{Update}} ()
+\item 
+static bool \doxymbox{\hyperlink{class_input_a6f39a9c5feb00c8f4d03f1b6ccf66ca3}{Get\+Key}} (\doxymbox{\hyperlink{namespace_key_afb9d68f62d2a93575c84412c87983a19}{Key::\+\+Code}} key)
+\item 
+static bool \doxymbox{\hyperlink{class_input_aa032422a4aead6443de5891d92a677c6}{Get\+Key\+Down}} (\doxymbox{\hyperlink{namespace_key_afb9d68f62d2a93575c84412c87983a19}{Key::\+\+Code}} key)
+\item 
+static bool \doxymbox{\hyperlink{class_input_a452c393c14f17c3d17ebf907f063d2dd}{Get\+Key\+Up}} (\doxymbox{\hyperlink{namespace_key_afb9d68f62d2a93575c84412c87983a19}{Key::\+\+Code}} key)
+\item 
+static bool \doxymbox{\hyperlink{class_input_aa3496cdb13b61e7daa1c02b4aaade603}{Get\+Mouse\+Button}} (\doxymbox{\hyperlink{namespace_mouse_a2189c95ac90001266b97105c25085270}{Mouse::\+\+Button}} button)
+\item 
+static bool \doxymbox{\hyperlink{class_input_a9debc3d3debe2d3c408efb3bc88f067e}{Get\+Mouse\+Button\+Down}} (\doxymbox{\hyperlink{namespace_mouse_a2189c95ac90001266b97105c25085270}{Mouse::\+\+Button}} button)
+\item 
+static bool \doxymbox{\hyperlink{class_input_a331ca9bba5ab5e6ccc7ec561c8ccb58d}{Get\+Mouse\+Button\+Up}} (\doxymbox{\hyperlink{namespace_mouse_a2189c95ac90001266b97105c25085270}{Mouse::\+\+Button}} button)
+\item 
+static \doxymbox{\hyperlink{struct_vector2}{Vector2}} \doxymbox{\hyperlink{class_input_ae96c3b7c1bc8b30d3af88f8c3ca85c18}{Get\+Mouse\+Position}} ()
+\item 
+static \doxymbox{\hyperlink{struct_vector2}{Vector2}} \doxymbox{\hyperlink{class_input_ad0fa69e8cc2c6de3f213b69b21fcdec6}{Get\+Mouse\+Delta}} ()
+\item 
+static \doxymbox{\hyperlink{struct_vector2}{Vector2}} \doxymbox{\hyperlink{class_input_afbe128ce5d3c27d7269b18c54d308d35}{Get\+Mouse\+Scroll\+Delta}} ()
+\item 
+static void \doxymbox{\hyperlink{class_input_afd5be0ceb6bfba0ca3af464772dcf9d3}{Set\+Cursor\+Mode}} (bool locked)
+\item 
+static bool \doxymbox{\hyperlink{class_input_a0efc0caa35c16d483bd1cb7ccf83acb5}{Is\+Cursor\+Locked}} ()
+\item 
+static void \doxymbox{\hyperlink{class_input_ac6c6f025e523b58584b780ade63cf9fa}{Set\+Key\+State}} (\doxymbox{\hyperlink{namespace_key_afb9d68f62d2a93575c84412c87983a19}{Key::\+\+Code}} key, bool pressed)
+\begin{DoxyCompactList}\small\item\em Sets the state of a key (for internal use). \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{class_input_a5ed99cad4f42a413f684189638051d40}{Set\+Mouse\+Button\+State}} (\doxymbox{\hyperlink{namespace_mouse_a2189c95ac90001266b97105c25085270}{Mouse::\+\+Button}} button, bool pressed)
+\begin{DoxyCompactList}\small\item\em Sets the state of a mouse button (for internal use). \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{class_input_ad670d58c47c6919c32b218163c745bc4}{Set\+Mouse\+Position}} (const \doxymbox{\hyperlink{struct_vector2}{Vector2}} \&position)
+\begin{DoxyCompactList}\small\item\em Sets the current mouse position (for internal use). \end{DoxyCompactList}\item 
+static void \doxymbox{\hyperlink{class_input_a03c716468a0bbb59d60c802f270dc2d9}{Set\+Mouse\+Scroll\+Delta}} (const \doxymbox{\hyperlink{struct_vector2}{Vector2}} \&scroll)
+\begin{DoxyCompactList}\small\item\em Sets the mouse scroll delta (for internal use). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std::\+array$<$ bool, 512 $>$ \doxymbox{\hyperlink{class_input_acf4f860e26a3a4569c89a609df5ecd5d}{s\+\_\+\+Key\+State}}
+\begin{DoxyCompactList}\small\item\em Current state of all keys. \end{DoxyCompactList}\item 
+static std::\+array$<$ bool, 512 $>$ \doxymbox{\hyperlink{class_input_a11c5cc43e52e22661fdccfbed5e1991b}{s\+\_\+\+Key\+State\+Previous}}
+\begin{DoxyCompactList}\small\item\em Previous frame state of all keys. \end{DoxyCompactList}\item 
+static std::\+array$<$ bool, 8 $>$ \doxymbox{\hyperlink{class_input_ae1f8636f106cd3b41a603e66cbac1db1}{s\+\_\+\+Mouse\+Button\+State}}
+\begin{DoxyCompactList}\small\item\em Current state of all mouse buttons. \end{DoxyCompactList}\item 
+static std::\+array$<$ bool, 8 $>$ \doxymbox{\hyperlink{class_input_ab2622594c5d9f6f16d54ac52816578ef}{s\+\_\+\+Mouse\+Button\+State\+Previous}}
+\begin{DoxyCompactList}\small\item\em Previous frame state of all mouse buttons. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{struct_vector2}{Vector2}} \doxymbox{\hyperlink{class_input_a88083cc47c71bbdfa5c0a5704e45e210}{s\+\_\+\+Mouse\+Position}}
+\begin{DoxyCompactList}\small\item\em Current mouse position. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{struct_vector2}{Vector2}} \doxymbox{\hyperlink{class_input_a04955a0d6cf5e1a9737b5cfce2ec5566}{s\+\_\+\+Mouse\+Position\+Previous}}
+\begin{DoxyCompactList}\small\item\em Previous frame mouse position. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{struct_vector2}{Vector2}} \doxymbox{\hyperlink{class_input_a6bdf2600c41b3894d3739bc67a32df4f}{s\+\_\+\+Mouse\+Scroll\+Delta}}
+\begin{DoxyCompactList}\small\item\em \doxylink{namespace_mouse}{Mouse} scroll delta. \end{DoxyCompactList}\item 
+static bool \doxymbox{\hyperlink{class_input_aa089fec2c27ff076760c93cf2f6a6afe}{s\+\_\+\+Cursor\+Locked}} = false
+\begin{DoxyCompactList}\small\item\em Whether the cursor is currently locked. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Static class for handling input from keyboard and mouse. 
+
+Provides methods to query the current state of keys and mouse buttons, as well as mouse position and scroll delta. Also allows locking the cursor.
+
+\begin{DoxyNote}{Note}
+Must be updated each frame via Update() to track state changes. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_input_2_input_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Input/\+\+Input.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_input_8h_source_l00148}{148}} of file \doxymbox{\hyperlink{_input_8h_source}{Input.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_input_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_input_a6f39a9c5feb00c8f4d03f1b6ccf66ca3}\index{Input@{Input}!GetKey@{GetKey}}
+\index{GetKey@{GetKey}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{GetKey()}{GetKey()}}
+{\footnotesize\ttfamily \label{class_input_a6f39a9c5feb00c8f4d03f1b6ccf66ca3} 
+bool Input::\+\+Get\+Key (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{namespace_key_afb9d68f62d2a93575c84412c87983a19}{Key::\+\+Code}}}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00039}{39}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+\Hypertarget{class_input_aa032422a4aead6443de5891d92a677c6}\index{Input@{Input}!GetKeyDown@{GetKeyDown}}
+\index{GetKeyDown@{GetKeyDown}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{GetKeyDown()}{GetKeyDown()}}
+{\footnotesize\ttfamily \label{class_input_aa032422a4aead6443de5891d92a677c6} 
+bool Input::\+\+Get\+Key\+Down (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{namespace_key_afb9d68f62d2a93575c84412c87983a19}{Key::\+\+Code}}}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00043}{43}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+\Hypertarget{class_input_a452c393c14f17c3d17ebf907f063d2dd}\index{Input@{Input}!GetKeyUp@{GetKeyUp}}
+\index{GetKeyUp@{GetKeyUp}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{GetKeyUp()}{GetKeyUp()}}
+{\footnotesize\ttfamily \label{class_input_a452c393c14f17c3d17ebf907f063d2dd} 
+bool Input::\+\+Get\+Key\+Up (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{namespace_key_afb9d68f62d2a93575c84412c87983a19}{Key::\+\+Code}}}]{key}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00048}{48}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+\Hypertarget{class_input_aa3496cdb13b61e7daa1c02b4aaade603}\index{Input@{Input}!GetMouseButton@{GetMouseButton}}
+\index{GetMouseButton@{GetMouseButton}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{GetMouseButton()}{GetMouseButton()}}
+{\footnotesize\ttfamily \label{class_input_aa3496cdb13b61e7daa1c02b4aaade603} 
+bool Input::\+\+Get\+Mouse\+Button (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{namespace_mouse_a2189c95ac90001266b97105c25085270}{Mouse::\+\+Button}}}]{button}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00054}{54}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+\Hypertarget{class_input_a9debc3d3debe2d3c408efb3bc88f067e}\index{Input@{Input}!GetMouseButtonDown@{GetMouseButtonDown}}
+\index{GetMouseButtonDown@{GetMouseButtonDown}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{GetMouseButtonDown()}{GetMouseButtonDown()}}
+{\footnotesize\ttfamily \label{class_input_a9debc3d3debe2d3c408efb3bc88f067e} 
+bool Input::\+\+Get\+Mouse\+Button\+Down (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{namespace_mouse_a2189c95ac90001266b97105c25085270}{Mouse::\+\+Button}}}]{button}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00058}{58}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+\Hypertarget{class_input_a331ca9bba5ab5e6ccc7ec561c8ccb58d}\index{Input@{Input}!GetMouseButtonUp@{GetMouseButtonUp}}
+\index{GetMouseButtonUp@{GetMouseButtonUp}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{GetMouseButtonUp()}{GetMouseButtonUp()}}
+{\footnotesize\ttfamily \label{class_input_a331ca9bba5ab5e6ccc7ec561c8ccb58d} 
+bool Input::\+\+Get\+Mouse\+Button\+Up (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{namespace_mouse_a2189c95ac90001266b97105c25085270}{Mouse::\+\+Button}}}]{button}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00063}{63}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+\Hypertarget{class_input_ad0fa69e8cc2c6de3f213b69b21fcdec6}\index{Input@{Input}!GetMouseDelta@{GetMouseDelta}}
+\index{GetMouseDelta@{GetMouseDelta}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{GetMouseDelta()}{GetMouseDelta()}}
+{\footnotesize\ttfamily \label{class_input_ad0fa69e8cc2c6de3f213b69b21fcdec6} 
+\doxymbox{\hyperlink{struct_vector2}{Vector2}} Input::\+\+Get\+Mouse\+Delta (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00072}{72}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+\Hypertarget{class_input_ae96c3b7c1bc8b30d3af88f8c3ca85c18}\index{Input@{Input}!GetMousePosition@{GetMousePosition}}
+\index{GetMousePosition@{GetMousePosition}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{GetMousePosition()}{GetMousePosition()}}
+{\footnotesize\ttfamily \label{class_input_ae96c3b7c1bc8b30d3af88f8c3ca85c18} 
+\doxymbox{\hyperlink{struct_vector2}{Vector2}} Input::\+\+Get\+Mouse\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00068}{68}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+\Hypertarget{class_input_afbe128ce5d3c27d7269b18c54d308d35}\index{Input@{Input}!GetMouseScrollDelta@{GetMouseScrollDelta}}
+\index{GetMouseScrollDelta@{GetMouseScrollDelta}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{GetMouseScrollDelta()}{GetMouseScrollDelta()}}
+{\footnotesize\ttfamily \label{class_input_afbe128ce5d3c27d7269b18c54d308d35} 
+\doxymbox{\hyperlink{struct_vector2}{Vector2}} Input::\+\+Get\+Mouse\+Scroll\+Delta (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00076}{76}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+\Hypertarget{class_input_a5197114da7299198826ff7277ee12bff}\index{Input@{Input}!Init@{Init}}
+\index{Init@{Init}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_input_a5197114da7299198826ff7277ee12bff} 
+void Input::\+\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00015}{15}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+\Hypertarget{class_input_a0efc0caa35c16d483bd1cb7ccf83acb5}\index{Input@{Input}!IsCursorLocked@{IsCursorLocked}}
+\index{IsCursorLocked@{IsCursorLocked}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{IsCursorLocked()}{IsCursorLocked()}}
+{\footnotesize\ttfamily \label{class_input_a0efc0caa35c16d483bd1cb7ccf83acb5} 
+bool Input::\+\+Is\+Cursor\+Locked (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00086}{86}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+\Hypertarget{class_input_afd5be0ceb6bfba0ca3af464772dcf9d3}\index{Input@{Input}!SetCursorMode@{SetCursorMode}}
+\index{SetCursorMode@{SetCursorMode}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{SetCursorMode()}{SetCursorMode()}}
+{\footnotesize\ttfamily \label{class_input_afd5be0ceb6bfba0ca3af464772dcf9d3} 
+void Input::\+\+Set\+Cursor\+Mode (\begin{DoxyParamCaption}\item[{bool}]{locked}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00081}{81}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+\Hypertarget{class_input_ac6c6f025e523b58584b780ade63cf9fa}\index{Input@{Input}!SetKeyState@{SetKeyState}}
+\index{SetKeyState@{SetKeyState}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{SetKeyState()}{SetKeyState()}}
+{\footnotesize\ttfamily \label{class_input_ac6c6f025e523b58584b780ade63cf9fa} 
+void Input::\+\+Set\+Key\+State (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{namespace_key_afb9d68f62d2a93575c84412c87983a19}{Key::\+\+Code}}}]{key}{, }\item[{bool}]{pressed}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets the state of a key (for internal use). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key code to set \\
+\hline
+{\em pressed} & True if the key is pressed, false otherwise \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_input_2_input_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Input/\+\+Input.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00091}{91}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_input_8h_source_l00380}{s\+\_\+\+Key\+State}}.
+
+\Hypertarget{class_input_a5ed99cad4f42a413f684189638051d40}\index{Input@{Input}!SetMouseButtonState@{SetMouseButtonState}}
+\index{SetMouseButtonState@{SetMouseButtonState}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{SetMouseButtonState()}{SetMouseButtonState()}}
+{\footnotesize\ttfamily \label{class_input_a5ed99cad4f42a413f684189638051d40} 
+void Input::\+\+Set\+Mouse\+Button\+State (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{namespace_mouse_a2189c95ac90001266b97105c25085270}{Mouse::\+\+Button}}}]{button}{, }\item[{bool}]{pressed}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets the state of a mouse button (for internal use). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & The mouse button code to set \\
+\hline
+{\em pressed} & True if the button is pressed, false otherwise \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_input_2_input_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Input/\+\+Input.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00095}{95}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_input_8h_source_l00392}{s\+\_\+\+Mouse\+Button\+State}}.
+
+\Hypertarget{class_input_ad670d58c47c6919c32b218163c745bc4}\index{Input@{Input}!SetMousePosition@{SetMousePosition}}
+\index{SetMousePosition@{SetMousePosition}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{SetMousePosition()}{SetMousePosition()}}
+{\footnotesize\ttfamily \label{class_input_ad670d58c47c6919c32b218163c745bc4} 
+void Input::\+\+Set\+Mouse\+Position (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector2}{Vector2}} \&}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets the current mouse position (for internal use). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The new mouse position \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_input_2_input_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Input/\+\+Input.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00099}{99}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_input_8h_source_l00404}{s\+\_\+\+Mouse\+Position}}.
+
+\Hypertarget{class_input_a03c716468a0bbb59d60c802f270dc2d9}\index{Input@{Input}!SetMouseScrollDelta@{SetMouseScrollDelta}}
+\index{SetMouseScrollDelta@{SetMouseScrollDelta}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{SetMouseScrollDelta()}{SetMouseScrollDelta()}}
+{\footnotesize\ttfamily \label{class_input_a03c716468a0bbb59d60c802f270dc2d9} 
+void Input::\+\+Set\+Mouse\+Scroll\+Delta (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector2}{Vector2}} \&}]{scroll}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Sets the mouse scroll delta (for internal use). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scroll} & The new mouse scroll delta \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_input_2_input_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Input/\+\+Input.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00103}{103}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_input_8h_source_l00416}{s\+\_\+\+Mouse\+Scroll\+Delta}}.
+
+\Hypertarget{class_input_af80dcfde6dbfe39bf3bc0345c75595ce}\index{Input@{Input}!Update@{Update}}
+\index{Update@{Update}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_input_af80dcfde6dbfe39bf3bc0345c75595ce} 
+void Input::\+\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_input_8cpp_source_l00028}{28}} of file \doxymbox{\hyperlink{_input_8cpp_source}{Input.\+cpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_input_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_input_aa089fec2c27ff076760c93cf2f6a6afe}\index{Input@{Input}!s\_CursorLocked@{s\_CursorLocked}}
+\index{s\_CursorLocked@{s\_CursorLocked}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{s\_CursorLocked}{s\_CursorLocked}}
+{\footnotesize\ttfamily \label{class_input_aa089fec2c27ff076760c93cf2f6a6afe} 
+bool Input::\+s\+\_\+\+Cursor\+Locked = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Whether the cursor is currently locked. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_input_2_input_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Input/\+\+Input.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_input_8h_source_l00422}{422}} of file \doxymbox{\hyperlink{_input_8h_source}{Input.\+h}}.
+
+\Hypertarget{class_input_acf4f860e26a3a4569c89a609df5ecd5d}\index{Input@{Input}!s\_KeyState@{s\_KeyState}}
+\index{s\_KeyState@{s\_KeyState}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{s\_KeyState}{s\_KeyState}}
+{\footnotesize\ttfamily \label{class_input_acf4f860e26a3a4569c89a609df5ecd5d} 
+std::\+array$<$ bool, 512 $>$ Input::\+s\+\_\+\+Key\+State\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Current state of all keys. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_input_2_input_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Input/\+\+Input.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_input_8h_source_l00380}{380}} of file \doxymbox{\hyperlink{_input_8h_source}{Input.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_input_8cpp_source_l00091}{Set\+Key\+State()}}.
+
+\Hypertarget{class_input_a11c5cc43e52e22661fdccfbed5e1991b}\index{Input@{Input}!s\_KeyStatePrevious@{s\_KeyStatePrevious}}
+\index{s\_KeyStatePrevious@{s\_KeyStatePrevious}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{s\_KeyStatePrevious}{s\_KeyStatePrevious}}
+{\footnotesize\ttfamily \label{class_input_a11c5cc43e52e22661fdccfbed5e1991b} 
+std::\+array$<$ bool, 512 $>$ Input::\+s\+\_\+\+Key\+State\+Previous\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Previous frame state of all keys. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_input_2_input_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Input/\+\+Input.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_input_8h_source_l00386}{386}} of file \doxymbox{\hyperlink{_input_8h_source}{Input.\+h}}.
+
+\Hypertarget{class_input_ae1f8636f106cd3b41a603e66cbac1db1}\index{Input@{Input}!s\_MouseButtonState@{s\_MouseButtonState}}
+\index{s\_MouseButtonState@{s\_MouseButtonState}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{s\_MouseButtonState}{s\_MouseButtonState}}
+{\footnotesize\ttfamily \label{class_input_ae1f8636f106cd3b41a603e66cbac1db1} 
+std::\+array$<$ bool, 8 $>$ Input::\+s\+\_\+\+Mouse\+Button\+State\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Current state of all mouse buttons. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_input_2_input_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Input/\+\+Input.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_input_8h_source_l00392}{392}} of file \doxymbox{\hyperlink{_input_8h_source}{Input.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_input_8cpp_source_l00095}{Set\+Mouse\+Button\+State()}}.
+
+\Hypertarget{class_input_ab2622594c5d9f6f16d54ac52816578ef}\index{Input@{Input}!s\_MouseButtonStatePrevious@{s\_MouseButtonStatePrevious}}
+\index{s\_MouseButtonStatePrevious@{s\_MouseButtonStatePrevious}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{s\_MouseButtonStatePrevious}{s\_MouseButtonStatePrevious}}
+{\footnotesize\ttfamily \label{class_input_ab2622594c5d9f6f16d54ac52816578ef} 
+std::\+array$<$ bool, 8 $>$ Input::\+s\+\_\+\+Mouse\+Button\+State\+Previous\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Previous frame state of all mouse buttons. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_input_2_input_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Input/\+\+Input.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_input_8h_source_l00398}{398}} of file \doxymbox{\hyperlink{_input_8h_source}{Input.\+h}}.
+
+\Hypertarget{class_input_a88083cc47c71bbdfa5c0a5704e45e210}\index{Input@{Input}!s\_MousePosition@{s\_MousePosition}}
+\index{s\_MousePosition@{s\_MousePosition}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{s\_MousePosition}{s\_MousePosition}}
+{\footnotesize\ttfamily \label{class_input_a88083cc47c71bbdfa5c0a5704e45e210} 
+\doxymbox{\hyperlink{struct_vector2}{Vector2}} Input::\+s\+\_\+\+Mouse\+Position\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Current mouse position. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_input_2_input_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Input/\+\+Input.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_input_8h_source_l00404}{404}} of file \doxymbox{\hyperlink{_input_8h_source}{Input.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_input_8cpp_source_l00099}{Set\+Mouse\+Position()}}.
+
+\Hypertarget{class_input_a04955a0d6cf5e1a9737b5cfce2ec5566}\index{Input@{Input}!s\_MousePositionPrevious@{s\_MousePositionPrevious}}
+\index{s\_MousePositionPrevious@{s\_MousePositionPrevious}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{s\_MousePositionPrevious}{s\_MousePositionPrevious}}
+{\footnotesize\ttfamily \label{class_input_a04955a0d6cf5e1a9737b5cfce2ec5566} 
+\doxymbox{\hyperlink{struct_vector2}{Vector2}} Input::\+s\+\_\+\+Mouse\+Position\+Previous\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Previous frame mouse position. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_input_2_input_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Input/\+\+Input.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_input_8h_source_l00410}{410}} of file \doxymbox{\hyperlink{_input_8h_source}{Input.\+h}}.
+
+\Hypertarget{class_input_a6bdf2600c41b3894d3739bc67a32df4f}\index{Input@{Input}!s\_MouseScrollDelta@{s\_MouseScrollDelta}}
+\index{s\_MouseScrollDelta@{s\_MouseScrollDelta}!Input@{Input}}
+\doxysubsubsection{\texorpdfstring{s\_MouseScrollDelta}{s\_MouseScrollDelta}}
+{\footnotesize\ttfamily \label{class_input_a6bdf2600c41b3894d3739bc67a32df4f} 
+\doxymbox{\hyperlink{struct_vector2}{Vector2}} Input::\+s\+\_\+\+Mouse\+Scroll\+Delta\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+\doxylink{namespace_mouse}{Mouse} scroll delta. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_input_2_input_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Input/\+\+Input.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_input_8h_source_l00416}{416}} of file \doxymbox{\hyperlink{_input_8h_source}{Input.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_input_8cpp_source_l00103}{Set\+Mouse\+Scroll\+Delta()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Input/\+Input.\+h\item 
+src/\+\+Input/\+Input.\+cpp\end{DoxyCompactItemize}

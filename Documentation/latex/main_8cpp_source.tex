@@ -1,0 +1,268 @@
+\doxysection{main.\+cpp}
+\hypertarget{main_8cpp_source}{}\label{main_8cpp_source}\index{src/main.cpp@{src/main.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}Core/Engine.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}Core/Log.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_graphics_8h}{Graphics/Graphics.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}Graphics/ResourceManager.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}Graphics/GLError.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}Input/Input.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}Math/Math.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}\doxymbox{\hyperlink{class_test_scene}{00009}}\ \textcolor{keyword}{class\ }TestScene\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_scene_ad10176d75a9cc0da56626f682d083507}{Scene}}\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011\ \ \ TestScene()\ :\ \doxymbox{\hyperlink{class_scene_ad10176d75a9cc0da56626f682d083507}{Scene}}(\textcolor{stringliteral}{"{}TestScene"{}})\ \{\}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013\ \ \ \textcolor{keywordtype}{void}\ Initialize()\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Initializing\ TestScene..."{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Настройка\ камеры}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017\ \ \ \ \ \doxymbox{\hyperlink{class_scene_ab72a62cdd897e1d31a72e9a2f3a260b2}{GetCamera}}().\doxymbox{\hyperlink{class_camera_ab1782340a5959089cbf93a7c97cdfdec}{SetPerspective}}(Math::ToRadians(60.0f),\ 16.0f\ /\ 9.0f,\ 0.1f,\ 100.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018\ \ \ \ \ \doxymbox{\hyperlink{class_scene_ab72a62cdd897e1d31a72e9a2f3a260b2}{GetCamera}}().\doxymbox{\hyperlink{class_camera_ad59eeb5b820614ca7e52262082e8dde1}{SetPosition}}(\doxymbox{\hyperlink{struct_vector3}{Vector3}}(0.0f,\ 20.0f,\ 100.0f));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019\ \ \ \ \ \doxymbox{\hyperlink{class_scene_ab72a62cdd897e1d31a72e9a2f3a260b2}{GetCamera}}().\doxymbox{\hyperlink{class_camera_a87338e74f59353ecaa912e2f421608c2}{LookAt}}(\doxymbox{\hyperlink{struct_vector3}{Vector3}}(0.0f,\ 0.0f,\ 0.0f));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021\ \ \ \ \ \doxymbox{\hyperlink{group___debug_macros_gaea47321626b32e9ed5172fdab6644d46}{ENGINE\_DEBUG\_LOG}}(\textcolor{stringliteral}{"{}Camera\ initialized\ at\ "{}}\ <<\ \doxymbox{\hyperlink{class_scene_ab72a62cdd897e1d31a72e9a2f3a260b2}{GetCamera}}().GetPosition().ToString());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//\ Создание\ тестовых\ объектов}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00024}00024\ \ \ \ \ CreateTestObjects();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}00026\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}TestScene\ initialized\ with\ "{}}\ <<\ \doxymbox{\hyperlink{class_scene_a11f3986e592b49aa3921ecf37b0c2dce}{GetObjects}}().size()\ <<\ \textcolor{stringliteral}{"{}\ objects"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}00027\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}\doxymbox{\hyperlink{class_test_scene_ade6d9e9f4fd30888257ed187cef2e388}{00029}}\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_test_scene_ade6d9e9f4fd30888257ed187cef2e388}{Update}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ deltaTime)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030\ \ \ \ \ m\_TotalTime\ +=\ deltaTime;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//\ Обновление\ анимаций}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ UpdateAnimations(deltaTime);\ пока\ без\ этого}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//\ Обновление\ камеры}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00036}00036\ \ \ \ \ UpdateCamera(deltaTime);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00037}00037\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}\doxymbox{\hyperlink{class_test_scene_ac7e1d8acdfc54c9a0a96bf4f1acc9a32}{00039}}\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_test_scene_ac7e1d8acdfc54c9a0a96bf4f1acc9a32}{Render}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\&\ shader)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040\ \ \ \ \ Renderer::BeginScene(\doxymbox{\hyperlink{class_scene_ab72a62cdd897e1d31a72e9a2f3a260b2}{GetCamera}}());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//\ Рендерим\ все\ объекты\ сцены}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ sceneObject\ :\ \doxymbox{\hyperlink{class_scene_a11f3986e592b49aa3921ecf37b0c2dce}{GetObjects}}())\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00044}00044\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sceneObject.mesh)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ modelMatrix\ =\ sceneObject.transform.ToMatrix();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ sceneObject.mesh-\/>Draw(shader,\ modelMatrix);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00047}00047\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00050}00050\ \ \ \ \ Renderer::EndScene();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00051}00051\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00053}00053\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00054}00054\ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m\_TotalTime\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00055}00055\ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ m\_CameraOrbitAngle\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057\ \ \ \textcolor{keywordtype}{void}\ CreateTestObjects()\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ 1.\ Центральный\ вращающийся\ куб\ (красный\ металлик)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059\ \ \ \ \ \doxymbox{\hyperlink{struct_scene_object}{SceneObject}}\ mainCube(\textcolor{stringliteral}{"{}MainCube"{}},\ \doxymbox{\hyperlink{class_mesh_a89afdca6de34de136cfe4b354a75a21c}{Mesh::CreateCube}}());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060\ \ \ \ \ mainCube.transform.position\ =\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0.0f,\ 0.0f,\ 0.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061\ \ \ \ \ mainCube.mesh-\/>GetMaterial()-\/>GetProperties().albedo\ =\ \doxymbox{\hyperlink{struct_vector4}{Vector4}}(0.8f,\ 0.2f,\ 0.2f,\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062\ \ \ \ \ mainCube.mesh-\/>GetMaterial()-\/>GetProperties().metallic\ =\ 0.8f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063\ \ \ \ \ mainCube.mesh-\/>GetMaterial()-\/>GetProperties().roughness\ =\ 0.2f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00064}00064\ \ \ \ \ \doxymbox{\hyperlink{class_scene_a4c9d8adc4cc03dd82f249b37dc64916c}{AddObject}}(mainCube);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//\ 2.\ Сфера\ (золотистая)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067\ \ \ \ \ \doxymbox{\hyperlink{struct_scene_object}{SceneObject}}\ sphere(\textcolor{stringliteral}{"{}Sphere"{}},\ \doxymbox{\hyperlink{class_mesh_a4cf4b14d99b5255d3f120dc68a41a9e6}{Mesh::CreateSphere}}(32));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068\ \ \ \ \ sphere.transform.position\ =\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(3.0f,\ 0.0f,\ 0.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069\ \ \ \ \ sphere.mesh-\/>GetMaterial()-\/>GetProperties().albedo\ =\ \doxymbox{\hyperlink{struct_vector4}{Vector4}}(1.0f,\ 0.8f,\ 0.4f,\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070\ \ \ \ \ sphere.mesh-\/>GetMaterial()-\/>GetProperties().metallic\ =\ 1.0f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071\ \ \ \ \ sphere.mesh-\/>GetMaterial()-\/>GetProperties().roughness\ =\ 0.1f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072\ \ \ \ \ \doxymbox{\hyperlink{class_scene_a4c9d8adc4cc03dd82f249b37dc64916c}{AddObject}}(sphere);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{comment}{//\ 3.\ Плоскость\ (пол,\ матовый\ серый)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00075}00075\ \ \ \ \ \doxymbox{\hyperlink{struct_scene_object}{SceneObject}}\ floor(\textcolor{stringliteral}{"{}Floor"{}},\ \doxymbox{\hyperlink{class_mesh_ac3da9e5b09bf79e2ac9b2aa2b20e28ee}{Mesh::CreatePlane}}());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00076}00076\ \ \ \ \ floor.transform.position\ =\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0.0f,\ -\/2.0f,\ 0.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00077}00077\ \ \ \ \ floor.transform.scale\ =\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(10.0f,\ 1.0f,\ 10.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00078}00078\ \ \ \ \ floor.mesh-\/>GetMaterial()-\/>GetProperties().albedo\ =\ \doxymbox{\hyperlink{struct_vector4}{Vector4}}(0.5f,\ 0.5f,\ 0.5f,\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00079}00079\ \ \ \ \ floor.mesh-\/>GetMaterial()-\/>GetProperties().metallic\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080\ \ \ \ \ floor.mesh-\/>GetMaterial()-\/>GetProperties().roughness\ =\ 0.9f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081\ \ \ \ \ \doxymbox{\hyperlink{class_scene_a4c9d8adc4cc03dd82f249b37dc64916c}{AddObject}}(floor);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//\ 4.\ Вращающийся\ куб\ (синий\ пластик)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00084}00084\ \ \ \ \ \doxymbox{\hyperlink{struct_scene_object}{SceneObject}}\ rotatingCube(\textcolor{stringliteral}{"{}RotatingCube"{}},\ \doxymbox{\hyperlink{class_mesh_a89afdca6de34de136cfe4b354a75a21c}{Mesh::CreateCube}}());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00085}00085\ \ \ \ \ rotatingCube.transform.position\ =\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(-\/3.0f,\ 0.0f,\ 0.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00086}00086\ \ \ \ \ rotatingCube.transform.scale\ =\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(0.7f,\ 0.7f,\ 0.7f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00087}00087\ \ \ \ \ rotatingCube.mesh-\/>GetMaterial()-\/>GetProperties().albedo\ =\ \doxymbox{\hyperlink{struct_vector4}{Vector4}}(0.2f,\ 0.3f,\ 0.8f,\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00088}00088\ \ \ \ \ rotatingCube.mesh-\/>GetMaterial()-\/>GetProperties().metallic\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00089}00089\ \ \ \ \ rotatingCube.mesh-\/>GetMaterial()-\/>GetProperties().roughness\ =\ 0.6f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}00090\ \ \ \ \ \doxymbox{\hyperlink{class_scene_a4c9d8adc4cc03dd82f249b37dc64916c}{AddObject}}(rotatingCube);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00093}00093\ \ \ \textcolor{comment}{//\ void\ UpdateAnimations(f32\ deltaTime)\ \{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00094}00094\ \ \ \textcolor{comment}{//\ \ \ //\ Анимация\ вращения\ объектов}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00095}00095\ \ \ \textcolor{comment}{//\ \ \ //\ Временно\ отключаем\ вращения\ объектов\ —\ фиксируем\ ориентацию\ для\ отладки\ рендера}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00096}00096\ \ \ \textcolor{comment}{//\ \ \ for\ (auto\&\ obj\ :\ GetObjects())\ \{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00097}00097\ \ \ \textcolor{comment}{//\ \ \ \ \ (void)deltaTime;\ //\ параметр\ не\ используется\ сейчас}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00098}00098\ \ \ \textcolor{comment}{//\ \ \ \ \ //\ оставляем\ rotation\ как\ есть\ (без\ изменений)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00099}00099\ \ \ \textcolor{comment}{//\ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00101}00101\ \ \ \textcolor{comment}{//\ \ \ //\ Пульсация\ сферы}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00102}00102\ \ \ \textcolor{comment}{//\ \ \ auto*\ sphere\ =\ FindObject("{}Sphere"{});}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00103}00103\ \ \ \textcolor{comment}{//\ \ \ if\ (sphere)\ \{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104\ \ \ \textcolor{comment}{//\ \ \ \ \ f32\ scale\ =\ 1.0f\ +\ sinf(m\_TotalTime\ *\ 2.0f)\ *\ 0.2f;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105\ \ \ \textcolor{comment}{//\ \ \ \ \ sphere-\/>transform.scale\ =\ Vector3(scale,\ scale,\ scale);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00106}00106\ \ \ \textcolor{comment}{//\ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00107}00107\ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00109}00109\ \ \ \textcolor{keywordtype}{void}\ UpdateCamera(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ deltaTime)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{comment}{//\ Фиксируем\ камеру\ в\ статичной\ позиции\ для\ отладки\ рендера}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00111}00111\ \ \ \ \ (void)deltaTime;\ \textcolor{comment}{//\ параметр\ не\ используется}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00112}00112\ \ \ \ \ Vector3\ cameraPos(0.0f,\ 2.0f,\ 8.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00113}00113\ \ \ \ \ \doxymbox{\hyperlink{class_scene_ab72a62cdd897e1d31a72e9a2f3a260b2}{GetCamera}}().\doxymbox{\hyperlink{class_camera_ad59eeb5b820614ca7e52262082e8dde1}{SetPosition}}(cameraPos);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}00114\ \ \ \ \ \doxymbox{\hyperlink{class_scene_ab72a62cdd897e1d31a72e9a2f3a260b2}{GetCamera}}().\doxymbox{\hyperlink{class_camera_a87338e74f59353ecaa912e2f421608c2}{LookAt}}(Vector3(0.0f,\ 0.0f,\ 0.0f));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116\ \};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00119}\doxymbox{\hyperlink{class_test_app}{00119}}\ \textcolor{keyword}{class\ }TestApp\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine}}\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00120}00120\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00121}00121\ \ \ TestApp()\ :\ m\_WireframeMode(\textcolor{keyword}{false})\ \{\}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00123}00123\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00124}\doxymbox{\hyperlink{class_test_app_ae314351442dedee0bb1fb9bebb236d60}{00124}}\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_test_app_ae314351442dedee0bb1fb9bebb236d60}{OnInitialize}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00125}00125\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}===\ Testing\ Complete\ Graphics\ Module\ ==="{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00127}00127\ \ \ \ \ \textcolor{comment}{//\ Инициализация\ всех\ систем}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00128}00128\ \ \ \ \ Renderer::Init();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00129}00129\ \ \ \ \ Input::Init();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00130}00130\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00131}00131\ \ \ \ \ \textcolor{comment}{//\ Настройка\ OpenGL\ состояния}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00132}00132\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00133}00133\ \ \ \ \ \ \ GL\_CHECK(\textcolor{stringliteral}{"{}GL\ State\ Setup"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00134}00134\ \ \ \ \ \ \ glEnable(GL\_DEPTH\_TEST);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00135}00135\ \ \ \ \ \ \ glDepthFunc(GL\_LESS);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00136}00136\ \ \ \ \ \ \ glClearDepth(1.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{comment}{//\ Загрузка\ шейдера\ из\ файлов\ через\ ResourceManager}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00140}00140\ \ \ \ \ \textcolor{comment}{//\ Используем\ пути\ относительно\ рабочей\ директории\ (build/)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00141}00141\ \ \ \ \ m\_Shader\ =\ \doxymbox{\hyperlink{class_resource_manager_a884ae73b54ff6fe1bc9e1b21f1611e51}{ResourceManager::LoadShader}}(\textcolor{stringliteral}{"{}default"{}},\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}assets/shaders/default.vert"{}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}assets/shaders/default.frag"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00144}00144\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00145}00145\ \ \ \ \ \textcolor{comment}{//\ Если\ не\ удалось\ загрузить,\ пробуем\ альтернативные\ пути}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00146}00146\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_Shader)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00147}00147\ \ \ \ \ \ \ m\_Shader\ =\ \doxymbox{\hyperlink{class_resource_manager_a884ae73b54ff6fe1bc9e1b21f1611e51}{ResourceManager::LoadShader}}(\textcolor{stringliteral}{"{}default"{}},\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}../assets/shaders/default.vert"{}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}../assets/shaders/default.frag"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00150}00150\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00151}00151\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_Shader)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00152}00152\ \ \ \ \ \ \ ENGINE\_ERROR\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ load\ shader!"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00153}00153\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00154}00154\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00156}00156\ \ \ \ \ \textcolor{comment}{//\ Создание\ и\ инициализация\ сцены}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00157}00157\ \ \ \ \ m\_Scene\ =\ CreateScope<TestScene>();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00158}00158\ \ \ \ \ m\_Scene-\/>Initialize();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00160}00160\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}===\ All\ Systems\ Ready\ ==="{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00161}00161\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Controls:"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00162}00162\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}\ \ SPACE\ -\/\ Toggle\ wireframe"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00163}00163\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}\ \ R\ -\/\ Reset\ camera"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00164}00164\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}\ \ ESC\ -\/\ Quit"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00165}00165\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00167}\doxymbox{\hyperlink{class_test_app_a91cb091c669cda0707d1760b12465e9c}{00167}}\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_test_app_a91cb091c669cda0707d1760b12465e9c}{OnUpdate}}(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ deltaTime)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00168}00168\ \ \ \ \ \textcolor{comment}{//\ Обновление\ сцены}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00169}00169\ \ \ \ \ m\_Scene-\/>Update(deltaTime);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00171}00171\ \ \ \ \ \textcolor{comment}{//\ Обработка\ ввода}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00172}00172\ \ \ \ \ HandleInput();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00174}00174\ \ \ \ \ \textcolor{comment}{//\ Логирование\ производительности}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00175}00175\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ fpsTimer\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00176}00176\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ frameCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00177}00177\ \ \ \ \ fpsTimer\ +=\ deltaTime;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00178}00178\ \ \ \ \ frameCount++;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00180}00180\ \ \ \ \ \textcolor{keywordflow}{if}\ (fpsTimer\ >=\ 1.0f)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00181}00181\ \ \ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}FPS:\ "{}}\ <<\ frameCount}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{},\ Objects:\ "{}}\ <<\ m\_Scene.get()-\/>GetObjects().size();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00183}00183\ \ \ \ \ \ \ fpsTimer\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00184}00184\ \ \ \ \ \ \ frameCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00185}00185\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00186}00186\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00188}\doxymbox{\hyperlink{class_test_app_ae0d04b159377479f20fca88198669016}{00188}}\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_test_app_ae0d04b159377479f20fca88198669016}{OnRender}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00189}00189\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00190}00190\ \ \ \ \ \ \ GL\_CHECK(\textcolor{stringliteral}{"{}Begin\ Render"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00191}00191\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00192}00192\ \ \ \ \ \ \ \textcolor{comment}{//\ Устанавливаем\ цвет\ очистки\ и\ очищаем\ буферы}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00193}00193\ \ \ \ \ \ \ glClearColor(0.1f,\ 0.1f,\ 0.1f,\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00194}00194\ \ \ \ \ \ \ glClear(GL\_COLOR\_BUFFER\_BIT\ |\ GL\_DEPTH\_BUFFER\_BIT);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00195}00195\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00196}00196\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00197}00197\ \ \ \ \ \textcolor{comment}{//\ Настраиваем\ шейдер}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00198}00198\ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_Shader)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00199}00199\ \ \ \ \ \ \ ENGINE\_ERROR\ <<\ \textcolor{stringliteral}{"{}Shader\ is\ null\ in\ OnRender!"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00200}00200\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00201}00201\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00202}00202\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00203}00203\ \ \ \ \ m\_Shader-\/>Bind();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00204}00204\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00205}00205\ \ \ \ \ \textcolor{comment}{//\ Устанавливаем\ основные\ униформы}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00206}00206\ \ \ \ \ m\_Shader-\/>SetVector3(\textcolor{stringliteral}{"{}u\_ViewPos"{}},\ m\_Scene-\/>GetCamera().GetPosition());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00207}00207\ \ \ \ \ m\_Shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_Wireframe"{}},\ m\_WireframeMode\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00209}00209\ \ \ \ \ \textcolor{comment}{//\ Рендерим\ сцену}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00210}00210\ \ \ \ \ m\_Scene-\/>Render(m\_Shader);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00211}00211\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00212}00212\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00213}00213\ \ \ \ \ \ \ GL\_CHECK(\textcolor{stringliteral}{"{}End\ Render"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00214}00214\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00215}00215\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00217}\doxymbox{\hyperlink{class_test_app_acd6763515b563f6f1394a44b9523e93d}{00217}}\ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_test_app_acd6763515b563f6f1394a44b9523e93d}{OnShutdown}}()\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00218}00218\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}===\ Shutting\ Down\ ==="{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00219}00219\ \ \ \ \ m\_Scene.reset();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00220}00220\ \ \ \ \ \doxymbox{\hyperlink{class_resource_manager_ad69916a57c142341802f13585d267851}{ResourceManager::Shutdown}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00221}00221\ \ \ \ \ Renderer::Shutdown();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00222}00222\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00224}00224\ \ \ \textcolor{keywordtype}{void}\ OnEvent(\doxymbox{\hyperlink{class_event}{Event}}\&\ event)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00225}00225\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{auto}*\ resizeEvent\ =\ \textcolor{keyword}{dynamic\_cast<}\doxymbox{\hyperlink{class_window_resize_event}{WindowResizeEvent}}*\textcolor{keyword}{>}(\&event))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00226}00226\ \ \ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Window\ resized:\ "{}}\ <<\ resizeEvent-\/>GetWidth()\ <<\ \textcolor{stringliteral}{"{}x"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ resizeEvent-\/>GetHeight();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00228}00228\ \ \ \ \ \ \ Renderer::OnWindowResize(resizeEvent-\/>GetWidth(),}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ resizeEvent-\/>GetHeight());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00230}00230\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00231}00231\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00233}00233\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00234}00234\ \ \ \doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope<TestScene>}}\ m\_Scene;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00235}00235\ \ \ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\ m\_Shader;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00236}00236\ \ \ \textcolor{keywordtype}{bool}\ m\_WireframeMode;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00239}00239\ \ \ \textcolor{keywordtype}{void}\ HandleInput()\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00240}00240\ \ \ \ \ \textcolor{keywordflow}{if}\ (Input::GetKeyDown(Key::Space))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00241}00241\ \ \ \ \ \ \ m\_WireframeMode\ =\ !m\_WireframeMode;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00242}00242\ \ \ \ \ \ \ m\_Shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_Wireframe"{}},\ m\_WireframeMode\ ?\ 1\ :\ 0);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00243}00243\ \ \ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Wireframe:\ "{}}\ <<\ (m\_WireframeMode\ ?\ \textcolor{stringliteral}{"{}ON"{}}\ :\ \textcolor{stringliteral}{"{}OFF"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00244}00244\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00246}00246\ \ \ \ \ \textcolor{keywordflow}{if}\ (Input::GetKeyDown(Key::R))\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00247}00247\ \ \ \ \ \ \ m\_Scene-\/>GetCamera().SetPosition(Vector3(0.0f,\ 2.0f,\ 8.0f));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00248}00248\ \ \ \ \ \ \ m\_Scene-\/>GetCamera().LookAt(Vector3(0.0f,\ 0.0f,\ 0.0f));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00249}00249\ \ \ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Camera\ reset"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00250}00250\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00251}00251\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00252}00252\ \};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00254}00254\ \textcolor{keywordtype}{int}\ main()\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00255}00255\ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}===\ Graphics\ Module\ Comprehensive\ Test\ ==="{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00257}00257\ \ \ \doxymbox{\hyperlink{class_test_app}{TestApp}}\ app;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00258}00258\ \ \ app.Run();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00260}00260\ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}===\ Test\ Completed\ ==="{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00261}00261\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00262}00262\ \}}
+
+\end{DoxyCode}

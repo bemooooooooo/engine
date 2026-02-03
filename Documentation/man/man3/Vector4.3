@@ -1,0 +1,262 @@
+.TH "Vector4" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Vector4
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVector4\fP (\fBf32\fP x, \fBf32\fP y, \fBf32\fP z, \fBf32\fP w)"
+.br
+.ti -1c
+.RI "\fBVector4\fP (\fBf32\fP scalar)"
+.br
+.ti -1c
+.RI "\fBVector4\fP (const \fBVector3\fP &vec, \fBf32\fP w=1\&.0f)"
+.br
+.ti -1c
+.RI "\fBVector4\fP \fBoperator+\fP (const \fBVector4\fP &other) const"
+.br
+.ti -1c
+.RI "\fBVector4\fP \fBoperator\-\fP (const \fBVector4\fP &other) const"
+.br
+.ti -1c
+.RI "\fBVector4\fP \fBoperator*\fP (\fBf32\fP scalar) const"
+.br
+.ti -1c
+.RI "\fBVector4\fP \fBoperator/\fP (\fBf32\fP scalar) const"
+.br
+.ti -1c
+.RI "\fBVector4\fP & \fBoperator+=\fP (const \fBVector4\fP &other)"
+.br
+.ti -1c
+.RI "\fBVector4\fP & \fBoperator*=\fP (\fBf32\fP scalar)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBVector4\fP &other) const"
+.br
+.ti -1c
+.RI "\fBVector4\fP \fBoperator\-\fP () const"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBoperator[]\fP (int index) const"
+.br
+.ti -1c
+.RI "\fBf32\fP & \fBoperator[]\fP (int index)"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBLengthSquared\fP () const"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBLength\fP () const"
+.br
+.ti -1c
+.RI "void \fBNormalize\fP ()"
+.br
+.ti -1c
+.RI "\fBVector4\fP \fBNormalized\fP () const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBXYZ\fP () const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBHomogenized\fP () const"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBf32\fP \fBDot\fP (const \fBVector4\fP &a, const \fBVector4\fP &b)"
+.br
+.ti -1c
+.RI "static \fBVector4\fP \fBLerp\fP (const \fBVector4\fP &a, const \fBVector4\fP &b, \fBf32\fP t)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBf32\fP \fBx\fP"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBy\fP"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBz\fP"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBw\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const \fBVector4\fP \fBZero\fP"
+.br
+.ti -1c
+.RI "static const \fBVector4\fP \fBOne\fP"
+.br
+.ti -1c
+.RI "static const \fBVector4\fP \fBUnitX\fP"
+.br
+.ti -1c
+.RI "static const \fBVector4\fP \fBUnitY\fP"
+.br
+.ti -1c
+.RI "static const \fBVector4\fP \fBUnitZ\fP"
+.br
+.ti -1c
+.RI "static const \fBVector4\fP \fBUnitW\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Renderer\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Graphics/Shader\&.h\fP\&.
+.PP
+Definition at line \fB6\fP of file \fBVector4\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Vector4::Vector4 ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB9\fP of file \fBVector4\&.h\fP\&.
+.SS "Vector4::Vector4 (\fBf32\fP x, \fBf32\fP y, \fBf32\fP z, \fBf32\fP w)\fR [inline]\fP"
+
+.PP
+Definition at line \fB10\fP of file \fBVector4\&.h\fP\&.
+.SS "Vector4::Vector4 (\fBf32\fP scalar)\fR [inline]\fP, \fR [explicit]\fP"
+
+.PP
+Definition at line \fB11\fP of file \fBVector4\&.h\fP\&.
+.SS "Vector4::Vector4 (const \fBVector3\fP & vec, \fBf32\fP w = \fR1\&.0f\fP)\fR [inline]\fP"
+
+.PP
+Definition at line \fB12\fP of file \fBVector4\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBf32\fP Vector4::Dot (const \fBVector4\fP & a, const \fBVector4\fP & b)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB84\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBVector3\fP Vector4::Homogenized () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB97\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBf32\fP Vector4::Length () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB62\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBf32\fP Vector4::LengthSquared () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB58\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBVector4\fP Vector4::Lerp (const \fBVector4\fP & a, const \fBVector4\fP & b, \fBf32\fP t)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB88\fP of file \fBVector4\&.h\fP\&.
+.SS "void Vector4::Normalize ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB66\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBVector4\fP Vector4::Normalized () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB74\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBVector4\fP Vector4::operator* (\fBf32\fP scalar) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB22\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBVector4\fP & Vector4::operator*= (\fBf32\fP scalar)\fR [inline]\fP"
+
+.PP
+Definition at line \fB36\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBVector4\fP Vector4::operator+ (const \fBVector4\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB14\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBVector4\fP & Vector4::operator+= (const \fBVector4\fP & other)\fR [inline]\fP"
+
+.PP
+Definition at line \fB31\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBVector4\fP Vector4::operator\- () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB46\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBVector4\fP Vector4::operator\- (const \fBVector4\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB18\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBVector4\fP Vector4::operator/ (\fBf32\fP scalar) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB26\fP of file \fBVector4\&.h\fP\&.
+.SS "bool Vector4::operator== (const \fBVector4\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB41\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBf32\fP & Vector4::operator[] (int index)\fR [inline]\fP"
+
+.PP
+Definition at line \fB54\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBf32\fP Vector4::operator[] (int index) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB50\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBVector3\fP Vector4::XYZ () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB80\fP of file \fBVector4\&.h\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const \fBVector4\fP Vector4::One\fR [static]\fP"
+
+.PP
+Definition at line \fB104\fP of file \fBVector4\&.h\fP\&.
+.SS "const \fBVector4\fP Vector4::UnitW\fR [static]\fP"
+
+.PP
+Definition at line \fB108\fP of file \fBVector4\&.h\fP\&.
+.SS "const \fBVector4\fP Vector4::UnitX\fR [static]\fP"
+
+.PP
+Definition at line \fB105\fP of file \fBVector4\&.h\fP\&.
+.SS "const \fBVector4\fP Vector4::UnitY\fR [static]\fP"
+
+.PP
+Definition at line \fB106\fP of file \fBVector4\&.h\fP\&.
+.SS "const \fBVector4\fP Vector4::UnitZ\fR [static]\fP"
+
+.PP
+Definition at line \fB107\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBf32\fP Vector4::w"
+
+.PP
+Definition at line \fB7\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBf32\fP Vector4::x"
+
+.PP
+Definition at line \fB7\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBf32\fP Vector4::y"
+
+.PP
+Definition at line \fB7\fP of file \fBVector4\&.h\fP\&.
+.SS "\fBf32\fP Vector4::z"
+
+.PP
+Definition at line \fB7\fP of file \fBVector4\&.h\fP\&.
+.SS "const \fBVector4\fP Vector4::Zero\fR [static]\fP"
+
+.PP
+Definition at line \fB103\fP of file \fBVector4\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

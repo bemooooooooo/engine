@@ -1,0 +1,80 @@
+.TH "src/Graphics/Graphics.h" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/Graphics/Graphics.h \- Central header for the Graphics module of the MyGameEngine project\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fR#include 'GraphicsContext\&.h'\fP
+.br
+\fR#include 'RenderCommand\&.h'\fP
+.br
+\fR#include 'Renderer\&.h'\fP
+.br
+\fR#include 'Window\&.h'\fP
+.br
+\fR#include 'Shader\&.h'\fP
+.br
+\fR#include 'Texture\&.h'\fP
+.br
+\fR#include 'VertexBuffer\&.h'\fP
+.br
+\fR#include 'IndexBuffer\&.h'\fP
+.br
+\fR#include 'VertexArray\&.h'\fP
+.br
+\fR#include 'Scene\&.h'\fP
+.br
+\fR#include 'Camera\&.h'\fP
+.br
+\fR#include 'Mesh\&.h'\fP
+.br
+\fR#include 'Material\&.h'\fP
+.br
+
+.SH "Detailed Description"
+.PP 
+Central header for the Graphics module of the MyGameEngine project\&. 
+
+This header aggregates all core graphics functionalities, including context management, rendering commands, resource handling, and scene representation\&. It serves as the main entry point for graphics-related operations within the engine\&.
+
+.PP
+\fBKey\fP components included:
+
+.PP
+.IP "\(bu" 2
+\fBGraphicsContext\fP: Manages the graphics rendering context and OpenGL state\&.
+.IP "\(bu" 2
+\fBRenderCommand\fP: Provides static methods for issuing rendering commands\&.
+.IP "\(bu" 2
+\fBRenderer\fP: High-level rendering interface for drawing scenes and objects\&.
+.IP "\(bu" 2
+Resource classes: \fBShader\fP, \fBTexture\fP, \fBVertexBuffer\fP, \fBIndexBuffer\fP, \fBVertexArray\fP\&.
+.IP "\(bu" 2
+\fBScene\fP representation: \fBScene\fP, \fBCamera\fP, \fBMesh\fP, \fBMaterial\fP\&.
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+This header should be included in any source file that requires graphics functionality from the engine\&.
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2026 
+.RE
+.PP
+
+.PP
+Definition in file \fBGraphics\&.h\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

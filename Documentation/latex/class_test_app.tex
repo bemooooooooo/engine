@@ -1,0 +1,234 @@
+\doxysection{Test\+App Class Reference}
+\hypertarget{class_test_app}{}\label{class_test_app}\index{TestApp@{TestApp}}
+Inheritance diagram for Test\+App:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_test_app}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_test_app_ae314351442dedee0bb1fb9bebb236d60}{On\+Initialize}} () override
+\begin{DoxyCompactList}\small\item\em Called during engine initialization. Override this method in derived classes to implement game-\/specific initialization logic. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_test_app_a91cb091c669cda0707d1760b12465e9c}{On\+Update}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} delta\+Time) override
+\begin{DoxyCompactList}\small\item\em Called each frame to update game logic. Override this method in derived classes to implement game-\/specific update logic. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_test_app_ae0d04b159377479f20fca88198669016}{On\+Render}} () override
+\begin{DoxyCompactList}\small\item\em Called each frame to render the scene. Override this method in derived classes to implement game-\/specific rendering logic. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_test_app_acd6763515b563f6f1394a44b9523e93d}{On\+Shutdown}} () override
+\begin{DoxyCompactList}\small\item\em Called during engine shutdown. Override this method in derived classes to implement game-\/specific cleanup logic. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_test_app_a59c5186d6e6ab3fc11622265e4717143}{On\+Event}} (\doxymbox{\hyperlink{class_event}{Event}} \&event) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_test_app_aca95770134e34183da2c8a7008431167}{Handle\+Input}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope}}$<$ \doxymbox{\hyperlink{class_test_scene}{Test\+Scene}} $>$ \doxymbox{\hyperlink{class_test_app_a9529a7fa5b7cbfed713e9fee987f8976}{m\+\_\+\+Scene}}
+\item 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \doxymbox{\hyperlink{class_test_app_ac297ea99680c4afbcaeaf61c1f111f9a}{m\+\_\+\+Shader}}
+\item 
+bool \doxymbox{\hyperlink{class_test_app_a9913f5e2ec0cdf38c110249de3efac5f}{m\+\_\+\+Wireframe\+Mode}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_engine}{Engine}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_engine_a8c98683b0a3aa28d8ab72a8bcd0d52f2}{Engine}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_engine}{Engine} instance. \end{DoxyCompactList}\item 
+virtual \doxymbox{\hyperlink{class_engine_a8ef7030a089ecb30bbfcb9e43094717a}{\texorpdfstring{$\sim$}{\string~}\+Engine}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_engine}{Engine} instance and cleans up resources. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_engine_af4c789fb939a0870426c698a5124a0ee}{Run}} ()
+\item 
+bool \doxymbox{\hyperlink{class_engine_a11baa1640d1f89e3cf8d1887a9621032}{Initialize}} ()
+\item 
+void \doxymbox{\hyperlink{class_engine_a3dbd2c0a65e642baa7eaa97caa6e4e64}{Shutdown}} ()
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_engine_a95cd587c5d6be9ac896a7949e7dd5c83}{Get\+Delta\+Time}} () const
+\begin{DoxyCompactList}\small\item\em Gets the application window. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_engine_a2e26a52a904fa6455c0c4bd9ae4ac057}{Get\+FPS}} () const
+\begin{DoxyCompactList}\small\item\em Gets the current frames per second (FPS). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \doxymbox{\hyperlink{class_engine}{Engine}}}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_engine}{Engine}} \& \doxymbox{\hyperlink{class_engine_a773b5995960f2ff398d064c221c70230}{Get}} ()
+\begin{DoxyCompactList}\small\item\em Gets the singleton instance of the \doxylink{class_engine}{Engine}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00119}{119}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_test_app_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_test_app_ad32f853793eefbce05935168f5d4cec0}\index{TestApp@{TestApp}!TestApp@{TestApp}}
+\index{TestApp@{TestApp}!TestApp@{TestApp}}
+\doxysubsubsection{\texorpdfstring{TestApp()}{TestApp()}}
+{\footnotesize\ttfamily \label{class_test_app_ad32f853793eefbce05935168f5d4cec0} 
+Test\+App::\+\+Test\+App (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00121}{121}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_test_app_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_test_app_aca95770134e34183da2c8a7008431167}\index{TestApp@{TestApp}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!TestApp@{TestApp}}
+\doxysubsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily \label{class_test_app_aca95770134e34183da2c8a7008431167} 
+void Test\+App::\+\+Handle\+Input (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00239}{239}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{class_test_app_a59c5186d6e6ab3fc11622265e4717143}\index{TestApp@{TestApp}!OnEvent@{OnEvent}}
+\index{OnEvent@{OnEvent}!TestApp@{TestApp}}
+\doxysubsubsection{\texorpdfstring{OnEvent()}{OnEvent()}}
+{\footnotesize\ttfamily \label{class_test_app_a59c5186d6e6ab3fc11622265e4717143} 
+void Test\+App::\+\+On\+Event (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_event}{Event}} \&}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Implements \doxymbox{\hyperlink{class_engine}{Engine}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00224}{224}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{class_test_app_ae314351442dedee0bb1fb9bebb236d60}\index{TestApp@{TestApp}!OnInitialize@{OnInitialize}}
+\index{OnInitialize@{OnInitialize}!TestApp@{TestApp}}
+\doxysubsubsection{\texorpdfstring{OnInitialize()}{OnInitialize()}}
+{\footnotesize\ttfamily \label{class_test_app_ae314351442dedee0bb1fb9bebb236d60} 
+void Test\+App::\+\+On\+Initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Called during engine initialization. Override this method in derived classes to implement game-\/specific initialization logic. 
+
+
+
+Reimplemented from \doxymbox{\hyperlink{class_engine_ae11320612a2d3ecffe574a1c92dca7e8}{Engine}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00124}{124}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00020}{Resource\+Manager::\+\+Load\+Shader()}}.
+
+\Hypertarget{class_test_app_ae0d04b159377479f20fca88198669016}\index{TestApp@{TestApp}!OnRender@{OnRender}}
+\index{OnRender@{OnRender}!TestApp@{TestApp}}
+\doxysubsubsection{\texorpdfstring{OnRender()}{OnRender()}}
+{\footnotesize\ttfamily \label{class_test_app_ae0d04b159377479f20fca88198669016} 
+void Test\+App::\+\+On\+Render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Called each frame to render the scene. Override this method in derived classes to implement game-\/specific rendering logic. 
+
+
+
+Reimplemented from \doxymbox{\hyperlink{class_engine_ae4c3ae5f32711465d9eaef36c82716ac}{Engine}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00188}{188}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{class_test_app_acd6763515b563f6f1394a44b9523e93d}\index{TestApp@{TestApp}!OnShutdown@{OnShutdown}}
+\index{OnShutdown@{OnShutdown}!TestApp@{TestApp}}
+\doxysubsubsection{\texorpdfstring{OnShutdown()}{OnShutdown()}}
+{\footnotesize\ttfamily \label{class_test_app_acd6763515b563f6f1394a44b9523e93d} 
+void Test\+App::\+\+On\+Shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Called during engine shutdown. Override this method in derived classes to implement game-\/specific cleanup logic. 
+
+
+
+Reimplemented from \doxymbox{\hyperlink{class_engine_aaa0aa0f8418f57e7ca8724cd5db63baa}{Engine}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00217}{217}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00134}{Resource\+Manager::\+\+Shutdown()}}.
+
+\Hypertarget{class_test_app_a91cb091c669cda0707d1760b12465e9c}\index{TestApp@{TestApp}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!TestApp@{TestApp}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_test_app_a91cb091c669cda0707d1760b12465e9c} 
+void Test\+App::\+\+On\+Update (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Called each frame to update game logic. Override this method in derived classes to implement game-\/specific update logic. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & \doxylink{namespace_time}{Time} elapsed since the last frame in seconds \\
+\hline
+\end{DoxyParams}
+
+
+Implements \doxymbox{\hyperlink{class_engine_ab387292a25fb78fb3f2d4e20c735d734}{Engine}}.
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00167}{167}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_test_app_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_test_app_a9529a7fa5b7cbfed713e9fee987f8976}\index{TestApp@{TestApp}!m\_Scene@{m\_Scene}}
+\index{m\_Scene@{m\_Scene}!TestApp@{TestApp}}
+\doxysubsubsection{\texorpdfstring{m\_Scene}{m\_Scene}}
+{\footnotesize\ttfamily \label{class_test_app_a9529a7fa5b7cbfed713e9fee987f8976} 
+\doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope}}$<$\doxymbox{\hyperlink{class_test_scene}{Test\+Scene}}$>$ Test\+App::\+m\+\_\+\+Scene\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00234}{234}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{class_test_app_ac297ea99680c4afbcaeaf61c1f111f9a}\index{TestApp@{TestApp}!m\_Shader@{m\_Shader}}
+\index{m\_Shader@{m\_Shader}!TestApp@{TestApp}}
+\doxysubsubsection{\texorpdfstring{m\_Shader}{m\_Shader}}
+{\footnotesize\ttfamily \label{class_test_app_ac297ea99680c4afbcaeaf61c1f111f9a} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$\doxymbox{\hyperlink{class_shader}{Shader}}$>$ Test\+App::\+m\+\_\+\+Shader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00235}{235}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\Hypertarget{class_test_app_a9913f5e2ec0cdf38c110249de3efac5f}\index{TestApp@{TestApp}!m\_WireframeMode@{m\_WireframeMode}}
+\index{m\_WireframeMode@{m\_WireframeMode}!TestApp@{TestApp}}
+\doxysubsubsection{\texorpdfstring{m\_WireframeMode}{m\_WireframeMode}}
+{\footnotesize\ttfamily \label{class_test_app_a9913f5e2ec0cdf38c110249de3efac5f} 
+bool Test\+App::\+m\+\_\+\+Wireframe\+Mode\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{main_8cpp_source_l00236}{236}} of file \doxymbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+main.\+cpp\end{DoxyCompactItemize}

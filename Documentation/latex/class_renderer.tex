@@ -1,0 +1,175 @@
+\doxysection{Renderer Class Reference}
+\hypertarget{class_renderer}{}\label{class_renderer}\index{Renderer@{Renderer}}
+
+
+Core rendering system for managing draw calls and scene rendering.  
+
+
+
+
+{\ttfamily \+\#include $<$Renderer.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{class_renderer_a919dd3310b2427abe522ee40719dc37a}{Init}} ()
+\item 
+static void \doxymbox{\hyperlink{class_renderer_a1effb02d0aa8ba8fea3ddd236efb7363}{Shutdown}} ()
+\item 
+static void \doxymbox{\hyperlink{class_renderer_a3bbc15e7102c3f9f24bad78f6082e2a9}{Begin\+Scene}} (const \doxymbox{\hyperlink{class_camera}{Camera}} \&camera)
+\item 
+static void \doxymbox{\hyperlink{class_renderer_a84a3cbb5866423af896bd0e931f0fb84}{End\+Scene}} ()
+\item 
+static void \doxymbox{\hyperlink{class_renderer_abcb0ba35d12f59ab761be56b9b82a137}{Submit}} (const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&shader, const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_vertex_array}{Vertex\+Array}} $>$ \&vertex\+Array, const \doxymbox{\hyperlink{struct_matrix4}{Matrix4}} \&transform=Matrix4::\+\+Identity())
+\item 
+static void \doxymbox{\hyperlink{class_renderer_a182b82ff9e0e34311e81937c383d5f6f}{Set\+Clear\+Color}} (const \doxymbox{\hyperlink{struct_vector4}{Vector4}} \&color)
+\item 
+static void \doxymbox{\hyperlink{class_renderer_aeedbc2ffdccf51fa1384100446488746}{Clear}} ()
+\item 
+static void \doxymbox{\hyperlink{class_renderer_a395b93a6a0c9d7ebaf11d55b046550aa}{On\+Window\+Resize}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} width, \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} height)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope}}$<$ \doxymbox{\hyperlink{struct_scene_data}{Scene\+Data}} $>$ \doxymbox{\hyperlink{class_renderer_af6dd7f8361ee8a272d9007f5d19358a9}{s\+\_\+\+Scene\+Data}} = Create\+Scope$<$\doxymbox{\hyperlink{struct_scene_data}{Scene\+Data}}$>$()
+\begin{DoxyCompactList}\small\item\em Static instance holding current scene rendering data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Core rendering system for managing draw calls and scene rendering. 
+
+This class provides static methods for initializing the renderer, beginning and ending scenes, submitting draw calls, and handling window resize events. It manages the rendering state and coordinates with shaders and vertex arrays to render 3D objects to the screen.
+
+\doxylink{namespace_key}{Key} features:\+
+\begin{DoxyItemize}
+\item \doxylink{class_scene}{Scene} management (begin/\+end)
+\item Draw call submission
+\item Clear color and buffer clearing
+\item \doxylink{class_window}{Window} resize handling
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+All methods are static; no instances of \doxylink{class_renderer}{Renderer} should be created. 
+
+Must be initialized via Init() before use. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_renderer_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Renderer.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_renderer_8h_source_l00056}{56}} of file \doxymbox{\hyperlink{_renderer_8h_source}{Renderer.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_renderer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_renderer_a3bbc15e7102c3f9f24bad78f6082e2a9}\index{Renderer@{Renderer}!BeginScene@{BeginScene}}
+\index{BeginScene@{BeginScene}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{BeginScene()}{BeginScene()}}
+{\footnotesize\ttfamily \label{class_renderer_a3bbc15e7102c3f9f24bad78f6082e2a9} 
+void Renderer::\+\+Begin\+Scene (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_camera}{Camera}} \&}]{camera}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_renderer_8cpp_source_l00018}{18}} of file \doxymbox{\hyperlink{_renderer_8cpp_source}{Renderer.\+cpp}}.
+
+\Hypertarget{class_renderer_aeedbc2ffdccf51fa1384100446488746}\index{Renderer@{Renderer}!Clear@{Clear}}
+\index{Clear@{Clear}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{class_renderer_aeedbc2ffdccf51fa1384100446488746} 
+void Renderer::\+\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_renderer_8cpp_source_l00071}{71}} of file \doxymbox{\hyperlink{_renderer_8cpp_source}{Renderer.\+cpp}}.
+
+\Hypertarget{class_renderer_a84a3cbb5866423af896bd0e931f0fb84}\index{Renderer@{Renderer}!EndScene@{EndScene}}
+\index{EndScene@{EndScene}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{EndScene()}{EndScene()}}
+{\footnotesize\ttfamily \label{class_renderer_a84a3cbb5866423af896bd0e931f0fb84} 
+void Renderer::\+\+End\+Scene (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_renderer_8cpp_source_l00022}{22}} of file \doxymbox{\hyperlink{_renderer_8cpp_source}{Renderer.\+cpp}}.
+
+\Hypertarget{class_renderer_a919dd3310b2427abe522ee40719dc37a}\index{Renderer@{Renderer}!Init@{Init}}
+\index{Init@{Init}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_renderer_a919dd3310b2427abe522ee40719dc37a} 
+void Renderer::\+\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_renderer_8cpp_source_l00006}{6}} of file \doxymbox{\hyperlink{_renderer_8cpp_source}{Renderer.\+cpp}}.
+
+\Hypertarget{class_renderer_a395b93a6a0c9d7ebaf11d55b046550aa}\index{Renderer@{Renderer}!OnWindowResize@{OnWindowResize}}
+\index{OnWindowResize@{OnWindowResize}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{OnWindowResize()}{OnWindowResize()}}
+{\footnotesize\ttfamily \label{class_renderer_a395b93a6a0c9d7ebaf11d55b046550aa} 
+void Renderer::\+\+On\+Window\+Resize (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{width}{, }\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_renderer_8cpp_source_l00075}{75}} of file \doxymbox{\hyperlink{_renderer_8cpp_source}{Renderer.\+cpp}}.
+
+\Hypertarget{class_renderer_a182b82ff9e0e34311e81937c383d5f6f}\index{Renderer@{Renderer}!SetClearColor@{SetClearColor}}
+\index{SetClearColor@{SetClearColor}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{SetClearColor()}{SetClearColor()}}
+{\footnotesize\ttfamily \label{class_renderer_a182b82ff9e0e34311e81937c383d5f6f} 
+void Renderer::\+\+Set\+Clear\+Color (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector4}{Vector4}} \&}]{color}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_renderer_8cpp_source_l00067}{67}} of file \doxymbox{\hyperlink{_renderer_8cpp_source}{Renderer.\+cpp}}.
+
+\Hypertarget{class_renderer_a1effb02d0aa8ba8fea3ddd236efb7363}\index{Renderer@{Renderer}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily \label{class_renderer_a1effb02d0aa8ba8fea3ddd236efb7363} 
+void Renderer::\+\+Shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_renderer_8cpp_source_l00012}{12}} of file \doxymbox{\hyperlink{_renderer_8cpp_source}{Renderer.\+cpp}}.
+
+\Hypertarget{class_renderer_abcb0ba35d12f59ab761be56b9b82a137}\index{Renderer@{Renderer}!Submit@{Submit}}
+\index{Submit@{Submit}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{Submit()}{Submit()}}
+{\footnotesize\ttfamily \label{class_renderer_abcb0ba35d12f59ab761be56b9b82a137} 
+void Renderer::\+\+Submit (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&}]{shader}{, }\item[{const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_vertex_array}{Vertex\+Array}} $>$ \&}]{vertex\+Array}{, }\item[{const \doxymbox{\hyperlink{struct_matrix4}{Matrix4}} \&}]{transform}{ = {\ttfamily Matrix4:\+:\+Identity()}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_renderer_8cpp_source_l00026}{26}} of file \doxymbox{\hyperlink{_renderer_8cpp_source}{Renderer.\+cpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_renderer_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_renderer_af6dd7f8361ee8a272d9007f5d19358a9}\index{Renderer@{Renderer}!s\_SceneData@{s\_SceneData}}
+\index{s\_SceneData@{s\_SceneData}!Renderer@{Renderer}}
+\doxysubsubsection{\texorpdfstring{s\_SceneData}{s\_SceneData}}
+{\footnotesize\ttfamily \label{class_renderer_af6dd7f8361ee8a272d9007f5d19358a9} 
+\doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope}}$<$ \doxymbox{\hyperlink{struct_scene_data}{Scene\+Data}} $>$ Renderer::\+s\+\_\+\+Scene\+Data = Create\+Scope$<$\doxymbox{\hyperlink{struct_scene_data}{Scene\+Data}}$>$()\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Static instance holding current scene rendering data. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_renderer_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Renderer.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_renderer_8h_source_l00201}{201}} of file \doxymbox{\hyperlink{_renderer_8h_source}{Renderer.\+h}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Renderer.\+h\item 
+src/\+\+Graphics/\+Renderer.\+cpp\end{DoxyCompactItemize}

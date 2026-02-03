@@ -1,0 +1,223 @@
+.TH "Quaternion" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Quaternion
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQuaternion\fP (\fBf32\fP x, \fBf32\fP y, \fBf32\fP z, \fBf32\fP w)"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP \fBoperator+\fP (const \fBQuaternion\fP &other) const"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP \fBoperator*\fP (const \fBQuaternion\fP &other) const"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP \fBoperator*\fP (\fBf32\fP scalar) const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBoperator*\fP (const \fBVector3\fP &vec) const"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP & \fBoperator*=\fP (const \fBQuaternion\fP &other)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBQuaternion\fP &other) const"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBLengthSquared\fP () const"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBLength\fP () const"
+.br
+.ti -1c
+.RI "void \fBNormalize\fP ()"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP \fBNormalized\fP () const"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP \fBConjugate\fP () const"
+.br
+.ti -1c
+.RI "\fBQuaternion\fP \fBInverse\fP () const"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBDot\fP (const \fBQuaternion\fP &other) const"
+.br
+.ti -1c
+.RI "\fBMatrix4\fP \fBToMatrix\fP () const"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBQuaternion\fP \fBIdentity\fP ()"
+.br
+.ti -1c
+.RI "static \fBQuaternion\fP \fBFromAxisAngle\fP (const \fBVector3\fP &axis, \fBf32\fP angle)"
+.br
+.ti -1c
+.RI "static \fBQuaternion\fP \fBFromEuler\fP (const \fBVector3\fP &euler)"
+.br
+.ti -1c
+.RI "static \fBQuaternion\fP \fBLerp\fP (const \fBQuaternion\fP &a, const \fBQuaternion\fP &b, \fBf32\fP t)"
+.br
+.ti -1c
+.RI "static \fBQuaternion\fP \fBSlerp\fP (const \fBQuaternion\fP &a, const \fBQuaternion\fP &b, \fBf32\fP t)"
+.br
+.ti -1c
+.RI "static \fBQuaternion\fP \fBLookRotation\fP (const \fBVector3\fP &forward, const \fBVector3\fP &up=Vector3::Up)"
+.br
+.ti -1c
+.RI "static \fBQuaternion\fP \fBFromRotationMatrix\fP (const \fBMatrix4\fP &matrix)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBf32\fP \fBx\fP"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBy\fP"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBz\fP"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBw\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB6\fP of file \fBQuaternion\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Quaternion::Quaternion ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB9\fP of file \fBQuaternion\&.h\fP\&.
+.SS "Quaternion::Quaternion (\fBf32\fP x, \fBf32\fP y, \fBf32\fP z, \fBf32\fP w)\fR [inline]\fP"
+
+.PP
+Definition at line \fB10\fP of file \fBQuaternion\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQuaternion\fP Quaternion::Conjugate () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB69\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBf32\fP Quaternion::Dot (const \fBQuaternion\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB79\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBQuaternion\fP Quaternion::FromAxisAngle (const \fBVector3\fP & axis, \fBf32\fP angle)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB110\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBQuaternion\fP Quaternion::FromEuler (const \fBVector3\fP & euler)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB118\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBQuaternion\fP Quaternion::FromRotationMatrix (const \fBMatrix4\fP & matrix)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB182\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBQuaternion\fP Quaternion::Identity ()\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB106\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBQuaternion\fP Quaternion::Inverse () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB73\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBf32\fP Quaternion::Length () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB51\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBf32\fP Quaternion::LengthSquared () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB47\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBQuaternion\fP Quaternion::Lerp (const \fBQuaternion\fP & a, const \fBQuaternion\fP & b, \fBf32\fP t)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB135\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBQuaternion\fP Quaternion::LookRotation (const \fBVector3\fP & forward, const \fBVector3\fP & up = \fRVector3::Up\fP)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB168\fP of file \fBQuaternion\&.h\fP\&.
+.SS "void Quaternion::Normalize ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB55\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBQuaternion\fP Quaternion::Normalized () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB63\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBQuaternion\fP Quaternion::operator* (const \fBQuaternion\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB17\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBVector3\fP Quaternion::operator* (const \fBVector3\fP & vec) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB30\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBQuaternion\fP Quaternion::operator* (\fBf32\fP scalar) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB26\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBQuaternion\fP & Quaternion::operator*= (const \fBQuaternion\fP & other)\fR [inline]\fP"
+
+.PP
+Definition at line \fB36\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBQuaternion\fP Quaternion::operator+ (const \fBQuaternion\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB13\fP of file \fBQuaternion\&.h\fP\&.
+.SS "bool Quaternion::operator== (const \fBQuaternion\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB41\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBQuaternion\fP Quaternion::Slerp (const \fBQuaternion\fP & a, const \fBQuaternion\fP & b, \fBf32\fP t)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB140\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBMatrix4\fP Quaternion::ToMatrix () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB83\fP of file \fBQuaternion\&.h\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBf32\fP Quaternion::w"
+
+.PP
+Definition at line \fB7\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBf32\fP Quaternion::x"
+
+.PP
+Definition at line \fB7\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBf32\fP Quaternion::y"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB7\fP of file \fBQuaternion\&.h\fP\&.
+.SS "\fBf32\fP Quaternion::z"
+
+.PP
+Definition at line \fB7\fP of file \fBQuaternion\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

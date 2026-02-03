@@ -1,0 +1,141 @@
+\doxysection{Plane Struct Reference}
+\hypertarget{struct_plane}{}\label{struct_plane}\index{Plane@{Plane}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_plane_a79b26a1d57d05317ca1f0533890b989e}{Plane}} (const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&normal, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} distance)
+\item 
+\doxymbox{\hyperlink{struct_plane_a961d265c45342a4b5e61b1de98d5a8ef}{Plane}} (const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&point, const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&normal)
+\item 
+\doxymbox{\hyperlink{struct_plane_a578e3974baead937160f44b304889719}{Plane}} (const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&a, const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&b, const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&c)
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{struct_plane_ada61ccbbe6bc333cf16f9568d7e655cd}{Get\+Distance\+To\+Point}} (const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&point) const
+\item 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} \doxymbox{\hyperlink{struct_plane_a53948354e79582bb1b07001241888abd}{Closest\+Point}} (const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&point) const
+\item 
+bool \doxymbox{\hyperlink{struct_plane_a5a9d6ea6ee76cd68f8a2e4abea956963}{Get\+Side}} (const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&point) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} \doxymbox{\hyperlink{struct_plane_a338da57ef85d4d8d32d80a8674e90ab7}{normal}}
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{struct_plane_acfd35fad826ed809518e8fa32167e4fd}{distance}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{_plane_8h_source_l00004}{4}} of file \doxymbox{\hyperlink{_plane_8h_source}{Plane.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{struct_plane_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_plane_acac0d9c003e0ab10d07b146c3566a0c7}\index{Plane@{Plane}!Plane@{Plane}}
+\index{Plane@{Plane}!Plane@{Plane}}
+\doxysubsubsection{\texorpdfstring{Plane()}{Plane()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{struct_plane_acac0d9c003e0ab10d07b146c3566a0c7} 
+Plane::\+\+Plane (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_plane_8h_source_l00008}{8}} of file \doxymbox{\hyperlink{_plane_8h_source}{Plane.\+h}}.
+
+\Hypertarget{struct_plane_a79b26a1d57d05317ca1f0533890b989e}\index{Plane@{Plane}!Plane@{Plane}}
+\index{Plane@{Plane}!Plane@{Plane}}
+\doxysubsubsection{\texorpdfstring{Plane()}{Plane()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{struct_plane_a79b26a1d57d05317ca1f0533890b989e} 
+Plane::\+\+Plane (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{normal}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{distance}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_plane_8h_source_l00009}{9}} of file \doxymbox{\hyperlink{_plane_8h_source}{Plane.\+h}}.
+
+\Hypertarget{struct_plane_a961d265c45342a4b5e61b1de98d5a8ef}\index{Plane@{Plane}!Plane@{Plane}}
+\index{Plane@{Plane}!Plane@{Plane}}
+\doxysubsubsection{\texorpdfstring{Plane()}{Plane()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{struct_plane_a961d265c45342a4b5e61b1de98d5a8ef} 
+Plane::\+\+Plane (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{point}{, }\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{normal}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_plane_8h_source_l00010}{10}} of file \doxymbox{\hyperlink{_plane_8h_source}{Plane.\+h}}.
+
+\Hypertarget{struct_plane_a578e3974baead937160f44b304889719}\index{Plane@{Plane}!Plane@{Plane}}
+\index{Plane@{Plane}!Plane@{Plane}}
+\doxysubsubsection{\texorpdfstring{Plane()}{Plane()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{struct_plane_a578e3974baead937160f44b304889719} 
+Plane::\+\+Plane (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{a}{, }\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{b}{, }\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{c}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_plane_8h_source_l00011}{11}} of file \doxymbox{\hyperlink{_plane_8h_source}{Plane.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{struct_plane_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_plane_a53948354e79582bb1b07001241888abd}\index{Plane@{Plane}!ClosestPoint@{ClosestPoint}}
+\index{ClosestPoint@{ClosestPoint}!Plane@{Plane}}
+\doxysubsubsection{\texorpdfstring{ClosestPoint()}{ClosestPoint()}}
+{\footnotesize\ttfamily \label{struct_plane_a53948354e79582bb1b07001241888abd} 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} Plane::\+\+Closest\+Point (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{point}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_plane_8h_source_l00020}{20}} of file \doxymbox{\hyperlink{_plane_8h_source}{Plane.\+h}}.
+
+\Hypertarget{struct_plane_ada61ccbbe6bc333cf16f9568d7e655cd}\index{Plane@{Plane}!GetDistanceToPoint@{GetDistanceToPoint}}
+\index{GetDistanceToPoint@{GetDistanceToPoint}!Plane@{Plane}}
+\doxysubsubsection{\texorpdfstring{GetDistanceToPoint()}{GetDistanceToPoint()}}
+{\footnotesize\ttfamily \label{struct_plane_ada61ccbbe6bc333cf16f9568d7e655cd} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Plane::\+\+Get\+Distance\+To\+Point (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{point}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_plane_8h_source_l00016}{16}} of file \doxymbox{\hyperlink{_plane_8h_source}{Plane.\+h}}.
+
+\Hypertarget{struct_plane_a5a9d6ea6ee76cd68f8a2e4abea956963}\index{Plane@{Plane}!GetSide@{GetSide}}
+\index{GetSide@{GetSide}!Plane@{Plane}}
+\doxysubsubsection{\texorpdfstring{GetSide()}{GetSide()}}
+{\footnotesize\ttfamily \label{struct_plane_a5a9d6ea6ee76cd68f8a2e4abea956963} 
+bool Plane::\+\+Get\+Side (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{point}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_plane_8h_source_l00024}{24}} of file \doxymbox{\hyperlink{_plane_8h_source}{Plane.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_plane_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_plane_acfd35fad826ed809518e8fa32167e4fd}\index{Plane@{Plane}!distance@{distance}}
+\index{distance@{distance}!Plane@{Plane}}
+\doxysubsubsection{\texorpdfstring{distance}{distance}}
+{\footnotesize\ttfamily \label{struct_plane_acfd35fad826ed809518e8fa32167e4fd} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Plane::\+distance}
+
+
+
+Definition at line \doxymbox{\hyperlink{_plane_8h_source_l00006}{6}} of file \doxymbox{\hyperlink{_plane_8h_source}{Plane.\+h}}.
+
+\Hypertarget{struct_plane_a338da57ef85d4d8d32d80a8674e90ab7}\index{Plane@{Plane}!normal@{normal}}
+\index{normal@{normal}!Plane@{Plane}}
+\doxysubsubsection{\texorpdfstring{normal}{normal}}
+{\footnotesize\ttfamily \label{struct_plane_a338da57ef85d4d8d32d80a8674e90ab7} 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} Plane::\+normal}
+
+
+
+Definition at line \doxymbox{\hyperlink{_plane_8h_source_l00005}{5}} of file \doxymbox{\hyperlink{_plane_8h_source}{Plane.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Math/\+Plane.\+h\end{DoxyCompactItemize}

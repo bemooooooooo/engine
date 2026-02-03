@@ -1,0 +1,225 @@
+\doxysection{Quaternion.\+h}
+\hypertarget{_quaternion_8h_source}{}\label{_quaternion_8h_source}\index{src/Math/Quaternion.h@{src/Math/Quaternion.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}Math.h"{}}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}Vector3.h"{}}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}Matrix4.h"{}}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00006}\doxymbox{\hyperlink{struct_quaternion}{00006}}\ \textcolor{keyword}{struct\ }Quaternion\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00007}00007\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ x,\ y,\ z,\ w;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00008}00008\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00009}00009\ \ \ \ \ Quaternion()\ :\ x(0),\ y(0),\ z(0),\ w(1)\ \{\}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00010}00010\ \ \ \ \ Quaternion(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ x,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ y,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ z,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ w)\ :\ x(x),\ y(y),\ z(z),\ w(w)\ \{\}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00011}00011\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ Базовые\ операции}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00013}00013\ \ \ \ \ Quaternion\ operator+(\textcolor{keyword}{const}\ Quaternion\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(x\ +\ other.x,\ y\ +\ other.y,\ z\ +\ other.z,\ w\ +\ other.w);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00016}00016\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00017}00017\ \ \ \ \ Quaternion\ operator*(\textcolor{keyword}{const}\ Quaternion\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ w\ *\ other.x\ +\ x\ *\ other.w\ +\ y\ *\ other.z\ -\/\ z\ *\ other.y,}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ w\ *\ other.y\ -\/\ x\ *\ other.z\ +\ y\ *\ other.w\ +\ z\ *\ other.x,}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ w\ *\ other.z\ +\ x\ *\ other.y\ -\/\ y\ *\ other.x\ +\ z\ *\ other.w,}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ w\ *\ other.w\ -\/\ x\ *\ other.x\ -\/\ y\ *\ other.y\ -\/\ z\ *\ other.z}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00023}00023\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00025}00025\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00026}00026\ \ \ \ \ Quaternion\ operator*(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ scalar)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(x\ *\ scalar,\ y\ *\ scalar,\ z\ *\ scalar,\ w\ *\ scalar);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00029}00029\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00030}00030\ \ \ \ \ \doxymbox{\hyperlink{struct_vector3}{Vector3}}\ operator*(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}\&\ vec)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00031}00031\ \ \ \ \ \ \ \ \ Quaternion\ p(vec.x,\ vec.y,\ vec.z,\ 0.0f);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00032}00032\ \ \ \ \ \ \ \ \ Quaternion\ result\ =\ (*this)\ *\ p\ *\ Conjugate();}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}(result.x,\ result.y,\ result.z);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00035}00035\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00036}00036\ \ \ \ \ Quaternion\&\ operator*=(\textcolor{keyword}{const}\ Quaternion\&\ other)\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ *\textcolor{keyword}{this}\ =\ *\textcolor{keyword}{this}\ *\ other;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00040}00040\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ Quaternion\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Math::Approximately(x,\ other.x)\ \&\&\ Math::Approximately(y,\ other.y)\ \&\&\ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Math::Approximately(z,\ other.z)\ \&\&\ Math::Approximately(w,\ other.w);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00045}00045\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\ Методы}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00047}00047\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ LengthSquared()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x\ *\ x\ +\ y\ *\ y\ +\ z\ *\ z\ +\ w\ *\ w;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00050}00050\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00051}00051\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ Length()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Math::Sqrt(LengthSquared());}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00054}00054\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{void}\ Normalize()\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ len\ =\ Length();}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (len\ >\ \doxymbox{\hyperlink{namespace_math_accab87ed706920fc8ced5c0fef4a16cf}{Math::EPSILON}})\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ invLen\ =\ 1.0f\ /\ len;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ x\ *=\ invLen;\ y\ *=\ invLen;\ z\ *=\ invLen;\ w\ *=\ invLen;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00062}00062\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00063}00063\ \ \ \ \ Quaternion\ Normalized()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ Quaternion\ result\ =\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00065}00065\ \ \ \ \ \ \ \ \ result.Normalize();}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00068}00068\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00069}00069\ \ \ \ \ Quaternion\ Conjugate()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(-\/x,\ -\/y,\ -\/z,\ w);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00072}00072\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00073}00073\ \ \ \ \ Quaternion\ Inverse()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ lenSq\ =\ LengthSquared();}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Math::NearZero(lenSq))\ \textcolor{keywordflow}{return}\ Identity();}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Conjugate()\ *\ (1.0f\ /\ lenSq);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00077}00077\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00078}00078\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00079}00079\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ Dot(\textcolor{keyword}{const}\ Quaternion\&\ other)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ x\ *\ other.x\ +\ y\ *\ other.y\ +\ z\ *\ other.z\ +\ w\ *\ other.w;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00082}00082\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00083}00083\ \ \ \ \ \doxymbox{\hyperlink{struct_matrix4}{Matrix4}}\ ToMatrix()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00084}00084\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_matrix4}{Matrix4}}\ result;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00085}00085\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00086}00086\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ xx\ =\ x\ *\ x,\ yy\ =\ y\ *\ y,\ zz\ =\ z\ *\ z;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00087}00087\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ xy\ =\ x\ *\ y,\ xz\ =\ x\ *\ z,\ xw\ =\ x\ *\ w;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00088}00088\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ yz\ =\ y\ *\ z,\ yw\ =\ y\ *\ w,\ zw\ =\ z\ *\ w;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00089}00089\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00090}00090\ \ \ \ \ \ \ \ \ result.m[0]\ =\ 1.0f\ -\/\ 2.0f\ *\ (yy\ +\ zz);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00091}00091\ \ \ \ \ \ \ \ \ result.m[1]\ =\ 2.0f\ *\ (xy\ -\/\ zw);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00092}00092\ \ \ \ \ \ \ \ \ result.m[2]\ =\ 2.0f\ *\ (xz\ +\ yw);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00094}00094\ \ \ \ \ \ \ \ \ result.m[4]\ =\ 2.0f\ *\ (xy\ +\ zw);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ result.m[5]\ =\ 1.0f\ -\/\ 2.0f\ *\ (xx\ +\ zz);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00096}00096\ \ \ \ \ \ \ \ \ result.m[6]\ =\ 2.0f\ *\ (yz\ -\/\ xw);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00097}00097\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ result.m[8]\ =\ 2.0f\ *\ (xz\ -\/\ yw);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ result.m[9]\ =\ 2.0f\ *\ (yz\ +\ xw);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ result.m[10]\ =\ 1.0f\ -\/\ 2.0f\ *\ (xx\ +\ yy);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00101}00101\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00103}00103\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00104}00104\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00105}00105\ \ \ \ \ \textcolor{comment}{//\ Статические\ методы}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00106}00106\ \ \ \ \ \textcolor{keyword}{static}\ Quaternion\ Identity()\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(0,\ 0,\ 0,\ 1);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00108}00108\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00109}00109\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00110}00110\ \ \ \ \ \textcolor{keyword}{static}\ Quaternion\ FromAxisAngle(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}\&\ axis,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ angle)\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00111}00111\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ halfAngle\ =\ angle\ *\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00112}00112\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ s\ =\ \doxymbox{\hyperlink{namespace_math_a8f4dbcdd74ef3ce8de71b8407a654f2b}{Math::Sin}}(halfAngle);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00113}00113\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_vector3}{Vector3}}\ n\ =\ axis.Normalized();}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00114}00114\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(n.x\ *\ s,\ n.y\ *\ s,\ n.z\ *\ s,\ \doxymbox{\hyperlink{namespace_math_a85d7111dae78d8c454fdb9b6fba22a69}{Math::Cos}}(halfAngle));}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00116}00116\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00117}00117\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00118}00118\ \ \ \ \ \textcolor{keyword}{static}\ Quaternion\ FromEuler(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}\&\ euler)\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00119}00119\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ halfX\ =\ euler.x\ *\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00120}00120\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ halfY\ =\ euler.y\ *\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00121}00121\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ halfZ\ =\ euler.z\ *\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00123}00123\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ cx\ =\ \doxymbox{\hyperlink{namespace_math_a85d7111dae78d8c454fdb9b6fba22a69}{Math::Cos}}(halfX),\ sx\ =\ \doxymbox{\hyperlink{namespace_math_a8f4dbcdd74ef3ce8de71b8407a654f2b}{Math::Sin}}(halfX);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00124}00124\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ cy\ =\ \doxymbox{\hyperlink{namespace_math_a85d7111dae78d8c454fdb9b6fba22a69}{Math::Cos}}(halfY),\ sy\ =\ \doxymbox{\hyperlink{namespace_math_a8f4dbcdd74ef3ce8de71b8407a654f2b}{Math::Sin}}(halfY);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00125}00125\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ cz\ =\ \doxymbox{\hyperlink{namespace_math_a85d7111dae78d8c454fdb9b6fba22a69}{Math::Cos}}(halfZ),\ sz\ =\ \doxymbox{\hyperlink{namespace_math_a8f4dbcdd74ef3ce8de71b8407a654f2b}{Math::Sin}}(halfZ);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00126}00126\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Quaternion(}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ sx\ *\ cy\ *\ cz\ -\/\ cx\ *\ sy\ *\ sz,}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ cx\ *\ sy\ *\ cz\ +\ sx\ *\ cy\ *\ sz,}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ cx\ *\ cy\ *\ sz\ -\/\ sx\ *\ sy\ *\ cz,}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ cx\ *\ cy\ *\ cz\ +\ sx\ *\ sy\ *\ sz}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00132}00132\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00133}00133\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00134}00134\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00135}00135\ \ \ \ \ \textcolor{keyword}{static}\ Quaternion\ Lerp(\textcolor{keyword}{const}\ Quaternion\&\ a,\ \textcolor{keyword}{const}\ Quaternion\&\ b,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ t)\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00136}00136\ \ \ \ \ \ \ \ \ t\ =\ Math::Clamp(t,\ 0.0f,\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (a\ *\ (1.0f\ -\/\ t)\ +\ b\ *\ t).Normalized();}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00138}00138\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00139}00139\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00140}00140\ \ \ \ \ \textcolor{keyword}{static}\ Quaternion\ Slerp(\textcolor{keyword}{const}\ Quaternion\&\ a,\ \textcolor{keyword}{const}\ Quaternion\&\ b,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ t)\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00141}00141\ \ \ \ \ \ \ \ \ t\ =\ Math::Clamp(t,\ 0.0f,\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00142}00142\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00143}00143\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ cosHalfTheta\ =\ a.Dot(b);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00144}00144\ \ \ \ \ \ \ \ \ Quaternion\ b2\ =\ b;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00145}00145\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cosHalfTheta\ <\ 0.0f)\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ b2\ =\ b\ *\ -\/1.0f;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ cosHalfTheta\ =\ -\/cosHalfTheta;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00149}00149\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00150}00150\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00151}00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cosHalfTheta\ >\ 0.9999f)\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Lerp(a,\ b2,\ t);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00153}00153\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00154}00154\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00155}00155\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ halfTheta\ =\ \doxymbox{\hyperlink{namespace_math_ad0632ff66392f0559dac6556a8f982ec}{Math::ACos}}(cosHalfTheta);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00156}00156\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ sinHalfTheta\ =\ Math::Sqrt(1.0f\ -\/\ cosHalfTheta\ *\ cosHalfTheta);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00157}00157\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Math::NearZero(sinHalfTheta))\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Lerp(a,\ b2,\ t);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00160}00160\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00161}00161\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00162}00162\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ ratioA\ =\ \doxymbox{\hyperlink{namespace_math_a8f4dbcdd74ef3ce8de71b8407a654f2b}{Math::Sin}}((1.0f\ -\/\ t)\ *\ halfTheta)\ /\ sinHalfTheta;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00163}00163\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ ratioB\ =\ \doxymbox{\hyperlink{namespace_math_a8f4dbcdd74ef3ce8de71b8407a654f2b}{Math::Sin}}(t\ *\ halfTheta)\ /\ sinHalfTheta;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00164}00164\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (a\ *\ ratioA\ +\ b2\ *\ ratioB).Normalized();}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00166}00166\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00167}00167\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00168}00168\ \ \ \ \ \textcolor{keyword}{static}\ Quaternion\ LookRotation(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}\&\ forward,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_vector3}{Vector3}}\&\ up\ =\ Vector3::Up)\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00169}00169\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_vector3}{Vector3}}\ f\ =\ forward.Normalized();}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00170}00170\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_vector3}{Vector3}}\ u\ =\ up.Normalized();}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00171}00171\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_vector3}{Vector3}}\ r\ =\ Vector3::Cross(u,\ f);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00172}00172\ \ \ \ \ \ \ \ \ u\ =\ Vector3::Cross(f,\ r);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00173}00173\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00174}00174\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_matrix4}{Matrix4}}\ m;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00175}00175\ \ \ \ \ \ \ \ \ m.m[0]\ =\ r.x;\ m.m[1]\ =\ r.y;\ m.m[2]\ =\ r.z;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00176}00176\ \ \ \ \ \ \ \ \ m.m[4]\ =\ u.x;\ m.m[5]\ =\ u.y;\ m.m[6]\ =\ u.z;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00177}00177\ \ \ \ \ \ \ \ \ m.m[8]\ =\ f.x;\ m.m[9]\ =\ f.y;\ m.m[10]\ =\ f.z;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00178}00178\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ FromRotationMatrix(m);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00180}00180\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00181}00181\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00182}00182\ \ \ \ \ \textcolor{keyword}{static}\ Quaternion\ FromRotationMatrix(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_matrix4}{Matrix4}}\&\ matrix)\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00183}00183\ \ \ \ \ Quaternion\ result;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00184}00184\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ trace\ =\ matrix(0,\ 0)\ +\ matrix(1,\ 1)\ +\ matrix(2,\ 2);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00185}00185\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00186}00186\ \ \ \ \ \textcolor{keywordflow}{if}\ (trace\ >\ 0.0f)\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00187}00187\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ s\ =\ 0.5f\ /\ Math::Sqrt(trace\ +\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00188}00188\ \ \ \ \ \ \ \ \ result.w\ =\ 0.25f\ /\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00189}00189\ \ \ \ \ \ \ \ \ result.x\ =\ (matrix(2,\ 1)\ -\/\ matrix(1,\ 2))\ *\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00190}00190\ \ \ \ \ \ \ \ \ result.y\ =\ (matrix(0,\ 2)\ -\/\ matrix(2,\ 0))\ *\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00191}00191\ \ \ \ \ \ \ \ \ result.z\ =\ (matrix(1,\ 0)\ -\/\ matrix(0,\ 1))\ *\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00192}00192\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00193}00193\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00194}00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matrix(0,\ 0)\ >\ matrix(1,\ 1)\ \&\&\ matrix(0,\ 0)\ >\ matrix(2,\ 2))\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ s\ =\ 2.0f\ *\ Math::Sqrt(1.0f\ +\ matrix(0,\ 0)\ -\/\ matrix(1,\ 1)\ -\/\ matrix(2,\ 2));}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ result.w\ =\ (matrix(2,\ 1)\ -\/\ matrix(1,\ 2))\ /\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ result.x\ =\ 0.25f\ *\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ result.y\ =\ (matrix(0,\ 1)\ +\ matrix(1,\ 0))\ /\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ result.z\ =\ (matrix(0,\ 2)\ +\ matrix(2,\ 0))\ /\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00200}00200\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00201}00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (matrix(1,\ 1)\ >\ matrix(2,\ 2))\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ s\ =\ 2.0f\ *\ Math::Sqrt(1.0f\ +\ matrix(1,\ 1)\ -\/\ matrix(0,\ 0)\ -\/\ matrix(2,\ 2));}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ result.w\ =\ (matrix(0,\ 2)\ -\/\ matrix(2,\ 0))\ /\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ result.x\ =\ (matrix(0,\ 1)\ +\ matrix(1,\ 0))\ /\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ result.y\ =\ 0.25f\ *\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ result.z\ =\ (matrix(1,\ 2)\ +\ matrix(2,\ 1))\ /\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00207}00207\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00208}00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ s\ =\ 2.0f\ *\ Math::Sqrt(1.0f\ +\ matrix(2,\ 2)\ -\/\ matrix(0,\ 0)\ -\/\ matrix(1,\ 1));}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ result.w\ =\ (matrix(1,\ 0)\ -\/\ matrix(0,\ 1))\ /\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ result.x\ =\ (matrix(0,\ 2)\ +\ matrix(2,\ 0))\ /\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ result.y\ =\ (matrix(1,\ 2)\ +\ matrix(2,\ 1))\ /\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ result.z\ =\ 0.25f\ *\ s;}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00214}00214\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00215}00215\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00216}00216\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00217}00217\ \ \ \ \ \textcolor{keywordflow}{return}\ result.Normalized();}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00218}00218\ \}}
+\DoxyCodeLine{\Hypertarget{_quaternion_8h_source_l00219}00219\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,92 @@
+.TH "VertexBufferElement" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+VertexBufferElement \- Represents a single element in a vertex buffer layout\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <VertexArray\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBu32\fP \fBGetSizeOfType\fP (\fBu32\fP \fBtype\fP)"
+.br
+.RI "Gets the size in bytes of the given OpenGL data type\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBu32\fP \fBtype\fP"
+.br
+.RI "The OpenGL data type of the vertex attribute (e\&.g\&., GL_FLOAT)\&. "
+.ti -1c
+.RI "\fBu32\fP \fBcount\fP"
+.br
+.RI "The number of components in the vertex attribute (e\&.g\&., 3 for vec3)\&. "
+.ti -1c
+.RI "\fBu8\fP \fBnormalized\fP"
+.br
+.RI "Whether the attribute data should be normalized (GL_TRUE or GL_FALSE)\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a single element in a vertex buffer layout\&. 
+
+Contains the type, count, and normalization flag for a vertex attribute\&. 
+.PP
+Definition at line \fB16\fP of file \fBVertexArray\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBu32\fP VertexBufferElement::GetSizeOfType (\fBu32\fP type)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Gets the size in bytes of the given OpenGL data type\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI\fBtype\fP\fP The OpenGL data type (e\&.g\&., GL_FLOAT) 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBu32\fP The size in bytes of the type 
+.RE
+.PP
+
+.PP
+Definition at line \fB42\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+References \fBtype\fP\&.
+.PP
+Referenced by \fBVertexArray::AddVertexBuffer()\fP, and \fBVertexBufferLayout::Push()\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBu32\fP VertexBufferElement::count"
+
+.PP
+The number of components in the vertex attribute (e\&.g\&., 3 for vec3)\&. 
+.PP
+Definition at line \fB27\fP of file \fBVertexArray\&.h\fP\&.
+.SS "\fBu8\fP VertexBufferElement::normalized"
+
+.PP
+Whether the attribute data should be normalized (GL_TRUE or GL_FALSE)\&. 
+.PP
+Definition at line \fB34\fP of file \fBVertexArray\&.h\fP\&.
+.SS "\fBu32\fP VertexBufferElement::type"
+
+.PP
+The OpenGL data type of the vertex attribute (e\&.g\&., GL_FLOAT)\&. 
+.PP
+Definition at line \fB21\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+Referenced by \fBGetSizeOfType()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

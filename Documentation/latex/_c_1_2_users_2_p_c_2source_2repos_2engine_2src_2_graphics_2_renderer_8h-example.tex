@@ -1,0 +1,225 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Renderer.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_renderer_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_renderer_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Renderer::Init();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (running)\ \{}
+\DoxyCodeLine{\ \ \ \ Renderer::BeginScene(camera);}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ Renderer::Submit(shader,\ vertexArray,\ transform);}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ Renderer::EndScene();}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{Renderer::Shutdown();}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Core/Base.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}RenderCommand.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Shader.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}VertexArray.h"{}}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @struct\ SceneData}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Structure\ holding\ per-\/scene\ rendering\ data.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Contains\ the\ view-\/projection\ matrix\ used\ for\ transforming\ world\ coordinates}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ to\ clip\ space\ during\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_scene_data}{SceneData}}\ \{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ viewProjectionMatrix}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ combined\ view\ and\ projection\ matrix\ for\ the\ current\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ Matrix4\ \doxymbox{\hyperlink{struct_scene_data_a9755133b130139974c3ae0d7f0baea4e}{viewProjectionMatrix}};}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ Renderer}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Core\ rendering\ system\ for\ managing\ draw\ calls\ and\ scene\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ class\ provides\ static\ methods\ for\ initializing\ the\ renderer,\ beginning}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ and\ ending\ scenes,\ submitting\ draw\ calls,\ and\ handling\ window\ resize\ events.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ It\ manages\ the\ rendering\ state\ and\ coordinates\ with\ shaders\ and\ vertex\ arrays}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ to\ render\ 3D\ objects\ to\ the\ screen.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Scene\ management\ (begin/end)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Draw\ call\ submission}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Clear\ color\ and\ buffer\ clearing}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Window\ resize\ handling}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ All\ methods\ are\ static;\ no\ instances\ of\ Renderer\ should\ be\ created.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ Must\ be\ initialized\ via\ Init()\ before\ use.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Renderer::Init();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ while\ (running)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ Renderer::BeginScene(camera);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ Renderer::Submit(shader,\ vertexArray,\ transform);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \ \ \ \ Renderer::EndScene();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Renderer::Shutdown();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_renderer}{Renderer}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Initializes\ the\ rendering\ system.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Must\ be\ called\ once\ at\ engine\ startup\ before\ any\ rendering\ operations.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ This\ function\ sets\ up\ necessary\ rendering\ state.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ This\ should\ be\ called\ right\ after\ creating\ a\ window.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ before\ any\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Window\ window(800,\ 600,\ "{}My\ Game"{});}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Renderer::Init();\ \ //\ Initialize\ renderer}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Init();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Shuts\ down\ the\ rendering\ system.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Called\ at\ engine\ shutdown\ to\ clean\ up\ rendering\ resources.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Should\ be\ called\ once\ when\ the\ application\ is\ closing.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Renderer::Shutdown();\ \ //\ Clean\ up\ renderer}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Shutdown();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Begins\ a\ new\ scene\ for\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Sets\ up\ the\ scene\ with\ the\ provided\ camera,\ calculating\ the\ view-\/projection}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ matrix\ for\ transforming\ objects\ in\ the\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ camera\ The\ camera\ defining\ the\ view\ and\ projection\ for\ the\ scene}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ before\ submitting\ any\ draw\ calls\ for\ the\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Renderer::BeginScene(camera);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ //\ ...\ submit\ draw\ calls\ ...}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Renderer::EndScene();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ BeginScene(\textcolor{keyword}{const}\ Camera\&\ camera);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Ends\ the\ current\ scene.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Finalizes\ rendering\ for\ the\ current\ scene.\ Should\ be\ called\ after\ all}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ draw\ calls\ have\ been\ submitted.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ after\ BeginScene()\ and\ all\ submissions.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Renderer::BeginScene(camera);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ //\ ...\ submit\ draw\ calls\ ...}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Renderer::EndScene();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ EndScene();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Submits\ a\ draw\ call\ to\ render\ a\ vertex\ array\ with\ a\ shader.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Binds\ the\ shader\ and\ vertex\ array,\ sets\ necessary\ uniforms,\ and\ issues}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ the\ draw\ call\ to\ render\ the\ object.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ shader\ The\ shader\ to\ use\ for\ rendering}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ vertexArray\ The\ vertex\ array\ containing\ geometry\ data}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ transform\ The\ transformation\ matrix\ to\ apply\ to\ the\ object\ (default\ is\ identity)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ between\ BeginScene()\ and\ EndScene().}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Renderer::BeginScene(camera);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Renderer::Submit(shader,\ vertexArray,\ transform);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Renderer::EndScene();}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Submit(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\&\ shader,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<VertexArray>}}\&\ vertexArray,\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Matrix4\&\ transform\ =\ Matrix4::Identity());}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ clear\ color\ for\ the\ framebuffer.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ color\ The\ color\ to\ use\ when\ clearing\ the\ screen}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Affects\ the\ color\ used\ in\ Clear().}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Renderer::SetClearColor(Vector4(0.1f,\ 0.1f,\ 0.1f,\ 1.0f));\ //\ Dark\ gray}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetClearColor(\textcolor{keyword}{const}\ Vector4\&\ color);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Clears\ the\ color\ and\ depth\ buffers.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Fills\ the\ color\ buffer\ with\ the\ color\ set\ by\ SetClearColor()\ and\ clears}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ the\ depth\ buffer.\ Typically\ called\ at\ the\ start\ of\ each\ frame.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ each\ frame\ to\ clear\ previous\ frame's\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Renderer::Clear();\ \ //\ Clear\ both\ color\ and\ depth\ buffers}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Clear();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Handles\ window\ resize\ events.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Updates\ the\ viewport\ and\ any\ necessary\ rendering\ state\ when\ the\ window}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ size\ changes.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ width\ The\ new\ width\ of\ the\ window}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ height\ The\ new\ height\ of\ the\ window}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @note\ Should\ be\ called\ whenever\ the\ window\ is\ resized.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ void\ OnWindowResize(u32\ width,\ u32\ height)\ \{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ Renderer::OnWindowResize(width,\ height);}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ \}}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ OnWindowResize(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ width,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ height);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ s\_SceneData}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Static\ instance\ holding\ current\ scene\ rendering\ data.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope<SceneData>}}\ \doxymbox{\hyperlink{class_renderer_af6dd7f8361ee8a272d9007f5d19358a9}{s\_SceneData}};}
+\DoxyCodeLine{\};}
+
+\end{DoxyCodeInclude}
+ 

@@ -1,0 +1,300 @@
+.TH "Window" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Window \- Encapsulates a window using GLFW for context and event handling\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Window\&.h>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBWindowData\fP"
+.br
+.RI "Internal data structure for window properties and state\&. "
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "using \fBEventCallbackFn\fP = std::function<void(\fBEvent\fP&)>"
+.br
+.RI "Function type for event callbacks\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBWindow\fP ()"
+.br
+.RI "Constructs a \fBWindow\fP instance\&. "
+.ti -1c
+.RI "\fB~Window\fP ()"
+.br
+.RI "Destructor that cleans up the window resources\&. "
+.ti -1c
+.RI "bool \fBInitialize\fP (const \fBWindowProps\fP &props=\fBWindowProps\fP())"
+.br
+.ti -1c
+.RI "void \fBShutdown\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdate\fP ()"
+.br
+.ti -1c
+.RI "\fBu32\fP \fBGetWidth\fP () const"
+.br
+.RI "Gets the current width of the window\&. "
+.ti -1c
+.RI "\fBu32\fP \fBGetHeight\fP () const"
+.br
+.RI "Gets the current height of the window\&. "
+.ti -1c
+.RI "void \fBBeginFrame\fP ()"
+.br
+.RI "Begins the frame by polling events\&. "
+.ti -1c
+.RI "void \fBEndFrame\fP ()"
+.br
+.RI "Ends the frame by swapping buffers\&. "
+.ti -1c
+.RI "void \fBSetEventCallback\fP (const \fBEventCallbackFn\fP &callback)"
+.br
+.ti -1c
+.RI "bool \fBShouldClose\fP () const"
+.br
+.ti -1c
+.RI "void * \fBGetNativeWindow\fP () const"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSetupCallbacks\fP ()"
+.br
+.RI "Sets up GLFW callbacks for window events\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBWindowData\fP \fBm_Data\fP"
+.br
+.RI "The window's properties and state data\&. "
+.ti -1c
+.RI "void * \fBm_Window\fP = nullptr"
+.br
+.RI "Pointer to the native GLFW window\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Encapsulates a window using GLFW for context and event handling\&. 
+
+This class manages the creation, updating, and destruction of a window\&. It also handles input events and provides a callback mechanism for event processing\&.
+
+.PP
+\fBKey\fP features:
+.IP "\(bu" 2
+Create and destroy a window with specified properties
+.IP "\(bu" 2
+Poll events and swap buffers each frame
+.IP "\(bu" 2
+Set event callback functions for handling input and window events
+.IP "\(bu" 2
+Query window dimensions and native handle
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+Requires GLFW library to be linked with the project\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB147\fP of file \fBWindow\&.h\fP\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "using \fBWindow::EventCallbackFn\fP = std::function<void(\fBEvent\fP&)>"
+
+.PP
+Function type for event callbacks\&. Represents a function that takes an \fBEvent\fP reference and returns void\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB155\fP of file \fBWindow\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Window::Window ()"
+
+.PP
+Constructs a \fBWindow\fP instance\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB15\fP of file \fBWindow\&.cpp\fP\&.
+.SS "Window::~Window ()"
+
+.PP
+Destructor that cleans up the window resources\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB19\fP of file \fBWindow\&.cpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Window::BeginFrame ()"
+
+.PP
+Begins the frame by polling events\&. Should be called at the start of each frame before rendering\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB145\fP of file \fBWindow\&.cpp\fP\&.
+.SS "void Window::EndFrame ()"
+
+.PP
+Ends the frame by swapping buffers\&. Should be called at the end of each frame after rendering\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB150\fP of file \fBWindow\&.cpp\fP\&.
+.SS "\fBu32\fP Window::GetHeight () const\fR [inline]\fP"
+
+.PP
+Gets the current height of the window\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBu32\fP The height in pixels 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB222\fP of file \fBWindow\&.h\fP\&.
+.PP
+References \fBm_Data\fP\&.
+.SS "void * Window::GetNativeWindow () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB281\fP of file \fBWindow\&.h\fP\&.
+.SS "\fBu32\fP Window::GetWidth () const\fR [inline]\fP"
+
+.PP
+Gets the current width of the window\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBu32\fP The width in pixels 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB216\fP of file \fBWindow\&.h\fP\&.
+.PP
+References \fBm_Data\fP\&.
+.SS "bool Window::Initialize (const \fBWindowProps\fP & props = \fR\fBWindowProps\fP()\fP)"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB24\fP of file \fBWindow\&.cpp\fP\&.
+.SS "void Window::SetEventCallback (const \fBEventCallbackFn\fP & callback)\fR [inline]\fP"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB253\fP of file \fBWindow\&.h\fP\&.
+.SS "void Window::SetupCallbacks ()\fR [private]\fP"
+
+.PP
+Sets up GLFW callbacks for window events\&. Configures GLFW to call appropriate functions on window events such as resize and close, forwarding them to the event callback\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB114\fP of file \fBWindow\&.cpp\fP\&.
+.PP
+References \fBm_Data\fP, and \fBm_Window\fP\&.
+.SS "bool Window::ShouldClose () const"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB110\fP of file \fBWindow\&.cpp\fP\&.
+.SS "void Window::Shutdown ()"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB91\fP of file \fBWindow\&.cpp\fP\&.
+.SS "void Window::Update ()"
+
+.PP
+Definition at line \fB99\fP of file \fBWindow\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBWindowData\fP Window::m_Data\fR [private]\fP"
+
+.PP
+The window's properties and state data\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB307\fP of file \fBWindow\&.h\fP\&.
+.PP
+Referenced by \fBGetHeight()\fP, \fBGetWidth()\fP, and \fBSetupCallbacks()\fP\&.
+.SS "void* Window::m_Window = nullptr\fR [private]\fP"
+
+.PP
+Pointer to the native GLFW window\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Window\&.h\fP\&.
+.PP
+Definition at line \fB313\fP of file \fBWindow\&.h\fP\&.
+.PP
+Referenced by \fBSetupCallbacks()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

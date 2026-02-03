@@ -1,0 +1,125 @@
+\doxysection{Vertex\+Buffer\+Element Class Reference}
+\hypertarget{struct_vertex_buffer_element}{}\label{struct_vertex_buffer_element}\index{VertexBufferElement@{VertexBufferElement}}
+
+
+Represents a single element in a vertex buffer layout.  
+
+
+
+
+{\ttfamily \+\#include $<$Vertex\+Array.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{struct_vertex_buffer_element_a32528b243db99b7c7df4a64f756aa001}{Get\+Size\+Of\+Type}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{struct_vertex_buffer_element_a21cd2372ed0921a849af8d89d3a68ed5}{type}})
+\begin{DoxyCompactList}\small\item\em Gets the size in bytes of the given Open\+GL data type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{struct_vertex_buffer_element_a21cd2372ed0921a849af8d89d3a68ed5}{type}}
+\begin{DoxyCompactList}\small\item\em The Open\+GL data type of the vertex attribute (e.\+g., GL\+\_\+\+FLOAT). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{struct_vertex_buffer_element_aa90a016c0b05e492e35c7da0250ad150}{count}}
+\begin{DoxyCompactList}\small\item\em The number of components in the vertex attribute (e.\+g., 3 for vec3). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga987e4d6cf789cb59dbb390728271e4d6}{u8}} \doxymbox{\hyperlink{struct_vertex_buffer_element_af787e32f2eb5447dae856dd454b598a5}{normalized}}
+\begin{DoxyCompactList}\small\item\em Whether the attribute data should be normalized (GL\+\_\+\+TRUE or GL\+\_\+\+FALSE). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a single element in a vertex buffer layout. 
+
+Contains the type, count, and normalization flag for a vertex attribute. 
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00016}{16}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{struct_vertex_buffer_element_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_vertex_buffer_element_a32528b243db99b7c7df4a64f756aa001}\index{VertexBufferElement@{VertexBufferElement}!GetSizeOfType@{GetSizeOfType}}
+\index{GetSizeOfType@{GetSizeOfType}!VertexBufferElement@{VertexBufferElement}}
+\doxysubsubsection{\texorpdfstring{GetSizeOfType()}{GetSizeOfType()}}
+{\footnotesize\ttfamily \label{struct_vertex_buffer_element_a32528b243db99b7c7df4a64f756aa001} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Vertex\+Buffer\+Element::\+\+Get\+Size\+Of\+Type (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Gets the size in bytes of the given Open\+GL data type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{struct_vertex_buffer_element_a21cd2372ed0921a849af8d89d3a68ed5}{type}} & The Open\+GL data type (e.\+g., GL\+\_\+\+FLOAT) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32} The size in bytes of the type 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00042}{42}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_vertex_array_8h_source_l00021}{type}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_vertex_array_8cpp_source_l00013}{Vertex\+Array::\+\+Add\+Vertex\+Buffer()}}, and \doxymbox{\hyperlink{_vertex_array_8h_source_l00118}{Vertex\+Buffer\+Layout::\+\+Push()}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_vertex_buffer_element_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_vertex_buffer_element_aa90a016c0b05e492e35c7da0250ad150}\index{VertexBufferElement@{VertexBufferElement}!count@{count}}
+\index{count@{count}!VertexBufferElement@{VertexBufferElement}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily \label{struct_vertex_buffer_element_aa90a016c0b05e492e35c7da0250ad150} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Vertex\+Buffer\+Element::\+count}
+
+
+
+The number of components in the vertex attribute (e.\+g., 3 for vec3). 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00027}{27}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+\Hypertarget{struct_vertex_buffer_element_af787e32f2eb5447dae856dd454b598a5}\index{VertexBufferElement@{VertexBufferElement}!normalized@{normalized}}
+\index{normalized@{normalized}!VertexBufferElement@{VertexBufferElement}}
+\doxysubsubsection{\texorpdfstring{normalized}{normalized}}
+{\footnotesize\ttfamily \label{struct_vertex_buffer_element_af787e32f2eb5447dae856dd454b598a5} 
+\doxymbox{\hyperlink{group___base_types_ga987e4d6cf789cb59dbb390728271e4d6}{u8}} Vertex\+Buffer\+Element::\+normalized}
+
+
+
+Whether the attribute data should be normalized (GL\+\_\+\+TRUE or GL\+\_\+\+FALSE). 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00034}{34}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+\Hypertarget{struct_vertex_buffer_element_a21cd2372ed0921a849af8d89d3a68ed5}\index{VertexBufferElement@{VertexBufferElement}!type@{type}}
+\index{type@{type}!VertexBufferElement@{VertexBufferElement}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \label{struct_vertex_buffer_element_a21cd2372ed0921a849af8d89d3a68ed5} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Vertex\+Buffer\+Element::\+type}
+
+
+
+The Open\+GL data type of the vertex attribute (e.\+g., GL\+\_\+\+FLOAT). 
+
+
+
+Definition at line \doxymbox{\hyperlink{_vertex_array_8h_source_l00021}{21}} of file \doxymbox{\hyperlink{_vertex_array_8h_source}{Vertex\+Array.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_vertex_array_8h_source_l00042}{Get\+Size\+Of\+Type()}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Vertex\+Array.\+h\end{DoxyCompactItemize}

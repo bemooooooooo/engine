@@ -1,0 +1,374 @@
+.TH "Vector2" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Vector2 \- A 2-dimensional vector structure for mathematics and graphics operations\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Vector2\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVector2\fP (\fBf32\fP \fBx\fP, \fBf32\fP \fBy\fP)"
+.br
+.ti -1c
+.RI "\fBVector2\fP (\fBf32\fP scalar)"
+.br
+.ti -1c
+.RI "\fBVector2\fP \fBoperator+\fP (const \fBVector2\fP &other) const"
+.br
+.ti -1c
+.RI "\fBVector2\fP \fBoperator\-\fP (const \fBVector2\fP &other) const"
+.br
+.ti -1c
+.RI "\fBVector2\fP \fBoperator*\fP (const \fBVector2\fP &other) const"
+.br
+.ti -1c
+.RI "\fBVector2\fP \fBoperator/\fP (const \fBVector2\fP &other) const"
+.br
+.ti -1c
+.RI "\fBVector2\fP \fBoperator*\fP (\fBf32\fP scalar) const"
+.br
+.ti -1c
+.RI "\fBVector2\fP \fBoperator/\fP (\fBf32\fP scalar) const"
+.br
+.ti -1c
+.RI "\fBVector2\fP & \fBoperator+=\fP (const \fBVector2\fP &other)"
+.br
+.ti -1c
+.RI "\fBVector2\fP & \fBoperator\-=\fP (const \fBVector2\fP &other)"
+.br
+.ti -1c
+.RI "\fBVector2\fP & \fBoperator*=\fP (const \fBVector2\fP &other)"
+.br
+.ti -1c
+.RI "\fBVector2\fP & \fBoperator/=\fP (const \fBVector2\fP &other)"
+.br
+.ti -1c
+.RI "\fBVector2\fP & \fBoperator*=\fP (\fBf32\fP scalar)"
+.br
+.ti -1c
+.RI "\fBVector2\fP & \fBoperator/=\fP (\fBf32\fP scalar)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBVector2\fP &other) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBVector2\fP &other) const"
+.br
+.ti -1c
+.RI "\fBVector2\fP \fBoperator\-\fP () const"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBoperator[]\fP (\fBu32\fP index) const"
+.br
+.ti -1c
+.RI "\fBf32\fP & \fBoperator[]\fP (\fBu32\fP index)"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBLength\fP () const"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBLengthSquared\fP () const"
+.br
+.ti -1c
+.RI "void \fBNormalize\fP ()"
+.br
+.ti -1c
+.RI "\fBVector2\fP \fBNormalized\fP () const"
+.br
+.ti -1c
+.RI "bool \fBisNormalized\fP () const"
+.br
+.ti -1c
+.RI "bool \fBisZero\fP () const"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBf32\fP \fBDot\fP (const \fBVector2\fP &a, const \fBVector2\fP &b)"
+.br
+.ti -1c
+.RI "static \fBf32\fP \fBDistance\fP (const \fBVector2\fP &a, const \fBVector2\fP &b)"
+.br
+.ti -1c
+.RI "static \fBf32\fP \fBDistanceSquared\fP (const \fBVector2\fP &a, const \fBVector2\fP &b)"
+.br
+.ti -1c
+.RI "static \fBVector2\fP \fBLerp\fP (const \fBVector2\fP &a, const \fBVector2\fP &b, \fBf32\fP t)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBf32\fP \fBx\fP"
+.br
+.RI "The X-component (horizontal coordinate) of the vector\&. "
+.ti -1c
+.RI "\fBf32\fP \fBy\fP"
+.br
+.RI "The Y-component (vertical coordinate) of the vector\&. "
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const \fBVector2\fP \fBZero\fP"
+.br
+.RI "Constant zero vector (0, 0)\&. "
+.ti -1c
+.RI "static const \fBVector2\fP \fBOne\fP"
+.br
+.RI "Constant unit vector (1, 1)\&. "
+.ti -1c
+.RI "static const \fBVector2\fP \fBUnitX\fP"
+.br
+.RI "Constant unit vector along X axis (1, 0)\&. "
+.ti -1c
+.RI "static const \fBVector2\fP \fBUnitY\fP"
+.br
+.RI "Constant unit vector along Y axis (0, 1)\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A 2-dimensional vector structure for mathematics and graphics operations\&. 
+
+\fBVector2\fP represents a point or direction in 2D space using two floating-point components (x, y)\&. It supports standard vector operations including addition, subtraction, scalar multiplication, normalization, and distance calculations\&.
+
+.PP
+Common uses:
+.IP "\(bu" 2
+2D positions and velocities
+.IP "\(bu" 2
+Screen coordinates and UI positioning
+.IP "\(bu" 2
+Direction vectors for 2D movement
+.IP "\(bu" 2
+\fBTexture\fP coordinates (UV mapping)
+.IP "\(bu" 2
+2D physics calculations
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+All components are stored as \fBf32\fP (single-precision floats) for performance\&. 
+
+.PP
+Vector operations are defined as operator overloads for intuitive syntax\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Shader\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Input/Input\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Math/Vector2\&.h\fP\&.
+.PP
+Definition at line \fB33\fP of file \fBVector2\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Vector2::Vector2 ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB57\fP of file \fBVector2\&.h\fP\&.
+.SS "Vector2::Vector2 (\fBf32\fP x, \fBf32\fP y)\fR [inline]\fP"
+
+.PP
+Definition at line \fB72\fP of file \fBVector2\&.h\fP\&.
+.SS "Vector2::Vector2 (\fBf32\fP scalar)\fR [inline]\fP, \fR [explicit]\fP"
+
+.PP
+Definition at line \fB88\fP of file \fBVector2\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBf32\fP Vector2::Distance (const \fBVector2\fP & a, const \fBVector2\fP & b)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB635\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBf32\fP Vector2::DistanceSquared (const \fBVector2\fP & a, const \fBVector2\fP & b)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB663\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBf32\fP Vector2::Dot (const \fBVector2\fP & a, const \fBVector2\fP & b)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB612\fP of file \fBVector2\&.h\fP\&.
+.SS "bool Vector2::isNormalized () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB563\fP of file \fBVector2\&.h\fP\&.
+.SS "bool Vector2::isZero () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB583\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBf32\fP Vector2::Length () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB464\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBf32\fP Vector2::LengthSquared () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB489\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBVector2\fP Vector2::Lerp (const \fBVector2\fP & a, const \fBVector2\fP & b, \fBf32\fP t)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB693\fP of file \fBVector2\&.h\fP\&.
+.SS "void Vector2::Normalize ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB509\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBVector2\fP Vector2::Normalized () const\fR [inline]\fP"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Vector2\&.h\fP\&.
+.PP
+Definition at line \fB538\fP of file \fBVector2\&.h\fP\&.
+.SS "bool Vector2::operator!= (const \fBVector2\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB382\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBVector2\fP Vector2::operator* (const \fBVector2\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB148\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBVector2\fP Vector2::operator* (\fBf32\fP scalar) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB189\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBVector2\fP & Vector2::operator*= (const \fBVector2\fP & other)\fR [inline]\fP"
+
+.PP
+Definition at line \fB270\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBVector2\fP & Vector2::operator*= (\fBf32\fP scalar)\fR [inline]\fP"
+
+.PP
+Definition at line \fB312\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBVector2\fP Vector2::operator+ (const \fBVector2\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB106\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBVector2\fP & Vector2::operator+= (const \fBVector2\fP & other)\fR [inline]\fP"
+
+.PP
+Definition at line \fB229\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBVector2\fP Vector2::operator\- () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB400\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBVector2\fP Vector2::operator\- (const \fBVector2\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB126\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBVector2\fP & Vector2::operator\-= (const \fBVector2\fP & other)\fR [inline]\fP"
+
+.PP
+Definition at line \fB250\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBVector2\fP Vector2::operator/ (const \fBVector2\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB170\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBVector2\fP Vector2::operator/ (\fBf32\fP scalar) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB210\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBVector2\fP & Vector2::operator/= (const \fBVector2\fP & other)\fR [inline]\fP"
+
+.PP
+Definition at line \fB292\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBVector2\fP & Vector2::operator/= (\fBf32\fP scalar)\fR [inline]\fP"
+
+.PP
+Definition at line \fB334\fP of file \fBVector2\&.h\fP\&.
+.SS "bool Vector2::operator== (const \fBVector2\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB360\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBf32\fP & Vector2::operator[] (\fBu32\fP index)\fR [inline]\fP"
+
+.PP
+Definition at line \fB444\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBf32\fP Vector2::operator[] (\fBu32\fP index) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB422\fP of file \fBVector2\&.h\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const \fBVector2\fP Vector2::One\fR [static]\fP"
+
+.PP
+Constant unit vector (1, 1)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Vector2\&.h\fP\&.
+.PP
+Definition at line \fB710\fP of file \fBVector2\&.h\fP\&.
+.SS "const \fBVector2\fP Vector2::UnitX\fR [static]\fP"
+
+.PP
+Constant unit vector along X axis (1, 0)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Vector2\&.h\fP\&.
+.PP
+Definition at line \fB716\fP of file \fBVector2\&.h\fP\&.
+.SS "const \fBVector2\fP Vector2::UnitY\fR [static]\fP"
+
+.PP
+Constant unit vector along Y axis (0, 1)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Vector2\&.h\fP\&.
+.PP
+Definition at line \fB722\fP of file \fBVector2\&.h\fP\&.
+.SS "\fBf32\fP Vector2::x"
+
+.PP
+The X-component (horizontal coordinate) of the vector\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Matrix3\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Math/Vector2\&.h\fP\&.
+.PP
+Definition at line \fB38\fP of file \fBVector2\&.h\fP\&.
+.PP
+Referenced by \fBMesh::CreateSphere()\fP, and \fBShader::SetVector2()\fP\&.
+.SS "\fBf32\fP Vector2::y"
+
+.PP
+The Y-component (vertical coordinate) of the vector\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Matrix3\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Math/Vector2\&.h\fP\&.
+.PP
+Definition at line \fB44\fP of file \fBVector2\&.h\fP\&.
+.PP
+Referenced by \fBMesh::CreateSphere()\fP, and \fBShader::SetVector2()\fP\&.
+.SS "const \fBVector2\fP Vector2::Zero\fR [static]\fP"
+
+.PP
+Constant zero vector (0, 0)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Vector2\&.h\fP\&.
+.PP
+Definition at line \fB704\fP of file \fBVector2\&.h\fP\&.
+.PP
+Referenced by \fBVertex::Vertex()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

@@ -1,0 +1,842 @@
+\doxysection{Camera Class Reference}
+\hypertarget{class_camera}{}\label{class_camera}\index{Camera@{Camera}}
+
+
+A 3D camera class supporting perspective and orthographic projections.  
+
+
+
+
+{\ttfamily \+\#include $<$Camera.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_camera_a01f94c3543f56ede7af49dc778f19331}{Camera}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_camera}{Camera} object. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_camera_ae3b60ad1d71c8253cbd6db535400b871}{Camera}} (Camera\+Type type, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} fov\+Or\+Size, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} aspect, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} near, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} far)
+\begin{DoxyCompactList}\small\item\em Construct a new \doxylink{class_camera}{Camera} object with specified parameters. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_camera_ab1782340a5959089cbf93a7c97cdfdec}{Set\+Perspective}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} fov, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} aspect, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} near, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} far)
+\begin{DoxyCompactList}\small\item\em Sets the camera to use perspective projection. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_camera_a9f23e46ca6e265e5142d1c902d4a960b}{Set\+Orthographic}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} size, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} aspect, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} near, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} far)
+\begin{DoxyCompactList}\small\item\em Sets the camera to use orthographic projection. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_camera_ad59eeb5b820614ca7e52262082e8dde1}{Set\+Position}} (const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&position)
+\begin{DoxyCompactList}\small\item\em Sets the camera\textquotesingle{}s position in world space. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_camera_a813699dd0540d634e888c47b6de40330}{Set\+Rotation}} (const \doxymbox{\hyperlink{struct_quaternion}{Quaternion}} \&rotation)
+\begin{DoxyCompactList}\small\item\em Sets the camera\textquotesingle{}s rotation using a quaternion. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_camera_a87338e74f59353ecaa912e2f421608c2}{Look\+At}} (const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&target, const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&up=Vector3::\+\+Up)
+\begin{DoxyCompactList}\small\item\em Orients the camera to look at a target point. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_camera_a0b51a525a1779c542ade9812ad70aa9d}{Move}} (const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&offset)
+\begin{DoxyCompactList}\small\item\em Moves the camera by an offset in world space. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_camera_a3a37aa4f50af4dd52fcafda1e102dcca}{Rotate}} (const \doxymbox{\hyperlink{struct_quaternion}{Quaternion}} \&rotation)
+\begin{DoxyCompactList}\small\item\em Rotates the camera by a quaternion rotation. \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \& \doxymbox{\hyperlink{class_camera_a7be636d533fd93d1c725ef92156acda2}{Get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Gets the camera\textquotesingle{}s position in world space. \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{struct_quaternion}{Quaternion}} \& \doxymbox{\hyperlink{class_camera_a863a1bd3d4050e8f432004e7b3fd76ff}{Get\+Rotation}} () const
+\begin{DoxyCompactList}\small\item\em Gets the camera\textquotesingle{}s rotation as a quaternion. \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{struct_matrix4}{Matrix4}} \& \doxymbox{\hyperlink{class_camera_a7b3d84899e56607661ab212ae8e790c8}{Get\+View\+Matrix}} () const
+\begin{DoxyCompactList}\small\item\em Gets the view matrix of the camera. \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{struct_matrix4}{Matrix4}} \& \doxymbox{\hyperlink{class_camera_a6bf792fb62c5db5d7a296f90060c9dc3}{Get\+Projection\+Matrix}} () const
+\begin{DoxyCompactList}\small\item\em Gets the projection matrix of the camera. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_matrix4}{Matrix4}} \doxymbox{\hyperlink{class_camera_a0a48cc9324beabbb6a8d04793d13ee95}{Get\+View\+Projection\+Matrix}} () const
+\begin{DoxyCompactList}\small\item\em Gets the combined view-\/projection matrix of the camera. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} \doxymbox{\hyperlink{class_camera_ac7c5c9923eaa64299efb930688f4714d}{Get\+Forward}} () const
+\begin{DoxyCompactList}\small\item\em Gets the camera\textquotesingle{}s forward, right, and up direction vectors. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} \doxymbox{\hyperlink{class_camera_a8e40065ff5a84c42768c2757001a7c3a}{Get\+Right}} () const
+\begin{DoxyCompactList}\small\item\em Gets the camera\textquotesingle{}s right direction vector. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} \doxymbox{\hyperlink{class_camera_ae053ef1680044846abd0be0a2ec6abaf}{Get\+Up}} () const
+\begin{DoxyCompactList}\small\item\em Gets the camera\textquotesingle{}s up direction vector. \end{DoxyCompactList}\item 
+Camera\+Type \doxymbox{\hyperlink{class_camera_acfe749c845e33f741121b9219027a5c6}{Get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Gets the camera type (Perspective or Orthographic). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_camera_a809e6fd0fbf37150cbd006f8036d1280}{Get\+FOV}} () const
+\begin{DoxyCompactList}\small\item\em Gets the camera\textquotesingle{}s field of view (for perspective cameras). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_camera_af501e68d83502540a705dd0f317294cf}{Get\+Aspect}} () const
+\begin{DoxyCompactList}\small\item\em Gets the camera\textquotesingle{}s size (for orthographic cameras). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_camera_a3722f0df8301a991249f2f780c516efb}{Get\+Near}} () const
+\begin{DoxyCompactList}\small\item\em Gets the camera\textquotesingle{}s near clipping plane distance. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_camera_af17bc39abcb97d98ff9d9d245c4ee750}{Get\+Far}} () const
+\begin{DoxyCompactList}\small\item\em Gets the camera\textquotesingle{}s far clipping plane distance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_camera_ab9356a4aa0aa7cf4eaee66425638ce81}{Recalculate}} ()
+\begin{DoxyCompactList}\small\item\em Recalculates the view and projection matrices based on current parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Camera\+Type \doxymbox{\hyperlink{class_camera_a978ade18865022ff5eed90b52c87b13c}{m\+\_\+\+Type}}
+\begin{DoxyCompactList}\small\item\em The type of camera projection. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} \doxymbox{\hyperlink{class_camera_a3f89ba3e10d6e8ea7fe3479417d2661c}{m\+\_\+\+Position}}
+\begin{DoxyCompactList}\small\item\em The position of the camera in world space. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_quaternion}{Quaternion}} \doxymbox{\hyperlink{class_camera_ab75f47af1cd46907c8ca0cd333395889}{m\+\_\+\+Rotation}}
+\begin{DoxyCompactList}\small\item\em The rotation of the camera as a quaternion. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_camera_aa4007c66e9f7392b97a6b9ed6c886764}{m\+\_\+\+FOV}}
+\begin{DoxyCompactList}\small\item\em Projection parameters. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_camera_a13ecb50b532021ba352dd299132003e0}{m\+\_\+\+Size}}
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_camera_a2163af1a807c2d1a8baa551c4a7e3249}{m\+\_\+\+Aspect}}
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_camera_aec21b83730935a7a548293b196672feb}{m\+\_\+\+Near}}
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{class_camera_ab66b8fad8de882c46d07f0181310303f}{m\+\_\+\+Far}}
+\item 
+\doxymbox{\hyperlink{struct_matrix4}{Matrix4}} \doxymbox{\hyperlink{class_camera_aaab33e66df42a804c349b925a14bad04}{m\+\_\+\+View\+Matrix}}
+\begin{DoxyCompactList}\small\item\em View and projection matrices. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_matrix4}{Matrix4}} \doxymbox{\hyperlink{class_camera_a5f352b9fc34c9fe737528c4c393f68fa}{m\+\_\+\+Projection\+Matrix}}
+\begin{DoxyCompactList}\small\item\em Projection matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A 3D camera class supporting perspective and orthographic projections. 
+
+The \doxylink{class_camera}{Camera} class encapsulates the properties and behaviors of a virtual camera in a 3D scene. It supports both perspective and orthographic projection modes, allowing for flexible rendering setups. The camera maintains its position, orientation, and projection parameters, and provides methods to manipulate its transform and retrieve view/\+projection matrices.
+
+\doxylink{namespace_key}{Key} features:\+
+\begin{DoxyItemize}
+\item Switchable between perspective and orthographic projections
+\item Position and rotation management using \doxylink{struct_vector3}{Vector3} and \doxylink{struct_quaternion}{Quaternion}
+\item View and projection matrix generation
+\item Utility methods for moving, rotating, and looking at targets
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+The camera uses a right-\/handed coordinate system. 
+
+The up vector is assumed to be (0, 1, 0) unless specified otherwise. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}, and \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_renderer_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Renderer.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00044}{44}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_camera_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_camera_a01f94c3543f56ede7af49dc778f19331}\index{Camera@{Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_camera_a01f94c3543f56ede7af49dc778f19331} 
+Camera::\+\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{class_camera}{Camera} object. 
+
+Initializes a camera with default parameters. The default camera is a perspective camera positioned at the origin, looking down the negative Z-\/axis. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8cpp_source_l00004}{4}} of file \doxymbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00178}{m\+\_\+\+FOV}}, \doxymbox{\hyperlink{_camera_8h_source_l00172}{m\+\_\+\+Position}}, \doxymbox{\hyperlink{_camera_8h_source_l00175}{m\+\_\+\+Rotation}}, \doxymbox{\hyperlink{_camera_8h_source_l00169}{m\+\_\+\+Type}}, and \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}.
+
+\Hypertarget{class_camera_ae3b60ad1d71c8253cbd6db535400b871}\index{Camera@{Camera}!Camera@{Camera}}
+\index{Camera@{Camera}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{Camera()}{Camera()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_camera_ae3b60ad1d71c8253cbd6db535400b871} 
+Camera::\+\+Camera (\begin{DoxyParamCaption}\item[{Camera\+Type}]{type}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{fov\+Or\+Size}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{aspect}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{near}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{far}{}\end{DoxyParamCaption})}
+
+
+
+Construct a new \doxylink{class_camera}{Camera} object with specified parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of camera projection (Perspective or Orthographic) \\
+\hline
+{\em fov\+Or\+Size} & For Perspective:\+ vertical field of view in degrees; For Orthographic:\+ size of the view volume \\
+\hline
+{\em aspect} & Aspect ratio (width /\+ height) of the viewport \\
+\hline
+{\em near} & Near clipping plane distance \\
+\hline
+{\em far} & Far clipping plane distance \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8cpp_source_l00016}{16}} of file \doxymbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00178}{m\+\_\+\+FOV}}, \doxymbox{\hyperlink{_camera_8h_source_l00172}{m\+\_\+\+Position}}, \doxymbox{\hyperlink{_camera_8h_source_l00175}{m\+\_\+\+Rotation}}, \doxymbox{\hyperlink{_camera_8h_source_l00169}{m\+\_\+\+Type}}, and \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_camera_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_camera_af501e68d83502540a705dd0f317294cf}\index{Camera@{Camera}!GetAspect@{GetAspect}}
+\index{GetAspect@{GetAspect}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{GetAspect()}{GetAspect()}}
+{\footnotesize\ttfamily \label{class_camera_af501e68d83502540a705dd0f317294cf} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Camera::\+\+Get\+Aspect (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the camera\textquotesingle{}s size (for orthographic cameras). 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00154}{154}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+\Hypertarget{class_camera_af17bc39abcb97d98ff9d9d245c4ee750}\index{Camera@{Camera}!GetFar@{GetFar}}
+\index{GetFar@{GetFar}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{GetFar()}{GetFar()}}
+{\footnotesize\ttfamily \label{class_camera_af17bc39abcb97d98ff9d9d245c4ee750} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Camera::\+\+Get\+Far (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the camera\textquotesingle{}s far clipping plane distance. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00160}{160}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+\Hypertarget{class_camera_ac7c5c9923eaa64299efb930688f4714d}\index{Camera@{Camera}!GetForward@{GetForward}}
+\index{GetForward@{GetForward}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{GetForward()}{GetForward()}}
+{\footnotesize\ttfamily \label{class_camera_ac7c5c9923eaa64299efb930688f4714d} 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} Camera::\+\+Get\+Forward (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the camera\textquotesingle{}s forward, right, and up direction vectors. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00139}{139}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00175}{m\+\_\+\+Rotation}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}.
+
+\Hypertarget{class_camera_a809e6fd0fbf37150cbd006f8036d1280}\index{Camera@{Camera}!GetFOV@{GetFOV}}
+\index{GetFOV@{GetFOV}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{GetFOV()}{GetFOV()}}
+{\footnotesize\ttfamily \label{class_camera_a809e6fd0fbf37150cbd006f8036d1280} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Camera::\+\+Get\+FOV (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the camera\textquotesingle{}s field of view (for perspective cameras). 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00151}{151}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00178}{m\+\_\+\+FOV}}.
+
+\Hypertarget{class_camera_a3722f0df8301a991249f2f780c516efb}\index{Camera@{Camera}!GetNear@{GetNear}}
+\index{GetNear@{GetNear}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{GetNear()}{GetNear()}}
+{\footnotesize\ttfamily \label{class_camera_a3722f0df8301a991249f2f780c516efb} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Camera::\+\+Get\+Near (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the camera\textquotesingle{}s near clipping plane distance. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00157}{157}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+\Hypertarget{class_camera_a7be636d533fd93d1c725ef92156acda2}\index{Camera@{Camera}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily \label{class_camera_a7be636d533fd93d1c725ef92156acda2} 
+const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \& Camera::\+\+Get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the camera\textquotesingle{}s position in world space. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00124}{124}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00172}{m\+\_\+\+Position}}.
+
+\Hypertarget{class_camera_a6bf792fb62c5db5d7a296f90060c9dc3}\index{Camera@{Camera}!GetProjectionMatrix@{GetProjectionMatrix}}
+\index{GetProjectionMatrix@{GetProjectionMatrix}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{GetProjectionMatrix()}{GetProjectionMatrix()}}
+{\footnotesize\ttfamily \label{class_camera_a6bf792fb62c5db5d7a296f90060c9dc3} 
+const \doxymbox{\hyperlink{struct_matrix4}{Matrix4}} \& Camera::\+\+Get\+Projection\+Matrix (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the projection matrix of the camera. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00133}{133}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00188}{m\+\_\+\+Projection\+Matrix}}.
+
+\Hypertarget{class_camera_a8e40065ff5a84c42768c2757001a7c3a}\index{Camera@{Camera}!GetRight@{GetRight}}
+\index{GetRight@{GetRight}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{GetRight()}{GetRight()}}
+{\footnotesize\ttfamily \label{class_camera_a8e40065ff5a84c42768c2757001a7c3a} 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} Camera::\+\+Get\+Right (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the camera\textquotesingle{}s right direction vector. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00142}{142}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00175}{m\+\_\+\+Rotation}}.
+
+\Hypertarget{class_camera_a863a1bd3d4050e8f432004e7b3fd76ff}\index{Camera@{Camera}!GetRotation@{GetRotation}}
+\index{GetRotation@{GetRotation}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{GetRotation()}{GetRotation()}}
+{\footnotesize\ttfamily \label{class_camera_a863a1bd3d4050e8f432004e7b3fd76ff} 
+const \doxymbox{\hyperlink{struct_quaternion}{Quaternion}} \& Camera::\+\+Get\+Rotation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the camera\textquotesingle{}s rotation as a quaternion. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00127}{127}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00175}{m\+\_\+\+Rotation}}.
+
+\Hypertarget{class_camera_acfe749c845e33f741121b9219027a5c6}\index{Camera@{Camera}!GetType@{GetType}}
+\index{GetType@{GetType}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{GetType()}{GetType()}}
+{\footnotesize\ttfamily \label{class_camera_acfe749c845e33f741121b9219027a5c6} 
+Camera\+Type Camera::\+\+Get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the camera type (Perspective or Orthographic). 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00148}{148}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00169}{m\+\_\+\+Type}}.
+
+\Hypertarget{class_camera_ae053ef1680044846abd0be0a2ec6abaf}\index{Camera@{Camera}!GetUp@{GetUp}}
+\index{GetUp@{GetUp}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{GetUp()}{GetUp()}}
+{\footnotesize\ttfamily \label{class_camera_ae053ef1680044846abd0be0a2ec6abaf} 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} Camera::\+\+Get\+Up (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the camera\textquotesingle{}s up direction vector. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00145}{145}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00175}{m\+\_\+\+Rotation}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}.
+
+\Hypertarget{class_camera_a7b3d84899e56607661ab212ae8e790c8}\index{Camera@{Camera}!GetViewMatrix@{GetViewMatrix}}
+\index{GetViewMatrix@{GetViewMatrix}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{GetViewMatrix()}{GetViewMatrix()}}
+{\footnotesize\ttfamily \label{class_camera_a7b3d84899e56607661ab212ae8e790c8} 
+const \doxymbox{\hyperlink{struct_matrix4}{Matrix4}} \& Camera::\+\+Get\+View\+Matrix (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the view matrix of the camera. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00130}{130}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00185}{m\+\_\+\+View\+Matrix}}.
+
+\Hypertarget{class_camera_a0a48cc9324beabbb6a8d04793d13ee95}\index{Camera@{Camera}!GetViewProjectionMatrix@{GetViewProjectionMatrix}}
+\index{GetViewProjectionMatrix@{GetViewProjectionMatrix}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{GetViewProjectionMatrix()}{GetViewProjectionMatrix()}}
+{\footnotesize\ttfamily \label{class_camera_a0a48cc9324beabbb6a8d04793d13ee95} 
+\doxymbox{\hyperlink{struct_matrix4}{Matrix4}} Camera::\+\+Get\+View\+Projection\+Matrix (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the combined view-\/projection matrix of the camera. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00136}{136}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00188}{m\+\_\+\+Projection\+Matrix}}, and \doxymbox{\hyperlink{_camera_8h_source_l00185}{m\+\_\+\+View\+Matrix}}.
+
+\Hypertarget{class_camera_a87338e74f59353ecaa912e2f421608c2}\index{Camera@{Camera}!LookAt@{LookAt}}
+\index{LookAt@{LookAt}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{LookAt()}{LookAt()}}
+{\footnotesize\ttfamily \label{class_camera_a87338e74f59353ecaa912e2f421608c2} 
+void Camera::\+\+Look\+At (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{target}{, }\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{up}{ = {\ttfamily Vector3:\+:\+Up}}\end{DoxyParamCaption})}
+
+
+
+Orients the camera to look at a target point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & The point in world space to look at \\
+\hline
+{\em up} & The up direction vector (default is (0, 1, 0)) \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8cpp_source_l00087}{87}} of file \doxymbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00172}{m\+\_\+\+Position}}, \doxymbox{\hyperlink{_camera_8h_source_l00175}{m\+\_\+\+Rotation}}, and \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}.
+
+\Hypertarget{class_camera_a0b51a525a1779c542ade9812ad70aa9d}\index{Camera@{Camera}!Move@{Move}}
+\index{Move@{Move}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{Move()}{Move()}}
+{\footnotesize\ttfamily \label{class_camera_a0b51a525a1779c542ade9812ad70aa9d} 
+void Camera::\+\+Move (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{offset}{}\end{DoxyParamCaption})}
+
+
+
+Moves the camera by an offset in world space. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em offset} & The translation vector to move the camera \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8cpp_source_l00092}{92}} of file \doxymbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00172}{m\+\_\+\+Position}}, and \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}.
+
+\Hypertarget{class_camera_ab9356a4aa0aa7cf4eaee66425638ce81}\index{Camera@{Camera}!Recalculate@{Recalculate}}
+\index{Recalculate@{Recalculate}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{Recalculate()}{Recalculate()}}
+{\footnotesize\ttfamily \label{class_camera_ab9356a4aa0aa7cf4eaee66425638ce81} 
+void Camera::\+\+Recalculate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Recalculates the view and projection matrices based on current parameters. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{102}} of file \doxymbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00139}{Get\+Forward()}}, \doxymbox{\hyperlink{_camera_8h_source_l00145}{Get\+Up()}}, \doxymbox{\hyperlink{_camera_8h_source_l00178}{m\+\_\+\+FOV}}, \doxymbox{\hyperlink{_camera_8h_source_l00172}{m\+\_\+\+Position}}, \doxymbox{\hyperlink{_camera_8h_source_l00188}{m\+\_\+\+Projection\+Matrix}}, \doxymbox{\hyperlink{_camera_8h_source_l00169}{m\+\_\+\+Type}}, and \doxymbox{\hyperlink{_camera_8h_source_l00185}{m\+\_\+\+View\+Matrix}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_camera_8cpp_source_l00004}{Camera()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00016}{Camera()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00087}{Look\+At()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00092}{Move()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00097}{Rotate()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00060}{Set\+Orthographic()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00033}{Set\+Perspective()}}, \doxymbox{\hyperlink{_camera_8h_source_l00090}{Set\+Position()}}, and \doxymbox{\hyperlink{_camera_8h_source_l00097}{Set\+Rotation()}}.
+
+\Hypertarget{class_camera_a3a37aa4f50af4dd52fcafda1e102dcca}\index{Camera@{Camera}!Rotate@{Rotate}}
+\index{Rotate@{Rotate}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{Rotate()}{Rotate()}}
+{\footnotesize\ttfamily \label{class_camera_a3a37aa4f50af4dd52fcafda1e102dcca} 
+void Camera::\+\+Rotate (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_quaternion}{Quaternion}} \&}]{rotation}{}\end{DoxyParamCaption})}
+
+
+
+Rotates the camera by a quaternion rotation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rotation} & The quaternion representing the rotation to apply \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8cpp_source_l00097}{97}} of file \doxymbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00175}{m\+\_\+\+Rotation}}, and \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}.
+
+\Hypertarget{class_camera_a9f23e46ca6e265e5142d1c902d4a960b}\index{Camera@{Camera}!SetOrthographic@{SetOrthographic}}
+\index{SetOrthographic@{SetOrthographic}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{SetOrthographic()}{SetOrthographic()}}
+{\footnotesize\ttfamily \label{class_camera_a9f23e46ca6e265e5142d1c902d4a960b} 
+void Camera::\+\+Set\+Orthographic (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{size}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{aspect}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{near}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{far}{}\end{DoxyParamCaption})}
+
+
+
+Sets the camera to use orthographic projection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Size of the orthographic view volume (height) \\
+\hline
+{\em aspect} & Aspect ratio (width /\+ height) of the viewport \\
+\hline
+{\em near} & Near clipping plane distance \\
+\hline
+{\em far} & Far clipping plane distance \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8cpp_source_l00060}{60}} of file \doxymbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00169}{m\+\_\+\+Type}}, and \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}.
+
+\Hypertarget{class_camera_ab1782340a5959089cbf93a7c97cdfdec}\index{Camera@{Camera}!SetPerspective@{SetPerspective}}
+\index{SetPerspective@{SetPerspective}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{SetPerspective()}{SetPerspective()}}
+{\footnotesize\ttfamily \label{class_camera_ab1782340a5959089cbf93a7c97cdfdec} 
+void Camera::\+\+Set\+Perspective (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{fov}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{aspect}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{near}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{far}{}\end{DoxyParamCaption})}
+
+
+
+Sets the camera to use perspective projection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fov} & Vertical field of view in degrees \\
+\hline
+{\em aspect} & Aspect ratio (width /\+ height) of the viewport \\
+\hline
+{\em near} & Near clipping plane distance \\
+\hline
+{\em far} & Far clipping plane distance \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8cpp_source_l00033}{33}} of file \doxymbox{\hyperlink{_camera_8cpp_source}{Camera.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00178}{m\+\_\+\+FOV}}, \doxymbox{\hyperlink{_camera_8h_source_l00169}{m\+\_\+\+Type}}, \doxymbox{\hyperlink{_math_8h_source_l00043}{Math::\+\+PI}}, and \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}.
+
+\Hypertarget{class_camera_ad59eeb5b820614ca7e52262082e8dde1}\index{Camera@{Camera}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily \label{class_camera_ad59eeb5b820614ca7e52262082e8dde1} 
+void Camera::\+\+Set\+Position (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_vector3}{Vector3}} \&}]{position}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the camera\textquotesingle{}s position in world space. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The new position of the camera \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00090}{90}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00172}{m\+\_\+\+Position}}, and \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}.
+
+\Hypertarget{class_camera_a813699dd0540d634e888c47b6de40330}\index{Camera@{Camera}!SetRotation@{SetRotation}}
+\index{SetRotation@{SetRotation}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{SetRotation()}{SetRotation()}}
+{\footnotesize\ttfamily \label{class_camera_a813699dd0540d634e888c47b6de40330} 
+void Camera::\+\+Set\+Rotation (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_quaternion}{Quaternion}} \&}]{rotation}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the camera\textquotesingle{}s rotation using a quaternion. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rotation} & The new rotation of the camera \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00097}{97}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_camera_8h_source_l00175}{m\+\_\+\+Rotation}}, and \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_camera_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_camera_a2163af1a807c2d1a8baa551c4a7e3249}\index{Camera@{Camera}!m\_Aspect@{m\_Aspect}}
+\index{m\_Aspect@{m\_Aspect}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{m\_Aspect}{m\_Aspect}}
+{\footnotesize\ttfamily \label{class_camera_a2163af1a807c2d1a8baa551c4a7e3249} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Camera::\+m\+\_\+\+Aspect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00180}{180}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+\Hypertarget{class_camera_ab66b8fad8de882c46d07f0181310303f}\index{Camera@{Camera}!m\_Far@{m\_Far}}
+\index{m\_Far@{m\_Far}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{m\_Far}{m\_Far}}
+{\footnotesize\ttfamily \label{class_camera_ab66b8fad8de882c46d07f0181310303f} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Camera::\+m\+\_\+\+Far\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00182}{182}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+\Hypertarget{class_camera_aa4007c66e9f7392b97a6b9ed6c886764}\index{Camera@{Camera}!m\_FOV@{m\_FOV}}
+\index{m\_FOV@{m\_FOV}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{m\_FOV}{m\_FOV}}
+{\footnotesize\ttfamily \label{class_camera_aa4007c66e9f7392b97a6b9ed6c886764} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Camera::\+m\+\_\+\+FOV\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Projection parameters. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00178}{178}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_camera_8cpp_source_l00004}{Camera()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00016}{Camera()}}, \doxymbox{\hyperlink{_camera_8h_source_l00151}{Get\+FOV()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}, and \doxymbox{\hyperlink{_camera_8cpp_source_l00033}{Set\+Perspective()}}.
+
+\Hypertarget{class_camera_aec21b83730935a7a548293b196672feb}\index{Camera@{Camera}!m\_Near@{m\_Near}}
+\index{m\_Near@{m\_Near}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{m\_Near}{m\_Near}}
+{\footnotesize\ttfamily \label{class_camera_aec21b83730935a7a548293b196672feb} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Camera::\+m\+\_\+\+Near\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00181}{181}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+\Hypertarget{class_camera_a3f89ba3e10d6e8ea7fe3479417d2661c}\index{Camera@{Camera}!m\_Position@{m\_Position}}
+\index{m\_Position@{m\_Position}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{m\_Position}{m\_Position}}
+{\footnotesize\ttfamily \label{class_camera_a3f89ba3e10d6e8ea7fe3479417d2661c} 
+\doxymbox{\hyperlink{struct_vector3}{Vector3}} Camera::\+m\+\_\+\+Position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The position of the camera in world space. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00172}{172}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_camera_8cpp_source_l00004}{Camera()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00016}{Camera()}}, \doxymbox{\hyperlink{_camera_8h_source_l00124}{Get\+Position()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00087}{Look\+At()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00092}{Move()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}, and \doxymbox{\hyperlink{_camera_8h_source_l00090}{Set\+Position()}}.
+
+\Hypertarget{class_camera_a5f352b9fc34c9fe737528c4c393f68fa}\index{Camera@{Camera}!m\_ProjectionMatrix@{m\_ProjectionMatrix}}
+\index{m\_ProjectionMatrix@{m\_ProjectionMatrix}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{m\_ProjectionMatrix}{m\_ProjectionMatrix}}
+{\footnotesize\ttfamily \label{class_camera_a5f352b9fc34c9fe737528c4c393f68fa} 
+\doxymbox{\hyperlink{struct_matrix4}{Matrix4}} Camera::\+m\+\_\+\+Projection\+Matrix\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Projection matrix. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00188}{188}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_camera_8h_source_l00133}{Get\+Projection\+Matrix()}}, \doxymbox{\hyperlink{_camera_8h_source_l00136}{Get\+View\+Projection\+Matrix()}}, and \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}.
+
+\Hypertarget{class_camera_ab75f47af1cd46907c8ca0cd333395889}\index{Camera@{Camera}!m\_Rotation@{m\_Rotation}}
+\index{m\_Rotation@{m\_Rotation}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{m\_Rotation}{m\_Rotation}}
+{\footnotesize\ttfamily \label{class_camera_ab75f47af1cd46907c8ca0cd333395889} 
+\doxymbox{\hyperlink{struct_quaternion}{Quaternion}} Camera::\+m\+\_\+\+Rotation\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The rotation of the camera as a quaternion. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00175}{175}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_camera_8cpp_source_l00004}{Camera()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00016}{Camera()}}, \doxymbox{\hyperlink{_camera_8h_source_l00139}{Get\+Forward()}}, \doxymbox{\hyperlink{_camera_8h_source_l00142}{Get\+Right()}}, \doxymbox{\hyperlink{_camera_8h_source_l00127}{Get\+Rotation()}}, \doxymbox{\hyperlink{_camera_8h_source_l00145}{Get\+Up()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00087}{Look\+At()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00097}{Rotate()}}, and \doxymbox{\hyperlink{_camera_8h_source_l00097}{Set\+Rotation()}}.
+
+\Hypertarget{class_camera_a13ecb50b532021ba352dd299132003e0}\index{Camera@{Camera}!m\_Size@{m\_Size}}
+\index{m\_Size@{m\_Size}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{m\_Size}{m\_Size}}
+{\footnotesize\ttfamily \label{class_camera_a13ecb50b532021ba352dd299132003e0} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Camera::\+m\+\_\+\+Size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00179}{179}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+\Hypertarget{class_camera_a978ade18865022ff5eed90b52c87b13c}\index{Camera@{Camera}!m\_Type@{m\_Type}}
+\index{m\_Type@{m\_Type}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{m\_Type}{m\_Type}}
+{\footnotesize\ttfamily \label{class_camera_a978ade18865022ff5eed90b52c87b13c} 
+Camera\+Type Camera::\+m\+\_\+\+Type\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The type of camera projection. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00169}{169}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_camera_8cpp_source_l00004}{Camera()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00016}{Camera()}}, \doxymbox{\hyperlink{_camera_8h_source_l00148}{Get\+Type()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}, \doxymbox{\hyperlink{_camera_8cpp_source_l00060}{Set\+Orthographic()}}, and \doxymbox{\hyperlink{_camera_8cpp_source_l00033}{Set\+Perspective()}}.
+
+\Hypertarget{class_camera_aaab33e66df42a804c349b925a14bad04}\index{Camera@{Camera}!m\_ViewMatrix@{m\_ViewMatrix}}
+\index{m\_ViewMatrix@{m\_ViewMatrix}!Camera@{Camera}}
+\doxysubsubsection{\texorpdfstring{m\_ViewMatrix}{m\_ViewMatrix}}
+{\footnotesize\ttfamily \label{class_camera_aaab33e66df42a804c349b925a14bad04} 
+\doxymbox{\hyperlink{struct_matrix4}{Matrix4}} Camera::\+m\+\_\+\+View\+Matrix\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+View and projection matrices. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_camera_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Camera.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_camera_8h_source_l00185}{185}} of file \doxymbox{\hyperlink{_camera_8h_source}{Camera.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_camera_8h_source_l00130}{Get\+View\+Matrix()}}, \doxymbox{\hyperlink{_camera_8h_source_l00136}{Get\+View\+Projection\+Matrix()}}, and \doxymbox{\hyperlink{_camera_8cpp_source_l00102}{Recalculate()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Camera.\+h\item 
+src/\+\+Graphics/\+Camera.\+cpp\end{DoxyCompactItemize}

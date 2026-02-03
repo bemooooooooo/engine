@@ -1,0 +1,720 @@
+.TH "Math" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Math \- Mathematical constants and utility functions for the game engine\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T> constexpr T \fBClamp\fP (T value, T min, T max)"
+.br
+.ti -1c
+.RI "template<typename T> constexpr T \fBLerp\fP (T a, T b, \fBf32\fP t)"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBToRadians\fP (\fBf32\fP degrees)"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBToDegrees\fP (\fBf32\fP radians)"
+.br
+.ti -1c
+.RI "bool \fBNearZero\fP (\fBf32\fP value, \fBf32\fP epsilon=\fBEPSILON\fP)"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBSqrt\fP (\fBf32\fP v)"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBSin\fP (\fBf32\fP angleRad)"
+.br
+.RI "Sin function\&. "
+.ti -1c
+.RI "\fBf32\fP \fBCos\fP (\fBf32\fP angleRad)"
+.br
+.RI "Cos function\&. "
+.ti -1c
+.RI "\fBf32\fP \fBTan\fP (\fBf32\fP angleRad)"
+.br
+.RI "Tan function\&. "
+.ti -1c
+.RI "\fBf32\fP \fBASin\fP (\fBf32\fP value)"
+.br
+.RI "Arc sine function\&. "
+.ti -1c
+.RI "\fBf32\fP \fBACos\fP (\fBf32\fP value)"
+.br
+.RI "Arc cosine function\&. "
+.ti -1c
+.RI "\fBf32\fP \fBATan\fP (\fBf32\fP value)"
+.br
+.RI "Arc tangent function\&. "
+.ti -1c
+.RI "\fBf32\fP \fBATan2\fP (\fBf32\fP y, \fBf32\fP x)"
+.br
+.RI "Arc tangent function with two arguments\&. "
+.ti -1c
+.RI "\fBf32\fP \fBExp\fP (\fBf32\fP value)"
+.br
+.RI "Exponential function\&. "
+.ti -1c
+.RI "\fBf32\fP \fBLog\fP (\fBf32\fP value)"
+.br
+.RI "Natural logarithm function\&. "
+.ti -1c
+.RI "\fBf32\fP \fBLog10\fP (\fBf32\fP value)"
+.br
+.RI "Base-10 logarithm function\&. "
+.ti -1c
+.RI "\fBf32\fP \fBCeil\fP (\fBf32\fP value)"
+.br
+.RI "Ceiling function\&. "
+.ti -1c
+.RI "\fBf32\fP \fBFloor\fP (\fBf32\fP value)"
+.br
+.RI "Floor function\&. "
+.ti -1c
+.RI "\fBf32\fP \fBRound\fP (\fBf32\fP value)"
+.br
+.RI "Round function\&. "
+.ti -1c
+.RI "\fBf32\fP \fBFmod\fP (\fBf32\fP x, \fBf32\fP y)"
+.br
+.RI "Fractional part function\&. "
+.ti -1c
+.RI "template<typename T> constexpr T \fBSign\fP (T value)"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBSmoothstep\fP (\fBf32\fP edge0, \fBf32\fP edge1, \fBf32\fP x)"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBSmootherstep\fP (\fBf32\fP edge0, \fBf32\fP edge1, \fBf32\fP x)"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBRemap\fP (\fBf32\fP value, \fBf32\fP fromMin, \fBf32\fP fromMax, \fBf32\fP toMin, \fBf32\fP toMax)"
+.br
+.ti -1c
+.RI "template<typename T> constexpr bool \fBInRange\fP (T value, T min, T max)"
+.br
+.ti -1c
+.RI "template<typename T> constexpr bool \fBInRangeExclusive\fP (T value, T min, T max)"
+.br
+.ti -1c
+.RI "\fBi32\fP \fBFloatToInt\fP (\fBf32\fP value)"
+.br
+.RI "Converts a floating-point number to an integer by rounding\&. "
+.ti -1c
+.RI "template<typename T> constexpr bool \fBIsPowerOfTwo\fP (T value)"
+.br
+.ti -1c
+.RI "template<typename T> constexpr T \fBNextPowerOfTwo\fP (T value)"
+.br
+.ti -1c
+.RI "template<typename T> constexpr T \fBMin\fP (T a, T b)"
+.br
+.ti -1c
+.RI "template<typename T> constexpr T \fBMax\fP (T a, T b)"
+.br
+.ti -1c
+.RI "template<typename T> constexpr T \fBAbs\fP (T value)"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBPow\fP (\fBf32\fP base, \fBf32\fP exponent)"
+.br
+.ti -1c
+.RI "bool \fBApproximately\fP (\fBf32\fP a, \fBf32\fP b, \fBf32\fP epsilon=\fBEPSILON\fP)"
+.br
+.ti -1c
+.RI "template<typename T> constexpr T \fBLerpClamped\fP (T a, T b, \fBf32\fP t)"
+.br
+.ti -1c
+.RI "template<typename T> constexpr T \fBQuadraticLerp\fP (T a, T b, T c, \fBf32\fP t)"
+.br
+.ti -1c
+.RI "template<typename T> constexpr \fBf32\fP \fBWarpAngle\fP (T angle)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "constexpr \fBf32\fP \fBPI\fP = 3\&.14159265358979323846f"
+.br
+.RI "Mathematical constant π (pi) approximately equal to 3\&.14159\&. "
+.ti -1c
+.RI "constexpr \fBf32\fP \fBTWO_PI\fP = 6\&.28318530717958647692f"
+.br
+.RI "Mathematical constant 2π (two times pi) approximately equal to 6\&.28318\&. "
+.ti -1c
+.RI "constexpr \fBf32\fP \fBHALF_PI\fP = 1\&.57079632679489661923f"
+.br
+.RI "Mathematical constant π/2 (half pi) approximately equal to 1\&.5708\&. "
+.ti -1c
+.RI "constexpr \fBf32\fP \fBDEG2RAD\fP = \fBPI\fP / 180\&.0f"
+.br
+.RI "Conversion factor from degrees to radians\&. "
+.ti -1c
+.RI "constexpr \fBf32\fP \fBRAD2DEG\fP = 180\&.0f / \fBPI\fP"
+.br
+.RI "Conversion factor from radians to degrees\&. "
+.ti -1c
+.RI "constexpr \fBf32\fP \fBEPSILON\fP = 1\&.0e\-6f"
+.br
+.RI "Small value used for floating-point comparisons\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Mathematical constants and utility functions for the game engine\&. 
+
+Additional mathematical utility functions for the game engine\&.
+
+.PP
+This namespace provides a collection of mathematical constants, functions, and utilities commonly used in game development\&. It includes definitions for pi, conversion factors between degrees and radians, and various helper functions for clamping, interpolation, and common math operations\&.
+
+.PP
+\fBKey\fP features:
+
+.PP
+.IP "\(bu" 2
+Mathematical constants (PI, TWO_PI, DEG2RAD, RAD2DEG)
+.IP "\(bu" 2
+Clamping and interpolation functions
+.IP "\(bu" 2
+Angle conversion utilities
+.IP "\(bu" 2
+Common math functions (sqrt, sin, cos, etc\&.)
+.IP "\(bu" 2
+Utility functions for range checking and power-of-two calculations
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+All floating-point operations use \fBf32\fP (single-precision) for performance\&.
+.RE
+.PP
+This namespace extends the core \fBMath\fP namespace with additional utility functions commonly used in game development\&. It includes functions for minimum/maximum, absolute value, power calculations, approximate comparisons, and various interpolation techniques\&.
+
+.PP
+\fBKey\fP features:
+
+.PP
+.IP "\(bu" 2
+Min/Max functions for comparing two values
+.IP "\(bu" 2
+Absolute value function
+.IP "\(bu" 2
+Power function for exponentiation
+.IP "\(bu" 2
+Approximate equality checks for floating-point numbers
+.IP "\(bu" 2
+Clamped linear interpolation
+.IP "\(bu" 2
+Quadratic interpolation
+.IP "\(bu" 2
+Angle wrapping utility
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+All floating-point operations use \fBf32\fP (single-precision) for performance\&. 
+.RE
+.PP
+
+.SH "Function Documentation"
+.PP 
+.SS "template<typename T> T Math::Abs (T value)\fR [constexpr]\fP"
+
+.PP
+Definition at line \fB87\fP of file \fBMathUtils\&.h\fP\&.
+.SS "\fBf32\fP Math::ACos (\fBf32\fP value)\fR [inline]\fP"
+
+.PP
+Arc cosine function\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP \fBInput\fP value 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBf32\fP Arc cosine of the value in radians 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB237\fP of file \fBMath\&.h\fP\&.
+.SS "bool Math::Approximately (\fBf32\fP a, \fBf32\fP b, \fBf32\fP epsilon = \fR\fBEPSILON\fP\fP)\fR [inline]\fP"
+
+.PP
+Definition at line \fB123\fP of file \fBMathUtils\&.h\fP\&.
+.SS "\fBf32\fP Math::ASin (\fBf32\fP value)\fR [inline]\fP"
+
+.PP
+Arc sine function\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP \fBInput\fP value 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBf32\fP Arc sine of the value in radians 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB229\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::ATan (\fBf32\fP value)\fR [inline]\fP"
+
+.PP
+Arc tangent function\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP \fBInput\fP value 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBf32\fP Arc tangent of the value in radians 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB245\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::ATan2 (\fBf32\fP y, \fBf32\fP x)\fR [inline]\fP"
+
+.PP
+Arc tangent function with two arguments\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIy\fP Y coordinate 
+.br
+\fIx\fP X coordinate 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBf32\fP Arc tangent of y/x in radians 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB254\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::Ceil (\fBf32\fP value)\fR [inline]\fP"
+
+.PP
+Ceiling function\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP \fBInput\fP value 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBf32\fP Smallest integer not less than value 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB290\fP of file \fBMath\&.h\fP\&.
+.SS "template<typename T> T Math::Clamp (T value, T min, T max)\fR [constexpr]\fP"
+
+.PP
+Definition at line \fB95\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::Cos (\fBf32\fP angleRad)\fR [inline]\fP"
+
+.PP
+Cos function\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIangleRad\fP angle in radians 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBf32\fP Cosine of the angle 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Math/Matrix3\&.h\fP\&.
+.PP
+Definition at line \fB211\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::Exp (\fBf32\fP value)\fR [inline]\fP"
+
+.PP
+Exponential function\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP \fBInput\fP value 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBf32\fP e raised to the power of value 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB264\fP of file \fBMath\&.h\fP\&.
+.SS "\fBi32\fP Math::FloatToInt (\fBf32\fP value)\fR [inline]\fP"
+
+.PP
+Converts a floating-point number to an integer by rounding\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP \fBInput\fP floating-point value 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBi32\fP Rounded integer value 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB441\fP of file \fBMath\&.h\fP\&.
+.PP
+References \fBRound()\fP\&.
+.SS "\fBf32\fP Math::Floor (\fBf32\fP value)\fR [inline]\fP"
+
+.PP
+Floor function\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP \fBInput\fP value 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBf32\fP Largest integer not greater than value 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB298\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::Fmod (\fBf32\fP x, \fBf32\fP y)\fR [inline]\fP"
+
+.PP
+Fractional part function\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP \fBInput\fP value 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBf32\fP Fractional part of value 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB314\fP of file \fBMath\&.h\fP\&.
+.SS "template<typename T> bool Math::InRange (T value, T min, T max)\fR [constexpr]\fP"
+
+.PP
+Definition at line \fB414\fP of file \fBMath\&.h\fP\&.
+.SS "template<typename T> bool Math::InRangeExclusive (T value, T min, T max)\fR [constexpr]\fP"
+
+.PP
+Definition at line \fB431\fP of file \fBMath\&.h\fP\&.
+.SS "template<typename T> bool Math::IsPowerOfTwo (T value)\fR [constexpr]\fP"
+
+.PP
+Definition at line \fB454\fP of file \fBMath\&.h\fP\&.
+.SS "template<typename T> T Math::Lerp (T a, T b, \fBf32\fP t)\fR [constexpr]\fP"
+
+.PP
+Definition at line \fB123\fP of file \fBMath\&.h\fP\&.
+.SS "template<typename T> T Math::LerpClamped (T a, T b, \fBf32\fP t)\fR [constexpr]\fP"
+
+.PP
+Definition at line \fB144\fP of file \fBMathUtils\&.h\fP\&.
+.SS "\fBf32\fP Math::Log (\fBf32\fP value)\fR [inline]\fP"
+
+.PP
+Natural logarithm function\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP \fBInput\fP value 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBf32\fP Natural logarithm of the value 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB272\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::Log10 (\fBf32\fP value)\fR [inline]\fP"
+
+.PP
+Base-10 logarithm function\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP \fBInput\fP value 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBf32\fP Base-10 logarithm of the value 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB280\fP of file \fBMath\&.h\fP\&.
+.SS "template<typename T> T Math::Max (T a, T b)\fR [constexpr]\fP"
+
+.PP
+Definition at line \fB71\fP of file \fBMathUtils\&.h\fP\&.
+.SS "template<typename T> T Math::Min (T a, T b)\fR [constexpr]\fP"
+
+.PP
+Definition at line \fB54\fP of file \fBMathUtils\&.h\fP\&.
+.SS "bool Math::NearZero (\fBf32\fP value, \fBf32\fP epsilon = \fR\fBEPSILON\fP\fP)\fR [inline]\fP"
+
+.PP
+Definition at line \fB173\fP of file \fBMath\&.h\fP\&.
+.SS "template<typename T> T Math::NextPowerOfTwo (T value)\fR [constexpr]\fP"
+
+.PP
+Definition at line \fB469\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::Pow (\fBf32\fP base, \fBf32\fP exponent)\fR [inline]\fP"
+
+.PP
+Definition at line \fB103\fP of file \fBMathUtils\&.h\fP\&.
+.SS "template<typename T> T Math::QuadraticLerp (T a, T b, T c, \fBf32\fP t)\fR [constexpr]\fP"
+
+.PP
+Definition at line \fB166\fP of file \fBMathUtils\&.h\fP\&.
+.SS "\fBf32\fP Math::Remap (\fBf32\fP value, \fBf32\fP fromMin, \fBf32\fP fromMax, \fBf32\fP toMin, \fBf32\fP toMax)\fR [inline]\fP"
+
+.PP
+Definition at line \fB397\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::Round (\fBf32\fP value)\fR [inline]\fP"
+
+.PP
+Round function\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP \fBInput\fP value 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBf32\fP Nearest integer to value 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB306\fP of file \fBMath\&.h\fP\&.
+.PP
+Referenced by \fBFloatToInt()\fP\&.
+.SS "template<typename T> T Math::Sign (T value)\fR [constexpr]\fP"
+
+.PP
+Definition at line \fB333\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::Sin (\fBf32\fP angleRad)\fR [inline]\fP"
+
+.PP
+Sin function\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIangleRad\fP angle in radians 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBf32\fP Sine of the angle 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Math/Matrix3\&.h\fP\&.
+.PP
+Definition at line \fB203\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::Smootherstep (\fBf32\fP edge0, \fBf32\fP edge1, \fBf32\fP x)\fR [inline]\fP"
+
+.PP
+Definition at line \fB375\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::Smoothstep (\fBf32\fP edge0, \fBf32\fP edge1, \fBf32\fP x)\fR [inline]\fP"
+
+.PP
+Definition at line \fB353\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::Sqrt (\fBf32\fP v)\fR [inline]\fP"
+
+.PP
+Definition at line \fB193\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::Tan (\fBf32\fP angleRad)\fR [inline]\fP"
+
+.PP
+Tan function\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIangleRad\fP angle in radians 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBf32\fP Tangent of the angle 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB219\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::ToDegrees (\fBf32\fP radians)\fR [inline]\fP"
+
+.PP
+Definition at line \fB155\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::ToRadians (\fBf32\fP degrees)\fR [inline]\fP"
+
+.PP
+Definition at line \fB140\fP of file \fBMath\&.h\fP\&.
+.SS "template<typename T> \fBf32\fP Math::WarpAngle (T angle)\fR [constexpr]\fP"
+
+.PP
+Definition at line \fB184\fP of file \fBMathUtils\&.h\fP\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBf32\fP Math::DEG2RAD = \fBPI\fP / 180\&.0f\fR [constexpr]\fP"
+
+.PP
+Conversion factor from degrees to radians\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB60\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::EPSILON = 1\&.0e\-6f\fR [constexpr]\fP"
+
+.PP
+Small value used for floating-point comparisons\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Math/MathUtils\&.h\fP\&.
+.PP
+Definition at line \fB72\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::HALF_PI = 1\&.57079632679489661923f\fR [constexpr]\fP"
+
+.PP
+Mathematical constant π/2 (half pi) approximately equal to 1\&.5708\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB54\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::PI = 3\&.14159265358979323846f\fR [constexpr]\fP"
+
+.PP
+Mathematical constant π (pi) approximately equal to 3\&.14159\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Math/MathUtils\&.h\fP\&.
+.PP
+Definition at line \fB43\fP of file \fBMath\&.h\fP\&.
+.PP
+Referenced by \fBMesh::CreateSphere()\fP, and \fBCamera::SetPerspective()\fP\&.
+.SS "\fBf32\fP Math::RAD2DEG = 180\&.0f / \fBPI\fP\fR [constexpr]\fP"
+
+.PP
+Conversion factor from radians to degrees\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP\&.
+.PP
+Definition at line \fB66\fP of file \fBMath\&.h\fP\&.
+.SS "\fBf32\fP Math::TWO_PI = 6\&.28318530717958647692f\fR [constexpr]\fP"
+
+.PP
+Mathematical constant 2π (two times pi) approximately equal to 6\&.28318\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Math/Math\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Math/MathUtils\&.h\fP\&.
+.PP
+Definition at line \fB48\fP of file \fBMath\&.h\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

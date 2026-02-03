@@ -1,0 +1,192 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ shader\ =\ \doxymbox{\hyperlink{class_resource_manager_a884ae73b54ff6fe1bc9e1b21f1611e51}{ResourceManager::LoadShader}}(\textcolor{stringliteral}{"{}basic"{}},\ \textcolor{stringliteral}{"{}vertex.glsl"{}},\ \textcolor{stringliteral}{"{}fragment.glsl"{}});}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ texture\ =\ \doxymbox{\hyperlink{class_resource_manager_aa9444c36eac438a0f97987baf0d95e51}{ResourceManager::LoadTexture}}(\textcolor{stringliteral}{"{}brick"{}},\ \textcolor{stringliteral}{"{}brick\_diffuse.png"{}});}
+\DoxyCodeLine{\textcolor{keyword}{auto}\ mesh\ =\ \doxymbox{\hyperlink{class_resource_manager_a04399a80ced01704cc0e0400f40bc52d}{ResourceManager::GetMesh}}(\textcolor{stringliteral}{"{}cube"{}});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Core/Base.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Forward\ declarations-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_shader}{Shader}};}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_texture}{Texture}};}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_mesh}{Mesh}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ ResourceManager}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Centralized\ manager\ for\ loading,\ storing,\ and\ accessing\ graphics\ resources.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ class\ provides\ static\ methods\ to\ load,\ retrieve,\ and\ unload\ various\ graphics}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ resources\ such\ as\ shaders,\ textures,\ and\ meshes.\ It\ maintains\ internal\ maps\ to}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ ensure\ that\ resources\ are\ loaded\ only\ once\ and\ shared\ across\ the\ engine.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Load\ shaders\ from\ files\ or\ source\ code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Load\ textures\ from\ image\ files}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Register\ and\ retrieve\ meshes}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Automatic\ resource\ cleanup\ on\ shutdown}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ All\ methods\ are\ static;\ no\ instances\ of\ ResourceManager\ should\ be\ created.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ Resources\ are\ identified\ by\ unique\ string\ names.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ auto\ shader\ =\ ResourceManager::LoadShader("{}basic"{},\ "{}vertex.glsl"{},\ "{}fragment.glsl"{});}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ auto\ texture\ =\ ResourceManager::LoadTexture("{}brick"{},\ "{}brick\_diffuse.png"{});}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ auto\ mesh\ =\ ResourceManager::GetMesh("{}cube"{});}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_resource_manager}{ResourceManager}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Shader\ management-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Retrieves\ a\ shader\ by\ name.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ of\ the\ shader}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Shader>\ The\ requested\ shader,\ or\ nullptr\ if\ not\ found}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\ \doxymbox{\hyperlink{class_resource_manager_a3603db5f3dfffc1557139cb0b59e1c77}{GetShader}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Loads\ a\ shader\ from\ vertex\ and\ fragment\ file\ paths.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ to\ associate\ with\ the\ shader}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ vertexPath\ The\ file\ path\ to\ the\ vertex\ shader\ source}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ fragmentPath\ The\ file\ path\ to\ the\ fragment\ shader\ source}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Shader>\ The\ loaded\ shader}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\ \doxymbox{\hyperlink{class_resource_manager_a884ae73b54ff6fe1bc9e1b21f1611e51}{LoadShader}}(\textcolor{keyword}{const}\ std::string\&\ name,\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vertexPath,\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ fragmentPath);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Loads\ a\ shader\ from\ provided\ source\ code\ strings.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ to\ associate\ with\ the\ shader}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ vertexSrc\ The\ vertex\ shader\ source\ code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ fragmentSrc\ The\ fragment\ shader\ source\ code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Shader>\ The\ loaded\ shader}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\ \doxymbox{\hyperlink{class_resource_manager_a827e96a4c14146dfae34cd5ff2164fae}{LoadShaderFromSource}}(\textcolor{keyword}{const}\ std::string\&\ name,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ vertexSrc,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\&\ fragmentSrc);\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Unloads\ a\ shader\ by\ name.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ of\ the\ shader\ to\ unload}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_resource_manager_a1b9f6d6eb55776d2868a128c346e29ae}{UnloadShader}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Texture\ management-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Retrieves\ a\ texture\ by\ name.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ of\ the\ texture}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Texture>\ The\ requested\ texture,\ or\ nullptr\ if\ not\ found}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Texture>}}\ \doxymbox{\hyperlink{class_resource_manager_ada224c447722b7fc9244514b7173ef9f}{GetTexture}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Loads\ a\ texture\ from\ an\ image\ file.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ to\ associate\ with\ the\ texture}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ path\ The\ file\ path\ to\ the\ image}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Texture>\ The\ loaded\ texture}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Texture>}}\ \doxymbox{\hyperlink{class_resource_manager_aa9444c36eac438a0f97987baf0d95e51}{LoadTexture}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ std::string\&\ path);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Unloads\ a\ texture\ by\ name.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ of\ the\ texture\ to\ unload}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_resource_manager_a5ab9c2577f39e6311fd673a30fa3ab5e}{UnloadTexture}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Mesh\ management-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Retrieves\ a\ mesh\ by\ name.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ of\ the\ mesh}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Mesh>\ The\ requested\ mesh,\ or\ nullptr\ if\ not\ found}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\ \doxymbox{\hyperlink{class_resource_manager_a04399a80ced01704cc0e0400f40bc52d}{GetMesh}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Registers\ a\ mesh\ with\ a\ unique\ name.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ to\ associate\ with\ the\ mesh}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ mesh\ The\ mesh\ to\ register}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_resource_manager_aea7a27de3d69b57d62eb7109b00f45a4}{RegisterMesh}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Mesh>}}\&\ mesh);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Unloads\ a\ mesh\ by\ name.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ unique\ name\ of\ the\ mesh\ to\ unload}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_resource_manager_af2f8fdb280a2f25a86dcb78133d1a037}{UnloadMesh}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Cleanup-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Unloads\ all\ resources\ and\ clears\ internal\ storage.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Should\ be\ called\ at\ engine\ shutdown\ to\ free\ all\ loaded\ resources.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_resource_manager_ad69916a57c142341802f13585d267851}{Shutdown}}();}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Statistics-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ count\ of\ currently\ loaded\ shaders,\ textures,\ and\ meshes.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ size\_t\ Number\ of\ loaded\ shaders}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ size\_t\ Number\ of\ loaded\ textures}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ size\_t\ Number\ of\ loaded\ meshes}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{class_resource_manager_a8589b7ff1fc4258a3462e9ffec3ac8ec}{GetShaderCount}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_resource_manager_a89da21256052faf26f86ff7eabf02f9b}{s\_Shaders}}.size();\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ count\ of\ currently\ loaded\ textures.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ size\_t\ Number\ of\ loaded\ textures}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{class_resource_manager_a4c0853c81b0cbe333700de117c7f0cad}{GetTextureCount}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_resource_manager_ad5209de21223e9f36d3fd38f4623bcb5}{s\_Textures}}.size();\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ count\ of\ currently\ loaded\ meshes.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ size\_t\ Number\ of\ loaded\ meshes}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{class_resource_manager_a2584aeeea0e40b9b1f0a83cbde69e98f}{GetMeshCount}}()\ \{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_resource_manager_a7a9101c11ae477773228d65a9863b3f1}{s\_Meshes}}.size();\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{private}:}
+\DoxyCodeLine{\textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Static\ resource\ storage-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ s\_Shaders}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Map\ of\ loaded\ shaders\ identified\ by\ unique\ names.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ std::unordered\_map<std::string,\ Ref<Shader>>\ \doxymbox{\hyperlink{class_resource_manager_a89da21256052faf26f86ff7eabf02f9b}{s\_Shaders}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ s\_Textures}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Map\ of\ loaded\ textures\ identified\ by\ unique\ names.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ std::unordered\_map<std::string,\ Ref<Texture>>\ \doxymbox{\hyperlink{class_resource_manager_ad5209de21223e9f36d3fd38f4623bcb5}{s\_Textures}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ s\_Meshes}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Map\ of\ loaded\ meshes\ identified\ by\ unique\ names.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ std::unordered\_map<std::string,\ Ref<Mesh>>\ \doxymbox{\hyperlink{class_resource_manager_a7a9101c11ae477773228d65a9863b3f1}{s\_Meshes}};}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+
+\end{DoxyCodeInclude}
+ 

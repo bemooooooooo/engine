@@ -1,0 +1,206 @@
+.TH "ModelLoader" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ModelLoader \- Utility class for loading 3D models and meshes from files\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <ModelLoader\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBRef\fP< \fBMesh\fP > \fBLoadMesh\fP (const std::string &filepath)"
+.br
+.RI "Loads a single mesh from the specified file\&. "
+.ti -1c
+.RI "static std::vector< \fBRef\fP< \fBMesh\fP > > \fBLoadModel\fP (const std::string &filepath)"
+.br
+.RI "Loads an entire model from the specified file\&. "
+.in -1c
+.SS "Static Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBProcessNode\fP (aiNode *node, const aiScene *scene, std::vector< \fBRef\fP< \fBMesh\fP > > &meshes)"
+.br
+.RI "Recursively processes a node in the Assimp scene graph\&. "
+.ti -1c
+.RI "static \fBRef\fP< \fBMesh\fP > \fBProcessMesh\fP (aiMesh *mesh)"
+.br
+.RI "Processes an individual Assimp mesh and converts it to a \fBMesh\fP object\&. "
+.ti -1c
+.RI "static std::vector< \fBu32\fP > \fBLoadIndices\fP (aiMesh *mesh)"
+.br
+.ti -1c
+.RI "static std::vector< \fBVertex\fP > \fBLoadVertices\fP (aiMesh *mesh)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Utility class for loading 3D models and meshes from files\&. 
+
+This class uses the Assimp library to load 3D model files in various formats (e\&.g\&., OBJ, FBX, STL) and converts them into \fBMesh\fP objects usable by the engine\&. It handles parsing the model file, extracting vertex and index data, and creating \fBMesh\fP instances with associated materials\&.
+
+.PP
+\fBKey\fP features:
+.IP "\(bu" 2
+Load single meshes or entire models with multiple meshes
+.IP "\(bu" 2
+Support for common 3D file formats via Assimp
+.IP "\(bu" 2
+Automatic processing of vertices, indices, normals, and texture coordinates
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+Requires Assimp library to be linked with the project\&. 
+
+.PP
+Currently does not handle animations or skeletal data\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ModelLoader\&.h\fP\&.
+.PP
+Definition at line \fB33\fP of file \fBModelLoader\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "std::vector< \fBu32\fP > ModelLoader::LoadIndices (aiMesh * mesh)\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Definition at line \fB93\fP of file \fBModelLoader\&.cpp\fP\&.
+.SS "\fBRef\fP< \fBMesh\fP > ModelLoader::LoadMesh (const std::string & filepath)\fR [static]\fP"
+
+.PP
+Loads a single mesh from the specified file\&. Uses Assimp to import the model file and extract the first mesh found\&. Converts the mesh data into a \fBMesh\fP object\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilepath\fP The path to the model file to load 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Mesh>\fP The loaded mesh object
+.RE
+.PP
+\fBNote\fP
+.RS 4
+If the file contains multiple meshes, only the first one is loaded\&. 
+
+.PP
+Throws an exception if loading fails\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ModelLoader\&.h\fP\&.
+.PP
+Definition at line \fB5\fP of file \fBModelLoader\&.cpp\fP\&.
+.PP
+References \fBLoadModel()\fP\&.
+.SS "std::vector< \fBRef\fP< \fBMesh\fP > > ModelLoader::LoadModel (const std::string & filepath)\fR [static]\fP"
+
+.PP
+Loads an entire model from the specified file\&. Uses Assimp to import the model file and extract all meshes found\&. Converts each mesh into a \fBMesh\fP object and returns a list of meshes\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilepath\fP The path to the model file to load 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+std::vector<Ref<Mesh>> A vector of loaded mesh objects
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Supports models with multiple meshes\&. 
+
+.PP
+Throws an exception if loading fails\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ModelLoader\&.h\fP\&.
+.PP
+Definition at line \fB10\fP of file \fBModelLoader\&.cpp\fP\&.
+.PP
+References \fBProcessNode()\fP\&.
+.PP
+Referenced by \fBLoadMesh()\fP\&.
+.SS "std::vector< \fBVertex\fP > ModelLoader::LoadVertices (aiMesh * mesh)\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Definition at line \fB51\fP of file \fBModelLoader\&.cpp\fP\&.
+.SS "\fBRef\fP< \fBMesh\fP > ModelLoader::ProcessMesh (aiMesh * mesh)\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Processes an individual Assimp mesh and converts it to a \fBMesh\fP object\&. Extracts vertex positions, normals, texture coordinates, and indices from the aiMesh structure and creates a \fBMesh\fP instance\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fImesh\fP The Assimp mesh to process 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Mesh>\fP The created \fBMesh\fP object 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ModelLoader\&.h\fP\&.
+.PP
+Definition at line \fB45\fP of file \fBModelLoader\&.cpp\fP\&.
+.PP
+Referenced by \fBProcessNode()\fP\&.
+.SS "void ModelLoader::ProcessNode (aiNode * node, const aiScene * scene, std::vector< \fBRef\fP< \fBMesh\fP > > & meshes)\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Recursively processes a node in the Assimp scene graph\&. Traverses the node hierarchy, processing each mesh and its children\&. Converts meshes into \fBMesh\fP objects and adds them to the provided list\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fInode\fP The current Assimp node to process 
+.br
+\fIscene\fP The Assimp scene containing the model data 
+.br
+\fImeshes\fP The vector to store processed \fBMesh\fP objects 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ModelLoader\&.h\fP\&.
+.PP
+Definition at line \fB31\fP of file \fBModelLoader\&.cpp\fP\&.
+.PP
+References \fBProcessMesh()\fP, and \fBProcessNode()\fP\&.
+.PP
+Referenced by \fBLoadModel()\fP, and \fBProcessNode()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

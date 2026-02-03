@@ -1,0 +1,84 @@
+.TH "MemoryManagement" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MemoryManagement \- Smart Pointer and Memory Utilities
+.SH SYNOPSIS
+.br
+.PP
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "template<typename T> using \fBScope\fP = std::unique_ptr<T>"
+.br
+.RI "Type alias for std::unique_ptr<T>\&. "
+.ti -1c
+.RI "template<typename T> using \fBRef\fP = std::shared_ptr<T>"
+.br
+.RI "Type alias for std::shared_ptr<T>\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T, typename\&.\&.\&. Args> constexpr \fBScope\fP< T > \fBCreateScope\fP (Args &&\&.\&.\&. args)"
+.br
+.ti -1c
+.RI "template<typename T, typename\&.\&.\&. Args> constexpr \fBRef\fP< T > \fBCreateRef\fP (Args &&\&.\&.\&. args)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Template aliases and factory functions for managing dynamic memory using C++11 smart pointers\&. These ensure proper resource management and prevent memory leaks by automating cleanup\&. Use \fBScope\fP for exclusive ownership and \fBRef\fP for shared ownership scenarios\&. 
+.SH "Typedef Documentation"
+.PP 
+.SS "template<typename T> using \fBRef\fP = std::shared_ptr<T>"
+
+.PP
+Type alias for std::shared_ptr<T>\&. Represents shared ownership semantics\&. Use \fBRef\fP when multiple entities need to own and access an object\&. The object is deleted automatically when the last reference is released\&. Internally uses reference counting to track ownership\&.
+
+.PP
+\fBTemplate Parameters\fP
+.RS 4
+\fIT\fP The type of object to manage 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Base\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/ModelLoader\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Renderer\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Shader\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB212\fP of file \fBBase\&.h\fP\&.
+.SS "template<typename T> using \fBScope\fP = std::unique_ptr<T>"
+
+.PP
+Type alias for std::unique_ptr<T>\&. Represents exclusive ownership semantics\&. Use \fBScope\fP when an object should be owned by a single entity and deleted when that owner is destroyed\&. Prevents memory leaks through automatic cleanup and eliminates the need for manual delete\&.
+
+.PP
+\fBTemplate Parameters\fP
+.RS 4
+\fIT\fP The type of object to manage 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Base\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Core/Engine\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Core/Log\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Graphics/Renderer\&.h\fP\&.
+.PP
+Definition at line \fB168\fP of file \fBBase\&.h\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "template<typename T, typename\&.\&.\&. Args> \fBRef\fP< T > CreateRef (Args &&\&.\&.\&. args)\fR [constexpr]\fP"
+
+.PP
+Definition at line \fB235\fP of file \fBBase\&.h\fP\&.
+.SS "template<typename T, typename\&.\&.\&. Args> \fBScope\fP< T > CreateScope (Args &&\&.\&.\&. args)\fR [constexpr]\fP"
+
+.PP
+Definition at line \fB190\fP of file \fBBase\&.h\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

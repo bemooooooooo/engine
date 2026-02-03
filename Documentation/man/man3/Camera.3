@@ -1,0 +1,633 @@
+.TH "Camera" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Camera \- A 3D camera class supporting perspective and orthographic projections\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Camera\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCamera\fP ()"
+.br
+.RI "Construct a new \fBCamera\fP object\&. "
+.ti -1c
+.RI "\fBCamera\fP (CameraType type, \fBf32\fP fovOrSize, \fBf32\fP aspect, \fBf32\fP near, \fBf32\fP far)"
+.br
+.RI "Construct a new \fBCamera\fP object with specified parameters\&. "
+.ti -1c
+.RI "void \fBSetPerspective\fP (\fBf32\fP fov, \fBf32\fP aspect, \fBf32\fP near, \fBf32\fP far)"
+.br
+.RI "Sets the camera to use perspective projection\&. "
+.ti -1c
+.RI "void \fBSetOrthographic\fP (\fBf32\fP size, \fBf32\fP aspect, \fBf32\fP near, \fBf32\fP far)"
+.br
+.RI "Sets the camera to use orthographic projection\&. "
+.ti -1c
+.RI "void \fBSetPosition\fP (const \fBVector3\fP &position)"
+.br
+.RI "Sets the camera's position in world space\&. "
+.ti -1c
+.RI "void \fBSetRotation\fP (const \fBQuaternion\fP &rotation)"
+.br
+.RI "Sets the camera's rotation using a quaternion\&. "
+.ti -1c
+.RI "void \fBLookAt\fP (const \fBVector3\fP &target, const \fBVector3\fP &up=Vector3::Up)"
+.br
+.RI "Orients the camera to look at a target point\&. "
+.ti -1c
+.RI "void \fBMove\fP (const \fBVector3\fP &offset)"
+.br
+.RI "Moves the camera by an offset in world space\&. "
+.ti -1c
+.RI "void \fBRotate\fP (const \fBQuaternion\fP &rotation)"
+.br
+.RI "Rotates the camera by a quaternion rotation\&. "
+.ti -1c
+.RI "const \fBVector3\fP & \fBGetPosition\fP () const"
+.br
+.RI "Gets the camera's position in world space\&. "
+.ti -1c
+.RI "const \fBQuaternion\fP & \fBGetRotation\fP () const"
+.br
+.RI "Gets the camera's rotation as a quaternion\&. "
+.ti -1c
+.RI "const \fBMatrix4\fP & \fBGetViewMatrix\fP () const"
+.br
+.RI "Gets the view matrix of the camera\&. "
+.ti -1c
+.RI "const \fBMatrix4\fP & \fBGetProjectionMatrix\fP () const"
+.br
+.RI "Gets the projection matrix of the camera\&. "
+.ti -1c
+.RI "\fBMatrix4\fP \fBGetViewProjectionMatrix\fP () const"
+.br
+.RI "Gets the combined view-projection matrix of the camera\&. "
+.ti -1c
+.RI "\fBVector3\fP \fBGetForward\fP () const"
+.br
+.RI "Gets the camera's forward, right, and up direction vectors\&. "
+.ti -1c
+.RI "\fBVector3\fP \fBGetRight\fP () const"
+.br
+.RI "Gets the camera's right direction vector\&. "
+.ti -1c
+.RI "\fBVector3\fP \fBGetUp\fP () const"
+.br
+.RI "Gets the camera's up direction vector\&. "
+.ti -1c
+.RI "CameraType \fBGetType\fP () const"
+.br
+.RI "Gets the camera type (Perspective or Orthographic)\&. "
+.ti -1c
+.RI "\fBf32\fP \fBGetFOV\fP () const"
+.br
+.RI "Gets the camera's field of view (for perspective cameras)\&. "
+.ti -1c
+.RI "\fBf32\fP \fBGetAspect\fP () const"
+.br
+.RI "Gets the camera's size (for orthographic cameras)\&. "
+.ti -1c
+.RI "\fBf32\fP \fBGetNear\fP () const"
+.br
+.RI "Gets the camera's near clipping plane distance\&. "
+.ti -1c
+.RI "\fBf32\fP \fBGetFar\fP () const"
+.br
+.RI "Gets the camera's far clipping plane distance\&. "
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBRecalculate\fP ()"
+.br
+.RI "Recalculates the view and projection matrices based on current parameters\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "CameraType \fBm_Type\fP"
+.br
+.RI "The type of camera projection\&. "
+.ti -1c
+.RI "\fBVector3\fP \fBm_Position\fP"
+.br
+.RI "The position of the camera in world space\&. "
+.ti -1c
+.RI "\fBQuaternion\fP \fBm_Rotation\fP"
+.br
+.RI "The rotation of the camera as a quaternion\&. "
+.ti -1c
+.RI "\fBf32\fP \fBm_FOV\fP"
+.br
+.RI "Projection parameters\&. "
+.ti -1c
+.RI "\fBf32\fP \fBm_Size\fP"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBm_Aspect\fP"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBm_Near\fP"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBm_Far\fP"
+.br
+.ti -1c
+.RI "\fBMatrix4\fP \fBm_ViewMatrix\fP"
+.br
+.RI "View and projection matrices\&. "
+.ti -1c
+.RI "\fBMatrix4\fP \fBm_ProjectionMatrix\fP"
+.br
+.RI "Projection matrix\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A 3D camera class supporting perspective and orthographic projections\&. 
+
+The \fBCamera\fP class encapsulates the properties and behaviors of a virtual camera in a 3D scene\&. It supports both perspective and orthographic projection modes, allowing for flexible rendering setups\&. The camera maintains its position, orientation, and projection parameters, and provides methods to manipulate its transform and retrieve view/projection matrices\&.
+
+.PP
+\fBKey\fP features:
+.IP "\(bu" 2
+Switchable between perspective and orthographic projections
+.IP "\(bu" 2
+Position and rotation management using \fBVector3\fP and \fBQuaternion\fP
+.IP "\(bu" 2
+View and projection matrix generation
+.IP "\(bu" 2
+Utility methods for moving, rotating, and looking at targets
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+The camera uses a right-handed coordinate system\&. 
+
+.PP
+The up vector is assumed to be (0, 1, 0) unless specified otherwise\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Graphics/Renderer\&.h\fP\&.
+.PP
+Definition at line \fB44\fP of file \fBCamera\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Camera::Camera ()"
+
+.PP
+Construct a new \fBCamera\fP object\&. Initializes a camera with default parameters\&. The default camera is a perspective camera positioned at the origin, looking down the negative Z-axis\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB4\fP of file \fBCamera\&.cpp\fP\&.
+.PP
+References \fBm_FOV\fP, \fBm_Position\fP, \fBm_Rotation\fP, \fBm_Type\fP, and \fBRecalculate()\fP\&.
+.SS "Camera::Camera (CameraType type, \fBf32\fP fovOrSize, \fBf32\fP aspect, \fBf32\fP near, \fBf32\fP far)"
+
+.PP
+Construct a new \fBCamera\fP object with specified parameters\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItype\fP The type of camera projection (Perspective or Orthographic) 
+.br
+\fIfovOrSize\fP For Perspective: vertical field of view in degrees; For Orthographic: size of the view volume 
+.br
+\fIaspect\fP Aspect ratio (width / height) of the viewport 
+.br
+\fInear\fP Near clipping plane distance 
+.br
+\fIfar\fP Far clipping plane distance 
+.RE
+.PP
+
+.PP
+Definition at line \fB16\fP of file \fBCamera\&.cpp\fP\&.
+.PP
+References \fBm_FOV\fP, \fBm_Position\fP, \fBm_Rotation\fP, \fBm_Type\fP, and \fBRecalculate()\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBf32\fP Camera::GetAspect () const\fR [inline]\fP"
+
+.PP
+Gets the camera's size (for orthographic cameras)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB154\fP of file \fBCamera\&.h\fP\&.
+.SS "\fBf32\fP Camera::GetFar () const\fR [inline]\fP"
+
+.PP
+Gets the camera's far clipping plane distance\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB160\fP of file \fBCamera\&.h\fP\&.
+.SS "\fBVector3\fP Camera::GetForward () const\fR [inline]\fP"
+
+.PP
+Gets the camera's forward, right, and up direction vectors\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB139\fP of file \fBCamera\&.h\fP\&.
+.PP
+References \fBm_Rotation\fP\&.
+.PP
+Referenced by \fBRecalculate()\fP\&.
+.SS "\fBf32\fP Camera::GetFOV () const\fR [inline]\fP"
+
+.PP
+Gets the camera's field of view (for perspective cameras)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB151\fP of file \fBCamera\&.h\fP\&.
+.PP
+References \fBm_FOV\fP\&.
+.SS "\fBf32\fP Camera::GetNear () const\fR [inline]\fP"
+
+.PP
+Gets the camera's near clipping plane distance\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB157\fP of file \fBCamera\&.h\fP\&.
+.SS "const \fBVector3\fP & Camera::GetPosition () const\fR [inline]\fP"
+
+.PP
+Gets the camera's position in world space\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB124\fP of file \fBCamera\&.h\fP\&.
+.PP
+References \fBm_Position\fP\&.
+.SS "const \fBMatrix4\fP & Camera::GetProjectionMatrix () const\fR [inline]\fP"
+
+.PP
+Gets the projection matrix of the camera\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB133\fP of file \fBCamera\&.h\fP\&.
+.PP
+References \fBm_ProjectionMatrix\fP\&.
+.SS "\fBVector3\fP Camera::GetRight () const\fR [inline]\fP"
+
+.PP
+Gets the camera's right direction vector\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB142\fP of file \fBCamera\&.h\fP\&.
+.PP
+References \fBm_Rotation\fP\&.
+.SS "const \fBQuaternion\fP & Camera::GetRotation () const\fR [inline]\fP"
+
+.PP
+Gets the camera's rotation as a quaternion\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB127\fP of file \fBCamera\&.h\fP\&.
+.PP
+References \fBm_Rotation\fP\&.
+.SS "CameraType Camera::GetType () const\fR [inline]\fP"
+
+.PP
+Gets the camera type (Perspective or Orthographic)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB148\fP of file \fBCamera\&.h\fP\&.
+.PP
+References \fBm_Type\fP\&.
+.SS "\fBVector3\fP Camera::GetUp () const\fR [inline]\fP"
+
+.PP
+Gets the camera's up direction vector\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB145\fP of file \fBCamera\&.h\fP\&.
+.PP
+References \fBm_Rotation\fP\&.
+.PP
+Referenced by \fBRecalculate()\fP\&.
+.SS "const \fBMatrix4\fP & Camera::GetViewMatrix () const\fR [inline]\fP"
+
+.PP
+Gets the view matrix of the camera\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB130\fP of file \fBCamera\&.h\fP\&.
+.PP
+References \fBm_ViewMatrix\fP\&.
+.SS "\fBMatrix4\fP Camera::GetViewProjectionMatrix () const\fR [inline]\fP"
+
+.PP
+Gets the combined view-projection matrix of the camera\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB136\fP of file \fBCamera\&.h\fP\&.
+.PP
+References \fBm_ProjectionMatrix\fP, and \fBm_ViewMatrix\fP\&.
+.SS "void Camera::LookAt (const \fBVector3\fP & target, const \fBVector3\fP & up = \fRVector3::Up\fP)"
+
+.PP
+Orients the camera to look at a target point\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItarget\fP The point in world space to look at 
+.br
+\fIup\fP The up direction vector (default is (0, 1, 0)) 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB87\fP of file \fBCamera\&.cpp\fP\&.
+.PP
+References \fBm_Position\fP, \fBm_Rotation\fP, and \fBRecalculate()\fP\&.
+.SS "void Camera::Move (const \fBVector3\fP & offset)"
+
+.PP
+Moves the camera by an offset in world space\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIoffset\fP The translation vector to move the camera 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB92\fP of file \fBCamera\&.cpp\fP\&.
+.PP
+References \fBm_Position\fP, and \fBRecalculate()\fP\&.
+.SS "void Camera::Recalculate ()\fR [private]\fP"
+
+.PP
+Recalculates the view and projection matrices based on current parameters\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB102\fP of file \fBCamera\&.cpp\fP\&.
+.PP
+References \fBGetForward()\fP, \fBGetUp()\fP, \fBm_FOV\fP, \fBm_Position\fP, \fBm_ProjectionMatrix\fP, \fBm_Type\fP, and \fBm_ViewMatrix\fP\&.
+.PP
+Referenced by \fBCamera()\fP, \fBCamera()\fP, \fBLookAt()\fP, \fBMove()\fP, \fBRotate()\fP, \fBSetOrthographic()\fP, \fBSetPerspective()\fP, \fBSetPosition()\fP, and \fBSetRotation()\fP\&.
+.SS "void Camera::Rotate (const \fBQuaternion\fP & rotation)"
+
+.PP
+Rotates the camera by a quaternion rotation\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrotation\fP The quaternion representing the rotation to apply 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB97\fP of file \fBCamera\&.cpp\fP\&.
+.PP
+References \fBm_Rotation\fP, and \fBRecalculate()\fP\&.
+.SS "void Camera::SetOrthographic (\fBf32\fP size, \fBf32\fP aspect, \fBf32\fP near, \fBf32\fP far)"
+
+.PP
+Sets the camera to use orthographic projection\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsize\fP Size of the orthographic view volume (height) 
+.br
+\fIaspect\fP Aspect ratio (width / height) of the viewport 
+.br
+\fInear\fP Near clipping plane distance 
+.br
+\fIfar\fP Far clipping plane distance 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB60\fP of file \fBCamera\&.cpp\fP\&.
+.PP
+References \fBm_Type\fP, and \fBRecalculate()\fP\&.
+.SS "void Camera::SetPerspective (\fBf32\fP fov, \fBf32\fP aspect, \fBf32\fP near, \fBf32\fP far)"
+
+.PP
+Sets the camera to use perspective projection\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfov\fP Vertical field of view in degrees 
+.br
+\fIaspect\fP Aspect ratio (width / height) of the viewport 
+.br
+\fInear\fP Near clipping plane distance 
+.br
+\fIfar\fP Far clipping plane distance 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB33\fP of file \fBCamera\&.cpp\fP\&.
+.PP
+References \fBm_FOV\fP, \fBm_Type\fP, \fBMath::PI\fP, and \fBRecalculate()\fP\&.
+.SS "void Camera::SetPosition (const \fBVector3\fP & position)\fR [inline]\fP"
+
+.PP
+Sets the camera's position in world space\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIposition\fP The new position of the camera 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB90\fP of file \fBCamera\&.h\fP\&.
+.PP
+References \fBm_Position\fP, and \fBRecalculate()\fP\&.
+.SS "void Camera::SetRotation (const \fBQuaternion\fP & rotation)\fR [inline]\fP"
+
+.PP
+Sets the camera's rotation using a quaternion\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrotation\fP The new rotation of the camera 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB97\fP of file \fBCamera\&.h\fP\&.
+.PP
+References \fBm_Rotation\fP, and \fBRecalculate()\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBf32\fP Camera::m_Aspect\fR [private]\fP"
+
+.PP
+Definition at line \fB180\fP of file \fBCamera\&.h\fP\&.
+.SS "\fBf32\fP Camera::m_Far\fR [private]\fP"
+
+.PP
+Definition at line \fB182\fP of file \fBCamera\&.h\fP\&.
+.SS "\fBf32\fP Camera::m_FOV\fR [private]\fP"
+
+.PP
+Projection parameters\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB178\fP of file \fBCamera\&.h\fP\&.
+.PP
+Referenced by \fBCamera()\fP, \fBCamera()\fP, \fBGetFOV()\fP, \fBRecalculate()\fP, and \fBSetPerspective()\fP\&.
+.SS "\fBf32\fP Camera::m_Near\fR [private]\fP"
+
+.PP
+Definition at line \fB181\fP of file \fBCamera\&.h\fP\&.
+.SS "\fBVector3\fP Camera::m_Position\fR [private]\fP"
+
+.PP
+The position of the camera in world space\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB172\fP of file \fBCamera\&.h\fP\&.
+.PP
+Referenced by \fBCamera()\fP, \fBCamera()\fP, \fBGetPosition()\fP, \fBLookAt()\fP, \fBMove()\fP, \fBRecalculate()\fP, and \fBSetPosition()\fP\&.
+.SS "\fBMatrix4\fP Camera::m_ProjectionMatrix\fR [private]\fP"
+
+.PP
+Projection matrix\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB188\fP of file \fBCamera\&.h\fP\&.
+.PP
+Referenced by \fBGetProjectionMatrix()\fP, \fBGetViewProjectionMatrix()\fP, and \fBRecalculate()\fP\&.
+.SS "\fBQuaternion\fP Camera::m_Rotation\fR [private]\fP"
+
+.PP
+The rotation of the camera as a quaternion\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB175\fP of file \fBCamera\&.h\fP\&.
+.PP
+Referenced by \fBCamera()\fP, \fBCamera()\fP, \fBGetForward()\fP, \fBGetRight()\fP, \fBGetRotation()\fP, \fBGetUp()\fP, \fBLookAt()\fP, \fBRotate()\fP, and \fBSetRotation()\fP\&.
+.SS "\fBf32\fP Camera::m_Size\fR [private]\fP"
+
+.PP
+Definition at line \fB179\fP of file \fBCamera\&.h\fP\&.
+.SS "CameraType Camera::m_Type\fR [private]\fP"
+
+.PP
+The type of camera projection\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB169\fP of file \fBCamera\&.h\fP\&.
+.PP
+Referenced by \fBCamera()\fP, \fBCamera()\fP, \fBGetType()\fP, \fBRecalculate()\fP, \fBSetOrthographic()\fP, and \fBSetPerspective()\fP\&.
+.SS "\fBMatrix4\fP Camera::m_ViewMatrix\fR [private]\fP"
+
+.PP
+View and projection matrices\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP\&.
+.PP
+Definition at line \fB185\fP of file \fBCamera\&.h\fP\&.
+.PP
+Referenced by \fBGetViewMatrix()\fP, \fBGetViewProjectionMatrix()\fP, and \fBRecalculate()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

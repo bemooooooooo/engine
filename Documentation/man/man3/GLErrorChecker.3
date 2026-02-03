@@ -1,0 +1,122 @@
+.TH "GLErrorChecker" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GLErrorChecker \- Utility class for checking and logging OpenGL errors\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <GLError\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGLErrorChecker\fP (const char *context)"
+.br
+.RI "Constructs a \fBGLErrorChecker\fP with a context description\&. "
+.ti -1c
+.RI "\fB~GLErrorChecker\fP ()"
+.br
+.RI "Destructor that checks for OpenGL errors\&. "
+.ti -1c
+.RI "void \fBCheckErrors\fP () const"
+.br
+.RI "Checks for OpenGL errors and logs them\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static const char * \fBGetErrorString\fP (GLenum error)"
+.br
+.RI "Converts an OpenGL error code to a human-readable string\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "const char * \fBm_Context\fP"
+.br
+.RI "Context description for error logging\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Utility class for checking and logging OpenGL errors\&. 
+
+This class provides functionality to check for OpenGL errors after OpenGL function calls\&. It logs any detected errors using the engine's logging system\&. The class can be used in a RAII manner to automatically check for errors when going out of scope\&.
+
+.PP
+Usage: 
+.PP
+.nf
+{
+  GLErrorChecker glError("Rendering Frame");
+ // OpenGL calls\&.\&.\&.
+} // Errors checked automatically here
+
+.fi
+.PP
+ 
+.PP
+\fBNote\fP
+.RS 4
+This class is intended for debugging purposes and may be disabled in release builds for performance\&. 
+.RE
+.PP
+
+.PP
+Definition at line \fB26\fP of file \fBGLError\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "GLErrorChecker::GLErrorChecker (const char * context)\fR [inline]\fP"
+
+.PP
+Constructs a \fBGLErrorChecker\fP with a context description\&. 
+.PP
+Definition at line \fB29\fP of file \fBGLError\&.h\fP\&.
+.PP
+References \fBm_Context\fP\&.
+.SS "GLErrorChecker::~GLErrorChecker ()\fR [inline]\fP"
+
+.PP
+Destructor that checks for OpenGL errors\&. 
+.PP
+Definition at line \fB35\fP of file \fBGLError\&.h\fP\&.
+.PP
+References \fBCheckErrors()\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void GLErrorChecker::CheckErrors () const\fR [inline]\fP"
+
+.PP
+Checks for OpenGL errors and logs them\&. 
+.PP
+Definition at line \fB40\fP of file \fBGLError\&.h\fP\&.
+.PP
+References \fBGetErrorString()\fP, and \fBm_Context\fP\&.
+.PP
+Referenced by \fB~GLErrorChecker()\fP\&.
+.SS "const char * GLErrorChecker::GetErrorString (GLenum error)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Converts an OpenGL error code to a human-readable string\&. 
+.PP
+Definition at line \fB58\fP of file \fBGLError\&.h\fP\&.
+.PP
+Referenced by \fBCheckErrors()\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const char* GLErrorChecker::m_Context\fR [private]\fP"
+
+.PP
+Context description for error logging\&. 
+.PP
+Definition at line \fB72\fP of file \fBGLError\&.h\fP\&.
+.PP
+Referenced by \fBCheckErrors()\fP, and \fBGLErrorChecker()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

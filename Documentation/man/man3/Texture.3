@@ -1,0 +1,473 @@
+.TH "Texture" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Texture \- Represents a 2D texture resource in OpenGL\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Texture\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTexture\fP (\fBu32\fP width, \fBu32\fP height)"
+.br
+.RI "Constructs a \fBTexture\fP with the given width and height\&. "
+.ti -1c
+.RI "\fBTexture\fP (const std::string &filepath)"
+.br
+.RI "Constructs a \fBTexture\fP by loading from the specified file path\&. "
+.ti -1c
+.RI "\fB~Texture\fP ()"
+.br
+.RI "Destructor that cleans up the OpenGL texture resource\&. "
+.ti -1c
+.RI "void \fBBind\fP (\fBu32\fP slot=0) const"
+.br
+.RI "Binds the texture to the specified texture unit\&. "
+.ti -1c
+.RI "void \fBUnbind\fP () const"
+.br
+.RI "Unbinds the texture from the current texture unit\&. "
+.ti -1c
+.RI "void \fBSetData\fP (void *data, \fBu32\fP size)"
+.br
+.RI "Sets the texture data from a raw data pointer\&. "
+.ti -1c
+.RI "\fBu32\fP \fBGetWidth\fP () const"
+.br
+.RI "Gets the width of the texture in pixels\&. "
+.ti -1c
+.RI "\fBu32\fP \fBGetHeight\fP () const"
+.br
+.RI "Gets the height of the texture in pixels\&. "
+.ti -1c
+.RI "\fBu32\fP \fBGetRendererID\fP () const"
+.br
+.RI "Gets the OpenGL renderer ID of the texture\&. "
+.ti -1c
+.RI "bool \fBIsLoaded\fP () const"
+.br
+.RI "Checks if the texture was successfully loaded\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBRef\fP< \fBTexture\fP > \fBCreate\fP (\fBu32\fP width, \fBu32\fP height)"
+.br
+.RI "Factory method to create a \fBTexture\fP\&. "
+.ti -1c
+.RI "static \fBRef\fP< \fBTexture\fP > \fBCreate\fP (const std::string &filepath)"
+.br
+.RI "Factory method to create a \fBTexture\fP from a file\&. "
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCreateInternal\fP ()"
+.br
+.RI "Internal method to create the OpenGL texture resource\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBu32\fP \fBm_RendererID\fP"
+.br
+.RI "The OpenGL renderer ID for the texture\&. "
+.ti -1c
+.RI "\fBu32\fP \fBm_Width\fP"
+.br
+.RI "The width of the texture in pixels\&. "
+.ti -1c
+.RI "\fBu32\fP \fBm_Height\fP"
+.br
+.ti -1c
+.RI "\fBu32\fP \fBm_InternalFormat\fP"
+.br
+.RI "The internal format of the texture (e\&.g\&., GL_RGBA8)\&. "
+.ti -1c
+.RI "\fBu32\fP \fBm_DataFormat\fP"
+.br
+.RI "The data format of the texture (e\&.g\&., GL_RGBA)\&. "
+.ti -1c
+.RI "std::string \fBm_Filepath\fP"
+.br
+.RI "The file path from which the texture was loaded\&. "
+.ti -1c
+.RI "bool \fBm_IsLoaded\fP = false"
+.br
+.RI "Flag indicating whether the texture was successfully loaded\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a 2D texture resource in OpenGL\&. 
+
+This class encapsulates the creation, management, and usage of 2D textures in OpenGL\&. It provides methods to load textures from image files, create empty textures, bind/unbind them for rendering, and set texture data\&.
+
+.PP
+\fBKey\fP features:
+.IP "\(bu" 2
+Load textures from image files (e\&.g\&., PNG, JPEG)
+.IP "\(bu" 2
+Create empty textures with specified width and height
+.IP "\(bu" 2
+Bind and unbind textures to texture units
+.IP "\(bu" 2
+Set texture data dynamically
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+Requires a valid OpenGL context to function properly\&. 
+
+.PP
+All OpenGL calls are made through this class; direct OpenGL calls should be avoided\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB41\fP of file \fBTexture\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Texture::Texture (\fBu32\fP width, \fBu32\fP height)"
+
+.PP
+Constructs a \fBTexture\fP with the given width and height\&. Creates an empty texture with the specified dimensions\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIwidth\fP The width of the texture in pixels 
+.br
+\fIheight\fP The height of the texture in pixels 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB6\fP of file \fBTexture\&.cpp\fP\&.
+.PP
+References \fBCreateInternal()\fP, \fBm_DataFormat\fP, \fBm_InternalFormat\fP, and \fBm_Width\fP\&.
+.SS "Texture::Texture (const std::string & filepath)"
+
+.PP
+Constructs a \fBTexture\fP by loading from the specified file path\&. Loads the texture image from the given file and creates the OpenGL texture\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilepath\fP The path to the image file to load 
+.RE
+.PP
+
+.PP
+Definition at line \fB13\fP of file \fBTexture\&.cpp\fP\&.
+.PP
+References \fBCreateInternal()\fP, \fBm_DataFormat\fP, \fBm_Filepath\fP, \fBm_InternalFormat\fP, \fBm_IsLoaded\fP, and \fBm_Width\fP\&.
+.SS "Texture::~Texture ()"
+
+.PP
+Destructor that cleans up the OpenGL texture resource\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB47\fP of file \fBTexture\&.cpp\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Texture::Bind (\fBu32\fP slot = \fR0\fP) const"
+
+.PP
+Binds the texture to the specified texture unit\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIslot\fP The texture unit slot to bind to (default is 0) 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB61\fP of file \fBTexture\&.cpp\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.SS "\fBRef\fP< \fBTexture\fP > Texture::Create (const std::string & filepath)\fR [static]\fP"
+
+.PP
+Factory method to create a \fBTexture\fP from a file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilepath\fP The path to the image file to load 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Texture>\fP The created texture loaded from file 
+.RE
+.PP
+
+.PP
+Definition at line \fB85\fP of file \fBTexture\&.cpp\fP\&.
+.SS "\fBRef\fP< \fBTexture\fP > Texture::Create (\fBu32\fP width, \fBu32\fP height)\fR [static]\fP"
+
+.PP
+Factory method to create a \fBTexture\fP\&. Overloaded to create a texture either from dimensions or from a file path\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIwidth\fP The width of the texture in pixels 
+.br
+\fIheight\fP The height of the texture in pixels 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Texture>\fP The created empty texture
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilepath\fP The path to the image file to load 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Texture>\fP The created texture loaded from file 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB81\fP of file \fBTexture\&.cpp\fP\&.
+.PP
+Referenced by \fBResourceManager::LoadTexture()\fP\&.
+.SS "void Texture::CreateInternal ()\fR [private]\fP"
+
+.PP
+Internal method to create the OpenGL texture resource\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB51\fP of file \fBTexture\&.cpp\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.PP
+Referenced by \fBTexture()\fP, and \fBTexture()\fP\&.
+.SS "\fBu32\fP Texture::GetHeight () const\fR [inline]\fP"
+
+.PP
+Gets the height of the texture in pixels\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBu32\fP The height of the texture 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB101\fP of file \fBTexture\&.h\fP\&.
+.SS "\fBu32\fP Texture::GetRendererID () const\fR [inline]\fP, \fR [nodiscard]\fP"
+
+.PP
+Gets the OpenGL renderer ID of the texture\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBu32\fP The OpenGL renderer ID 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB108\fP of file \fBTexture\&.h\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.SS "\fBu32\fP Texture::GetWidth () const\fR [inline]\fP"
+
+.PP
+Gets the width of the texture in pixels\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBu32\fP The width of the texture 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB94\fP of file \fBTexture\&.h\fP\&.
+.PP
+References \fBm_Width\fP\&.
+.SS "bool Texture::IsLoaded () const\fR [inline]\fP"
+
+.PP
+Checks if the texture was successfully loaded\&. 
+.PP
+\fBReturns\fP
+.RS 4
+true If the texture is loaded and valid 
+
+.PP
+false If the texture failed to load 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB116\fP of file \fBTexture\&.h\fP\&.
+.PP
+References \fBm_IsLoaded\fP\&.
+.SS "void Texture::SetData (void * data, \fBu32\fP size)"
+
+.PP
+Sets the texture data from a raw data pointer\&. Uploads the provided pixel data to the texture\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIdata\fP Pointer to the pixel data 
+.br
+\fIsize\fP Size of the data in bytes 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB70\fP of file \fBTexture\&.cpp\fP\&.
+.PP
+References \fBm_DataFormat\fP, \fBm_InternalFormat\fP, and \fBm_Width\fP\&.
+.SS "void Texture::Unbind () const"
+
+.PP
+Unbinds the texture from the current texture unit\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB66\fP of file \fBTexture\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBu32\fP Texture::m_DataFormat\fR [private]\fP"
+
+.PP
+The data format of the texture (e\&.g\&., GL_RGBA)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB164\fP of file \fBTexture\&.h\fP\&.
+.PP
+Referenced by \fBSetData()\fP, \fBTexture()\fP, and \fBTexture()\fP\&.
+.SS "std::string Texture::m_Filepath\fR [private]\fP"
+
+.PP
+The file path from which the texture was loaded\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB170\fP of file \fBTexture\&.h\fP\&.
+.PP
+Referenced by \fBTexture()\fP\&.
+.SS "\fBu32\fP Texture::m_Height\fR [private]\fP"
+
+.PP
+Definition at line \fB156\fP of file \fBTexture\&.h\fP\&.
+.SS "\fBu32\fP Texture::m_InternalFormat\fR [private]\fP"
+
+.PP
+The internal format of the texture (e\&.g\&., GL_RGBA8)\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB164\fP of file \fBTexture\&.h\fP\&.
+.PP
+Referenced by \fBSetData()\fP, \fBTexture()\fP, and \fBTexture()\fP\&.
+.SS "bool Texture::m_IsLoaded = false\fR [private]\fP"
+
+.PP
+Flag indicating whether the texture was successfully loaded\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB176\fP of file \fBTexture\&.h\fP\&.
+.PP
+Referenced by \fBIsLoaded()\fP, and \fBTexture()\fP\&.
+.SS "\fBu32\fP Texture::m_RendererID\fR [private]\fP"
+
+.PP
+The OpenGL renderer ID for the texture\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB150\fP of file \fBTexture\&.h\fP\&.
+.PP
+Referenced by \fBBind()\fP, \fBCreateInternal()\fP, \fBGetRendererID()\fP, and \fB~Texture()\fP\&.
+.SS "\fBu32\fP Texture::m_Width\fR [private]\fP"
+
+.PP
+The width of the texture in pixels\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Texture\&.h\fP\&.
+.PP
+Definition at line \fB156\fP of file \fBTexture\&.h\fP\&.
+.PP
+Referenced by \fBGetWidth()\fP, \fBSetData()\fP, \fBTexture()\fP, and \fBTexture()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

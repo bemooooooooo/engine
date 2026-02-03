@@ -1,0 +1,208 @@
+\doxysection{Renderer.\+h}
+\hypertarget{_renderer_8h_source}{}\label{_renderer_8h_source}\index{src/Graphics/Renderer.h@{src/Graphics/Renderer.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_base_8h}{../Core/Base.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}RenderCommand.h"{}}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}Shader.h"{}}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}VertexArray.h"{}}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00007}00007\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00008}00008\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00009}00009\ \textcolor{comment}{\ *\ @struct\ SceneData}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00010}00010\ \textcolor{comment}{\ *\ @brief\ Structure\ holding\ per-\/scene\ rendering\ data.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00011}00011\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00012}00012\ \textcolor{comment}{\ *\ Contains\ the\ view-\/projection\ matrix\ used\ for\ transforming\ world\ coordinates}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00013}00013\ \textcolor{comment}{\ *\ to\ clip\ space\ during\ rendering.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00014}00014\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00015}\doxymbox{\hyperlink{struct_scene_data}{00015}}\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_scene_data}{SceneData}}\ \{\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00016}00016\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00017}00017\ \textcolor{comment}{\ \ \ \ \ *\ @var\ viewProjectionMatrix}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00018}00018\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ combined\ view\ and\ projection\ matrix\ for\ the\ current\ scene.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00019}00019\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00020}\doxymbox{\hyperlink{struct_scene_data_a9755133b130139974c3ae0d7f0baea4e}{00020}}\ \ \ \ \ \doxymbox{\hyperlink{struct_matrix4}{Matrix4}}\ \doxymbox{\hyperlink{struct_scene_data_a9755133b130139974c3ae0d7f0baea4e}{viewProjectionMatrix}};}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00021}00021\ \};}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00022}00022\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00023}00023\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00024}00024\ \textcolor{comment}{\ *\ @class\ Renderer}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00025}00025\ \textcolor{comment}{\ *\ @brief\ Core\ rendering\ system\ for\ managing\ draw\ calls\ and\ scene\ rendering.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00026}00026\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00027}00027\ \textcolor{comment}{\ *\ This\ class\ provides\ static\ methods\ for\ initializing\ the\ renderer,\ beginning}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00028}00028\ \textcolor{comment}{\ *\ and\ ending\ scenes,\ submitting\ draw\ calls,\ and\ handling\ window\ resize\ events.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00029}00029\ \textcolor{comment}{\ *\ It\ manages\ the\ rendering\ state\ and\ coordinates\ with\ shaders\ and\ vertex\ arrays}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00030}00030\ \textcolor{comment}{\ *\ to\ render\ 3D\ objects\ to\ the\ screen.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00031}00031\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00032}00032\ \textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00033}00033\ \textcolor{comment}{\ *\ -\/\ Scene\ management\ (begin/end)}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00034}00034\ \textcolor{comment}{\ *\ -\/\ Draw\ call\ submission}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00035}00035\ \textcolor{comment}{\ *\ -\/\ Clear\ color\ and\ buffer\ clearing}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00036}00036\ \textcolor{comment}{\ *\ -\/\ Window\ resize\ handling}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00037}00037\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00038}00038\ \textcolor{comment}{\ *\ @note\ All\ methods\ are\ static;\ no\ instances\ of\ Renderer\ should\ be\ created.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00039}00039\ \textcolor{comment}{\ *\ @note\ Must\ be\ initialized\ via\ Init()\ before\ use.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00040}00040\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00041}00041\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00042}00042\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00043}00043\ \textcolor{comment}{\ *\ Renderer::Init();}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00044}00044\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00045}00045\ \textcolor{comment}{\ *\ while\ (running)\ \{}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00046}00046\ \textcolor{comment}{\ *\ \ \ \ \ Renderer::BeginScene(camera);}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00047}00047\ \textcolor{comment}{\ *\ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00048}00048\ \textcolor{comment}{\ *\ \ \ \ \ Renderer::Submit(shader,\ vertexArray,\ transform);}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00049}00049\ \textcolor{comment}{\ *\ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00050}00050\ \textcolor{comment}{\ *\ \ \ \ \ Renderer::EndScene();}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00051}00051\ \textcolor{comment}{\ *\ \}}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00052}00052\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00053}00053\ \textcolor{comment}{\ *\ Renderer::Shutdown();}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00054}00054\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00055}00055\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00056}\doxymbox{\hyperlink{class_renderer}{00056}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_renderer}{Renderer}}\ \{}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00057}00057\ \textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00058}00058\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00059}00059\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Initializes\ the\ rendering\ system.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00060}00060\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00061}00061\ \textcolor{comment}{\ \ \ \ \ *\ Must\ be\ called\ once\ at\ engine\ startup\ before\ any\ rendering\ operations.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00062}00062\ \textcolor{comment}{\ \ \ \ \ *\ This\ function\ sets\ up\ necessary\ rendering\ state.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00063}00063\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00064}00064\ \textcolor{comment}{\ \ \ \ \ *\ @note\ This\ should\ be\ called\ right\ after\ creating\ a\ window.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00065}00065\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ before\ any\ rendering.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00066}00066\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00067}00067\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00068}00068\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00069}00069\ \textcolor{comment}{\ \ \ \ \ *\ Window\ window(800,\ 600,\ "{}My\ Game"{});}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00070}00070\ \textcolor{comment}{\ \ \ \ \ *\ Renderer::Init();\ \ //\ Initialize\ renderer}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00071}00071\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00072}00072\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Init();}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00074}00074\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00075}00075\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00076}00076\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Shuts\ down\ the\ rendering\ system.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00077}00077\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00078}00078\ \textcolor{comment}{\ \ \ \ \ *\ Called\ at\ engine\ shutdown\ to\ clean\ up\ rendering\ resources.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00079}00079\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00080}00080\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Should\ be\ called\ once\ when\ the\ application\ is\ closing.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00081}00081\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00082}00082\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00083}00083\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00084}00084\ \textcolor{comment}{\ \ \ \ \ *\ Renderer::Shutdown();\ \ //\ Clean\ up\ renderer}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00085}00085\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00086}00086\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00087}00087\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Shutdown();}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00088}00088\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00089}00089\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00090}00090\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Begins\ a\ new\ scene\ for\ rendering.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00091}00091\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00092}00092\ \textcolor{comment}{\ \ \ \ \ *\ Sets\ up\ the\ scene\ with\ the\ provided\ camera,\ calculating\ the\ view-\/projection}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00093}00093\ \textcolor{comment}{\ \ \ \ \ *\ matrix\ for\ transforming\ objects\ in\ the\ scene.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00094}00094\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00095}00095\ \textcolor{comment}{\ \ \ \ \ *\ @param\ camera\ The\ camera\ defining\ the\ view\ and\ projection\ for\ the\ scene}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00096}00096\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00097}00097\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ before\ submitting\ any\ draw\ calls\ for\ the\ scene.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00098}00098\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00099}00099\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00100}00100\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00101}00101\ \textcolor{comment}{\ \ \ \ \ *\ Renderer::BeginScene(camera);}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00102}00102\ \textcolor{comment}{\ \ \ \ \ *\ //\ ...\ submit\ draw\ calls\ ...}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00103}00103\ \textcolor{comment}{\ \ \ \ \ *\ Renderer::EndScene();}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00104}00104\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00105}00105\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00106}00106\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ BeginScene(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_camera}{Camera}}\&\ camera);}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00107}00107\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00108}00108\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00109}00109\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Ends\ the\ current\ scene.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00110}00110\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00111}00111\ \textcolor{comment}{\ \ \ \ \ *\ Finalizes\ rendering\ for\ the\ current\ scene.\ Should\ be\ called\ after\ all}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00112}00112\ \textcolor{comment}{\ \ \ \ \ *\ draw\ calls\ have\ been\ submitted.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00113}00113\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00114}00114\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ after\ BeginScene()\ and\ all\ submissions.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00115}00115\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00116}00116\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00117}00117\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00118}00118\ \textcolor{comment}{\ \ \ \ \ *\ Renderer::BeginScene(camera);}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00119}00119\ \textcolor{comment}{\ \ \ \ \ *\ //\ ...\ submit\ draw\ calls\ ...}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00120}00120\ \textcolor{comment}{\ \ \ \ \ *\ Renderer::EndScene();}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00121}00121\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00122}00122\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00123}00123\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ EndScene();}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00124}00124\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00125}00125\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00126}00126\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Submits\ a\ draw\ call\ to\ render\ a\ vertex\ array\ with\ a\ shader.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00127}00127\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00128}00128\ \textcolor{comment}{\ \ \ \ \ *\ Binds\ the\ shader\ and\ vertex\ array,\ sets\ necessary\ uniforms,\ and\ issues}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00129}00129\ \textcolor{comment}{\ \ \ \ \ *\ the\ draw\ call\ to\ render\ the\ object.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00130}00130\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00131}00131\ \textcolor{comment}{\ \ \ \ \ *\ @param\ shader\ The\ shader\ to\ use\ for\ rendering}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00132}00132\ \textcolor{comment}{\ \ \ \ \ *\ @param\ vertexArray\ The\ vertex\ array\ containing\ geometry\ data}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00133}00133\ \textcolor{comment}{\ \ \ \ \ *\ @param\ transform\ The\ transformation\ matrix\ to\ apply\ to\ the\ object\ (default\ is\ identity)}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00134}00134\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00135}00135\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ between\ BeginScene()\ and\ EndScene().}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00136}00136\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00137}00137\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00138}00138\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00139}00139\ \textcolor{comment}{\ \ \ \ \ *\ Renderer::BeginScene(camera);}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00140}00140\ \textcolor{comment}{\ \ \ \ \ *\ Renderer::Submit(shader,\ vertexArray,\ transform);}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00141}00141\ \textcolor{comment}{\ \ \ \ \ *\ Renderer::EndScene();}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00142}00142\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00143}00143\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00144}00144\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Submit(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\&\ shader,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<VertexArray>}}\&\ vertexArray,\ }
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_matrix4}{Matrix4}}\&\ transform\ =\ Matrix4::Identity());}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00146}00146\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00147}00147\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00148}00148\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ clear\ color\ for\ the\ framebuffer.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00149}00149\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00150}00150\ \textcolor{comment}{\ \ \ \ \ *\ @param\ color\ The\ color\ to\ use\ when\ clearing\ the\ screen}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00151}00151\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00152}00152\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Affects\ the\ color\ used\ in\ Clear().}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00153}00153\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00154}00154\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00155}00155\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00156}00156\ \textcolor{comment}{\ \ \ \ \ *\ Renderer::SetClearColor(Vector4(0.1f,\ 0.1f,\ 0.1f,\ 1.0f));\ //\ Dark\ gray}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00157}00157\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00158}00158\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00159}00159\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetClearColor(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_vector4}{Vector4}}\&\ color);}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00160}00160\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00161}00161\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00162}00162\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Clears\ the\ color\ and\ depth\ buffers.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00163}00163\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00164}00164\ \textcolor{comment}{\ \ \ \ \ *\ Fills\ the\ color\ buffer\ with\ the\ color\ set\ by\ SetClearColor()\ and\ clears}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00165}00165\ \textcolor{comment}{\ \ \ \ \ *\ the\ depth\ buffer.\ Typically\ called\ at\ the\ start\ of\ each\ frame.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00166}00166\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00167}00167\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Must\ be\ called\ each\ frame\ to\ clear\ previous\ frame's\ rendering.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00168}00168\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00169}00169\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00170}00170\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00171}00171\ \textcolor{comment}{\ \ \ \ \ *\ Renderer::Clear();\ \ //\ Clear\ both\ color\ and\ depth\ buffers}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00172}00172\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00173}00173\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00174}00174\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Clear();}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00175}00175\ \ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00176}00176\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00177}00177\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Handles\ window\ resize\ events.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00178}00178\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00179}00179\ \textcolor{comment}{\ \ \ \ \ *\ Updates\ the\ viewport\ and\ any\ necessary\ rendering\ state\ when\ the\ window}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00180}00180\ \textcolor{comment}{\ \ \ \ \ *\ size\ changes.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00181}00181\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00182}00182\ \textcolor{comment}{\ \ \ \ \ *\ @param\ width\ The\ new\ width\ of\ the\ window}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00183}00183\ \textcolor{comment}{\ \ \ \ \ *\ @param\ height\ The\ new\ height\ of\ the\ window}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00184}00184\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00185}00185\ \textcolor{comment}{\ \ \ \ \ *\ @note\ Should\ be\ called\ whenever\ the\ window\ is\ resized.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00186}00186\ \textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00187}00187\ \textcolor{comment}{\ \ \ \ \ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00188}00188\ \textcolor{comment}{\ \ \ \ \ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00189}00189\ \textcolor{comment}{\ \ \ \ \ *\ void\ OnWindowResize(u32\ width,\ u32\ height)\ \{}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00190}00190\ \textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ Renderer::OnWindowResize(width,\ height);}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00191}00191\ \textcolor{comment}{\ \ \ \ \ *\ \}}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00192}00192\ \textcolor{comment}{\ \ \ \ \ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00193}00193\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00194}00194\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ OnWindowResize(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ width,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ height);}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00196}00196\ \textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00197}00197\ \textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00198}00198\ \textcolor{comment}{\ \ \ \ \ *\ @var\ s\_SceneData}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00199}00199\ \textcolor{comment}{\ \ \ \ \ *\ @brief\ Static\ instance\ holding\ current\ scene\ rendering\ data.}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00200}00200\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00201}\doxymbox{\hyperlink{class_renderer_af6dd7f8361ee8a272d9007f5d19358a9}{00201}}\ \ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope<SceneData>}}\ \doxymbox{\hyperlink{class_renderer_af6dd7f8361ee8a272d9007f5d19358a9}{s\_SceneData}};}
+\DoxyCodeLine{\Hypertarget{_renderer_8h_source_l00202}00202\ \};}
+
+\end{DoxyCode}

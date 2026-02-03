@@ -1,0 +1,874 @@
+\doxysection{Math Namespace Reference}
+\hypertarget{namespace_math}{}\label{namespace_math}\index{Math@{Math}}
+
+
+Mathematical constants and utility functions for the game engine.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T$>$ }\\constexpr T \doxymbox{\hyperlink{namespace_math_a020ec93d78412772e63df380cd24c9a7}{Clamp}} (T value, T min, T max)
+\item 
+{\footnotesize template$<$typename T$>$ }\\constexpr T \doxymbox{\hyperlink{namespace_math_aeaaf0c64acbb6261e6babea25c21ba44}{Lerp}} (T a, T b, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} t)
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a25349d6616f3f192c04da51f45df7b62}{To\+Radians}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} degrees)
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a4a37c37a46fb10987c208a59b4112181}{To\+Degrees}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} radians)
+\item 
+bool \doxymbox{\hyperlink{namespace_math_ab4dd9c6fe35cb1e1ce5ce11459020306}{Near\+Zero}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} value, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} epsilon=\doxymbox{\hyperlink{namespace_math_accab87ed706920fc8ced5c0fef4a16cf}{EPSILON}})
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a6c0c1f93677f185ec734d14476ebff7a}{Sqrt}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} v)
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a8f4dbcdd74ef3ce8de71b8407a654f2b}{Sin}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} angle\+Rad)
+\begin{DoxyCompactList}\small\item\em Sin function. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a85d7111dae78d8c454fdb9b6fba22a69}{Cos}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} angle\+Rad)
+\begin{DoxyCompactList}\small\item\em Cos function. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_ae9b9bca238e44f6bd314df8957c06e27}{Tan}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} angle\+Rad)
+\begin{DoxyCompactList}\small\item\em Tan function. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a9aeda26c030adbf471bab70a9b7f544f}{ASin}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} value)
+\begin{DoxyCompactList}\small\item\em Arc sine function. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_ad0632ff66392f0559dac6556a8f982ec}{ACos}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} value)
+\begin{DoxyCompactList}\small\item\em Arc cosine function. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a45f42aada4642529a0d0779280dc0d83}{ATan}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} value)
+\begin{DoxyCompactList}\small\item\em Arc tangent function. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_ac8ed210ad72ca37577538092cd7e192f}{ATan2}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} y, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} x)
+\begin{DoxyCompactList}\small\item\em Arc tangent function with two arguments. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a650dcaa43cd9aabad9317bd7daa59e47}{Exp}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} value)
+\begin{DoxyCompactList}\small\item\em Exponential function. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a0a453133a1ddea6d1f4b0ad383409583}{Log}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} value)
+\begin{DoxyCompactList}\small\item\em Natural logarithm function. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a7d431b325a7a9bb205a81915f28b1147}{Log10}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} value)
+\begin{DoxyCompactList}\small\item\em Base-\/10 logarithm function. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a3a72da9728fe753784906239ba65086e}{Ceil}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} value)
+\begin{DoxyCompactList}\small\item\em Ceiling function. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_aa27c59c26db2eb7d018237df85d7cbfa}{Floor}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} value)
+\begin{DoxyCompactList}\small\item\em Floor function. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_aa0e7494bb6a3fe9c3e813b0b8b5487d7}{Round}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} value)
+\begin{DoxyCompactList}\small\item\em Round function. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_aa654b389507369464b076330acb4581c}{Fmod}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} x, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} y)
+\begin{DoxyCompactList}\small\item\em Fractional part function. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\constexpr T \doxymbox{\hyperlink{namespace_math_aed7e89be67545666eee5ddc0a3d3f217}{Sign}} (T value)
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a2028187519f1fcba6e76ded2cf8ba532}{Smoothstep}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} edge0, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} edge1, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} x)
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a3e3f44e972e17b023b8fcab53966fdd6}{Smootherstep}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} edge0, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} edge1, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} x)
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a6784834839baf17ee7ac1c98a8681951}{Remap}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} value, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} from\+Min, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} from\+Max, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} to\+Min, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} to\+Max)
+\item 
+{\footnotesize template$<$typename T$>$ }\\constexpr bool \doxymbox{\hyperlink{namespace_math_a67d50d51053d5f361a24cf3c9c9248c9}{In\+Range}} (T value, T min, T max)
+\item 
+{\footnotesize template$<$typename T$>$ }\\constexpr bool \doxymbox{\hyperlink{namespace_math_a386588edc3248efd92577185ada10d0b}{In\+Range\+Exclusive}} (T value, T min, T max)
+\item 
+\doxymbox{\hyperlink{group___base_types_gaec41e5f8e4b7aef2540e84268692fa84}{i32}} \doxymbox{\hyperlink{namespace_math_a7305c01ece0e19a6b0ae0862bcc8aeb6}{Float\+To\+Int}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} value)
+\begin{DoxyCompactList}\small\item\em Converts a floating-\/point number to an integer by rounding. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\constexpr bool \doxymbox{\hyperlink{namespace_math_a3d7073dbbe727638060aa8b2ada5f452}{Is\+Power\+Of\+Two}} (T value)
+\item 
+{\footnotesize template$<$typename T$>$ }\\constexpr T \doxymbox{\hyperlink{namespace_math_a9cfd2713503cd06e66cb19a2980bcf37}{Next\+Power\+Of\+Two}} (T value)
+\item 
+{\footnotesize template$<$typename T$>$ }\\constexpr T \doxymbox{\hyperlink{namespace_math_af9787733753e1f2c97a3948175446dfc}{Min}} (T a, T b)
+\item 
+{\footnotesize template$<$typename T$>$ }\\constexpr T \doxymbox{\hyperlink{namespace_math_a9a6466460f4ac6f504bceea6dcb51114}{Max}} (T a, T b)
+\item 
+{\footnotesize template$<$typename T$>$ }\\constexpr T \doxymbox{\hyperlink{namespace_math_ad944047657973d35cee96fc51a65a2d4}{Abs}} (T value)
+\item 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a0bb79d4bdc550d454193c5c8b6c7e885}{Pow}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} base, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} exponent)
+\item 
+bool \doxymbox{\hyperlink{namespace_math_a10c6478b729d02bca8421d5527e0ab5e}{Approximately}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} a, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} b, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} epsilon=\doxymbox{\hyperlink{namespace_math_accab87ed706920fc8ced5c0fef4a16cf}{EPSILON}})
+\item 
+{\footnotesize template$<$typename T$>$ }\\constexpr T \doxymbox{\hyperlink{namespace_math_a114c56f131d653d952e2097446f91803}{Lerp\+Clamped}} (T a, T b, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} t)
+\item 
+{\footnotesize template$<$typename T$>$ }\\constexpr T \doxymbox{\hyperlink{namespace_math_adfdd83c58b18ceaf675da6bf51147943}{Quadratic\+Lerp}} (T a, T b, T c, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} t)
+\item 
+{\footnotesize template$<$typename T$>$ }\\constexpr \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a960f0505981dbff19b39ef0148c542bf}{Warp\+Angle}} (T angle)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{PI}} = 3.\+14159265358979323846f
+\begin{DoxyCompactList}\small\item\em Mathematical constant π (pi) approximately equal to 3.\+14159. \end{DoxyCompactList}\item 
+constexpr \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_aee4e2fdc9954787c0334470bfc7597c0}{TWO\+\_\+\+PI}} = 6.\+28318530717958647692f
+\begin{DoxyCompactList}\small\item\em Mathematical constant 2π (two times pi) approximately equal to 6.\+28318. \end{DoxyCompactList}\item 
+constexpr \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_ab2cbad12b4db8c83d049ec6126eb276d}{HALF\+\_\+\+PI}} = 1.\+57079632679489661923f
+\begin{DoxyCompactList}\small\item\em Mathematical constant π/\+2 (half pi) approximately equal to 1.\+5708. \end{DoxyCompactList}\item 
+constexpr \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a46d08bfee3cf59359dcd09da91f0457d}{DEG2\+RAD}} = \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{PI}} /\+ 180.\+0f
+\begin{DoxyCompactList}\small\item\em Conversion factor from degrees to radians. \end{DoxyCompactList}\item 
+constexpr \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_a0e3c13471cf7c76a4dc3ea053166ab35}{RAD2\+DEG}} = 180.\+0f /\+ \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{PI}}
+\begin{DoxyCompactList}\small\item\em Conversion factor from radians to degrees. \end{DoxyCompactList}\item 
+constexpr \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} \doxymbox{\hyperlink{namespace_math_accab87ed706920fc8ced5c0fef4a16cf}{EPSILON}} = 1.\+0e-\/6f
+\begin{DoxyCompactList}\small\item\em Small value used for floating-\/point comparisons. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Mathematical constants and utility functions for the game engine. 
+
+Additional mathematical utility functions for the game engine.
+
+This namespace provides a collection of mathematical constants, functions, and utilities commonly used in game development. It includes definitions for pi, conversion factors between degrees and radians, and various helper functions for clamping, interpolation, and common math operations.
+
+\doxylink{namespace_key}{Key} features:\+
+
+
+\begin{DoxyItemize}
+\item Mathematical constants (PI, TWO\+\_\+\+PI, DEG2\+RAD, RAD2\+DEG)
+\item Clamping and interpolation functions
+\item Angle conversion utilities
+\item Common math functions (sqrt, sin, cos, etc.)
+\item Utility functions for range checking and power-\/of-\/two calculations
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+All floating-\/point operations use \doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} (single-\/precision) for performance.
+\end{DoxyNote}
+This namespace extends the core \doxylink{namespace_math}{Math} namespace with additional utility functions commonly used in game development. It includes functions for minimum/\+maximum, absolute value, power calculations, approximate comparisons, and various interpolation techniques.
+
+\doxylink{namespace_key}{Key} features:\+
+
+
+\begin{DoxyItemize}
+\item Min/\+\+Max functions for comparing two values
+\item Absolute value function
+\item Power function for exponentiation
+\item Approximate equality checks for floating-\/point numbers
+\item Clamped linear interpolation
+\item Quadratic interpolation
+\item Angle wrapping utility
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+All floating-\/point operations use \doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} (single-\/precision) for performance. 
+\end{DoxyNote}
+
+
+\label{doc-func-members}
+\Hypertarget{namespace_math_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_math_ad944047657973d35cee96fc51a65a2d4}\index{Math@{Math}!Abs@{Abs}}
+\index{Abs@{Abs}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Abs()}{Abs()}}
+{\footnotesize\ttfamily \label{namespace_math_ad944047657973d35cee96fc51a65a2d4} 
+template$<$typename T$>$ \\
+T Math::\+\+Abs (\begin{DoxyParamCaption}\item[{T}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_utils_8h_source_l00087}{87}} of file \doxymbox{\hyperlink{_math_utils_8h_source}{Math\+Utils.\+h}}.
+
+\Hypertarget{namespace_math_ad0632ff66392f0559dac6556a8f982ec}\index{Math@{Math}!ACos@{ACos}}
+\index{ACos@{ACos}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{ACos()}{ACos()}}
+{\footnotesize\ttfamily \label{namespace_math_ad0632ff66392f0559dac6556a8f982ec} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+ACos (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Arc cosine function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \doxylink{class_input}{Input} value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} Arc cosine of the value in radians 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00237}{237}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a10c6478b729d02bca8421d5527e0ab5e}\index{Math@{Math}!Approximately@{Approximately}}
+\index{Approximately@{Approximately}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Approximately()}{Approximately()}}
+{\footnotesize\ttfamily \label{namespace_math_a10c6478b729d02bca8421d5527e0ab5e} 
+bool Math::\+\+Approximately (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{a}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{b}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{epsilon}{ = {\ttfamily \doxymbox{\hyperlink{namespace_math_accab87ed706920fc8ced5c0fef4a16cf}{EPSILON}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_utils_8h_source_l00123}{123}} of file \doxymbox{\hyperlink{_math_utils_8h_source}{Math\+Utils.\+h}}.
+
+\Hypertarget{namespace_math_a9aeda26c030adbf471bab70a9b7f544f}\index{Math@{Math}!ASin@{ASin}}
+\index{ASin@{ASin}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{ASin()}{ASin()}}
+{\footnotesize\ttfamily \label{namespace_math_a9aeda26c030adbf471bab70a9b7f544f} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+ASin (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Arc sine function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \doxylink{class_input}{Input} value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} Arc sine of the value in radians 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00229}{229}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a45f42aada4642529a0d0779280dc0d83}\index{Math@{Math}!ATan@{ATan}}
+\index{ATan@{ATan}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{ATan()}{ATan()}}
+{\footnotesize\ttfamily \label{namespace_math_a45f42aada4642529a0d0779280dc0d83} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+ATan (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Arc tangent function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \doxylink{class_input}{Input} value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} Arc tangent of the value in radians 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00245}{245}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_ac8ed210ad72ca37577538092cd7e192f}\index{Math@{Math}!ATan2@{ATan2}}
+\index{ATan2@{ATan2}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{ATan2()}{ATan2()}}
+{\footnotesize\ttfamily \label{namespace_math_ac8ed210ad72ca37577538092cd7e192f} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+ATan2 (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{y}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{x}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Arc tangent function with two arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & Y coordinate \\
+\hline
+{\em x} & X coordinate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} Arc tangent of y/\+x in radians 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00254}{254}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a3a72da9728fe753784906239ba65086e}\index{Math@{Math}!Ceil@{Ceil}}
+\index{Ceil@{Ceil}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Ceil()}{Ceil()}}
+{\footnotesize\ttfamily \label{namespace_math_a3a72da9728fe753784906239ba65086e} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Ceil (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Ceiling function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \doxylink{class_input}{Input} value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} Smallest integer not less than value 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00290}{290}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a020ec93d78412772e63df380cd24c9a7}\index{Math@{Math}!Clamp@{Clamp}}
+\index{Clamp@{Clamp}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Clamp()}{Clamp()}}
+{\footnotesize\ttfamily \label{namespace_math_a020ec93d78412772e63df380cd24c9a7} 
+template$<$typename T$>$ \\
+T Math::\+\+Clamp (\begin{DoxyParamCaption}\item[{T}]{value}{, }\item[{T}]{min}{, }\item[{T}]{max}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00095}{95}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a85d7111dae78d8c454fdb9b6fba22a69}\index{Math@{Math}!Cos@{Cos}}
+\index{Cos@{Cos}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Cos()}{Cos()}}
+{\footnotesize\ttfamily \label{namespace_math_a85d7111dae78d8c454fdb9b6fba22a69} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Cos (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{angle\+Rad}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Cos function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle\+Rad} & angle in radians \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} Cosine of the angle 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}, and \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_matrix3_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Matrix3.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00211}{211}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a650dcaa43cd9aabad9317bd7daa59e47}\index{Math@{Math}!Exp@{Exp}}
+\index{Exp@{Exp}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Exp()}{Exp()}}
+{\footnotesize\ttfamily \label{namespace_math_a650dcaa43cd9aabad9317bd7daa59e47} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Exp (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Exponential function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \doxylink{class_input}{Input} value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} e raised to the power of value 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00264}{264}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a7305c01ece0e19a6b0ae0862bcc8aeb6}\index{Math@{Math}!FloatToInt@{FloatToInt}}
+\index{FloatToInt@{FloatToInt}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{FloatToInt()}{FloatToInt()}}
+{\footnotesize\ttfamily \label{namespace_math_a7305c01ece0e19a6b0ae0862bcc8aeb6} 
+\doxymbox{\hyperlink{group___base_types_gaec41e5f8e4b7aef2540e84268692fa84}{i32}} Math::\+\+Float\+To\+Int (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Converts a floating-\/point number to an integer by rounding. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \doxylink{class_input}{Input} floating-\/point value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gaec41e5f8e4b7aef2540e84268692fa84}{i32} Rounded integer value 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00441}{441}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_math_8h_source_l00306}{Round()}}.
+
+\Hypertarget{namespace_math_aa27c59c26db2eb7d018237df85d7cbfa}\index{Math@{Math}!Floor@{Floor}}
+\index{Floor@{Floor}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Floor()}{Floor()}}
+{\footnotesize\ttfamily \label{namespace_math_aa27c59c26db2eb7d018237df85d7cbfa} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Floor (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Floor function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \doxylink{class_input}{Input} value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} Largest integer not greater than value 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00298}{298}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_aa654b389507369464b076330acb4581c}\index{Math@{Math}!Fmod@{Fmod}}
+\index{Fmod@{Fmod}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Fmod()}{Fmod()}}
+{\footnotesize\ttfamily \label{namespace_math_aa654b389507369464b076330acb4581c} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Fmod (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{x}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Fractional part function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \doxylink{class_input}{Input} value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} Fractional part of value 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00314}{314}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a67d50d51053d5f361a24cf3c9c9248c9}\index{Math@{Math}!InRange@{InRange}}
+\index{InRange@{InRange}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{InRange()}{InRange()}}
+{\footnotesize\ttfamily \label{namespace_math_a67d50d51053d5f361a24cf3c9c9248c9} 
+template$<$typename T$>$ \\
+bool Math::\+\+In\+Range (\begin{DoxyParamCaption}\item[{T}]{value}{, }\item[{T}]{min}{, }\item[{T}]{max}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00414}{414}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a386588edc3248efd92577185ada10d0b}\index{Math@{Math}!InRangeExclusive@{InRangeExclusive}}
+\index{InRangeExclusive@{InRangeExclusive}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{InRangeExclusive()}{InRangeExclusive()}}
+{\footnotesize\ttfamily \label{namespace_math_a386588edc3248efd92577185ada10d0b} 
+template$<$typename T$>$ \\
+bool Math::\+\+In\+Range\+Exclusive (\begin{DoxyParamCaption}\item[{T}]{value}{, }\item[{T}]{min}{, }\item[{T}]{max}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00431}{431}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a3d7073dbbe727638060aa8b2ada5f452}\index{Math@{Math}!IsPowerOfTwo@{IsPowerOfTwo}}
+\index{IsPowerOfTwo@{IsPowerOfTwo}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{IsPowerOfTwo()}{IsPowerOfTwo()}}
+{\footnotesize\ttfamily \label{namespace_math_a3d7073dbbe727638060aa8b2ada5f452} 
+template$<$typename T$>$ \\
+bool Math::\+\+Is\+Power\+Of\+Two (\begin{DoxyParamCaption}\item[{T}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00454}{454}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_aeaaf0c64acbb6261e6babea25c21ba44}\index{Math@{Math}!Lerp@{Lerp}}
+\index{Lerp@{Lerp}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Lerp()}{Lerp()}}
+{\footnotesize\ttfamily \label{namespace_math_aeaaf0c64acbb6261e6babea25c21ba44} 
+template$<$typename T$>$ \\
+T Math::\+\+Lerp (\begin{DoxyParamCaption}\item[{T}]{a}{, }\item[{T}]{b}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00123}{123}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a114c56f131d653d952e2097446f91803}\index{Math@{Math}!LerpClamped@{LerpClamped}}
+\index{LerpClamped@{LerpClamped}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{LerpClamped()}{LerpClamped()}}
+{\footnotesize\ttfamily \label{namespace_math_a114c56f131d653d952e2097446f91803} 
+template$<$typename T$>$ \\
+T Math::\+\+Lerp\+Clamped (\begin{DoxyParamCaption}\item[{T}]{a}{, }\item[{T}]{b}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_utils_8h_source_l00144}{144}} of file \doxymbox{\hyperlink{_math_utils_8h_source}{Math\+Utils.\+h}}.
+
+\Hypertarget{namespace_math_a0a453133a1ddea6d1f4b0ad383409583}\index{Math@{Math}!Log@{Log}}
+\index{Log@{Log}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Log()}{Log()}}
+{\footnotesize\ttfamily \label{namespace_math_a0a453133a1ddea6d1f4b0ad383409583} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Log (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Natural logarithm function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \doxylink{class_input}{Input} value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} Natural logarithm of the value 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00272}{272}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a7d431b325a7a9bb205a81915f28b1147}\index{Math@{Math}!Log10@{Log10}}
+\index{Log10@{Log10}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Log10()}{Log10()}}
+{\footnotesize\ttfamily \label{namespace_math_a7d431b325a7a9bb205a81915f28b1147} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Log10 (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Base-\/10 logarithm function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \doxylink{class_input}{Input} value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} Base-\/10 logarithm of the value 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00280}{280}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a9a6466460f4ac6f504bceea6dcb51114}\index{Math@{Math}!Max@{Max}}
+\index{Max@{Max}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Max()}{Max()}}
+{\footnotesize\ttfamily \label{namespace_math_a9a6466460f4ac6f504bceea6dcb51114} 
+template$<$typename T$>$ \\
+T Math::\+\+Max (\begin{DoxyParamCaption}\item[{T}]{a}{, }\item[{T}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_utils_8h_source_l00071}{71}} of file \doxymbox{\hyperlink{_math_utils_8h_source}{Math\+Utils.\+h}}.
+
+\Hypertarget{namespace_math_af9787733753e1f2c97a3948175446dfc}\index{Math@{Math}!Min@{Min}}
+\index{Min@{Min}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Min()}{Min()}}
+{\footnotesize\ttfamily \label{namespace_math_af9787733753e1f2c97a3948175446dfc} 
+template$<$typename T$>$ \\
+T Math::\+\+Min (\begin{DoxyParamCaption}\item[{T}]{a}{, }\item[{T}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_utils_8h_source_l00054}{54}} of file \doxymbox{\hyperlink{_math_utils_8h_source}{Math\+Utils.\+h}}.
+
+\Hypertarget{namespace_math_ab4dd9c6fe35cb1e1ce5ce11459020306}\index{Math@{Math}!NearZero@{NearZero}}
+\index{NearZero@{NearZero}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{NearZero()}{NearZero()}}
+{\footnotesize\ttfamily \label{namespace_math_ab4dd9c6fe35cb1e1ce5ce11459020306} 
+bool Math::\+\+Near\+Zero (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{value}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{epsilon}{ = {\ttfamily \doxymbox{\hyperlink{namespace_math_accab87ed706920fc8ced5c0fef4a16cf}{EPSILON}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00173}{173}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a9cfd2713503cd06e66cb19a2980bcf37}\index{Math@{Math}!NextPowerOfTwo@{NextPowerOfTwo}}
+\index{NextPowerOfTwo@{NextPowerOfTwo}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{NextPowerOfTwo()}{NextPowerOfTwo()}}
+{\footnotesize\ttfamily \label{namespace_math_a9cfd2713503cd06e66cb19a2980bcf37} 
+template$<$typename T$>$ \\
+T Math::\+\+Next\+Power\+Of\+Two (\begin{DoxyParamCaption}\item[{T}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00469}{469}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a0bb79d4bdc550d454193c5c8b6c7e885}\index{Math@{Math}!Pow@{Pow}}
+\index{Pow@{Pow}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Pow()}{Pow()}}
+{\footnotesize\ttfamily \label{namespace_math_a0bb79d4bdc550d454193c5c8b6c7e885} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Pow (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{base}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{exponent}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_utils_8h_source_l00103}{103}} of file \doxymbox{\hyperlink{_math_utils_8h_source}{Math\+Utils.\+h}}.
+
+\Hypertarget{namespace_math_adfdd83c58b18ceaf675da6bf51147943}\index{Math@{Math}!QuadraticLerp@{QuadraticLerp}}
+\index{QuadraticLerp@{QuadraticLerp}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{QuadraticLerp()}{QuadraticLerp()}}
+{\footnotesize\ttfamily \label{namespace_math_adfdd83c58b18ceaf675da6bf51147943} 
+template$<$typename T$>$ \\
+T Math::\+\+Quadratic\+Lerp (\begin{DoxyParamCaption}\item[{T}]{a}{, }\item[{T}]{b}{, }\item[{T}]{c}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{t}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_utils_8h_source_l00166}{166}} of file \doxymbox{\hyperlink{_math_utils_8h_source}{Math\+Utils.\+h}}.
+
+\Hypertarget{namespace_math_a6784834839baf17ee7ac1c98a8681951}\index{Math@{Math}!Remap@{Remap}}
+\index{Remap@{Remap}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Remap()}{Remap()}}
+{\footnotesize\ttfamily \label{namespace_math_a6784834839baf17ee7ac1c98a8681951} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Remap (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{value}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{from\+Min}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{from\+Max}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{to\+Min}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{to\+Max}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00397}{397}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_aa0e7494bb6a3fe9c3e813b0b8b5487d7}\index{Math@{Math}!Round@{Round}}
+\index{Round@{Round}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Round()}{Round()}}
+{\footnotesize\ttfamily \label{namespace_math_aa0e7494bb6a3fe9c3e813b0b8b5487d7} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Round (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Round function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \doxylink{class_input}{Input} value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} Nearest integer to value 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00306}{306}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_math_8h_source_l00441}{Float\+To\+Int()}}.
+
+\Hypertarget{namespace_math_aed7e89be67545666eee5ddc0a3d3f217}\index{Math@{Math}!Sign@{Sign}}
+\index{Sign@{Sign}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Sign()}{Sign()}}
+{\footnotesize\ttfamily \label{namespace_math_aed7e89be67545666eee5ddc0a3d3f217} 
+template$<$typename T$>$ \\
+T Math::\+\+Sign (\begin{DoxyParamCaption}\item[{T}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00333}{333}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a8f4dbcdd74ef3ce8de71b8407a654f2b}\index{Math@{Math}!Sin@{Sin}}
+\index{Sin@{Sin}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Sin()}{Sin()}}
+{\footnotesize\ttfamily \label{namespace_math_a8f4dbcdd74ef3ce8de71b8407a654f2b} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Sin (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{angle\+Rad}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sin function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle\+Rad} & angle in radians \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} Sine of the angle 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}, and \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_matrix3_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Matrix3.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00203}{203}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a3e3f44e972e17b023b8fcab53966fdd6}\index{Math@{Math}!Smootherstep@{Smootherstep}}
+\index{Smootherstep@{Smootherstep}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Smootherstep()}{Smootherstep()}}
+{\footnotesize\ttfamily \label{namespace_math_a3e3f44e972e17b023b8fcab53966fdd6} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Smootherstep (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{edge0}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{edge1}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{x}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00375}{375}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a2028187519f1fcba6e76ded2cf8ba532}\index{Math@{Math}!Smoothstep@{Smoothstep}}
+\index{Smoothstep@{Smoothstep}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Smoothstep()}{Smoothstep()}}
+{\footnotesize\ttfamily \label{namespace_math_a2028187519f1fcba6e76ded2cf8ba532} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Smoothstep (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{edge0}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{edge1}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{x}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00353}{353}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a6c0c1f93677f185ec734d14476ebff7a}\index{Math@{Math}!Sqrt@{Sqrt}}
+\index{Sqrt@{Sqrt}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Sqrt()}{Sqrt()}}
+{\footnotesize\ttfamily \label{namespace_math_a6c0c1f93677f185ec734d14476ebff7a} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Sqrt (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{v}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00193}{193}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_ae9b9bca238e44f6bd314df8957c06e27}\index{Math@{Math}!Tan@{Tan}}
+\index{Tan@{Tan}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{Tan()}{Tan()}}
+{\footnotesize\ttfamily \label{namespace_math_ae9b9bca238e44f6bd314df8957c06e27} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Tan (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{angle\+Rad}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Tan function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em angle\+Rad} & angle in radians \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32} Tangent of the angle 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00219}{219}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a4a37c37a46fb10987c208a59b4112181}\index{Math@{Math}!ToDegrees@{ToDegrees}}
+\index{ToDegrees@{ToDegrees}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{ToDegrees()}{ToDegrees()}}
+{\footnotesize\ttfamily \label{namespace_math_a4a37c37a46fb10987c208a59b4112181} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+To\+Degrees (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{radians}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00155}{155}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a25349d6616f3f192c04da51f45df7b62}\index{Math@{Math}!ToRadians@{ToRadians}}
+\index{ToRadians@{ToRadians}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{ToRadians()}{ToRadians()}}
+{\footnotesize\ttfamily \label{namespace_math_a25349d6616f3f192c04da51f45df7b62} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+To\+Radians (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{degrees}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00140}{140}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a960f0505981dbff19b39ef0148c542bf}\index{Math@{Math}!WarpAngle@{WarpAngle}}
+\index{WarpAngle@{WarpAngle}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{WarpAngle()}{WarpAngle()}}
+{\footnotesize\ttfamily \label{namespace_math_a960f0505981dbff19b39ef0148c542bf} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+Warp\+Angle (\begin{DoxyParamCaption}\item[{T}]{angle}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_math_utils_8h_source_l00184}{184}} of file \doxymbox{\hyperlink{_math_utils_8h_source}{Math\+Utils.\+h}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{namespace_math_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespace_math_a46d08bfee3cf59359dcd09da91f0457d}\index{Math@{Math}!DEG2RAD@{DEG2RAD}}
+\index{DEG2RAD@{DEG2RAD}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{DEG2RAD}{DEG2RAD}}
+{\footnotesize\ttfamily \label{namespace_math_a46d08bfee3cf59359dcd09da91f0457d} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+DEG2\+RAD = \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{PI}} /\+ 180.\+0f\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Conversion factor from degrees to radians. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00060}{60}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_accab87ed706920fc8ced5c0fef4a16cf}\index{Math@{Math}!EPSILON@{EPSILON}}
+\index{EPSILON@{EPSILON}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{EPSILON}{EPSILON}}
+{\footnotesize\ttfamily \label{namespace_math_accab87ed706920fc8ced5c0fef4a16cf} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+EPSILON = 1.\+0e-\/6f\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Small value used for floating-\/point comparisons. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}, and \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_utils_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math\+Utils.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00072}{72}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_ab2cbad12b4db8c83d049ec6126eb276d}\index{Math@{Math}!HALF\_PI@{HALF\_PI}}
+\index{HALF\_PI@{HALF\_PI}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{HALF\_PI}{HALF\_PI}}
+{\footnotesize\ttfamily \label{namespace_math_ab2cbad12b4db8c83d049ec6126eb276d} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+HALF\+\_\+\+PI = 1.\+57079632679489661923f\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Mathematical constant π/\+2 (half pi) approximately equal to 1.\+5708. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00054}{54}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_a1792009809afd3b065beb212f55b224f}\index{Math@{Math}!PI@{PI}}
+\index{PI@{PI}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{PI}{PI}}
+{\footnotesize\ttfamily \label{namespace_math_a1792009809afd3b065beb212f55b224f} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+PI = 3.\+14159265358979323846f\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Mathematical constant π (pi) approximately equal to 3.\+14159. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}, and \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_utils_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math\+Utils.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00043}{43}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_mesh_8cpp_source_l00132}{Mesh::\+\+Create\+Sphere()}}, and \doxymbox{\hyperlink{_camera_8cpp_source_l00033}{Camera::\+\+Set\+Perspective()}}.
+
+\Hypertarget{namespace_math_a0e3c13471cf7c76a4dc3ea053166ab35}\index{Math@{Math}!RAD2DEG@{RAD2DEG}}
+\index{RAD2DEG@{RAD2DEG}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{RAD2DEG}{RAD2DEG}}
+{\footnotesize\ttfamily \label{namespace_math_a0e3c13471cf7c76a4dc3ea053166ab35} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+RAD2\+DEG = 180.\+0f /\+ \doxymbox{\hyperlink{namespace_math_a1792009809afd3b065beb212f55b224f}{PI}}\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Conversion factor from radians to degrees. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00066}{66}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+
+\Hypertarget{namespace_math_aee4e2fdc9954787c0334470bfc7597c0}\index{Math@{Math}!TWO\_PI@{TWO\_PI}}
+\index{TWO\_PI@{TWO\_PI}!Math@{Math}}
+\doxysubsubsection{\texorpdfstring{TWO\_PI}{TWO\_PI}}
+{\footnotesize\ttfamily \label{namespace_math_aee4e2fdc9954787c0334470bfc7597c0} 
+\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} Math::\+\+TWO\+\_\+\+PI = 6.\+28318530717958647692f\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Mathematical constant 2π (two times pi) approximately equal to 6.\+28318. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math.\+h}}, and \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_math_2_math_utils_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Math/\+\+Math\+Utils.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_math_8h_source_l00048}{48}} of file \doxymbox{\hyperlink{_math_8h_source}{Math.\+h}}.
+

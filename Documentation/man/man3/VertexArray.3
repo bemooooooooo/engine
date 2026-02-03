@@ -1,0 +1,211 @@
+.TH "VertexArray" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+VertexArray \- Encapsulates an OpenGL vertex array object (VAO)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <VertexArray\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVertexArray\fP ()"
+.br
+.RI "Constructs a new \fBVertexArray\fP and generates the OpenGL VAO\&. "
+.ti -1c
+.RI "\fB~VertexArray\fP ()"
+.br
+.RI "Destructor that cleans up the OpenGL VAO\&. "
+.ti -1c
+.RI "void \fBBind\fP () const"
+.br
+.RI "Binds the vertex array for rendering\&. "
+.ti -1c
+.RI "void \fBUnbind\fP () const"
+.br
+.RI "Unbinds the vertex array\&. "
+.ti -1c
+.RI "void \fBAddVertexBuffer\fP (const \fBRef\fP< \fBVertexBuffer\fP > &vertexBuffer, const \fBVertexBufferLayout\fP &layout)"
+.br
+.RI "Adds a vertex buffer to the vertex array with the specified layout\&. "
+.ti -1c
+.RI "void \fBSetIndexBuffer\fP (const \fBRef\fP< \fBIndexBuffer\fP > &indexBuffer)"
+.br
+.RI "Sets the index buffer for the vertex array\&. "
+.ti -1c
+.RI "const std::vector< \fBRef\fP< \fBVertexBuffer\fP > > & \fBGetVertexBuffers\fP () const"
+.br
+.RI "Gets the OpenGL renderer ID of the vertex array\&. "
+.ti -1c
+.RI "const \fBRef\fP< \fBIndexBuffer\fP > & \fBGetIndexBuffer\fP () const"
+.br
+.RI "Gets the index buffer associated with the vertex array\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBu32\fP \fBm_RendererID\fP"
+.br
+.RI "The OpenGL renderer ID for the vertex array object\&. "
+.ti -1c
+.RI "\fBu32\fP \fBm_VertexBufferIndex\fP = 0"
+.br
+.RI "The current index for vertex buffer attributes\&. "
+.ti -1c
+.RI "std::vector< \fBRef\fP< \fBVertexBuffer\fP > > \fBm_VertexBuffers\fP"
+.br
+.RI "The list of vertex buffers associated with this vertex array\&. "
+.ti -1c
+.RI "\fBRef\fP< \fBIndexBuffer\fP > \fBm_IndexBuffer\fP"
+.br
+.RI "The index buffer associated with this vertex array\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Encapsulates an OpenGL vertex array object (VAO)\&. 
+
+Manages the binding of vertex buffers and index buffers for rendering\&. 
+.PP
+Definition at line \fB151\fP of file \fBVertexArray\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "VertexArray::VertexArray ()"
+
+.PP
+Constructs a new \fBVertexArray\fP and generates the OpenGL VAO\&. 
+.PP
+Definition at line \fB5\fP of file \fBVertexArray\&.cpp\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.SS "VertexArray::~VertexArray ()"
+
+.PP
+Destructor that cleans up the OpenGL VAO\&. 
+.PP
+Definition at line \fB7\fP of file \fBVertexArray\&.cpp\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void VertexArray::AddVertexBuffer (const \fBRef\fP< \fBVertexBuffer\fP > & vertexBuffer, const \fBVertexBufferLayout\fP & layout)"
+
+.PP
+Adds a vertex buffer to the vertex array with the specified layout\&. Configures the vertex attribute pointers based on the provided layout\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIvertexBuffer\fP The vertex buffer to add 
+.br
+\fIlayout\fP The layout describing the vertex attributes 
+.RE
+.PP
+
+.PP
+Definition at line \fB13\fP of file \fBVertexArray\&.cpp\fP\&.
+.PP
+References \fBBind()\fP, \fBVertexBufferLayout::GetElements()\fP, \fBVertexBufferElement::GetSizeOfType()\fP, \fBVertexBufferLayout::GetStride()\fP, \fBm_VertexBufferIndex\fP, and \fBm_VertexBuffers\fP\&.
+.SS "void VertexArray::Bind () const"
+
+.PP
+Binds the vertex array for rendering\&. 
+.PP
+Definition at line \fB9\fP of file \fBVertexArray\&.cpp\fP\&.
+.PP
+References \fBm_RendererID\fP\&.
+.PP
+Referenced by \fBAddVertexBuffer()\fP, and \fBSetIndexBuffer()\fP\&.
+.SS "const \fBRef\fP< \fBIndexBuffer\fP > & VertexArray::GetIndexBuffer () const\fR [inline]\fP"
+
+.PP
+Gets the index buffer associated with the vertex array\&. 
+.PP
+\fBReturns\fP
+.RS 4
+const \fBRef<IndexBuffer>\fP& The index buffer 
+.RE
+.PP
+
+.PP
+Definition at line \fB205\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+References \fBm_IndexBuffer\fP\&.
+.SS "const std::vector< \fBRef\fP< \fBVertexBuffer\fP > > & VertexArray::GetVertexBuffers () const\fR [inline]\fP"
+
+.PP
+Gets the OpenGL renderer ID of the vertex array\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBu32\fP The OpenGL renderer ID 
+.RE
+.PP
+
+.PP
+Definition at line \fB196\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+References \fBm_VertexBuffers\fP\&.
+.SS "void VertexArray::SetIndexBuffer (const \fBRef\fP< \fBIndexBuffer\fP > & indexBuffer)"
+
+.PP
+Sets the index buffer for the vertex array\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIindexBuffer\fP The index buffer to set 
+.RE
+.PP
+
+.PP
+Definition at line \fB34\fP of file \fBVertexArray\&.cpp\fP\&.
+.PP
+References \fBBind()\fP, and \fBm_IndexBuffer\fP\&.
+.SS "void VertexArray::Unbind () const"
+
+.PP
+Unbinds the vertex array\&. 
+.PP
+Definition at line \fB11\fP of file \fBVertexArray\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBRef\fP<\fBIndexBuffer\fP> VertexArray::m_IndexBuffer\fR [private]\fP"
+
+.PP
+The index buffer associated with this vertex array\&. 
+.PP
+Definition at line \fB230\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+Referenced by \fBGetIndexBuffer()\fP, and \fBSetIndexBuffer()\fP\&.
+.SS "\fBu32\fP VertexArray::m_RendererID\fR [private]\fP"
+
+.PP
+The OpenGL renderer ID for the vertex array object\&. 
+.PP
+Definition at line \fB212\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+Referenced by \fBBind()\fP, \fBVertexArray()\fP, and \fB~VertexArray()\fP\&.
+.SS "\fBu32\fP VertexArray::m_VertexBufferIndex = 0\fR [private]\fP"
+
+.PP
+The current index for vertex buffer attributes\&. 
+.PP
+Definition at line \fB218\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+Referenced by \fBAddVertexBuffer()\fP\&.
+.SS "std::vector<\fBRef\fP<\fBVertexBuffer\fP> > VertexArray::m_VertexBuffers\fR [private]\fP"
+
+.PP
+The list of vertex buffers associated with this vertex array\&. 
+.PP
+Definition at line \fB224\fP of file \fBVertexArray\&.h\fP\&.
+.PP
+Referenced by \fBAddVertexBuffer()\fP, and \fBGetVertexBuffers()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

@@ -1,0 +1,271 @@
+.TH "Matrix4" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Matrix4
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMatrix4\fP (const \fBf32\fP *data)"
+.br
+.ti -1c
+.RI "\fBMatrix4\fP (\fBf32\fP m00, \fBf32\fP m01, \fBf32\fP m02, \fBf32\fP m03, \fBf32\fP m10, \fBf32\fP m11, \fBf32\fP m12, \fBf32\fP m13, \fBf32\fP m20, \fBf32\fP m21, \fBf32\fP m22, \fBf32\fP m23, \fBf32\fP m30, \fBf32\fP m31, \fBf32\fP m32, \fBf32\fP m33)"
+.br
+.ti -1c
+.RI "\fBMatrix4\fP \fBoperator+\fP (const \fBMatrix4\fP &other) const"
+.br
+.ti -1c
+.RI "\fBMatrix4\fP \fBoperator\-\fP (const \fBMatrix4\fP &other) const"
+.br
+.ti -1c
+.RI "\fBMatrix4\fP \fBoperator*\fP (const \fBMatrix4\fP &other) const"
+.br
+.ti -1c
+.RI "\fBVector4\fP \fBoperator*\fP (const \fBVector4\fP &vec) const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBTransformPoint\fP (const \fBVector3\fP &point) const"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBTransformDirection\fP (const \fBVector3\fP &direction) const"
+.br
+.ti -1c
+.RI "\fBMatrix4\fP & \fBoperator*=\fP (const \fBMatrix4\fP &other)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBMatrix4\fP &other) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBMatrix4\fP &other) const"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBoperator()\fP (int row, int col) const"
+.br
+.ti -1c
+.RI "\fBf32\fP & \fBoperator()\fP (int row, int col)"
+.br
+.ti -1c
+.RI "void \fBSetIdentity\fP ()"
+.br
+.ti -1c
+.RI "\fBMatrix4\fP \fBTransposed\fP () const"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBDeterminant\fP () const"
+.br
+.ti -1c
+.RI "\fBMatrix4\fP \fBInverted\fP () const"
+.br
+.ti -1c
+.RI "\fBMatrix3\fP \fBGetNormalMatrix\fP () const"
+.br
+.ti -1c
+.RI "std::string \fBToString\fP () const"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBMatrix4\fP \fBIdentity\fP ()"
+.br
+.ti -1c
+.RI "static \fBMatrix4\fP \fBTranslation\fP (const \fBVector3\fP &translation)"
+.br
+.ti -1c
+.RI "static \fBMatrix4\fP \fBScale\fP (const \fBVector3\fP &scale)"
+.br
+.ti -1c
+.RI "static \fBMatrix4\fP \fBRotationX\fP (\fBf32\fP angle)"
+.br
+.ti -1c
+.RI "static \fBMatrix4\fP \fBRotationY\fP (\fBf32\fP angle)"
+.br
+.ti -1c
+.RI "static \fBMatrix4\fP \fBRotationZ\fP (\fBf32\fP angle)"
+.br
+.ti -1c
+.RI "static \fBMatrix4\fP \fBRotation\fP (const \fBVector3\fP &axis, \fBf32\fP angle)"
+.br
+.ti -1c
+.RI "static \fBMatrix4\fP \fBOrthographic\fP (\fBf32\fP left, \fBf32\fP right, \fBf32\fP bottom, \fBf32\fP top, \fBf32\fP near, \fBf32\fP far)"
+.br
+.ti -1c
+.RI "static \fBMatrix4\fP \fBPerspective\fP (\fBf32\fP fov, \fBf32\fP aspect, \fBf32\fP near, \fBf32\fP far)"
+.br
+.ti -1c
+.RI "static \fBMatrix4\fP \fBLookAt\fP (const \fBVector3\fP &eye, const \fBVector3\fP &target, const \fBVector3\fP &up)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "union {"
+.br
+.ti -1c
+.RI "   \fBf32\fP \fBm\fP [16]"
+.br
+.ti -1c
+.RI "   \fBf32\fP \fBmm\fP [4][4]"
+.br
+.ti -1c
+.RI "   \fBVector4\fP \fBcolumns\fP [4]"
+.br
+.ti -1c
+.RI "}; "
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Camera\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Renderer\&.h\fP, \fBC:/Users/PC/source/repos/engine/src/Graphics/Shader\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Math/Matrix3\&.h\fP\&.
+.PP
+Definition at line \fB12\fP of file \fBMatrix4\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Matrix4::Matrix4 ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB19\fP of file \fBMatrix4\&.h\fP\&.
+.SS "Matrix4::Matrix4 (const \fBf32\fP * data)\fR [inline]\fP, \fR [explicit]\fP"
+
+.PP
+Definition at line \fB21\fP of file \fBMatrix4\&.h\fP\&.
+.SS "Matrix4::Matrix4 (\fBf32\fP m00, \fBf32\fP m01, \fBf32\fP m02, \fBf32\fP m03, \fBf32\fP m10, \fBf32\fP m11, \fBf32\fP m12, \fBf32\fP m13, \fBf32\fP m20, \fBf32\fP m21, \fBf32\fP m22, \fBf32\fP m23, \fBf32\fP m30, \fBf32\fP m31, \fBf32\fP m32, \fBf32\fP m33)\fR [inline]\fP"
+
+.PP
+Definition at line \fB23\fP of file \fBMatrix4\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBf32\fP Matrix4::Determinant () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB128\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix3\fP Matrix4::GetNormalMatrix () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB381\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP Matrix4::Identity ()\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB222\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP Matrix4::Inverted () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB145\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP Matrix4::LookAt (const \fBVector3\fP & eye, const \fBVector3\fP & target, const \fBVector3\fP & up)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB336\fP of file \fBMatrix4\&.h\fP\&.
+.SS "bool Matrix4::operator!= (const \fBMatrix4\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB104\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBf32\fP & Matrix4::operator() (int row, int col)\fR [inline]\fP"
+
+.PP
+Definition at line \fB108\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBf32\fP Matrix4::operator() (int row, int col) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB106\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP Matrix4::operator* (const \fBMatrix4\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB61\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBVector4\fP Matrix4::operator* (const \fBVector4\fP & vec) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB74\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP & Matrix4::operator*= (const \fBMatrix4\fP & other)\fR [inline]\fP"
+
+.PP
+Definition at line \fB92\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP Matrix4::operator+ (const \fBMatrix4\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB45\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP Matrix4::operator\- (const \fBMatrix4\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB53\fP of file \fBMatrix4\&.h\fP\&.
+.SS "bool Matrix4::operator== (const \fBMatrix4\fP & other) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB97\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP Matrix4::Orthographic (\fBf32\fP left, \fBf32\fP right, \fBf32\fP bottom, \fBf32\fP top, \fBf32\fP near, \fBf32\fP far)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB306\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP Matrix4::Perspective (\fBf32\fP fov, \fBf32\fP aspect, \fBf32\fP near, \fBf32\fP far)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB321\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP Matrix4::Rotation (const \fBVector3\fP & axis, \fBf32\fP angle)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB283\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP Matrix4::RotationX (\fBf32\fP angle)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB244\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP Matrix4::RotationY (\fBf32\fP angle)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB257\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP Matrix4::RotationZ (\fBf32\fP angle)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB270\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP Matrix4::Scale (const \fBVector3\fP & scale)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB236\fP of file \fBMatrix4\&.h\fP\&.
+.SS "void Matrix4::SetIdentity ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB111\fP of file \fBMatrix4\&.h\fP\&.
+.SS "std::string Matrix4::ToString () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB362\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBVector3\fP Matrix4::TransformDirection (const \fBVector3\fP & direction) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB87\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBVector3\fP Matrix4::TransformPoint (const \fBVector3\fP & point) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB82\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP Matrix4::Translation (const \fBVector3\fP & translation)\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Definition at line \fB228\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBMatrix4\fP Matrix4::Transposed () const\fR [inline]\fP"
+
+.PP
+Definition at line \fB118\fP of file \fBMatrix4\&.h\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBVector4\fP Matrix4::columns[4]"
+
+.PP
+Definition at line \fB16\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBf32\fP Matrix4::m[16]"
+
+.PP
+Definition at line \fB14\fP of file \fBMatrix4\&.h\fP\&.
+.SS "\fBf32\fP Matrix4::mm[4][4]"
+
+.PP
+Definition at line \fB15\fP of file \fBMatrix4\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

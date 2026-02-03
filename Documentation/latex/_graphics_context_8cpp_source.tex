@@ -1,0 +1,131 @@
+\doxysection{Graphics\+Context.\+cpp}
+\hypertarget{_graphics_context_8cpp_source}{}\label{_graphics_context_8cpp_source}\index{src/Graphics/GraphicsContext.cpp@{src/Graphics/GraphicsContext.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}GraphicsContext.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <glad/gl.h>}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <GLFW/glfw3.h>}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00005}00005\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_graphics_context_a37a144d3b40d916f9097813a7692e849}{GraphicsContext::s\_Initialized}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00007}00007\ \textcolor{keywordtype}{void}\ GraphicsContext::Init()\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{class_graphics_context_a37a144d3b40d916f9097813a7692e849}{s\_Initialized}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00009}00009\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ Проверяем\ что\ Glad\ инициализирован}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00011}00011\ \ \ \ \ \textcolor{keywordflow}{if}\ (!gladLoadGL((GLADloadfunc)glfwGetProcAddress))\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ ENGINE\_CRITICAL\ <<\ \textcolor{stringliteral}{"{}Glad\ not\ initialized!"{}};}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00015}00015\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Базовая\ настройка\ OpenGL}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00017}00017\ \ \ \ \ EnableDepthTest(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00018}00018\ \ \ \ \ EnableBlending(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00019}00019\ \ \ \ \ EnableCulling(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00020}00020\ \ \ \ \ SetCullFace(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00021}00021\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Настройка\ blending}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00023}00023\ \ \ \ \ glBlendFunc(GL\_SRC\_ALPHA,\ GL\_ONE\_MINUS\_SRC\_ALPHA);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00024}00024\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ Настройка\ глубины}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00026}00026\ \ \ \ \ glDepthFunc(GL\_LEQUAL);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00027}00027\ \ \ \ \ glClearDepth(1.0f);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00028}00028\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//\ Проверка\ состояния\ после\ инициализации}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00030}00030\ \ \ \ \ GLint\ depthTest,\ depthFunc,\ cullFace,\ blendEnabled;}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00031}00031\ \ \ \ \ glGetIntegerv(GL\_DEPTH\_TEST,\ \&depthTest);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00032}00032\ \ \ \ \ glGetIntegerv(GL\_DEPTH\_FUNC,\ \&depthFunc);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00033}00033\ \ \ \ \ glGetIntegerv(GL\_CULL\_FACE,\ \&cullFace);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00034}00034\ \ \ \ \ glGetIntegerv(GL\_BLEND,\ \&blendEnabled);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00035}00035\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00036}00036\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}OpenGL\ State\ after\ init:"{}};}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00037}00037\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}\ \ Depth\ Test:\ "{}}\ <<\ (depthTest\ ?\ \textcolor{stringliteral}{"{}ON"{}}\ :\ \textcolor{stringliteral}{"{}OFF"{}});}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00038}00038\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}\ \ Depth\ Func:\ 0x"{}}\ <<\ std::hex\ <<\ depthFunc;}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00039}00039\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}\ \ Face\ Culling:\ "{}}\ <<\ (cullFace\ ?\ \textcolor{stringliteral}{"{}ON"{}}\ :\ \textcolor{stringliteral}{"{}OFF"{}});}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00040}00040\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}\ \ Blending:\ "{}}\ <<\ (blendEnabled\ ?\ \textcolor{stringliteral}{"{}ON"{}}\ :\ \textcolor{stringliteral}{"{}OFF"{}});}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00041}00041\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00042}00042\ \ \ \ \ \doxymbox{\hyperlink{class_graphics_context_a37a144d3b40d916f9097813a7692e849}{s\_Initialized}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00043}00043\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00044}00044\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Graphics\ Context\ Initialized"{}};}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00045}00045\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}\ \ Vendor:\ "{}}\ <<\ GetVendor();}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00046}00046\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}\ \ Renderer:\ "{}}\ <<\ GetRenderer();}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00047}00047\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}\ \ Version:\ "{}}\ <<\ GetVersion();}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00050}00050\ \textcolor{keywordtype}{void}\ GraphicsContext::Shutdown()\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00051}00051\ \ \ \ \ \doxymbox{\hyperlink{class_graphics_context_a37a144d3b40d916f9097813a7692e849}{s\_Initialized}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00052}00052\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Graphics\ Context\ Shutdown"{}};}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00053}00053\ \}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00055}00055\ \textcolor{keywordtype}{void}\ GraphicsContext::SetViewport(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ x,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ y,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ width,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ height)\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00056}00056\ \ \ \ \ glViewport(x,\ y,\ width,\ height);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00057}00057\ \}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00059}00059\ \textcolor{keywordtype}{void}\ GraphicsContext::SetClearColor(\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ r,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ g,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ b,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ a)\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00060}00060\ \ \ \ \ glClearColor(r,\ g,\ b,\ a);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00061}00061\ \}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00063}00063\ \textcolor{keywordtype}{void}\ GraphicsContext::Clear()\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00064}00064\ \ \ \ \ glClear(GL\_COLOR\_BUFFER\_BIT\ |\ GL\_DEPTH\_BUFFER\_BIT);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00067}00067\ \textcolor{keywordtype}{void}\ GraphicsContext::EnableDepthTest(\textcolor{keywordtype}{bool}\ enable)\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (enable)\ glEnable(GL\_DEPTH\_TEST);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{else}\ glDisable(GL\_DEPTH\_TEST);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00070}00070\ \}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00072}00072\ \textcolor{keywordtype}{void}\ GraphicsContext::EnableBlending(\textcolor{keywordtype}{bool}\ enable)\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{keywordflow}{if}\ (enable)\ glEnable(GL\_BLEND);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{else}\ glDisable(GL\_BLEND);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00077}00077\ \textcolor{keywordtype}{void}\ GraphicsContext::EnableCulling(\textcolor{keywordtype}{bool}\ enable)\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{keywordflow}{if}\ (enable)\ glEnable(GL\_CULL\_FACE);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{keywordflow}{else}\ glDisable(GL\_CULL\_FACE);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00080}00080\ \}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00082}00082\ \textcolor{keywordtype}{void}\ GraphicsContext::SetCullFace(\textcolor{keywordtype}{bool}\ cullBack)\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00083}00083\ \ \ \ \ glCullFace(cullBack\ ?\ GL\_BACK\ :\ GL\_FRONT);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00084}00084\ \}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00086}00086\ \textcolor{keywordtype}{void}\ GraphicsContext::DrawArrays(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ vertexCount)\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00087}00087\ \ \ \ \ glDrawArrays(GL\_TRIANGLES,\ 0,\ vertexCount);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00088}00088\ \}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00090}00090\ \textcolor{keywordtype}{void}\ GraphicsContext::DrawIndexed(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ indexCount)\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00091}00091\ \ \ \ \ glDrawElements(GL\_TRIANGLES,\ \textcolor{keyword}{static\_cast<}GLsizei\textcolor{keyword}{>}(indexCount),\ GL\_UNSIGNED\_INT,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00092}00092\ \}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00094}00094\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ GraphicsContext::GetVendor()\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(glGetString(GL\_VENDOR));}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00096}00096\ \}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00098}00098\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ GraphicsContext::GetRenderer()\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00099}00099\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(glGetString(GL\_RENDERER));}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00100}00100\ \}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00102}00102\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ GraphicsContext::GetVersion()\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00103}00103\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(glGetString(GL\_VERSION));}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00104}00104\ \}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00106}00106\ \textcolor{comment}{//\ Добавляем\ функцию\ для\ вывода\ текущего\ состояния\ OpenGL}}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00107}00107\ \textcolor{keywordtype}{void}\ GraphicsContext::PrintGLInfo()\ \{}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00108}00108\ \ \ \ \ GLint\ viewport[4];}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00109}00109\ \ \ \ \ glGetIntegerv(GL\_VIEWPORT,\ viewport);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00110}00110\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}OpenGL\ Viewport:\ "{}}\ <<\ viewport[0]\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ viewport[1]\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ viewport[2]\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ viewport[3];}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00113}00113\ \ \ \ \ GLint\ depthTest,\ depthFunc,\ cullFace;}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00114}00114\ \ \ \ \ glGetIntegerv(GL\_DEPTH\_TEST,\ \&depthTest);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00115}00115\ \ \ \ \ glGetIntegerv(GL\_DEPTH\_FUNC,\ \&depthFunc);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00116}00116\ \ \ \ \ glGetIntegerv(GL\_CULL\_FACE,\ \&cullFace);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00117}00117\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00118}00118\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Depth\ Test:\ "{}}\ <<\ (depthTest\ ?\ \textcolor{stringliteral}{"{}ON"{}}\ :\ \textcolor{stringliteral}{"{}OFF"{}})}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{},\ Depth\ Func:\ 0x"{}}\ <<\ std::hex\ <<\ depthFunc}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{},\ Face\ Culling:\ "{}}\ <<\ (cullFace\ ?\ \textcolor{stringliteral}{"{}ON"{}}\ :\ \textcolor{stringliteral}{"{}OFF"{}});}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00122}00122\ \ \ \ \ GLfloat\ depth\_range[2];}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00123}00123\ \ \ \ \ glGetFloatv(GL\_DEPTH\_RANGE,\ depth\_range);}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00124}00124\ \ \ \ \ ENGINE\_INFO\ <<\ \textcolor{stringliteral}{"{}Depth\ Range:\ "{}}\ <<\ depth\_range[0]\ <<\ \textcolor{stringliteral}{"{}\ -\/\ "{}}\ <<\ depth\_range[1];}
+\DoxyCodeLine{\Hypertarget{_graphics_context_8cpp_source_l00125}00125\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,101 @@
+\doxysection{Smart Pointer and Memory Utilities }
+\hypertarget{group___memory_management}{}\label{group___memory_management}\index{Smart Pointer and Memory Utilities@{Smart Pointer and Memory Utilities}}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T$>$ }\\using \doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope}} = std::\+unique\+\_\+ptr$<$T$>$
+\begin{DoxyCompactList}\small\item\em Type alias for std::\+unique\+\_\+ptr$<$\+T$>$. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\using \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}} = std::\+shared\+\_\+ptr$<$T$>$
+\begin{DoxyCompactList}\small\item\em Type alias for std::\+shared\+\_\+ptr$<$\+T$>$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T, typename... Args$>$ }\\constexpr \doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope}}$<$ T $>$ \doxymbox{\hyperlink{group___memory_management_gaa6f344b966989e6bcb7ad2e2eaceb7ce}{Create\+Scope}} (Args \&\&... args)
+\item 
+{\footnotesize template$<$typename T, typename... Args$>$ }\\constexpr \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ T $>$ \doxymbox{\hyperlink{group___memory_management_ga6319f792d6030b2b69071455eb36e3f8}{Create\+Ref}} (Args \&\&... args)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Template aliases and factory functions for managing dynamic memory using C++11 smart pointers. These ensure proper resource management and prevent memory leaks by automating cleanup. Use \doxylink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope} for exclusive ownership and \doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref} for shared ownership scenarios. 
+
+\label{doc-typedef-members}
+\Hypertarget{group___memory_management_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}\index{Smart Pointer and Memory Utilities@{Smart Pointer and Memory Utilities}!Ref@{Ref}}
+\index{Ref@{Ref}!Smart Pointer and Memory Utilities@{Smart Pointer and Memory Utilities}}
+\doxysubsubsection{\texorpdfstring{Ref}{Ref}}
+{\footnotesize\ttfamily \label{group___memory_management_gadd5e90b302c31b74a46619f240214bcc} 
+template$<$typename T$>$ \\
+using \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}} = std::\+shared\+\_\+ptr$<$T$>$}
+
+
+
+Type alias for std::\+shared\+\_\+ptr$<$\+T$>$. 
+
+Represents shared ownership semantics. Use \doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref} when multiple entities need to own and access an object. The object is deleted automatically when the last reference is released. Internally uses reference counting to track ownership.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of object to manage \\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_base_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Base.\+h}}, \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}}, \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_model_loader_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Model\+Loader.\+h}}, \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_renderer_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Renderer.\+h}}, \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}, \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}, \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_shader_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Shader.\+h}}, and \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_base_8h_source_l00212}{212}} of file \doxymbox{\hyperlink{_base_8h_source}{Base.\+h}}.
+
+\Hypertarget{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}\index{Smart Pointer and Memory Utilities@{Smart Pointer and Memory Utilities}!Scope@{Scope}}
+\index{Scope@{Scope}!Smart Pointer and Memory Utilities@{Smart Pointer and Memory Utilities}}
+\doxysubsubsection{\texorpdfstring{Scope}{Scope}}
+{\footnotesize\ttfamily \label{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d} 
+template$<$typename T$>$ \\
+using \doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope}} = std::\+unique\+\_\+ptr$<$T$>$}
+
+
+
+Type alias for std::\+unique\+\_\+ptr$<$\+T$>$. 
+
+Represents exclusive ownership semantics. Use \doxylink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope} when an object should be owned by a single entity and deleted when that owner is destroyed. Prevents memory leaks through automatic cleanup and eliminates the need for manual delete.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of object to manage \\
+\hline
+\end{DoxyTemplParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_base_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Base.\+h}}, \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_engine_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Engine.\+h}}, \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_log_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Log.\+h}}, and \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_renderer_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Renderer.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_base_8h_source_l00168}{168}} of file \doxymbox{\hyperlink{_base_8h_source}{Base.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{group___memory_management_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{group___memory_management_ga6319f792d6030b2b69071455eb36e3f8}\index{Smart Pointer and Memory Utilities@{Smart Pointer and Memory Utilities}!CreateRef@{CreateRef}}
+\index{CreateRef@{CreateRef}!Smart Pointer and Memory Utilities@{Smart Pointer and Memory Utilities}}
+\doxysubsubsection{\texorpdfstring{CreateRef()}{CreateRef()}}
+{\footnotesize\ttfamily \label{group___memory_management_ga6319f792d6030b2b69071455eb36e3f8} 
+template$<$typename T, typename... Args$>$ \\
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ T $>$ Create\+Ref (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_base_8h_source_l00235}{235}} of file \doxymbox{\hyperlink{_base_8h_source}{Base.\+h}}.
+
+\Hypertarget{group___memory_management_gaa6f344b966989e6bcb7ad2e2eaceb7ce}\index{Smart Pointer and Memory Utilities@{Smart Pointer and Memory Utilities}!CreateScope@{CreateScope}}
+\index{CreateScope@{CreateScope}!Smart Pointer and Memory Utilities@{Smart Pointer and Memory Utilities}}
+\doxysubsubsection{\texorpdfstring{CreateScope()}{CreateScope()}}
+{\footnotesize\ttfamily \label{group___memory_management_gaa6f344b966989e6bcb7ad2e2eaceb7ce} 
+template$<$typename T, typename... Args$>$ \\
+\doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope}}$<$ T $>$ Create\+Scope (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_base_8h_source_l00190}{190}} of file \doxymbox{\hyperlink{_base_8h_source}{Base.\+h}}.
+

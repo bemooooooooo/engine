@@ -1,0 +1,121 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Index\+Buffer.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_index_buffer_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_index_buffer_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ indices[]\ =\ \{0,\ 1,\ 2,\ 2,\ 3,\ 0\};}
+\DoxyCodeLine{\doxymbox{\hyperlink{class_index_buffer}{IndexBuffer}}\ ibo(indices,\ 6);}
+\DoxyCodeLine{}
+\DoxyCodeLine{ibo.Bind();}
+\DoxyCodeLine{GraphicsContext::DrawElements(ibo.GetCount());}
+\DoxyCodeLine{ibo.Unbind();}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Core/Base.h"{}}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ IndexBuffer}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Represents\ an\ OpenGL\ index\ buffer\ for\ indexed\ drawing.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ The\ IndexBuffer\ class\ encapsulates\ the\ creation,\ binding,\ and\ management}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ of\ an\ OpenGL\ index\ buffer\ object\ (IBO).\ It\ allows\ for\ efficient\ rendering}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ of\ complex\ geometries\ by\ reusing\ vertex\ data\ through\ indexed\ drawing.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Creation\ of\ index\ buffer\ from\ an\ array\ of\ indices}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Binding\ and\ unbinding\ the\ index\ buffer\ for\ rendering}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Retrieval\ of\ the\ number\ of\ indices\ stored}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Usage:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Create\ an\ IndexBuffer\ with\ a\ list\ of\ indices}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Bind\ the\ buffer\ before\ issuing\ draw\ calls}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Unbind\ when\ done\ to\ avoid\ unintended\ state\ changes}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ This\ class\ assumes\ that\ an\ OpenGL\ context\ is\ active\ when\ used.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ The\ indices\ are\ expected\ to\ be\ of\ type\ u32\ (unsigned\ 32-\/bit\ integers).}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ u32\ indices[]\ =\ \{0,\ 1,\ 2,\ 2,\ 3,\ 0\};}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ IndexBuffer\ ibo(indices,\ 6);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ ibo.Bind();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ GraphicsContext::DrawElements(ibo.GetCount());}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ ibo.Unbind();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_index_buffer}{IndexBuffer}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Constructs\ an\ IndexBuffer\ from\ an\ array\ of\ indices.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Creates\ an\ OpenGL\ index\ buffer\ object\ and\ uploads\ the\ provided}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ indices\ to\ the\ GPU\ for\ use\ in\ indexed\ drawing.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ indices\ Pointer\ to\ an\ array\ of\ u32\ indices}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ count\ Number\ of\ indices\ in\ the\ array}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{class_index_buffer_ac68b48465425e90fdd6df6a23ee77d68}{IndexBuffer}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}*\ indices,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ count);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Destructor\ that\ cleans\ up\ the\ OpenGL\ index\ buffer.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Deletes\ the\ OpenGL\ buffer\ object\ associated\ with\ this\ IndexBuffer}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ to\ free\ GPU\ resources.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{class_index_buffer_a348889936f378b7942c1e01d83e42866}{\string~IndexBuffer}}();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Binds\ the\ index\ buffer\ for\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Sets\ this\ index\ buffer\ as\ the\ current\ buffer\ to\ be\ used\ for}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ indexed\ drawing\ operations.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_index_buffer_ac8bdd0495f718173fb46691ad1b7e4af}{Bind}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Unbinds\ the\ index\ buffer.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Resets\ the\ current\ index\ buffer\ binding\ to\ zero,\ effectively}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ unbinding\ any\ index\ buffer\ that\ was\ previously\ bound.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_index_buffer_a5a1cfc46339ea7d6e72d22a096da5a77}{Unbind}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ number\ of\ indices\ stored\ in\ the\ buffer.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Returns\ the\ count\ of\ indices\ that\ were\ uploaded\ to\ the\ GPU}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ when\ the\ IndexBuffer\ was\ created.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ number\ of\ indices}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_index_buffer_a6b0ad54ce7ec387016490bd42654e603}{GetCount}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_index_buffer_abba1d4884c4d1e4c8f97a606dbd69e9f}{m\_Count}};\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ OpenGL\ renderer\ ID\ for\ this\ index\ buffer.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Returns\ the\ internal\ OpenGL\ buffer\ object\ ID\ used\ for\ binding}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ and\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ OpenGL\ buffer\ object\ ID}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_index_buffer_a1e8a2293736daccbf67f8177a727039c}{GetRendererID}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_index_buffer_ae689bf71a8dee67b1dfceafafe183250}{m\_RendererID}};\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_RendererID}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ OpenGL\ buffer\ object\ ID\ for\ this\ index\ buffer.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_index_buffer_ae689bf71a8dee67b1dfceafafe183250}{m\_RendererID}};\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_Count}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ number\ of\ indices\ stored\ in\ this\ index\ buffer.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_index_buffer_abba1d4884c4d1e4c8f97a606dbd69e9f}{m\_Count}};}
+\DoxyCodeLine{\};}
+
+\end{DoxyCodeInclude}
+ 

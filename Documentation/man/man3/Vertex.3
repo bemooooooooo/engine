@@ -1,0 +1,121 @@
+.TH "Vertex" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Vertex \- Structure representing a single vertex in a mesh\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Mesh\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVertex\fP ()=default"
+.br
+.RI "Default constructor initializing vertex attributes\&. "
+.ti -1c
+.RI "\fBVertex\fP (const \fBVector3\fP &pos, const \fBVector3\fP &norm=Vector3::Up, const \fBVector2\fP &uv=\fBVector2::Zero\fP)"
+.br
+.RI "Parameterized constructor to initialize vertex attributes\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBVector3\fP \fBposition\fP"
+.br
+.RI "The 3D position of the vertex\&. "
+.ti -1c
+.RI "\fBVector3\fP \fBnormal\fP"
+.br
+.RI "The normal vector at the vertex, used for lighting calculations\&. "
+.ti -1c
+.RI "\fBVector2\fP \fBtexCoord\fP"
+.br
+.RI "The 2D texture coordinates (UV) for mapping textures to the vertex\&. "
+.ti -1c
+.RI "\fBVector3\fP \fBtangent\fP"
+.br
+.RI "The tangent vector at the vertex, used for normal mapping\&. "
+.ti -1c
+.RI "\fBVector3\fP \fBbitangent\fP"
+.br
+.RI "The bitangent vector at the vertex, used for normal mapping\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Structure representing a single vertex in a mesh\&. 
+
+Contains position, normal, texture coordinates, tangent, and bitangent data\&. Used for defining the geometry of 3D models\&. 
+.PP
+Definition at line \fB18\fP of file \fBMesh\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Vertex::Vertex (const \fBVector3\fP & pos, const \fBVector3\fP & norm = \fRVector3::Up\fP, const \fBVector2\fP & uv = \fR\fBVector2::Zero\fP\fP)\fR [inline]\fP"
+
+.PP
+Parameterized constructor to initialize vertex attributes\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpos\fP The position of the vertex 
+.br
+\fInorm\fP The normal vector at the vertex (default is up vector) 
+.br
+\fIuv\fP The texture coordinates (default is zero vector) 
+.RE
+.PP
+
+.PP
+Definition at line \fB61\fP of file \fBMesh\&.h\fP\&.
+.PP
+References \fBnormal\fP, \fBposition\fP, \fBtexCoord\fP, and \fBVector2::Zero\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBVector3\fP Vertex::bitangent"
+
+.PP
+The bitangent vector at the vertex, used for normal mapping\&. 
+.PP
+Definition at line \fB47\fP of file \fBMesh\&.h\fP\&.
+.PP
+Referenced by \fBMesh::CreateSphere()\fP\&.
+.SS "\fBVector3\fP Vertex::normal"
+
+.PP
+The normal vector at the vertex, used for lighting calculations\&. 
+.PP
+Definition at line \fB29\fP of file \fBMesh\&.h\fP\&.
+.PP
+Referenced by \fBMesh::CreateSphere()\fP, and \fBVertex()\fP\&.
+.SS "\fBVector3\fP Vertex::position"
+
+.PP
+The 3D position of the vertex\&. 
+.PP
+Definition at line \fB23\fP of file \fBMesh\&.h\fP\&.
+.PP
+Referenced by \fBMesh::CreateSphere()\fP, and \fBVertex()\fP\&.
+.SS "\fBVector3\fP Vertex::tangent"
+
+.PP
+The tangent vector at the vertex, used for normal mapping\&. 
+.PP
+Definition at line \fB41\fP of file \fBMesh\&.h\fP\&.
+.PP
+Referenced by \fBMesh::CreateSphere()\fP\&.
+.SS "\fBVector2\fP Vertex::texCoord"
+
+.PP
+The 2D texture coordinates (UV) for mapping textures to the vertex\&. 
+.PP
+Definition at line \fB35\fP of file \fBMesh\&.h\fP\&.
+.PP
+Referenced by \fBMesh::CreateSphere()\fP, and \fBVertex()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

@@ -1,0 +1,138 @@
+.TH "MaterialProperties" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MaterialProperties \- Encapsulates the properties and texture maps of a material\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Material\&.h>\fP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBVector4\fP \fBalbedo\fP = \fBVector4\fP(1\&.0f, 1\&.0f, 1\&.0f, 1\&.0f)"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBmetallic\fP = 0\&.0f"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBroughness\fP = 0\&.5f"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBambientOcclusion\fP = 1\&.0f"
+.br
+.ti -1c
+.RI "\fBRef\fP< \fBTexture\fP > \fBalbedoMap\fP"
+.br
+.ti -1c
+.RI "\fBRef\fP< \fBTexture\fP > \fBnormalMap\fP"
+.br
+.ti -1c
+.RI "\fBRef\fP< \fBTexture\fP > \fBmetallicMap\fP"
+.br
+.ti -1c
+.RI "\fBRef\fP< \fBTexture\fP > \fBroughnessMap\fP"
+.br
+.ti -1c
+.RI "\fBRef\fP< \fBTexture\fP > \fBambientOcclusionMap\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Encapsulates the properties and texture maps of a material\&. 
+
+This structure holds the various properties that define the appearance of a material in the rendering engine, including color, metallicity, roughness, ambient occlusion, and associated texture maps\&.
+
+.PP
+Properties:
+.IP "\(bu" 2
+albedo: Base color of the material
+.IP "\(bu" 2
+metallic: Metallic factor (0\&.0 = non-metal, 1\&.0 = metal)
+.IP "\(bu" 2
+roughness: Surface roughness (0\&.0 = smooth, 1\&.0 = rough)
+.IP "\(bu" 2
+ambientOcclusion: Ambient occlusion factor
+.PP
+
+.PP
+\fBTexture\fP Maps:
+.IP "\(bu" 2
+albedoMap: \fBTexture\fP for base color
+.IP "\(bu" 2
+normalMap: \fBTexture\fP for surface normals
+.IP "\(bu" 2
+metallicMap: \fBTexture\fP for metallic values
+.IP "\(bu" 2
+roughnessMap: \fBTexture\fP for roughness values
+.IP "\(bu" 2
+ambientOcclusionMap: \fBTexture\fP for ambient occlusion values 
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP\&.
+.PP
+Definition at line \fB37\fP of file \fBMaterial\&.h\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBVector4\fP MaterialProperties::albedo = \fBVector4\fP(1\&.0f, 1\&.0f, 1\&.0f, 1\&.0f)"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP\&.
+.PP
+Definition at line \fB39\fP of file \fBMaterial\&.h\fP\&.
+.SS "\fBRef\fP<\fBTexture\fP> MaterialProperties::albedoMap"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP\&.
+.PP
+Definition at line \fB45\fP of file \fBMaterial\&.h\fP\&.
+.SS "\fBf32\fP MaterialProperties::ambientOcclusion = 1\&.0f"
+
+.PP
+Definition at line \fB42\fP of file \fBMaterial\&.h\fP\&.
+.SS "\fBRef\fP<\fBTexture\fP> MaterialProperties::ambientOcclusionMap"
+
+.PP
+Definition at line \fB49\fP of file \fBMaterial\&.h\fP\&.
+.SS "\fBf32\fP MaterialProperties::metallic = 0\&.0f"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP\&.
+.PP
+Definition at line \fB40\fP of file \fBMaterial\&.h\fP\&.
+.SS "\fBRef\fP<\fBTexture\fP> MaterialProperties::metallicMap"
+
+.PP
+Definition at line \fB47\fP of file \fBMaterial\&.h\fP\&.
+.SS "\fBRef\fP<\fBTexture\fP> MaterialProperties::normalMap"
+
+.PP
+Definition at line \fB46\fP of file \fBMaterial\&.h\fP\&.
+.SS "\fBf32\fP MaterialProperties::roughness = 0\&.5f"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Material\&.h\fP\&.
+.PP
+Definition at line \fB41\fP of file \fBMaterial\&.h\fP\&.
+.SS "\fBRef\fP<\fBTexture\fP> MaterialProperties::roughnessMap"
+
+.PP
+Definition at line \fB48\fP of file \fBMaterial\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

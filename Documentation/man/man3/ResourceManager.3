@@ -1,0 +1,476 @@
+.TH "ResourceManager" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ResourceManager \- Centralized manager for loading, storing, and accessing graphics resources\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <ResourceManager\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBRef\fP< \fBShader\fP > \fBGetShader\fP (const std::string &name)"
+.br
+.RI "Retrieves a shader by name\&. "
+.ti -1c
+.RI "static \fBRef\fP< \fBShader\fP > \fBLoadShader\fP (const std::string &name, const std::string &vertexPath, const std::string &fragmentPath)"
+.br
+.RI "Loads a shader from vertex and fragment file paths\&. "
+.ti -1c
+.RI "static \fBRef\fP< \fBShader\fP > \fBLoadShaderFromSource\fP (const std::string &name, const std::string &vertexSrc, const std::string &fragmentSrc)"
+.br
+.RI "Loads a shader from provided source code strings\&. "
+.ti -1c
+.RI "static void \fBUnloadShader\fP (const std::string &name)"
+.br
+.RI "Unloads a shader by name\&. "
+.ti -1c
+.RI "static \fBRef\fP< \fBTexture\fP > \fBGetTexture\fP (const std::string &name)"
+.br
+.RI "Retrieves a texture by name\&. "
+.ti -1c
+.RI "static \fBRef\fP< \fBTexture\fP > \fBLoadTexture\fP (const std::string &name, const std::string &path)"
+.br
+.RI "Loads a texture from an image file\&. "
+.ti -1c
+.RI "static void \fBUnloadTexture\fP (const std::string &name)"
+.br
+.RI "Unloads a texture by name\&. "
+.ti -1c
+.RI "static \fBRef\fP< \fBMesh\fP > \fBGetMesh\fP (const std::string &name)"
+.br
+.RI "Retrieves a mesh by name\&. "
+.ti -1c
+.RI "static void \fBRegisterMesh\fP (const std::string &name, const \fBRef\fP< \fBMesh\fP > &mesh)"
+.br
+.RI "Registers a mesh with a unique name\&. "
+.ti -1c
+.RI "static void \fBUnloadMesh\fP (const std::string &name)"
+.br
+.RI "Unloads a mesh by name\&. "
+.ti -1c
+.RI "static void \fBShutdown\fP ()"
+.br
+.RI "Unloads all resources and clears internal storage\&. "
+.ti -1c
+.RI "static size_t \fBGetShaderCount\fP ()"
+.br
+.RI "Gets the count of currently loaded shaders, textures, and meshes\&. "
+.ti -1c
+.RI "static size_t \fBGetTextureCount\fP ()"
+.br
+.RI "Gets the count of currently loaded textures\&. "
+.ti -1c
+.RI "static size_t \fBGetMeshCount\fP ()"
+.br
+.RI "Gets the count of currently loaded meshes\&. "
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static std::unordered_map< std::string, \fBRef\fP< \fBShader\fP > > \fBs_Shaders\fP"
+.br
+.RI "Map of loaded shaders identified by unique names\&. "
+.ti -1c
+.RI "static std::unordered_map< std::string, \fBRef\fP< \fBTexture\fP > > \fBs_Textures\fP"
+.br
+.RI "Map of loaded textures identified by unique names\&. "
+.ti -1c
+.RI "static std::unordered_map< std::string, \fBRef\fP< \fBMesh\fP > > \fBs_Meshes\fP"
+.br
+.RI "Map of loaded meshes identified by unique names\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Centralized manager for loading, storing, and accessing graphics resources\&. 
+
+This class provides static methods to load, retrieve, and unload various graphics resources such as shaders, textures, and meshes\&. It maintains internal maps to ensure that resources are loaded only once and shared across the engine\&.
+
+.PP
+\fBKey\fP features:
+.IP "\(bu" 2
+Load shaders from files or source code
+.IP "\(bu" 2
+Load textures from image files
+.IP "\(bu" 2
+Register and retrieve meshes
+.IP "\(bu" 2
+Automatic resource cleanup on shutdown
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+All methods are static; no instances of \fBResourceManager\fP should be created\&. 
+
+.PP
+Resources are identified by unique string names\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB35\fP of file \fBResourceManager\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBRef\fP< \fBMesh\fP > ResourceManager::GetMesh (const std::string & name)\fR [static]\fP, \fR [nodiscard]\fP"
+
+.PP
+Retrieves a mesh by name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP The unique name of the mesh 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Mesh>\fP The requested mesh, or nullptr if not found 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP, and \fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB107\fP of file \fBResourceManager\&.cpp\fP\&.
+.PP
+References \fBs_Meshes\fP\&.
+.SS "size_t ResourceManager::GetMeshCount ()\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Gets the count of currently loaded meshes\&. 
+.PP
+\fBReturns\fP
+.RS 4
+size_t Number of loaded meshes 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB155\fP of file \fBResourceManager\&.h\fP\&.
+.PP
+References \fBs_Meshes\fP\&.
+.SS "\fBRef\fP< \fBShader\fP > ResourceManager::GetShader (const std::string & name)\fR [static]\fP, \fR [nodiscard]\fP"
+
+.PP
+Retrieves a shader by name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP The unique name of the shader 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Shader>\fP The requested shader, or nullptr if not found 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB11\fP of file \fBResourceManager\&.cpp\fP\&.
+.PP
+References \fBs_Shaders\fP\&.
+.SS "size_t ResourceManager::GetShaderCount ()\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Gets the count of currently loaded shaders, textures, and meshes\&. 
+.PP
+\fBReturns\fP
+.RS 4
+size_t Number of loaded shaders 
+
+.PP
+size_t Number of loaded textures 
+
+.PP
+size_t Number of loaded meshes 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB141\fP of file \fBResourceManager\&.h\fP\&.
+.PP
+References \fBs_Shaders\fP\&.
+.SS "\fBRef\fP< \fBTexture\fP > ResourceManager::GetTexture (const std::string & name)\fR [static]\fP, \fR [nodiscard]\fP"
+
+.PP
+Retrieves a texture by name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP The unique name of the texture 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Texture>\fP The requested texture, or nullptr if not found 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB70\fP of file \fBResourceManager\&.cpp\fP\&.
+.PP
+References \fBs_Textures\fP\&.
+.SS "size_t ResourceManager::GetTextureCount ()\fR [inline]\fP, \fR [static]\fP"
+
+.PP
+Gets the count of currently loaded textures\&. 
+.PP
+\fBReturns\fP
+.RS 4
+size_t Number of loaded textures 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB148\fP of file \fBResourceManager\&.h\fP\&.
+.PP
+References \fBs_Textures\fP\&.
+.SS "\fBRef\fP< \fBShader\fP > ResourceManager::LoadShader (const std::string & name, const std::string & vertexPath, const std::string & fragmentPath)\fR [static]\fP, \fR [nodiscard]\fP"
+
+.PP
+Loads a shader from vertex and fragment file paths\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP The unique name to associate with the shader 
+.br
+\fIvertexPath\fP The file path to the vertex shader source 
+.br
+\fIfragmentPath\fP The file path to the fragment shader source 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Shader>\fP The loaded shader 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB20\fP of file \fBResourceManager\&.cpp\fP\&.
+.PP
+References \fBShader::CreateFromFiles()\fP, and \fBs_Shaders\fP\&.
+.PP
+Referenced by \fBTestApp::OnInitialize()\fP\&.
+.SS "\fBRef\fP< \fBShader\fP > ResourceManager::LoadShaderFromSource (const std::string & name, const std::string & vertexSrc, const std::string & fragmentSrc)\fR [static]\fP, \fR [nodiscard]\fP"
+
+.PP
+Loads a shader from provided source code strings\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP The unique name to associate with the shader 
+.br
+\fIvertexSrc\fP The vertex shader source code 
+.br
+\fIfragmentSrc\fP The fragment shader source code 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Shader>\fP The loaded shader 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB40\fP of file \fBResourceManager\&.cpp\fP\&.
+.PP
+References \fBShader::Create()\fP, and \fBs_Shaders\fP\&.
+.SS "\fBRef\fP< \fBTexture\fP > ResourceManager::LoadTexture (const std::string & name, const std::string & path)\fR [static]\fP, \fR [nodiscard]\fP"
+
+.PP
+Loads a texture from an image file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP The unique name to associate with the texture 
+.br
+\fIpath\fP The file path to the image 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+\fBRef<Texture>\fP The loaded texture 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB79\fP of file \fBResourceManager\&.cpp\fP\&.
+.PP
+References \fBTexture::Create()\fP, and \fBs_Textures\fP\&.
+.SS "void ResourceManager::RegisterMesh (const std::string & name, const \fBRef\fP< \fBMesh\fP > & mesh)\fR [static]\fP"
+
+.PP
+Registers a mesh with a unique name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP The unique name to associate with the mesh 
+.br
+\fImesh\fP The mesh to register 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB116\fP of file \fBResourceManager\&.cpp\fP\&.
+.PP
+References \fBs_Meshes\fP\&.
+.SS "void ResourceManager::Shutdown ()\fR [static]\fP"
+
+.PP
+Unloads all resources and clears internal storage\&. Should be called at engine shutdown to free all loaded resources\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB134\fP of file \fBResourceManager\&.cpp\fP\&.
+.PP
+References \fBs_Meshes\fP, \fBs_Shaders\fP, and \fBs_Textures\fP\&.
+.PP
+Referenced by \fBTestApp::OnShutdown()\fP\&.
+.SS "void ResourceManager::UnloadMesh (const std::string & name)\fR [static]\fP"
+
+.PP
+Unloads a mesh by name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP The unique name of the mesh to unload 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB124\fP of file \fBResourceManager\&.cpp\fP\&.
+.PP
+References \fBs_Meshes\fP\&.
+.SS "void ResourceManager::UnloadShader (const std::string & name)\fR [static]\fP"
+
+.PP
+Unloads a shader by name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP The unique name of the shader to unload 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB60\fP of file \fBResourceManager\&.cpp\fP\&.
+.PP
+References \fBs_Shaders\fP\&.
+.SS "void ResourceManager::UnloadTexture (const std::string & name)\fR [static]\fP"
+
+.PP
+Unloads a texture by name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIname\fP The unique name of the texture to unload 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB97\fP of file \fBResourceManager\&.cpp\fP\&.
+.PP
+References \fBs_Textures\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::unordered_map< std::string, \fBRef\fP< \fBMesh\fP > > ResourceManager::s_Meshes\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Map of loaded meshes identified by unique names\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB175\fP of file \fBResourceManager\&.h\fP\&.
+.PP
+Referenced by \fBGetMesh()\fP, \fBGetMeshCount()\fP, \fBRegisterMesh()\fP, \fBShutdown()\fP, and \fBUnloadMesh()\fP\&.
+.SS "std::unordered_map< std::string, \fBRef\fP< \fBShader\fP > > ResourceManager::s_Shaders\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Map of loaded shaders identified by unique names\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB163\fP of file \fBResourceManager\&.h\fP\&.
+.PP
+Referenced by \fBGetShader()\fP, \fBGetShaderCount()\fP, \fBLoadShader()\fP, \fBLoadShaderFromSource()\fP, \fBShutdown()\fP, and \fBUnloadShader()\fP\&.
+.SS "std::unordered_map< std::string, \fBRef\fP< \fBTexture\fP > > ResourceManager::s_Textures\fR [static]\fP, \fR [private]\fP"
+
+.PP
+Map of loaded textures identified by unique names\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/ResourceManager\&.h\fP\&.
+.PP
+Definition at line \fB169\fP of file \fBResourceManager\&.h\fP\&.
+.PP
+Referenced by \fBGetTexture()\fP, \fBGetTextureCount()\fP, \fBLoadTexture()\fP, \fBShutdown()\fP, and \fBUnloadTexture()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

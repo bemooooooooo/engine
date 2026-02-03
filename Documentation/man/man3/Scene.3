@@ -1,0 +1,420 @@
+.TH "Scene" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Scene \- Represents a 3D scene containing multiple scene objects and a camera\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Scene\&.h>\fP
+.PP
+Inherited by \fBTestScene\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBScene\fP ()"
+.br
+.RI "Constructs a new \fBScene\fP with an optional name\&. "
+.ti -1c
+.RI "\fBScene\fP (std::string \fBname\fP)"
+.br
+.RI "Constructs a new \fBScene\fP with the specified name\&. "
+.ti -1c
+.RI "\fB~Scene\fP ()"
+.br
+.RI "Destructor for the \fBScene\fP class\&. "
+.ti -1c
+.RI "void \fBAddObject\fP (const \fBSceneObject\fP &object)"
+.br
+.RI "Adds a \fBSceneObject\fP to the scene\&. "
+.ti -1c
+.RI "void \fBRemoveObject\fP (const std::string &\fBname\fP)"
+.br
+.RI "Removes a \fBSceneObject\fP from the scene by name\&. "
+.ti -1c
+.RI "\fBSceneObject\fP * \fBFindObject\fP (const std::string &\fBname\fP)"
+.br
+.RI "Finds a \fBSceneObject\fP in the scene by name\&. "
+.ti -1c
+.RI "virtual void \fBUpdate\fP (\fBf32\fP deltaTime)"
+.br
+.RI "Updates all SceneObjects in the scene\&. "
+.ti -1c
+.RI "virtual void \fBRender\fP (const \fBRef\fP< \fBShader\fP > &shader) const"
+.br
+.RI "Renders all SceneObjects in the scene using the specified shader\&. "
+.ti -1c
+.RI "const std::vector< \fBSceneObject\fP > & \fBGetObjects\fP () const"
+.br
+.RI "Gets the list of SceneObjects in the scene\&. "
+.ti -1c
+.RI "std::vector< \fBSceneObject\fP > & \fBGetObjects\fP ()"
+.br
+.RI "Gets the list of SceneObjects in the scene\&. "
+.ti -1c
+.RI "void \fBSetCamera\fP (const \fBCamera\fP &camera)"
+.br
+.RI "Sets the camera for the scene\&. "
+.ti -1c
+.RI "\fBCamera\fP & \fBGetCamera\fP ()"
+.br
+.RI "Gets the camera of the scene\&. "
+.ti -1c
+.RI "const \fBCamera\fP & \fBGetCamera\fP () const"
+.br
+.RI "Gets the camera of the scene\&. "
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBname\fP"
+.br
+.RI "The name of the scene\&. "
+.ti -1c
+.RI "std::vector< \fBSceneObject\fP > \fBm_Objects\fP"
+.br
+.RI "The list of SceneObjects contained in the scene\&. "
+.ti -1c
+.RI "std::unordered_map< std::string, size_t > \fBm_ObjectIndex\fP"
+.br
+.RI "A map for quick lookup of SceneObjects by name\&. "
+.ti -1c
+.RI "\fBCamera\fP \fBm_Camera\fP"
+.br
+.RI "The camera used to view the scene\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Represents a 3D scene containing multiple scene objects and a camera\&. 
+
+The \fBScene\fP class manages a collection of \fBSceneObject\fP instances, allowing for adding, removing, updating, and rendering them\&. It also holds a \fBCamera\fP to define the viewpoint for rendering the scene\&.
+
+.PP
+\fBKey\fP features:
+.IP "\(bu" 2
+Add and remove SceneObjects by name
+.IP "\(bu" 2
+Find SceneObjects by name
+.IP "\(bu" 2
+Update all objects each frame, invoking their onUpdate callbacks
+.IP "\(bu" 2
+Render all objects using a specified shader
+.IP "\(bu" 2
+Manage a \fBCamera\fP for the scene
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+The \fBScene\fP does not handle physics or collision; it focuses on object management and rendering\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB117\fP of file \fBScene\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Scene::Scene ()"
+
+.PP
+Constructs a new \fBScene\fP with an optional name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI\fBname\fP\fP The name of the scene (default is empty string) 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB6\fP of file \fBScene\&.cpp\fP\&.
+.PP
+References \fBm_Camera\fP\&.
+.SS "Scene::Scene (std::string name)"
+
+.PP
+Constructs a new \fBScene\fP with the specified name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI\fBname\fP\fP The name of the scene 
+.RE
+.PP
+
+.PP
+Definition at line \fB13\fP of file \fBScene\&.cpp\fP\&.
+.PP
+References \fBm_Camera\fP, and \fBname\fP\&.
+.SS "Scene::~Scene ()"
+
+.PP
+Destructor for the \fBScene\fP class\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB20\fP of file \fBScene\&.cpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Scene::AddObject (const \fBSceneObject\fP & object)"
+
+.PP
+Adds a \fBSceneObject\fP to the scene\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIobject\fP The \fBSceneObject\fP to add 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB22\fP of file \fBScene\&.cpp\fP\&.
+.PP
+References \fBm_ObjectIndex\fP, and \fBm_Objects\fP\&.
+.SS "\fBSceneObject\fP * Scene::FindObject (const std::string & name)\fR [nodiscard]\fP"
+
+.PP
+Finds a \fBSceneObject\fP in the scene by name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI\fBname\fP\fP The name of the \fBSceneObject\fP to find 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+SceneObject* Pointer to the found \fBSceneObject\fP, or nullptr if not found 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB58\fP of file \fBScene\&.cpp\fP\&.
+.PP
+References \fBm_ObjectIndex\fP, \fBm_Objects\fP, and \fBname\fP\&.
+.SS "\fBCamera\fP & Scene::GetCamera ()\fR [inline]\fP"
+
+.PP
+Gets the camera of the scene\&. 
+.PP
+\fBReturns\fP
+.RS 4
+\fBCamera\fP& Reference to the scene's \fBCamera\fP 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB200\fP of file \fBScene\&.h\fP\&.
+.PP
+References \fBm_Camera\fP\&.
+.PP
+Referenced by \fBTestScene::Render()\fP\&.
+.SS "const \fBCamera\fP & Scene::GetCamera () const\fR [inline]\fP"
+
+.PP
+Gets the camera of the scene\&. 
+.PP
+\fBReturns\fP
+.RS 4
+const \fBCamera\fP& Constant reference to the scene's \fBCamera\fP 
+.RE
+.PP
+
+.PP
+Definition at line \fB207\fP of file \fBScene\&.h\fP\&.
+.PP
+References \fBm_Camera\fP\&.
+.SS "std::vector< \fBSceneObject\fP > & Scene::GetObjects ()\fR [inline]\fP"
+
+.PP
+Gets the list of SceneObjects in the scene\&. 
+.PP
+\fBReturns\fP
+.RS 4
+std::vector<SceneObject>& Reference to the vector of SceneObjects 
+.RE
+.PP
+
+.PP
+Definition at line \fB186\fP of file \fBScene\&.h\fP\&.
+.PP
+References \fBm_Objects\fP\&.
+.SS "const std::vector< \fBSceneObject\fP > & Scene::GetObjects () const\fR [inline]\fP"
+
+.PP
+Gets the list of SceneObjects in the scene\&. 
+.PP
+\fBReturns\fP
+.RS 4
+const std::vector<SceneObject>& Constant reference to the vector of SceneObjects 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB179\fP of file \fBScene\&.h\fP\&.
+.PP
+References \fBm_Objects\fP\&.
+.PP
+Referenced by \fBTestScene::Render()\fP\&.
+.SS "void Scene::RemoveObject (const std::string & name)"
+
+.PP
+Removes a \fBSceneObject\fP from the scene by name\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fI\fBname\fP\fP The name of the \fBSceneObject\fP to remove 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB35\fP of file \fBScene\&.cpp\fP\&.
+.PP
+References \fBm_ObjectIndex\fP, \fBm_Objects\fP, and \fBname\fP\&.
+.SS "void Scene::Render (const \fBRef\fP< \fBShader\fP > & shader) const\fR [virtual]\fP"
+
+.PP
+Renders all SceneObjects in the scene using the specified shader\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIshader\fP The shader to use for rendering the objects 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTestScene\fP\&.
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB74\fP of file \fBScene\&.cpp\fP\&.
+.PP
+References \fBENGINE_DEBUG_LOG\fP, \fBm_Camera\fP, \fBm_Objects\fP, and \fBname\fP\&.
+.SS "void Scene::SetCamera (const \fBCamera\fP & camera)\fR [inline]\fP"
+
+.PP
+Sets the camera for the scene\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcamera\fP The \fBCamera\fP to set 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB193\fP of file \fBScene\&.h\fP\&.
+.PP
+References \fBm_Camera\fP\&.
+.SS "void Scene::Update (\fBf32\fP deltaTime)\fR [virtual]\fP"
+
+.PP
+Updates all SceneObjects in the scene\&. Calls the onUpdate callback for each object if it is set\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIdeltaTime\fP The time elapsed since the last update in seconds 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTestScene\fP\&.
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB66\fP of file \fBScene\&.cpp\fP\&.
+.PP
+References \fBm_Objects\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBCamera\fP Scene::m_Camera\fR [private]\fP"
+
+.PP
+The camera used to view the scene\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB232\fP of file \fBScene\&.h\fP\&.
+.PP
+Referenced by \fBGetCamera()\fP, \fBGetCamera()\fP, \fBRender()\fP, \fBScene()\fP, \fBScene()\fP, and \fBSetCamera()\fP\&.
+.SS "std::unordered_map<std::string, size_t> Scene::m_ObjectIndex\fR [private]\fP"
+
+.PP
+A map for quick lookup of SceneObjects by name\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB226\fP of file \fBScene\&.h\fP\&.
+.PP
+Referenced by \fBAddObject()\fP, \fBFindObject()\fP, and \fBRemoveObject()\fP\&.
+.SS "std::vector<\fBSceneObject\fP> Scene::m_Objects\fR [private]\fP"
+
+.PP
+The list of SceneObjects contained in the scene\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB220\fP of file \fBScene\&.h\fP\&.
+.PP
+Referenced by \fBAddObject()\fP, \fBFindObject()\fP, \fBGetObjects()\fP, \fBGetObjects()\fP, \fBRemoveObject()\fP, \fBRender()\fP, and \fBUpdate()\fP\&.
+.SS "std::string Scene::name\fR [private]\fP"
+
+.PP
+The name of the scene\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Graphics/Scene\&.h\fP\&.
+.PP
+Definition at line \fB214\fP of file \fBScene\&.h\fP\&.
+.PP
+Referenced by \fBFindObject()\fP, \fBRemoveObject()\fP, \fBRender()\fP, and \fBScene()\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

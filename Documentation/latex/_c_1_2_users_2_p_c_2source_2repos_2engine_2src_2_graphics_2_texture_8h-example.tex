@@ -1,0 +1,204 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Create\ a\ texture\ from\ file}}
+\DoxyCodeLine{\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Texture>}}\ texture\ =\ \doxymbox{\hyperlink{class_texture_a95668d1df7743f3178a362c0c0e3b470}{Texture::Create}}(\textcolor{stringliteral}{"{}path/to/texture.png"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Create\ an\ empty\ texture}}
+\DoxyCodeLine{\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Texture>}}\ emptyTexture\ =\ \doxymbox{\hyperlink{class_texture_a95668d1df7743f3178a362c0c0e3b470}{Texture::Create}}(512,\ 512);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Bind\ the\ texture\ for\ use}}
+\DoxyCodeLine{texture-\/>Bind(0);\ \ \textcolor{comment}{//\ Bind\ to\ texture\ unit\ 0}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Set\ texture\ data}}
+\DoxyCodeLine{\textcolor{keywordtype}{void}*\ data\ =\ ...;\ \textcolor{comment}{//\ Pointer\ to\ pixel\ data}}
+\DoxyCodeLine{texture-\/>SetData(data,\ width\ *\ height\ *\ 4);\ \textcolor{comment}{//\ Assuming\ RGBA\ format}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Unbind\ the\ texture}}
+\DoxyCodeLine{texture-\/>Unbind();}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Core/Base.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Core/Log.h"{}}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ Texture}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Represents\ a\ 2D\ texture\ resource\ in\ OpenGL.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ class\ encapsulates\ the\ creation,\ management,\ and\ usage\ of\ 2D\ textures}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ in\ OpenGL.\ It\ provides\ methods\ to\ load\ textures\ from\ image\ files,\ create}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ empty\ textures,\ bind/unbind\ them\ for\ rendering,\ and\ set\ texture\ data.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Load\ textures\ from\ image\ files\ (e.g.,\ PNG,\ JPEG)}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Create\ empty\ textures\ with\ specified\ width\ and\ height}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Bind\ and\ unbind\ textures\ to\ texture\ units}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Set\ texture\ data\ dynamically}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ Requires\ a\ valid\ OpenGL\ context\ to\ function\ properly.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ All\ OpenGL\ calls\ are\ made\ through\ this\ class;\ direct\ OpenGL\ calls\ should\ be\ avoided.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ //\ Create\ a\ texture\ from\ file}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Ref<Texture>\ texture\ =\ Texture::Create("{}path/to/texture.png"{});}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ //\ Create\ an\ empty\ texture}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Ref<Texture>\ emptyTexture\ =\ Texture::Create(512,\ 512);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ //\ Bind\ the\ texture\ for\ use}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ texture-\/>Bind(0);\ \ //\ Bind\ to\ texture\ unit\ 0}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ //\ Set\ texture\ data}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ void*\ data\ =\ ...;\ //\ Pointer\ to\ pixel\ data}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ texture-\/>SetData(data,\ width\ *\ height\ *\ 4);\ //\ Assuming\ RGBA\ format}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ //\ Unbind\ the\ texture}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ texture-\/>Unbind();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_texture}{Texture}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Constructs\ a\ Texture\ with\ the\ given\ width\ and\ height.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Creates\ an\ empty\ texture\ with\ the\ specified\ dimensions.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ width\ The\ width\ of\ the\ texture\ in\ pixels}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ height\ The\ height\ of\ the\ texture\ in\ pixels}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{class_texture_a9f41c70a2e704ef829e7e89718862aa4}{Texture}}(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ width,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ height);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Constructs\ a\ Texture\ by\ loading\ from\ the\ specified\ file\ path.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Loads\ the\ texture\ image\ from\ the\ given\ file\ and\ creates\ the\ OpenGL\ texture.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ filepath\ The\ path\ to\ the\ image\ file\ to\ load}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{class_texture_a9f41c70a2e704ef829e7e89718862aa4}{Texture}}(\textcolor{keyword}{const}\ std::string\&\ filepath);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Destructor\ that\ cleans\ up\ the\ OpenGL\ texture\ resource.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{class_texture_a09c4bcb7462f64c1d20fa69dba3cee8a}{\string~Texture}}();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Binds\ the\ texture\ to\ the\ specified\ texture\ unit.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ slot\ The\ texture\ unit\ slot\ to\ bind\ to\ (default\ is\ 0)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_texture_a2ce2eb9f09d4bbcc289b42cecfe21f9d}{Bind}}(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ slot\ =\ 0)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Unbinds\ the\ texture\ from\ the\ current\ texture\ unit.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_texture_a0bff249ecfb46e9b08c6ba52d64a921e}{Unbind}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ the\ texture\ data\ from\ a\ raw\ data\ pointer.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Uploads\ the\ provided\ pixel\ data\ to\ the\ texture.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ data\ Pointer\ to\ the\ pixel\ data}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ size\ Size\ of\ the\ data\ in\ bytes}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_texture_aebe2caf71137e1771aa5a9096c70955d}{SetData}}(\textcolor{keywordtype}{void}*\ data,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ size);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ width\ of\ the\ texture\ in\ pixels.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ width\ of\ the\ texture}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_texture_a60932e4a79a6aa83303456814944e183}{GetWidth}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_texture_a85847b7dbebd64b03b3e714376f3e6fc}{m\_Width}};\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ height\ of\ the\ texture\ in\ pixels.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ height\ of\ the\ texture}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_texture_a7ae059fdd929a2f43ac4902767cf8bf5}{GetHeight}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_Height;\ \}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ OpenGL\ renderer\ ID\ of\ the\ texture.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ OpenGL\ renderer\ ID}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ [[nodiscard]]\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_texture_ab18699fc9ead2bcb9d997000f2c97b77}{GetRendererID}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_texture_af8fe00f64287e900e136948eefe311f2}{m\_RendererID}};\ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Checks\ if\ the\ texture\ was\ successfully\ loaded.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ true\ If\ the\ texture\ is\ loaded\ and\ valid}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ false\ If\ the\ texture\ failed\ to\ load}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_texture_a426f7a09d506a481b0607ef9f91e1672}{IsLoaded}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_texture_a19581cda9c74f7992070f390672b45ad}{m\_IsLoaded}};\ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Factory\ method\ to\ create\ a\ Texture.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Overloaded\ to\ create\ a\ texture\ either\ from\ dimensions\ or\ from\ a\ file\ path.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ width\ The\ width\ of\ the\ texture\ in\ pixels}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ height\ The\ height\ of\ the\ texture\ in\ pixels}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Texture>\ The\ created\ empty\ texture}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ filepath\ The\ path\ to\ the\ image\ file\ to\ load}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Texture>\ The\ created\ texture\ loaded\ from\ file}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Texture>}}\ \doxymbox{\hyperlink{class_texture_a95668d1df7743f3178a362c0c0e3b470}{Create}}(\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ width,\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ height);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Factory\ method\ to\ create\ a\ Texture\ from\ a\ file.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ filepath\ The\ path\ to\ the\ image\ file\ to\ load}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Texture>\ The\ created\ texture\ loaded\ from\ file}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Texture>}}\ \doxymbox{\hyperlink{class_texture_a95668d1df7743f3178a362c0c0e3b470}{Create}}(\textcolor{keyword}{const}\ std::string\&\ filepath);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Internal\ method\ to\ create\ the\ OpenGL\ texture\ resource.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_texture_a3ddeec1757d232f12f5a8b91cfe02c88}{CreateInternal}}();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_RendererID}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ OpenGL\ renderer\ ID\ for\ the\ texture.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_texture_af8fe00f64287e900e136948eefe311f2}{m\_RendererID}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_Width}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ width\ of\ the\ texture\ in\ pixels.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_texture_a85847b7dbebd64b03b3e714376f3e6fc}{m\_Width}},\ m\_Height;}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_InternalFormat}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ internal\ format\ of\ the\ texture\ (e.g.,\ GL\_RGBA8).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_DataFormat}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ data\ format\ of\ the\ texture\ (e.g.,\ GL\_RGBA).}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_texture_a16126c7495b6e30482c7074d08bf8dc2}{m\_InternalFormat}},\ \doxymbox{\hyperlink{class_texture_a7310ad8cb00d157d33ec3bdb13f46297}{m\_DataFormat}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_Filepath}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ file\ path\ from\ which\ the\ texture\ was\ loaded.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ std::string\ \doxymbox{\hyperlink{class_texture_a675be3c1432369c5590c0a9b5f114758}{m\_Filepath}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_IsLoaded}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Flag\ indicating\ whether\ the\ texture\ was\ successfully\ loaded.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_texture_a19581cda9c74f7992070f390672b45ad}{m\_IsLoaded}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\};}
+
+\end{DoxyCodeInclude}
+ 

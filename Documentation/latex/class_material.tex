@@ -1,0 +1,313 @@
+\doxysection{Material Class Reference}
+\hypertarget{class_material}{}\label{class_material}\index{Material@{Material}}
+
+
+Represents a material with properties and associated shader.  
+
+
+
+
+{\ttfamily \+\#include $<$Material.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_material_a137e987401b63eb7c6c27c3e38bc74b5}{Material}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_material}{Material} with default properties and no shader. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_material_a41a1b2045a0beda0d9e6278a8c864f81}{Material}} (const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&shader)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_material}{Material} with the specified shader. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_material_a3721ac2921e5c425da968b5421451688}{Apply}} (const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&shader) const
+\begin{DoxyCompactList}\small\item\em Applies the material properties to the given shader. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_material_ae5119fca8f1fcdbab924a1cac17904d9}{Set\+Shader}} (const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&shader)
+\begin{DoxyCompactList}\small\item\em Sets the shader used by this material. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \doxymbox{\hyperlink{class_material_ad414ffc52be67d1cd2d681cad2767742}{Get\+Shader}} () const
+\begin{DoxyCompactList}\small\item\em Gets the shader used by this material. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_material_properties}{Material\+Properties}} \& \doxymbox{\hyperlink{class_material_aea0628e04931cc3b03526e2a21da5e73}{Get\+Properties}} ()
+\begin{DoxyCompactList}\small\item\em Gets the material properties. \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{struct_material_properties}{Material\+Properties}} \& \doxymbox{\hyperlink{class_material_afacb197925feb1de9ed46daa9f20c82f}{Get\+Properties}} () const
+\begin{DoxyCompactList}\small\item\em Gets the material properties (const version). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_material}{Material}} $>$ \doxymbox{\hyperlink{class_material_a0fec49ce2ec527eb8543784cbd155ad9}{Create}} ()
+\begin{DoxyCompactList}\small\item\em Factory method to create a \doxylink{class_material}{Material} with default properties. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_material}{Material}} $>$ \doxymbox{\hyperlink{class_material_ae4bad4ae40a9006578068ed09e989ecc}{Create}} (const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&shader)
+\begin{DoxyCompactList}\small\item\em Factory method to create a \doxylink{class_material}{Material} with the specified shader. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \doxymbox{\hyperlink{class_material_add77d8cc6551d56b264085f4440b8bca}{m\+\_\+\+Shader}}
+\begin{DoxyCompactList}\small\item\em The shader associated with this material. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_material_properties}{Material\+Properties}} \doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\+\_\+\+Properties}}
+\begin{DoxyCompactList}\small\item\em The properties defining the material\textquotesingle{}s appearance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a material with properties and associated shader. 
+
+The \doxylink{class_material}{Material} class encapsulates the visual properties of a surface, including its shader and material properties such as color, metallicity, roughness, and texture maps. It provides methods to apply these properties to a shader for rendering.
+
+\doxylink{namespace_key}{Key} features:\+
+\begin{DoxyItemize}
+\item Holds a reference to a \doxylink{class_shader}{Shader} used for rendering
+\item Contains \doxylink{struct_material_properties}{Material\+Properties} defining appearance
+\item Method to apply properties to the shader uniforms 
+\end{DoxyItemize}\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00078}{78}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_material_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_material_a137e987401b63eb7c6c27c3e38bc74b5}\index{Material@{Material}!Material@{Material}}
+\index{Material@{Material}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{Material()}{Material()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_material_a137e987401b63eb7c6c27c3e38bc74b5} 
+Material::\+\+Material (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_material}{Material} with default properties and no shader. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_material_8cpp_source_l00004}{4}} of file \doxymbox{\hyperlink{_material_8cpp_source}{Material.\+cpp}}.
+
+\Hypertarget{class_material_a41a1b2045a0beda0d9e6278a8c864f81}\index{Material@{Material}!Material@{Material}}
+\index{Material@{Material}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{Material()}{Material()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_material_a41a1b2045a0beda0d9e6278a8c864f81} 
+Material::\+\+Material (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&}]{shader}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_material}{Material} with the specified shader. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & Reference to the \doxylink{class_shader}{Shader} to be used by this material \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_material_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_material_a3721ac2921e5c425da968b5421451688}\index{Material@{Material}!Apply@{Apply}}
+\index{Apply@{Apply}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{Apply()}{Apply()}}
+{\footnotesize\ttfamily \label{class_material_a3721ac2921e5c425da968b5421451688} 
+void Material::\+\+Apply (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&}]{shader}{}\end{DoxyParamCaption}) const}
+
+
+
+Applies the material properties to the given shader. 
+
+Sets the shader uniforms based on the material\textquotesingle{}s properties and binds any associated texture maps.
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & The shader to which the material properties will be applied \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_material_8cpp_source_l00013}{13}} of file \doxymbox{\hyperlink{_material_8cpp_source}{Material.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_material_8h_source_l00154}{m\+\_\+\+Shader}}.
+
+\Hypertarget{class_material_a0fec49ce2ec527eb8543784cbd155ad9}\index{Material@{Material}!Create@{Create}}
+\index{Create@{Create}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_material_a0fec49ce2ec527eb8543784cbd155ad9} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_material}{Material}} $>$ Material::\+\+Create (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Factory method to create a \doxylink{class_material}{Material} with default properties. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Material$>$} Reference to the newly created \doxylink{class_material}{Material} 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}}.\end{Desc}
+\Hypertarget{class_material_ae4bad4ae40a9006578068ed09e989ecc}\index{Material@{Material}!Create@{Create}}
+\index{Create@{Create}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_material_ae4bad4ae40a9006578068ed09e989ecc} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_material}{Material}} $>$ Material::\+\+Create (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&}]{shader}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Factory method to create a \doxylink{class_material}{Material} with the specified shader. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & Reference to the \doxylink{class_shader}{Shader} to be used by the new material \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Material$>$} Reference to the newly created \doxylink{class_material}{Material} 
+\end{DoxyReturn}
+\Hypertarget{class_material_aea0628e04931cc3b03526e2a21da5e73}\index{Material@{Material}!GetProperties@{GetProperties}}
+\index{GetProperties@{GetProperties}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{GetProperties()}{GetProperties()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_material_aea0628e04931cc3b03526e2a21da5e73} 
+\doxymbox{\hyperlink{struct_material_properties}{Material\+Properties}} \& Material::\+\+Get\+Properties (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the material properties. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{struct_material_properties}{Material\+Properties}\& Reference to the material properties 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00125}{125}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_material_8h_source_l00160}{m\+\_\+\+Properties}}.
+
+\Hypertarget{class_material_afacb197925feb1de9ed46daa9f20c82f}\index{Material@{Material}!GetProperties@{GetProperties}}
+\index{GetProperties@{GetProperties}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{GetProperties()}{GetProperties()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_material_afacb197925feb1de9ed46daa9f20c82f} 
+const \doxymbox{\hyperlink{struct_material_properties}{Material\+Properties}} \& Material::\+\+Get\+Properties (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the material properties (const version). 
+
+\begin{DoxyReturn}{Returns}
+const \doxylink{struct_material_properties}{Material\+Properties}\& Const reference to the material properties 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00132}{132}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_material_8h_source_l00160}{m\+\_\+\+Properties}}.
+
+\Hypertarget{class_material_ad414ffc52be67d1cd2d681cad2767742}\index{Material@{Material}!GetShader@{GetShader}}
+\index{GetShader@{GetShader}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{GetShader()}{GetShader()}}
+{\footnotesize\ttfamily \label{class_material_ad414ffc52be67d1cd2d681cad2767742} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ Material::\+\+Get\+Shader (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the shader used by this material. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Shader$>$} Reference to the current \doxylink{class_shader}{Shader} 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00118}{118}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_material_8h_source_l00154}{m\+\_\+\+Shader}}.
+
+\Hypertarget{class_material_ae5119fca8f1fcdbab924a1cac17904d9}\index{Material@{Material}!SetShader@{SetShader}}
+\index{SetShader@{SetShader}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{SetShader()}{SetShader()}}
+{\footnotesize\ttfamily \label{class_material_ae5119fca8f1fcdbab924a1cac17904d9} 
+void Material::\+\+Set\+Shader (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&}]{shader}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the shader used by this material. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & Reference to the \doxylink{class_shader}{Shader} to set \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00111}{111}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_material_8h_source_l00154}{m\+\_\+\+Shader}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_material_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}\index{Material@{Material}!m\_Properties@{m\_Properties}}
+\index{m\_Properties@{m\_Properties}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{m\_Properties}{m\_Properties}}
+{\footnotesize\ttfamily \label{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe} 
+\doxymbox{\hyperlink{struct_material_properties}{Material\+Properties}} Material::\+m\+\_\+\+Properties\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The properties defining the material\textquotesingle{}s appearance. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00160}{160}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_material_8h_source_l00125}{Get\+Properties()}}, and \doxymbox{\hyperlink{_material_8h_source_l00132}{Get\+Properties()}}.
+
+\Hypertarget{class_material_add77d8cc6551d56b264085f4440b8bca}\index{Material@{Material}!m\_Shader@{m\_Shader}}
+\index{m\_Shader@{m\_Shader}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{m\_Shader}{m\_Shader}}
+{\footnotesize\ttfamily \label{class_material_add77d8cc6551d56b264085f4440b8bca} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$\doxymbox{\hyperlink{class_shader}{Shader}}$>$ Material::\+m\+\_\+\+Shader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The shader associated with this material. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_material_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Material.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_material_8h_source_l00154}{154}} of file \doxymbox{\hyperlink{_material_8h_source}{Material.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_material_8cpp_source_l00013}{Apply()}}, \doxymbox{\hyperlink{_material_8h_source_l00118}{Get\+Shader()}}, and \doxymbox{\hyperlink{_material_8h_source_l00111}{Set\+Shader()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Material.\+h\item 
+src/\+\+Graphics/\+Material.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,116 @@
+\doxysection{Log::\+Logger Class Reference}
+\hypertarget{class_log_1_1_logger}{}\label{class_log_1_1_logger}\index{Log::Logger@{Log::Logger}}
+
+
+\doxylink{class_log_1_1_logger}{Logger} class for creating log messages with various severity levels.  
+
+
+
+
+{\ttfamily \+\#include $<$Log.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_log_1_1_logger_ad614e938e1f68b0d626aafcd45a0963b}{Logger}} (\doxymbox{\hyperlink{namespace_log_afb5d4c945d835d194a295461d752531e}{Level}} lvl, const char \texorpdfstring{$\ast$}{*}file, int line)
+\item 
+{\footnotesize template$<$typename T$>$ }\\Logger \& \doxymbox{\hyperlink{class_log_1_1_logger_a486acc59ecddf643a9c5ccb9cdd1561f}{operator$<$$<$}} (T \&\&value)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{namespace_log_afb5d4c945d835d194a295461d752531e}{Level}} \doxymbox{\hyperlink{class_log_1_1_logger_a9932c209fcbfcccfaddb34e04cc74233}{m\+\_\+\+Level\+\_\+}}
+\item 
+std::\+ostringstream \doxymbox{\hyperlink{class_log_1_1_logger_a739f8b9da8a03d883f6eaadb7b8c8de4}{m\+\_\+\+Stream\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_log_1_1_logger}{Logger} class for creating log messages with various severity levels. 
+
+The \doxylink{class_log_1_1_logger}{Logger} class provides a stream-\/style interface for constructing log messages. It captures the log level, source file, and line number for each message. Messages are output to the console and optionally to a log file based on the configured log level.
+
+Usage:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Log::Logger(Level::\_Info,\ \_\_FILE\_\_,\ \_\_LINE\_\_)\ <<\ \textcolor{stringliteral}{"{}This\ is\ an\ info\ message."{}};}
+
+\end{DoxyCode}
+ \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_core_2_log_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Core/\+\+Log.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_log_8h_source_l00065}{65}} of file \doxymbox{\hyperlink{_log_8h_source}{Log.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_log_1_1_logger_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_log_1_1_logger_ad614e938e1f68b0d626aafcd45a0963b}\index{Log::Logger@{Log::Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!Log::Logger@{Log::Logger}}
+\doxysubsubsection{\texorpdfstring{Logger()}{Logger()}}
+{\footnotesize\ttfamily \label{class_log_1_1_logger_ad614e938e1f68b0d626aafcd45a0963b} 
+Log::\+\+Logger::\+\+Logger (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{namespace_log_afb5d4c945d835d194a295461d752531e}{Level}}}]{lvl}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{file}{, }\item[{int}]{line}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_log_8cpp_source_l00013}{13}} of file \doxymbox{\hyperlink{_log_8cpp_source}{Log.\+cpp}}.
+
+\Hypertarget{class_log_1_1_logger_a6f9ed9c24db66c09cd4f7b0cf4f0e913}\index{Log::Logger@{Log::Logger}!````~Logger@{\texorpdfstring{$\sim$}{\string~}Logger}}
+\index{````~Logger@{\texorpdfstring{$\sim$}{\string~}Logger}!Log::Logger@{Log::Logger}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Logger()}{\string~Logger()}}
+{\footnotesize\ttfamily \label{class_log_1_1_logger_a6f9ed9c24db66c09cd4f7b0cf4f0e913} 
+Log::\+\+Logger::\+\texorpdfstring{$\sim$}{\string~}\+Logger (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_log_8cpp_source_l00028}{28}} of file \doxymbox{\hyperlink{_log_8cpp_source}{Log.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_log_1_1_logger_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_log_1_1_logger_a486acc59ecddf643a9c5ccb9cdd1561f}\index{Log::Logger@{Log::Logger}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Log::Logger@{Log::Logger}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily \label{class_log_1_1_logger_a486acc59ecddf643a9c5ccb9cdd1561f} 
+template$<$typename T$>$ \\
+Logger \& Log::\+\+Logger::\+operator$<$$<$ (\begin{DoxyParamCaption}\item[{T \&\&}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_log_8h_source_l00085}{85}} of file \doxymbox{\hyperlink{_log_8h_source}{Log.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_log_1_1_logger_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_log_1_1_logger_a9932c209fcbfcccfaddb34e04cc74233}\index{Log::Logger@{Log::Logger}!m\_Level\_@{m\_Level\_}}
+\index{m\_Level\_@{m\_Level\_}!Log::Logger@{Log::Logger}}
+\doxysubsubsection{\texorpdfstring{m\_Level\_}{m\_Level\_}}
+{\footnotesize\ttfamily \label{class_log_1_1_logger_a9932c209fcbfcccfaddb34e04cc74233} 
+\doxymbox{\hyperlink{namespace_log_afb5d4c945d835d194a295461d752531e}{Level}} Log::\+\+Logger::\+m\+\_\+\+Level\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_log_8h_source_l00094}{94}} of file \doxymbox{\hyperlink{_log_8h_source}{Log.\+h}}.
+
+\Hypertarget{class_log_1_1_logger_a739f8b9da8a03d883f6eaadb7b8c8de4}\index{Log::Logger@{Log::Logger}!m\_Stream\_@{m\_Stream\_}}
+\index{m\_Stream\_@{m\_Stream\_}!Log::Logger@{Log::Logger}}
+\doxysubsubsection{\texorpdfstring{m\_Stream\_}{m\_Stream\_}}
+{\footnotesize\ttfamily \label{class_log_1_1_logger_a739f8b9da8a03d883f6eaadb7b8c8de4} 
+std::\+ostringstream Log::\+\+Logger::\+m\+\_\+\+Stream\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_log_8h_source_l00096}{96}} of file \doxymbox{\hyperlink{_log_8h_source}{Log.\+h}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Core/\+Log.\+h\item 
+src/\+\+Core/\+Log.\+cpp\end{DoxyCompactItemize}

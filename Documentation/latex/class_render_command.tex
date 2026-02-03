@@ -1,0 +1,161 @@
+\doxysection{Render\+Command Class Reference}
+\hypertarget{class_render_command}{}\label{class_render_command}\index{RenderCommand@{RenderCommand}}
+
+
+Static wrapper class for issuing rendering commands.  
+
+
+
+
+{\ttfamily \+\#include $<$Render\+Command.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{class_render_command_ac64b72f568f0c378fc7fcef2b89e237b}{Init}} ()
+\item 
+static void \doxymbox{\hyperlink{class_render_command_a3ca1eb35900922386852fe6862f0ce9b}{Shutdown}} ()
+\item 
+static void \doxymbox{\hyperlink{class_render_command_a4f981798317d8e5043a5f846b7aeb8bb}{Set\+Viewport}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} x, \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} y, \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} width, \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} height)
+\item 
+static void \doxymbox{\hyperlink{class_render_command_a0f887f4ed5410067af515d743204cfb5}{Set\+Clear\+Color}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} r, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} g, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} b, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} a)
+\item 
+static void \doxymbox{\hyperlink{class_render_command_a04d9ba4082ca71e0c848ee07f4b557c5}{Clear}} ()
+\item 
+static void \doxymbox{\hyperlink{class_render_command_abe94353d0be82bb8c7c362c1f890dcd5}{Draw\+Arrays}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} vertex\+Count)
+\item 
+static void \doxymbox{\hyperlink{class_render_command_ad88b2345c8cc222dee8255acc3076090}{Draw\+Indexed}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} index\+Count)
+\item 
+static void \doxymbox{\hyperlink{class_render_command_accbc8a2d25a38f90ed09de70ded824b0}{Enable\+Depth\+Test}} (bool enable)
+\item 
+static void \doxymbox{\hyperlink{class_render_command_acf20bb1f97b5c7854396c2124c5fdb20}{Enable\+Blending}} (bool enable)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Static wrapper class for issuing rendering commands. 
+
+This class provides a simplified interface for common rendering operations by wrapping the \doxylink{class_graphics_context}{Graphics\+Context} static methods. It serves as a higher-\/level abstraction for issuing draw calls and managing rendering state.
+
+All methods are static, allowing direct access without instantiation.
+
+\doxylink{namespace_key}{Key} features:\+
+\begin{DoxyItemize}
+\item Viewport setup
+\item Clear color and buffer clearing
+\item Drawing operations (arrays and indexed)
+\item Depth testing and blending control
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+This class relies on \doxylink{class_graphics_context}{Graphics\+Context} for actual Open\+GL calls. 
+
+Must be initialized via Init() before use. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_render_command_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Render\+Command.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_render_command_8h_source_l00038}{38}} of file \doxymbox{\hyperlink{_render_command_8h_source}{Render\+Command.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_render_command_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_render_command_a04d9ba4082ca71e0c848ee07f4b557c5}\index{RenderCommand@{RenderCommand}!Clear@{Clear}}
+\index{Clear@{Clear}!RenderCommand@{RenderCommand}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{class_render_command_a04d9ba4082ca71e0c848ee07f4b557c5} 
+void Render\+Command::\+\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_render_command_8h_source_l00150}{150}} of file \doxymbox{\hyperlink{_render_command_8h_source}{Render\+Command.\+h}}.
+
+\Hypertarget{class_render_command_abe94353d0be82bb8c7c362c1f890dcd5}\index{RenderCommand@{RenderCommand}!DrawArrays@{DrawArrays}}
+\index{DrawArrays@{DrawArrays}!RenderCommand@{RenderCommand}}
+\doxysubsubsection{\texorpdfstring{DrawArrays()}{DrawArrays()}}
+{\footnotesize\ttfamily \label{class_render_command_abe94353d0be82bb8c7c362c1f890dcd5} 
+void Render\+Command::\+\+Draw\+Arrays (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{vertex\+Count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_render_command_8h_source_l00171}{171}} of file \doxymbox{\hyperlink{_render_command_8h_source}{Render\+Command.\+h}}.
+
+\Hypertarget{class_render_command_ad88b2345c8cc222dee8255acc3076090}\index{RenderCommand@{RenderCommand}!DrawIndexed@{DrawIndexed}}
+\index{DrawIndexed@{DrawIndexed}!RenderCommand@{RenderCommand}}
+\doxysubsubsection{\texorpdfstring{DrawIndexed()}{DrawIndexed()}}
+{\footnotesize\ttfamily \label{class_render_command_ad88b2345c8cc222dee8255acc3076090} 
+void Render\+Command::\+\+Draw\+Indexed (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{index\+Count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_render_command_8h_source_l00192}{192}} of file \doxymbox{\hyperlink{_render_command_8h_source}{Render\+Command.\+h}}.
+
+\Hypertarget{class_render_command_acf20bb1f97b5c7854396c2124c5fdb20}\index{RenderCommand@{RenderCommand}!EnableBlending@{EnableBlending}}
+\index{EnableBlending@{EnableBlending}!RenderCommand@{RenderCommand}}
+\doxysubsubsection{\texorpdfstring{EnableBlending()}{EnableBlending()}}
+{\footnotesize\ttfamily \label{class_render_command_acf20bb1f97b5c7854396c2124c5fdb20} 
+void Render\+Command::\+\+Enable\+Blending (\begin{DoxyParamCaption}\item[{bool}]{enable}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_render_command_8h_source_l00237}{237}} of file \doxymbox{\hyperlink{_render_command_8h_source}{Render\+Command.\+h}}.
+
+\Hypertarget{class_render_command_accbc8a2d25a38f90ed09de70ded824b0}\index{RenderCommand@{RenderCommand}!EnableDepthTest@{EnableDepthTest}}
+\index{EnableDepthTest@{EnableDepthTest}!RenderCommand@{RenderCommand}}
+\doxysubsubsection{\texorpdfstring{EnableDepthTest()}{EnableDepthTest()}}
+{\footnotesize\ttfamily \label{class_render_command_accbc8a2d25a38f90ed09de70ded824b0} 
+void Render\+Command::\+\+Enable\+Depth\+Test (\begin{DoxyParamCaption}\item[{bool}]{enable}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_render_command_8h_source_l00214}{214}} of file \doxymbox{\hyperlink{_render_command_8h_source}{Render\+Command.\+h}}.
+
+\Hypertarget{class_render_command_ac64b72f568f0c378fc7fcef2b89e237b}\index{RenderCommand@{RenderCommand}!Init@{Init}}
+\index{Init@{Init}!RenderCommand@{RenderCommand}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_render_command_ac64b72f568f0c378fc7fcef2b89e237b} 
+void Render\+Command::\+\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_render_command_8h_source_l00055}{55}} of file \doxymbox{\hyperlink{_render_command_8h_source}{Render\+Command.\+h}}.
+
+\Hypertarget{class_render_command_a0f887f4ed5410067af515d743204cfb5}\index{RenderCommand@{RenderCommand}!SetClearColor@{SetClearColor}}
+\index{SetClearColor@{SetClearColor}!RenderCommand@{RenderCommand}}
+\doxysubsubsection{\texorpdfstring{SetClearColor()}{SetClearColor()}}
+{\footnotesize\ttfamily \label{class_render_command_a0f887f4ed5410067af515d743204cfb5} 
+void Render\+Command::\+\+Set\+Clear\+Color (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{r}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{g}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{b}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{a}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_render_command_8h_source_l00128}{128}} of file \doxymbox{\hyperlink{_render_command_8h_source}{Render\+Command.\+h}}.
+
+\Hypertarget{class_render_command_a4f981798317d8e5043a5f846b7aeb8bb}\index{RenderCommand@{RenderCommand}!SetViewport@{SetViewport}}
+\index{SetViewport@{SetViewport}!RenderCommand@{RenderCommand}}
+\doxysubsubsection{\texorpdfstring{SetViewport()}{SetViewport()}}
+{\footnotesize\ttfamily \label{class_render_command_a4f981798317d8e5043a5f846b7aeb8bb} 
+void Render\+Command::\+\+Set\+Viewport (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{x}{, }\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{y}{, }\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{width}{, }\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_render_command_8h_source_l00098}{98}} of file \doxymbox{\hyperlink{_render_command_8h_source}{Render\+Command.\+h}}.
+
+\Hypertarget{class_render_command_a3ca1eb35900922386852fe6862f0ce9b}\index{RenderCommand@{RenderCommand}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!RenderCommand@{RenderCommand}}
+\doxysubsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily \label{class_render_command_a3ca1eb35900922386852fe6862f0ce9b} 
+void Render\+Command::\+\+Shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_render_command_8h_source_l00073}{73}} of file \doxymbox{\hyperlink{_render_command_8h_source}{Render\+Command.\+h}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Render\+Command.\+h\end{DoxyCompactItemize}

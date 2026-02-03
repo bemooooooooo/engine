@@ -1,0 +1,68 @@
+.TH "Ray" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Ray
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRay\fP (const \fBVector3\fP &origin, const \fBVector3\fP &direction)"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBGetPoint\fP (\fBf32\fP distance) const"
+.br
+.ti -1c
+.RI "bool \fBIntersectsPlane\fP (const \fBVector3\fP &planePoint, const \fBVector3\fP &planeNormal, \fBf32\fP &distance) const"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBVector3\fP \fBorigin\fP"
+.br
+.ti -1c
+.RI "\fBVector3\fP \fBdirection\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB4\fP of file \fBRay\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Ray::Ray ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB8\fP of file \fBRay\&.h\fP\&.
+.SS "Ray::Ray (const \fBVector3\fP & origin, const \fBVector3\fP & direction)\fR [inline]\fP"
+
+.PP
+Definition at line \fB9\fP of file \fBRay\&.h\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBVector3\fP Ray::GetPoint (\fBf32\fP distance) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB12\fP of file \fBRay\&.h\fP\&.
+.SS "bool Ray::IntersectsPlane (const \fBVector3\fP & planePoint, const \fBVector3\fP & planeNormal, \fBf32\fP & distance) const\fR [inline]\fP"
+
+.PP
+Definition at line \fB14\fP of file \fBRay\&.h\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBVector3\fP Ray::direction"
+
+.PP
+Definition at line \fB6\fP of file \fBRay\&.h\fP\&.
+.SS "\fBVector3\fP Ray::origin"
+
+.PP
+Definition at line \fB5\fP of file \fBRay\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

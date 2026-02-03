@@ -1,0 +1,171 @@
+\doxysection{Material.\+cpp}
+\hypertarget{_material_8cpp_source}{}\label{_material_8cpp_source}\index{src/Graphics/Material.cpp@{src/Graphics/Material.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}Material.h"{}}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}../Core/Log.h"{}}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00004}\doxymbox{\hyperlink{class_material_a137e987401b63eb7c6c27c3e38bc74b5}{00004}}\ \doxymbox{\hyperlink{class_material_a137e987401b63eb7c6c27c3e38bc74b5}{Material::Material}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00005}00005\ \ \ \ \ \textcolor{comment}{//\ Create\ default\ PBR\ shader}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00006}00006\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ defaultVertexShader\ =\ R\textcolor{stringliteral}{"{}(}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00007}00007\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \#version\ 330\ core}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00008}00008\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ layout\ (location\ =\ 0)\ in\ vec3\ a\_Position;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00009}00009\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ layout\ (location\ =\ 1)\ in\ vec3\ a\_Normal;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00010}00010\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ layout\ (location\ =\ 2)\ in\ vec2\ a\_TexCoord;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00011}00011\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ layout\ (location\ =\ 3)\ in\ vec3\ a\_Tangent;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00012}00012\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ layout\ (location\ =\ 4)\ in\ vec3\ a\_Bitangent;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00013}\doxymbox{\hyperlink{class_material_a3721ac2921e5c425da968b5421451688}{00013}}\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00014}00014\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ uniform\ mat4\ u\_Model;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00015}00015\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ uniform\ mat4\ u\_View;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00016}00016\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ uniform\ mat4\ u\_Projection;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00017}00017\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00018}00018\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ out\ vec3\ v\_FragPos;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00019}00019\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ out\ vec3\ v\_Normal;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00020}00020\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ out\ vec2\ v\_TexCoord;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00021}00021\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ out\ mat3\ v\_TBN;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00022}00022\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00023}00023\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ void\ main()\ \{}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00024}00024\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ v\_FragPos\ =\ vec3(u\_Model\ *\ vec4(a\_Position,\ 1.0));}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00025}00025\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ v\_Normal\ =\ mat3(transpose(inverse(u\_Model)))\ *\ a\_Normal;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ v\_TexCoord\ =\ a\_TexCoord;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ //\ Calculate\ TBN\ matrix\ for\ normal\ mapping}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00029}00029\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ vec3\ T\ =\ normalize(mat3(u\_Model)\ *\ a\_Tangent);}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00030}00030\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ vec3\ B\ =\ normalize(mat3(u\_Model)\ *\ a\_Bitangent);}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00031}00031\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ vec3\ N\ =\ normalize(mat3(u\_Model)\ *\ a\_Normal);}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ v\_TBN\ =\ mat3(T,\ B,\ N);}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00033}00033\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00034}00034\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ gl\_Position\ =\ u\_Projection\ *\ u\_View\ *\ vec4(v\_FragPos,\ 1.0);}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00035}00035\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00036}00036\ \textcolor{stringliteral}{\ \ \ \ )"{};}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ }\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ defaultFragmentShader\ =\ R\textcolor{stringliteral}{"{}(}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00039}00039\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \#version\ 330\ core}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00040}00040\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00041}00041\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ struct\ Material\ \{}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00042}00042\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ vec4\ albedo;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00043}00043\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ float\ metallic;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00044}00044\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ float\ roughness;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00045}00045\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ float\ ambientOcclusion;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \};}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00047}00047\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ in\ vec3\ v\_FragPos;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ in\ vec3\ v\_Normal;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ in\ vec2\ v\_TexCoord;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00051}00051\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ in\ mat3\ v\_TBN;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00052}00052\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00053}00053\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ uniform\ Material\ u\_Material;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00054}00054\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00055}00055\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ uniform\ sampler2D\ u\_AlbedoMap;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00056}00056\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ uniform\ sampler2D\ u\_NormalMap;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00057}00057\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ uniform\ sampler2D\ u\_MetallicMap;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00058}00058\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ uniform\ sampler2D\ u\_RoughnessMap;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00059}00059\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ uniform\ sampler2D\ u\_AmbientOcclusionMap;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00060}00060\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00061}00061\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ uniform\ bool\ u\_HasAlbedoMap;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00062}00062\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ uniform\ bool\ u\_HasNormalMap;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00063}00063\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ uniform\ bool\ u\_HasMetallicMap;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00064}00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ uniform\ bool\ u\_HasRoughnessMap;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00065}00065\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ uniform\ bool\ u\_HasAOMap;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00067}00067\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ uniform\ vec3\ u\_ViewPos;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00068}00068\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00069}00069\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ out\ vec4\ FragColor;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00070}00070\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00071}00071\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ void\ main()\ \{}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00072}00072\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ //\ Sample\ textures}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00073}00073\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ vec4\ albedo\ =\ u\_HasAlbedoMap\ ?\ texture(u\_AlbedoMap,\ v\_TexCoord)\ :\ u\_Material.albedo;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00074}00074\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ float\ metallic\ =\ u\_HasMetallicMap\ ?\ texture(u\_MetallicMap,\ v\_TexCoord).r\ :\ u\_Material.metallic;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00075}00075\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ float\ roughness\ =\ u\_HasRoughnessMap\ ?\ texture(u\_RoughnessMap,\ v\_TexCoord).r\ :\ u\_Material.roughness;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00076}00076\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ float\ ambientOcclusion\ =\ u\_HasAOMap\ ?\ texture(u\_AmbientOcclusionMap,\ v\_TexCoord).r\ :\ u\_Material.ambientOcclusion;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00077}00077\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00078}00078\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ //\ Normal\ mapping}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00079}00079\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ vec3\ normal\ =\ v\_Normal;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00080}00080\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ if\ (u\_HasNormalMap)\ \{}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00081}00081\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ normal\ =\ texture(u\_NormalMap,\ v\_TexCoord).rgb;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00082}00082\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ normal\ =\ normal\ *\ 2.0\ -\/\ 1.0;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00083}00083\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ normal\ =\ normalize(v\_TBN\ *\ normal);}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00084}00084\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00085}00085\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00086}00086\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ //\ Simple\ lighting\ (можно\ заменить\ на\ PBR\ в\ будущем)}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00087}00087\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ vec3\ lightDir\ =\ normalize(vec3(1.0,\ 1.0,\ 1.0));}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00088}00088\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ vec3\ viewDir\ =\ normalize(u\_ViewPos\ -\/\ v\_FragPos);}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00089}00089\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ vec3\ reflectDir\ =\ reflect(-\/lightDir,\ normal);}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00090}00090\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00091}00091\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ float\ diff\ =\ max(dot(normal,\ lightDir),\ 0.0);}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00092}00092\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ float\ spec\ =\ pow(max(dot(viewDir,\ reflectDir),\ 0.0),\ 32.0);}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00093}00093\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00094}00094\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ vec3\ ambient\ =\ vec3(0.1)\ *\ albedo.rgb;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00095}00095\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ vec3\ diffuse\ =\ diff\ *\ albedo.rgb;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00096}00096\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ vec3\ specular\ =\ spec\ *\ vec3(0.5);}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00097}00097\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00098}00098\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ vec3\ result\ =\ (ambient\ +\ diffuse\ +\ specular)\ *\ ambientOcclusion;}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00099}00099\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ FragColor\ =\ vec4(result,\ albedo.a);}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00100}00100\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00101}00101\ \textcolor{stringliteral}{\ \ \ \ )"{};}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00102}00102\ \textcolor{stringliteral}{\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00103}00103\ \textcolor{stringliteral}{\ \ \ \ \doxymbox{\hyperlink{class_material_add77d8cc6551d56b264085f4440b8bca}{m\_Shader}}\ =\ \doxymbox{\hyperlink{class_shader_a1dde33d5c4c6097011775a58580355e7}{Shader::Create}}(defaultVertexShader,\ defaultFragmentShader);}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00104}00104\ \textcolor{stringliteral}{\}}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00105}00105\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00106}00106\ \textcolor{stringliteral}{}\textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_material_a3721ac2921e5c425da968b5421451688}{Material::Apply}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\&\ shader)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00107}00107\ \ \ \ \ \textcolor{comment}{//\ Set\ material\ properties}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00108}00108\ \ \ \ \ \textcolor{comment}{//\ В\ GLSL\ нельзя\ устанавливать\ поля\ структуры\ через\ точечную\ нотацию}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00109}00109\ \ \ \ \ \textcolor{comment}{//\ Используем\ отдельные\ униформы\ или\ устанавливаем\ всю\ структуру}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00110}00110\ \ \ \ \ shader-\/>SetVector4(\textcolor{stringliteral}{"{}u\_Material.albedo"{}},\ \doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}}.albedo);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00111}00111\ \ \ \ \ shader-\/>SetFloat(\textcolor{stringliteral}{"{}u\_Material.metallic"{}},\ \doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}}.metallic);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00112}00112\ \ \ \ \ shader-\/>SetFloat(\textcolor{stringliteral}{"{}u\_Material.roughness"{}},\ \doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}}.roughness);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00113}00113\ \ \ \ \ shader-\/>SetFloat(\textcolor{stringliteral}{"{}u\_Material.ambientOcclusion"{}},\ \doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}}.ambientOcclusion);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00114}00114\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00115}00115\ \ \ \ \ \textcolor{comment}{//\ Альтернативный\ способ\ -\/\ установка\ через\ отдельные\ униформы\ (если\ шейдер\ их\ поддерживает)}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{comment}{//\ Это\ более\ надежно,\ так\ как\ некоторые\ драйверы\ могут\ не\ поддерживать\ точечную\ нотацию}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00117}00117\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00118}00118\ \ \ \ \ \textcolor{comment}{//\ Set\ texture\ uniforms\ and\ bind\ textures}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00119}00119\ \ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ textureSlot\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00120}00120\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00121}00121\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}}.albedoMap)\ \{}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_HasAlbedoMap"{}},\ 1);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}}.albedoMap-\/>Bind(textureSlot);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_AlbedoMap"{}},\ textureSlot);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ textureSlot++;}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00126}00126\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00127}00127\ \ \ \ \ \ \ \ \ shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_HasAlbedoMap"{}},\ 0);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00128}00128\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00129}00129\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00130}00130\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}}.normalMap)\ \{}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_HasNormalMap"{}},\ 1);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}}.normalMap-\/>Bind(textureSlot);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_NormalMap"{}},\ textureSlot);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ textureSlot++;}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00135}00135\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_HasNormalMap"{}},\ 0);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00138}00138\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00139}00139\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}}.metallicMap)\ \{}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_HasMetallicMap"{}},\ 1);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}}.metallicMap-\/>Bind(textureSlot);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_MetallicMap"{}},\ textureSlot);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ textureSlot++;}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00144}00144\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_HasMetallicMap"{}},\ 0);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00146}00146\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00147}00147\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00148}00148\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}}.roughnessMap)\ \{}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_HasRoughnessMap"{}},\ 1);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}}.roughnessMap-\/>Bind(textureSlot);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_RoughnessMap"{}},\ textureSlot);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ textureSlot++;}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00153}00153\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_HasRoughnessMap"{}},\ 0);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00155}00155\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00156}00156\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00157}00157\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}}.ambientOcclusionMap)\ \{}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_HasAOMap"{}},\ 1);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_material_a00eb4e5c0dc1c6bf7c77b5c2d3627afe}{m\_Properties}}.ambientOcclusionMap-\/>Bind(textureSlot);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_AmbientOcclusionMap"{}},\ textureSlot);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ textureSlot++;}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00162}00162\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ shader-\/>SetInt(\textcolor{stringliteral}{"{}u\_HasAOMap"{}},\ 0);}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00164}00164\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_material_8cpp_source_l00165}00165\ \}}
+
+\end{DoxyCode}

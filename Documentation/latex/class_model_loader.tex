@@ -1,0 +1,229 @@
+\doxysection{Model\+Loader Class Reference}
+\hypertarget{class_model_loader}{}\label{class_model_loader}\index{ModelLoader@{ModelLoader}}
+
+
+Utility class for loading 3D models and meshes from files.  
+
+
+
+
+{\ttfamily \+\#include $<$Model\+Loader.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ \doxymbox{\hyperlink{class_model_loader_a6f83b2ebba67fbaf7e8540440d34fde2}{Load\+Mesh}} (const std::\+string \&filepath)
+\begin{DoxyCompactList}\small\item\em Loads a single mesh from the specified file. \end{DoxyCompactList}\item 
+static std::\+vector$<$ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ $>$ \doxymbox{\hyperlink{class_model_loader_ae138cf95f00e92a5b3b5e64906d5f6ee}{Load\+Model}} (const std::\+string \&filepath)
+\begin{DoxyCompactList}\small\item\em Loads an entire model from the specified file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{class_model_loader_a4b5fd06f67503496592fa4400a560e3d}{Process\+Node}} (ai\+Node \texorpdfstring{$\ast$}{*}node, const ai\+Scene \texorpdfstring{$\ast$}{*}scene, std::\+vector$<$ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ $>$ \&meshes)
+\begin{DoxyCompactList}\small\item\em Recursively processes a node in the Assimp scene graph. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ \doxymbox{\hyperlink{class_model_loader_a1df6a237f3339a9feb6cd7d73dd116b1}{Process\+Mesh}} (ai\+Mesh \texorpdfstring{$\ast$}{*}mesh)
+\begin{DoxyCompactList}\small\item\em Processes an individual Assimp mesh and converts it to a \doxylink{class_mesh}{Mesh} object. \end{DoxyCompactList}\item 
+static std::\+vector$<$ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} $>$ \doxymbox{\hyperlink{class_model_loader_a2ee49bc991ef23615a6e64bbfe01d14b}{Load\+Indices}} (ai\+Mesh \texorpdfstring{$\ast$}{*}mesh)
+\item 
+static std::\+vector$<$ \doxymbox{\hyperlink{struct_vertex}{Vertex}} $>$ \doxymbox{\hyperlink{class_model_loader_a167e6a8d1d408b361cf8d784ee5d464b}{Load\+Vertices}} (ai\+Mesh \texorpdfstring{$\ast$}{*}mesh)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utility class for loading 3D models and meshes from files. 
+
+This class uses the Assimp library to load 3D model files in various formats (e.\+g., OBJ, FBX, STL) and converts them into \doxylink{class_mesh}{Mesh} objects usable by the engine. It handles parsing the model file, extracting vertex and index data, and creating \doxylink{class_mesh}{Mesh} instances with associated materials.
+
+\doxylink{namespace_key}{Key} features:\+
+\begin{DoxyItemize}
+\item Load single meshes or entire models with multiple meshes
+\item Support for common 3D file formats via Assimp
+\item Automatic processing of vertices, indices, normals, and texture coordinates
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+Requires Assimp library to be linked with the project. 
+
+Currently does not handle animations or skeletal data. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_model_loader_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Model\+Loader.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_model_loader_8h_source_l00033}{33}} of file \doxymbox{\hyperlink{_model_loader_8h_source}{Model\+Loader.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_model_loader_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_model_loader_a2ee49bc991ef23615a6e64bbfe01d14b}\index{ModelLoader@{ModelLoader}!LoadIndices@{LoadIndices}}
+\index{LoadIndices@{LoadIndices}!ModelLoader@{ModelLoader}}
+\doxysubsubsection{\texorpdfstring{LoadIndices()}{LoadIndices()}}
+{\footnotesize\ttfamily \label{class_model_loader_a2ee49bc991ef23615a6e64bbfe01d14b} 
+std::\+vector$<$ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} $>$ Model\+Loader::\+\+Load\+Indices (\begin{DoxyParamCaption}\item[{ai\+Mesh \texorpdfstring{$\ast$}{*}}]{mesh}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_model_loader_8cpp_source_l00093}{93}} of file \doxymbox{\hyperlink{_model_loader_8cpp_source}{Model\+Loader.\+cpp}}.
+
+\Hypertarget{class_model_loader_a6f83b2ebba67fbaf7e8540440d34fde2}\index{ModelLoader@{ModelLoader}!LoadMesh@{LoadMesh}}
+\index{LoadMesh@{LoadMesh}!ModelLoader@{ModelLoader}}
+\doxysubsubsection{\texorpdfstring{LoadMesh()}{LoadMesh()}}
+{\footnotesize\ttfamily \label{class_model_loader_a6f83b2ebba67fbaf7e8540440d34fde2} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ Model\+Loader::\+\+Load\+Mesh (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filepath}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Loads a single mesh from the specified file. 
+
+Uses Assimp to import the model file and extract the first mesh found. Converts the mesh data into a \doxylink{class_mesh}{Mesh} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & The path to the model file to load \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Mesh$>$} The loaded mesh object
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If the file contains multiple meshes, only the first one is loaded. 
+
+Throws an exception if loading fails. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_model_loader_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Model\+Loader.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_model_loader_8cpp_source_l00005}{5}} of file \doxymbox{\hyperlink{_model_loader_8cpp_source}{Model\+Loader.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_model_loader_8cpp_source_l00010}{Load\+Model()}}.
+
+\Hypertarget{class_model_loader_ae138cf95f00e92a5b3b5e64906d5f6ee}\index{ModelLoader@{ModelLoader}!LoadModel@{LoadModel}}
+\index{LoadModel@{LoadModel}!ModelLoader@{ModelLoader}}
+\doxysubsubsection{\texorpdfstring{LoadModel()}{LoadModel()}}
+{\footnotesize\ttfamily \label{class_model_loader_ae138cf95f00e92a5b3b5e64906d5f6ee} 
+std::\+vector$<$ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ $>$ Model\+Loader::\+\+Load\+Model (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filepath}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Loads an entire model from the specified file. 
+
+Uses Assimp to import the model file and extract all meshes found. Converts each mesh into a \doxylink{class_mesh}{Mesh} object and returns a list of meshes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & The path to the model file to load \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std::\+vector$<$\+Ref$<$\+Mesh$>$$>$ A vector of loaded mesh objects
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Supports models with multiple meshes. 
+
+Throws an exception if loading fails. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_model_loader_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Model\+Loader.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_model_loader_8cpp_source_l00010}{10}} of file \doxymbox{\hyperlink{_model_loader_8cpp_source}{Model\+Loader.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_model_loader_8cpp_source_l00031}{Process\+Node()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_model_loader_8cpp_source_l00005}{Load\+Mesh()}}.
+
+\Hypertarget{class_model_loader_a167e6a8d1d408b361cf8d784ee5d464b}\index{ModelLoader@{ModelLoader}!LoadVertices@{LoadVertices}}
+\index{LoadVertices@{LoadVertices}!ModelLoader@{ModelLoader}}
+\doxysubsubsection{\texorpdfstring{LoadVertices()}{LoadVertices()}}
+{\footnotesize\ttfamily \label{class_model_loader_a167e6a8d1d408b361cf8d784ee5d464b} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_vertex}{Vertex}} $>$ Model\+Loader::\+\+Load\+Vertices (\begin{DoxyParamCaption}\item[{ai\+Mesh \texorpdfstring{$\ast$}{*}}]{mesh}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_model_loader_8cpp_source_l00051}{51}} of file \doxymbox{\hyperlink{_model_loader_8cpp_source}{Model\+Loader.\+cpp}}.
+
+\Hypertarget{class_model_loader_a1df6a237f3339a9feb6cd7d73dd116b1}\index{ModelLoader@{ModelLoader}!ProcessMesh@{ProcessMesh}}
+\index{ProcessMesh@{ProcessMesh}!ModelLoader@{ModelLoader}}
+\doxysubsubsection{\texorpdfstring{ProcessMesh()}{ProcessMesh()}}
+{\footnotesize\ttfamily \label{class_model_loader_a1df6a237f3339a9feb6cd7d73dd116b1} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ Model\+Loader::\+\+Process\+Mesh (\begin{DoxyParamCaption}\item[{ai\+Mesh \texorpdfstring{$\ast$}{*}}]{mesh}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Processes an individual Assimp mesh and converts it to a \doxylink{class_mesh}{Mesh} object. 
+
+Extracts vertex positions, normals, texture coordinates, and indices from the ai\+Mesh structure and creates a \doxylink{class_mesh}{Mesh} instance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & The Assimp mesh to process \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Mesh$>$} The created \doxylink{class_mesh}{Mesh} object 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_model_loader_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Model\+Loader.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_model_loader_8cpp_source_l00045}{45}} of file \doxymbox{\hyperlink{_model_loader_8cpp_source}{Model\+Loader.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_model_loader_8cpp_source_l00031}{Process\+Node()}}.
+
+\Hypertarget{class_model_loader_a4b5fd06f67503496592fa4400a560e3d}\index{ModelLoader@{ModelLoader}!ProcessNode@{ProcessNode}}
+\index{ProcessNode@{ProcessNode}!ModelLoader@{ModelLoader}}
+\doxysubsubsection{\texorpdfstring{ProcessNode()}{ProcessNode()}}
+{\footnotesize\ttfamily \label{class_model_loader_a4b5fd06f67503496592fa4400a560e3d} 
+void Model\+Loader::\+\+Process\+Node (\begin{DoxyParamCaption}\item[{ai\+Node \texorpdfstring{$\ast$}{*}}]{node}{, }\item[{const ai\+Scene \texorpdfstring{$\ast$}{*}}]{scene}{, }\item[{std::\+vector$<$ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_mesh}{Mesh}} $>$ $>$ \&}]{meshes}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Recursively processes a node in the Assimp scene graph. 
+
+Traverses the node hierarchy, processing each mesh and its children. Converts meshes into \doxylink{class_mesh}{Mesh} objects and adds them to the provided list.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & The current Assimp node to process \\
+\hline
+{\em scene} & The Assimp scene containing the model data \\
+\hline
+{\em meshes} & The vector to store processed \doxylink{class_mesh}{Mesh} objects \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_model_loader_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Model\+Loader.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_model_loader_8cpp_source_l00031}{31}} of file \doxymbox{\hyperlink{_model_loader_8cpp_source}{Model\+Loader.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_model_loader_8cpp_source_l00045}{Process\+Mesh()}}, and \doxymbox{\hyperlink{_model_loader_8cpp_source_l00031}{Process\+Node()}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_model_loader_8cpp_source_l00010}{Load\+Model()}}, and \doxymbox{\hyperlink{_model_loader_8cpp_source_l00031}{Process\+Node()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Model\+Loader.\+h\item 
+src/\+\+Graphics/\+Model\+Loader.\+cpp\end{DoxyCompactItemize}

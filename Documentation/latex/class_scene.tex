@@ -1,0 +1,521 @@
+\doxysection{Scene Class Reference}
+\hypertarget{class_scene}{}\label{class_scene}\index{Scene@{Scene}}
+
+
+Represents a 3D scene containing multiple scene objects and a camera.  
+
+
+
+
+{\ttfamily \+\#include $<$Scene.\+h$>$}
+
+Inheritance diagram for Scene:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_scene}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_scene_ad10176d75a9cc0da56626f682d083507}{Scene}} ()
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_scene}{Scene} with an optional name. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_scene_a6fb788d6ae25d5293d3a58966cf29757}{Scene}} (std::\+string \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}})
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{class_scene}{Scene} with the specified name. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_scene_a3b8cec2e32546713915f8c6303c951f1}{\texorpdfstring{$\sim$}{\string~}\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \doxylink{class_scene}{Scene} class. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_scene_a4c9d8adc4cc03dd82f249b37dc64916c}{Add\+Object}} (const \doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}} \&object)
+\begin{DoxyCompactList}\small\item\em Adds a \doxylink{struct_scene_object}{Scene\+Object} to the scene. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_scene_a695ea00facd0b261fd7b536f47a735d3}{Remove\+Object}} (const std::\+string \&\doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}})
+\begin{DoxyCompactList}\small\item\em Removes a \doxylink{struct_scene_object}{Scene\+Object} from the scene by name. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_scene_a2573a087031d929dd4ded7505c6e8a1b}{Find\+Object}} (const std::\+string \&\doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}})
+\begin{DoxyCompactList}\small\item\em Finds a \doxylink{struct_scene_object}{Scene\+Object} in the scene by name. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_scene_a2835bf088b491fe34516dfea0e8bfd0b}{Update}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} delta\+Time)
+\begin{DoxyCompactList}\small\item\em Updates all Scene\+Objects in the scene. \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{class_scene_ad73b9c1185b16f0bd0b16b77471b8e35}{Render}} (const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&shader) const
+\begin{DoxyCompactList}\small\item\em Renders all Scene\+Objects in the scene using the specified shader. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}} $>$ \& \doxymbox{\hyperlink{class_scene_a11f3986e592b49aa3921ecf37b0c2dce}{Get\+Objects}} () const
+\begin{DoxyCompactList}\small\item\em Gets the list of Scene\+Objects in the scene. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}} $>$ \& \doxymbox{\hyperlink{class_scene_a645956b159ae9cbc43ec698eb9e96222}{Get\+Objects}} ()
+\begin{DoxyCompactList}\small\item\em Gets the list of Scene\+Objects in the scene. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_scene_ae3ad734c5ab018e43fc0b2360443d588}{Set\+Camera}} (const \doxymbox{\hyperlink{class_camera}{Camera}} \&camera)
+\begin{DoxyCompactList}\small\item\em Sets the camera for the scene. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_camera}{Camera}} \& \doxymbox{\hyperlink{class_scene_ab72a62cdd897e1d31a72e9a2f3a260b2}{Get\+Camera}} ()
+\begin{DoxyCompactList}\small\item\em Gets the camera of the scene. \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{class_camera}{Camera}} \& \doxymbox{\hyperlink{class_scene_a26734db954d487644691e613286a9c4a}{Get\+Camera}} () const
+\begin{DoxyCompactList}\small\item\em Gets the camera of the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string \doxymbox{\hyperlink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}}
+\begin{DoxyCompactList}\small\item\em The name of the scene. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}} $>$ \doxymbox{\hyperlink{class_scene_a4507dcef4e6a65477d814c7d10de037f}{m\+\_\+\+Objects}}
+\begin{DoxyCompactList}\small\item\em The list of Scene\+Objects contained in the scene. \end{DoxyCompactList}\item 
+std::\+unordered\+\_\+map$<$ std::\+string, size\+\_\+t $>$ \doxymbox{\hyperlink{class_scene_a5e328ee8e0d8d80a193ab15ea0135d65}{m\+\_\+\+Object\+Index}}
+\begin{DoxyCompactList}\small\item\em A map for quick lookup of Scene\+Objects by name. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_camera}{Camera}} \doxymbox{\hyperlink{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}{m\+\_\+\+Camera}}
+\begin{DoxyCompactList}\small\item\em The camera used to view the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a 3D scene containing multiple scene objects and a camera. 
+
+The \doxylink{class_scene}{Scene} class manages a collection of \doxylink{struct_scene_object}{Scene\+Object} instances, allowing for adding, removing, updating, and rendering them. It also holds a \doxylink{class_camera}{Camera} to define the viewpoint for rendering the scene.
+
+\doxylink{namespace_key}{Key} features:\+
+\begin{DoxyItemize}
+\item Add and remove Scene\+Objects by name
+\item Find Scene\+Objects by name
+\item Update all objects each frame, invoking their on\+Update callbacks
+\item Render all objects using a specified shader
+\item Manage a \doxylink{class_camera}{Camera} for the scene
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+The \doxylink{class_scene}{Scene} does not handle physics or collision; it focuses on object management and rendering. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00117}{117}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_scene_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_scene_ad10176d75a9cc0da56626f682d083507}\index{Scene@{Scene}!Scene@{Scene}}
+\index{Scene@{Scene}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{Scene()}{Scene()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_scene_ad10176d75a9cc0da56626f682d083507} 
+Scene::\+\+Scene (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a new \doxylink{class_scene}{Scene} with an optional name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}} & The name of the scene (default is empty string) \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8cpp_source_l00006}{6}} of file \doxymbox{\hyperlink{_scene_8cpp_source}{Scene.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_scene_8h_source_l00232}{m\+\_\+\+Camera}}.
+
+\Hypertarget{class_scene_a6fb788d6ae25d5293d3a58966cf29757}\index{Scene@{Scene}!Scene@{Scene}}
+\index{Scene@{Scene}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{Scene()}{Scene()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_scene_a6fb788d6ae25d5293d3a58966cf29757} 
+Scene::\+\+Scene (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a new \doxylink{class_scene}{Scene} with the specified name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}} & The name of the scene \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8cpp_source_l00013}{13}} of file \doxymbox{\hyperlink{_scene_8cpp_source}{Scene.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_scene_8h_source_l00232}{m\+\_\+\+Camera}}, and \doxymbox{\hyperlink{_scene_8h_source_l00214}{name}}.
+
+\Hypertarget{class_scene_a3b8cec2e32546713915f8c6303c951f1}\index{Scene@{Scene}!````~Scene@{\texorpdfstring{$\sim$}{\string~}Scene}}
+\index{````~Scene@{\texorpdfstring{$\sim$}{\string~}Scene}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Scene()}{\string~Scene()}}
+{\footnotesize\ttfamily \label{class_scene_a3b8cec2e32546713915f8c6303c951f1} 
+Scene::\+\texorpdfstring{$\sim$}{\string~}\+Scene (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor for the \doxylink{class_scene}{Scene} class. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8cpp_source_l00020}{20}} of file \doxymbox{\hyperlink{_scene_8cpp_source}{Scene.\+cpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_scene_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_scene_a4c9d8adc4cc03dd82f249b37dc64916c}\index{Scene@{Scene}!AddObject@{AddObject}}
+\index{AddObject@{AddObject}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{AddObject()}{AddObject()}}
+{\footnotesize\ttfamily \label{class_scene_a4c9d8adc4cc03dd82f249b37dc64916c} 
+void Scene::\+\+Add\+Object (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}} \&}]{object}{}\end{DoxyParamCaption})}
+
+
+
+Adds a \doxylink{struct_scene_object}{Scene\+Object} to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & The \doxylink{struct_scene_object}{Scene\+Object} to add \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8cpp_source_l00022}{22}} of file \doxymbox{\hyperlink{_scene_8cpp_source}{Scene.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_scene_8h_source_l00226}{m\+\_\+\+Object\+Index}}, and \doxymbox{\hyperlink{_scene_8h_source_l00220}{m\+\_\+\+Objects}}.
+
+\Hypertarget{class_scene_a2573a087031d929dd4ded7505c6e8a1b}\index{Scene@{Scene}!FindObject@{FindObject}}
+\index{FindObject@{FindObject}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{FindObject()}{FindObject()}}
+{\footnotesize\ttfamily \label{class_scene_a2573a087031d929dd4ded7505c6e8a1b} 
+\doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}} \texorpdfstring{$\ast$}{*} Scene::\+\+Find\+Object (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Finds a \doxylink{struct_scene_object}{Scene\+Object} in the scene by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}} & The name of the \doxylink{struct_scene_object}{Scene\+Object} to find \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Scene\+Object\texorpdfstring{$\ast$}{*} Pointer to the found \doxylink{struct_scene_object}{Scene\+Object}, or nullptr if not found 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8cpp_source_l00058}{58}} of file \doxymbox{\hyperlink{_scene_8cpp_source}{Scene.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_scene_8h_source_l00226}{m\+\_\+\+Object\+Index}}, \doxymbox{\hyperlink{_scene_8h_source_l00220}{m\+\_\+\+Objects}}, and \doxymbox{\hyperlink{_scene_8h_source_l00214}{name}}.
+
+\Hypertarget{class_scene_ab72a62cdd897e1d31a72e9a2f3a260b2}\index{Scene@{Scene}!GetCamera@{GetCamera}}
+\index{GetCamera@{GetCamera}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{GetCamera()}{GetCamera()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_scene_ab72a62cdd897e1d31a72e9a2f3a260b2} 
+\doxymbox{\hyperlink{class_camera}{Camera}} \& Scene::\+\+Get\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the camera of the scene. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_camera}{Camera}\& Reference to the scene\textquotesingle{}s \doxylink{class_camera}{Camera} 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00200}{200}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_scene_8h_source_l00232}{m\+\_\+\+Camera}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00039}{Test\+Scene::\+\+Render()}}.
+
+\Hypertarget{class_scene_a26734db954d487644691e613286a9c4a}\index{Scene@{Scene}!GetCamera@{GetCamera}}
+\index{GetCamera@{GetCamera}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{GetCamera()}{GetCamera()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_scene_a26734db954d487644691e613286a9c4a} 
+const \doxymbox{\hyperlink{class_camera}{Camera}} \& Scene::\+\+Get\+Camera (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the camera of the scene. 
+
+\begin{DoxyReturn}{Returns}
+const \doxylink{class_camera}{Camera}\& Constant reference to the scene\textquotesingle{}s \doxylink{class_camera}{Camera} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00207}{207}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_scene_8h_source_l00232}{m\+\_\+\+Camera}}.
+
+\Hypertarget{class_scene_a645956b159ae9cbc43ec698eb9e96222}\index{Scene@{Scene}!GetObjects@{GetObjects}}
+\index{GetObjects@{GetObjects}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{GetObjects()}{GetObjects()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_scene_a645956b159ae9cbc43ec698eb9e96222} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}} $>$ \& Scene::\+\+Get\+Objects (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the list of Scene\+Objects in the scene. 
+
+\begin{DoxyReturn}{Returns}
+std::\+vector$<$\+Scene\+Object$>$\& Reference to the vector of Scene\+Objects 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00186}{186}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_scene_8h_source_l00220}{m\+\_\+\+Objects}}.
+
+\Hypertarget{class_scene_a11f3986e592b49aa3921ecf37b0c2dce}\index{Scene@{Scene}!GetObjects@{GetObjects}}
+\index{GetObjects@{GetObjects}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{GetObjects()}{GetObjects()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_scene_a11f3986e592b49aa3921ecf37b0c2dce} 
+const std::\+vector$<$ \doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}} $>$ \& Scene::\+\+Get\+Objects (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the list of Scene\+Objects in the scene. 
+
+\begin{DoxyReturn}{Returns}
+const std::\+vector$<$\+Scene\+Object$>$\& Constant reference to the vector of Scene\+Objects 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00179}{179}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_scene_8h_source_l00220}{m\+\_\+\+Objects}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{main_8cpp_source_l00039}{Test\+Scene::\+\+Render()}}.
+
+\Hypertarget{class_scene_a695ea00facd0b261fd7b536f47a735d3}\index{Scene@{Scene}!RemoveObject@{RemoveObject}}
+\index{RemoveObject@{RemoveObject}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{RemoveObject()}{RemoveObject()}}
+{\footnotesize\ttfamily \label{class_scene_a695ea00facd0b261fd7b536f47a735d3} 
+void Scene::\+\+Remove\+Object (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Removes a \doxylink{struct_scene_object}{Scene\+Object} from the scene by name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{class_scene_a44b2d6bffa153dda02f026f8533ceb08}{name}} & The name of the \doxylink{struct_scene_object}{Scene\+Object} to remove \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8cpp_source_l00035}{35}} of file \doxymbox{\hyperlink{_scene_8cpp_source}{Scene.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_scene_8h_source_l00226}{m\+\_\+\+Object\+Index}}, \doxymbox{\hyperlink{_scene_8h_source_l00220}{m\+\_\+\+Objects}}, and \doxymbox{\hyperlink{_scene_8h_source_l00214}{name}}.
+
+\Hypertarget{class_scene_ad73b9c1185b16f0bd0b16b77471b8e35}\index{Scene@{Scene}!Render@{Render}}
+\index{Render@{Render}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily \label{class_scene_ad73b9c1185b16f0bd0b16b77471b8e35} 
+void Scene::\+\+Render (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_shader}{Shader}} $>$ \&}]{shader}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Renders all Scene\+Objects in the scene using the specified shader. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shader} & The shader to use for rendering the objects \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \doxymbox{\hyperlink{class_test_scene_ac7e1d8acdfc54c9a0a96bf4f1acc9a32}{Test\+Scene}}.
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8cpp_source_l00074}{74}} of file \doxymbox{\hyperlink{_scene_8cpp_source}{Scene.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_base_8h_source_l00272}{ENGINE\+\_\+\+DEBUG\+\_\+\+LOG}}, \doxymbox{\hyperlink{_scene_8h_source_l00232}{m\+\_\+\+Camera}}, \doxymbox{\hyperlink{_scene_8h_source_l00220}{m\+\_\+\+Objects}}, and \doxymbox{\hyperlink{_scene_8h_source_l00214}{name}}.
+
+\Hypertarget{class_scene_ae3ad734c5ab018e43fc0b2360443d588}\index{Scene@{Scene}!SetCamera@{SetCamera}}
+\index{SetCamera@{SetCamera}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{SetCamera()}{SetCamera()}}
+{\footnotesize\ttfamily \label{class_scene_ae3ad734c5ab018e43fc0b2360443d588} 
+void Scene::\+\+Set\+Camera (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_camera}{Camera}} \&}]{camera}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the camera for the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em camera} & The \doxylink{class_camera}{Camera} to set \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00193}{193}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_scene_8h_source_l00232}{m\+\_\+\+Camera}}.
+
+\Hypertarget{class_scene_a2835bf088b491fe34516dfea0e8bfd0b}\index{Scene@{Scene}!Update@{Update}}
+\index{Update@{Update}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_scene_a2835bf088b491fe34516dfea0e8bfd0b} 
+void Scene::\+\+Update (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{delta\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Updates all Scene\+Objects in the scene. 
+
+Calls the on\+Update callback for each object if it is set.
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The time elapsed since the last update in seconds \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \doxymbox{\hyperlink{class_test_scene_ade6d9e9f4fd30888257ed187cef2e388}{Test\+Scene}}.
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8cpp_source_l00066}{66}} of file \doxymbox{\hyperlink{_scene_8cpp_source}{Scene.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_scene_8h_source_l00220}{m\+\_\+\+Objects}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_scene_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_scene_a94ff1ded25f59169f751cf6c51d2bf79}\index{Scene@{Scene}!m\_Camera@{m\_Camera}}
+\index{m\_Camera@{m\_Camera}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{m\_Camera}{m\_Camera}}
+{\footnotesize\ttfamily \label{class_scene_a94ff1ded25f59169f751cf6c51d2bf79} 
+\doxymbox{\hyperlink{class_camera}{Camera}} Scene::\+m\+\_\+\+Camera\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The camera used to view the scene. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00232}{232}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_scene_8h_source_l00200}{Get\+Camera()}}, \doxymbox{\hyperlink{_scene_8h_source_l00207}{Get\+Camera()}}, \doxymbox{\hyperlink{_scene_8cpp_source_l00074}{Render()}}, \doxymbox{\hyperlink{_scene_8cpp_source_l00006}{Scene()}}, \doxymbox{\hyperlink{_scene_8cpp_source_l00013}{Scene()}}, and \doxymbox{\hyperlink{_scene_8h_source_l00193}{Set\+Camera()}}.
+
+\Hypertarget{class_scene_a5e328ee8e0d8d80a193ab15ea0135d65}\index{Scene@{Scene}!m\_ObjectIndex@{m\_ObjectIndex}}
+\index{m\_ObjectIndex@{m\_ObjectIndex}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{m\_ObjectIndex}{m\_ObjectIndex}}
+{\footnotesize\ttfamily \label{class_scene_a5e328ee8e0d8d80a193ab15ea0135d65} 
+std::\+unordered\+\_\+map$<$std::\+string, size\+\_\+t$>$ Scene::\+m\+\_\+\+Object\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A map for quick lookup of Scene\+Objects by name. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00226}{226}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_scene_8cpp_source_l00022}{Add\+Object()}}, \doxymbox{\hyperlink{_scene_8cpp_source_l00058}{Find\+Object()}}, and \doxymbox{\hyperlink{_scene_8cpp_source_l00035}{Remove\+Object()}}.
+
+\Hypertarget{class_scene_a4507dcef4e6a65477d814c7d10de037f}\index{Scene@{Scene}!m\_Objects@{m\_Objects}}
+\index{m\_Objects@{m\_Objects}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{m\_Objects}{m\_Objects}}
+{\footnotesize\ttfamily \label{class_scene_a4507dcef4e6a65477d814c7d10de037f} 
+std::\+vector$<$\doxymbox{\hyperlink{struct_scene_object}{Scene\+Object}}$>$ Scene::\+m\+\_\+\+Objects\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The list of Scene\+Objects contained in the scene. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00220}{220}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_scene_8cpp_source_l00022}{Add\+Object()}}, \doxymbox{\hyperlink{_scene_8cpp_source_l00058}{Find\+Object()}}, \doxymbox{\hyperlink{_scene_8h_source_l00186}{Get\+Objects()}}, \doxymbox{\hyperlink{_scene_8h_source_l00179}{Get\+Objects()}}, \doxymbox{\hyperlink{_scene_8cpp_source_l00035}{Remove\+Object()}}, \doxymbox{\hyperlink{_scene_8cpp_source_l00074}{Render()}}, and \doxymbox{\hyperlink{_scene_8cpp_source_l00066}{Update()}}.
+
+\Hypertarget{class_scene_a44b2d6bffa153dda02f026f8533ceb08}\index{Scene@{Scene}!name@{name}}
+\index{name@{name}!Scene@{Scene}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily \label{class_scene_a44b2d6bffa153dda02f026f8533ceb08} 
+std::\+string Scene::\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The name of the scene. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_scene_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Scene.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_scene_8h_source_l00214}{214}} of file \doxymbox{\hyperlink{_scene_8h_source}{Scene.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_scene_8cpp_source_l00058}{Find\+Object()}}, \doxymbox{\hyperlink{_scene_8cpp_source_l00035}{Remove\+Object()}}, \doxymbox{\hyperlink{_scene_8cpp_source_l00074}{Render()}}, and \doxymbox{\hyperlink{_scene_8cpp_source_l00013}{Scene()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Scene.\+h\item 
+src/\+\+Graphics/\+Scene.\+cpp\end{DoxyCompactItemize}

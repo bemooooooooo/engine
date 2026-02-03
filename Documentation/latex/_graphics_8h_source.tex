@@ -1,0 +1,53 @@
+\doxysection{Graphics.\+h}
+\hypertarget{_graphics_8h_source}{}\label{_graphics_8h_source}\index{src/Graphics/Graphics.h@{src/Graphics/Graphics.h}}
+\doxymbox{\hyperlink{_graphics_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}\textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00002}00002\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00003}00003\ \textcolor{comment}{\ *\ @file\ Graphics.h}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00004}00004\ \textcolor{comment}{\ *\ @brief\ Central\ header\ for\ the\ Graphics\ module\ of\ the\ MyGameEngine\ project.}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00005}00005\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00006}00006\ \textcolor{comment}{\ *\ This\ header\ aggregates\ all\ core\ graphics\ functionalities,\ including\ context}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00007}00007\ \textcolor{comment}{\ *\ management,\ rendering\ commands,\ resource\ handling,\ and\ scene\ representation.}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00008}00008\ \textcolor{comment}{\ *\ It\ serves\ as\ the\ main\ entry\ point\ for\ graphics-\/related\ operations\ within}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00009}00009\ \textcolor{comment}{\ *\ the\ engine.}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00010}00010\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00011}00011\ \textcolor{comment}{\ *\ Key\ components\ included:}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00012}00012\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00013}00013\ \textcolor{comment}{\ *\ -\/\ GraphicsContext:\ Manages\ the\ graphics\ rendering\ context\ and\ OpenGL\ state.}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00014}00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00015}00015\ \textcolor{comment}{\ *\ -\/\ RenderCommand:\ Provides\ static\ methods\ for\ issuing\ rendering\ commands.}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00016}00016\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00017}00017\ \textcolor{comment}{\ *\ -\/\ Renderer:\ High-\/level\ rendering\ interface\ for\ drawing\ scenes\ and\ objects.}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00019}00019\ \textcolor{comment}{\ *\ -\/\ Resource\ classes:\ Shader,\ Texture,\ VertexBuffer,\ IndexBuffer,\ VertexArray.}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00020}00020\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00021}00021\ \textcolor{comment}{\ *\ -\/\ Scene\ representation:\ Scene,\ Camera,\ Mesh,\ Material.}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00022}00022\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00023}00023\ \textcolor{comment}{\ *\ @note\ This\ header\ should\ be\ included\ in\ any\ source\ file\ that\ requires}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00024}00024\ \textcolor{comment}{\ *\ graphics\ functionality\ from\ the\ engine.}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00025}00025\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00026}00026\ \textcolor{comment}{\ *\ @version\ 1.0}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00027}00027\ \textcolor{comment}{\ *\ @date\ 2026}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00028}00028\ \textcolor{comment}{\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00030}00030\ \textcolor{comment}{//\ Core}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}GraphicsContext.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}RenderCommand.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}Renderer.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}Window.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00036}00036\ \textcolor{comment}{//\ Resources}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00037}00037\ \textcolor{preprocessor}{\#include\ "{}Shader.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00038}00038\ \textcolor{preprocessor}{\#include\ "{}Texture.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00039}00039\ \textcolor{preprocessor}{\#include\ "{}VertexBuffer.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}IndexBuffer.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00041}00041\ \textcolor{preprocessor}{\#include\ "{}VertexArray.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00043}00043\ \textcolor{comment}{//\ Scene}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}Scene.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}Camera.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}Mesh.h"{}}}
+\DoxyCodeLine{\Hypertarget{_graphics_8h_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}Material.h"{}}}
+
+\end{DoxyCode}

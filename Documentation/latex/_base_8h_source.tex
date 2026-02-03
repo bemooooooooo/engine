@@ -1,0 +1,311 @@
+\doxysection{Base.\+h}
+\hypertarget{_base_8h_source}{}\label{_base_8h_source}\index{src/Core/Base.h@{src/Core/Base.h}}
+\doxymbox{\hyperlink{_base_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00002}00002\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00003}00003\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00004}00004\ \textcolor{comment}{\ *\ @file\ Base.h}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00005}00005\ \textcolor{comment}{\ *\ @brief\ Core\ base\ definitions,\ type\ aliases,\ and\ utility\ macros\ for\ the\ game\ engine.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00006}00006\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00007}00007\ \textcolor{comment}{\ *\ This\ header\ provides\ fundamental\ types,\ memory\ management\ utilities,\ and\ cross-\/platform}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00008}00008\ \textcolor{comment}{\ *\ compatibility\ definitions\ for\ the\ MyGameEngine\ project.\ It\ serves\ as\ the\ foundation\ that}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00009}00009\ \textcolor{comment}{\ *\ all\ other\ engine\ modules\ depend\ on.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00010}00010\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00011}00011\ \textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00012}00012\ \textcolor{comment}{\ *\ -\/\ Cross-\/platform\ compatibility\ macros}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00013}00013\ \textcolor{comment}{\ *\ -\/\ Fixed-\/size\ integer\ type\ aliases\ (i8,\ i16,\ i32,\ i64,\ u8,\ u16,\ u32,\ u64)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00014}00014\ \textcolor{comment}{\ *\ -\/\ Floating-\/point\ type\ aliases\ (f32,\ f64)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00015}00015\ \textcolor{comment}{\ *\ -\/\ Smart\ pointer\ utilities\ (Scope,\ Ref)\ with\ factory\ functions}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00016}00016\ \textcolor{comment}{\ *\ -\/\ Debug\ logging\ macros\ that\ compile\ out\ in\ release\ builds}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00017}00017\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00018}00018\ \textcolor{comment}{\ *\ @author\ bemooooooooo}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00019}00019\ \textcolor{comment}{\ *\ @version\ 1.0}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00020}00020\ \textcolor{comment}{\ *\ @date\ 2026}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00021}00021\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00022}00022\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00023}00023\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00024}00024\ \textcolor{comment}{\ *\ @brief\ Cross-\/platform\ export\ macro\ for\ DLL/shared\ library\ definitions.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00025}00025\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00026}00026\ \textcolor{comment}{\ *\ On\ Windows\ platforms,\ this\ macro\ expands\ to\ \_\_declspec(dllexport)\ to\ properly}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00027}00027\ \textcolor{comment}{\ *\ export\ symbols\ from\ a\ dynamic\ library.\ On\ other\ platforms\ (Linux,\ macOS),\ it}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00028}00028\ \textcolor{comment}{\ *\ expands\ to\ nothing,\ allowing\ the\ code\ to\ work\ seamlessly\ across\ different\ OS.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00029}00029\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00030}00030\ \textcolor{comment}{\ *\ Usage:}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00031}00031\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00032}00032\ \textcolor{comment}{\ *\ class\ ENGINE\_API\ MyPublicClass\ \{\ ...\ \};}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00033}00033\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00034}00034\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00035}00035\ \textcolor{preprocessor}{\#ifdef\ \_WIN32}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00036}00036\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00037}00037\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00038}\doxymbox{\hyperlink{_base_8h_a0697ee40f69dc5dab56d13131f4c4835}{00038}}\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_API\ \_\_attribute\_\_((visibility("{}default"{})))}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00039}00039\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00041}00041\ \textcolor{comment}{//\ Compiler-\/specific\ attributes}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00042}00042\ \textcolor{preprocessor}{\#ifdef\ \_MSC\_VER}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00043}00043\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_FORCE\_INLINE\ \_\_forceinline}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00044}00044\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_DEPRECATED(msg)\ \_\_declspec(deprecated(msg))}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00045}00045\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_PACKED\ \_\_pragma(pack(push,\ 1))}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00046}00046\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_PACKED\_END\ \_\_pragma(pack(pop))}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00047}00047\ \textcolor{preprocessor}{\#elif\ defined(\_\_GNUC\_\_)\ ||\ defined(\_\_clang\_\_)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00048}00048\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_FORCE\_INLINE\ inline\ \_\_attribute\_\_((always\_inline))}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00049}00049\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_DEPRECATED(msg)\ \_\_attribute\_\_((deprecated(msg)))}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00050}00050\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_PACKED\ \_\_attribute\_\_((packed))}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00051}00051\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_PACKED\_END}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00052}00052\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00053}00053\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_FORCE\_INLINE\ inline}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00054}00054\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_DEPRECATED(msg)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00055}00055\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_PACKED}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00056}00056\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_PACKED\_END}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00057}00057\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00058}00058\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00059}00059\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00060}00060\ \textcolor{comment}{\ *\ @defgroup\ BaseTypes\ Fundamental\ Type\ Aliases}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00061}00061\ \textcolor{comment}{\ *\ @\{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00062}00062\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00063}00063\ \textcolor{comment}{\ *\ Standard\ type\ aliases\ for\ fixed-\/size\ integer\ and\ floating-\/point\ types.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00064}00064\ \textcolor{comment}{\ *\ These\ provide\ a\ consistent\ interface\ across\ different\ platforms\ and\ compilers}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00065}00065\ \textcolor{comment}{\ *\ for\ numerical\ computations\ throughout\ the\ engine.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00066}00066\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00068}00068\ \textcolor{comment}{//\ Base\ types}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00069}00069\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00070}00070\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00071}00071\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00072}00072\ \textcolor{comment}{\ *\ @typedef\ i8}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00073}00073\ \textcolor{comment}{\ *\ @brief\ Signed\ 8-\/bit\ integer\ type\ (range:\ -\/128\ to\ 127)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00074}00074\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00075}\doxymbox{\hyperlink{group___base_types_ga196513547113c3f96a078ee3e658a6ef}{00075}}\ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_ga196513547113c3f96a078ee3e658a6ef}{i8}}\ =\ int8\_t;}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00076}00076\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00077}00077\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00078}00078\ \textcolor{comment}{\ *\ @typedef\ i16}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00079}00079\ \textcolor{comment}{\ *\ @brief\ Signed\ 16-\/bit\ integer\ type\ (range:\ -\/32768\ to\ 32767)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00080}00080\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00081}\doxymbox{\hyperlink{group___base_types_ga977685259fe8059c48e92450967d46a8}{00081}}\ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_ga977685259fe8059c48e92450967d46a8}{i16}}\ =\ int16\_t;}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00082}00082\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00083}00083\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00084}00084\ \textcolor{comment}{\ *\ @typedef\ i32}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00085}00085\ \textcolor{comment}{\ *\ @brief\ Signed\ 32-\/bit\ integer\ type\ (range:\ -\/2147483648\ to\ 2147483647)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00086}00086\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00087}\doxymbox{\hyperlink{group___base_types_gaec41e5f8e4b7aef2540e84268692fa84}{00087}}\ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_gaec41e5f8e4b7aef2540e84268692fa84}{i32}}\ =\ int32\_t;}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00088}00088\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00089}00089\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00090}00090\ \textcolor{comment}{\ *\ @typedef\ i64}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00091}00091\ \textcolor{comment}{\ *\ @brief\ Signed\ 64-\/bit\ integer\ type\ (range:\ -\/9223372036854775808\ to\ 9223372036854775807)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00092}00092\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00093}\doxymbox{\hyperlink{group___base_types_ga86025ec3a0bc201ca893caac2cb2acbd}{00093}}\ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_ga86025ec3a0bc201ca893caac2cb2acbd}{i64}}\ =\ int64\_t;}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00094}00094\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00095}00095\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00096}00096\ \textcolor{comment}{\ *\ @typedef\ u8}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00097}00097\ \textcolor{comment}{\ *\ @brief\ Unsigned\ 8-\/bit\ integer\ type\ (range:\ 0\ to\ 255)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00098}00098\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00099}\doxymbox{\hyperlink{group___base_types_ga987e4d6cf789cb59dbb390728271e4d6}{00099}}\ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_ga987e4d6cf789cb59dbb390728271e4d6}{u8}}\ =\ uint8\_t;}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00100}00100\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00101}00101\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00102}00102\ \textcolor{comment}{\ *\ @typedef\ u16}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00103}00103\ \textcolor{comment}{\ *\ @brief\ Unsigned\ 16-\/bit\ integer\ type\ (range:\ 0\ to\ 65535)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00104}00104\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00105}\doxymbox{\hyperlink{group___base_types_ga6dbf9516e516c901604625282c174aa4}{00105}}\ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_ga6dbf9516e516c901604625282c174aa4}{u16}}\ =\ uint16\_t;}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00106}00106\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00107}00107\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00108}00108\ \textcolor{comment}{\ *\ @typedef\ u32}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00109}00109\ \textcolor{comment}{\ *\ @brief\ Unsigned\ 32-\/bit\ integer\ type\ (range:\ 0\ to\ 4294967295)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00110}00110\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00111}\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{00111}}\ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ =\ uint32\_t;}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00112}00112\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00113}00113\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00114}00114\ \textcolor{comment}{\ *\ @typedef\ u64}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00115}00115\ \textcolor{comment}{\ *\ @brief\ Unsigned\ 64-\/bit\ integer\ type\ (range:\ 0\ to\ 18446744073709551615)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00116}00116\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00117}\doxymbox{\hyperlink{group___base_types_ga1af9f95651e921615e75917a6dd1b574}{00117}}\ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_ga1af9f95651e921615e75917a6dd1b574}{u64}}\ =\ uint64\_t;}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00118}00118\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00119}00119\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00120}00120\ \textcolor{comment}{\ *\ @typedef\ f32}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00121}00121\ \textcolor{comment}{\ *\ @brief\ 32-\/bit\ floating-\/point\ type\ (standard\ C++\ float)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00122}00122\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00123}00123\ \textcolor{comment}{\ *\ Provides\ single-\/precision\ floating-\/point\ calculations,\ commonly\ used\ for}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00124}00124\ \textcolor{comment}{\ *\ 3D\ graphics\ computations,\ physics\ calculations,\ and\ transformations.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00125}00125\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00126}\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{00126}}\ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ =\ float;}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00127}00127\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00128}00128\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00129}00129\ \textcolor{comment}{\ *\ @typedef\ f64}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00130}00130\ \textcolor{comment}{\ *\ @brief\ 64-\/bit\ floating-\/point\ type\ (standard\ C++\ double)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00131}00131\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00132}00132\ \textcolor{comment}{\ *\ Provides\ double-\/precision\ floating-\/point\ calculations\ for\ high-\/precision}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00133}00133\ \textcolor{comment}{\ *\ mathematical\ operations\ where\ accuracy\ is\ critical.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00134}00134\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00135}\doxymbox{\hyperlink{group___base_types_gabc2f107791bd7c1d49ecf0f168c085a3}{00135}}\ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___base_types_gabc2f107791bd7c1d49ecf0f168c085a3}{f64}}\ =\ double;}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00136}00136\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00137}00137\ \textcolor{comment}{/**\ @\}\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00138}00138\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00139}00139\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00140}00140\ \textcolor{comment}{\ *\ @defgroup\ MemoryManagement\ Smart\ Pointer\ and\ Memory\ Utilities}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00141}00141\ \textcolor{comment}{\ *\ @\{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00142}00142\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00143}00143\ \textcolor{comment}{\ *\ Template\ aliases\ and\ factory\ functions\ for\ managing\ dynamic\ memory\ using}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00144}00144\ \textcolor{comment}{\ *\ C++11\ smart\ pointers.\ These\ ensure\ proper\ resource\ management\ and\ prevent}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00145}00145\ \textcolor{comment}{\ *\ memory\ leaks\ by\ automating\ cleanup.\ Use\ Scope\ for\ exclusive\ ownership\ and}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00146}00146\ \textcolor{comment}{\ *\ Ref\ for\ shared\ ownership\ scenarios.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00147}00147\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00149}00149\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00150}00150\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00151}00151\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00152}00152\ \textcolor{comment}{\ *\ @typedef\ Scope<T>}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00153}00153\ \textcolor{comment}{\ *\ @brief\ Type\ alias\ for\ std::unique\_ptr<T>}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00154}00154\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00155}00155\ \textcolor{comment}{\ *\ Represents\ exclusive\ ownership\ semantics.\ Use\ Scope\ when\ an\ object\ should\ be}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00156}00156\ \textcolor{comment}{\ *\ owned\ by\ a\ single\ entity\ and\ deleted\ when\ that\ owner\ is\ destroyed.\ Prevents}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00157}00157\ \textcolor{comment}{\ *\ memory\ leaks\ through\ automatic\ cleanup\ and\ eliminates\ the\ need\ for\ manual\ delete.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00158}00158\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00159}00159\ \textcolor{comment}{\ *\ @tparam\ T\ The\ type\ of\ object\ to\ manage}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00160}00160\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00161}00161\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00162}00162\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00163}00163\ \textcolor{comment}{\ *\ Scope<Camera>\ camera\ =\ CreateScope<Camera>();}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00164}00164\ \textcolor{comment}{\ *\ //\ Camera\ is\ automatically\ deleted\ when\ camera\ goes\ out\ of\ scope}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00165}00165\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00166}00166\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00167}00167\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00168}\doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{00168}}\ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope}}\ =\ std::unique\_ptr<T>;}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00169}00169\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00170}00170\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00171}00171\ \textcolor{comment}{\ *\ @brief\ Factory\ function\ to\ create\ a\ unique\_ptr\ with\ RAII\ semantics.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00172}00172\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00173}00173\ \textcolor{comment}{\ *\ Constructs\ an\ object\ of\ type\ T\ on\ the\ heap\ and\ returns\ it\ wrapped\ in\ a}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00174}00174\ \textcolor{comment}{\ *\ unique\_ptr.\ This\ function\ simplifies\ the\ creation\ of\ scoped\ objects\ with}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00175}00175\ \textcolor{comment}{\ *\ automatic\ cleanup\ and\ prevents\ accidental\ memory\ leaks.\ Perfect-\/forwarding}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00176}00176\ \textcolor{comment}{\ *\ is\ used\ to\ support\ any\ constructor\ signature.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00177}00177\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00178}00178\ \textcolor{comment}{\ *\ @tparam\ T\ The\ type\ of\ object\ to\ create}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00179}00179\ \textcolor{comment}{\ *\ @tparam\ Args\ Parameter\ types\ for\ the\ constructor}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00180}00180\ \textcolor{comment}{\ *\ @param\ args\ Constructor\ arguments\ to\ forward\ to\ T's\ constructor}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00181}00181\ \textcolor{comment}{\ *\ @return\ Scope<T>\ A\ unique\_ptr\ managing\ the\ newly\ created\ object}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00182}00182\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00183}00183\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00184}00184\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00185}00185\ \textcolor{comment}{\ *\ auto\ renderer\ =\ CreateScope<Renderer>(800,\ 600);}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00186}00186\ \textcolor{comment}{\ *\ //\ Object\ is\ automatically\ deleted\ when\ renderer\ goes\ out\ of\ scope}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00187}00187\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00188}00188\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00189}00189\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00190}00190\ \textcolor{keyword}{constexpr}\ \doxymbox{\hyperlink{group___memory_management_gaa2eeed5b5b4a0ea20bd3dae08409662d}{Scope<T>}}\ CreateScope(Args\&\&...\ args)\ \{}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00191}00191\ \ \ \textcolor{keywordflow}{return}\ std::make\_unique<T>(std::forward<Args>(args)...);}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00192}00192\ \}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00193}00193\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00194}00194\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00195}00195\ \textcolor{comment}{\ *\ @typedef\ Ref<T>}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00196}00196\ \textcolor{comment}{\ *\ @brief\ Type\ alias\ for\ std::shared\_ptr<T>}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00197}00197\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00198}00198\ \textcolor{comment}{\ *\ Represents\ shared\ ownership\ semantics.\ Use\ Ref\ when\ multiple\ entities\ need}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00199}00199\ \textcolor{comment}{\ *\ to\ own\ and\ access\ an\ object.\ The\ object\ is\ deleted\ automatically\ when\ the}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00200}00200\ \textcolor{comment}{\ *\ last\ reference\ is\ released.\ Internally\ uses\ reference\ counting\ to\ track\ ownership.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00201}00201\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00202}00202\ \textcolor{comment}{\ *\ @tparam\ T\ The\ type\ of\ object\ to\ manage}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00203}00203\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00204}00204\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00205}00205\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00206}00206\ \textcolor{comment}{\ *\ Ref<Texture>\ texture\ =\ CreateRef<Texture>("{}assets/image.png"{});}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00207}00207\ \textcolor{comment}{\ *\ auto\ copy\ =\ texture;\ //\ Both\ share\ ownership}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00208}00208\ \textcolor{comment}{\ *\ //\ Texture\ is\ deleted\ when\ both\ references\ are\ released}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00209}00209\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00210}00210\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00211}00211\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00212}\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{00212}}\ \textcolor{keyword}{using\ }\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}\ =\ std::shared\_ptr<T>;}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00213}00213\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00214}00214\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00215}00215\ \textcolor{comment}{\ *\ @brief\ Factory\ function\ to\ create\ a\ shared\_ptr\ with\ RAII\ semantics.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00216}00216\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00217}00217\ \textcolor{comment}{\ *\ Constructs\ an\ object\ of\ type\ T\ on\ the\ heap\ and\ returns\ it\ wrapped\ in\ a}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00218}00218\ \textcolor{comment}{\ *\ shared\_ptr.\ This\ function\ simplifies\ the\ creation\ of\ reference-\/counted}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00219}00219\ \textcolor{comment}{\ *\ objects\ and\ is\ useful\ when\ multiple\ systems\ need\ to\ share\ ownership.\ Uses}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00220}00220\ \textcolor{comment}{\ *\ perfect-\/forwarding\ to\ support\ any\ constructor\ signature.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00221}00221\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00222}00222\ \textcolor{comment}{\ *\ @tparam\ T\ The\ type\ of\ object\ to\ create}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00223}00223\ \textcolor{comment}{\ *\ @tparam\ Args\ Parameter\ types\ for\ the\ constructor}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00224}00224\ \textcolor{comment}{\ *\ @param\ args\ Constructor\ arguments\ to\ forward\ to\ T's\ constructor}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00225}00225\ \textcolor{comment}{\ *\ @return\ Ref<T>\ A\ shared\_ptr\ managing\ the\ newly\ created\ object}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00226}00226\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00227}00227\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00228}00228\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00229}00229\ \textcolor{comment}{\ *\ auto\ model\ =\ CreateRef<Model>("{}assets/model.obj"{});}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00230}00230\ \textcolor{comment}{\ *\ auto\ reference\ =\ model;\ //\ Both\ share\ ownership}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00231}00231\ \textcolor{comment}{\ *\ //\ Object\ is\ deleted\ when\ all\ references\ are\ released}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00232}00232\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00233}00233\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00234}00234\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}...\ Args>}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00235}00235\ \textcolor{keyword}{constexpr}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<T>}}\ CreateRef(Args\&\&...\ args)\ \{}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00236}00236\ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<T>(std::forward<Args>(args)...);}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00237}00237\ \}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00238}00238\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00239}00239\ \textcolor{comment}{/**\ @\}\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00240}00240\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00241}00241\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00242}00242\ \textcolor{comment}{\ *\ @defgroup\ DebugMacros\ Debug\ Logging\ Macros}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00243}00243\ \textcolor{comment}{\ *\ @\{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00244}00244\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00245}00245\ \textcolor{comment}{\ *\ Conditional\ compilation\ macros\ for\ debug\ logging\ that\ provide\ zero-\/overhead}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00246}00246\ \textcolor{comment}{\ *\ debugging\ in\ release\ builds.\ These\ macros\ are\ completely\ eliminated\ during}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00247}00247\ \textcolor{comment}{\ *\ compilation\ when\ ENGINE\_DEBUG\_BUILD\ is\ not\ defined,\ ensuring\ zero\ performance\ impact.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00248}00248\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00249}00249\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00250}00250\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00251}00251\ \textcolor{comment}{\ *\ @def\ ENGINE\_DEBUG\_LOG}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00252}00252\ \textcolor{comment}{\ *\ @brief\ Logs\ a\ message\ in\ debug\ builds\ only\ with\ zero\ overhead\ in\ release\ builds.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00253}00253\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00254}00254\ \textcolor{comment}{\ *\ In\ debug\ builds\ (when\ ENGINE\_DEBUG\_BUILD\ is\ defined\ and\ non-\/zero),\ this\ macro}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00255}00255\ \textcolor{comment}{\ *\ outputs\ the\ given\ expression\ to\ the\ engine's\ logging\ system\ via\ ENGINE\_INFO.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00256}00256\ \textcolor{comment}{\ *\ In\ release\ builds,\ this\ macro\ compiles\ to\ a\ no-\/op\ instruction\ that\ has\ virtually}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00257}00257\ \textcolor{comment}{\ *\ no\ performance\ cost.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00258}00258\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00259}00259\ \textcolor{comment}{\ *\ @param\ x\ The\ message\ or\ expression\ to\ log}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00260}00260\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00261}00261\ \textcolor{comment}{\ *\ @note\ Requires\ ENGINE\_INFO\ to\ be\ defined\ as\ a\ logging\ stream\ (e.g.,\ logger\ stream)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00262}00262\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00263}00263\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00264}00264\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00265}00265\ \textcolor{comment}{\ *\ ENGINE\_DEBUG\_LOG("{}Player\ position:\ "{}\ <<\ playerPos.x\ <<\ "{},\ "{}\ <<\ playerPos.y);}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00266}00266\ \textcolor{comment}{\ *\ ENGINE\_DEBUG\_LOG("{}Loading\ asset:\ "{}\ <<\ assetPath);}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00267}00267\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00268}00268\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00269}00269\ \textcolor{preprocessor}{\#if\ defined(ENGINE\_DEBUG\_BUILD)\ \&\&\ ENGINE\_DEBUG\_BUILD}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00270}00270\ \textcolor{preprocessor}{\ \ \#define\ ENGINE\_DEBUG\_LOG(x)\ ENGINE\_INFO\ <<\ x}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00271}00271\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00272}\doxymbox{\hyperlink{group___debug_macros_gaea47321626b32e9ed5172fdab6644d46}{00272}}\ \textcolor{preprocessor}{\ \ \#define\ ENGINE\_DEBUG\_LOG(x)\ ((void)0)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00273}00273\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00274}00274\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00275}00275\ \textcolor{comment}{/**}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00276}00276\ \textcolor{comment}{\ *\ @def\ ENGINE\_DEBUG\_LOG\_IF}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00277}00277\ \textcolor{comment}{\ *\ @brief\ Conditionally\ logs\ a\ message\ in\ debug\ builds\ only\ if\ a\ condition\ is\ met.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00278}00278\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00279}00279\ \textcolor{comment}{\ *\ In\ debug\ builds,\ this\ macro\ evaluates\ the\ condition\ and\ logs\ the\ expression\ only}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00280}00280\ \textcolor{comment}{\ *\ if\ the\ condition\ evaluates\ to\ true.\ In\ release\ builds,\ this\ macro\ is\ completely}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00281}00281\ \textcolor{comment}{\ *\ eliminated\ by\ the\ preprocessor,\ resulting\ in\ zero\ runtime\ cost.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00282}00282\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00283}00283\ \textcolor{comment}{\ *\ This\ is\ useful\ for\ conditional\ logging\ that\ should\ only\ appear\ under\ specific}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00284}00284\ \textcolor{comment}{\ *\ runtime\ circumstances,\ such\ as\ logging\ only\ when\ values\ are\ out\ of\ expected\ ranges}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00285}00285\ \textcolor{comment}{\ *\ or\ when\ certain\ error\ conditions\ are\ detected.}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00286}00286\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00287}00287\ \textcolor{comment}{\ *\ @param\ cond\ The\ condition\ to\ evaluate\ (true\ =\ log,\ false\ =\ skip)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00288}00288\ \textcolor{comment}{\ *\ @param\ x\ The\ message\ or\ expression\ to\ log\ if\ condition\ is\ true}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00289}00289\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00290}00290\ \textcolor{comment}{\ *\ @note\ Requires\ ENGINE\_INFO\ to\ be\ defined\ as\ a\ logging\ stream}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00291}00291\ \textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00292}00292\ \textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00293}00293\ \textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00294}00294\ \textcolor{comment}{\ *\ ENGINE\_DEBUG\_LOG\_IF(health\ <\ maxHealth,\ "{}Health\ reduced\ to:\ "{}\ <<\ health);}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00295}00295\ \textcolor{comment}{\ *\ ENGINE\_DEBUG\_LOG\_IF(fps\ <\ 30,\ "{}Low\ frame\ rate\ detected:\ "{}\ <<\ fps);}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00296}00296\ \textcolor{comment}{\ *\ ENGINE\_DEBUG\_LOG\_IF(ptr\ ==\ nullptr,\ "{}Null\ pointer\ encountered!"{});}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00297}00297\ \textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00298}00298\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00299}00299\ \textcolor{preprocessor}{\#if\ defined(ENGINE\_DEBUG\_BUILD)\ \&\&\ ENGINE\_DEBUG\_BUILD}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00300}00300\ \textcolor{preprocessor}{\ \ \#define\ ENGINE\_DEBUG\_LOG\_IF(cond,\ x)\ if\ (cond)\ \{\ ENGINE\_INFO\ <<\ x;\ \}}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00301}00301\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00302}\doxymbox{\hyperlink{group___debug_macros_ga6a368943a0cf91bd403bf1c6e35e9ee0}{00302}}\ \textcolor{preprocessor}{\ \ \#define\ ENGINE\_DEBUG\_LOG\_IF(cond,\ x)\ ((void)0)}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00303}00303\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00304}00304\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_base_8h_source_l00305}00305\ \textcolor{comment}{/**\ @\}\ */}}
+
+\end{DoxyCode}

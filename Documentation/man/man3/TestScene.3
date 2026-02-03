@@ -1,0 +1,163 @@
+.TH "TestScene" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TestScene
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBScene\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBInitialize\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdate\fP (\fBf32\fP deltaTime) override"
+.br
+.RI "Updates all SceneObjects in the scene\&. "
+.ti -1c
+.RI "void \fBRender\fP (const \fBRef\fP< \fBShader\fP > &shader) const override"
+.br
+.RI "Renders all SceneObjects in the scene using the specified shader\&. "
+.in -1c
+
+Public Member Functions inherited from \fBScene\fP
+.in +1c
+.ti -1c
+.RI "\fBScene\fP ()"
+.br
+.RI "Constructs a new \fBScene\fP with an optional name\&. "
+.ti -1c
+.RI "\fBScene\fP (std::string \fBname\fP)"
+.br
+.RI "Constructs a new \fBScene\fP with the specified name\&. "
+.ti -1c
+.RI "\fB~Scene\fP ()"
+.br
+.RI "Destructor for the \fBScene\fP class\&. "
+.ti -1c
+.RI "void \fBAddObject\fP (const \fBSceneObject\fP &object)"
+.br
+.RI "Adds a \fBSceneObject\fP to the scene\&. "
+.ti -1c
+.RI "void \fBRemoveObject\fP (const std::string &\fBname\fP)"
+.br
+.RI "Removes a \fBSceneObject\fP from the scene by name\&. "
+.ti -1c
+.RI "\fBSceneObject\fP * \fBFindObject\fP (const std::string &\fBname\fP)"
+.br
+.RI "Finds a \fBSceneObject\fP in the scene by name\&. "
+.ti -1c
+.RI "const std::vector< \fBSceneObject\fP > & \fBGetObjects\fP () const"
+.br
+.RI "Gets the list of SceneObjects in the scene\&. "
+.ti -1c
+.RI "std::vector< \fBSceneObject\fP > & \fBGetObjects\fP ()"
+.br
+.RI "Gets the list of SceneObjects in the scene\&. "
+.ti -1c
+.RI "void \fBSetCamera\fP (const \fBCamera\fP &camera)"
+.br
+.RI "Sets the camera for the scene\&. "
+.ti -1c
+.RI "\fBCamera\fP & \fBGetCamera\fP ()"
+.br
+.RI "Gets the camera of the scene\&. "
+.ti -1c
+.RI "const \fBCamera\fP & \fBGetCamera\fP () const"
+.br
+.RI "Gets the camera of the scene\&. "
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCreateTestObjects\fP ()"
+.br
+.ti -1c
+.RI "void \fBUpdateCamera\fP (\fBf32\fP deltaTime)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBf32\fP \fBm_TotalTime\fP = 0\&.0f"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBm_CameraOrbitAngle\fP = 0\&.0f"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line \fB9\fP of file \fBmain\&.cpp\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TestScene::TestScene ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB11\fP of file \fBmain\&.cpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void TestScene::CreateTestObjects ()\fR [inline]\fP, \fR [private]\fP"
+
+.PP
+Definition at line \fB57\fP of file \fBmain\&.cpp\fP\&.
+.SS "void TestScene::Initialize ()\fR [inline]\fP"
+
+.PP
+Definition at line \fB13\fP of file \fBmain\&.cpp\fP\&.
+.SS "void TestScene::Render (const \fBRef\fP< \fBShader\fP > & shader) const\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Renders all SceneObjects in the scene using the specified shader\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIshader\fP The shader to use for rendering the objects 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBScene\fP\&.
+.PP
+Definition at line \fB39\fP of file \fBmain\&.cpp\fP\&.
+.PP
+References \fBScene::GetCamera()\fP, and \fBScene::GetObjects()\fP\&.
+.SS "void TestScene::Update (\fBf32\fP deltaTime)\fR [inline]\fP, \fR [override]\fP, \fR [virtual]\fP"
+
+.PP
+Updates all SceneObjects in the scene\&. Calls the onUpdate callback for each object if it is set\&.
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIdeltaTime\fP The time elapsed since the last update in seconds 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBScene\fP\&.
+.PP
+Definition at line \fB29\fP of file \fBmain\&.cpp\fP\&.
+.SS "void TestScene::UpdateCamera (\fBf32\fP deltaTime)\fR [inline]\fP, \fR [private]\fP"
+
+.PP
+Definition at line \fB109\fP of file \fBmain\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBf32\fP TestScene::m_CameraOrbitAngle = 0\&.0f\fR [private]\fP"
+
+.PP
+Definition at line \fB55\fP of file \fBmain\&.cpp\fP\&.
+.SS "\fBf32\fP TestScene::m_TotalTime = 0\&.0f\fR [private]\fP"
+
+.PP
+Definition at line \fB54\fP of file \fBmain\&.cpp\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

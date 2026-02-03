@@ -1,0 +1,845 @@
+# Doxygen Configuration File for MyGameEngine
+# Generated for comprehensive API documentation generation
+# Last Updated: 2026
+
+#---------------------------------------------------------------------------
+# Project Related Configuration Options
+#---------------------------------------------------------------------------
+
+# The PROJECT_NAME tag is a single word (or sequence of words) that should
+# identify the project for which the documentation is generated. This is used
+# in the title of most generated pages and in a few other places.
+PROJECT_NAME           = "MyGameEngine"
+
+# The PROJECT_NUMBER tag can be used to enter a project or revision number.
+# This could be handy for archiving the generated documentation or
+# if some version control system is used.
+PROJECT_NUMBER         = "1.0"
+
+# Using the PROJECT_BRIEF tag one can provide an optional one line description
+# for a project that appears at the top of each page and should give viewer
+# a quick idea about the purpose of the project.
+PROJECT_BRIEF          = "A high-performance 3D game engine built with modern C++"
+
+# With the PROJECT_LOGO tag one can specify an logo or icon that is
+# included in the documentation.
+PROJECT_LOGO           = ""
+
+# The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
+# where the generated documentation will be put. If a relative path is entered,
+# it will be relative to the location where doxygen was started. If left blank
+# the current directory will be used.
+OUTPUT_DIRECTORY       = "./Documentation/"
+
+# If the CREATE_SUBDIRS tag is set to YES, then doxygen will create
+# 4096 sub-directories (in 2 levels) under the output directory of each output
+# format and will distribute the generated files over these directories.
+CREATE_SUBDIRS         = NO
+
+# If the ALLOW_UNICODE_NAMES tag is set to YES, doxygen will allow non-ASCII
+# characters to appear in the names of generated files. If set to NO, non-ASCII
+# characters will be escaped, for example _xc3_9f will be used for ß.
+ALLOW_UNICODE_NAMES    = NO
+
+#---------------------------------------------------------------------------
+# Build Related Configuration Options
+#---------------------------------------------------------------------------
+
+# If the EXTRACT_ALL tag is set to YES doxygen will assume all entities in
+# documentation are documented, even if no documentation was available.
+# Private class members and static file members will be hidden unless
+# the EXTRACT_PRIVATE respectively EXTRACT_STATIC tags are set to YES
+EXTRACT_ALL            = NO
+
+# If the EXTRACT_PRIVATE tag is set to YES all private members of a class
+# will be included in the documentation.
+EXTRACT_PRIVATE        = YES
+
+# If the EXTRACT_PACKAGE tag is set to YES all members with package or internal
+# scope will be included in the documentation.
+EXTRACT_PACKAGE        = NO
+
+# If the EXTRACT_STATIC tag is set to YES all static members of a file
+# will be included in the documentation.
+EXTRACT_STATIC         = YES
+
+# If the EXTRACT_LOCAL_CLASSES tag is set to YES all local classes
+# (classes defined inside other classes) are included in the documentation.
+EXTRACT_LOCAL_CLASSES  = YES
+
+# This flag is only useful for Objective-C projects. When set to YES local
+# methods, which are defined in the implementation section but not in
+# the interface are included in the documentation.
+EXTRACT_LOCAL_METHODS  = NO
+
+# If this flag is set to YES, the members of anonymous namespaces will be
+# extracted and appear in the documentation as a namespace called
+# 'anonymous_namespace{file}', where file will be replaced with the base name
+# of the file that contains the anonymous namespace.
+EXTRACT_ANON_NSPACES   = NO
+
+# If the HIDE_UNDOC_MEMBERS tag is set to YES, Doxygen will hide all
+# undocumented members of documented classes, files or namespaces.
+HIDE_UNDOC_MEMBERS     = NO
+
+# If the HIDE_UNDOC_CLASSES tag is set to YES, Doxygen will hide all
+# undocumented classes that are normally visible in the class hierarchy.
+HIDE_UNDOC_CLASSES     = NO
+
+# If the HIDE_FRIEND_COMPOUNDS tag is set to YES, Doxygen will hide all
+# friend (class,struct, and union) declarations.
+HIDE_FRIEND_COMPOUNDS  = NO
+
+# If the HIDE_IN_BODY_DOCS tag is set to YES, Doxygen will hide any
+# documentation blocks found inside the body of a function.
+HIDE_IN_BODY_DOCS      = NO
+
+# The INTERNAL_DOCS tag determines if documentation
+# that is typed after a \internal command is included. If set to NO
+# (the default) then the documentation will be excluded.
+INTERNAL_DOCS          = NO
+
+# If the CASE_SENSE_FILENAMES tag is set to NO then the directories will be
+# treated on case-insensitive filesystems in a case-sensitive manner. Please
+# use this option only on Windows!
+CASE_SENSE_FILENAMES   = YES
+
+# If the HIDE_SCOPE_NAMES tag is set to NO (the default) then Doxygen
+# will show members with their full qualified names in the documentation.
+HIDE_SCOPE_NAMES       = NO
+
+# If the ALLOW_UNICODE_NAMES tag is set to YES, doxygen will allow non-ASCII
+# characters to appear in the names of generated files.
+ALLOW_UNICODE_NAMES    = NO
+
+# If the SHOW_INCLUDES tag is set to YES (the default) then Doxygen
+# will put a list of the files that are included by a file in the
+# documentation of that file.
+SHOW_INCLUDES          = YES
+
+# If the FORCE_LOCAL_RANGE tag is set to YES then Doxygen will only generate
+# documentation for files and classes in the current directory tree.
+FORCE_LOCAL_RANGE      = NO
+
+# If the INLINE_INFO tag is set to YES (the default) then a tag [inline]
+# is inserted in the documentation for inline members.
+INLINE_INFO            = YES
+
+# If the SORT_MEMBER_DOCS tag is set to YES (the default) then doxygen
+# will sort the (detailed) documentation of file and class members
+# alphabetically by member name.
+SORT_MEMBER_DOCS       = YES
+
+# If the SORT_BRIEF_DOCS tag is set to YES then doxygen will sort the
+# brief descriptions of file, namespace and class members alphabetically
+# by member name.
+SORT_BRIEF_DOCS        = NO
+
+# If the SORT_MEMBERS_CTORS_1ST tag is set to YES then doxygen
+# will sort the (brief and detailed) documentation of class members so that
+# constructors and destructors are listed first.
+SORT_MEMBERS_CTORS_1ST = NO
+
+# If the SORT_GROUP_NAMES tag is set to YES then doxygen will sort the
+# hierarchy of group names into alphabetical order.
+SORT_GROUP_NAMES       = NO
+
+# If the SORT_BY_SCOPE_NAME tag is set to YES, the class list will be
+# sorted by fully-qualified names, including namespaces. If set to NO
+# (the default), the class list will be sorted only by class name,
+# not including the namespace part.
+SORT_BY_SCOPE_NAME     = YES
+
+# Controls the algorithm used to order the items in the file list.
+# 1: alphabetical order
+# 2: shows files in the order they were processed
+# 3: shows files in alphabetical order
+SORT_BY_SCOPE_NAME     = YES
+
+# If the STRICT_PROTO_MATCHING option is enabled and set to YES, the prototype
+# of a member will be matched more strictly during the search of the symbols
+# throughout the input files.
+STRICT_PROTO_MATCHING  = NO
+
+# The REFERENCED_BY_RELATION tag can be used to enable showing all examples
+# and test cases that reference the classes, namespaces or member functions
+# that are documented.
+REFERENCED_BY_RELATION = YES
+
+# The REFERENCES_RELATION tag can be used to enable showing all examples
+# and test cases that the documented class, namespace or member function references.
+REFERENCES_RELATION    = YES
+
+# The REFERENCES_LINK_SOURCE tag controls whether the hyperlinks that are
+# generated to the source code files are file names or complete paths.
+REFERENCES_LINK_SOURCE = YES
+
+# If SOURCE_TOOLTIPS is enabled (the default) then hovering a hyperlink in
+# the source code will show a tooltip with additional information such as the
+# definition of the symbol and the number of lines to the definition.
+SOURCE_TOOLTIPS        = YES
+
+# If the USE_HTAGS tag is set to YES then the references to source code
+# will point to the HTML generated by the htags(1) tool instead of doxygen
+# built-in source browser.
+USE_HTAGS              = NO
+
+# If the VERBATIM_HEADERS tag is set to YES (the default) then Doxygen
+# will generate a verbatim copy of the header file for each class for
+# which an include statement is generated.
+VERBATIM_HEADERS       = YES
+
+# The CLANG_ASSISTED_PARSING tag is a hints to clang parser about the used
+# source code dialect. The current values are: C, C++, ObjectiveC. If left
+# blank libclang will try to auto detect the language based on the file
+# extension.
+CLANG_ASSISTED_PARSING = NO
+
+#---------------------------------------------------------------------------
+# Configuration options related to the input files
+#---------------------------------------------------------------------------
+
+# The INPUT tag can be used to specify the files and/or directories that contain
+# documented source files. You may enter file names like "myfile.cpp" or
+# directories like "/usr/src/myproject". Separate the files or directories
+# with spaces.
+INPUT                  = ./src
+
+# This tag can be used to specify the character encoding of the source files
+# that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
+# libiconv (or the iconv built into libc) to perform the translation from the
+# configured encoding into UTF-8 Note that on some systems the default encoding
+# is UTF-8.
+INPUT_ENCODING         = UTF-8
+
+# If the value of the INPUT tag contains directories, you can use the
+# FILE_PATTERNS tag to specify one or more wildcard patterns (like *.cpp
+# and *.h) to filter out the files in the directories that match the patterns.
+FILE_PATTERNS          = *.h *.hpp *.cpp *.c *.cc *.cxx
+
+# The RECURSIVE tag can be used to specify whether or not subdirectories should
+# be searched for input files as well. Possible values are YES and NO. If left
+# blank NO is the default.
+RECURSIVE              = YES
+
+# The EXCLUDE tag can be used to specify files and/or directories that should be
+# excluded from the INPUT source files. This way you can easily exclude a
+# subdirectory from a project.
+EXCLUDE                = ./src/output
+
+# The EXCLUDE_SYMLINKS tag can be used select whether or not files or
+# directories that are symbolic links (a Unix filesystem feature) should be
+# excluded from the input.
+EXCLUDE_SYMLINKS       = NO
+
+# If the value of the INPUT tag contains directories, you can use the
+# EXCLUDE_PATTERNS tag to specify one or more wildcard patterns to exclude
+# certain files from those directories.
+EXCLUDE_PATTERNS       = */.*
+
+# The EXAMPLE_PATH tag can be used to specify one or more files or
+# directories that contain example code fragments that are included (see
+# the \include command).
+EXAMPLE_PATH           = 
+
+# If the value of the EXAMPLE_PATH tag contains directories, you can use the
+# EXAMPLE_PATTERNS tag to specify one or more wildcard patterns to filter out
+# the example files in the directories.
+EXAMPLE_PATTERNS       = *
+
+# The IMAGE_PATH tag can be used to specify one or more files or
+# directories that contain image that are included in the documentation (see
+# the \image command).
+IMAGE_PATH             = 
+
+# The INPUT_FILTER tag can be used to specify a program that doxygen should
+# invoke to filter for each input file. Doxygen will invoke the filter program
+# by executing (via popen()) the command "<filter> <input-file>" where <filter>
+# is the value of the INPUT_FILTER tag, and <input-file> is the name of an
+# input file.
+INPUT_FILTER           = 
+
+# If the FILTER_PATTERNS tag is empty or if none of the patterns match the
+# file name, INPUT_FILTER is applied.
+FILTER_PATTERNS        = 
+
+# If the FILTER_SOURCE_FILES tag is set to YES, the input filter (if set using
+# INPUT_FILTER) will also be applied to the source files that are used for
+# producing the source file documentation.
+FILTER_SOURCE_FILES    = NO
+
+# The FILTER_SOURCE_PATTERNS tag can be used to specify source filters per file
+# pattern.
+FILTER_SOURCE_PATTERNS = 
+
+#---------------------------------------------------------------------------
+# Configuration options related to source browsing
+#---------------------------------------------------------------------------
+
+# If the SOURCE_BROWSER tag is set to YES then a list of source files will
+# be generated. Documented entities will be cross-referenced with these sources.
+SOURCE_BROWSER         = YES
+
+# Setting the INLINE_SOURCES tag to YES will include the body
+# of functions and classes directly into the documentation.
+INLINE_SOURCES         = NO
+
+# Setting the STRIP_CODE_COMMENTS tag to YES (the default the entry will
+# removed. Note that (flux) in the filter.
+STRIP_CODE_COMMENTS    = NO
+
+# If the REFERENCED_BY_RELATION is set to YES
+# then for each documented function all documented
+# functions referencing it will be listed.
+REFERENCED_BY_RELATION = YES
+
+# If SOURCE_TOOLTIPS is enabled (the default) then hovering a hyperlink in
+# the source code will show a tooltip with additional information such as the
+# definition of the symbol and the number of lines to the definition.
+SOURCE_TOOLTIPS        = YES
+
+# If the USE_HTAGS tag is set to YES then the references to source code will
+# point to the HTML generated by the htags(1) tool instead of doxygen built-in
+# source browser.
+USE_HTAGS              = NO
+
+# If the VERBATIM_HEADERS tag is set to YES (the default) then Doxygen
+# will generate a verbatim copy of the header file for each class for
+# which an include statement is generated.
+VERBATIM_HEADERS       = YES
+
+#---------------------------------------------------------------------------
+# Configuration options related to the alphabetical class index
+#---------------------------------------------------------------------------
+
+# If the ALPHABETICAL_INDEX tag is set to YES, an alphabetical index
+# of all compounds will be generated. Enable this if the project
+# contains a lot of classes, structs, unions or interfaces.
+ALPHABETICAL_INDEX     = YES
+
+# The COLS_IN_ALPHA_INDEX tag can be used to specify the number of columns
+# in which the alphabetical index for all compounds will be split.
+# Leave as 0 to disable fixed column. width.
+COLS_IN_ALPHA_INDEX    = 5
+
+# In case all classes in a project start with a common prefix, all
+# classes will be put under the same header in the alphabetical index.
+# The IGNORE_PREFIX tag can be used to specify one or more prefixes that
+# should be ignored while generating the alphabetical index headers.
+IGNORE_PREFIX          = 
+
+#---------------------------------------------------------------------------
+# Configuration options related to the HTML output
+#---------------------------------------------------------------------------
+
+# If the GENERATE_HTML tag is set to YES (the default) Doxygen will
+# generate HTML output
+GENERATE_HTML          = YES
+
+# The HTML_OUTPUT tag is used to specify where the HTML docs will be put.
+# If a relative path is entered the value of OUTPUT_DIRECTORY will be
+# put in front of it.
+HTML_OUTPUT            = html
+
+# The HTML_FILE_EXTENSION tag can be used to specify the file extension for
+# each generated HTML page (for example: .htm, .php, .asp).
+HTML_FILE_EXTENSION    = .html
+
+# The HTML_HEADER tag can be used to specify a user-defined HTML header file for
+# each generated HTML page.
+HTML_HEADER            = 
+
+# The HTML_FOOTER tag can be used to specify a user-defined HTML footer for
+# each generated HTML page.
+HTML_FOOTER            = 
+
+# The HTML_STYLESHEET tag can be used to specify a user-defined cascading
+# style sheet that is used by each HTML page.
+HTML_STYLESHEET        = 
+
+# The HTML_EXTRA_STYLESHEET tag can be used to specify an additional
+# user-defined cascading style sheet that is included after the standard
+# style sheets created by doxygen.
+HTML_EXTRA_STYLESHEET  = 
+
+# The HTML_COLORSTYLE_HUE tag controls the color of the HTML output.
+# Doxygen will adjust the colors in the stylesheet and background images
+# according to this value.
+HTML_COLORSTYLE_HUE    = 220
+
+# The HTML_COLORSTYLE_SAT tag controls the saturation of the color output
+# (Grayscale if 0, full color if 100).
+HTML_COLORSTYLE_SAT    = 100
+
+# The HTML_COLORSTYLE_GAMMA tag controls the gamma correction of the color
+# output (Range: 70 - 130, 100 is the default value).
+HTML_COLORSTYLE_GAMMA  = 80
+
+# If the HTML_TIMESTAMP tag is set to YES then the footer of each generated HTML
+# page will contain the date and time when the page was generated.
+HTML_TIMESTAMP         = YES
+
+# If the HTML_DYNAMIC_SECTIONS tag is set to YES then the generated HTML
+# documentation will contain sections that can be hidden and shown dynamically
+# using javascript.
+HTML_DYNAMIC_SECTIONS  = YES
+
+# With HTML_INDEX_NUM_ENTRIES one can control the instance of the index.html
+# that will be generated for the HTML documentation. This can be useful when
+# having large projects on hosted web servers.
+# HTML_INDEX_NUM_ENTRIES: Specify an integer between 0 and 20000 that represents
+# the maximum number of index entries (all, classes, namespaces, files, groups
+# and pages) combined in the index.html file.
+HTML_INDEX_NUM_ENTRIES = 100
+
+# If the GENERATE_DOCSET tag is set to YES, additional index files
+# will be generated that can be used as input for Apple's Xcode 3
+# integrated development environment, introduced with OSX 10.5 (Leopard).
+GENERATE_DOCSET        = NO
+
+# When GENERATE_DOCSET is enabled this tag determines the name of the docset
+# feed.
+DOCSET_FEEDNAME        = "MyGameEngine API"
+
+# When GENERATE_DOCSET is enabled this tag specifies a string that should
+# uniquely identify the documentation set bundle.
+DOCSET_BUNDLE_ID       = com.mycompany.MyGameEngine.documentation
+
+# When GENERATE_PUBLISHER_ID tag specifies a string that should uniquely identify
+# the documentation publisher.
+DOCSET_PUBLISHER_ID    = com.mycompany
+
+# When GENERATE_PUBLISHER_NAME tag specifies the name of the publisher of the
+# documentation.
+DOCSET_PUBLISHER_NAME  = MyCompany
+
+# If the GENERATE_HTMLHELP tag is set to YES then doxygen generates three
+# additional HTML index files: index.hhp, index.hhc, and index.hhk. The
+# index.hhp is a project file that can be read by Microsoft's HTML Help Workshop
+# (see: http://www.microsoft.com/downloads/details.aspx?familyid=00535409-b51d-42cd-8c1e-87da80569913&displaylang=en)
+GENERATE_HTMLHELP      = NO
+
+# If the GENERATE_CHI tag is set to YES, additional index files will be
+# generated for each top-level namespace (or package) and for each class as
+# an additional d6w file that can be read by Microsoft's Help Workshop. With
+# option you can create one large searchable index (for example to help
+# search a C++ project or Java project) or multiple indexes for fine grained,
+# context-specific help.
+GENERATE_CHI           = NO
+
+# Language ids used for generating the HTML documentation for each disabled
+# language.
+LANGUAGE_MAPPING       = 
+
+# If the DISABLE_INDEX tag is set to YES then the indexing features of doxygen
+# will be disabled.
+DISABLE_INDEX          = NO
+
+# The ENUM_VALUES_PER_PAGE tag can be used to set the number of enum values
+# (e.g. enum Color { RED=0, GREEN=100, BLUE=200}) that doxygen will group on
+# one page (for HTML and XML output).
+ENUM_VALUES_PER_PAGE   = 4
+
+# If the GENERATE_TREEVIEW tag is set to YES then a tree like index structure
+# will be generated to display hierarchical information.
+GENERATE_TREEVIEW      = YES
+
+# If the TREEVIEW_WIDTH tag is used to set the initial width (in pixels) of the
+# tree view.
+TREEVIEW_WIDTH         = 250
+
+# When DISABLE_INDEX is disabled, this tag controls if the navigation tree
+# should be resizable (using a splitter bar).
+FULL_SIDEBAR           = NO
+
+# The EXT_LINKS_IN_WINDOW tag can be used to open external links in the same
+# window in which the documentation is displayed by default.
+EXT_LINKS_IN_WINDOW    = NO
+
+# Use this tag to change the font size of Latex formulas included
+# as images in the HTML documentation.
+FORMULA_FONTSIZE       = 10
+
+# Use the FORMULA_TRANSPARENT tag to determine whether or not the images
+# generated for formulas are transparent PNGs.
+FORMULA_TRANSPARENT    = YES
+
+# Enable the USE_MATHJAX option to render LaTeX formulas using MathJax
+# (see http://www.mathjax.org) which is much more portable than using embedded
+# images.
+USE_MATHJAX            = NO
+
+# When MathJax is enabled you can set the default output format to be used for
+# the MathJax output.
+MATHJAX_FORMAT         = HTML-CSS
+
+# When MathJax is enabled you need to supply the location of the MathJax library.
+MATHJAX_RELPATH        = https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/
+
+# The MATHJAX_EXTENSIONS tag can be used to specify one or more MathJax
+# extension names that should be enabled during MathJax rendering.
+MATHJAX_EXTENSIONS    = 
+
+# The SERVER_BASED_SEARCH tag controls whether doxygen uses the search engine
+# based on xapian (see: https://xapian.org/) which is activated via the
+# EXTERNAL_SEARCH setting. When your project is small you can use the default
+# PHP based and AJAX based search engine. When your project is getting to big to
+# index its contents for the PHP based searching you will need to enable the
+# SERVER_BASED_SEARCH option to indicate that the search index should be stored
+# on the server instead of downloaded on-the-fly.
+SERVER_BASED_SEARCH    = NO
+
+# If the EXTERNAL_SEARCH tag is enabled doxygen will no longer generate the PHP
+# script for searching. Instead the search results are written to an XML file
+# which you can import into xapian (see: https://xapian.org/).
+EXTERNAL_SEARCH        = NO
+
+# The SEARCHENGINE_URL should point to a search engine hosted by an external
+# company using the open protocol described at http://www.externalapp.com/help/getrequests.html or
+# http://www.externalapp.com/help/post_requests.html.
+SEARCHENGINE_URL       = 
+
+# When SERVER_BASED_SEARCH and EXTERNAL_SEARCH are both enabled then the
+# relevance of the results returned by the external search engine should be
+# higher than the relevance of the results generated by the PHP based searching.
+# The value in the range 0 and 100 is used where 100 means the results of the
+# external search engine is ten times more relevant than the internal php based
+# one.
+EXTRA_SEARCH_MAPPINGS  = 
+
+#---------------------------------------------------------------------------
+# Configuration options related to the LaTeX output
+#---------------------------------------------------------------------------
+
+# If the GENERATE_LATEX tag is set to YES (the default) Doxygen will
+# generate Latex output.
+GENERATE_LATEX         = YES
+
+# The LATEX_OUTPUT tag is used to specify where the LaTeX docs will be put.
+# If a relative path is entered the value of OUTPUT_DIRECTORY will be
+# put in front of it.
+LATEX_OUTPUT           = latex
+
+# The LATEX_CMD_NAME tag can be used to specify the LaTeX command name to be
+# invoked.
+LATEX_CMD_NAME         = latex
+
+# The MAKEINDEX_CMD_NAME tag can be used to specify the command name to
+# generate index for LaTeX.
+MAKEINDEX_CMD_NAME     = makeindex
+
+# If the COMPACT_LATEX tag is set to YES Doxygen will generate more compact
+# LaTeX that may look better in printed output.
+COMPACT_LATEX          = NO
+
+# The PAPER_TYPE tag can be used to specify the paper type that is used
+# by the printer.
+PAPER_TYPE             = a4
+
+# The EXTRA_PACKAGES tag can be used to specify one or more names of LaTeX
+# packages that should be included in the LaTeX output.
+EXTRA_PACKAGES         = 
+
+# The LATEX_HEADER tag can be used to specify a custom LaTeX header for
+# the generated LaTeX document.
+LATEX_HEADER           = 
+
+# The LATEX_FOOTER tag can be used to specify a custom LaTeX footer for
+# the generated LaTeX document.
+LATEX_FOOTER           = 
+
+# The LATEX_EXTRA_STYLESHEET tag can be used to specify additional user-defined
+# LaTeX style sheet that is included by the generated LaTeX file.
+LATEX_EXTRA_STYLESHEET = 
+
+# The LATEX_EXTRA_FILES tag can be used to specify one or more extra images
+# or other source files that should be copied to the LATEX_OUTPUT output
+# directory.
+LATEX_EXTRA_FILES      = 
+
+# If the PDF_HYPERLINKS tag is set to YES, the LaTeX that is generated
+# is prepared for conversion to pdf (using ps2pdf).
+PDF_HYPERLINKS         = YES
+
+# If the USE_PDFLATEX tag is set to YES, pdflatex will be used instead of
+# raw latex in the Makefile.
+USE_PDFLATEX           = YES
+
+# If the LATEX_BATCHMODE tag is set to YES, doxygen will add the \\batchmode.
+# command to the LaTeX file.
+LATEX_BATCHMODE        = NO
+
+# If the LATEX_HIDE_INDICES tag is set to YES then doxygen will not
+# include the index chapters (such as \begin{theindex}...\end{theindex})
+# in the generated LaTeX output.
+LATEX_HIDE_INDICES     = NO
+
+# If the LATEX_SOURCE_CODE tag is set to YES then doxygen will include
+# source code with syntax highlighting in the LaTeX output.
+LATEX_SOURCE_CODE      = NO
+
+# The LATEX_BIB_STYLE tag can be used to specify the style to use for the
+# bibliography, e.g. plainnat, or ieeetr
+LATEX_BIB_STYLE        = plain
+
+#---------------------------------------------------------------------------
+# Configuration options related to the RTF output
+#---------------------------------------------------------------------------
+
+# If the GENERATE_RTF tag is set to YES Doxygen will generate RTF output
+# (see http://www.feedback.com/rtf/).
+GENERATE_RTF           = NO
+
+#---------------------------------------------------------------------------
+# Configuration options related to the man page output
+#---------------------------------------------------------------------------
+
+# If the GENERATE_MAN tag is set to YES (the default) Doxygen will
+# generate man pages
+GENERATE_MAN           = YES
+
+# The MAN_OUTPUT tag is used to specify where the man pages will be put.
+# If a relative path is entered the value of OUTPUT_DIRECTORY will be
+# put in front of it.
+MAN_OUTPUT             = man
+
+# The MAN_EXTENSION tag determines what extension is added to the
+# generated man pages (default is the sufix to the program).
+MAN_EXTENSION          = .3
+
+# If the MAN_LINKS tag is set to YES and Doxygen generates man output,
+# then it will generate links from the man pages of one project to the base
+# name of the man pages of another project.
+MAN_LINKS              = NO
+
+#---------------------------------------------------------------------------
+# Configuration options related to the XML output
+#---------------------------------------------------------------------------
+
+# If the GENERATE_XML tag is set to YES Doxygen will
+# generate an XML file that captures the structure of
+# the code including all documentation.
+GENERATE_XML           = NO
+
+# The XML_OUTPUT tag is used to specify where the XML pages will be put.
+# If a relative path is entered the value of OUTPUT_DIRECTORY will be
+# put in front of it.
+XML_OUTPUT             = xml
+
+# If the XML_PROGRAMLISTING tag is set to YES Doxygen will
+# dump the program listings (all source code) into the XML output.
+# Note that enabling this will significantly increase the size of the XML output.
+XML_PROGRAMLISTING     = YES
+
+# If the XML_NS_MEMB_FILE_SCOPE tag is set to YES, doxygen will include
+# namespace member definitions in XML files.
+XML_NS_MEMB_FILE_SCOPE = NO
+
+#---------------------------------------------------------------------------
+# Configuration options related to the DOCBOOK output
+#---------------------------------------------------------------------------
+
+# If the GENERATE_DOCBOOK tag is set to YES Doxygen will generate DOCBOOK files
+# that can be used to generate PDF.
+GENERATE_DOCBOOK       = NO
+
+# The DOCBOOK_OUTPUT tag is used to specify where the DOCBOOK pages will be put.
+# If a relative path is entered the value of OUTPUT_DIRECTORY will be
+# put in front of it.
+DOCBOOK_OUTPUT         = docbook
+
+# If the DOCBOOK_PROGRAMLISTING tag is set to YES Doxygen will include the
+# program listings (source code) in the DOCBOOK output.
+DOCBOOK_PROGRAMLISTING = NO
+
+#---------------------------------------------------------------------------
+# Configuration options for the AutoGen Definitions output
+#---------------------------------------------------------------------------
+
+# If the GENERATE_AUTOGEN_DEF tag is set to YES Doxygen will
+# generate an AutoGen Definitions (see autogen.sourceforge.net) file
+# that captures the structure of the code including all
+# documentation. Note that this feature is still experimental
+# and incomplete at the moment.
+GENERATE_AUTOGEN_DEF   = NO
+
+#---------------------------------------------------------------------------
+# Configuration options related to the Perl module output
+#---------------------------------------------------------------------------
+
+# If the GENERATE_PERLMOD tag is set to YES Doxygen will
+# generate a Perl module file that captures the structure of
+# the code including all documentation.
+GENERATE_PERLMOD       = NO
+
+# If the PERLMOD_LATEX tag is set to YES Doxygen will generate
+# the necessary Makefile rules, Latex escapes and Perl scripts
+# to be able to generate PDF and DVI output from the Perl module
+# output.
+PERLMOD_LATEX          = NO
+
+# Set the PERLMOD_PRETTY tag to YES if you want to format the generated
+# Perl modules nicely formatted so they can be read by humans.
+PERLMOD_PRETTY         = YES
+
+# The names of the Perl modules that should be documented.
+PERLMOD_MAKEVAR_PREFIX = 
+
+#---------------------------------------------------------------------------
+# Configuration options related to the preprocessor
+#---------------------------------------------------------------------------
+
+# The ENABLE_PREPROCESSING tag is used to specify whether the C preprocessor
+# should be invoked by doxygen for all input files.
+ENABLE_PREPROCESSING   = YES
+
+# The MACRO_EXPANSION tag is used to specify whether doxygen should expand all
+# macro names in the input files into their definition.
+MACRO_EXPANSION        = NO
+
+# If the EXPAND_ONLY_PREDEF and MACRO_EXPANSION tags are both set to YES
+# then the macro expansion is limited to the macros specified with the
+# PREDEFINED and EXPAND_AS_DEFINED tags.
+EXPAND_ONLY_PREDEF     = NO
+
+# The SEARCH_INCLUDES tag can be used to specify whether or not included files
+# should be parsed just like normal input files.
+SEARCH_INCLUDES        = YES
+
+# The INCLUDE_PATH tag can be used to specify one or more directories that
+# contain include files that are not input files but whose documentation
+# is referenced by the input files.
+INCLUDE_PATH           = ./src ./external/glfw/include ./external/glad/include ./external/assimp/include
+
+# You can use the INCLUDE_FILE_PATTERNS tag to specify header files where the
+# names contain specific patterns. One include file name can be matched by
+# multiple patterns. Use INCLUDE_FILE_PATTERNS to specify one or
+# more wildcard patterns (like *.h and *.hpp) to filter out header
+# files names to be included. If left blank, Doxygen will look for files with
+# extension *.h, *.hpp, *.hxx and *.h++. The patterns are case
+# sensitive.
+INCLUDE_FILE_PATTERNS  = *.h *.hpp
+
+# The PREDEFINED tag can be used to specify one or more macro names that
+# are defined before the preprocessor is started (similar to the -D option used
+# with the C preprocessor).
+PREDEFINED             = __cplusplus DOXYGEN_SKIP
+
+# If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then
+# this tag can be used to specify a list of macro names that should be expanded.
+EXPAND_AS_DEFINED      = 
+
+# If the SKIP_FUNCTION_MACROS tag is set to YES (the default) then doxygen's
+# preprocessor will remove all function-like macros that are alone on a line,
+# have an all uppercase name, and do not end with a semicolon.
+SKIP_FUNCTION_MACROS   = YES
+
+#---------------------------------------------------------------------------
+# Configuration options related to external references
+#---------------------------------------------------------------------------
+
+# The TAGFILES tag can be used to specify one or more tag files.
+TAGFILES               = 
+
+# When a file name is specified after GENERATE_TAGFILE, doxygen will create
+# a tag file that is based on the input files it has parsed.
+GENERATE_TAGFILE       = 
+
+# If the ALLEXTERNALS tag is set to YES all external classes will be listed
+# in the class index. If set to NO only the inherited external classes
+# will be listed.
+ALLEXTERNALS           = NO
+
+# If the EXTERNAL_GROUPS tag is set to YES all external groups will be listed
+# in the modules index. If set to NO, only the current project's groups will
+# be listed.
+EXTERNAL_GROUPS        = YES
+
+# If the EXTERNAL_PAGES tag is set to YES all external pages will be listed
+# in the related pages index. If set to NO, only the current project's
+# pages will be listed.
+EXTERNAL_PAGES         = YES
+
+#---------------------------------------------------------------------------
+# Configuration options related to the dot tool
+#---------------------------------------------------------------------------
+
+# If the CLASS_DIAGRAMS tag is set to YES (the default) Doxygen will
+# generate a class hierarchy of all classes instead of a textual one.
+CLASS_DIAGRAMS         = YES
+
+# You can define message sequence charts within doxygen comments using the \msc
+# command.  Doxygen will then run the mscgen tool (see
+# http://www.mcternan.me.uk/mscgen/) to produce the chart and insert it in the
+# documentation. The MSCGEN_PATH tag allows you to specify the directory where
+# the mscgen tool is located. If left empty the tool is assumed to be found in
+# the default search path.
+MSCGEN_PATH            = 
+
+# You can include diagrams made with dia in doxygen documentation. Doxygen will
+# then run dia to produce the chart and insert it in the documentation.
+DIA_PATH               = 
+
+# If set to YES, the inheritance and collaboration graphs will include
+# inheritance and usage relations if the destinations are undocumented or
+# appear in a different project's documentation.
+INCLUDE_GRAPH          = YES
+
+# If the ENABLE_PREPROCESSING, SEARCH_INCLUDES, INCLUDE_GRAPH, and HAVE_DOT
+# tags are set to YES then doxygen will generate a graph for each documented
+# file showing the direct and indirect include dependencies of the file with
+# other documented files.
+INCLUDE_PATH_GRAPH     = YES
+
+# If the CALL_GRAPH tag is set to YES and DOT_PATH is specified, a call dependency
+# graph is generated for every global function or class method.
+CALL_GRAPH             = NO
+
+# If the CALLER_GRAPH tag is set to YES and DOT_PATH is specified, a caller
+# dependency graph is generated for every global function or class method.
+CALLER_GRAPH           = NO
+
+# If the GRAPHICAL_HIERARCHY tag is set to YES then the graphical class hierarchy
+# is included in the documentation.
+GRAPHICAL_HIERARCHY    = YES
+
+# If the DIRECTORY_GRAPH tag is set to YES then the graphical representation of
+# the directories is included in the documentation.
+DIRECTORY_GRAPH        = YES
+
+# The DOT_IMAGE_FORMAT tag can be used to set the image format of the graphs
+# generated by dot. For an explanation of the image formats see the section
+# output formats in the documentation of the dot tool (Graphviz).
+DOT_IMAGE_FORMAT       = png
+
+# In case our dot version is not 2.26.0+ we need to specify the HASHCHAR
+# character to doxygen (it has to be a single character). Doxygen will remove
+# everything before and after this character from the ./DOT_GRAPH_MAX_NODES tag
+# in order to prevent timing problems with very large graphs.
+MSCGEN_PATH            = 
+
+# The maximum dot graph depth is a safeguard against too large graphs
+# becoming too memory intensive and grinding to a halt when running
+# on a smaller machine. By default the maximum depth is set to 2.
+# is mainly used by the "include dependency" graphs.
+DOT_GRAPH_MAX_NODES    = 50
+
+# Set the DOT_TRANSPARENT tag to YES to turn the background of the dot graphs
+# white instead of transparent. This is useful if you want to include the graph
+# in an RTF document that has a white background. Default value is NO.
+DOT_TRANSPARENT        = NO
+
+# Set the DOT_MULTI_TARGETS tag to YES allow dot to generate multiple output
+# files in one go. Set it to NO if you use img src in your html files (may be
+# needed for older versions of IE on Windows).
+DOT_MULTI_TARGETS      = NO
+
+# If the GENERATE_LEGEND tag is set to YES (the default) Doxygen will
+# generate a legend page explaining the meaning of the various boxes and
+# arrows in the DIRECTORY_GRAPH and GRAPHICAL_HIERARCHY graphs.
+GENERATE_LEGEND        = YES
+
+# If the DOT_CLEANUP tag is set to YES (the default) Doxygen will
+# remove the intermediate dot files that are used to generate
+# the various graphs.
+DOT_CLEANUP            = YES

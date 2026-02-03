@@ -1,0 +1,173 @@
+.TH "Time::Timer" 3 "Version 1.0" "MyGameEngine" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Time::Timer \- High-precision timer for measuring elapsed time and frame delta times\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fR#include <Time\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "using \fBClock\fP = std::chrono::high_resolution_clock"
+.br
+.RI "High-resolution clock type used for timing measurements\&. "
+.ti -1c
+.RI "using \fBTimePoint\fP = std::chrono::time_point<\fBClock\fP>"
+.br
+.RI "Type representing a specific point in time from the high-resolution clock\&. "
+.ti -1c
+.RI "using \fBDuration\fP = std::chrono::duration<\fBf32\fP>"
+.br
+.RI "Type representing a duration of time in floating-point seconds\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBElapsed\fP () const"
+.br
+.ti -1c
+.RI "\fBf32\fP \fBTick\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBTimePoint\fP \fBm_StartTime_\fP"
+.br
+.RI "The time point when the timer was created or last reset\&. "
+.ti -1c
+.RI "\fBTimePoint\fP \fBm_LastFrameTime_\fP"
+.br
+.RI "The time point of the last Tick() call\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+High-precision timer for measuring elapsed time and frame delta times\&. 
+
+This class provides a flexible timer that can measure both total elapsed time since creation/reset and frame-to-frame delta times\&. It uses the system's high-resolution clock for accurate timing measurements needed in game loops\&.
+
+.PP
+The timer is useful for:
+
+.PP
+.IP "\(bu" 2
+Frame timing and delta time calculation
+.IP "\(bu" 2
+Performance profiling and benchmarking
+.IP "\(bu" 2
+Game logic that depends on elapsed time
+.IP "\(bu" 2
+Animations and transitions
+.IP "\(bu" 2
+\fBInput\fP response timing
+.PP
+
+.PP
+\fBNote\fP
+.RS 4
+This class is not thread-safe\&. Use separate \fBTimer\fP instances for different threads\&. 
+.RE
+.PP
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Time\&.h\fP\&.
+.PP
+Definition at line \fB52\fP of file \fBTime\&.h\fP\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "using \fBTime::Timer::Clock\fP = std::chrono::high_resolution_clock"
+
+.PP
+High-resolution clock type used for timing measurements\&. Uses std::chrono::high_resolution_clock which provides the highest available resolution for time measurements on the system\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Time\&.h\fP\&.
+.PP
+Definition at line \fB61\fP of file \fBTime\&.h\fP\&.
+.SS "using \fBTime::Timer::Duration\fP = std::chrono::duration<\fBf32\fP>"
+
+.PP
+Type representing a duration of time in floating-point seconds\&. A duration type that measures time intervals in floating-point seconds, providing fractional second precision for frame delta times and other timing needs\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Time\&.h\fP\&.
+.PP
+Definition at line \fB79\fP of file \fBTime\&.h\fP\&.
+.SS "using \fBTime::Timer::TimePoint\fP = std::chrono::time_point<\fBClock\fP>"
+
+.PP
+Type representing a specific point in time from the high-resolution clock\&. Represents a single moment in time with the precision of the high-resolution clock\&. Used internally to track timer start time and last frame time\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Time\&.h\fP\&.
+.PP
+Definition at line \fB70\fP of file \fBTime\&.h\fP\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Time::Timer::Timer ()"
+
+.PP
+Definition at line \fB5\fP of file \fBTime\&.cpp\fP\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBf32\fP Time::Timer::Elapsed () const"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Time\&.h\fP\&.
+.PP
+Definition at line \fB12\fP of file \fBTime\&.cpp\fP\&.
+.SS "void Time::Timer::Reset ()"
+
+.PP
+Definition at line \fB7\fP of file \fBTime\&.cpp\fP\&.
+.SS "\fBf32\fP Time::Timer::Tick ()"
+
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Time\&.h\fP\&.
+.PP
+Definition at line \fB18\fP of file \fBTime\&.cpp\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBTimePoint\fP Time::Timer::m_LastFrameTime_\fR [private]\fP"
+
+.PP
+The time point of the last Tick() call\&. Used to calculate the delta time (time between frames) in the Tick() function\&. Updated after each Tick() call\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Time\&.h\fP\&.
+.PP
+Definition at line \fB200\fP of file \fBTime\&.h\fP\&.
+.SS "\fBTimePoint\fP Time::Timer::m_StartTime_\fR [private]\fP"
+
+.PP
+The time point when the timer was created or last reset\&. Used to calculate total elapsed time via the Elapsed() function\&. Updated when Reset() is called\&. 
+.PP
+\fBExamples\fP
+.in +1c
+\fBC:/Users/PC/source/repos/engine/src/Core/Time\&.h\fP\&.
+.PP
+Definition at line \fB191\fP of file \fBTime\&.h\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MyGameEngine from the source code\&.

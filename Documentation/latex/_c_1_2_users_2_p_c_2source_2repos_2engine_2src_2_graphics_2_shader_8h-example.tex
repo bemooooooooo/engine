@@ -1,0 +1,199 @@
+\doxysection{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Shader.\+h}
+\hypertarget{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_shader_8h-example}{}\label{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_shader_8h-example}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{std::string\ vertexSrc\ =\ \textcolor{stringliteral}{"{}..."{}};\ \ \ \textcolor{comment}{//\ Vertex\ shader\ source\ code}}
+\DoxyCodeLine{std::string\ fragmentSrc\ =\ \textcolor{stringliteral}{"{}..."{}};\ \textcolor{comment}{//\ Fragment\ shader\ source\ code}}
+\DoxyCodeLine{\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\ shader\ =\ \doxymbox{\hyperlink{class_shader_a1dde33d5c4c6097011775a58580355e7}{Shader::Create}}(vertexSrc,\ fragmentSrc);}
+\DoxyCodeLine{}
+\DoxyCodeLine{shader-\/>Bind();}
+\DoxyCodeLine{shader-\/>SetMatrix4(\textcolor{stringliteral}{"{}u\_ViewProjection"{}},\ viewProjMatrix);}
+\DoxyCodeLine{shader-\/>SetVector3(\textcolor{stringliteral}{"{}u\_LightPosition"{}},\ lightPos);}
+\DoxyCodeLine{shader-\/>Unbind();}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCodeInclude}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Core/Base.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Core/Log.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Math/Matrix3.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Math/Matrix4.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Math/Vector2.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Math/Vector3.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}../Math/Vector4.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <glad/gl.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @class\ Shader}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @brief\ Represents\ an\ OpenGL\ shader\ program\ composed\ of\ vertex\ and\ fragment\ shaders.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ This\ class\ encapsulates\ the\ creation,\ compilation,\ linking,\ and\ management\ of}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ OpenGL\ shader\ programs.\ It\ provides\ methods\ to\ bind/unbind\ the\ shader\ and\ set}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ uniform\ variables\ of\ various\ types\ (int,\ float,\ vectors,\ matrices).}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Key\ features:}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Load\ shaders\ from\ source\ code\ strings\ or\ files}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Compile\ and\ link\ shader\ programs}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ -\/\ Set\ uniform\ variables\ with\ caching\ for\ performance}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ Requires\ a\ valid\ OpenGL\ context\ to\ function\ properly.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @note\ All\ OpenGL\ calls\ are\ made\ through\ this\ class;\ direct\ OpenGL\ calls\ should\ be\ avoided.}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @example}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ std::string\ vertexSrc\ =\ "{}..."{};\ \ \ //\ Vertex\ shader\ source\ code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ std::string\ fragmentSrc\ =\ "{}..."{};\ //\ Fragment\ shader\ source\ code}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ Ref<Shader>\ shader\ =\ Shader::Create(vertexSrc,\ fragmentSrc);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ *\ shader-\/>Bind();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ shader-\/>SetMatrix4("{}u\_ViewProjection"{},\ viewProjMatrix);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ shader-\/>SetVector3("{}u\_LightPosition"{},\ lightPos);}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ shader-\/>Unbind();}}
+\DoxyCodeLine{\textcolor{comment}{\ *\ @endcode}}
+\DoxyCodeLine{\textcolor{comment}{\ */}}
+\DoxyCodeLine{\textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_shader}{Shader}}\ \{}
+\DoxyCodeLine{\textcolor{keyword}{public}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Constructs\ a\ Shader\ from\ vertex\ and\ fragment\ source\ code\ strings.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ Compiles\ the\ provided\ vertex\ and\ fragment\ shader\ source\ code,\ links\ them}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ into\ a\ shader\ program,\ and\ prepares\ it\ for\ use.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ vertexSrc\ The\ source\ code\ for\ the\ vertex\ shader}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ fragmentSrc\ The\ source\ code\ for\ the\ fragment\ shader}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{class_shader_ac2dacc42a94082c3df099471f7786acd}{Shader}}(\textcolor{keyword}{const}\ std::string\&\ vertexSrc,\ \textcolor{keyword}{const}\ std::string\&\ fragmentSrc);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Destructor\ that\ cleans\ up\ the\ OpenGL\ shader\ program.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{class_shader_aff01df87e8a102f270b5b135a295e59d}{\string~Shader}}();}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Binds\ the\ shader\ program\ for\ use\ in\ rendering.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_shader_a5a5a24f72050f46f03cb839b41490527}{Bind}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Unbinds\ the\ shader\ program.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_shader_aebfe8baf7c63c605e0ed429085a4e06a}{Unbind}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/Uniform\ setters-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ an\ integer\ uniform\ variable\ in\ the\ shader.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ name\ of\ the\ uniform\ variable}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ value\ The\ integer\ value\ to\ set}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_shader_af2d37dccd1bc9ca2703abacdc21cd128}{SetInt}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \doxymbox{\hyperlink{group___base_types_gaec41e5f8e4b7aef2540e84268692fa84}{i32}}\ value);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ a\ float\ uniform\ variable\ in\ the\ shader.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ name\ of\ the\ uniform\ variable}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ value\ The\ float\ value\ to\ set}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_shader_ad8cd2deba9b73f08f96d18af36c760bf}{SetFloat}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}\ value);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ a\ Vector2\ uniform\ variable\ in\ the\ shader.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ name\ of\ the\ uniform\ variable}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ value\ The\ Vector2\ value\ to\ set}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_shader_afb99be4c0f53054165d0544c1cef854f}{SetVector2}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ Vector2\&\ value);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ a\ Vector3\ uniform\ variable\ in\ the\ shader.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ name\ of\ the\ uniform\ variable}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ value\ The\ Vector3\ value\ to\ set}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_shader_a43bdcbb4c8bf6cdcdfa98cb7cf1ecb10}{SetVector3}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ Vector3\&\ value);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ a\ Vector4\ uniform\ variable\ in\ the\ shader.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ name\ of\ the\ uniform\ variable}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ value\ The\ Vector4\ value\ to\ set}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_shader_a56990578b5ca1169bbf3f25816d1a5c0}{SetVector4}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ Vector4\&\ value);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ a\ Matrix3\ uniform\ variable\ in\ the\ shader.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ name\ of\ the\ uniform\ variable}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ value\ The\ Matrix3\ value\ to\ set}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_shader_aefcb795ab817ccd13590d02216aa671c}{SetMatrix3}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ Matrix3\&\ value);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Sets\ a\ Matrix4\ uniform\ variable\ in\ the\ shader.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ name\ of\ the\ uniform\ variable}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ value\ The\ Matrix4\ value\ to\ set}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_shader_aeec5d6253c434835401b986486d41822}{SetMatrix4}}(\textcolor{keyword}{const}\ std::string\&\ name,\ \textcolor{keyword}{const}\ Matrix4\&\ value);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Gets\ the\ OpenGL\ renderer\ ID\ of\ the\ shader\ program.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ OpenGL\ renderer\ ID}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ [[nodiscard]]\ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_shader_ad2f40005a2c12a7ac6a52cf207ee91c7}{GetRendererID}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_shader_afc78b0e074bc1714f0b47b47acbd9f72}{m\_RendererID}};\ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Creates\ a\ Shader\ from\ vertex\ and\ fragment\ source\ code\ strings.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ vertexSrc\ The\ source\ code\ for\ the\ vertex\ shader}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ fragmentSrc\ The\ source\ code\ for\ the\ fragment\ shader}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Shader>\ A\ reference-\/counted\ pointer\ to\ the\ created\ Shader}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\ \doxymbox{\hyperlink{class_shader_a1dde33d5c4c6097011775a58580355e7}{Create}}(\textcolor{keyword}{const}\ std::string\&\ vertexSrc,\ \textcolor{keyword}{const}\ std::string\&\ fragmentSrc);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Creates\ a\ Shader\ by\ loading\ vertex\ and\ fragment\ shader\ source\ code\ from\ files.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ vertexPath\ The\ file\ path\ to\ the\ vertex\ shader\ source\ code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ fragmentPath\ The\ file\ path\ to\ the\ fragment\ shader\ source\ code}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ Ref<Shader>\ A\ reference-\/counted\ pointer\ to\ the\ created\ Shader}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ [[nodiscard]]\ \textcolor{keyword}{static}\ \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref<Shader>}}\ \doxymbox{\hyperlink{class_shader_aa39810a6a7d8210889000e1e6b7f552d}{CreateFromFiles}}(\textcolor{keyword}{const}\ std::string\&\ vertexPath,\ \textcolor{keyword}{const}\ std::string\&\ fragmentPath);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{private}:\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Compiles\ a\ shader\ of\ the\ given\ type\ from\ source\ code.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ type\ The\ type\ of\ shader\ (GL\_VERTEX\_SHADER\ or\ GL\_FRAGMENT\_SHADER)}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ source\ The\ source\ code\ of\ the\ shader}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ u32\ The\ OpenGL\ ID\ of\ the\ compiled\ shader}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_shader_a01a8d78001b4ea179729fc5bc9ded1f4}{CompileShader}}(GLenum\ type,\ \textcolor{keyword}{const}\ std::string\&\ source);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Retrieves\ the\ location\ of\ a\ uniform\ variable,\ using\ caching\ for\ performance.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @param\ name\ The\ name\ of\ the\ uniform\ variable}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @return\ i32\ The\ location\ of\ the\ uniform\ variable}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_gaec41e5f8e4b7aef2540e84268692fa84}{i32}}\ \doxymbox{\hyperlink{class_shader_a373c7665cb040ef4afbaca76518a42a8}{GetUniformLocation}}(\textcolor{keyword}{const}\ std::string\&\ name);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_RendererID}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ The\ OpenGL\ renderer\ ID\ for\ the\ shader\ program.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}\ \doxymbox{\hyperlink{class_shader_afc78b0e074bc1714f0b47b47acbd9f72}{m\_RendererID}};}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ /**\ }}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @var\ m\_UniformLocationCache}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ *\ @brief\ Cache\ mapping\ uniform\ variable\ names\ to\ their\ OpenGL\ locations.}}
+\DoxyCodeLine{\textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\ \ \ \ std::unordered\_map<std::string,\ i32>\ \doxymbox{\hyperlink{class_shader_aa07ad8f5e0d63fbc7e20c928bc685d11}{m\_UniformLocationCache}};}
+\DoxyCodeLine{\};}
+
+\end{DoxyCodeInclude}
+ 

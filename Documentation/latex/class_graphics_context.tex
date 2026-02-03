@@ -1,0 +1,261 @@
+\doxysection{Graphics\+Context Class Reference}
+\hypertarget{class_graphics_context}{}\label{class_graphics_context}\index{GraphicsContext@{GraphicsContext}}
+
+
+Core graphics context management for Open\+GL operations.  
+
+
+
+
+{\ttfamily \+\#include $<$Graphics\+Context.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \doxymbox{\hyperlink{class_graphics_context_ac521a3a38fad3062069b19650d8d277c}{Init}} ()
+\item 
+static void \doxymbox{\hyperlink{class_graphics_context_ab79b1ec7a5d63666aad24ff086705828}{Shutdown}} ()
+\item 
+static void \doxymbox{\hyperlink{class_graphics_context_a9295376ceb5fbb3977391125a713c172}{Set\+Viewport}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} x, \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} y, \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} width, \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} height)
+\item 
+static void \doxymbox{\hyperlink{class_graphics_context_a81e457de67e15ce96a0733d0a233569e}{Set\+Clear\+Color}} (\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} r, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} g, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} b, \doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}} a)
+\item 
+static void \doxymbox{\hyperlink{class_graphics_context_ada2728be71d03f587482627181ccede5}{Clear}} ()
+\item 
+static void \doxymbox{\hyperlink{class_graphics_context_aeaa33f748dda2a599f309a943b8208c4}{Enable\+Depth\+Test}} (bool enable)
+\item 
+static void \doxymbox{\hyperlink{class_graphics_context_a2127bdd61ccab782bed34c2ff120275e}{Enable\+Blending}} (bool enable)
+\item 
+static void \doxymbox{\hyperlink{class_graphics_context_a0a722ec59c9d6afa72eb014cf1dc385c}{Enable\+Culling}} (bool enable)
+\item 
+static void \doxymbox{\hyperlink{class_graphics_context_a57896cda46bf4822677761b7c0270b72}{Set\+Cull\+Face}} (bool cull\+Back)
+\item 
+static void \doxymbox{\hyperlink{class_graphics_context_a8f3a0c39b7f1d3ec24ef5152f6dbfac7}{Draw\+Arrays}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} vertex\+Count)
+\item 
+static void \doxymbox{\hyperlink{class_graphics_context_abf27b16c0f019d30230b62c2fab5dd0e}{Draw\+Indexed}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} index\+Count)
+\item 
+static const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_graphics_context_af5aa6a6dccffd09d4f9deada461b7158}{Get\+Vendor}} ()
+\item 
+static const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_graphics_context_adbc53a53986b2da56c2a8e62fae21f49}{Get\+Renderer}} ()
+\item 
+static const char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_graphics_context_abb8d465eb5bb9ee002715eeb569e7307}{Get\+Version}} ()
+\item 
+static void \doxymbox{\hyperlink{class_graphics_context_a7d7741549cde54a6a4ad37c5e1b1add7}{Print\+GLInfo}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static bool \doxymbox{\hyperlink{class_graphics_context_a37a144d3b40d916f9097813a7692e849}{s\+\_\+\+Initialized}} = false
+\begin{DoxyCompactList}\small\item\em Static flag indicating whether the graphics context is initialized. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Core graphics context management for Open\+GL operations. 
+
+This class manages the graphics rendering context and provides a unified interface for Open\+GL operations. It handles viewport setup, color clearing, depth testing, blending, face culling, and drawing operations.
+
+All member functions are static, making \doxylink{class_graphics_context}{Graphics\+Context} a static utility class. This enforces a single graphics context per application, which is appropriate for most game engine architectures.
+
+The class is responsible for:\+
+\begin{DoxyItemize}
+\item Initializing and shutting down the graphics context
+\item Managing rendering state (viewport, clear color, depth test, etc.)
+\item Providing drawing functions
+\item Querying graphics hardware information
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+This class uses static methods. It should be initialized once at engine startup. 
+
+All Open\+GL operations must occur after initialization. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_graphics_context_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Graphics\+Context.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8h_source_l00044}{44}} of file \doxymbox{\hyperlink{_graphics_context_8h_source}{Graphics\+Context.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_graphics_context_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_graphics_context_ada2728be71d03f587482627181ccede5}\index{GraphicsContext@{GraphicsContext}!Clear@{Clear}}
+\index{Clear@{Clear}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily \label{class_graphics_context_ada2728be71d03f587482627181ccede5} 
+void Graphics\+Context::\+\+Clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8cpp_source_l00063}{63}} of file \doxymbox{\hyperlink{_graphics_context_8cpp_source}{Graphics\+Context.\+cpp}}.
+
+\Hypertarget{class_graphics_context_a8f3a0c39b7f1d3ec24ef5152f6dbfac7}\index{GraphicsContext@{GraphicsContext}!DrawArrays@{DrawArrays}}
+\index{DrawArrays@{DrawArrays}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{DrawArrays()}{DrawArrays()}}
+{\footnotesize\ttfamily \label{class_graphics_context_a8f3a0c39b7f1d3ec24ef5152f6dbfac7} 
+void Graphics\+Context::\+\+Draw\+Arrays (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{vertex\+Count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8cpp_source_l00086}{86}} of file \doxymbox{\hyperlink{_graphics_context_8cpp_source}{Graphics\+Context.\+cpp}}.
+
+\Hypertarget{class_graphics_context_abf27b16c0f019d30230b62c2fab5dd0e}\index{GraphicsContext@{GraphicsContext}!DrawIndexed@{DrawIndexed}}
+\index{DrawIndexed@{DrawIndexed}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{DrawIndexed()}{DrawIndexed()}}
+{\footnotesize\ttfamily \label{class_graphics_context_abf27b16c0f019d30230b62c2fab5dd0e} 
+void Graphics\+Context::\+\+Draw\+Indexed (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{index\+Count}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8cpp_source_l00090}{90}} of file \doxymbox{\hyperlink{_graphics_context_8cpp_source}{Graphics\+Context.\+cpp}}.
+
+\Hypertarget{class_graphics_context_a2127bdd61ccab782bed34c2ff120275e}\index{GraphicsContext@{GraphicsContext}!EnableBlending@{EnableBlending}}
+\index{EnableBlending@{EnableBlending}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{EnableBlending()}{EnableBlending()}}
+{\footnotesize\ttfamily \label{class_graphics_context_a2127bdd61ccab782bed34c2ff120275e} 
+void Graphics\+Context::\+\+Enable\+Blending (\begin{DoxyParamCaption}\item[{bool}]{enable}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8cpp_source_l00072}{72}} of file \doxymbox{\hyperlink{_graphics_context_8cpp_source}{Graphics\+Context.\+cpp}}.
+
+\Hypertarget{class_graphics_context_a0a722ec59c9d6afa72eb014cf1dc385c}\index{GraphicsContext@{GraphicsContext}!EnableCulling@{EnableCulling}}
+\index{EnableCulling@{EnableCulling}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{EnableCulling()}{EnableCulling()}}
+{\footnotesize\ttfamily \label{class_graphics_context_a0a722ec59c9d6afa72eb014cf1dc385c} 
+void Graphics\+Context::\+\+Enable\+Culling (\begin{DoxyParamCaption}\item[{bool}]{enable}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8cpp_source_l00077}{77}} of file \doxymbox{\hyperlink{_graphics_context_8cpp_source}{Graphics\+Context.\+cpp}}.
+
+\Hypertarget{class_graphics_context_aeaa33f748dda2a599f309a943b8208c4}\index{GraphicsContext@{GraphicsContext}!EnableDepthTest@{EnableDepthTest}}
+\index{EnableDepthTest@{EnableDepthTest}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{EnableDepthTest()}{EnableDepthTest()}}
+{\footnotesize\ttfamily \label{class_graphics_context_aeaa33f748dda2a599f309a943b8208c4} 
+void Graphics\+Context::\+\+Enable\+Depth\+Test (\begin{DoxyParamCaption}\item[{bool}]{enable}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8cpp_source_l00067}{67}} of file \doxymbox{\hyperlink{_graphics_context_8cpp_source}{Graphics\+Context.\+cpp}}.
+
+\Hypertarget{class_graphics_context_adbc53a53986b2da56c2a8e62fae21f49}\index{GraphicsContext@{GraphicsContext}!GetRenderer@{GetRenderer}}
+\index{GetRenderer@{GetRenderer}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{GetRenderer()}{GetRenderer()}}
+{\footnotesize\ttfamily \label{class_graphics_context_adbc53a53986b2da56c2a8e62fae21f49} 
+const char \texorpdfstring{$\ast$}{*} Graphics\+Context::\+\+Get\+Renderer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8cpp_source_l00098}{98}} of file \doxymbox{\hyperlink{_graphics_context_8cpp_source}{Graphics\+Context.\+cpp}}.
+
+\Hypertarget{class_graphics_context_af5aa6a6dccffd09d4f9deada461b7158}\index{GraphicsContext@{GraphicsContext}!GetVendor@{GetVendor}}
+\index{GetVendor@{GetVendor}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{GetVendor()}{GetVendor()}}
+{\footnotesize\ttfamily \label{class_graphics_context_af5aa6a6dccffd09d4f9deada461b7158} 
+const char \texorpdfstring{$\ast$}{*} Graphics\+Context::\+\+Get\+Vendor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8cpp_source_l00094}{94}} of file \doxymbox{\hyperlink{_graphics_context_8cpp_source}{Graphics\+Context.\+cpp}}.
+
+\Hypertarget{class_graphics_context_abb8d465eb5bb9ee002715eeb569e7307}\index{GraphicsContext@{GraphicsContext}!GetVersion@{GetVersion}}
+\index{GetVersion@{GetVersion}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{GetVersion()}{GetVersion()}}
+{\footnotesize\ttfamily \label{class_graphics_context_abb8d465eb5bb9ee002715eeb569e7307} 
+const char \texorpdfstring{$\ast$}{*} Graphics\+Context::\+\+Get\+Version (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8cpp_source_l00102}{102}} of file \doxymbox{\hyperlink{_graphics_context_8cpp_source}{Graphics\+Context.\+cpp}}.
+
+\Hypertarget{class_graphics_context_ac521a3a38fad3062069b19650d8d277c}\index{GraphicsContext@{GraphicsContext}!Init@{Init}}
+\index{Init@{Init}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_graphics_context_ac521a3a38fad3062069b19650d8d277c} 
+void Graphics\+Context::\+\+Init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8cpp_source_l00007}{7}} of file \doxymbox{\hyperlink{_graphics_context_8cpp_source}{Graphics\+Context.\+cpp}}.
+
+\Hypertarget{class_graphics_context_a7d7741549cde54a6a4ad37c5e1b1add7}\index{GraphicsContext@{GraphicsContext}!PrintGLInfo@{PrintGLInfo}}
+\index{PrintGLInfo@{PrintGLInfo}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{PrintGLInfo()}{PrintGLInfo()}}
+{\footnotesize\ttfamily \label{class_graphics_context_a7d7741549cde54a6a4ad37c5e1b1add7} 
+void Graphics\+Context::\+\+Print\+GLInfo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8cpp_source_l00107}{107}} of file \doxymbox{\hyperlink{_graphics_context_8cpp_source}{Graphics\+Context.\+cpp}}.
+
+\Hypertarget{class_graphics_context_a81e457de67e15ce96a0733d0a233569e}\index{GraphicsContext@{GraphicsContext}!SetClearColor@{SetClearColor}}
+\index{SetClearColor@{SetClearColor}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{SetClearColor()}{SetClearColor()}}
+{\footnotesize\ttfamily \label{class_graphics_context_a81e457de67e15ce96a0733d0a233569e} 
+void Graphics\+Context::\+\+Set\+Clear\+Color (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{r}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{g}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{b}{, }\item[{\doxymbox{\hyperlink{group___base_types_gad34d88453d37b65a09797bad37f2f527}{f32}}}]{a}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8cpp_source_l00059}{59}} of file \doxymbox{\hyperlink{_graphics_context_8cpp_source}{Graphics\+Context.\+cpp}}.
+
+\Hypertarget{class_graphics_context_a57896cda46bf4822677761b7c0270b72}\index{GraphicsContext@{GraphicsContext}!SetCullFace@{SetCullFace}}
+\index{SetCullFace@{SetCullFace}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{SetCullFace()}{SetCullFace()}}
+{\footnotesize\ttfamily \label{class_graphics_context_a57896cda46bf4822677761b7c0270b72} 
+void Graphics\+Context::\+\+Set\+Cull\+Face (\begin{DoxyParamCaption}\item[{bool}]{cull\+Back}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8cpp_source_l00082}{82}} of file \doxymbox{\hyperlink{_graphics_context_8cpp_source}{Graphics\+Context.\+cpp}}.
+
+\Hypertarget{class_graphics_context_a9295376ceb5fbb3977391125a713c172}\index{GraphicsContext@{GraphicsContext}!SetViewport@{SetViewport}}
+\index{SetViewport@{SetViewport}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{SetViewport()}{SetViewport()}}
+{\footnotesize\ttfamily \label{class_graphics_context_a9295376ceb5fbb3977391125a713c172} 
+void Graphics\+Context::\+\+Set\+Viewport (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{x}{, }\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{y}{, }\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{width}{, }\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8cpp_source_l00055}{55}} of file \doxymbox{\hyperlink{_graphics_context_8cpp_source}{Graphics\+Context.\+cpp}}.
+
+\Hypertarget{class_graphics_context_ab79b1ec7a5d63666aad24ff086705828}\index{GraphicsContext@{GraphicsContext}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily \label{class_graphics_context_ab79b1ec7a5d63666aad24ff086705828} 
+void Graphics\+Context::\+\+Shutdown (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8cpp_source_l00050}{50}} of file \doxymbox{\hyperlink{_graphics_context_8cpp_source}{Graphics\+Context.\+cpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_graphics_context_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_graphics_context_a37a144d3b40d916f9097813a7692e849}\index{GraphicsContext@{GraphicsContext}!s\_Initialized@{s\_Initialized}}
+\index{s\_Initialized@{s\_Initialized}!GraphicsContext@{GraphicsContext}}
+\doxysubsubsection{\texorpdfstring{s\_Initialized}{s\_Initialized}}
+{\footnotesize\ttfamily \label{class_graphics_context_a37a144d3b40d916f9097813a7692e849} 
+bool Graphics\+Context::\+s\+\_\+\+Initialized = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Static flag indicating whether the graphics context is initialized. 
+
+Used to track initialization state and prevent double-\/initialization or operations before proper setup. \begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_graphics_context_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Graphics\+Context.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_graphics_context_8h_source_l00373}{373}} of file \doxymbox{\hyperlink{_graphics_context_8h_source}{Graphics\+Context.\+h}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Graphics\+Context.\+h\item 
+src/\+\+Graphics/\+Graphics\+Context.\+cpp\end{DoxyCompactItemize}

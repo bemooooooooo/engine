@@ -1,0 +1,578 @@
+\doxysection{Texture Class Reference}
+\hypertarget{class_texture}{}\label{class_texture}\index{Texture@{Texture}}
+
+
+Represents a 2D texture resource in Open\+GL.  
+
+
+
+
+{\ttfamily \+\#include $<$Texture.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_texture_a9f41c70a2e704ef829e7e89718862aa4}{Texture}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} width, \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} height)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_texture}{Texture} with the given width and height. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_texture_a5619bfa584f63bc635007dec36b73610}{Texture}} (const std::\+string \&filepath)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_texture}{Texture} by loading from the specified file path. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_texture_a09c4bcb7462f64c1d20fa69dba3cee8a}{\texorpdfstring{$\sim$}{\string~}\+Texture}} ()
+\begin{DoxyCompactList}\small\item\em Destructor that cleans up the Open\+GL texture resource. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_texture_a2ce2eb9f09d4bbcc289b42cecfe21f9d}{Bind}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} slot=0) const
+\begin{DoxyCompactList}\small\item\em Binds the texture to the specified texture unit. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_texture_a0bff249ecfb46e9b08c6ba52d64a921e}{Unbind}} () const
+\begin{DoxyCompactList}\small\item\em Unbinds the texture from the current texture unit. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_texture_aebe2caf71137e1771aa5a9096c70955d}{Set\+Data}} (void \texorpdfstring{$\ast$}{*}data, \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} size)
+\begin{DoxyCompactList}\small\item\em Sets the texture data from a raw data pointer. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_texture_a60932e4a79a6aa83303456814944e183}{Get\+Width}} () const
+\begin{DoxyCompactList}\small\item\em Gets the width of the texture in pixels. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_texture_a7ae059fdd929a2f43ac4902767cf8bf5}{Get\+Height}} () const
+\begin{DoxyCompactList}\small\item\em Gets the height of the texture in pixels. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_texture_ab18699fc9ead2bcb9d997000f2c97b77}{Get\+Renderer\+ID}} () const
+\begin{DoxyCompactList}\small\item\em Gets the Open\+GL renderer ID of the texture. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_texture_a426f7a09d506a481b0607ef9f91e1672}{Is\+Loaded}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the texture was successfully loaded. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_texture}{Texture}} $>$ \doxymbox{\hyperlink{class_texture_a95668d1df7743f3178a362c0c0e3b470}{Create}} (\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} width, \doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} height)
+\begin{DoxyCompactList}\small\item\em Factory method to create a \doxylink{class_texture}{Texture}. \end{DoxyCompactList}\item 
+static \doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_texture}{Texture}} $>$ \doxymbox{\hyperlink{class_texture_ac8a70128650b07aca28073f5e7d02e6e}{Create}} (const std::\+string \&filepath)
+\begin{DoxyCompactList}\small\item\em Factory method to create a \doxylink{class_texture}{Texture} from a file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_texture_a3ddeec1757d232f12f5a8b91cfe02c88}{Create\+Internal}} ()
+\begin{DoxyCompactList}\small\item\em Internal method to create the Open\+GL texture resource. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_texture_af8fe00f64287e900e136948eefe311f2}{m\+\_\+\+Renderer\+ID}}
+\begin{DoxyCompactList}\small\item\em The Open\+GL renderer ID for the texture. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_texture_a85847b7dbebd64b03b3e714376f3e6fc}{m\+\_\+\+Width}}
+\begin{DoxyCompactList}\small\item\em The width of the texture in pixels. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_texture_a5cd9bc503bd1f599e5c34e14e7e8eb9b}{m\+\_\+\+Height}}
+\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_texture_a16126c7495b6e30482c7074d08bf8dc2}{m\+\_\+\+Internal\+Format}}
+\begin{DoxyCompactList}\small\item\em The internal format of the texture (e.\+g., GL\+\_\+\+RGBA8). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} \doxymbox{\hyperlink{class_texture_a7310ad8cb00d157d33ec3bdb13f46297}{m\+\_\+\+Data\+Format}}
+\begin{DoxyCompactList}\small\item\em The data format of the texture (e.\+g., GL\+\_\+\+RGBA). \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_texture_a675be3c1432369c5590c0a9b5f114758}{m\+\_\+\+Filepath}}
+\begin{DoxyCompactList}\small\item\em The file path from which the texture was loaded. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_texture_a19581cda9c74f7992070f390672b45ad}{m\+\_\+\+Is\+Loaded}} = false
+\begin{DoxyCompactList}\small\item\em Flag indicating whether the texture was successfully loaded. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a 2D texture resource in Open\+GL. 
+
+This class encapsulates the creation, management, and usage of 2D textures in Open\+GL. It provides methods to load textures from image files, create empty textures, bind/\+unbind them for rendering, and set texture data.
+
+\doxylink{namespace_key}{Key} features:\+
+\begin{DoxyItemize}
+\item Load textures from image files (e.\+g., PNG, JPEG)
+\item Create empty textures with specified width and height
+\item Bind and unbind textures to texture units
+\item Set texture data dynamically
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+Requires a valid Open\+GL context to function properly. 
+
+All Open\+GL calls are made through this class; direct Open\+GL calls should be avoided. 
+\end{DoxyNote}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_resource_manager_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Resource\+Manager.\+h}}, and \doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8h_source_l00041}{41}} of file \doxymbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_texture_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_texture_a9f41c70a2e704ef829e7e89718862aa4}\index{Texture@{Texture}!Texture@{Texture}}
+\index{Texture@{Texture}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{Texture()}{Texture()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_texture_a9f41c70a2e704ef829e7e89718862aa4} 
+Texture::\+\+Texture (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{width}{, }\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{height}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_texture}{Texture} with the given width and height. 
+
+Creates an empty texture with the specified dimensions.
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & The width of the texture in pixels \\
+\hline
+{\em height} & The height of the texture in pixels \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8cpp_source_l00006}{6}} of file \doxymbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_texture_8cpp_source_l00051}{Create\+Internal()}}, \doxymbox{\hyperlink{_texture_8h_source_l00164}{m\+\_\+\+Data\+Format}}, \doxymbox{\hyperlink{_texture_8h_source_l00164}{m\+\_\+\+Internal\+Format}}, and \doxymbox{\hyperlink{_texture_8h_source_l00156}{m\+\_\+\+Width}}.
+
+\Hypertarget{class_texture_a5619bfa584f63bc635007dec36b73610}\index{Texture@{Texture}!Texture@{Texture}}
+\index{Texture@{Texture}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{Texture()}{Texture()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_texture_a5619bfa584f63bc635007dec36b73610} 
+Texture::\+\+Texture (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filepath}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_texture}{Texture} by loading from the specified file path. 
+
+Loads the texture image from the given file and creates the Open\+GL texture.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & The path to the image file to load \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8cpp_source_l00013}{13}} of file \doxymbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_texture_8cpp_source_l00051}{Create\+Internal()}}, \doxymbox{\hyperlink{_texture_8h_source_l00164}{m\+\_\+\+Data\+Format}}, \doxymbox{\hyperlink{_texture_8h_source_l00170}{m\+\_\+\+Filepath}}, \doxymbox{\hyperlink{_texture_8h_source_l00164}{m\+\_\+\+Internal\+Format}}, \doxymbox{\hyperlink{_texture_8h_source_l00176}{m\+\_\+\+Is\+Loaded}}, and \doxymbox{\hyperlink{_texture_8h_source_l00156}{m\+\_\+\+Width}}.
+
+\Hypertarget{class_texture_a09c4bcb7462f64c1d20fa69dba3cee8a}\index{Texture@{Texture}!````~Texture@{\texorpdfstring{$\sim$}{\string~}Texture}}
+\index{````~Texture@{\texorpdfstring{$\sim$}{\string~}Texture}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Texture()}{\string~Texture()}}
+{\footnotesize\ttfamily \label{class_texture_a09c4bcb7462f64c1d20fa69dba3cee8a} 
+Texture::\+\texorpdfstring{$\sim$}{\string~}\+Texture (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructor that cleans up the Open\+GL texture resource. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8cpp_source_l00047}{47}} of file \doxymbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_texture_8h_source_l00150}{m\+\_\+\+Renderer\+ID}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_texture_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_texture_a2ce2eb9f09d4bbcc289b42cecfe21f9d}\index{Texture@{Texture}!Bind@{Bind}}
+\index{Bind@{Bind}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{Bind()}{Bind()}}
+{\footnotesize\ttfamily \label{class_texture_a2ce2eb9f09d4bbcc289b42cecfe21f9d} 
+void Texture::\+\+Bind (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{slot}{ = {\ttfamily 0}}\end{DoxyParamCaption}) const}
+
+
+
+Binds the texture to the specified texture unit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em slot} & The texture unit slot to bind to (default is 0) \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8cpp_source_l00061}{61}} of file \doxymbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_texture_8h_source_l00150}{m\+\_\+\+Renderer\+ID}}.
+
+\Hypertarget{class_texture_ac8a70128650b07aca28073f5e7d02e6e}\index{Texture@{Texture}!Create@{Create}}
+\index{Create@{Create}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_texture_ac8a70128650b07aca28073f5e7d02e6e} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_texture}{Texture}} $>$ Texture::\+\+Create (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filepath}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Factory method to create a \doxylink{class_texture}{Texture} from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & The path to the image file to load \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Texture$>$} The created texture loaded from file 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8cpp_source_l00085}{85}} of file \doxymbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+
+\Hypertarget{class_texture_a95668d1df7743f3178a362c0c0e3b470}\index{Texture@{Texture}!Create@{Create}}
+\index{Create@{Create}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_texture_a95668d1df7743f3178a362c0c0e3b470} 
+\doxymbox{\hyperlink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref}}$<$ \doxymbox{\hyperlink{class_texture}{Texture}} $>$ Texture::\+\+Create (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{width}{, }\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{height}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Factory method to create a \doxylink{class_texture}{Texture}. 
+
+Overloaded to create a texture either from dimensions or from a file path.
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & The width of the texture in pixels \\
+\hline
+{\em height} & The height of the texture in pixels \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Texture$>$} The created empty texture
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em filepath} & The path to the image file to load \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxylink{group___memory_management_gadd5e90b302c31b74a46619f240214bcc}{Ref$<$\+Texture$>$} The created texture loaded from file 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8cpp_source_l00081}{81}} of file \doxymbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_resource_manager_8cpp_source_l00079}{Resource\+Manager::\+\+Load\+Texture()}}.
+
+\Hypertarget{class_texture_a3ddeec1757d232f12f5a8b91cfe02c88}\index{Texture@{Texture}!CreateInternal@{CreateInternal}}
+\index{CreateInternal@{CreateInternal}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{CreateInternal()}{CreateInternal()}}
+{\footnotesize\ttfamily \label{class_texture_a3ddeec1757d232f12f5a8b91cfe02c88} 
+void Texture::\+\+Create\+Internal (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Internal method to create the Open\+GL texture resource. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8cpp_source_l00051}{51}} of file \doxymbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_texture_8h_source_l00150}{m\+\_\+\+Renderer\+ID}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_texture_8cpp_source_l00013}{Texture()}}, and \doxymbox{\hyperlink{_texture_8cpp_source_l00006}{Texture()}}.
+
+\Hypertarget{class_texture_a7ae059fdd929a2f43ac4902767cf8bf5}\index{Texture@{Texture}!GetHeight@{GetHeight}}
+\index{GetHeight@{GetHeight}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{GetHeight()}{GetHeight()}}
+{\footnotesize\ttfamily \label{class_texture_a7ae059fdd929a2f43ac4902767cf8bf5} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Texture::\+\+Get\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the height of the texture in pixels. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32} The height of the texture 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8h_source_l00101}{101}} of file \doxymbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+
+\Hypertarget{class_texture_ab18699fc9ead2bcb9d997000f2c97b77}\index{Texture@{Texture}!GetRendererID@{GetRendererID}}
+\index{GetRendererID@{GetRendererID}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{GetRendererID()}{GetRendererID()}}
+{\footnotesize\ttfamily \label{class_texture_ab18699fc9ead2bcb9d997000f2c97b77} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Texture::\+\+Get\+Renderer\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Gets the Open\+GL renderer ID of the texture. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32} The Open\+GL renderer ID 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8h_source_l00108}{108}} of file \doxymbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_texture_8h_source_l00150}{m\+\_\+\+Renderer\+ID}}.
+
+\Hypertarget{class_texture_a60932e4a79a6aa83303456814944e183}\index{Texture@{Texture}!GetWidth@{GetWidth}}
+\index{GetWidth@{GetWidth}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{GetWidth()}{GetWidth()}}
+{\footnotesize\ttfamily \label{class_texture_a60932e4a79a6aa83303456814944e183} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Texture::\+\+Get\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the width of the texture in pixels. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32} The width of the texture 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8h_source_l00094}{94}} of file \doxymbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_texture_8h_source_l00156}{m\+\_\+\+Width}}.
+
+\Hypertarget{class_texture_a426f7a09d506a481b0607ef9f91e1672}\index{Texture@{Texture}!IsLoaded@{IsLoaded}}
+\index{IsLoaded@{IsLoaded}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{IsLoaded()}{IsLoaded()}}
+{\footnotesize\ttfamily \label{class_texture_a426f7a09d506a481b0607ef9f91e1672} 
+bool Texture::\+\+Is\+Loaded (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the texture was successfully loaded. 
+
+\begin{DoxyReturn}{Returns}
+true If the texture is loaded and valid 
+
+false If the texture failed to load 
+\end{DoxyReturn}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8h_source_l00116}{116}} of file \doxymbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+
+
+
+References \doxymbox{\hyperlink{_texture_8h_source_l00176}{m\+\_\+\+Is\+Loaded}}.
+
+\Hypertarget{class_texture_aebe2caf71137e1771aa5a9096c70955d}\index{Texture@{Texture}!SetData@{SetData}}
+\index{SetData@{SetData}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{SetData()}{SetData()}}
+{\footnotesize\ttfamily \label{class_texture_aebe2caf71137e1771aa5a9096c70955d} 
+void Texture::\+\+Set\+Data (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}}}]{size}{}\end{DoxyParamCaption})}
+
+
+
+Sets the texture data from a raw data pointer. 
+
+Uploads the provided pixel data to the texture.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the pixel data \\
+\hline
+{\em size} & Size of the data in bytes \\
+\hline
+\end{DoxyParams}
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8cpp_source_l00070}{70}} of file \doxymbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+
+
+
+References \doxymbox{\hyperlink{_texture_8h_source_l00164}{m\+\_\+\+Data\+Format}}, \doxymbox{\hyperlink{_texture_8h_source_l00164}{m\+\_\+\+Internal\+Format}}, and \doxymbox{\hyperlink{_texture_8h_source_l00156}{m\+\_\+\+Width}}.
+
+\Hypertarget{class_texture_a0bff249ecfb46e9b08c6ba52d64a921e}\index{Texture@{Texture}!Unbind@{Unbind}}
+\index{Unbind@{Unbind}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{Unbind()}{Unbind()}}
+{\footnotesize\ttfamily \label{class_texture_a0bff249ecfb46e9b08c6ba52d64a921e} 
+void Texture::\+\+Unbind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Unbinds the texture from the current texture unit. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8cpp_source_l00066}{66}} of file \doxymbox{\hyperlink{_texture_8cpp_source}{Texture.\+cpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_texture_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_texture_a7310ad8cb00d157d33ec3bdb13f46297}\index{Texture@{Texture}!m\_DataFormat@{m\_DataFormat}}
+\index{m\_DataFormat@{m\_DataFormat}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{m\_DataFormat}{m\_DataFormat}}
+{\footnotesize\ttfamily \label{class_texture_a7310ad8cb00d157d33ec3bdb13f46297} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Texture::\+m\+\_\+\+Data\+Format\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The data format of the texture (e.\+g., GL\+\_\+\+RGBA). 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8h_source_l00164}{164}} of file \doxymbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_texture_8cpp_source_l00070}{Set\+Data()}}, \doxymbox{\hyperlink{_texture_8cpp_source_l00013}{Texture()}}, and \doxymbox{\hyperlink{_texture_8cpp_source_l00006}{Texture()}}.
+
+\Hypertarget{class_texture_a675be3c1432369c5590c0a9b5f114758}\index{Texture@{Texture}!m\_Filepath@{m\_Filepath}}
+\index{m\_Filepath@{m\_Filepath}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{m\_Filepath}{m\_Filepath}}
+{\footnotesize\ttfamily \label{class_texture_a675be3c1432369c5590c0a9b5f114758} 
+std::\+string Texture::\+m\+\_\+\+Filepath\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The file path from which the texture was loaded. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8h_source_l00170}{170}} of file \doxymbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_texture_8cpp_source_l00013}{Texture()}}.
+
+\Hypertarget{class_texture_a5cd9bc503bd1f599e5c34e14e7e8eb9b}\index{Texture@{Texture}!m\_Height@{m\_Height}}
+\index{m\_Height@{m\_Height}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{m\_Height}{m\_Height}}
+{\footnotesize\ttfamily \label{class_texture_a5cd9bc503bd1f599e5c34e14e7e8eb9b} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Texture::\+m\+\_\+\+Height\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8h_source_l00156}{156}} of file \doxymbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+
+\Hypertarget{class_texture_a16126c7495b6e30482c7074d08bf8dc2}\index{Texture@{Texture}!m\_InternalFormat@{m\_InternalFormat}}
+\index{m\_InternalFormat@{m\_InternalFormat}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{m\_InternalFormat}{m\_InternalFormat}}
+{\footnotesize\ttfamily \label{class_texture_a16126c7495b6e30482c7074d08bf8dc2} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Texture::\+m\+\_\+\+Internal\+Format\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The internal format of the texture (e.\+g., GL\+\_\+\+RGBA8). 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8h_source_l00164}{164}} of file \doxymbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_texture_8cpp_source_l00070}{Set\+Data()}}, \doxymbox{\hyperlink{_texture_8cpp_source_l00013}{Texture()}}, and \doxymbox{\hyperlink{_texture_8cpp_source_l00006}{Texture()}}.
+
+\Hypertarget{class_texture_a19581cda9c74f7992070f390672b45ad}\index{Texture@{Texture}!m\_IsLoaded@{m\_IsLoaded}}
+\index{m\_IsLoaded@{m\_IsLoaded}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{m\_IsLoaded}{m\_IsLoaded}}
+{\footnotesize\ttfamily \label{class_texture_a19581cda9c74f7992070f390672b45ad} 
+bool Texture::\+m\+\_\+\+Is\+Loaded = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flag indicating whether the texture was successfully loaded. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8h_source_l00176}{176}} of file \doxymbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_texture_8h_source_l00116}{Is\+Loaded()}}, and \doxymbox{\hyperlink{_texture_8cpp_source_l00013}{Texture()}}.
+
+\Hypertarget{class_texture_af8fe00f64287e900e136948eefe311f2}\index{Texture@{Texture}!m\_RendererID@{m\_RendererID}}
+\index{m\_RendererID@{m\_RendererID}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{m\_RendererID}{m\_RendererID}}
+{\footnotesize\ttfamily \label{class_texture_af8fe00f64287e900e136948eefe311f2} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Texture::\+m\+\_\+\+Renderer\+ID\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The Open\+GL renderer ID for the texture. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8h_source_l00150}{150}} of file \doxymbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_texture_8cpp_source_l00061}{Bind()}}, \doxymbox{\hyperlink{_texture_8cpp_source_l00051}{Create\+Internal()}}, \doxymbox{\hyperlink{_texture_8h_source_l00108}{Get\+Renderer\+ID()}}, and \doxymbox{\hyperlink{_texture_8cpp_source_l00047}{\texorpdfstring{$\sim$}{\string~}\+Texture()}}.
+
+\Hypertarget{class_texture_a85847b7dbebd64b03b3e714376f3e6fc}\index{Texture@{Texture}!m\_Width@{m\_Width}}
+\index{m\_Width@{m\_Width}!Texture@{Texture}}
+\doxysubsubsection{\texorpdfstring{m\_Width}{m\_Width}}
+{\footnotesize\ttfamily \label{class_texture_a85847b7dbebd64b03b3e714376f3e6fc} 
+\doxymbox{\hyperlink{group___base_types_ga70c1fcc1a4e96af8f6580f708657cd41}{u32}} Texture::\+m\+\_\+\+Width\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The width of the texture in pixels. 
+
+\begin{Desc}
+\item[Examples]\par
+\doxymbox{\hyperlink{_c_1_2_users_2_p_c_2source_2repos_2engine_2src_2_graphics_2_texture_8h-example}{C:\+/\+\+Users/\+\+PC/\+source/\+repos/\+engine/\+src/\+\+Graphics/\+\+Texture.\+h}}.\end{Desc}
+
+
+Definition at line \doxymbox{\hyperlink{_texture_8h_source_l00156}{156}} of file \doxymbox{\hyperlink{_texture_8h_source}{Texture.\+h}}.
+
+
+
+Referenced by \doxymbox{\hyperlink{_texture_8h_source_l00094}{Get\+Width()}}, \doxymbox{\hyperlink{_texture_8cpp_source_l00070}{Set\+Data()}}, \doxymbox{\hyperlink{_texture_8cpp_source_l00013}{Texture()}}, and \doxymbox{\hyperlink{_texture_8cpp_source_l00006}{Texture()}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+Graphics/\+Texture.\+h\item 
+src/\+\+Graphics/\+Texture.\+cpp\end{DoxyCompactItemize}
